@@ -4,7 +4,7 @@ category: timing
 tags: [motion,rhythm,sequencing]
 axes: {energy: 3, density: 3, weight: 2, finish: 4}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -21,9 +21,9 @@ a queue and the reader waits.
 40-item grid from taking three seconds.
 
 Ship the band as **two** tokens, not one value: a tight base at .06–.08s for
-siblings that should read as a single gesture, and a loose tier at .12–.15s for
-sequences meant to be counted — steps, beats, a list the reader is supposed to
-follow item by item. One token forces every group into the same reading.
+siblings that should read as a single gesture, and a loose tier at .12–.22s for
+sequences meant to be counted — steps, beats, labelled phases taken one at a
+time, the top of that band only for block-sized items. One token forces every group into the same reading.
 
 Without a script the stagger is *n* delay classes on one keyframe, stepping by
 the chosen band. It needs `animation-fill-mode: both`, or each element holds its

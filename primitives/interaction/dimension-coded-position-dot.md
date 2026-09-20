@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,state,indicator,accessibility,carousel]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,8 @@ to carry progress *within* the step, not only which step.
 width and animate `flex-basis` instead. `scaleX` avoids the reflow but stretches
 the radius into an ellipse. Dots are a position, never a label — keep a count
 beside them.
+
+For a row of steps that advances itself, promote the indicator to the hairline
+already above each step: `scaleX()` from `transform-origin: left` over the
+step's dwell, past steps full and future ones dimmed to .35–.5. A rule has no
+radius to distort, so the `scaleX` objection above does not apply.

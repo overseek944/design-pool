@@ -4,7 +4,7 @@ category: surface
 tags: [diagram,hairline,precision,detail,schematic]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,9 @@ fill so the rail passes behind them.
 ```
 ⚠ Gaps 18–32px. Tighter and the link reads as a seam in the node rather than a
 path between two.
+
+Where connectors are SVG and cannot be inset per node, carve the gap at the
+node: a 4–10px ring in the *page background* colour knocks the lines out
+behind it without touching their geometry.
+`box-shadow: 0 0 0 6px var(--bg)`, before any glow in the same declaration.
+Over an image or a gradient the ring becomes a visible disc.
