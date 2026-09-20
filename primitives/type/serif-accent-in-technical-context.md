@@ -4,7 +4,7 @@ category: type
 tags: [type,contrast,editorial,restraint]
 axes: {energy: 1, density: 2, weight: 3, finish: 5}
 cost: 1
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -42,3 +42,10 @@ voice, not a change of size.
 ```css
 h1 .mono { font-family: var(--font-mono); font-size: .78em; font-weight: 300 }
 ```
+
+Past the lede sits the full dose in the other direction: sans keeps every
+headline, label and control, and the serif takes *all* running prose. The page
+reads as a technical voice quoting a written one, which suits an argument long
+enough to need paragraphs. It only holds if the sans keeps every non-prose
+string — one serif byline or metadata line and the two voices stop mapping to
+roles and start looking arbitrary. A text serif, not a display cut, at 16–18px.

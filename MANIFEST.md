@@ -1,6 +1,6 @@
 # Manifest
 
-240 primitives. Format: `category/id | axes cost | tags | gist`
+244 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -94,6 +94,7 @@ media/dialog-scoped-embed-lifecycle | neutral  $2 | media performance dialog cor
 media/mask-swap-over-shared-paint | E2 D2 W2 F4 $2 | mask icon gradient media state | When a family of glyphs must share one fill — a gradient, a vide
 media/optical-height-logo-row | neutral  $1 | media logos normalisation scale responsive | Supplied marks are drawn to different conventions — a wordmark f
 media/origin-conditional-sandbox | neutral  $1 | media iframe embed security correctness | A sandboxed iframe that is also allow-same-origin and served fro
+media/sheared-ghost-silhouette | E1 D3 W2 F5 $2 | depth line-art silhouette projection stroke | Flat line work reads as volume if the outline is drawn twice. Ke
 media/single-source-focal-crop | neutral  $1 | media responsive performance detail | One photograph can hold a headline at every width without a seco
 media/stacked-contour-volume | E1 D4 W2 F5 $2 | svg mark depth stroke currentcolor | Describe a solid as a stack of cross-sections instead of as a sh
 media/state-preserving-frame-relocation | neutral  $3 | media iframe embed lifecycle dom correctness | appendChild removes and reinserts: an iframe reloads, a video re
@@ -104,6 +105,7 @@ motion-system/attribute-driven-motion-hooks | neutral  $1 | architecture motion 
 motion-system/camera-over-static-scene | E3 D2 W3 F5 $2 | motion transform scale focus diagram narrative | To walk a reader through a diagram, move the viewport rather tha
 motion-system/context-scoped-cleanup | neutral  $1 | motion lifecycle correctness | Create every animation inside a scoped context and revert it on 
 motion-system/distance-eased-camera-push | E2 D2 W3 F5 $3 | camera 3d easing scroll narrative | Interpolating a camera's position between two waypoints looks wr
+motion-system/fire-on-arrival-propagation | E3 D3 W2 F5 $3 | entrance propagation graph canvas emergent | An entrance authored as a list of delays must be rewritten whene
 motion-system/keyframe-variant-bank | E3 D4 W2 F3 $2 | motion generative ambient tokens architecture | Phase and period offsets only ever translate one curve; they can
 motion-system/marquee-playhead | E3 D3 W2 F5 $3 | marquee motion state observer rhythm | Give a moving track one stationary reading position. A marker si
 motion-system/marquee-still-state | neutral  $1 | motion accessibility marquee correctness overflow | A marquee's reduced-motion state is not a paused marquee. The tr
@@ -122,6 +124,7 @@ motion-system/slot-permutation-rotation | E2 D3 W2 F5 $3 | motion grid state res
 motion-system/svg-geometry-keyframes | E3 D2 W2 F5 $1 | motion svg diagram precision detail | r, cx, cy, x, y and width are CSS properties on SVG, not just at
 motion-system/transient-class-scoped-transition | neutral  $2 | motion-system view-transition theme correctness reduced-motion | A view transition, or a global colour transition, must animate f
 perf/data-saver-media-branch | neutral  $1 | performance media-query bandwidth video progressive-enhancement accessibility | prefers-reduced-data: reduce is a reader saying their connection
+perf/dead-banded-resize-rebuild | neutral  $1 | resize canvas mobile correctness | A generative scene that re-seeds on resize restarts every time a
 perf/device-hint-quality-tier | neutral  $2 | performance webgl capability progressive-enhancement correctness | Resolve one integer tier at startup and let every expensive deci
 perf/font-display-per-role | neutral  $1 | type font-loading cls performance correctness | font-display is a decision per face, not per project. Body and U
 perf/layer-order-preamble | neutral  $1 | architecture cascade css correctness code-splitting | Cascade layers are ordered by first mention, so with code-split 
@@ -137,6 +140,7 @@ perf/single-flight-external-script | neutral  $2 | performance architecture corr
 perf/stylesheet-failure-reload-guard | neutral  $2 | correctness performance progressive-enhancement architecture cls | A hashed stylesheet that 404s after a deploy paints the whole do
 perf/velocity-scaled-preload-margin | neutral  $2 | perf lazy-load scroll images loading | A fixed lazy-load margin is tuned for one scroll speed. Under a 
 perf/will-change-on-split-children | neutral  $1 | motion performance promotion | Split text creates dozens of nodes animated simultaneously; with
+reveal/arc-window-overstroke | E3 D2 W3 F5 $2 | draw-on highlight canvas pulse path | A path being drawn reads as inert when the settled trail and the
 reveal/char-opacity-drift | E3 D4 W2 F5 $4 | type motion reveal ambient | Per-character with opacity + small y, will-change:opacity,transf
 reveal/glyph-scramble-settle | E4 D3 W2 F3 $2 | type reveal motion technical text | Resolve a label out of noise rather than fading it in: hold the 
 reveal/masked-line-rise | E3 D2 W3 F5 $2 | type motion reveal | Split to lines, wrap each in an overflow-hidden outer with a tra

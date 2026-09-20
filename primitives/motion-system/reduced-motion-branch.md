@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,accessibility,required]
 axes: none
 cost: 1
-seen: 18
+seen: 19
 requires: []
 conflicts: []
 completes: []
@@ -62,3 +62,16 @@ each boundary so a scene commits as its copy arrives rather than after it.
 const stops = [0, 1.3, 2.4, 3.4]                    // one per authored scene
 const p = reduced ? stops[clamp(Math.floor(raw + .15), 0, stops.length - 1)] : raw
 ```
+
+A procedural scene has no authored end state to set — the resting composition is
+whatever the simulation converges to. Run it rather than skipping it: under
+`reduce`, step the same update function to completion inside a bounded loop,
+then draw one frame and never request another. The still image is then exactly
+the one a reader who waited would have seen, with no second hand-built
+"static version" to drift out of sync with the real one.
+```js
+for (let i = 0; i < 200 && !settled(); i++) step(FIXED_DT)
+draw(); return
+```
+⚠ Bound the loop by iteration count as well as by the settled test — a rule that
+never converges otherwise hangs the main thread instead of playing too long.

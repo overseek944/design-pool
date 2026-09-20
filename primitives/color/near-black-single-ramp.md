@@ -4,7 +4,7 @@ category: color
 tags: [color,palette,dark,restraint]
 axes: {energy: 2, density: 2, weight: 4, finish: 4}
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -31,3 +31,11 @@ saturated block of the accent used once as a full fill lands far harder than it
 would on grey. Keep chroma low enough that the ground still reads as black
 beside white text, and hold the tint to a single hue — two tinted darks in one
 page read as a colour cast, not a decision.
+
+Inverted — one warm off-white ground and ONE ink ramp at three strengths: full
+for headings, softened for prose, faint for labels. The ink must be tinted
+toward the ground rather than neutral, or it reads as a sticker laid on the
+paper instead of printed into it. The faint rung is where this fails: a warm
+grey that looks correctly quiet against warm paper is routinely near 3:1, so it
+is a rung for decoration and non-essential labels only, and anything that must
+be read moves up to the softened rung.

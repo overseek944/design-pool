@@ -4,7 +4,7 @@ category: surface
 tags: [surface,gradient,fade,mask,precision]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,12 @@ direction.
 ```
 ⚠ Worth it over 24–64px of fade. Shorter than that a two-stop gradient is
 already imperceptible and the extra stops are wasted bytes.
+
+Anchor the stops in pixels, not percentages, wherever the element's height is
+content-driven: `calc(100% - 64px)` holds the ramp at the length it was tuned
+for whether the block is 300px or 2000px tall, while a percentage ramp stretches
+into a wash on the long one and compresses into a hard edge on the short one.
+```css
+mask-image: linear-gradient(to bottom, #000 calc(100% - 80px),
+  #0009 calc(100% - 64px), #0004 calc(100% - 32px), transparent 100%)
+```

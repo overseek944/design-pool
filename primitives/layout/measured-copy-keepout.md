@@ -4,7 +4,7 @@ category: layout
 tags: [layout,measurement,legibility,canvas]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,11 @@ const keepout = Math.max(...blocks.map(b => b.getBoundingClientRect().height
 ⚠ Observe the blocks, not the window — a reflow with no resize still moves the
 box. Measure on resize and cache; reading geometry inside the frame loop
 thrashes layout.
+
+The number is half the job — what the art does with it decides whether the
+keepout is visible. Clamping every offending element to the boundary line packs
+them into a flat row along it, which draws more attention than the collision
+would have. Push each one back along its own direction from the composition's
+centre instead, or drop it and resample; either keeps the field's distribution
+intact. Where the art is a connected structure, move the whole subgraph rather
+than its members, or the links stretch into a visible fan at the edge.
