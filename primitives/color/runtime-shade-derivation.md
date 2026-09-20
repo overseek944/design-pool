@@ -4,7 +4,7 @@ category: color
 tags: [color,tokens,theming,architecture]
 axes: none
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -34,3 +34,15 @@ saturation/lightness pairs — `--icon: hsl(var(--h) 46% 51%)`, `--ring: hsl(var
 44% 68%)` — each holding its relationship while one scalar retints all of them.
 `color-mix()` cannot do this: it walks toward black or white, never around the
 wheel.
+
+Where the hover state only needs to move, not to be named, `filter:
+brightness()` skips the colour arithmetic entirely — and unlike any mix it works
+on a gradient, an image or a multi-layer fill, where there is no single colour
+to derive from. 1.04–1.08 on a light fill, and pair it with the transform rather
+than a second token. It cannot express a *disabled* step, so the ramp above
+still owns the semantic states.
+```css
+.btn:hover { filter: brightness(1.06) }
+```
+⚠ `filter` promotes the element and clips any `position: fixed` descendant to
+it — wrong on a control that opens a menu from inside itself.

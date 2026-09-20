@@ -4,7 +4,7 @@ category: surface
 tags: [surface,depth,detail,affordance,state,border]
 axes: {energy: 2, density: 2, weight: 2, finish: 3}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,12 @@ one. Highlight 30–50% white, inner shadow 4–10% black, drop 1–2px at 3–6
 ⚠ Depth is invisible in forced-colors and to low-vision readers — carry pressed
 state in the background value too, never in the shadow alone. Over a dark ground
 the white highlight reads as a seam; derive it from the ground's luminance.
+
+On a saturated fill both inset edges go white and the pair reads as a convex
+face rather than a raised plate: the top edge catches the light, the bottom is
+the same light wrapping the lower curve, so it must be the dimmer of the two or
+the button looks like a hollow tube. Roughly 2:1 — 20–25% top, 10–14% bottom.
+No drop shadow is needed; the fill's own tinted ramp does that job.
+```css
+.btn { box-shadow: inset 0 1px 0 #ffffff3d, inset 0 -1px 0 #ffffff1f }
+```

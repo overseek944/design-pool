@@ -4,7 +4,7 @@ category: media
 tags: [media,logos,normalisation,scale,responsive]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,15 @@ weight. Two heights covers almost every supplied set.
 ```
 ⚠ `minmax(0, 1fr)` is load-bearing: plain `1fr` floors at min-content, so one
 wide mark blows the row past its container.
+
+Past two outlier classes, give each mark its own authored height and multiply
+them all by one variable. The optical decision is made once per logo and never
+revisited; the responsive decision is a single number per breakpoint instead of
+a clamp retuned on every mark. It scales a set of any size, and a swapped logo
+touches one declaration.
+```css
+.row    { --logo-h: .82 }
+@media (width >= 40rem) { .row { --logo-h: 1 } }
+.row img { height: calc(var(--h) * var(--logo-h) * 1px); width: auto }
+/* <img style="--h:28"> per mark */
+```

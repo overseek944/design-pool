@@ -4,7 +4,7 @@ category: scale
 tags: [scale,layout,proportion,transform,responsive]
 axes: {energy: 1, density: 2, weight: 3, finish: 4}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -31,4 +31,16 @@ and publish `container / designWidth` as the property, so the factor tracks the
 column through sidebars and breakpoints.
 ```js
 new ResizeObserver(() => box.style.setProperty('--f', box.clientWidth / 1400)).observe(box)
+```
+
+The wrapper height that entry demands is better spent as an `aspect-ratio` on
+the shell: the shell reserves the exact box from first paint, the stage is
+absolutely positioned inside it, and the scale factor no longer has to be
+mirrored into a height calculation that can drift from it. Gate the stage's
+opacity on the first measurement too — a `ResizeObserver` fires after layout, so
+without it the unscaled canvas paints at full size for a frame.
+```css
+.shell { aspect-ratio: 1200 / 746; position: relative; width: 100% }
+.stage { position: absolute; inset: 0 auto auto 0; width: 1200px; height: 746px;
+         transform-origin: 0 0; transform: scale(var(--f)) }
 ```

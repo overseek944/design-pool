@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,observer,navigation,architecture,correctness]
 axes: none
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -47,3 +47,16 @@ let g = 'light'
 for (const s of sections) { const r = s.getBoundingClientRect()
   if (r.top <= y && r.bottom > y) g = s.dataset.ground ?? 'light' }
 ```
+
+For a binary — has the page left the top, is the hero behind us — the band
+collapses further into a sentinel: a zero-height element placed in the document
+at the threshold, observed with a top `rootMargin` of minus the chrome height.
+The threshold is then expressed in layout rather than as a pixel constant that
+goes stale the next time the hero changes height, and there is no scroll
+listener at all.
+```js
+new IntersectionObserver(([e]) => bar.toggleAttribute('data-raised', !e.isIntersecting),
+  { rootMargin: `-${navH}px 0px 0px 0px` }).observe(sentinel)
+```
+⚠ The sentinel must not be the sticky element's own child — it scrolls with the
+bar and never leaves the root.
