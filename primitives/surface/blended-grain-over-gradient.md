@@ -4,7 +4,7 @@ category: surface
 tags: [surface,texture,grain,gradient,blend-mode,banding]
 axes: {energy: 1, density: 3, weight: 3, finish: 4}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -40,3 +40,19 @@ panel reads as dirt.
 ```
 ⚠ `stitchTiles="stitch"` or the tile seams visibly at any size. Filter
 rasterisation is not free — one tiled element, never one per card.
+
+Generate the tile rather than requesting it: an inline `feTurbulence` in an
+SVG data URI costs no round trip and keeps `baseFrequency`, `seed` and octave
+count readable in the declaration. `fractalNoise` at 0.6–0.9 is paper tooth;
+`turbulence` at the same frequency is a cloudier wash. Over a flat opaque
+stock, blend `multiply` instead of `soft-light` — the grain then reads as ink
+taken up unevenly rather than as a film laid over the panel.
+```css
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'
+  width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise'
+  baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160'
+  filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+background-blend-mode: multiply
+```
+⚠ Desaturate inside the filter with `feColorMatrix type="saturate" values="0"`
+or the turbulence arrives in colour and tints the stock.

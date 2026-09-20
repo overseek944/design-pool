@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,layout,narrative]
 axes: {energy: 4, density: 3, weight: 4, finish: 4}
 cost: 4
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: [context-scoped-cleanup, reduced-motion-branch]

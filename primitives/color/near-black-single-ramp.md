@@ -4,7 +4,7 @@ category: color
 tags: [color,palette,dark,restraint]
 axes: {energy: 2, density: 2, weight: 4, finish: 4}
 cost: 1
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []

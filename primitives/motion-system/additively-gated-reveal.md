@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,reveal,accessibility,progressive-enhancement,correctness,scroll]
 axes: {energy: 2, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []

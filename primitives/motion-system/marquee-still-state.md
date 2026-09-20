@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,accessibility,marquee,correctness,overflow]
 axes: none
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -49,3 +49,8 @@ branch nobody tests.
 Give it a real pause control rather than relying on hover — a visible button
 above 44px that flips the same running flag. It is the only stop available to a
 touch reader, and it outranks every automatic gate.
+
+The duplicate goes in the scroller variant too. A native horizontal scroller
+over a doubled track spends half its distance on a repeat the reader has just
+passed, which reads as a bug rather than as a loop — drop the `aria-hidden`
+copy and let the real content set the scroll width.

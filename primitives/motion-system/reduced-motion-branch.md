@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,accessibility,required]
 axes: none
 cost: 1
-seen: 27
+seen: 28
 requires: []
 conflicts: []
 completes: []
@@ -115,3 +115,15 @@ and a state machine that advances on it stalls with the interface half-open.
 ```css
 @media (prefers-reduced-motion: reduce) { .card, .panel { transition-duration: 10ms } }
 ```
+
+Where the loop's clock is a *wrapped period* — `t = now / 1000 % P` — the still
+state is the same draw call at an elected phase, not at zero. Phase 0 is
+routinely the empty frame the cycle builds out of, so pick the phase where the
+composition says the most and pass it in. One renderer serves both states and
+neither can drift from the other.
+```js
+const draw = t => { /* every time term reads t */ }
+reduced ? draw(STILL_PHASE) : loop()      // STILL_PHASE ~ .6–.8 of P
+```
+⚠ Elect the phase by looking at it, not by arithmetic — the most legible frame
+is rarely the one where the most things are on screen.

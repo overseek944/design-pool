@@ -4,7 +4,7 @@ category: timing
 tags: [timing,choreography,keyframes,css-animation,token,sequence]
 axes: {energy: 2, density: 3, weight: 2, finish: 5}
 cost: 2
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -75,3 +75,15 @@ machine and nothing to reset. Cut pairs 0.3–0.8% of the period.
 ```
 ⚠ Sub-percent gaps are below the resolution of most animation inspectors —
 annotate them in the source or the next edit rounds them back into tweens.
+
+Give every participant the same blackout window at the end of the period —
+opacity 1 held to ~96%, 0 by 99% — and the loop restarts from nothing rather
+than cutting from each element's end state back to its start. Start and end
+states then no longer have to match, which is what usually forces a multi-part
+sequence to be authored backwards from its own wrap. Fade window 3–5% of the
+period; below 2% it reads as a flicker rather than a reset.
+```css
+@keyframes step-a { 0%,30% { opacity: 1 } 96% { opacity: 1 } 99%,100% { opacity: 0 } }
+```
+⚠ The window must be identical everywhere. One element fading a percent late
+draws the eye straight to the seam the technique exists to hide.
