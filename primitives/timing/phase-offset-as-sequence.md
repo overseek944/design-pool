@@ -4,7 +4,7 @@ category: timing
 tags: [motion,sequencing,rhythm,ambient,css]
 axes: {energy: 3, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -48,3 +48,17 @@ map a bare `delay-*` class to the transition one, so a stack authored this way
 renders perfectly in review and runs dead in phase, every member peaking on the
 same frame. The tell is that the group reads as one blinking object rather than
 as travel; check the computed `animation-delay`, not the class list.
+
+A round-robin needs one member that is *not* offset. Where N peers share the
+period and each lights for roughly `100/N` percent of it, an element showing
+overall progress — a rail that fills, a counter — must run its own keyframe on
+the same duration with N stepped holds, not the shared one at a delay. Give it
+the delay treatment and it restarts inside every stage, reporting the stage's
+progress instead of the cycle's.
+```css
+.rail { animation: fill 8s linear infinite }   /* peers: delay n*2s */
+@keyframes fill { 0%,19% { transform: scaleX(0) } 31%,44% { transform: scaleX(.25) }
+                  56%,69% { transform: scaleX(.5) } 81%,100% { transform: scaleX(.75) } }
+```
+⚠ Duty cycle and peer count are one number: widen a peer's lit plateau past
+`period/N` and two stages are lit at once, which reads as a fault.

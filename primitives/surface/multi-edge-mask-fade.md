@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,edge,composition,bleed]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
@@ -41,3 +41,15 @@ one says which way to swipe.
 mask-image: linear-gradient(to right, transparent 0, #000 var(--lead),
                             #000 calc(100% - var(--trail)), transparent 100%)
 ```
+
+Where the fade is focal rather than per-edge, one oversized radial stop replaces
+the whole composited stack — no `mask-composite`, no prefix pair, one layer. A
+decorative ground then exists only around the content it sits behind and is gone
+by the section boundary, so it never has to be terminated. Size the ellipse
+1.5–2.5x the content block and push its centre to the optical focus, usually
+above middle; opaque to 40–60%, clear by 80–90%.
+```css
+mask-image: radial-gradient(900px 700px at 50% 30%, #000 50%, transparent 85%)
+```
+⚠ Percentage stops here are of the *gradient box*, not the element, so an
+explicit ellipse size is what keeps the falloff stable across viewports.
