@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,edge,composition,bleed]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,8 @@ edges, not a wall of colour. Fade distances 80–560px, tuned per edge.
 }
 ```
 ⚠ `mask-composite` needs the `-webkit-` prefix pair to work in Safari; without `intersect` the layers union and nothing fades.
+
+Percentage stops instead of px when the fade should scale with the element —
+`8%`/`92%` on a horizontal rail keeps the same proportion of fade at every width,
+where a fixed 400px eats a narrow one whole. Px for fixed-size stages,
+percentages for anything fluid.

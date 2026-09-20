@@ -4,7 +4,7 @@ category: type
 tags: [type,tokens,opentype,variable-font,precision]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -27,3 +27,8 @@ body { font-variation-settings: var(--font-variations);
 .tabular { font-feature-settings: var(--font-features), "zero" }
 ```
 ⚠ Non-round weights have no synthetic fallback — set `font-synthesis: none` so a failed font load degrades visibly rather than smearing.
+
+Ship a real italic — a second variable file over the same weight range, not a
+synthesised oblique. With `font-synthesis: none` that pair is what keeps
+emphasis from shearing. It doubles the payload, so it earns its place only where
+italic carries meaning.

@@ -4,7 +4,7 @@ category: motion-system
 tags: [architecture,motion,maintainability]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -19,3 +19,8 @@ every animated node in the codebase is greppable.
 ```js
 gsap.utils.toArray('[data-reveal-card]')
 ```
+
+Carry the parameters on the same attributes — `data-delay`, `data-duration`,
+`data-ease` read at setup — so one generic initialiser serves every instance and
+per-element tuning never becomes a per-element code path. Parse with a fallback
+per key; an authoring typo should degrade to the default, not to `NaN`.

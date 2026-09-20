@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,polish,consistency]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
