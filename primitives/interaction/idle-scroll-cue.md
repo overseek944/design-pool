@@ -4,7 +4,7 @@ category: interaction
 tags: [scroll,affordance,feedback,motion]
 axes: {energy: 2, density: 1, weight: 2, finish: 4}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,11 @@ const arm = () => { show(false); clearTimeout(t)
 ```
 ⚠ Measure `documentElement`, not `body` — a body carrying the page background
 does not track pin spacers reliably.
+
+The mirror policy uses the same idle timer inverted: a readout that exists only
+*while* the reader moves — depth, percentage, section — and retires after
+600ms–1.2s of stillness. It reports rather than instructs, so it may sit over
+content that a persistent cue could not, and it never needs the
+near-the-bottom suppression. Update it from a single rAF-coalesced scroll
+handler and mark it `aria-hidden`; a per-frame figure is noise to a screen
+reader.

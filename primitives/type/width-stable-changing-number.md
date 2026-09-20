@@ -4,7 +4,7 @@ category: type
 tags: [numerals,data,motion,correctness]
 axes: {energy: 2, density: 3, weight: 3, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -22,3 +22,11 @@ fix the decimals at the source.
 ⚠ `ch` is the advance of `0` — correct only for the face actually rendering, so
 reserve after the webfont loads or the fallback sets the floor. Give the element
 `aria-live="off"`; a per-frame value read aloud is unusable.
+
+Counting a figure up by rewriting `textContent` adds a third obligation:
+round-trip the source string. Capture it once, split off the non-numeric
+prefix and suffix, note the grouping separators and decimal places, and write
+the exact original back on the final frame rather than a re-formatted
+equivalent. Anything else silently drops a currency mark, a `+`, or a
+localised separator — and it will be a translated or edited DOM you are
+overwriting, not the one you authored.

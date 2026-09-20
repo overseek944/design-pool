@@ -4,7 +4,7 @@ category: type
 tags: [type,list,counter,detail,technical]
 axes: {energy: 1, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -30,3 +30,10 @@ section, tinted a few percent off the background so it sits below the text
 contrast floor and reads as a position marker, not content. Deliberately
 illegible, so `aria-hidden` and duplicated in real text. Alternate the side it
 hangs from and a long numbered run gains rhythm.
+
+`::before` with `content: counter(n, decimal-leading-zero)` is the right form
+for the one case `list-style` cannot serve: an ordinal that needs text welded
+to it — `"FIG." counter(fig) " // "` — or that sits in a caption rather than a
+marker box. The built-in style pads to two digits only and then grows, so it
+holds a run under a hundred and quietly breaks the column past it; above that,
+back to a `@counter-style` with an explicit `pad`.

@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,observer,navigation,architecture,correctness]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,14 @@ new IntersectionObserver(
 ```
 ⚠ A section shorter than the band can pass through without intersecting, and
 the highlight sticks on the previous one.
+
+The band also answers "what is *under* my fixed chrome right now". Offset its
+top by the chrome height rather than a percentage and squeeze the bottom to
+−90%, and each section can declare its own ground polarity on a data attribute
+— the overlay bar then recolours itself from the section it is currently
+crossing instead of guessing from scroll position. Transition the colour over
+200–300ms so the hand-off does not snap at the boundary.
+```js
+{ rootMargin: `-${navH}px 0px -90% 0px`, threshold: 0 }
+// nav.classList.toggle('over-light', e.target.dataset.navbg === 'light')
+```
