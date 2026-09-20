@@ -4,7 +4,7 @@ category: layout
 tags: [overflow,correctness,accessibility,scroll]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,9 @@ really do scroll.
 ⚠ `overflow-clip-margin` reopens a controlled bleed of 0–24px for glows and
 focus rings that would otherwise be cut. Without it a `:focus-visible` outline
 on a clipped child is invisible.
+
+Variant — `clip` takes two axis values where `hidden` effectively cannot:
+`overflow: clip visible` crops horizontally while letting a dropdown, tooltip or
+glow escape vertically. `hidden visible` is silently computed back to
+`hidden hidden`, so this is the only way to get one-axis cropping without a
+mask.

@@ -1,0 +1,28 @@
+---
+id: single-edge-cell-rules
+category: layout
+tags: [layout,grid,hairline,rules,precision]
+axes: {energy: 1, density: 3, weight: 1, finish: 5}
+cost: 1
+seen: 1
+requires: []
+conflicts: []
+completes: []
+tension: []
+---
+In a ruled grid every interior line is drawn by both neighbours and reads at
+double weight. Give each cell only its right and bottom edge, then let the
+container supply the missing top and left from a pseudo-element pulled out by
+exactly one line width. Every rule in the field is then the same hairline,
+frame included, and the cells still tile with no gap.
+
+```css
+.cell   { border-right: var(--hair) solid var(--rule);
+          border-bottom: var(--hair) solid var(--rule) }
+.field  { position: relative }
+.field::before { content: ""; position: absolute; inset: 0; pointer-events: none;
+  top: calc(-1 * var(--hair)); left: calc(-1 * var(--hair));
+  border: var(--hair) solid var(--rule) }
+```
+⚠ `--hair` 1px for a ruled field; `.5px` drops out on non-retina, 2px stops
+reading as a rule and starts reading as a box.

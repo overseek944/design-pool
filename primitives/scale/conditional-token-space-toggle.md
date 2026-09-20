@@ -4,7 +4,7 @@ category: scale
 tags: [tokens,architecture,css,correctness]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,9 @@ number of unrelated properties from one place, with no duplicated selectors.
 ⚠ Only works through the custom-property layer — the flag must land in another
 custom property first, never directly in a real declaration. Name both branches;
 an unnamed fallback is unreadable six months later.
+
+Variant — the two-flag form handles light/dark with no `prefers-color-scheme`
+downstream: set `--light: initial; --dark: ;` at the root and invert the pair in
+one theme class. Each token then picks its branch inline —
+`--fg: var(--light, #111) var(--dark, #eee)` — a `light-dark()` that works
+everywhere and switches any property, not only colours.

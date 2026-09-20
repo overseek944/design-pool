@@ -4,7 +4,7 @@ category: interaction
 tags: [motion,disclosure,accessibility,progressive-enhancement,height]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,10 @@ in-out curve; anything slower reads as lag on a control the user just clicked.
 ```
 ⚠ Gate on `@supports` and let unsupported engines open instantly. Never
 substitute a guessed `max-height` — the easing is then wrong at every length.
+
+Variant — put `interpolate-size` itself inside
+`@media (prefers-reduced-motion: no-preference)` rather than guarding the
+transition. Without the keyword-interpolation opt-in the open state jumps
+straight to its height and there is no transition left to suppress, so the
+reduced branch is one wrapper instead of a second rule. `height: auto` on the
+open state behaves identically to `fit-content` here and reads more plainly.
