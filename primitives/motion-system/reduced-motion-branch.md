@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,accessibility,required]
 axes: none
 cost: 1
-seen: 16
+seen: 17
 requires: []
 conflicts: []
 completes: []
@@ -52,3 +52,13 @@ A blanket reset that only collapses durations still strands any system whose
 resting state is *paused* or delayed — a marquee waiting on a play flag, a
 cascade holding at 0% behind `animation-delay`. Force both in the same reset:
 `animation-play-state: running !important` and `animation-delay: 0s !important`.
+
+A scrubbed sequence of *scenes* has a better still state than one elected frame:
+keep the scroll driving it and quantise the progress value onto the scene stops.
+Every scene stays reachable and only the interpolation between them is gone —
+the argument survives, the movement does not. Bias the snap slightly ahead of
+each boundary so a scene commits as its copy arrives rather than after it.
+```js
+const stops = [0, 1.3, 2.4, 3.4]                    // one per authored scene
+const p = reduced ? stops[clamp(Math.floor(raw + .15), 0, stops.length - 1)] : raw
+```

@@ -4,7 +4,7 @@ category: reveal
 tags: [reveal,clip-path,wipe,panel,motion]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,15 @@ the opening edge instead of popping in behind it.
 ```
 ⚠ Omit `round` at one end and the radius animates to zero instead of holding.
 `clip-path` interpolates only between the same shape function.
+
+Stepped rather than smooth, the same inset is a typewriter: run
+`inset(0 100% 0 0)` to `inset(0)` over `steps(n)` with n at the character count.
+No monospace face, no `ch` width to measure, and no per-glyph markup — the clip
+travels the laid-out text. 12–25 characters per second.
+```css
+.type { animation: wipe 1.2s steps(26) both }
+@keyframes wipe { from { clip-path: inset(0 100% 0 0) } to { clip-path: inset(0) } }
+```
+⚠ Single line only: a right-side inset clips the whole box, so a wrapped string
+reveals every line in parallel. n is per string — one shared value makes short
+labels stutter and long ones slide.

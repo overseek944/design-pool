@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,intersection-observer,visibility,battery,correctness]
 axes: none
 cost: 2
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -56,4 +56,19 @@ the *top of the callback*, not only where frames are requested.
 ```js
 const run = () => !destroyed && !rm.matches && onScreen && !document.hidden
 const frame = t => { raf = null; if (!run()) return; draw(t); raf = requestAnimationFrame(frame) }
+```
+
+A reader-facing motion switch belongs in the same predicate, but it is not
+symmetrical with the OS preference: it may turn motion *off*, never back on over
+a standing `reduce`. Disable the control in that state and put the reason in its
+title, so it reads as already honoured rather than broken. Both sources
+resolving to one attribute on the root keeps the query and the toggle on a
+single path — the CSS reset is one rule list, selected two ways.
+```html
+<button aria-pressed="false" disabled title="Reduced motion is on in your system settings">
+```
+```css
+@media (prefers-reduced-motion: reduce) { .page *, .page ::before {
+  animation: none !important; transition: none !important } }
+.page[data-reduced-motion=true] *, .page[data-reduced-motion=true] ::before { /* same */ }
 ```

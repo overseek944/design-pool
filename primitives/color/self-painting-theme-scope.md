@@ -4,7 +4,7 @@ category: color
 tags: [color,tokens,theming,architecture,dark]
 axes: none
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -36,3 +36,14 @@ theme — redeclare only the tokens whose relationship to the ground changed
 (muted text, rules, any accent that must lift off a dark field) and let the rest
 cascade. Three or four declarations on the section, and every component inside
 inverts untouched.
+
+Where the ground is *drawn* rather than declared — a canvas or a video
+dissolving from light to dark under the copy — the DOM flip and the render have
+to share one threshold, read from the same progress value. Two independently
+tuned numbers leave the text on the wrong ground for a few hundred pixels of
+scroll, which reads as a bug and not a transition. Give the copy a colour
+transition slightly longer than the dissolve, 250–600ms, so it trails the
+ground instead of racing it.
+```js
+stage.dataset.sceneDark = String(progress > DARK_AT)   // the renderer's own constant
+```
