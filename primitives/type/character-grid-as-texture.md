@@ -4,7 +4,7 @@ category: type
 tags: [type,texture,ornament,ascii]
 axes: {energy: 3, density: 5, weight: 2, finish: 3}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,6 @@ link's prefix — instead of an icon that must be drawn.
 .dots > span { background: currentColor }
 ```
 ⚠ Decorative — `aria-hidden`, and never the only thing carrying a label.
+
+Full-bleed behind copy, cap alpha at 0.25–0.4 — a light colour alone breaks the
+contrast floor under a dense patch.

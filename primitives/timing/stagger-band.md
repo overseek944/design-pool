@@ -4,7 +4,7 @@ category: timing
 tags: [motion,rhythm,sequencing]
 axes: {energy: 3, density: 3, weight: 2, finish: 4}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -29,3 +29,7 @@ Without a script the stagger is *n* delay classes on one keyframe, stepping by
 the chosen band. It needs `animation-fill-mode: both`, or each element holds its
 *final* state through its own delay and the group flashes in before the sequence
 starts. Past eight classes, use the JS form.
+
+That ceiling is on *classes*, not CSS: generated markup can carry the delay
+inline and author an uneven schedule per element — 240/400/560/1100ms — playing
+from first paint, not after hydration.

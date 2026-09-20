@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,surface,hover]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -22,3 +22,8 @@ native `[open]`, `[aria-current]` or `:checked` and one attribute flip drives
 every part — a `+` rotating 45° into a close mark, a chevron turning, a rail
 tinting. The state then lives where the platform already keeps it rather than
 in a class the script has to remember to remove.
+
+A part that *moves* on parent hover wants two guards, not one: `hover: hover` so
+a tap on a touch device does not strand it displaced under sticky `:hover`, and
+a reduced-motion branch so the nudge is colour or weight instead. Parts that
+only change colour need neither. Travel 1–3px — past that it reads as a jump.

@@ -1,0 +1,28 @@
+---
+id: hash-dither-before-quantise
+category: canvas
+tags: [canvas,color,ramp,noise,grain,banding,generative]
+axes: {energy: 1, density: 3, weight: 2, finish: 4}
+cost: 2
+seen: 1
+requires: []
+conflicts: []
+completes: []
+tension: []
+---
+Snapping a continuous value onto a short palette — eight to twelve grey levels,
+a glyph ramp, a stepped tint — bands into visible contours. Add a deterministic
+hash jitter of about half a step before flooring, then lerp between the two
+adjacent levels. The contour dissolves into grain, and because the hash is pure
+in the cell's coordinates that grain holds still instead of crawling. Jitter
+0.04–0.12 of the ramp.
+
+```js
+const hash = (x, y) => { const n = Math.sin(x * 127.1 + y * 311.7) * 43758.5453
+  return n - Math.floor(n) }
+const f = (v + (hash(c, r) - .5) * .08) * (L.length - 1), i = f | 0
+const out = L[i] + (L[Math.min(L.length - 1, i + 1)] - L[i]) * (f - i)
+```
+⚠ Clamp before indexing — the jitter pushes both ends out of bounds. Seed the
+hash with a time term only if the grain should move; drifting it per frame
+reintroduces flicker at low frame rates.

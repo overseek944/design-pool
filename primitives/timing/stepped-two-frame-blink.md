@@ -4,7 +4,7 @@ category: timing
 tags: [motion,easing,indicator,status,ambient]
 axes: {energy: 2, density: 1, weight: 2, finish: 3}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -23,3 +23,7 @@ keeps its position legible.
 ```
 ⚠ Hard blinking is seizure-adjacent above ~3Hz and visually loud well below
 it. Under `prefers-reduced-motion` it must stop, not slow.
+
+`step-end` over a three-stop keyframe is the same instrument written the other
+way round — `0%,100% {opacity:1} 50% {opacity:0}` — and puts the off state in
+the keyframe rather than the duration, so period and duty cycle tune apart.

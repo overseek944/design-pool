@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,accessibility,required]
 axes: none
 cost: 1
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []
@@ -43,3 +43,7 @@ nor the last frame is the right still state. Elect one and pin it: every step
 `opacity: 0`, the elected one `1`, and any property mid-transit written to rest
 (`clip-path: inset(0)`, `stroke-dashoffset: 0`). `animation: none` alone leaves
 each element at its authored 0%, which for a wipe is invisible.
+
+For a continuously-rendered surface the still state is a *drawn* frame: render
+once with every time term at rest and never re-request the loop. Skipping the
+draw leaves a blank canvas.
