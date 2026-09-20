@@ -4,7 +4,7 @@ category: color
 tags: [color,hierarchy,surface,sequence,contrast]
 axes: {energy: 1, density: 2, weight: 3, finish: 4}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -34,3 +34,14 @@ each other so no member reads as first or last.
 ```
 ⚠ Equal lightness by eye is not equal lightness — mix each tint into the same
 `oklch` L or the row develops an accidental ranking in greyscale and in print.
+
+Where the ramp carries a *quantity* rather than a position, two things change.
+A member with no value must leave the ramp entirely — matched lightness, near
+zero chroma — or it is read as a low reading. And the figure belongs inside the
+shape: five to seven steps support ranking and never support reading a value
+off them, so the ramp is a sorting aid laid over a table, which is the job it
+is actually good at.
+```css
+.area          { fill: color-mix(in oklch, var(--hi) calc(var(--t) * 100%), var(--lo)) }
+.area.no-data  { fill: oklch(from var(--lo) l .01 h) }
+```

@@ -4,7 +4,7 @@ category: scale
 tags: [tokens,responsive,breakpoint,architecture,cascade,custom-properties]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -29,3 +29,15 @@ countable — four to eight, not a library.
 ⚠ An inline custom property is inherited, so it reaches every descendant that
 happens to read that name — scope it with `@property { inherits: false }` or a
 component-prefixed name.
+
+Where the `style` attribute is unavailable at all — a `style-src` policy without
+`unsafe-inline`, a sanitiser that strips it — the value travels as a plain
+attribute and meets a stylesheet that already knows every value it can take.
+Enumerate a small closed set of attribute selectors, one per step. It does not
+generalise and does not need to: a stagger ladder or a span count has five or
+six legal values, and holding them in the stylesheet is what keeps the schedule
+retunable in one place.
+```css
+[data-delay="1"] { transition-delay:  70ms }
+[data-delay="2"] { transition-delay: 140ms }   /* 5–7 steps, then stop */
+```

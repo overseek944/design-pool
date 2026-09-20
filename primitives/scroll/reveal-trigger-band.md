@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,reveal,thresholds]
 axes: {energy: 2, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -39,3 +39,12 @@ own crossing of the fold instead of firing at a line. The numbers are not the
 observer's — they measure entry progress, where `entry 100%` is fully arrived,
 so the 80–90% band above becomes a *window* roughly 10–20% to 50–60%. Cheaper
 than either: no library, no observer, and it recomputes free on resize.
+
+A `rootMargin` in pixels is a different band on every device: `-60px` is 9% of a
+700px phone viewport and 5% of a 1200px desktop one, so the phone fires latest
+in proportional terms exactly where the fold is tightest. State it as a
+percentage and it resolves against the root's own box — `-6%` to `-10%` holds
+the same fraction everywhere and needs no breakpoint.
+```js
+new IntersectionObserver(cb, { rootMargin: "0px 0px -8% 0px", threshold: .12 })
+```

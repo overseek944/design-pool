@@ -4,7 +4,7 @@ category: surface
 tags: [gradient,ground,surface,section,seam,cheap]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -27,3 +27,13 @@ content stacked above is untouched. Onset 40–60%, opaque by 85–100%.
 ```
 ⚠ The scrim colour must be the literal ground token, not a near neighbour — one
 step off and the seam moves rather than disappearing.
+
+Pin *both* ends and the same ramp stops repairing a seam and becomes tonal
+rhythm. Make the section's whole ground a gradient that starts and finishes on
+the exact page token with a slightly sunk plateau held across the middle
+30–78%: it reads as a recessed band with no locatable edge at either boundary,
+and alternating it with its lighter twin separates sections by value alone.
+Keep the plateau within 2–5% lightness of the page or it becomes a stripe.
+```css
+.band { background: linear-gradient(var(--page), var(--page-sunk) 30% 78%, var(--page)) }
+```

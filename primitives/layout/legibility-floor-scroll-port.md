@@ -4,7 +4,7 @@ category: layout
 tags: [overflow,responsive,scroll,correctness,table,figure]
 axes: none
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -50,3 +50,16 @@ move a code block sideways to finish a sentence, so let it wrap: `pre-wrap` plus
 `overflow-wrap: break-word`, with `overflow-x: visible` so no port is created at
 all. Scroll a port the reader has stopped at — a table, a hero snippet, a
 diagram; wrap anything embedded in a column of text.
+
+Sideways scroll is right for a table and wrong for a graphic whose meaning is
+its shape. A map, a floor plan or a network does not become readable by sliding:
+the reader loses the whole while inspecting a part. Swap the representation
+instead — below the floor, drop the graphic and render the same data as a list
+sorted by whatever the graphic encodes. Spatial relation is what a narrow screen
+cannot show; ranking is what it can.
+```css
+@media (width <  48rem) { .graphic { display: none } }
+@media (width >= 48rem) { .ranked  { display: none } }
+```
+⚠ Two renderings of one dataset drift. Generate both from one source, and label
+the graphic's parts from the same strings the list prints.

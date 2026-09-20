@@ -4,7 +4,7 @@ category: media
 tags: [media,logos,normalisation,scale,responsive]
 axes: none
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -37,3 +37,17 @@ touches one declaration.
 .row img { height: calc(var(--h) * var(--logo-h) * 1px); width: auto }
 /* <img style="--h:28"> per mark */
 ```
+
+The decision inverts when the art should *exceed* its slot. Line drawings of
+unrelated subjects — one wide, one tall — sized to fit a uniform box land at
+unrelated optical weights. Give every slot one size for the rhythm, take the art
+out of flow inside it, and author a width and an offset per item so each drawing
+sits at the scale it was drawn for and overhangs freely. The grid keeps the
+rhythm; the art keeps its weight.
+```css
+.slot     { position: relative; width: 6rem; aspect-ratio: 1 }
+.slot img { position: absolute; max-width: none }
+.art-2    { width: 156px; top: -14px; left: -30px }   /* per item */
+```
+⚠ Nothing clips the overhang — budget the row's gap for the widest overshoot,
+and restate the offsets where the row stacks.
