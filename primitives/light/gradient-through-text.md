@@ -4,7 +4,7 @@ category: light
 tags: [color,type,effect]
 axes: {energy: 3, density: 2, weight: 4, finish: 3}
 cost: 2
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []
@@ -60,3 +60,15 @@ background-image: linear-gradient(100deg, var(--base) 0,
 ```
 ⚠ Wrapped text needs `box-decoration-break: clone` or the gradient spans the
 whole inline box and every line after the first gets only its tail.
+
+`background-clip: text` needs `display: inline-block`, and that box clips
+ascenders and descenders the moment leading drops below about 1.3em — the tell
+is a shorn `g` or a flattened `f` that only appears on the tight headline.
+Compensate symmetrically: pad by half the shortfall and pull it back with a
+negative margin of the same size, so the paint box grows and the layout box
+does not move.
+```css
+.fill { display: inline-block;
+  padding: max(0em, calc((1.3em - var(--lh)) / 2));
+  margin:  min(0em, calc((1.3em - var(--lh)) / -2)) }
+```

@@ -4,7 +4,7 @@ category: surface
 tags: [surface,depth,shadow,blur,mock,hero]
 axes: {energy: 1, density: 2, weight: 4, finish: 4}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -27,3 +27,14 @@ light, black reads as dirt. Blur 18–72px, scale .90–.96, translateY 8–20%.
 ```
 ⚠ Each plate is a full-size compositor layer that repaints on resize — keep it
 off anything animated and transform the wrapper instead.
+
+Inside a clipping parent the plate must *overhang* the clip, not meet it. A
+blur samples transparency beyond its own box, so a plate flush with a card's
+`overflow: hidden` edge thins and darkens along all four sides — the tell is a
+wash that looks vignetted inward. Inflate the insets past the clip by at least
+the blur radius and let the card's radius do the cutting; the fill then reads
+as light trapped in the card rather than a shape inside it.
+```css
+.card  { overflow: hidden; border-radius: 12px; isolation: isolate }
+.plate { position: absolute; inset: -20px -58px -26px -45px; filter: blur(100px) }
+```

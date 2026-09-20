@@ -4,7 +4,7 @@ category: type
 tags: [type,contrast,editorial,restraint]
 axes: {energy: 1, density: 2, weight: 3, finish: 5}
 cost: 1
-seen: 17
+seen: 18
 requires: []
 conflicts: []
 completes: []
@@ -62,3 +62,9 @@ ctx.font = `italic 10px Georgia, "Times New Roman", serif`
 ```
 ⚠ Under about 9px the italic loses its terminals and reads as noise; below that
 set the annotation upright, or in the sans.
+
+The accent can live *inside* the product mock rather than in the page around
+it. A serif on the record title or section head of a rendered UI panel — the
+sans holding every control and label beside it — says the software itself was
+considered, which no amount of editorial serif in the marketing copy claims on
+its behalf. One line per mock; past that the mock stops reading as software.

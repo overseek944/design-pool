@@ -4,7 +4,7 @@ category: timing
 tags: [motion,rhythm,sequencing]
 axes: {energy: 3, density: 3, weight: 2, finish: 4}
 cost: 1
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
@@ -50,3 +50,9 @@ The band widens as the unit gets bigger. 60–80ms is right for siblings in a ro
 a cascade down the *lines* of a heading reads better nearer 40–55ms, because the
 eye is already travelling down them and the extra delay lands as lag rather than
 rhythm. Scale it to what is moving, not to a house number.
+
+Tokens inside one line are not siblings and do not take the sibling band. Words
+in a heading sit **20–50ms** apart — an order below .06–.08 — because the eye
+tracks them as a single wave crossing the line, not as items arriving in turn.
+At the sibling band a ten-word heading takes most of a second to finish and
+reads as a queue. Scale by tokens per line, not by the house step.
