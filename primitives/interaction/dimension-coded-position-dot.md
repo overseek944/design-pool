@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,state,indicator,accessibility,carousel]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -62,3 +62,13 @@ width at 100–200ms linear to absorb the event's coarse cadence.
 ⚠ `timeupdate` fires every ~250ms, not per frame — without the transition the
 bar visibly steps. A rail row given `role="tab"` owes arrow keys and a roving
 `tabindex`, or it is a tablist in name only.
+
+The absorbing transition generalises beyond a media clock: any fill driven by a
+coarse event — `timeupdate` at ~250ms, a scroll handler under a fast wheel —
+steps visibly without one, and lags behind the input with too much. 80–200ms
+linear, scaled to the event's cadence: 80–100ms where the source fires near
+frame rate and only stutters, 150–200ms where it genuinely arrives four times a
+second. Never eased — an ease on a repeating small delta reads as hesitation.
+```css
+.fill { transition: block-size 80ms linear }   /* scroll-driven */
+```

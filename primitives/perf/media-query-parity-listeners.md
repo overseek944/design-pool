@@ -4,7 +4,7 @@ category: perf
 tags: [responsive,correctness,architecture,motion,breakpoint]
 axes: none
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -52,3 +52,20 @@ setTimeout(measure, 400)                      // post-mount settle
 ```
 ⚠ Only for a loop that runs continuously. Hanging a polling re-measure on a
 `setInterval` next to an idle scene is the leak this is supposed to avoid.
+
+Rendered on a server there is no `matchMedia` to ask, so a component deriving
+layout or motion from a query must declare what the server believes — and that
+choice decides whether a reader who asked for reduced motion gets one frame of
+it before hydration corrects. Subscribe/read/server-read as three explicit
+functions keeps the answer stable across the first client render instead of
+guessing in an effect a frame late.
+```js
+useSyncExternalStore(
+  cb => { const q = matchMedia('(prefers-reduced-motion: reduce)')
+          q.addEventListener('change', cb); return () => q.removeEventListener('change', cb) },
+  () => matchMedia('(prefers-reduced-motion: reduce)').matches,
+  () => false)                      // server: the branch the HTML will carry
+```
+⚠ Returning the *preference* from the server snapshot is the safer default for
+anything that hides content; returning `false` is safer for anything that
+animates. Pick per query, not once per project.

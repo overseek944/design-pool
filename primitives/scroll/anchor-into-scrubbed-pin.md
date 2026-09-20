@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,navigation,anchor,correctness,pin]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -38,3 +38,18 @@ requestAnimationFrame(() => { read(); elapsed = target; render(); s.removeProper
 ⚠ Restore in a `finally` and guard re-entry — a second click while the override
 is live captures it as the "previous" value and the page loses smooth scrolling
 for good.
+
+The same map run backwards turns the pin's progress indicator into a control:
+step *i* of *n* sits at `i / (n - 1)` of the **usable** travel, which is the
+spacer's height minus one viewport, not its height. Using the full height puts
+the last step past the end and it can never be reached; using `i / n` lands
+every step short by one slot. One expression serves the dots, a keyboard
+handler and a deep link.
+```js
+const span = wrap.offsetHeight - innerHeight          // usable, not offsetHeight
+scrollTo({ top: wrap.offsetTop + (i / (n - 1)) * span,
+           behavior: reduced ? 'auto' : 'smooth' })
+```
+⚠ A jump is a scripted scroll that fires the same handler the wheel does, so the
+index it lands on must be derived, never assigned alongside it — assigning both
+leaves the state disagreeing with the position the moment the user interrupts.

@@ -4,7 +4,7 @@ category: surface
 tags: [surface,texture,ambient,depth,performance]
 axes: {energy: 2, density: 3, weight: 1, finish: 4}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -55,3 +55,19 @@ hairlines into visible rules. A schematic ground then holds one weight from
 ⚠ `vector-effect` does not inherit: set as an attribute on a `<g>` it computes
 to `none` on every child and the whole correction silently does nothing. Reach
 it with a descendant selector, per element.
+
+Where the ground is a *schematic* rather than a texture — ruled lines, traces
+that leave the ruling at right angles, nodes at the junctions — paint every mark
+in `currentColor` and build the depth out of per-element `opacity` alone, in
+three or four tiers (roughly .24 / .32 / .40 / .60, hairlines .5–.8px). One
+`color` declaration on the `<svg>` then retints the whole field, and one
+`opacity` on the parent scales the hierarchy proportionally, so the same artwork
+serves a hero at .5 and a footer at .15 without a second export.
+```html
+<svg class="ground" style="color: var(--brand)" aria-hidden="true">
+  <line stroke="currentColor" stroke-width=".5" opacity=".32"/>
+  <circle fill="currentColor" r="3" opacity=".6"/></svg>
+```
+⚠ Baking the alpha into `stroke` as `rgba()` looks identical and kills both
+controls. Tiers under ~.2 disappear entirely on a dim display — verify the
+lowest one still resolves before it is load-bearing.
