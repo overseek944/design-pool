@@ -1,6 +1,6 @@
 # Manifest
 
-380 primitives. Format: `category/id | axes cost | tags | gist`
+384 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -66,6 +66,7 @@ interaction/breakpoint-scoped-overlay-dismiss | neutral  $1 | navigation overlay
 interaction/coordinated-group-state | E3 D2 W2 F5 $1 | interaction surface hover | Hover the container, animate the parts. A single group parent le
 interaction/copy-safe-sample-text | neutral  $1 | interaction code correctness detail usability | A terminal or code sample is there to be dragged over and pasted
 interaction/dimension-coded-position-dot | E2 D2 W2 F5 $1 | interaction state indicator accessibility carousel | Let the active item in a position indicator change size, not onl
+interaction/drag-suppressed-click-threshold | neutral  $2 | pointer drag interaction correctness accessibility | A surface that answers to drag and also holds links fires a clic
 interaction/edge-hotzone-sibling-reveal | E2 D2 W2 F5 $2 | interaction hover panel chrome css-only accessibility | Reclaim the width a hidden rail costs without a toggle: park an 
 interaction/find-reachable-collapse | neutral  $1 | accessibility correctness disclosure search architecture | Collapsed content the browser's own find cannot reach is content
 interaction/focus-handoff-on-self-removal | neutral  $1 | accessibility focus correctness form state | A control that removes itself when used — a form replaced by its
@@ -126,6 +127,7 @@ layout/per-edge-clip-polygon | neutral  $1 | overflow clip correctness bleed | o
 layout/ring-placed-upright-labels | E1 D3 W2 F4 $2 | layout diagram radial label geometry | Rotating a container to arrange labels around a circle tips ever
 layout/ruled-definition-rows | E1 D3 W2 F5 $1 | layout type metadata responsive hairline | Metadata reads as a datasheet when it is a list of label-to-valu
 layout/safe-area-floor-gutter | neutral  $1 | layout tokens safe-area responsive correctness | A gutter written as a plain value gets eaten by notches, rounded
+layout/scripted-depth-projected-dom | E3 D3 W2 F5 $4 | 3d projection depth transform dom | preserve-3d puts real DOM in depth but rotates the glyphs with i
 layout/scroll-contracted-bar | E2 D2 W2 F5 $2 | header scroll sticky chrome | A header can start edge-to-edge and contract into an inset float
 layout/scroll-lock-via-has | neutral  $1 | overlay correctness overflow dialog cls | Lock the page behind an overlay from CSS alone by keying off the
 layout/self-drawing-grid-debug | neutral  $2 | layout grid tooling debug architecture | A layout system worth having can show its own work. One class re
@@ -228,6 +230,7 @@ perf/prefetch-on-intent-band | neutral  $2 | performance navigation prefetch obs
 perf/revert-split-on-resize | neutral  $1 | type motion correctness | Split text hard-codes line breaks at split time. On resize or we
 perf/self-throttled-raf-loop | neutral  $1 | performance animation canvas battery frame-budget correctness | requestAnimationFrame offers the display's rate; it is not a con
 perf/single-flight-external-script | neutral  $2 | performance architecture correctness lifecycle embed | Several components on a page may each need the same third-party 
+perf/stride-pruned-decorative-field | neutral  $1 | perf responsive decoration correctness | A decorative field — dots, marks, ticks, labels — that costs too
 perf/stylesheet-failure-reload-guard | neutral  $2 | correctness performance progressive-enhancement architecture cls | A hashed stylesheet that 404s after a deploy paints the whole do
 perf/velocity-scaled-preload-margin | neutral  $2 | perf lazy-load scroll images loading | A fixed lazy-load margin is tuned for one scroll speed. Under a 
 perf/will-change-on-split-children | neutral  $1 | motion performance promotion | Split text creates dozens of nodes animated simultaneously; with
@@ -287,6 +290,7 @@ scroll/smooth-scroll-driving-timeline | E3 D2 W3 F5 $3 | scroll motion architect
 scroll/stale-scroll-request-guard | neutral  $2 | scroll correctness accessibility events navigation | A scroll request crossing an async boundary — posted by an embed
 scroll/sticky-as-cheap-pin | E1 D2 W2 F3 $1 | scroll layout performance | position: sticky for anything that only needs to hold position —
 scroll/tall-target-intersection-clause | neutral  $1 | scroll correctness observer reveal | intersectionRatio is a fraction of the element, so a section tal
+surface/arc-length-colour-ramp-stroke | E3 D2 W2 F5 $3 | svg stroke gradient color dash effect | An SVG gradient paints in the element's box, so a stroke that cu
 surface/backdrop-blur-tier-system | E1 D3 W3 F4 $3 | surface depth glass | Treat backdrop blur as a depth scale, not a decoration: sm for i
 surface/baseline-closed-area-path | E2 D2 W2 F5 $1 | svg chart sparkline data precision | A sparkline's tinted area and its stroke must never disagree by 
 surface/blended-grain-over-gradient | E1 D3 W3 F4 $1 | surface texture grain gradient blend-mode banding | A wide gradient across a saturated panel bands on 8-bit displays

@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,embed,iframe,overflow,pointer,correctness]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,15 @@ pointer, or a thumb that has no hover loses the ability to scroll past.
 ⚠ Reserve the track with `scrollbar-gutter: stable` or freezing mid-page shifts
 the content sideways. Keyboard users never trigger this, so the embed still
 needs a deliberate focus path in and out.
+
+The thumb has the same conflict and no hover to resolve it. `touch-action`
+settles it declaratively by naming the axis the surface does *not* consume:
+`pan-y` on an island that only reads horizontal or rotational drag lets the page
+keep scrolling straight through it, while `none` claims both axes for one that
+really does pan in two. Declare it beside `user-select: none`, since a gesture
+dragged across text selects the text otherwise.
+```css
+.island { touch-action: pan-y; user-select: none }   /* none only if it pans in 2D */
+```
+⚠ `touch-action` is read once when the gesture starts and cannot be changed
+mid-drag — a surface with two modes has to declare the union up front.

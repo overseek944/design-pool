@@ -4,7 +4,7 @@ category: surface
 tags: [surface,effect,svg,gotcha]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,16 @@ retuning the weight moves the reservation with it.
 ```
 ⚠ Half the stroke, not the whole — SVG centres a stroke on its path, so a full
 reservation leaves a visible extra gap on every side.
+
+`overflow: visible` does not reach a `<filter>`. The filter region is a separate
+box, defaulting to −10%/120% of the object bounding box, so a wide blur is
+cropped there before overflow is ever consulted — the tell is a glow with hard
+straight edges at a constant inset on all four sides. Move the region into user
+space and pad it by roughly twice the blur radius plus any spread.
+```html
+<filter id="g" filterUnits="userSpaceOnUse"
+        x="-24" y="-24" width="248" height="88">   <!-- box + 2 × pad -->
+```
+⚠ A user-space region is in absolute coordinates and has to be recomputed
+whenever the element resizes; the percentage default tracks for free, so only
+take this where the default is actually clipping.

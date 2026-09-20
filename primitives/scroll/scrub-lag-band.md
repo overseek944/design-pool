@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,motion,feel]
 axes: {energy: 3, density: 2, weight: 3, finish: 5}
 cost: 2
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []

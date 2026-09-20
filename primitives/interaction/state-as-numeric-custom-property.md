@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,hover,state,tokens,architecture]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
