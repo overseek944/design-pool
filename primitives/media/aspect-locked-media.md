@@ -4,7 +4,7 @@ category: media
 tags: [layout,media,cls]
 axes: none
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -22,3 +22,9 @@ panel beside a column of copy — swap the ratio for a floor at that breakpoint
 (`aspect-ratio: auto` plus `min-height`), or a wide ratio on a wide column
 makes the panel absurdly tall. Same purpose, different reservation: the floor
 still holds the space before content arrives.
+
+Where several layers stack in one slot — a poster, a skeleton, a live frame
+that replaces both — give them one ratio token rather than one literal each.
+The layers cannot drift, and changing the product's stage shape is a single
+edit instead of a search. `aspect-ratio: var(--stage-aspect)` on every layer,
+the token defined once beside the spacing scale.

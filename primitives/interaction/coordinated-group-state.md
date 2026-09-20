@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,surface,hover]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -58,3 +58,13 @@ carries less optical weight at an edge than a letterform does —
 `:has([data-icon=inline-start])` cuts the inline-start padding by a quarter to a
 third. Write it on the logical axis and the compensation flips with writing
 direction for free.
+
+Pair every group trigger with `:focus-within`, always in the same rule. Where
+the card's affordance *is* the group response — a plate that grows behind it, a
+border that arrives — hover alone means a keyboard reader tabs onto a target
+with no visible change at all beyond the focus ring, and cannot tell which of
+twelve tiles is armed. The focus ring proves where focus is; the group response
+is what says the thing is ready.
+```css
+.group:hover .plate, .group:focus-within .plate { opacity: 1; scale: 1 }
+```

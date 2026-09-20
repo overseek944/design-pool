@@ -4,7 +4,7 @@ category: perf
 tags: [performance,navigation,prefetch,observer,architecture]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -28,3 +28,17 @@ threshold limits *when*, not *how many*. Skip both under `navigator.connection.s
 Bound the cache: a 30–90s TTL and a cap near 8 entries, evicted oldest-first.
 Validate before storing — a redirect or a non-HTML content type means the URL
 went somewhere else, and caching it hands the router the wrong document.
+
+Below both policies sits a third, nearly free tier: warm the *connection*, not
+the document. On the same intent signal, point a single reused
+`<link rel=preconnect>` at the origin about to be needed and retarget that one
+element as intent moves — DNS, TCP and TLS are paid ahead while nothing is
+fetched. Browsers keep only a handful of preconnects, so accumulating one link
+per hovered card evicts the ones that mattered.
+```js
+let l = document.querySelector('link[data-warm]') ?? mkLink()
+if (l.dataset.warm !== origin) (l.href = origin, l.dataset.warm = origin)
+```
+Gate the whole ladder on connection quality, not just `saveData`:
+`effectiveType` of `2g` or `slow-2g` means speculative bytes compete with the
+ones actually asked for.

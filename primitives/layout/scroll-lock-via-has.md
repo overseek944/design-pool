@@ -4,7 +4,7 @@ category: layout
 tags: [overlay,correctness,overflow,dialog,cls]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -28,3 +28,9 @@ Where the lock must stay imperative, restore the *previous* value, never the
 empty string. Two stacked overlays that each write `overflow: hidden` and clear
 it to `''` unlock the page when the inner one closes, and a root that carried
 its own `overflow` loses it permanently.
+
+Lock the element that actually scrolls. An app shell that pins `html, body` to
+`height: 100%; overflow: hidden` and scrolls an inner pane makes every rule
+written against the root a no-op — the overlay opens and the pane underneath
+still moves. Key the `:has()` off whichever ancestor owns the overflow, and
+where more than one pane can scroll, off each of them.

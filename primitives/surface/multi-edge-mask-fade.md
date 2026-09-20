@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,edge,composition,bleed]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -31,3 +31,13 @@ Percentage stops instead of px when the fade should scale with the element —
 `8%`/`92%` on a horizontal rail keeps the same proportion of fade at every width,
 where a fixed 400px eats a narrow one whole. Px for fixed-size stages,
 percentages for anything fluid.
+
+On a rail that scrolls, the two ends are not the same edge and should not fade
+equally. A short fade at the start — 0.5–1× the gutter — reads as a soft crop,
+while a longer one at the end, 1.5–2.5×, reads as *more*: content dissolving
+because it continues. A symmetric mask says the rail is centred; an asymmetric
+one says which way to swipe.
+```css
+mask-image: linear-gradient(to right, transparent 0, #000 var(--lead),
+                            #000 calc(100% - var(--trail)), transparent 100%)
+```
