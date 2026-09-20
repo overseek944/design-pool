@@ -52,8 +52,20 @@ function dashboard() {
   const gained = s.sites.reduce((a, x) => a + (x.new || 0), 0)
   const unpushed = s.sites.filter(x => x.commit && !x.pushed).length
   const paused = existsSync(PAUSE)
+  const timed = s.sites.filter(x => x.status === 'done' && x.durationMs)
+  const avg = timed.length ? timed.reduce((a, x) => a + x.durationMs, 0) / timed.length : 0
+  const etaMs = avg * n.pending
+  const short = ms => !ms ? '—' : ms < 3600000 ? Math.round(ms / 60000) + 'm' : (ms / 3600000).toFixed(1) + 'h'
+  // with a long queue, render everything settled plus a short look-ahead
+  const PEEK = 25
+  let shown = 0, hidden = 0
+  const visible = s.sites.filter(x => {
+    if (x.status !== 'pending') return true
+    if (shown < PEEK) { shown++; return true }
+    hidden++; return false
+  })
   let cum = 0
-  const rows = s.sites.map((x, i) => {
+  const rows = visible.map((x, i) => {
     cum += x.new || 0
     return `<tr class="${x.status}">
       <td class="num">${i + 1}</td>
@@ -65,7 +77,7 @@ function dashboard() {
       <td class="num">${dur(x.durationMs)}</td>
       <td class="mut">${when(x.finished || x.started)}</td>
       <td class="mut note">${esc(x.note || '')}</td></tr>`
-  }).join('')
+  }).join('') + (hidden ? `<tr><td class="num mut">⋯</td><td colspan="8" class="mut">${hidden} more pending — hidden to keep this page light</td></tr>` : '')
 
   writeFileSync(DASH, `<!doctype html><html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -128,6 +140,8 @@ ${unpushed ? `<div class="flag">⚠ ${unpushed} commit(s) not pushed. Runner ret
 <div class="stat"><b class="mut">${n.skipped}</b><span>skipped</span></div>
 <div class="stat"><b style="color:${n.failed ? 'var(--fail)' : 'inherit'}">${n.failed}</b><span>failed</span></div>
 <div class="stat"><b style="color:var(--done)">+${gained}</b><span>primitives gained</span></div>
+<div class="stat"><b>${short(avg)}</b><span>avg / site</span></div>
+<div class="stat"><b>${short(etaMs)}</b><span>eta remaining</span></div>
 <progress value="${settled}" max="${total || 1}" aria-label="${pct}% of queue settled"></progress>
 </div>
 ${total ? `<div class="scroll"><table><thead><tr>
@@ -216,7 +230,7 @@ if (cmd === 'start') {
 
   const dirty = tryGit('status --porcelain').out.split('\n').filter(Boolean)
   if (dirty.length) {
-    const poolOwned = dirty.every(l => /\s(primitives\/|MANIFEST\.md|index\.json|ledger\.jsonl)/.test(l))
+    const poolOwned = dirty.every(l => /\s(primitives\/|routes\/|MANIFEST\.md|index\.json|ledger\.jsonl)/.test(l))
     if (has('reset-dirty') && poolOwned) { tryGit('checkout -- .'); tryGit('clean -fd primitives'); console.log('discarded partial pool changes') }
     else {
       console.error(`✗ working tree is dirty (${dirty.length} change(s)) — refusing to start.\n`)
@@ -298,7 +312,7 @@ Finish by printing: HARVEST_RESULT new=<N> sharpened=<M>`
         site.sharpened = d.filter(l => /^M\s+primitives\//.test(l)).length
         site.note = 'agent self-committed'
       }
-      const porc = tryGit('status --porcelain').out.split('\n').filter(Boolean)
+      const porc = tryGit('status --porcelain -- primitives MANIFEST.md index.json ledger.jsonl routes').out.split('\n').filter(Boolean)
       const isPrim = l => /primitives\//.test(l)
       if (!agentCommitted) {
         site.new = porc.filter(l => /^\?\?/.test(l) && isPrim(l)).length
@@ -307,7 +321,7 @@ Finish by printing: HARVEST_RESULT new=<N> sharpened=<M>`
       if (porc.length || agentCommitted) {
         let c = { ok: agentCommitted }
         if (porc.length) {
-          tryGit('add -A')
+          tryGit('add -- primitives MANIFEST.md index.json ledger.jsonl routes')
           const msg = `harvest: ${site.url} — ${site.new} new, ${site.sharpened} sharpened`
           c = tryGit(`commit -q -m ${JSON.stringify(msg)}`)
         }
