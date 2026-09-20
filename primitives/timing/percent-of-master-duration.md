@@ -4,7 +4,7 @@ category: timing
 tags: [timing,choreography,keyframes,css-animation,token,sequence]
 axes: {energy: 2, density: 3, weight: 2, finish: 5}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -35,3 +35,16 @@ no delay to drift.
 @keyframes step { 0% { transform: translate(0) } 25%, 100% { transform: translate(4px) } }
 ```
 ⚠ Below ~1.2s the hold stops registering and it reads as a twitch.
+
+One element can carry a perpetual loop and a one-shot settle at once: two
+entries in the `animation` list, the loop on the shared token and the settle on
+its own period with `forwards`. A badge that jitters forever while its fill
+drifts once from cold to warm is two short keyframe sets, not one long
+compromise.
+```css
+.mark { animation: jitter 2s linear infinite,
+                   warm var(--seq) linear forwards }
+```
+⚠ Later entries in the list win on any property two of them both touch, and the
+loop is usually listed first — so the one-shot must not name the looped
+property or it silently freezes the loop.

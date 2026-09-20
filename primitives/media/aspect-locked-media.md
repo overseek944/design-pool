@@ -4,7 +4,7 @@ category: media
 tags: [layout,media,cls]
 axes: none
 cost: 1
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -28,3 +28,16 @@ that replaces both — give them one ratio token rather than one literal each.
 The layers cannot drift, and changing the product's stage shape is a single
 edit instead of a search. `aspect-ratio: var(--stage-aspect)` on every layer,
 the token defined once beside the spacing scale.
+
+Where the reservation has to survive before any stylesheet or script runs — a
+lazy swap that sets `src` late, or a first paint that beats the CSS — put the
+ratio inside the placeholder rather than around it. A content-free SVG data URI
+carrying the *final* asset's `viewBox` and dimensions is an intrinsic ratio the
+element already has, at roughly 100 bytes and no request. A 1×1 transparent GIF
+reserves a square and collapses on swap.
+```html
+<img width="1159" height="430" src="data:image/svg+xml,%3Csvg%20xmlns=
+  'http://www.w3.org/2000/svg'%20viewBox='0%200%201159%20430'/%3E" data-src="…">
+```
+⚠ The placeholder's numbers must match the real asset — a stale ratio is a
+shift that no `aspect-ratio` rule above it can correct.
