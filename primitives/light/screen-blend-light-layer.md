@@ -4,7 +4,7 @@ category: light
 tags: [effect,blend,compositing,dark]
 axes: {energy: 3, density: 3, weight: 3, finish: 4}
 cost: 3
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -16,3 +16,7 @@ group in `isolation: isolate` so the blend can't reach the page background.
 ```css
 .beam { mix-blend-mode: screen } .group { isolation: isolate }
 ```
+
+Variant — `overlay` instead of `screen` for film grain: it lightens highlights
+and darkens shadows, so the tile reads as texture across the whole tonal range
+rather than washing dark areas out. Tile 128–256px at 0.5–0.9 opacity.

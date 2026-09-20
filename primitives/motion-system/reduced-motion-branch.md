@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,accessibility,required]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -18,3 +18,8 @@ if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
   gsap.set(targets, { opacity: 1, y: 0, clearProps: "all" }); return
 }
 ```
+
+Variant — for motion that lives in CSS, invert the query: declare the animation
+inside `@media (prefers-reduced-motion: no-preference)` rather than undoing it
+inside `reduce`. Still is then the default state and a new animation cannot ship
+without an accessibility branch, because it has nowhere else to go.

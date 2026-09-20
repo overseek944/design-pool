@@ -4,7 +4,7 @@ category: surface
 tags: [surface,border,motion,svg]
 axes: {energy: 4, density: 3, weight: 3, finish: 4}
 cost: 3
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: [overflow-visible-for-glow-bleed]
@@ -18,3 +18,9 @@ three at different periods and directions for a border that never repeats.
             overflow-visible animate-[spin_5s_linear_infinite]">
 ```
 `overflow-visible` is load-bearing — without it the stroke's glow is clipped.
+
+Variant — static gradient border with no SVG and no overhang: a pseudo-element
+with `padding: 1–2px`, the gradient as its background, and two identical mask
+layers clipped to `content-box, border-box` composited with `exclude`. Leaves
+only the ring, inherits `border-radius` exactly, but cannot bleed glow outside
+the box.

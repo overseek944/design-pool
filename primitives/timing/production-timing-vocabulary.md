@@ -4,7 +4,7 @@ category: timing
 tags: [motion,easing,duration,reference,system]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,7 @@ one family; variation lives in distance and stagger, not in easing curves.
 `.45s / power2.out` as the house default covers most of a page. Decelerating
 curves (`.out`) for anything entering; `.inOut` only when something travels
 between two known positions.
+
+Range — the micro band reaches lower than the table suggests. `.12–.16s` on
+hover, background and colour changes reads as instantaneous response rather than
+as animation; reserve `.20–.35s` for micro-motion that actually travels.
