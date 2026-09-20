@@ -4,7 +4,7 @@ category: perf
 tags: [performance,architecture,correctness,lifecycle,embed]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -37,3 +37,17 @@ const s = [...document.scripts].find(x => x.src === src)
 if (s) return s.dataset.ready ? Promise.resolve()
                               : new Promise(r => s.addEventListener('load', r))
 ```
+
+The vendor's global ready hook may not be yours to take. A tag manager or a
+second widget from the same vendor may already hold it, and a loader that assigns
+then deletes breaks that consumer silently. Save what was there, call it before
+you resolve — it was waiting on the same event — and restore it only if the slot
+still holds your own function. Pair the load with a hard timeout, or an SDK that
+arrives and never fires leaves every awaiting consumer pending forever. 10–20s.
+```js
+const prev = window[cb]
+const mine = () => { prev?.(); if (window[cb] === mine) window[cb] = prev; res() }
+window[cb] = mine; const t = setTimeout(() => rej(Error('sdk timeout')), 20_000)
+```
+⚠ Remove only the tag you created. Calling `.remove()` on one you adopted from
+the document tears out somebody else's loader mid-flight.

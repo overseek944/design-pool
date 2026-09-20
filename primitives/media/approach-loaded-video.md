@@ -4,7 +4,7 @@ category: media
 tags: [media,video,performance,intersection-observer,accessibility,bandwidth]
 axes: none
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -34,3 +34,16 @@ silence.
 ```js
 wants = true; v.play().then(() => { if (!wants) v.pause() }).catch(() => {})
 ```
+
+A vendor's player is the same gate with none of the handles — no `preload`, no
+`muted` attribute, and its `play()` resets volume on the way in. Assert mute
+twice: once before the call, once inside the player's own started callback. Miss
+the second and the first frame of every autoplay ships audio, which is the one
+failure a reader does not forgive. Keep the link to the original beside the frame
+so the unavailable case still serves the content.
+```js
+p.mute(); p.setVolume(0); p.play()
+p.subscribe('startedPlaying', () => { p.mute(); p.setVolume(0) })
+```
+⚠ Vendor callbacks fire after teardown. Guard each one against a mount that has
+already been replaced, or a late `startedPlaying` unmutes a player nobody can see.

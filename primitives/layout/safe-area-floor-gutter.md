@@ -4,7 +4,7 @@ category: layout
 tags: [layout,tokens,safe-area,responsive,correctness]
 axes: none
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -37,3 +37,17 @@ whatever the device claims. Gutters clamp, docked chrome accumulates.
 ⚠ Accumulating on a full-height panel costs real estate: subtract the same
 `env()` from its height (`calc(100dvh - var(--bar) - env(safe-area-inset-bottom))`)
 or the last row sits below the fold on exactly the devices that have insets.
+
+`max()` and `calc(+)` are two different intents and the choice is not stylistic.
+A floating element only has to clear the hardware, so the design value is a floor
+and `max()` is right. A bottom-docked bar's padding is content spacing that the
+inset must be added *to* — take the larger there and a device with a gesture bar
+loses the bar's own internal breathing room to the hardware. Same for the page's
+scroll floor under fixed chrome.
+```css
+.toast { inset-block-end: max(1rem, env(safe-area-inset-bottom, 0px)) }
+.dock  { padding-block-end: calc(1rem + env(safe-area-inset-bottom, 0px)) }
+```
+⚠ Always supply the `0px` fallback. `env()` with no second argument makes the
+whole declaration invalid where the variable is unknown, taking the design value
+down with it.

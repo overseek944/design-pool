@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,subgrid,cards,hairline,datasheet,alignment]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,16 @@ air.
 ⚠ Subgrid needs the card to be a direct grid child — any wrapper between row and
 card breaks it silently. The no-support fallback is one fixed band height,
 140–200px, which aligns but starves the shortest content.
+
+Write the no-subgrid fallback band in `em` of the heading's own leading rather
+than in pixels: `2.6em` against `line-height: 1.3` is exactly two lines, so the
+reservation re-solves when the type scale moves and never clips a third. Then
+release it at the breakpoint where the row stacks to one column — there is
+nothing left to align against, and the reserved space becomes a visible hole
+under every short title. 2–3 lines.
+```css
+.card h3 { line-height: 1.3; min-height: 2.6em }
+@media (width <= 48rem) { .card h3 { min-height: 0 } }
+```
+⚠ An em floor is a floor, not a clamp: a title running to three lines still
+pushes its own card's band down, and only subgrid drags the others with it.

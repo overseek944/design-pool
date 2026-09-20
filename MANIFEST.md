@@ -1,6 +1,6 @@
 # Manifest
 
-384 primitives. Format: `category/id | axes cost | tags | gist`
+388 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -63,6 +63,8 @@ interaction/anchor-focus-handoff | neutral  $1 | accessibility navigation focus 
 interaction/auto-advance-yields-to-input | E2 D2 W2 F5 $2 | carousel autoplay accessibility state | A self-advancing sequence must stop the instant a reader touches
 interaction/breakpoint-dual-mode-details | neutral  $2 | disclosure navigation responsive accessibility progressive-enhancement | One <details> can be a permanently-open sidebar above a breakpoi
 interaction/breakpoint-scoped-overlay-dismiss | neutral  $1 | navigation overlay responsive correctness accessibility | An overlay that exists only below a breakpoint — a mobile nav sh
+interaction/coarse-pointer-affordance-promotion | neutral  $1 | accessibility interaction touch correctness media-query | Controls that fade in on :hover — a play button on a thumbnail, 
+interaction/content-sized-field-bounds | E1 D1 W2 F4 $1 | form input layout detail progressive-enhancement | field-sizing: content lets an input measure its own value, retir
 interaction/coordinated-group-state | E3 D2 W2 F5 $1 | interaction surface hover | Hover the container, animate the parts. A single group parent le
 interaction/copy-safe-sample-text | neutral  $1 | interaction code correctness detail usability | A terminal or code sample is there to be dragged over and pasted
 interaction/dimension-coded-position-dot | E2 D2 W2 F5 $1 | interaction state indicator accessibility carousel | Let the active item in a position indicator change size, not onl
@@ -94,6 +96,7 @@ interaction/runtime-assembled-href | neutral  $1 | interaction correctness acces
 interaction/snap-scroll-as-dismiss-gesture | E3 D2 W2 F5 $3 | gesture dialog scroll accessibility sheet | Build a drag-to-dismiss sheet out of a scroll container rather t
 interaction/state-as-numeric-custom-property | E3 D2 W2 F5 $1 | interaction hover state tokens architecture | Express interaction state as a number, then derive every depende
 interaction/state-seeded-at-listener-attach | neutral  $1 | correctness state events scroll architecture | Events report transitions, not the current value. Any class deri
+interaction/transparent-stroke-hit-area | neutral  $1 | accessibility svg interaction touch correctness detail | A small mark inside a viewBox — a path node, a scrubber dot — is
 interaction/viewport-clamped-anchored-popover | neutral  $1 | correctness responsive overlay accessibility hover focus | A popover sized against its trigger gets clipped by the window: 
 interaction/withheld-value-reveal | E2 D2 W3 F4 $1 | interaction disclosure redaction accessibility state | Withholding a figure claims more than printing it, but only if t
 layout/argued-column-as-surface | E1 D3 W4 F5 $1 | layout table comparison surface contrast hierarchy | In a comparison matrix the column you are arguing for should be 
@@ -229,6 +232,7 @@ perf/post-teardown-asset-disposal | neutral  $2 | performance correctness lifecy
 perf/prefetch-on-intent-band | neutral  $2 | performance navigation prefetch observer architecture | Prefetching is two policies, not one. Intent arms on mouseenter,
 perf/revert-split-on-resize | neutral  $1 | type motion correctness | Split text hard-codes line breaks at split time. On resize or we
 perf/self-throttled-raf-loop | neutral  $1 | performance animation canvas battery frame-budget correctness | requestAnimationFrame offers the display's rate; it is not a con
+perf/shell-shaped-lazy-fallback | neutral  $2 | cls loading accessibility architecture correctness code-splitting | A lazy fallback is usually a spinner in a box that is not the co
 perf/single-flight-external-script | neutral  $2 | performance architecture correctness lifecycle embed | Several components on a page may each need the same third-party 
 perf/stride-pruned-decorative-field | neutral  $1 | perf responsive decoration correctness | A decorative field — dots, marks, ticks, labels — that costs too
 perf/stylesheet-failure-reload-guard | neutral  $2 | correctness performance progressive-enhancement architecture cls | A hashed stylesheet that 404s after a deploy paints the whole do

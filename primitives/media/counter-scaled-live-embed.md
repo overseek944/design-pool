@@ -4,7 +4,7 @@ category: media
 tags: [media,iframe,embed,responsive,architecture]
 axes: none
 cost: 3
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -27,3 +27,16 @@ f.style.transform = `scale(${r})`           /* transform-origin: 0 0 */
 breakpoint deliberately, and never let a scaled frame be the only copy of the
 text (WCAG 1.4.4). `load` fires before the child paints; re-measure on a
 `ResizeObserver` and gate readiness on a bounded poll for known content.
+
+Some embeds take a width *parameter* instead of answering CSS, and counter-
+scaling is then the wrong tool: measure the host, floor the number, and hand it
+over at construction. The floor is load-bearing — below roughly 200–260px most
+vendor players decline to render at all and you get an empty box with no error.
+Changing the number means rebuilding the embed, so either fix one width per
+breakpoint or debounce hard; a width that tracks a drag restarts the video every
+frame.
+```js
+node.dataset.width = String(Math.max(220, Math.round(host.getBoundingClientRect().width)))
+```
+⚠ Measure the host, never the viewport — inside a grid the two diverge at exactly
+the widths where the floor starts to bite.
