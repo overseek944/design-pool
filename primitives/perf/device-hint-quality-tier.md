@@ -4,7 +4,7 @@ category: perf
 tags: [performance,webgl,capability,progressive-enhancement,correctness]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,17 @@ const tier = narrow ? 0 : weak ? 1 : 2
 ⚠ Default the hints *optimistically*. Both are Chromium-only; `?? 4` puts every
 Safari and Firefox reader on the low tier. Add a URL override so a tier can be
 forced for review.
+
+Input class is a separate ladder from compute class and wants its own cascade,
+because a laptop with a touchscreen and a phone report the same `deviceMemory`
+but need opposite hover, target-size and drag decisions. Ask the specific signal
+first and fall through: `userAgentData.mobile`, then `(pointer: coarse) and
+(hover: none)`, then a screen-width threshold. Guard each probe — privacy
+builds throw on reading these rather than returning undefined, so one
+unprotected access takes the whole startup path down.
+```js
+const ask = f => { try { return f() } catch { return undefined } }
+const m = ask(() => navigator.userAgentData?.mobile)
+        ?? ask(() => matchMedia('(pointer: coarse) and (hover: none)').matches)
+        ?? ask(() => screen.width < 768) ?? false
+```

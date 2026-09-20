@@ -4,7 +4,7 @@ category: type
 tags: [type,contrast,editorial,restraint]
 axes: {energy: 1, density: 2, weight: 3, finish: 5}
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -32,3 +32,13 @@ paragraph under a sans headline, 18–22px with leading near 1.6, reads as a
 subtitle in a second voice while every other paragraph on the page stays sans. A
 whole sentence establishes the register where a single word only decorates it,
 and the dose stays countable: one element per section.
+
+Mono is the other accent face, and it needs a *size* correction where the serif
+needed a tracking one. A monospace cut set at the sans's font-size reads a step
+too large and a shade too heavy, because its glyphs are drawn to a fixed advance
+and its stems are even. Set the run at `0.7–0.85em` of the headline and drop it
+one weight; the cap-heights then agree and the switch reads as a change of
+voice, not a change of size.
+```css
+h1 .mono { font-family: var(--font-mono); font-size: .78em; font-weight: 300 }
+```

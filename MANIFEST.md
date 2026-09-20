@@ -1,6 +1,6 @@
 # Manifest
 
-237 primitives. Format: `category/id | axes cost | tags | gist`
+240 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -24,6 +24,7 @@ color/declared-contrast-escalation | neutral  $1 | accessibility contrast tokens
 color/gamut-ladder-fallback | neutral  $1 | color tokens progressive-enhancement correctness | Ship every colour token twice: an sRGB hex baseline, then the wi
 color/near-black-single-ramp | E2 D2 W4 F4 $1 | color palette dark restraint | Pure #000 ground, off-white #ededed text, and ONE neutral ramp (
 color/parallel-alpha-ramp | neutral  $2 | color tokens alpha borders theming | Ship two neutral ramps of equal length: one opaque, one alpha-on
+color/pattern-encoded-series | E1 D3 W2 F4 $2 | color accessibility pattern data contrast texture | Hue alone cannot carry series identity — it fails in greyscale, 
 color/root-filter-inversion | E2 D2 W4 F2 $2 | color dark filter invert theme effect | filter: invert(1) hue-rotate(180deg) on the root flips lightness
 color/runtime-shade-derivation | neutral  $1 | color tokens theming architecture | Derive hover, active and disabled shades from a colour you will 
 color/self-painting-theme-scope | neutral  $2 | color tokens theming architecture dark | A theme is one class that both defines the semantic colour token
@@ -188,12 +189,14 @@ surface/gradient-dot-lattice | E1 D3 W1 F4 $1 | surface texture pattern blueprin
 surface/gradient-over-opaque-glass | E1 D3 W3 F5 $1 | surface glass gradient depth cheap performance | Glass without a backdrop filter: stack a vertical alpha gradient
 surface/grid-intersection-crosshair | E1 D3 W1 F5 $2 | surface grid detail blueprint ornament | Mark a grid intersection with a small plus centred exactly on th
 surface/hairline-overhang | E1 D2 W1 F5 $1 | surface detail precision | Negative inset of exactly 1px with calc(100% + 2px) sizing so a 
+surface/inverted-bevel-state-pair | E2 D2 W2 F3 $1 | surface depth detail affordance state border | One inset hairline decides whether a box is raised or recessed, 
 surface/inverted-field-ground | E1 D2 W3 F4 $1 | surface form contrast figure-ground accessibility | Invert the form figure-ground: tint the panel below the page val
 surface/masked-edge-highlight | E1 D2 W2 F5 $2 | surface border light mask detail | A hairline that is bright at one point and fades to nothing arou
 surface/multi-edge-mask-fade | E1 D2 W2 F5 $2 | surface mask edge composition bleed | Let an oversized panel run past the layout and dissolve instead 
 surface/overflow-visible-for-glow-bleed | neutral  $1 | surface effect svg gotcha | SVG clips to its viewBox by default, which decapitates any drop-
 surface/paired-hard-shadow-sheet | E1 D2 W2 F4 $1 | surface depth border detail editorial | To imply a second sheet under a panel, two zero-blur shadows do 
 surface/phase-matched-gradient-drift | E2 D2 W2 F4 $1 | surface gradient loop ambient background | An oversized gradient translated behind its box gives a ground a
+surface/projected-lattice-ground | E2 D3 W1 F4 $2 | surface grid texture ambient depth geometry | A flat hairline lattice reads as a sheet behind the page. Tilt t
 surface/radius-inset-connector-rail | E1 D3 W1 F5 $1 | diagram hairline precision detail schematic | Connectors in a node diagram are hairlines on pseudo-elements, n
 surface/receding-annulus-mask | E1 D3 W2 F4 $2 | surface mask gradient depth texture | Concentric rings that grow geometrically and fade as they widen 
 surface/receding-bar-plate | E2 D1 W2 F4 $1 | surface chrome scroll opacity accessibility | Invert the usual scroll chrome: a floating bar starts fully opaq

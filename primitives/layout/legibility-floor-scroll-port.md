@@ -4,7 +4,7 @@ category: layout
 tags: [overflow,responsive,scroll,correctness,table,figure]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -33,3 +33,20 @@ order and must look like one.
 ```
 ⚠ Only make it focusable while it actually overflows, or it is a dead tab stop
 at every width where the table fits.
+
+`min-width: max-content` on the content is the floor to reach for when no single
+rem value is right — a code block whose longest line is unknown. It scrolls at
+exactly its widest line and never wraps, where a fixed floor either wraps a long
+line or over-reserves for a short one. It only works if every grid or flex
+ancestor carries `min-width: 0`; without it the track floors at min-content, the
+port never overflows, and the whole layout widens instead.
+```css
+.port { min-width: 0; overflow-x: auto }      /* and every ancestor track child */
+.port pre code { display: block; min-width: max-content }
+```
+
+Scrolling is the wrong answer in running prose. A reader mid-article will not
+move a code block sideways to finish a sentence, so let it wrap: `pre-wrap` plus
+`overflow-wrap: break-word`, with `overflow-x: visible` so no port is created at
+all. Scroll a port the reader has stopped at — a table, a hero snippet, a
+diagram; wrap anything embedded in a column of text.

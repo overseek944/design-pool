@@ -4,7 +4,7 @@ category: timing
 tags: [motion,easing,indicator,status,ambient]
 axes: {energy: 2, density: 1, weight: 2, finish: 3}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -27,3 +27,12 @@ it. Under `prefers-reduced-motion` it must stop, not slow.
 `step-end` over a three-stop keyframe is the same instrument written the other
 way round — `0%,100% {opacity:1} 50% {opacity:0}` — and puts the off state in
 the keyframe rather than the duration, so period and duty cycle tune apart.
+
+Duty cycle is not free to set at 50%. A text caret off for half its period reads
+as a field that has lost focus; the same caret off for a quarter reads as
+waiting for input. Put three or four stops in the keyframe so the on and off
+phases are independently tunable — off 25–35% of the period for a caret, up to
+50% for an alarm, where the gap *is* the signal.
+```css
+@keyframes caret { 0%, 70%, 100% { opacity: 1 } 20%, 50% { opacity: 0 } }
+```
