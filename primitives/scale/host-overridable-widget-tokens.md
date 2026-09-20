@@ -4,7 +4,7 @@ category: scale
 tags: [tokens,embed,widget,theming,specificity,correctness]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []

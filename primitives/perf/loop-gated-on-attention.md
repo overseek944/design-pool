@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,intersection-observer,visibility,battery,correctness]
 axes: none
 cost: 2
-seen: 17
+seen: 18
 requires: []
 conflicts: []
 completes: []
@@ -125,3 +125,12 @@ const stamp = e => { mutate(e); if (!raf) raf = requestAnimationFrame(frame) }
 ```
 ⚠ Every path that changes state has to restart the loop, not only the obvious
 one — resize, theme change and re-entry all arrive at a loop that has stopped.
+
+The predicate decides whether to run, not what is left on screen. When it closes
+on the *preference* term, a generative field that merely stops was never drawn
+at all. Draw one frame at the current clock before cancelling, and step the
+layer's opacity down to 40–60% in CSS: motionless and quieter reads better than
+absent, and it costs a single frame.
+```js
+if (rm.matches) { cancelAnimationFrame(raf); video.pause(); if (onScreen) draw(0); return }
+```

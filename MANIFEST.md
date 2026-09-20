@@ -1,6 +1,6 @@
 # Manifest
 
-341 primitives. Format: `category/id | axes cost | tags | gist`
+343 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -39,6 +39,7 @@ canvas/scroll-driven-frame-atlas | E4 D3 W3 F4 $4 | canvas scroll performance | 
 canvas/standard-uniform-set | neutral  $2 | shader architecture reference | A small reusable uniform contract covers most decorative shaders
 canvas/svg-userspace-pointer-mapping | neutral  $1 | svg pointer correctness interaction geometry | An SVG with a viewBox is drawn in its own coordinate system, and
 canvas/unit-box-asset-framing | neutral  $2 | canvas correctness scale geometry architecture | A loaded 3D asset arrives at whatever scale and origin its expor
+canvas/video-textured-mark-field | E2 D3 W2 F5 $3 | canvas video particles texture motion performance | A field of marks needs content as well as motion, and inventing 
 color/declared-contrast-escalation | neutral  $1 | accessibility contrast tokens type color | prefers-contrast: more is not a second theme — it is permission 
 color/gamut-ladder-fallback | neutral  $1 | color tokens progressive-enhancement correctness | Ship every colour token twice: an sRGB hex baseline, then the wi
 color/near-black-single-ramp | E2 D2 W4 F4 $1 | color palette dark restraint | Pure #000 ground, off-white #ededed text, and ONE neutral ramp (
@@ -321,6 +322,7 @@ type/balanced-headline-wrap | neutral  $1 | type polish | text-wrap: balance on 
 type/cap-height-trim | neutral  $1 | type spacing precision alignment | Every text block ships with invisible half-leading above and bel
 type/char-count-stepped-reveal | E3 D1 W2 F4 $1 | type motion css-only custom-properties keyframes | A per-character reveal is one number. Publish the character coun
 type/character-grid-as-texture | E3 D5 W2 F3 $2 | type texture ornament ascii | A field of monospace glyphs (+ x X 8 0 @ # % $) on a grid, used 
+type/content-ghosted-width-reservation | neutral  $1 | type layout-shift css-only accessibility correctness | Text that animates or swaps in place resizes its own box and rel
 type/em-locked-wordmark-mark | E1 D2 W2 F5 $1 | type logo alignment detail scale | A lock-up whose mark is sized in pixels needs a new value at eve
 type/em-sheared-highlight | E3 D2 W4 F4 $1 | type highlight clip-path emphasis inline scale | A slanted block behind a phrase gives a headline a cut-in, marke
 type/frame-cycled-glyph-indicator | E3 D1 W2 F3 $1 | indicator mono glyph loading state motion | An indeterminate wait does not need a drawn shape. Step one text

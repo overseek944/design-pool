@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,legibility,performance,ambient,contrast,generative]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -32,3 +32,14 @@ envelope collapses to one axis: a linear ramp over 80–150px from the text's
 outer edge, clamped, with a second ramp holding the field off the bottom rule.
 Two `clamp`-shaped multiplies and no distance call at all — worth taking when
 the well would only ever be rectangular.
+
+Where the field is generated rather than sampled, the cheapest envelope is none:
+discard the cell at seed time if it falls inside the copy's box. One normalised
+rect, tested once per resize, nothing stored and nothing multiplied per frame —
+and the field can then composite additively with no contrast floor to defend
+over the text, because nothing is drawn there. Inset 4–8% past the copy.
+```js
+if (x > .2*w && x < .8*w && y > .16*h && y < .84*h) continue   // copy lives here
+```
+⚠ A hard boundary becomes legible as an edge once the field is dense enough to
+read as a texture. Past that point pay for the soft envelope.
