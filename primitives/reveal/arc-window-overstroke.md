@@ -4,7 +4,7 @@ category: reveal
 tags: [draw-on,highlight,canvas,pulse,path]
 axes: {energy: 3, density: 2, weight: 3, finish: 5}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []

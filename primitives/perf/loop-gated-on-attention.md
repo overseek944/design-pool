@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,intersection-observer,visibility,battery,correctness]
 axes: none
 cost: 2
-seen: 15
+seen: 16
 requires: []
 conflicts: []
 completes: []
@@ -98,3 +98,17 @@ const frame = t => { raf = null; if (!live()) return
 ```
 ⚠ Only for a loop whose frame at `t = 0` is already a complete image. A sweep or
 an entrance has no meaningful first frame — those hold their *end* state instead.
+
+Resetting the clock on resume is the crude fix for the offscreen jump, and it
+throws away where a long scheduled loop had got to — a reader returning to a
+20s sequence watches it start over. Accumulate instead: hold elapsed seconds
+and the timestamp the current run began, add the span on every pause, and read
+`elapsed + (running ? now - start : 0)`. The loop resumes in phase, `dt` stays
+bounded without a clamp, and the same number drives a scrub or a still frame.
+```js
+const pause = t => { if (on) { acc += (t - t0) / 1000; on = false } }
+const play  = t => { if (!on) { t0 = t; on = true } }
+const clock = t => acc + (on ? (t - t0) / 1000 : 0)
+```
+⚠ Pause from every gate that stops frames — visibility, intersection and
+teardown — or the clock keeps counting through a stop it did not hear about.

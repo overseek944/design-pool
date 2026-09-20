@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,svg,performance,generative,texture,batching]
 axes: {energy: 2, density: 4, weight: 1, finish: 5}
 cost: 3
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -40,3 +40,20 @@ blink rather than a shimmer.
 ```
 ⚠ Assign halves by interleaving, never by region — a spatial split makes the two
 phases visible as two patches.
+
+The same ladder on a 2D canvas is flat coordinate arrays rather than path
+strings: one array per bucket, `length = 0` each frame instead of reallocating,
+and one `beginPath`/`stroke` per bucket at that bucket's `strokeStyle`.
+Hairlines hide the banding a readable mark would show, so the ladder can run
+32–64 steps there rather than 4–6. Flush each bucket in fixed runs — a single
+path of tens of thousands of segments degrades sharply in the rasteriser, while
+runs of 500–1000 segments do not.
+```js
+for (let b = 1; b <= N; b++) { const a = buf[b]; if (!a.length) continue
+  ctx.strokeStyle = ink(b / N)
+  for (let i = 0; i < a.length; i += RUN) { ctx.beginPath()
+    for (let j = i; j < Math.min(a.length, i + RUN); j += 4) {
+      ctx.moveTo(a[j], a[j+1]); ctx.lineTo(a[j+2], a[j+3]) } ctx.stroke() } }
+```
+⚠ Skip a bucket below ~1/255 alpha rather than drawing it — the clear costs
+nothing and the state change costs the same as a visible one.

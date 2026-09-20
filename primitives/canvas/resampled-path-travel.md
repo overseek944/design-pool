@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,performance,motion,connector,architecture]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []

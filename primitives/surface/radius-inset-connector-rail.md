@@ -4,7 +4,7 @@ category: surface
 tags: [diagram,hairline,precision,detail,schematic]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -42,3 +42,20 @@ with the grid — no second element, nothing measured.
 @media (width <= 900px) { .step:not(:last-child)::after {
   inset:auto auto -16px 50%; transform:translateX(-50%) rotate(135deg) } }
 ```
+
+Inverted for a timeline, where the rail must read as continuous *through* the
+gaps between items: give every item the same over-long rail instead of linking
+neighbours. Pull it past the item by more than half the gap at both ends, so
+consecutive rails overlap into one line, and paint it with a gradient that
+fades to transparent at both tips — the first and last items then have no hard
+terminal and no `:first-child`/`:last-child` rule exists. Reach 2.5–4em against
+gaps of 4–6em; fade 2–3em.
+```css
+.item::before { content:''; position:absolute; width:1px;
+  top: calc(-1 * var(--reach)); bottom: calc(-1 * var(--reach));
+  left: calc(-1 * var(--gutter));
+  background: linear-gradient(transparent, var(--ink) var(--fade),
+    var(--ink) calc(100% - var(--fade)), transparent) }
+```
+⚠ Reach under half the gap leaves a visible break; far over it doubles the ink
+in the overlap unless the fade covers the join.

@@ -4,7 +4,7 @@ category: type
 tags: [type,contrast,editorial,restraint]
 axes: {energy: 1, density: 2, weight: 3, finish: 5}
 cost: 1
-seen: 12
+seen: 13
 requires: []
 conflicts: []
 completes: []
@@ -49,3 +49,16 @@ reads as a technical voice quoting a written one, which suits an argument long
 enough to need paragraphs. It only holds if the sans keeps every non-prose
 string — one serif byline or metadata line and the two voices stop mapping to
 roles and start looking arbitrary. A text serif, not a display cut, at 16–18px.
+
+The narrowest dose of all: hold the serif for *annotation only* — the labels
+inside a diagram, a figure caption, an axis year — and let every word of chrome
+and body stay sans. Italic at 9–11px it reads as a draughtsman's hand written
+onto the drawing rather than as interface text, which separates what the figure
+says about itself from what the page says about the figure. The same stack has
+to be named twice where the figure is a canvas, because `fillText` resolves
+against the canvas font string, not inherited CSS.
+```js
+ctx.font = `italic 10px Georgia, "Times New Roman", serif`
+```
+⚠ Under about 9px the italic loses its terminals and reads as noise; below that
+set the annotation upright, or in the sans.

@@ -4,7 +4,7 @@ category: type
 tags: [underline,link,hover,transform-origin,wipe,cheap]
 axes: {energy: 3, density: 1, weight: 2, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,18 @@ wipe, not a rewind. Nothing is painted at that instant, so the flip is invisible
 ```
 ⚠ Keep a plain resting transition under it or a fast pointer strands the bar
 mid-wipe. 0.5–0.7s, and the same rule must answer `:focus-visible`.
+
+A transform cannot draw an underline under an inline that wraps — the
+pseudo-element is one box and covers the first line fragment only. Animate a
+gradient `background-size` instead: the background paints on every fragment, so
+an emphasised phrase inside a running headline draws correctly on both lines,
+with no extra element and no measuring. Height is the hairline token, position
+pins it to the text bottom. 0.45–0.6s each; stagger several across one sentence
+at 0.5–0.65s apart and shorten each successive draw slightly.
+```css
+em { background: linear-gradient(var(--line), var(--line)) no-repeat 0 100%;
+     background-size: 0 1px; animation: draw .55s ease-out both }
+@keyframes draw { to { background-size: 100% 1px } }
+```
+⚠ `background-size` is not compositable — it repaints the inline each frame.
+Fine for a handful of words, not for a whole paragraph.

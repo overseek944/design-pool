@@ -4,7 +4,7 @@ category: timing
 tags: [motion,timing,loop,architecture,correctness]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,19 @@ if ((t += Math.min(dt, .05)) >= PERIOD) { t = 0; i = 0; reset() }
 ```
 ⚠ The reset must return every element a cue touched to its start state — a cue
 list is a schedule, not a state machine, and it will not undo itself.
+
+Where the cues are generated rather than authored, their durations will not sum
+to the period and the ring closes on a visible jump. Draw random durations
+until the total first exceeds the period, then absorb the overshoot by
+shortening the last cue — and if that would push it under its own legibility
+floor, drop it and lengthen its predecessor instead. Every generated sequence
+then fills exactly one period, so a grid of independently-seeded ones stays
+locked to one clock. Floor each cue at 60–75% of its drawn duration.
+```js
+while (total < PERIOD) { const c = make(); cues.push(c); total += c.dur }
+const over = total - PERIOD, last = cues.at(-1)
+if (over > last.dur - last.min) { cues.pop(); cues.at(-1).dur += PERIOD - (total - last.dur) }
+else last.dur -= over
+```
+⚠ Give each participant its own random phase offset into the period, or every
+one of them restarts on the same frame and the field pulses.

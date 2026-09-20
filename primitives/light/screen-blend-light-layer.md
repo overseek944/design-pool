@@ -4,7 +4,7 @@ category: light
 tags: [effect,blend,compositing,dark]
 axes: {energy: 3, density: 3, weight: 3, finish: 4}
 cost: 3
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -45,3 +45,19 @@ above that and it is a picture behind the copy.
   background: url(plate.webp) center / cover no-repeat;
   mask-image: radial-gradient(ellipse 75% 50% at center, #000 30%, transparent 88%) }
 ```
+
+Variant — `difference` where the layer must work over both a mark and its
+inverse. It subtracts rather than adds, so a white band swept across a
+two-tone logo flips black glyphs to white and white ground to black in one
+declaration, with no knowledge of which pixels are which and no second asset
+for a dark theme. Drive it by `background-position` on an oversized gradient
+band rather than a transform, so nothing is promoted while it rests. Band 15–25%
+of a 300% background width; sweep 0.4–0.6s.
+```css
+.mark::after { content:''; position:absolute; inset:25%;
+  background: linear-gradient(112deg, #fff0 40%, #fff 40% 60%, #fff0 60%)
+    no-repeat 130% 0 / 300% 100%; mix-blend-mode: difference }
+.mark:hover::after { animation: sweep .48s cubic-bezier(.3,0,.2,1) }
+```
+⚠ Difference against a mid-grey returns mid-grey — it does nothing on a mark
+that is not high-contrast, and it inverts any colour in one.

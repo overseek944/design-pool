@@ -4,7 +4,7 @@ category: perf
 tags: [performance,webgl,capability,progressive-enhancement,correctness]
 axes: none
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -40,3 +40,18 @@ const m = ask(() => navigator.userAgentData?.mobile)
         ?? ask(() => matchMedia('(pointer: coarse) and (hover: none)').matches)
         ?? ask(() => screen.width < 768) ?? false
 ```
+
+A canvas has no media queries, so the same integer answers *layout* as well as
+quality: resolve the tier from the drawing surface's own width, then index
+per-tier literal arrays for every dimension in the scene — box sizes, gaps,
+font sizes, label sets. The breakpoints live in one line and each dimension's
+three values sit side by side where they can be compared, which no scattered
+`width < 620 ? … : …` chain allows. Two breakpoints is usually enough; a fourth
+tier stops being reviewable.
+```js
+const z = w < 620 ? 0 : w < 940 ? 1 : 2
+const boxW = [46, 54, 62][z], pad = [12, 18, 30][z]
+const labels = [['sim', 'synth'], ['simulate', 'synthesize']][Math.min(z, 1)]
+```
+⚠ Tier off the container, never the viewport — the same scene in a sidebar and
+a full-bleed plate must resolve differently. Rebuild on resize across a bound.

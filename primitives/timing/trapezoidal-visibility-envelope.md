@@ -4,7 +4,7 @@ category: timing
 tags: [motion,timing,loop,architecture]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -49,3 +49,17 @@ percentage stops already in the keyframe carry both properties.
 ```
 ⚠ `filter` on a held element is a compositor layer for the whole cycle, not
 just the ramp — fine for a handful of participants, not for dozens.
+
+Write the window as the *product* of two independent ramps — one rising at the
+start, one falling at the end — rather than one function with a single shoulder
+width. The two shoulders then tune separately, which is what a beat that snaps
+on and drifts off actually needs, and any further condition multiplies into the
+same scalar: a master fade, a proximity falloff, a per-layer gate. Each term
+reads alone and the product is still one number per element per frame.
+```js
+const up   = (t, at, d) => smoothstep((t - at) / d)
+const down = (t, at, d) => 1 - smoothstep((t - at) / d)
+const a = up(t, .02, .1) * down(t, .72 * dur, .3) * master
+```
+⚠ Every term must reach 1 somewhere or the element never hits full strength —
+overlapping ramps silently cap a beat at a fraction of its intended value.
