@@ -4,7 +4,7 @@ category: color
 tags: [color,tokens,theming,architecture,dark]
 axes: none
 cost: 2
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -47,3 +47,16 @@ ground instead of racing it.
 ```js
 stage.dataset.sceneDark = String(progress > DARK_AT)   // the renderer's own constant
 ```
+
+`color-scheme` is not always enough for autofill — Chromium still forces its own
+field background in several states, and no `background-color` beats it. The only
+declaration that does is a huge inset shadow repainting the box, the text colour
+restored through `-webkit-text-fill-color`, and a transition long enough that
+the UA's own fade never arrives. Ugly, and it is the whole fix.
+```css
+input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--fg); -webkit-box-shadow: 0 0 0 1000px var(--input-bg) inset;
+  transition: background-color 5000s ease-in-out 0s }
+```
+⚠ The shadow paints over any inset bevel or focus ring on the same element, so a
+focused autofilled field loses its state. Carry that state on an outline.

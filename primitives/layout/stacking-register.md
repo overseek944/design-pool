@@ -4,7 +4,7 @@ category: layout
 tags: [architecture,z-index,tokens,correctness,overlay]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -31,3 +31,9 @@ parent's background and vanishes; `isolation: isolate` on the parent opens a
 stacking context so negative-z children land above that background and below the
 content. One section can then carry a photograph and a scrim as two ordinary
 children, and the isolation stops either reaching the page behind.
+
+A scrim is not its own band. Number it one step *below* the surface it dims —
+`--z-modal-backdrop: 3900` against `--z-modal: 4000` — so the pair is legibly
+one thing and moving the dialog up a band carries its backdrop with it. Given a
+band of its own, the two drift the first time a new overlay is inserted between
+them and the scrim starts dimming the dialog it belongs to.

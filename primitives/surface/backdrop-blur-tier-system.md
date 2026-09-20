@@ -4,7 +4,7 @@ category: surface
 tags: [surface,depth,glass]
 axes: {energy: 1, density: 3, weight: 3, finish: 4}
 cost: 3
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
@@ -29,3 +29,18 @@ On a dark ground add `brightness(1.05–1.12)` after the saturate. Blur over dar
 content averages toward the ground and the plate sinks into it; the brightness
 pass lifts it back to reading as a layer above, which is the one thing the blur
 was meant to say. Above ~1.15 the text behind the glass starts to ghost through.
+
+Declare the opaque panel as the base rule and add the glass only inside
+`@supports ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)))`.
+Both fallbacks then come free from one value: no support and
+`prefers-reduced-transparency: reduce` land on the same declaration, and neither
+path restates the opaque background in a third place to drift out of sync. The
+reduced branch has to name `backdrop-filter: none` *and* the alpha, since the
+`@supports` block already won on specificity.
+```css
+.panel { background: rgb(28 21 18 / 1) }
+@supports (backdrop-filter: blur(1px)) {
+  .panel { background: rgb(28 21 18 / .6); backdrop-filter: blur(14px) saturate(1.4) } }
+@media (prefers-reduced-transparency: reduce) {
+  .panel { background: rgb(28 21 18 / 1); backdrop-filter: none } }
+```

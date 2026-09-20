@@ -4,7 +4,7 @@ category: scale
 tags: [unit,typography,layout,responsive,poster]
 axes: {energy: 2, density: 2, weight: 4, finish: 4}
 cost: 3
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: [proportional-effect-radii, three-tier-token-redefinition]
@@ -54,3 +54,11 @@ h1 + p { margin-top: clamp(.75rem, 1.3vw, 1.5rem) }    /* ≈ .25× the type rat
 ```
 ⚠ Ratios of .2–.4 hold. At 1.0 the page is one proportional unit again, which is
 the decision above, not a tuning of it.
+
+Sub-pixel parts need a different floor from the one `max()` gives. A 0.5cqw
+hairline — a caret, a rule inside the drawing — rounds to nothing in a small
+container, and `width: max(.5cqw, 1px)` does not save it: the value is a
+*basis* a flex parent is still free to shrink to zero. Floor those on
+`min-width`/`min-height` and leave `width` proportional. The rule of thumb:
+`max()` for anything that only has to stay legible, the `min-*` properties for
+anything that has to stay visible at all.
