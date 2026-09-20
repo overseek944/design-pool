@@ -4,7 +4,7 @@ category: color
 tags: [color,palette,dark,restraint]
 axes: {energy: 2, density: 2, weight: 4, finish: 4}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -18,3 +18,8 @@ surface fill. Reads as instrument panel rather than dark-mode-of-a-light-site.
 Range — the ground need not be pure `#000`. A near-black around `#0f1011` with a
 raised shade near `#191d20` gives one usable elevation step before glow is
 needed, and reads less like an OLED void on large panels.
+
+Two raised steps hold as well as one when the ground stays at true `#000` —
+around `#191919` for the card and `#333` for anything nested inside it. That is
+the ceiling: a third step lands close enough to the second that the eye reads
+noise, and a divider is cheaper than another fill.

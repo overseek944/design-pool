@@ -8,7 +8,7 @@ seen: 1
 requires: []
 conflicts: []
 completes: []
-tension: []
+tension: [fixed-canvas-root-scale]
 ---
 `zoom` is the one scale that reflows. `transform: scale()` leaves the original
 box behind, so neighbours hold their old positions and the scaled thing either
