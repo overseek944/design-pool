@@ -4,7 +4,7 @@ category: layout
 tags: [diagram,svg,schematic,accessibility,responsive]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,9 @@ nodes then track each other at every width with nothing measured in script.
 ⚠ Only holds while the box keeps its aspect ratio; a non-square container needs
 `preserveAspectRatio="none"`, which shears strokes. Give the SVG
 `pointer-events: none` so it cannot swallow clicks on the nodes beneath it.
+
+Percentages place node *centres*, but a connector stops at a node's edge, and
+that edge moves when the node is sized fluidly. Derive the inset as a token —
+`--node-half: calc(var(--node-size) / 2)` against a `clamp()` size — and every
+endpoint, halo radius and label offset tracks one declaration across the whole
+range with nothing measured in script.

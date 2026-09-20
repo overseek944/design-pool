@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,scroll,scrub,architecture,performance]
 axes: {energy: 3, density: 2, weight: 3, finish: 5}
 cost: 3
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -22,3 +22,10 @@ const seek = p => anims.forEach(a => { a.currentTime = clamp01(p) * total })
 ```
 ⚠ A Web Animation outranks a CSS animation on the same property, so a timeline
 built late snaps already-visible content back to its first frame.
+
+The same clock can *adopt* animations it did not create. `getAnimations({subtree:
+true})` filtered by a name prefix hands you every CSS keyframe animation under a
+root; pause them and write one `currentTime` to the set. Independently started
+CSS loops are otherwise never in phase, each beginning when its element first
+painted — and authoring stays declarative, so the piece survives the script's
+absence. Re-collect on a ~1s interval or late-mounted nodes run off-clock.

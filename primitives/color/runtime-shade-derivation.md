@@ -4,7 +4,7 @@ category: color
 tags: [color,tokens,theming,architecture]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -28,3 +28,9 @@ Where the colour arrives as a JS string and tints are inline, the same family
 comes from appending hex-alpha bytes — `${c}12` a wash, `${c}45` a border.
 Only on 6-digit hex: a named colour, `hsl()` or a shorthand silently yields an
 invalid value and paints untinted, so normalise at the boundary.
+
+Store the *hue* as a bare number and a semantic family falls out of fixed
+saturation/lightness pairs — `--icon: hsl(var(--h) 46% 51%)`, `--ring: hsl(var(--h)
+44% 68%)` — each holding its relationship while one scalar retints all of them.
+`color-mix()` cannot do this: it walks toward black or white, never around the
+wheel.

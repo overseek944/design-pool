@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,accessibility,required]
 axes: none
 cost: 1
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -37,3 +37,9 @@ cancel: `animation-duration: 1ms`, `animation-iteration-count: 1`,
 `transition-duration: 1ms`. `animation: none` cancels outright, so `animationend`
 never fires and a script waiting on it stalls with content still hidden. The
 iteration cap is the half that stops infinite loops.
+
+For a sequence that *cycles* — steps appearing one at a time — neither the first
+nor the last frame is the right still state. Elect one and pin it: every step
+`opacity: 0`, the elected one `1`, and any property mid-transit written to rest
+(`clip-path: inset(0)`, `stroke-dashoffset: 0`). `animation: none` alone leaves
+each element at its authored 0%, which for a wipe is invisible.

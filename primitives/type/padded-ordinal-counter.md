@@ -4,7 +4,7 @@ category: type
 tags: [type,list,counter,detail,technical]
 axes: {energy: 1, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,9 @@ reads as a serial number.
 ⚠ Markers are announced inconsistently by screen readers. If the number is
 referenced anywhere — "see step 04" — put it in the text too, not only in the
 marker.
+
+The same ordinal can also be set as scenery: the figure at 8–16rem beside its
+section, tinted a few percent off the background so it sits below the text
+contrast floor and reads as a position marker, not content. Deliberately
+illegible, so `aria-hidden` and duplicated in real text. Alternate the side it
+hangs from and a long numbered run gains rhythm.

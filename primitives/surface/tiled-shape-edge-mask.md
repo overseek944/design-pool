@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,edge,ornament,texture,section]
 axes: {energy: 2, density: 3, weight: 2, finish: 3}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,9 @@ constant physical size instead of stretching. Tile 50–70px wide narrow,
 ```
 ⚠ `mask-size: contain` rescales the tile to the band and the repeat stops
 landing whole. Ship the `-webkit-mask` pair.
+
+Where the boundary should read as a *signal* rather than a cut, paint it: an SVG
+band stretched full-bleed with `preserveAspectRatio="none"` and every stroke on
+`vector-effect: non-scaling-stroke`, which holds authored weights exact through
+a stretch that would otherwise smear them. Layer a fat translucent stroke as a
+body, a hairline over it, a dashed pass for texture. Band height 100–180px.
