@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,generative,field,deterministic,correctness,scatter]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,16 @@ const x = cx + jit(i) * ampX
 ```
 ⚠ A stride near a simple fraction lays the values on a visible lattice — draw
 200 before trusting one.
+
+A stride gives one value per index, which is not enough when generation needs a
+*stream* — several draws per element, rejection loops, or a distribution that
+has to be shaped (`cbrt` for a solid, `sqrt` for a disc). Seed a small integer
+generator instead and take values in a fixed order: still identical on server
+and client and across reloads, still no stored array, and the call site reads
+like `Math.random()`. Re-seed from the same constant to replay a layout exactly.
+```js
+let s = 1337
+const rnd = () => ((s = 16807 * s % 2147483647) - 1) / 2147483646
+```
+⚠ Order-dependent — inserting one draw reshuffles everything after it, so a
+generator under revision changes layout on edits that look unrelated.

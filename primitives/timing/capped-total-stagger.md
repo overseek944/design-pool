@@ -4,7 +4,7 @@ category: timing
 tags: [motion,sequencing,scale]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -35,3 +35,16 @@ settled first and then jumps back to start.
 .row:nth-child(2) { animation-delay: 30ms }   /* … through the ceiling … */
 .row:nth-child(n+8) { animation-delay: .21s }
 ```
+
+Inside a scroll container the right ceiling is not a chosen index but the number
+of items that actually fit: rows past the fold cascade where nobody is looking,
+and on a short viewport the reader waits out a queue they cannot see. Measure
+the port against the item's own height, stagger that many, and set the rest at
+once. Re-measure on resize, and remember which collections have played so a tab
+returned to does not replay.
+```js
+const visible = Math.ceil((port.clientHeight - pad) / rowHeight)
+const n = Math.min(visible, rows.length)          // stagger n, snap the rest
+```
+⚠ Read the row height from a token or one measured row, never a constant — it
+moves with the type scale and the miscount is silent.

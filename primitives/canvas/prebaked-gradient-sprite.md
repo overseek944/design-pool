@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,performance,particles,light]
 axes: none
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []

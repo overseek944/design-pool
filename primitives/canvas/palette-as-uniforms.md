@@ -4,7 +4,7 @@ category: canvas
 tags: [shader,color,system]
 axes: none
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -31,3 +31,16 @@ addEventListener('themechange', sync)
 matchMedia('(prefers-color-scheme: dark)').addEventListener('change', sync)
 ```
 ⚠ `getComputedStyle` is a layout read — do it on theme change, never per frame.
+
+A theme toggled by a *class* on the root emits neither event nor media change,
+so both subscriptions above miss it and the canvas keeps the old palette until
+something else forces a read. Observe the attribute itself — one
+`MutationObserver` on `documentElement` filtered to `class` — and the sync runs
+for the toggle, for a restored preference and for a server-rendered theme
+alike, with no contract between the canvas and whatever owns the switch.
+```js
+new MutationObserver(ms => ms.some(m => m.attributeName === 'class') && sync())
+  .observe(document.documentElement, { attributes: true })
+```
+⚠ Fires on every unrelated root class write, and `sync` reads computed style —
+filter on the attribute name, and disconnect in teardown.

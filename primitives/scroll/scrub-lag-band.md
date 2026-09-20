@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,motion,feel]
 axes: {energy: 3, density: 2, weight: 3, finish: 5}
 cost: 2
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -47,3 +47,13 @@ raf = requestAnimationFrame(tick)
 ```
 ⚠ Clear the stored timestamp on the way out or the first delta after the pause
 is the whole pause, and the value jumps the gap it was smoothing.
+
+Parameterise that coefficient by *half-life* rather than by τ: `k = 1 - 0.5^(dt
+/ h)` is the same curve with a number that can be specified and reviewed — half
+the distance closed in `h` milliseconds — where τ is a constant nobody reads off
+a design. The decay of something fading out is the same expression without the
+complement. Half-lives 80–160ms for tracking, 400–700ms for a value that should
+visibly linger.
+```js
+const k = 1 - Math.pow(.5, dt / H)                 // H in the same units as dt
+```

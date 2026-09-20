@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,edge,composition,bleed]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 21
+seen: 22
 requires: []
 conflicts: []
 completes: []
@@ -78,3 +78,17 @@ harder than edges, which a per-side stack cannot do.
 ```
 ⚠ Radial falloff is uniform, so anything that must stay readable near a corner
 is the wrong content for this variant.
+
+Over a scroll port on a known solid surface, paint the fade rather than masking
+it. A mask makes the content transparent, so a scrollbar, a focus ring or a
+selection under the fade goes with it; an absolutely-positioned `::after`
+gradient to the surface token covers the pixels and leaves the element intact.
+The pairing that makes it read as a fade and not a permanent dimming is padding
+on the scrolled content equal to the fade height, so the last line clears it.
+```css
+.port::after { content:""; position:absolute; inset:auto 0 0 0; height:2rem;
+  pointer-events:none; background:linear-gradient(transparent, var(--card)) }
+.port > * { padding-block-end: 2rem }
+```
+⚠ Only over an opaque, known colour — on a gradient or an image the painted
+band is a visible rectangle.

@@ -4,7 +4,7 @@ category: canvas
 tags: [shader,canvas,precision,correctness,detail]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,16 @@ float shape = 1.0 - smoothstep(r - aa, r + aa, d);
 ⚠ `fwidth` is a fragment-stage derivative taken across a 2×2 quad and is
 undefined inside non-uniform control flow — compute it before any branch that
 can differ between neighbouring pixels.
+
+The exception is a mark whose screen size is fixed by construction — a point
+sprite at a constant `gl_PointSize`, a blit at one scale. There is one pixel
+ratio between the distance field and the screen for the life of the draw, so a
+hand-picked band is exactly right, cheaper, and available in stages where the
+derivative is not. Discard below the band rather than blending toward zero, so
+the fully transparent rim never reaches the blend stage at all.
+```glsl
+float mask = smoothstep(0.5, 0.16, length(gl_PointCoord - 0.5));
+if (mask <= 0.001) discard;
+```
+⚠ Holds only while the size is genuinely constant — the moment size varies with
+depth or zoom the band is back to being mush at one end.

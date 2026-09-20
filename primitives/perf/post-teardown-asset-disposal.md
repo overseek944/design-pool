@@ -4,7 +4,7 @@ category: perf
 tags: [performance,correctness,lifecycle,canvas,architecture,memory]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,17 @@ return () => { dead = true; cancelAnimationFrame(h); dispose(scene); r.dispose()
 ```
 ⚠ Disposing the scene does not reach geometries and materials — traverse and
 dispose each, and treat an array-valued material as the common case.
+
+Traversing at teardown only reaches what is still attached. Anything built and
+swapped out — a replaced material, a render target, geometry for a pass that
+was dropped — is invisible to the walk and leaks silently. Register instead:
+one array and a `track()` that returns its argument, wrapped around every
+construction so the registration cannot be forgotten separately from the
+creation. Teardown is then one loop over things that definitely exist.
+```js
+const owned = [], track = o => (owned.push(o), o)
+const mesh = new Mesh(track(new Geo(...)), track(new Mat(...)))
+return () => { owned.forEach(o => o.dispose()); renderer.dispose() }
+```
+⚠ Registration order is creation order, so a parent may dispose before a child
+reads it — dispose GPU resources only, never objects with teardown side effects.

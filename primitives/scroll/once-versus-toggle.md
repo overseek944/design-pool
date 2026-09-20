@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,reveal,ux]
 axes: none
 cost: 1
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []
@@ -30,3 +30,16 @@ const io = new IntersectionObserver(es => es.forEach(e => {
   set(true); once && io.unobserve(e.target)
 }), { threshold: .15 })          // .1–.25 for a block-sized target
 ```
+
+For a scripted *sequence* rather than one reveal, writing `false` on exit is not
+the toggle policy — it is a half-played demonstration. Every timer still in
+flight fires against a hidden element, and re-entry resumes from whatever phase
+it reached, with the tail of the DOM already in its finished state. Exit has to
+clear the pending handle and return the machine to its idle phase, so re-entry
+starts the sequence rather than joining it.
+```js
+const reset = () => { clearTimeout(h); setPhase('idle'); setTyped('') }
+!e.isIntersecting ? reset() : phase === 'idle' && setPhase('typing')
+```
+⚠ Threshold high enough that the reset cannot fire while any of it is still
+visible — 0.3–0.5 for a panel-sized demo, or it restarts under the reader.

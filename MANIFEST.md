@@ -1,12 +1,13 @@
 # Manifest
 
-411 primitives. Format: `category/id | axes cost | tags | gist`
+414 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
 canvas/alpha-bucketed-path-batch | E2 D4 W1 F5 $3 | canvas svg performance generative texture batching | Thousands of individually-faded SVG marks means thousands of nod
 canvas/baked-cell-frame-stream | neutral  $4 | canvas animation precomputed payload performance field | An ambient field whose motion is authored rather than simulated 
 canvas/borrowed-scene-constructors | neutral  $2 | canvas 3d architecture interop bundle | A wrapper that owns the renderer — a globe, a model viewer, a 3D
+canvas/bucketed-depth-order | neutral  $2 | canvas performance depth particles batching quantise | Painter's order on a 2D context normally means sorting every mar
 canvas/canvas-behind-dom-not-instead-of-it | neutral  $2 | canvas architecture accessibility | Absolutely-positioned inset-0 canvas with pointer-events-none un
 canvas/cell-quantised-arrival-front | E3 D3 W2 F4 $3 | shader reveal grid quantise front texture | A reveal front evaluated per pixel is a soft edge crossing a pic
 canvas/composed-arrival-field | E3 D3 W2 F5 $2 | shader stagger clock uniform reveal perf | Thousands of elements cannot each own a tween. Derive every elem
@@ -42,6 +43,7 @@ canvas/row-span-culled-field | neutral  $2 | perf field raster culling imagedata
 canvas/saturating-density-transfer | E1 D2 W2 F5 $1 | canvas shader color field opacity | An accumulating field has no upper bound but coverage does, so m
 canvas/screen-composited-understroke | E2 D2 W2 F5 $2 | canvas light stroke effect depth cheap | Canvas 2D has no cheap blur, so a glowing stroke is built from p
 canvas/scroll-driven-frame-atlas | E4 D3 W3 F4 $4 | canvas scroll performance | For scrubbed sequence playback, draw frames from a sprite atlas 
+canvas/shell-reprojected-displacement | E2 D3 W2 F5 $2 | shader canvas generative noise silhouette geometry | Noise added straight to a point on a generated form moves it out
 canvas/signed-bow-connector-bundle | E1 D3 W1 F5 $2 | canvas connector diagram geometry svg | Connectors terminating at one hub, drawn straight, collapse into
 canvas/simulation-preroll | neutral  $1 | canvas simulation lifecycle loading generative | A simulation's worst frame is its first: an empty grid, a lone s
 canvas/single-channel-field-storage | neutral  $2 | canvas simulation performance texture shader | Choose the channel count per field rather than reaching for RGBA
@@ -231,6 +233,7 @@ motion-system/stepped-follow-transition | E3 D1 W2 F3 $1 | motion pointer transi
 motion-system/svg-geometry-keyframes | E3 D2 W2 F5 $1 | motion svg diagram precision detail | r, cx, cy, x, y and width are CSS properties on SVG, not just at
 motion-system/transient-class-scoped-transition | neutral  $2 | motion-system view-transition theme correctness reduced-motion | A view transition, or a global colour transition, must animate f
 perf/analytic-stand-in-until-live | neutral  $2 | data loading architecture visualisation labelling | A visual driven by a live feed has three bad first frames: empty
+perf/bfcache-blanked-surface | neutral  $1 | performance canvas lifecycle correctness restoration flicker | A page restored from the back/forward cache repaints whatever a 
 perf/byte-measured-entry-gate | neutral  $3 | performance loading progress fetch overlay correctness | An overlay held while an asset loads is usually a timer pretendi
 perf/data-saver-media-branch | neutral  $1 | performance media-query bandwidth video progressive-enhancement accessibility | prefers-reduced-data: reduce is a reader saying their connection
 perf/dead-banded-resize-rebuild | neutral  $1 | resize canvas mobile correctness | A generative scene that re-seeds on resize restarts every time a
