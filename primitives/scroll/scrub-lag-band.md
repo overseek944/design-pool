@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,motion,feel]
 axes: {energy: 3, density: 2, weight: 3, finish: 5}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -34,3 +34,16 @@ accumulator unwrapped so it never fights its own modulo.
 const d = ((target - cur + 540) % 360) - 180      // shortest arc
 cur += d * (1 - Math.exp(-dt / tau))
 ```
+
+An exponential approach never arrives, so the loop that runs it never ends: a
+page at rest keeps a rAF alive forever, a frame's work per frame, for a
+difference in the fourth decimal. Snap and stop instead — below an epsilon,
+assign the target outright and decline to reschedule, letting the next scroll
+event restart the loop. Epsilon at about 1/1000 of the driven range.
+```js
+disp += (target - disp) * k
+if (Math.abs(target - disp) < EPS) { disp = target; return }   // no reschedule
+raf = requestAnimationFrame(tick)
+```
+⚠ Clear the stored timestamp on the way out or the first delta after the pause
+is the whole pause, and the value jumps the gap it was smoothing.

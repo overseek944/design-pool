@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,mock,meter,progress,accessibility]
 axes: {energy: 2, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -22,3 +22,18 @@ visibly alive and never near enough to either end to claim a state.
 ⚠ Without `alternate` the first and last frames must be identical or the bar
 snaps back at every wrap. It reports nothing: keep it `aria-hidden`, never
 `role="progressbar"`, and stop it under `prefers-reduced-motion`.
+
+Where the meter *is* the argument — a scored assessment, a confidence, a
+qualitative level the scene exists to show — the rule inverts and the number
+becomes the problem instead. A screen reader announcing "62" says nothing the
+reader can act on. Use `role="meter"` with the value present for shape and an
+`aria-valuetext` carrying the word the visual is actually communicating, so both
+audiences get the same claim at the same resolution.
+```html
+<span role="meter" aria-valuemin="0" aria-valuemax="100"
+      aria-valuenow="62" aria-valuetext="partial">
+```
+⚠ `aria-valuetext` replaces the number outright, so it has to be the whole
+message — a bare "62 percent" band label leaves the reader worse off than the
+default. A level that is genuinely unknown is not a zero: withhold the meter
+rather than render an empty one.

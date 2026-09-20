@@ -4,7 +4,7 @@ category: scale
 tags: [tokens,radius,architecture,correctness,surface]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []

@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,navigation,hydration,restoration,architecture]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -39,3 +39,19 @@ if (type !== 'POP') location.hash
 ```
 ⚠ Take the navigation type from the router's own signal, not by comparing URLs —
 a back button landing on the route it left is indistinguishable that way.
+
+A stored pixel offset is only valid if the destination renders at the same
+length. Restore across anything that re-flows the same page — a locale switch, a
+font that lands late, a density or theme toggle — and the reader arrives near
+the right place and then somewhere else entirely, because the paragraph they
+were on now sits 400px higher. Store a landmark instead: the id of the topmost
+element still crossing the viewport's top edge, plus its offset from that edge,
+and restore relative to it, keeping the raw offset only as the fallback for a
+document with no ids.
+```js
+const a = { id: el.id, offset: el.getBoundingClientRect().top }   // at departure
+top = scrollY + document.getElementById(a.id).getBoundingClientRect().top - a.offset
+```
+⚠ Re-apply once on `fonts.ready` and once on `pageshow`, but arm the abandon
+first — a correction that lands after the reader has started scrolling is
+indistinguishable from the page fighting them.

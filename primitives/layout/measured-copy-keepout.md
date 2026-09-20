@@ -4,7 +4,7 @@ category: layout
 tags: [layout,measurement,legibility,canvas]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -31,3 +31,18 @@ would have. Push each one back along its own direction from the composition's
 centre instead, or drop it and resample; either keeps the field's distribution
 intact. Where the art is a connected structure, move the whole subgraph rather
 than its members, or the links stretch into a visible fan at the edge.
+
+An element that is `display: none` has no box to measure, and the scenes a
+scrubbed stage has not reached yet are usually exactly that. Rather than
+building a parallel model of what their layout would be, borrow it: set
+`display` for the length of one synchronous read, take the offsets, put the
+previous value back. The write and the read are in the same task, so nothing
+paints — the cost is one forced reflow, not a flash.
+```js
+const prev = el.style.display; el.style.display = 'block'
+const centre = el.offsetTop + el.offsetHeight / 2
+el.style.display = prev
+```
+⚠ Once per resize, cached per element, never in the frame loop — this is the
+most expensive reflow on the page. Read every measurement needed in one pass;
+alternating writes and reads across several elements forces one each time.

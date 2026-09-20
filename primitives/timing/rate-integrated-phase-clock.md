@@ -4,7 +4,7 @@ category: timing
 tags: [motion,timing,correctness,loop]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -29,3 +29,17 @@ comparing two clocks that can disagree by a frame, so the first delta after
 every start and resume can come out negative — the phase runs backwards for one
 frame and anything easing off it visibly snaps. `Math.min(.05, Math.max(0, t -
 last))` costs nothing and removes the whole class.
+
+Integration is wrong when the clock is not time at all. If the position already
+*is* the scrub — a scroll offset mapped to a duration — accumulating a rate off
+it adds a second, lagging state that the scrub then disagrees with: the loop
+keeps advancing when the reader scrolls back, so a travelling highlight runs
+forward down a path the reader is reversing. Derive the phase from the scrubbed
+value directly and the loop is stateless, reversible, and identical every time
+that offset is visited.
+```js
+const head = (scrubbed * RATE + laneOffset) % 1      // not phase += dt * rate
+```
+⚠ This only holds while the scrubbed value is monotonic in scroll and smoothed
+upstream. Derive off a raw, unsmoothed offset and the loop inherits every wheel
+step as a jump.
