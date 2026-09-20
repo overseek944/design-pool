@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,progress,correctness,observer,reading]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -36,3 +36,17 @@ const f = clamp01((innerHeight * .5 - b.top) / b.height)
 ⚠ The rail keeps reporting once its section leaves; drop it to 0.3–0.4 opacity
 when the tracked box is entirely above or below the viewport, or a full bar
 hangs beside unrelated content.
+
+Where the article scrolls inside its own box rather than the document, the rect
+maths disappears: progress is `scrollTop / (scrollHeight - clientHeight)` read
+straight off the scroller, with no viewport term and no `run > 0` guard, and it
+stays correct while the shell around it — brand, rail, the gauge itself — never
+moves. Add `overscroll-behavior-y: contain` so reaching the end does not hand the
+gesture to the document behind.
+```css
+.panel { overflow-y: auto; overscroll-behavior-y: contain }
+.rail > span { transform: scaleX(var(--p)); transform-origin: 0 }
+```
+⚠ A scroll container is not keyboard-reachable by default — give it
+`tabindex="0"` and an accessible name, or the article cannot be paged without a
+pointer.

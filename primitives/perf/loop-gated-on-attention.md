@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,intersection-observer,visibility,battery,correctness]
 axes: none
 cost: 2
-seen: 16
+seen: 17
 requires: []
 conflicts: []
 completes: []
@@ -112,3 +112,16 @@ const clock = t => acc + (on ? (t - t0) / 1000 : 0)
 ```
 ⚠ Pause from every gate that stops frames — visibility, intersection and
 teardown — or the clock keeps counting through a stop it did not hear about.
+
+One term is still missing from the predicate: *finished*. An intro that resolves,
+a field that reaches equilibrium, a scrub parked at its end — each keeps asking
+for frames forever to repaint an image that no longer changes. Let the render
+report whether anything actually moved, drop out of the loop when nothing did,
+and restart only where real input arrives. An ambient surface then costs nothing
+for the rest of the session rather than a composite every 16ms.
+```js
+const live = () => !settled && onScreen && visible && !rm.matches
+const stamp = e => { mutate(e); if (!raf) raf = requestAnimationFrame(frame) }
+```
+⚠ Every path that changes state has to restart the loop, not only the obvious
+one — resize, theme change and re-entry all arrive at a loop that has stopped.

@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,simulation,performance,resolution,texture]
 axes: none
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []

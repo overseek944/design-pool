@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,edge,composition,bleed]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 14
+seen: 15
 requires: []
 conflicts: []
 completes: []
@@ -53,3 +53,16 @@ mask-image: radial-gradient(900px 700px at 50% 30%, #000 50%, transparent 85%)
 ```
 ⚠ Percentage stops here are of the *gradient box*, not the element, so an
 explicit ellipse size is what keeps the falloff stable across viewports.
+
+Invert the stops on that radial and the same single layer becomes a keep-out
+rather than a frame: clear through the middle, opaque at the rim. An ambient
+field laid full-bleed behind an article is then incapable of appearing across
+the measure — no z-index race, no per-element placement, and the body-text
+contrast floor holds by construction instead of by restraint. Clear to 50–60% of
+the ellipse, opaque by 75–90%.
+```css
+mask-image: radial-gradient(48% 68%, transparent 0 54%, #000 78%)
+```
+⚠ The gradient box is the element, so on a wide viewport a full-bleed field
+clears far more than the column it is protecting — size the ellipse against the
+measure, and widen the hole again where the column takes most of the width.

@@ -4,7 +4,7 @@ category: reveal
 tags: [type,reveal,motion,technical,text]
 axes: {energy: 4, density: 3, weight: 2, finish: 3}
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -54,3 +54,15 @@ const w = {}; for (const c of POOL) w[c] = ctx.measureText(c).width
 const swap = c => POOL.filter(x => Math.abs(w[x] - w[c]) <= .02 * size)
 ```
 ⚠ Measure after the webfont resolves; the fallback's metrics band differently.
+
+Colouring the two halves differently makes the settle front legible without
+raising the noise: split at the resolved index into two spans and tint the
+unresolved tail — an accent, or the text colour at 40–60% — while the settled
+prefix is already final. The run reads as resolution rather than as flicker even
+at sizes where the substituted glyphs barely differ in shape, and a string too
+short to show a cascade still shows direction.
+```html
+<span aria-label="…"><span aria-hidden="true">Resolv<i class="tail">#/x|</i></span></span>
+```
+⚠ Keep the tail above the contrast floor for the whole run — it is on screen long
+enough to be read, and it is the half that is not yet the real string.
