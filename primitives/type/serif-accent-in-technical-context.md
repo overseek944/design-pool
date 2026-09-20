@@ -4,7 +4,7 @@ category: type
 tags: [type,contrast,editorial,restraint]
 axes: {energy: 1, density: 2, weight: 3, finish: 5}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -21,3 +21,8 @@ sidebearings, real terminals — collides at those values. Set the accent back t
 rather than roman when the accent is a phrase inside a headline: it separates
 the two voices without reaching for a second weight, and the slope reads as a
 change of register rather than an emphasis.
+
+Inverted dose — serif takes every heading, mono holds all chrome, sans drops to
+body copy alone. The register flips to *editorial with technical apparatus*.
+Needs a true display serif; a text serif at 48px+ reads as a document, not a
+voice.

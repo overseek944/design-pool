@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,hairline,rules,precision]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,7 @@ frame included, and the cells still tile with no gap.
 ```
 ⚠ `--hair` 1px for a ruled field; `.5px` drops out on non-retina, 2px stops
 reading as a rule and starts reading as a box.
+
+Inverse solution — paint the field background in the rule colour and open a
+`gap` of one hairline between opaque cells. The gaps *are* the rules: no
+doubling, no pseudo-element. Costs a frame border; fails on a transparent cell.

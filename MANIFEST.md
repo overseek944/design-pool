@@ -1,6 +1,6 @@
 # Manifest
 
-138 primitives. Format: `category/id | axes cost | tags | gist`
+145 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -29,8 +29,10 @@ interaction/snap-scroll-as-dismiss-gesture | E3 D2 W2 F5 $3 | gesture dialog scr
 interaction/state-as-numeric-custom-property | E3 D2 W2 F5 $1 | interaction hover state tokens architecture | Express interaction state as a number, then derive every depende
 layout/boxless-wrapper | neutral  $1 | layout grid architecture correctness accessibility | display: contents removes an element's box while keeping its chi
 layout/breakout-grid-named-lines | neutral  $2 | layout grid tokens architecture full-bleed | One grid on the page wrapper with named lines for the bleed gutt
+layout/column-aligned-disclosure | E1 D2 W2 F5 $2 | layout grid disclosure alignment native | Let a <details> row sit on the page's column grid: make the <sum
 layout/fractional-grid-with-fluid-rail | E1 D3 W3 F4 $2 | layout grid asymmetry | Asymmetric two-column via minmax() where the rail is viewport-pr
 layout/in-flow-overlay-header | neutral  $1 | layout sticky overlay correctness cls | A header that must float over the first section and still stick 
+layout/labelled-elastic-rule | E1 D2 W1 F5 $1 | layout type hairline metadata editorial | A section divider carries more than separation when the rule its
 layout/legibility-floor-scroll-port | neutral  $1 | overflow responsive scroll correctness table figure | A table or a diagram has a width below which it stops being read
 layout/overflow-clip-over-hidden | neutral  $1 | overflow correctness accessibility scroll | overflow: clip crops without creating a scroll container. hidden
 layout/per-edge-clip-polygon | neutral  $1 | overflow clip correctness bleed | overflow only works per axis, so there is no way to crop one edg
@@ -50,6 +52,7 @@ light/screen-blend-light-layer | E3 D3 W3 F4 $3 | effect blend compositing dark 
 light/stacked-chromatic-bloom | E3 D2 W4 F4 $3 | effect glow filter svg depth | filter: drop-shadow() chains, and follows the alpha channel — so
 media/aspect-locked-media | neutral  $1 | layout media cls | Lock every media slot with an explicit aspect-ratio and let widt
 media/mask-swap-over-shared-paint | E2 D2 W2 F4 $2 | mask icon gradient media state | When a family of glyphs must share one fill — a gradient, a vide
+media/stacked-contour-volume | E1 D4 W2 F5 $2 | svg mark depth stroke currentcolor | Describe a solid as a stack of cross-sections instead of as a sh
 media/stepped-transform-sprite | E3 D2 W2 F4 $2 | media sprite animation svg performance | Play a short looping illustration as a filmstrip: frames in one 
 media/video-as-surface-not-frame | E3 D2 W4 F4 $3 | media surface hero | autoplay muted loop playsinline preload="auto" with object-conta
 motion-system/attribute-driven-motion-hooks | neutral  $1 | architecture motion maintainability | Target animations off data- attributes, never class names. Styli
@@ -66,6 +69,7 @@ motion-system/self-dissolving-entrance-queue | neutral  $2 | motion sequencing c
 perf/font-display-per-role | neutral  $1 | type font-loading cls performance correctness | font-display is a decision per face, not per project. Body and U
 perf/layer-order-preamble | neutral  $1 | architecture cascade css correctness code-splitting | Cascade layers are ordered by first mention, so with code-split 
 perf/loop-gated-on-attention | neutral  $2 | performance animation intersection-observer visibility battery correctness | An infinite decorative animation never stops — it keeps composit
+perf/markup-declared-instrumentation | neutral  $1 | architecture instrumentation events delegation maintenance | Declare the event name and its payload as data- attributes and l
 perf/media-query-parity-listeners | neutral  $1 | responsive correctness architecture motion breakpoint | Where script and stylesheet must agree on a layout, ask the brow
 perf/prefetch-on-intent-band | neutral  $2 | performance navigation prefetch observer architecture | Prefetching is two policies, not one. Intent arms on mouseenter,
 perf/revert-split-on-resize | neutral  $1 | type motion correctness | Split text hard-codes line breaks at split time. On resize or we
@@ -95,6 +99,7 @@ scroll/hoisted-scroll-timeline | neutral  $2 | scroll motion architecture progre
 scroll/once-versus-toggle | neutral  $1 | scroll reveal ux | Two reveal policies, chosen per intent, never mixed arbitrarily:
 scroll/overflow-probe-via-scroll-timeline | neutral  $2 | scroll overflow progressive-enhancement correctness | A scroll-driven animation only advances if its scroll port can a
 scroll/pin-and-progress-stack | E4 D3 W4 F4 $4 | scroll layout narrative | Pin a tall container and drive discrete state from a single scru
+scroll/pre-hydration-scroll-restore | neutral  $2 | scroll navigation hydration restoration architecture | A client-routed page that restores scroll after hydration shows 
 scroll/reveal-trigger-band | E2 D2 W2 F4 $1 | scroll reveal thresholds | Entrance triggers fire at top 85%–top 90% — just inside the fold
 scroll/scrub-lag-band | E3 D2 W3 F5 $2 | scroll motion feel | scrub as a number adds catch-up lag in seconds and is what separ
 scroll/smooth-scroll-driving-timeline | E3 D2 W3 F5 $3 | scroll motion architecture | Pair a smooth-scroll library (Lenis) with the animation library'
@@ -105,6 +110,7 @@ surface/baseline-closed-area-path | E2 D2 W2 F5 $1 | svg chart sparkline data pr
 surface/dash-phase-flow | E2 D2 W1 F5 $1 | svg dash motion connector diagram precision | Animating stroke-dashoffset on a dashed connector makes a static
 surface/drained-field-clear-window | E2 D2 W3 F5 $3 | surface mask backdrop-filter focus attention de-emphasis | Direct attention by de-emphasising everything else: a full-bleed
 surface/eased-fade-stop-ramp | E1 D2 W2 F5 $2 | surface gradient fade mask precision | A two-stop fade interpolates alpha linearly and the eye reads th
+surface/gradient-dot-lattice | E1 D3 W1 F4 $1 | surface texture pattern blueprint cheap | One radial-gradient plus a background-size gives a dot lattice a
 surface/grid-intersection-crosshair | E1 D3 W1 F5 $2 | surface grid detail blueprint ornament | Mark a grid intersection with a small plus centred exactly on th
 surface/hairline-overhang | E1 D2 W1 F5 $1 | surface detail precision | Negative inset of exactly 1px with calc(100% + 2px) sizing so a 
 surface/inverted-field-ground | E1 D2 W3 F4 $1 | surface form contrast figure-ground accessibility | Invert the form figure-ground: tint the panel below the page val
@@ -136,6 +142,7 @@ type/mono-as-ui-texture | E1 D3 W2 F4 $1 | type ui technical register | Run a mo
 type/optical-width-text-fit | E1 D2 W4 F5 $3 | type fit measurement display responsive | A headline that must fill a fixed box cannot be sized by charact
 type/padded-ordinal-counter | E1 D2 W2 F4 $1 | type list counter detail technical | 01 02 … 09 10 numbering without hand-written zeros and without t
 type/serif-accent-in-technical-context | E1 D2 W3 F5 $1 | type contrast editorial restraint | One high-contrast serif, used sparingly against a geometric sans
+type/sub-baseline-marker-band | E2 D2 W3 F3 $1 | type emphasis highlight contrast accessibility | A full accent block behind a phrase has to clear 4.5:1 against t
 type/three-family-stack | E2 D3 W3 F4 $1 | type system | Geometric sans (body/headline) + mono (chrome/code) + display se
 type/tonal-lead-in-clause | E1 D2 W3 F5 $1 | type emphasis hierarchy editorial colour | Carry two levels inside one sentence: the clause holding the cla
 type/tracking-as-size-ratio | E1 D2 W3 F5 $1 | type tracking precision fluid tokens | Tracking fixed in px or em is wrong at one end of a fluid range:
