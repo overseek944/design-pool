@@ -4,7 +4,7 @@ category: surface
 tags: [surface,texture,ambient,depth,performance]
 axes: {energy: 2, density: 3, weight: 1, finish: 4}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -41,3 +41,17 @@ every scale.
 ```
 ⚠ `slice` crops from the centre, so points near the viewBox edges are the first
 to leave. Compose the field so nothing load-bearing sits in the outer 15%.
+
+The same `slice` crop carries line art, not only points, once the strokes are
+pinned. Scale the viewBox art past the frame — 110–135% per axis with a
+`min-width` floor so a narrow viewport does not crop it to nothing — and give
+every stroke `vector-effect: non-scaling-stroke`, or the oversize multiplies
+hairlines into visible rules. A schematic ground then holds one weight from
+390px to a wide display.
+```css
+.ground { inline-size: 132vw; min-inline-size: 1120px; block-size: 118vh }
+.ground [stroke] { vector-effect: non-scaling-stroke }
+```
+⚠ `vector-effect` does not inherit: set as an attribute on a `<g>` it computes
+to `none` on every child and the whole correction silently does nothing. Reach
+it with a descendant selector, per element.

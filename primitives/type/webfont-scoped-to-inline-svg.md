@@ -4,7 +4,7 @@ category: type
 tags: [type,svg,correctness,architecture,progressive-enhancement]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []

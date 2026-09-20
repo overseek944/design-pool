@@ -1,6 +1,6 @@
 # Manifest
 
-376 primitives. Format: `category/id | axes cost | tags | gist`
+379 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -93,6 +93,7 @@ interaction/runtime-assembled-href | neutral  $1 | interaction correctness acces
 interaction/snap-scroll-as-dismiss-gesture | E3 D2 W2 F5 $3 | gesture dialog scroll accessibility sheet | Build a drag-to-dismiss sheet out of a scroll container rather t
 interaction/state-as-numeric-custom-property | E3 D2 W2 F5 $1 | interaction hover state tokens architecture | Express interaction state as a number, then derive every depende
 interaction/state-seeded-at-listener-attach | neutral  $1 | correctness state events scroll architecture | Events report transitions, not the current value. Any class deri
+interaction/viewport-clamped-anchored-popover | neutral  $1 | correctness responsive overlay accessibility hover focus | A popover sized against its trigger gets clipped by the window: 
 interaction/withheld-value-reveal | E2 D2 W3 F4 $1 | interaction disclosure redaction accessibility state | Withholding a figure claims more than printing it, but only if t
 layout/argued-column-as-surface | E1 D3 W4 F5 $1 | layout table comparison surface contrast hierarchy | In a comparison matrix the column you are arguing for should be 
 layout/balanced-side-track-centring | neutral  $1 | layout grid alignment chrome correctness | space-between centres nothing: the middle child lands wherever t
@@ -188,6 +189,7 @@ motion-system/keyframe-variant-bank | E3 D4 W2 F3 $2 | motion generative ambient
 motion-system/marquee-playhead | E3 D3 W2 F5 $3 | marquee motion state observer rhythm | Give a moving track one stationary reading position. A marker si
 motion-system/marquee-still-state | neutral  $1 | motion accessibility marquee correctness overflow | A marquee's reduced-motion state is not a paused marquee. The tr
 motion-system/motion-runtime-watchdog | neutral  $2 | motion correctness accessibility progressive-enhancement reveal | A reveal system that hides content in CSS and un-hides it from J
+motion-system/mpath-bound-traveller | E3 D1 W1 F5 $1 | motion svg path marker loop diagram | A marker crossing a drawn route drifts off it the moment the dra
 motion-system/named-completed-motion-state | neutral  $1 | motion state correctness accessibility reveal progressive-enhancement | Give a choreographed scene three named states — waiting, playing
 motion-system/namespaced-hook-families | neutral  $1 | architecture motion scale | Prefix hooks by section (data-why-card, data-why-canvas, data-wh
 motion-system/non-converging-decorative-meter | E2 D2 W2 F4 $1 | motion mock meter progress accessibility | A meter animated inside a product mock gets read as data. Fill i
@@ -318,6 +320,7 @@ surface/quantised-ground-transition | E1 D2 W2 F3 $1 | surface color gradient to
 surface/radius-inset-connector-rail | E1 D3 W1 F5 $1 | diagram hairline precision detail schematic | Connectors in a node diagram are hairlines on pseudo-elements, n
 surface/receding-annulus-mask | E1 D3 W2 F4 $2 | surface mask gradient depth texture | Concentric rings that grow geometrically and fade as they widen 
 surface/receding-bar-plate | E2 D1 W2 F4 $1 | surface chrome scroll opacity accessibility | Invert the usual scroll chrome: a floating bar starts fully opaq
+surface/region-bound-hatch-pattern | E1 D3 W1 F5 $1 | svg pattern texture hatch diagram schematic | CSS gradients hatch boxes; a schematic needs the hatch inside an
 surface/rotating-conic-border | E4 D3 W3 F4 $3 | surface border motion svg | An animated gradient border without a pseudo-element hack: an SV
 surface/scrim-terminated-ground | E1 D2 W2 F5 $1 | gradient ground surface section seam cheap | A decorative ground that stops at its section's edge leaves a ho
 surface/single-hue-lit-bead | E2 D2 W3 F5 $1 | surface gradient identity marker presence contrast | At 8–24px a flat disc is a dot; three stops make it a bead. Take

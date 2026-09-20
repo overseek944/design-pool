@@ -24,3 +24,19 @@ the line visibly stutters.
 ⚠ Perpetual peripheral motion is a vestibular trigger and an attention sink — a
 `prefers-reduced-motion` branch is required. Hold 20–40px/s; faster and the
 dashes strobe rather than flow.
+
+A flowing connector that runs off the edge of its frame needs no hard terminal:
+paint the stroke with a `linearGradient` transparent at both ends. In the
+default `objectBoundingBox` units the stops span the path's own box, so the
+fade tracks the geometry through any edit — which neither a mask nor a CSS
+`linear-gradient` manages on a curve. Hold zero alpha to 12–20% and from 78–88%.
+```html
+<linearGradient id="fade" x1="0" x2="1">
+  <stop offset="0" stop-opacity="0"/><stop offset=".18" stop-opacity=".34"/>
+  <stop offset=".78" stop-opacity=".36"/><stop offset="1" stop-opacity="0"/>
+</linearGradient>
+<path d="…" stroke="url(#fade)" stroke-dasharray="10 18"/>
+```
+⚠ A bounding box has no direction — a route that doubles back fades mid-line.
+Straight-ish runs only, else `gradientUnits="userSpaceOnUse"` and place the
+stops in viewBox coordinates.

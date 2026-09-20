@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,navigation,hydration,restoration,architecture]
 axes: none
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -55,3 +55,19 @@ top = scrollY + document.getElementById(a.id).getBoundingClientRect().top - a.of
 ⚠ Re-apply once on `fonts.ready` and once on `pageshow`, but arm the abandon
 first — a correction that lands after the reader has started scrolling is
 indistinguishable from the page fighting them.
+
+A cold load *at* a fragment is the case no stored offset covers: the browser
+jumps before late webfonts have set the final layout, and the reader lands
+hundreds of pixels off with no history entry to restore from. Re-run the jump
+once on `document.fonts.ready`, then wait two frames — the promise resolves
+before the reflow it causes has been laid out. Force `scroll-behavior: auto`
+around that one call, or a global `smooth` animates the correction and the page
+reads as drifting under the reader.
+```js
+document.fonts.ready.then(() => rAF(() => rAF(() => {
+  const s = document.documentElement.style, was = s.scrollBehavior
+  s.scrollBehavior = 'auto'; el.scrollIntoView({ block: 'start' }); s.scrollBehavior = was
+})))
+```
+⚠ Decode the fragment before looking it up — a percent-encoded or non-ASCII id
+never matches `getElementById`, and the correction silently never runs.
