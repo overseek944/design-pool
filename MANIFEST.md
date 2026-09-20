@@ -1,6 +1,6 @@
 # Manifest
 
-366 primitives. Format: `category/id | axes cost | tags | gist`
+371 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -14,6 +14,7 @@ canvas/derivative-width-edge-aa | neutral  $2 | shader canvas precision correctn
 canvas/described-canvas-figure | neutral  $1 | canvas accessibility architecture diagram | A canvas carrying the argument — a diagram, a chart, a staged ex
 canvas/dom-labels-in-normalised-canvas-space | neutral  $2 | canvas accessibility architecture correctness label | Text drawn with fillText cannot be selected, found, translated o
 canvas/eased-pointer-influence | E3 D2 W2 F5 $2 | shader interaction feel | Never feed raw pointer state to a shader. Keep a uMouseActive fl
+canvas/facing-weighted-directional-pull | E3 D2 W3 F5 $3 | shader canvas pointer motion generative | Uniform displacement inflates a form; a form reaching toward som
 canvas/feature-scaled-sim-grid | neutral  $2 | canvas simulation performance resolution texture | Size a field simulation's grid by the smallest feature worth see
 canvas/glyph-ramp-image-field | E2 D4 W2 F3 $4 | canvas type texture image ambient generative | Encode a photograph as a field of characters: draw it into an of
 canvas/half-pixel-hairline-grid | E1 D2 W1 F5 $1 | canvas hairline correctness diagram pixel-ratio performance | A one-pixel canvas line drawn on an integer coordinate straddles
@@ -147,6 +148,7 @@ media/blend-normalised-logo-wall | neutral  $1 | media logos blend-mode assets n
 media/chained-filter-duotone | E1 D2 W3 F4 $1 | media color filter normalisation texture | Supplied photographs come from different cameras, days and light
 media/child-reported-frame-height | neutral  $2 | media correctness architecture cls responsive | An iframe reporting its own height hands layout control to a cha
 media/clip-partitioned-image-rig | E3 D2 W3 F4 $3 | mask clip-path illustration rig raster animation | Flat artwork can be rigged without re-exporting it as parts. Pun
+media/counter-scaled-live-embed | neutral  $3 | media iframe embed responsive architecture | An embed's CSS width is a separate decision from the size of the
 media/crop-coupled-scrim | neutral  $1 | media video legibility overlay accessibility responsive | Footage behind a headline crops differently at every width, so a
 media/crop-scaled-source-hint | neutral  $1 | media correctness responsive performance loading | sizes states the width the browser has to fill, and under object
 media/dialog-scoped-embed-lifecycle | neutral  $2 | media performance dialog correctness lifecycle | A third-party embed is not yours to pause — you cannot reach int
@@ -169,6 +171,7 @@ motion-system/attribute-driven-motion-hooks | neutral  $1 | architecture motion 
 motion-system/below-fold-armed-entrance | neutral  $1 | motion correctness progressive-enhancement observer reveal | An entrance system that hides content in CSS and un-hides it fro
 motion-system/camera-over-static-scene | E3 D2 W3 F5 $2 | motion transform scale focus diagram narrative | To walk a reader through a diagram, move the viewport rather tha
 motion-system/context-scoped-cleanup | neutral  $1 | motion lifecycle correctness | Create every animation inside a scoped context and revert it on 
+motion-system/deadline-bounded-animated-close | neutral  $1 | motion correctness state architecture | A state change that waits on an animation never happens when the
 motion-system/distance-cued-focus-wheel | E2 D2 W2 F5 $2 | list rotation blur depth mask custom-property | A rotating list that only fades its neighbours reads flat. Stack
 motion-system/distance-eased-camera-push | E2 D2 W3 F5 $3 | camera 3d easing scroll narrative | Interpolating a camera's position between two waypoints looks wr
 motion-system/drive-mode-scoped-transition | neutral  $1 | motion scroll scrub custom-properties correctness architecture | A property that eases on arrival and later tracks a continuous i
@@ -191,6 +194,7 @@ motion-system/pivot-segmented-route | E3 D2 W2 F5 $2 | motion path diagram keyfr
 motion-system/reduced-motion-branch | neutral  $1 | motion accessibility required | Branch at setup, not per-animation: if the user prefers reduced 
 motion-system/residual-length-trail-lock | E2 D2 W1 F5 $2 | motion svg stroke path diagram | A trail and the mover drawing it are two animations; time alone 
 motion-system/scheduled-event-aliveness | E3 D2 W2 F4 $3 | idle loop character randomness raf ambient | Anything idling on sines reads as a mechanism — the period is au
+motion-system/scroll-energy-accumulator | E3 D2 W2 F4 $1 | scroll motion shader effect canvas | Scroll position says where something is; scroll effort should sa
 motion-system/scrubbable-waapi-timeline | E3 D2 W3 F5 $3 | motion scroll scrub architecture performance | A scroll-scrubbed timeline needs no animation library. Build eve
 motion-system/self-dissolving-entrance-queue | neutral  $2 | motion sequencing correctness reveal scroll | Serialising entrances stops a long page arriving as noise, but a
 motion-system/self-erasing-play-classes | neutral  $1 | architecture progressive-enhancement svg accessibility correctness entrance | Author the finished frame as the markup, then take it away to pl
@@ -253,6 +257,7 @@ scroll/aria-current-scrollspy-state | neutral  $1 | accessibility navigation scr
 scroll/collapsed-observer-band | neutral  $1 | scroll observer navigation architecture correctness | Squeeze an observer's root to a single horizontal line and "whic
 scroll/css-owned-pin-geometry | neutral  $2 | scroll pin architecture correctness responsive | Let the stylesheet decide whether a section pins and for how lon
 scroll/docked-travelling-mark | E3 D1 W2 F5 $3 | scroll anchor continuity measurement architecture | One mark crossing the whole page ties unrelated sections into a 
+scroll/edge-chained-frame-scroll | neutral  $2 | scroll iframe embed correctness interaction | A same-origin embed that scrolls internally traps the gesture at
 scroll/element-scoped-read-progress | neutral  $2 | scroll progress correctness observer reading | Reading progress belongs to the article, not the document. Measu
 scroll/embed-claims-wheel-on-hover | neutral  $1 | scroll embed iframe overflow pointer correctness | An interactive embed inside a scrolling page — a map, a 3D scene
 scroll/fixed-attachment-band | E2 D1 W3 F3 $1 | scroll parallax media surface progressive-enhancement performance | A full-bleed decorative band whose image is pinned to the viewpo

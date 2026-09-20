@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,hover,state,tokens,architecture]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -41,3 +41,16 @@ html[style*="--focus: 1"] body { cursor: crosshair }
 whitespace change and cannot survive a `@property` registration that normalises
 the serialisation. Use it for coarse, cosmetic state only; anything a component
 depends on belongs in an attribute.
+
+One scalar can also drive two different axes. An indicator positioned by
+`translateX(calc(var(--i) * 100%))` becomes a vertical one by restating only the
+transform at the breakpoint — the state variable, the writer and every other
+rule are untouched, so a segmented control turns into a stacked list without the
+script learning that anything changed. Orientation is a layout decision and
+belongs in the media query; the index is not.
+```css
+.ind { transform: translateX(calc(var(--i) * 100%)) }
+@media (width <= 44rem) { .ind { transform: translateY(calc(var(--i) * 100%)) } }
+```
+⚠ Size the indicator from the same count the tracks come from — a hard-coded
+`33.333%` and a `repeat(3, 1fr)` are one decision written twice.

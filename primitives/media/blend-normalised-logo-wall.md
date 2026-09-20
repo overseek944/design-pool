@@ -4,7 +4,7 @@ category: media
 tags: [media,logos,blend-mode,assets,normalisation]
 axes: none
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -48,3 +48,16 @@ so the marks sit behind the copy.
 ```css
 .wall img { filter: grayscale(1); mix-blend-mode: multiply; opacity: .88 }
 ```
+
+When every mark must land on one flat colour, `brightness(0)` collapses any
+artwork — colour, gradients, a photographic lock-up — to solid black in one
+pass, and `invert(1)` after it makes that white for a dark ground. It is the
+blunt end of the same problem the blend modes solve, and the right tool where
+the row is a texture rather than a set of brands: nothing is eaten for being
+the wrong hue because nothing keeps a hue at all.
+```css
+.wall img { filter: brightness(0) invert(1) }   /* drop invert on light */
+```
+⚠ Alpha survives and luminance does not, so any mark carrying meaning in its
+colour — a status dot, a two-tone lock-up — becomes one silhouette. Check that
+counter-shapes are real holes in the asset and not light fill.

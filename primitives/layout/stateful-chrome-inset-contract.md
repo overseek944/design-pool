@@ -4,7 +4,7 @@ category: layout
 tags: [layout,chrome,tokens,custom-property,architecture,overlay,correctness]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,19 @@ remembering. Rail 12–16rem open, 3–4rem collapsed.
 ```
 ⚠ An unregistered custom property does not interpolate — transition the
 consumer's own `padding-inline-start`, or the page snaps while the rail slides.
+
+One measurement, two numbers. Height and *current* offset are different
+questions: page padding, `scroll-padding-top` and anchor targets want the space
+the chrome reserves and must not move, while a sticky panel below it wants the
+space the chrome is occupying right now — which is zero the moment a hide-on-
+scroll bar has retracted. Publish both and each consumer reads the one it means;
+publish one and sticky panels hold a gap under a bar that is no longer there.
+```js
+root.style.setProperty('--nav-h', h + 'px')                 // reserved, stable
+root.style.setProperty('--nav-offset', hidden ? '0px' : h + 'px')
+```
+```css
+.panel { position: sticky; top: var(--nav-offset, var(--nav-h)) }
+```
+⚠ Add the class that enables transitions one frame *after* the first write, or
+every consumer animates from zero on load.

@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,svg,focus,diagram,correctness]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -28,3 +28,17 @@ is read twice. The hover treatment then keys off `:focus` for free.
 ```
 ⚠ Tab order follows document order, not the picture. Sort the groups into a
 reading sequence or the keyboard walks the drawing at random.
+
+Grant the `tabindex` from the script that binds the behaviour, and strip it in
+the same teardown. Authored into the markup it is a promise the page makes
+before anything can keep it: a reader tabs into a labelled region on a route
+where the handlers never ran, or after a client-side navigation tore them down,
+and finds a focus ring on something inert. Attribute and listener have one
+lifetime, so the drawing advertises exactly the interactivity it currently has.
+```js
+parts.forEach(p => { p.setAttribute('tabindex', '0'); bind(p, { signal }) })
+signal.addEventListener('abort', () =>
+  parts.forEach(p => p.setAttribute('tabindex', '-1')))
+```
+⚠ `-1` on teardown, not removal — an element focused at that moment must keep a
+valid target or focus drops to `<body>`.

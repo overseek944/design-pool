@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,lifecycle,correctness]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,17 @@ collect their handles and clear them in the same teardown. Under a client-side
 router the teardown hook is the pre-swap event, not unmount: it fires while the
 outgoing DOM is still addressable, which is the last moment a kill can find its
 targets.
+
+Without a library context, one `AbortController` per component is the whole
+mechanism: pass its `signal` to every `addEventListener`, and a single `abort()`
+on the router's pre-swap event unbinds listeners, observers and the frame loop
+together — nothing to enumerate and nothing to forget. Hang the undo on the
+signal too, so state the component wrote outside itself comes back with it.
+```js
+const c = new AbortController(), { signal } = c
+addEventListener('scroll', onScroll, { passive: true, signal })
+signal.addEventListener('abort', () => header.classList.remove('over-hero'))
+document.addEventListener('astro:before-swap', () => c.abort(), { once: true })
+```
+⚠ An init that runs both at module evaluation *and* on every route event binds
+twice on the first page. Guard with a dataset flag on the element it owns.

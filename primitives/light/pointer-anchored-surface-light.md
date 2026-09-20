@@ -4,7 +4,7 @@ category: light
 tags: [light,pointer,hover,gradient,custom-properties,surface]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,18 @@ Radius 8–16rem, peak alpha 8–20%, fade 120–200ms.
 ⚠ The pseudo-element paints over the panel's own children — raise them with
 `position: relative; z-index: 1` or the light washes the text. Bail on
 `pointerType === 'touch'`, or a tap strands the glow where the finger left it.
+
+Put the gradient in the *border band* rather than the fill and the light traces
+the panel's edge instead of washing its contents — no raised children, no
+pointer-transparent copy layer, and the interior stays exactly the flat surface
+it was. A transparent border with the fill clipped to `padding-box` and the
+pointer-centred gradient to `border-box`; fade the whole thing in on `opacity`
+from a second, identical pseudo-element so the rim appears rather than sweeps.
+```css
+.card::after { inset: 0; border: 1px solid transparent; opacity: 0;
+  background: linear-gradient(var(--bg), var(--bg)) padding-box,
+    radial-gradient(24rem circle at var(--px) var(--py), var(--rim), transparent)
+    border-box }
+```
+⚠ At a 1px band the gradient has almost no area to resolve in — keep the radius
+large relative to the card, or the rim reads as a flat colour change.

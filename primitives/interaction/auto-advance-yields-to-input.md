@@ -4,7 +4,7 @@ category: interaction
 tags: [carousel,autoplay,accessibility,state]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -28,3 +28,18 @@ not interaction and focus never arrives, so bind to the control's own drag
 `start` and `end` instead and measure the quiet window from release. Suspend on
 `start`, arm the resume timer on `end`; a timer armed on `start` expires
 mid-drag and the idle motion fights the hand still holding the object.
+
+Graze and choice are not the same input. A cursor crossing the strip should not
+suspend anything — there is nothing to read under a pointer that is only passing
+— but a reader who *picks* an item has said what they want, and rotation that
+resumes over that choice takes it back. Stop permanently on selection, ignore
+hover entirely, and gate the timer on an `IntersectionObserver` so a strip
+off-screen costs nothing.
+```js
+const pick = (i, chosen) => { show(i); if (chosen) locked = true; arm() }
+const arm = () => { clearTimeout(t)
+  if (visible && !locked && !mq.matches) t = setTimeout(next, 5200) }
+```
+⚠ Re-arm from the `change` event on the reduced-motion query, not only from its
+value at startup — a reader who turns motion off mid-page otherwise keeps the
+rotation they just asked to stop.

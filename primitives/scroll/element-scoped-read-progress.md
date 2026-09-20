@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,progress,correctness,observer,reading]
 axes: none
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -50,3 +50,16 @@ gesture to the document behind.
 ⚠ A scroll container is not keyboard-reachable by default — give it
 `tabindex="0"` and an accessible name, or the article cannot be paged without a
 pointer.
+
+Subtract a hold tail from the runway and the finished state dwells. Progress
+that reaches 1 exactly as the tracked box leaves gives the end of the sequence a
+single frame before it scrolls away — the payoff is the part nobody sees. Take a
+viewport or more off the denominator instead: the scrub completes early and the
+remaining scroll is spent holding the last frame under a reader who is still
+moving. Tail 1–1.5 viewports.
+```js
+const run = b.height - innerHeight - innerHeight * 1.2
+const f = run > 0 ? clamp01(-b.top / run) : 1
+```
+⚠ The tail is height the section must actually have — a stage shorter than
+viewport plus tail collapses the runway to nothing and the whole sequence snaps.

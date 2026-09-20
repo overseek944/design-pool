@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,svg,stroke,path,diagram]
 axes: {energy: 2, density: 2, weight: 1, finish: 5}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,18 @@ fractions.
 ```
 ⚠ Edit the path and nothing warns — the head silently detaches. Recompute
 stops from the geometry, never by eye.
+
+Or remove the second animation entirely: sample the path. `getPointAtLength` at
+the drawn fraction gives the head's position, and a second sample a couple of
+units behind it gives the heading — so an arrowhead riding a stroke that is
+being drawn cannot desync, because both read the same geometry at the same
+instant. Edit the path and nothing needs recomputing. The cost is a layout-
+thrashing DOM call per head per frame; fine for a handful, not for a field.
+```js
+const L = path.getTotalLength(), a = path.getPointAtLength(p * L)
+const b = path.getPointAtLength(Math.max(0, p * L - 2))
+head.setAttribute('transform',
+  `translate(${a.x} ${a.y}) rotate(${Math.atan2(a.y-b.y, a.x-b.x) * 57.3})`)
+```
+⚠ Sample back, never forward — a lookahead past the end flips the head around
+at the final frame.

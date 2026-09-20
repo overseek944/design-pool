@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,focus,correctness,form,state]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,16 @@ if (inside) { done.tabIndex = -1; done.focus() }
 ⚠ Move focus only if it was inside what you removed, or a pointer user is
 scrolled to a message already on screen. A `role="status"` present at load and
 then unhidden announces reliably; one inserted at that moment often does not.
+
+Nothing has to be removed for the same break to happen. An element made inert in
+place — `tabindex="-1"` and `aria-hidden` swapped onto a sibling as a mode flips,
+an overlay link handing over to the thing it covered — strands the keyboard on a
+node that no longer accepts it. Move focus across at the moment of the swap, and
+only when it was on the element being disabled. `preventScroll: true` matters
+here in a way it does not on removal: both elements are on screen, so the
+default scroll-into-view jumps a page that was already in the right place.
+```js
+const had = document.activeElement === outgoing
+setInert(outgoing); enable(incoming)
+if (had) incoming.focus({ preventScroll: true })
+```
