@@ -1,6 +1,6 @@
 # Manifest
 
-356 primitives. Format: `category/id | axes cost | tags | gist`
+363 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -39,6 +39,7 @@ canvas/screen-composited-understroke | E2 D2 W2 F5 $2 | canvas light stroke effe
 canvas/scroll-driven-frame-atlas | E4 D3 W3 F4 $4 | canvas scroll performance | For scrubbed sequence playback, draw frames from a sprite atlas 
 canvas/standard-uniform-set | neutral  $2 | shader architecture reference | A small reusable uniform contract covers most decorative shaders
 canvas/svg-userspace-pointer-mapping | neutral  $1 | svg pointer correctness interaction geometry | An SVG with a viewBox is drawn in its own coordinate system, and
+canvas/tilted-heightfield-mark-sheet | E2 D3 W1 F4 $3 | canvas 3d projection field depth scenery | Deep scenery on a 2D context needs no renderer: sample a summed-
 canvas/unit-box-asset-framing | neutral  $2 | canvas correctness scale geometry architecture | A loaded 3D asset arrives at whatever scale and origin its expor
 canvas/video-textured-mark-field | E2 D3 W2 F5 $3 | canvas video particles texture motion performance | A field of marks needs content as well as motion, and inventing 
 color/declared-contrast-escalation | neutral  $1 | accessibility contrast tokens type color | prefers-contrast: more is not a second theme — it is permission 
@@ -131,6 +132,7 @@ layout/unit-cell-quantity-field | E1 D4 W2 F4 $2 | layout data grid indicator ac
 layout/viewport-height-bands | neutral  $1 | layout responsive media-query ornament correctness | Some decisions belong to the short axis. An opening frame, a pin
 light/blend-doubled-headline | E2 D2 W4 F5 $3 | type blend legibility contrast compositing | Set the headline twice in one grid cell: an opaque copy under th
 light/broadcast-light-source | E2 D2 W2 F5 $3 | light gradient custom-property ambient architecture | A panel lit at the pointer has one lamp, and only while a pointe
+light/counter-rotated-specular-layer | E2 D2 W3 F5 $2 | light gradient rotation material 3d | An object with its highlight painted into its own background spi
 light/emitted-light-not-borders | E2 D1 W3 F5 $2 | color effect depth restraint | Separate surfaces with glow and luminance rather than 1px solid.
 light/gradient-through-text | E3 D2 W4 F3 $2 | color type effect | background-clip: text with a transparent fill turns a headline i
 light/offscreen-anchored-wash | E1 D2 W2 F4 $1 | gradient ground atmosphere ambient color cheap | A radial gradient centred inside its box shows its hot core and 
@@ -143,6 +145,7 @@ media/aspect-locked-media | neutral  $1 | layout media cls | Lock every media sl
 media/blend-normalised-logo-wall | neutral  $1 | media logos blend-mode assets normalisation | Supplied logo files arrive as opaque rectangles — baked-in white
 media/chained-filter-duotone | E1 D2 W3 F4 $1 | media color filter normalisation texture | Supplied photographs come from different cameras, days and light
 media/child-reported-frame-height | neutral  $2 | media correctness architecture cls responsive | An iframe reporting its own height hands layout control to a cha
+media/clip-partitioned-image-rig | E3 D2 W3 F4 $3 | mask clip-path illustration rig raster animation | Flat artwork can be rigged without re-exporting it as parts. Pun
 media/crop-coupled-scrim | neutral  $1 | media video legibility overlay accessibility responsive | Footage behind a headline crops differently at every width, so a
 media/crop-scaled-source-hint | neutral  $1 | media correctness responsive performance loading | sizes states the width the browser has to fill, and under object
 media/dialog-scoped-embed-lifecycle | neutral  $2 | media performance dialog correctness lifecycle | A third-party embed is not yours to pause — you cannot reach int
@@ -165,11 +168,13 @@ motion-system/attribute-driven-motion-hooks | neutral  $1 | architecture motion 
 motion-system/below-fold-armed-entrance | neutral  $1 | motion correctness progressive-enhancement observer reveal | An entrance system that hides content in CSS and un-hides it fro
 motion-system/camera-over-static-scene | E3 D2 W3 F5 $2 | motion transform scale focus diagram narrative | To walk a reader through a diagram, move the viewport rather tha
 motion-system/context-scoped-cleanup | neutral  $1 | motion lifecycle correctness | Create every animation inside a scoped context and revert it on 
+motion-system/distance-cued-focus-wheel | E2 D2 W2 F5 $2 | list rotation blur depth mask custom-property | A rotating list that only fades its neighbours reads flat. Stack
 motion-system/distance-eased-camera-push | E2 D2 W3 F5 $3 | camera 3d easing scroll narrative | Interpolating a camera's position between two waypoints looks wr
 motion-system/drive-mode-scoped-transition | neutral  $1 | motion scroll scrub custom-properties correctness architecture | A property that eases on arrival and later tracks a continuous i
 motion-system/fire-on-arrival-propagation | E3 D3 W2 F5 $3 | entrance propagation graph canvas emergent | An entrance authored as a list of delays must be rewritten whene
 motion-system/first-paint-entry-style | neutral  $1 | motion transition css-only progressive-enhancement state | An element that did not exist a frame ago has no previous value 
 motion-system/gap-compensated-loop-distance | neutral  $1 | motion marquee correctness loop overflow | A duplicated track loops seamlessly only when it travels exactly
+motion-system/independent-transform-channels | neutral  $1 | transform transition architecture composition state | Two concerns wanting the same element — an entrance offset and a
 motion-system/keyframe-variant-bank | E3 D4 W2 F3 $2 | motion generative ambient tokens architecture | Phase and period offsets only ever translate one curve; they can
 motion-system/marquee-playhead | E3 D3 W2 F5 $3 | marquee motion state observer rhythm | Give a moving track one stationary reading position. A marker si
 motion-system/marquee-still-state | neutral  $1 | motion accessibility marquee correctness overflow | A marquee's reduced-motion state is not a paused marquee. The tr
@@ -184,6 +189,7 @@ motion-system/paused-as-authored-rest | neutral  $1 | motion architecture correc
 motion-system/pivot-segmented-route | E3 D2 W2 F5 $2 | motion path diagram keyframes | Interpolating position and heading together makes a marker cut d
 motion-system/reduced-motion-branch | neutral  $1 | motion accessibility required | Branch at setup, not per-animation: if the user prefers reduced 
 motion-system/residual-length-trail-lock | E2 D2 W1 F5 $2 | motion svg stroke path diagram | A trail and the mover drawing it are two animations; time alone 
+motion-system/scheduled-event-aliveness | E3 D2 W2 F4 $3 | idle loop character randomness raf ambient | Anything idling on sines reads as a mechanism — the period is au
 motion-system/scrubbable-waapi-timeline | E3 D2 W3 F5 $3 | motion scroll scrub architecture performance | A scroll-scrubbed timeline needs no animation library. Build eve
 motion-system/self-dissolving-entrance-queue | neutral  $2 | motion sequencing correctness reveal scroll | Serialising entrances stops a long page arriving as noise, but a
 motion-system/self-erasing-play-classes | neutral  $1 | architecture progressive-enhancement svg accessibility correctness entrance | Author the finished frame as the markup, then take it away to pl
@@ -244,6 +250,7 @@ scroll/append-stream-anchor-release | neutral  $1 | scroll correctness stream lo
 scroll/aria-current-scrollspy-state | neutral  $1 | accessibility navigation scroll state architecture | A table of contents entry is a location, and the platform has a 
 scroll/collapsed-observer-band | neutral  $1 | scroll observer navigation architecture correctness | Squeeze an observer's root to a single horizontal line and "whic
 scroll/css-owned-pin-geometry | neutral  $2 | scroll pin architecture correctness responsive | Let the stylesheet decide whether a section pins and for how lon
+scroll/docked-travelling-mark | E3 D1 W2 F5 $3 | scroll anchor continuity measurement architecture | One mark crossing the whole page ties unrelated sections into a 
 scroll/element-scoped-read-progress | neutral  $2 | scroll progress correctness observer reading | Reading progress belongs to the article, not the document. Measu
 scroll/embed-claims-wheel-on-hover | neutral  $1 | scroll embed iframe overflow pointer correctness | An interactive embed inside a scrolling page — a map, a 3D scene
 scroll/fixed-attachment-band | E2 D1 W3 F3 $1 | scroll parallax media surface progressive-enhancement performance | A full-bleed decorative band whose image is pinned to the viewpo

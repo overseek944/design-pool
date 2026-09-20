@@ -38,3 +38,18 @@ while it earns its keep.
 ```
 ⚠ Transition the background colour, not the filter — animating
 `backdrop-filter` recomposites everything under the bar every frame.
+
+Where the busy ground is not one picture but a full-page generative field, the
+veil belongs to the *reading column*, not to each block: one fixed element the
+width of the measure, spanning the viewport, feathered to nothing on its left
+and right edges. Blur as little as 1px — enough to kill fine texture without
+touching luminance — over 15–20% white. One compositing layer serves the whole
+document, the field keeps its density everywhere else, and the veil never reads
+as a box because it has no edge where the eye looks.
+```css
+.veil { position: fixed; inset-block: 0; width: min(1040px, 94vw);
+  background: #fff3; backdrop-filter: blur(1px);
+  mask-image: linear-gradient(to right, transparent, #000 16%, #000 84%, transparent) }
+```
+⚠ Below the column's own breakpoint the veil is the viewport — drop the mask and
+raise the alpha instead, or the feather eats the first and last characters.

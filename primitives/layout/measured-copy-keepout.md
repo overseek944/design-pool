@@ -46,3 +46,15 @@ el.style.display = prev
 ⚠ Once per resize, cached per element, never in the frame loop — this is the
 most expensive reflow on the page. Read every measurement needed in one pass;
 alternating writes and reads across several elements forces one each time.
+
+`getBoundingClientRect` reports the *painted* box, so any element mid-entrance —
+sliding in, scaled, settling — measures where it currently is rather than where
+it belongs. Anything laying connectors, hit regions or a coordinate table over
+animated nodes should read `offsetLeft`/`offsetTop` instead: they are layout
+positions and transforms do not touch them. The geometry is then correct on the
+first frame of the entrance rather than after it settles.
+```js
+const cx = el.offsetLeft, cy = el.offsetTop      // immune to the slide-in
+```
+⚠ Offsets are relative to `offsetParent`, so the container needs its own
+positioning context — and they round to integers, which shows on hairlines.

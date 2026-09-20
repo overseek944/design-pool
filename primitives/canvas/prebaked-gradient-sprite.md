@@ -39,3 +39,17 @@ ctx.globalAlpha = fade; ctx.drawImage(layer, 0, 0, w, h); ctx.globalAlpha = 1
 ```
 ⚠ A full-viewport baked layer is width × height × 4 × dpr² bytes — two or three
 of them is the ceiling on a phone, and each one is a texture upload per frame.
+
+The same trade applies to text. `fillText` re-shapes the glyph on every call, so
+a field drawn in marks — a `+`, a dot, a rule character — pays the shaping cost
+per particle per frame. Rasterise the glyph once into a tight offscreen canvas
+at the device ratio and blit it; scale then comes from the `drawImage`
+arguments, which is also how a mark shrinks with depth. One sprite per size
+class, three or four across the whole field.
+```js
+g.font = `${px * dpr}px ui-monospace, Menlo, monospace`
+g.textBaseline = 'top'; g.fillStyle = colour; g.fillText('+', 0, 0)
+ctx.drawImage(spr.c, x, y, spr.w * k, spr.h * k)      // k = perspective factor
+```
+⚠ Bake at the largest size drawn and scale down, never up. Read the colour from
+a custom property at bake time — a theme flip needs a re-bake, not a filter.

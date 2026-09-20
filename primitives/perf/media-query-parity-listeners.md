@@ -23,3 +23,18 @@ only when the OR of its conditions flips.
 ```
 ⚠ Make the handler idempotent — two conditions can flip together. A preference
 flip changes layout without firing `resize`, so re-measure here too.
+
+Resize is only one of a page's layout invalidations, and a system that measures
+should subscribe to all of them through a single debounced entry point: window
+`resize` and `load`, `document.fonts.ready` for the reflow when the real face
+arrives, a `ResizeObserver` on the measured container for changes no window
+event reports, and — where the page carries more than one language — a
+`MutationObserver` on `[lang]`, because swapping copy changes every measurement
+without firing anything else at all.
+```js
+const relayout = debounce(() => { measure(); onScroll() }, 60)   // 50–120ms
+document.fonts?.ready.then(relayout)
+new MutationObserver(relayout).observe(root, { attributeFilter: ['lang'] })
+```
+⚠ One entry point or the handlers race — two of these fire together routinely.
+Make it idempotent and read every measurement in one pass.

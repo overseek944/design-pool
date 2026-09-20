@@ -36,3 +36,16 @@ nothing decodes, and the still state is one child.
 @media (prefers-reduced-motion: reduce) { .frame { opacity: 0; animation: none }
   .frame:first-child { opacity: 1 } }
 ```
+
+`transform-box` has a second value that matters whenever a *part* of a drawing
+animates: `view-box` resolves percentage `transform-origin` against the SVG's
+own viewBox rather than the element's tight bounding box. A beam pivoting about
+a hinge, a needle about its pin, a lid about its fold — the origin can then be
+authored in the same coordinates as the artwork, and it stays put when the
+shape's own extent changes mid-animation. `fill-box` is right for whole-sprite
+moves; `view-box` for anything hinged.
+```css
+.beam { transform-box: view-box; transform-origin: 50% 29% }
+```
+⚠ Without either value the origin resolves against the *reference box*, which
+for SVG children is the nearest viewport — usually not what the artwork implies.

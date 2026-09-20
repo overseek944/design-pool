@@ -74,3 +74,18 @@ h1 { font-size: max(2.5rem, min(9.3cqw, 9vh)) }
 ⚠ The `cqw` term needs `container-type: inline-size` on an ancestor or it resolves
 against the viewport and the `min()` quietly degrades to a width clamp that looks
 right at every width you test at full height.
+
+Where the component's size should be an *input* rather than a consequence of its
+box, take one length as a custom property and derive everything inside from it —
+type as a coefficient, padding in percent, internal rhythm in `em`. The caller
+sets one value and the whole object scales rigidly; no container query, no
+breakpoint inside the component, and two instances at different sizes stay
+proportionally identical. Coefficients around 0.04–0.06 for body text in a card
+whose width is the unit.
+```css
+.card { width: var(--u); font-size: calc(var(--u) * 0.049); padding: 9% 9.5% }
+.card .label { font-size: 0.74em; margin-bottom: 0.5em }     /* em from here down */
+.deck { --u: clamp(150px, 12.5vw, 190px) }
+```
+⚠ A px floor has to go on the *unit*, not on the derived type — flooring the
+font-size alone breaks the proportions the construction exists to keep.
