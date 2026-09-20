@@ -4,7 +4,7 @@ category: timing
 tags: [motion,easing,duration,reference,system]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 17
+seen: 18
 requires: []
 conflicts: []
 completes: []
@@ -43,3 +43,15 @@ both together — roughly 2× the travel and 1.3–1.6× the duration for a
 full-width block against the copy above it — and the group arrives at one
 apparent speed instead of as a rigid slab. Text 12–24px, page-width media
 32–56px, same ease throughout.
+
+One element's transition list is not one intent. Split it by what each property
+means: properties acknowledging the reader's own action take the snap band while
+properties reporting the element's state stay in micro, three to four times
+apart in the same declaration. A press that scales at the same speed its
+background tints feels like a page redrawing rather than a control giving way.
+The same split runs on an appearing part — opacity linear at 120–160ms so it is
+simply there, the transform it rides eased over 250–400ms so the travel reads.
+```css
+.btn { transition: background .3s, border-color .3s, color .3s, transform .1s }
+.btn:active { transform: scale(.97) }
+```

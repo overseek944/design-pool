@@ -4,7 +4,7 @@ category: perf
 tags: [performance,webgl,capability,progressive-enhancement,correctness]
 axes: none
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -55,3 +55,16 @@ const labels = [['sim', 'synth'], ['simulate', 'synthesize']][Math.min(z, 1)]
 ```
 ⚠ Tier off the container, never the viewport — the same scene in a sidebar and
 a full-bleed plate must resolve differently. Rebuild on resize across a bound.
+
+Pixel ratio clamps at 1; render scale does not have to. A decorative field with
+no edges to alias — particles, noise, a fog volume — can be rendered at a
+*fraction* of its display size and upscaled by the compositor with no visible
+loss, which cuts fragment work quadratically. Scale 0.4–0.6 on the tier that
+would otherwise drop the effect, 0.2–0.3 below it. Anything with a straight
+line, a glyph or a hard silhouette in it stays at 1 and takes the pixel-ratio
+clamp instead.
+```js
+renderer.setSize(w * SCALE[tier], h * SCALE[tier], false)   // false: keep CSS size
+```
+⚠ Read the tier at the size the canvas is *laid out*, not the window — a scene
+in a half-width panel is already paying a quarter of the full-bleed cost.

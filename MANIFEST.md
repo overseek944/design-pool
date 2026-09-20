@@ -1,6 +1,6 @@
 # Manifest
 
-391 primitives. Format: `category/id | axes cost | tags | gist`
+394 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -61,6 +61,7 @@ color/status-triad-tokens | neutral  $1 | color tokens accessibility contrast co
 interaction/aliased-fragment-target | neutral  $1 | navigation anchor fragment accessibility architecture url | A section can answer to more than one fragment without renaming 
 interaction/anchor-focus-handoff | neutral  $1 | accessibility navigation focus correctness anchor | An in-page link that only scrolls leaves the keyboard where it w
 interaction/auto-advance-yields-to-input | E2 D2 W2 F5 $2 | carousel autoplay accessibility state | A self-advancing sequence must stop the instant a reader touches
+interaction/axis-swapped-disclosure | neutral  $2 | disclosure responsive layout-animation breakpoint accessibility | A detail panel opens downward in a stacked column and sideways b
 interaction/breakpoint-dual-mode-details | neutral  $2 | disclosure navigation responsive accessibility progressive-enhancement | One <details> can be a permanently-open sidebar above a breakpoi
 interaction/breakpoint-scoped-overlay-dismiss | neutral  $1 | navigation overlay responsive correctness accessibility | An overlay that exists only below a breakpoint — a mobile nav sh
 interaction/coarse-pointer-affordance-promotion | neutral  $1 | accessibility interaction touch correctness media-query | Controls that fade in on :hover — a play button on a thumbnail, 
@@ -127,6 +128,7 @@ layout/measured-copy-keepout | neutral  $2 | layout measurement legibility canva
 layout/occupancy-negotiated-label-placement | neutral  $4 | layout label annotation collision diagram correctness | Annotations placed independently overlap the moment two anchors 
 layout/overflow-clip-over-hidden | neutral  $1 | overflow correctness accessibility scroll | overflow: clip crops without creating a scroll container. hidden
 layout/per-edge-clip-polygon | neutral  $1 | overflow clip correctness bleed | overflow only works per axis, so there is no way to crop one edg
+layout/reserved-slot-detached-bleed | neutral  $1 | layout bleed cls decorative responsive | The rectangle a decorative field occupies and the rectangle it p
 layout/ring-placed-upright-labels | E1 D3 W2 F4 $2 | layout diagram radial label geometry | Rotating a container to arrange labels around a circle tips ever
 layout/ruled-definition-rows | E1 D3 W2 F5 $1 | layout type metadata responsive hairline | Metadata reads as a datasheet when it is a list of label-to-valu
 layout/safe-area-floor-gutter | neutral  $1 | layout tokens safe-area responsive correctness | A gutter written as a plain value gets eaten by notches, rounded
@@ -313,6 +315,7 @@ surface/gradient-dot-lattice | E1 D3 W1 F4 $1 | surface texture pattern blueprin
 surface/gradient-over-opaque-glass | E1 D3 W3 F5 $1 | surface glass gradient depth cheap performance | Glass without a backdrop filter: stack a vertical alpha gradient
 surface/grid-intersection-crosshair | E1 D3 W1 F5 $2 | surface grid detail blueprint ornament | Mark a grid intersection with a small plus centred exactly on th
 surface/hairline-overhang | E1 D2 W1 F5 $1 | surface detail precision | Negative inset of exactly 1px with calc(100% + 2px) sizing so a 
+surface/inherited-tint-hover-plate | E1 D2 W2 F5 $1 | surface hover currentcolor theming accessibility | A hover plate behind an inline link usually costs a token per co
 surface/instance-scoped-filter-id | neutral  $1 | svg filter architecture correctness component | Filters, gradients and masks resolve by id against the whole doc
 surface/interleaved-ground-dissolve | E2 D3 W3 F2 $2 | surface color pattern section boundary texture | Carry one ground into another by interleaving their pixels at a 
 surface/intersected-raster-mask | E1 D4 W2 F4 $2 | surface mask texture print halftone | mask-composite: intersect turns a mask stack into a boolean AND,

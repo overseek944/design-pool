@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,edge,composition,bleed]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 18
+seen: 19
 requires: []
 conflicts: []
 completes: []
@@ -66,3 +66,15 @@ mask-image: radial-gradient(48% 68%, transparent 0 54%, #000 78%)
 ⚠ The gradient box is the element, so on a wide viewport a full-bleed field
 clears far more than the column it is protecting — size the ellipse against the
 measure, and widen the hole again where the column takes most of the width.
+
+Where every edge fades and the panel is decorative rather than legible content,
+one radial layer replaces the whole stack: an oversized ellipse centred on the
+box holds the middle opaque and falls off on all four sides at once, with no
+`mask-composite` and so no Safari caveat. The ellipse is the control — 55–75%
+of the box on each axis, opaque to 55–65% of the radius — and it fades corners
+harder than edges, which a per-side stack cannot do.
+```css
+.field { mask-image: radial-gradient(ellipse 65% 50% at 50% 50%, #000 60%, transparent 100%) }
+```
+⚠ Radial falloff is uniform, so anything that must stay readable near a corner
+is the wrong content for this variant.

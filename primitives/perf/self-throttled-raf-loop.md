@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,canvas,battery,frame-budget,correctness]
 axes: none
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -61,3 +61,19 @@ if (fps > 0) raf = requestAnimationFrame(step)
 ```
 ⚠ Still request the first frame unconditionally, or a static canvas never
 paints at all.
+
+The reactive case above has a second half. `scroll`, `pointermove` and `resize`
+fire faster than the display refreshes, so invoking the render directly from the
+listener runs it several times per frame and every run past the last is thrown
+away. Latch instead: the listener only requests a frame if one is not already
+pending, and the callback clears the latch before it draws. A burst of forty
+scroll events then costs one render.
+```js
+let pending = 0
+const run = () => { pending = 0; draw() }
+addEventListener('scroll', () => { pending ||= requestAnimationFrame(run) },
+  { passive: true })
+```
+⚠ `passive: true` on scroll and touch listeners, or the browser must wait to
+see whether the handler cancels the gesture. Cancel any pending frame on
+teardown.

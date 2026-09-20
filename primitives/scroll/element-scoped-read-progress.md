@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,progress,correctness,observer,reading]
 axes: none
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -63,3 +63,16 @@ const f = run > 0 ? clamp01(-b.top / run) : 1
 ```
 ⚠ The tail is height the section must actually have — a stage shorter than
 viewport plus tail collapses the runway to nothing and the whole sequence snaps.
+
+An element *shorter* than the viewport falls into the `run > 0` branch above and
+never moves — which is exactly the case when the progress is driving an effect
+rather than reporting a position. Measure the approach instead of the traverse:
+define the window in fractions of the viewport, independent of the element's own
+height, so a 200px band and a 2000px one both ramp over the same travel. Start
+when the top crosses 35–45% of the viewport and finish over the next 50–70%.
+```js
+const vh = innerHeight || 1
+const t = Math.min(1, Math.max(0, (.4 * vh - el.getBoundingClientRect().top) / (.6 * vh)))
+```
+⚠ This never reaches 0 or 1 by arithmetic alone — clamp both ends or a shader
+uniform receives values outside its range on a fast flick.

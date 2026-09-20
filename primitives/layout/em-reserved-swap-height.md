@@ -4,7 +4,7 @@ category: layout
 tags: [layout,layout-shift,responsive,correctness,tabs]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -38,3 +38,18 @@ when the selection moves, and the marker rescales with a fluid heading for free.
 ```
 ⚠ Opacity leaves the marker in the accessibility tree and in the hit area —
 `aria-hidden` it and let `aria-current` carry the state to a reader.
+
+The cross-fade that ⚠ above sends you to needs no reservation at all: put every
+variant in the *same* grid cell and the container is already as tall as the
+tallest, measured rather than guessed. Only the active one is opaque, and the
+box never resizes because all of them are always in flow. This beats an `em`
+count wherever the variants differ by more than about two lines, or whenever
+their length is not known at authoring time.
+```css
+.swap       { display: grid }
+.swap > *   { grid-area: 1 / 1; transition: opacity .5s ease-out }
+.swap > [data-active="false"] { opacity: 0; pointer-events: none }
+```
+⚠ Zero-opacity copies stay readable to a screen reader and findable by
+find-in-page. `aria-hidden` the inactive ones and mark the container
+`aria-live="polite"` so the swap is announced once, not four times.
