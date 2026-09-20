@@ -82,6 +82,12 @@ Visible keyboard focus · body text contrast ≥ 4.5:1 · a
 `agents/harvest.md` — the brief for mining a new site. Run it with the site URL.
 Never commit raw site assets; the harvester works in scratch and discards.
 
+Duplicate sites are caught by two gates: `bin/pool site <url>` canonicalises and
+matches on URL and registrable domain, then the same command with `--signals`
+compares a hashed technique fingerprint to catch the same site under a different
+URL and shared page-builder templates. Do not read `ledger.jsonl` when composing
+— it is an ingest log, not part of the design path.
+
 ## Structure tiers
 
 `bin/pool stats` reports the current tier and warns before a threshold.

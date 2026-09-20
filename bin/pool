@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // design-pool CLI — zero dependencies, node >=16
-import { readdirSync, readFileSync, writeFileSync, statSync } from 'fs'
+import { readdirSync, readFileSync, writeFileSync, appendFileSync, existsSync, statSync } from 'fs'
 import { join, dirname, basename } from 'path'
 import { fileURLToPath } from 'url'
 
@@ -43,6 +43,38 @@ const dist = (a, b) => Math.sqrt(AX.reduce((s, k, i) => s + (vec(a)[i] - vec(b)[
 const fmtAx = p => p.axes ? AX.map(a => a[0].toUpperCase() + p.axes[a]).join(' ') : 'neutral '
 const arg = (k, d) => { const i = process.argv.indexOf('--' + k); return i > -1 ? process.argv[i + 1] : d }
 const has = k => process.argv.includes('--' + k)
+
+
+const LEDGER = join(ROOT, 'ledger.jsonl')
+// public suffixes where the label in front of them identifies a distinct site
+const SUFFIX = new Set(['co.uk','org.uk','ac.uk','gov.uk','co.jp','co.kr','com.au','net.au','org.au',
+  'com.br','com.cn','co.in','co.nz','co.za','com.mx','com.tr','com.sg','co.il','com.hk','github.io',
+  'vercel.app','netlify.app','pages.dev','webflow.io','framer.website','framer.app','wixsite.com',
+  'myshopify.com','notion.site','super.site','carrd.co','glitch.me','surge.sh','herokuapp.com',
+  'fly.dev','onrender.com','web.app','firebaseapp.com'])
+
+function canon(u) {
+  let s = String(u).trim().toLowerCase().replace(/^[a-z]+:\/\//, '').split('#')[0].split('?')[0].replace(/\/+$/, '')
+  const [hostRaw, ...rest] = s.split('/')
+  const host = hostRaw.replace(/^www\./, '').replace(/:\d+$/, '')
+  return { host, full: host + (rest.length ? '/' + rest.join('/') : '') }
+}
+function siteKey(host) {
+  const p = host.split('.')
+  if (p.length <= 2) return host
+  return SUFFIX.has(p.slice(-2).join('.')) ? p.slice(-3).join('.') : p.slice(-2).join('.')
+}
+const fnv = s => { let h = 0x811c9dc5
+  for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0 }
+  return h.toString(36) }
+const jaccard = (a, b) => { const A = new Set(a), B = new Set(b)
+  if (!A.size || !B.size) return 0
+  let i = 0; for (const x of A) if (B.has(x)) i++
+  return i / (A.size + B.size - i) }
+const readLedger = () => existsSync(LEDGER)
+  ? readFileSync(LEDGER, 'utf8').split('\n').filter(Boolean)
+      .map(l => { try { return JSON.parse(l) } catch { return null } }).filter(Boolean)
+  : []
 
 const cmd = process.argv[2]
 const all = load()
@@ -141,6 +173,47 @@ if (cmd === 'check') {
   if (errors) process.exit(1)
 }
 
+
+if (cmd === 'site') {
+  const add = process.argv[3] === 'add'
+  const url = process.argv[add ? 4 : 3]
+  if (!url) { console.error("usage: pool site <url> [--signals a,b,c]\n       pool site add <url> --new N --sharpened M --signals a,b,c"); process.exit(2) }
+  const c = canon(url), key = siteKey(c.host), led = readLedger()
+  const sig = (arg('signals') || '').split(',').map(x => x.trim()).filter(Boolean).map(fnv)
+
+  if (add) {
+    appendFileSync(LEDGER, JSON.stringify({ url: c.full, key, date: new Date().toISOString().slice(0, 10),
+      new: +arg('new', 0), sharpened: +arg('sharpened', 0), fp: sig }) + '\n')
+    console.log(`ledger += ${c.full}   new:${arg('new', 0)} sharpened:${arg('sharpened', 0)} signals:${sig.length}`)
+    process.exit(0)
+  }
+
+  let blocked = false
+  const exact = led.find(e => e.url === c.full)
+  const sameKey = led.filter(e => e.key === key && e.url !== c.full)
+
+  if (exact) { console.log(`✗ ALREADY HARVESTED   ${c.full}   ${exact.date} → ${exact.new} new, ${exact.sharpened} sharpened`); blocked = true }
+  else if (sameKey.length) {
+    console.log(`⚠ DOMAIN ALREADY HARVESTED   ${key}`)
+    sameKey.forEach(e => console.log(`    ${e.url}   ${e.date}   new:${e.new}`))
+    console.log('  Different path or subdomain. Proceed only if the design system visibly differs.')
+  }
+
+  if (sig.length) {
+    const sims = led.map(e => [jaccard(sig, e.fp || []), e]).filter(([v]) => v >= .5).sort((a, b) => b[0] - a[0])
+    if (!sims.length) console.log(`fingerprint   no close match across ${led.length} harvested site(s)`)
+    else {
+      console.log('fingerprint')
+      sims.slice(0, 3).forEach(([v, e]) => console.log(`  ${(v * 100).toFixed(0).padStart(3)}%  ${e.url}  ${e.date}${v >= .85 ? '   ← same site or same template' : ''}`))
+      if (sims[0][0] >= .85) { console.log(`\n✗ ${(sims[0][0] * 100).toFixed(0)}% technique overlap — same site under another URL, or the same page-builder template.`); blocked = true }
+    }
+  }
+
+  if (!blocked && !sameKey.length) console.log(`✓ NEW   ${c.full}   (key: ${key})`)
+  if (blocked) { console.log("\nRe-harvest only with --force. Under --force do NOT increment 'seen' on existing\nprimitives — that counter means distinct sites, and inflating it breaks --rare."); process.exit(1) }
+  process.exit(0)
+}
+
 if (cmd === 'index') {
   const lines = all.sort((a, b) => (a.category + a.id).localeCompare(b.category + b.id))
     .map(p => `${p.category}/${p.id} | ${fmtAx(p)} $${p.cost} | ${(p.tags || []).join(' ')} | ${p.gist.slice(0, 64)}`)
@@ -169,7 +242,7 @@ if (cmd === 'lint') {
   if (bad) process.exit(1)
 }
 
-if (!['stats', 'query', 'near', 'show', 'check', 'index', 'lint'].includes(cmd))
+if (!['stats', 'query', 'near', 'show', 'check', 'site', 'index', 'lint'].includes(cmd))
   console.log(`design-pool
 
   pool stats                        size, distribution, restructure threshold
@@ -178,5 +251,7 @@ if (!['stats', 'query', 'near', 'show', 'check', 'index', 'lint'].includes(cmd))
   pool near <id>                    primitives closest in axis-space
   pool show <id> [id...]            full text
   pool check <id> [id...]           coherence, conflicts, correctness, budget
+  pool site <url> [--signals ..]    has this site been harvested? URL + fingerprint
+  pool site add <url> --new N ...   record a harvest in the ledger
   pool index                        regenerate MANIFEST.md + index.json
   pool lint                         validate frontmatter and cross-refs`)

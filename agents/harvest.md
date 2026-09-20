@@ -6,11 +6,20 @@ source, not an entry. Nothing site-specific survives.
 **Input:** a URL. **Output:** new primitive files, sharpened existing ones, a
 ledger line, a regenerated index.
 
-## 1. Check the ledger
+## 1. Gate on the ledger — before downloading anything
 
 ```bash
-grep -F "<url>" ledger.jsonl && echo "ALREADY HARVESTED — stop"
+bin/pool site "<url>"     # non-zero exit = stop
 ```
+
+Canonicalises scheme, `www.`, case, port, query and trailing slash, then checks
+the exact URL and the registrable domain. Three outcomes:
+
+- `✗ ALREADY HARVESTED` — stop. Do not proceed without an explicit `--force`
+  instruction from the user.
+- `⚠ DOMAIN ALREADY HARVESTED` — a different page on a site already mined.
+  Proceed only if the design system visibly differs; expect near-zero yield.
+- `✓ NEW` — continue.
 
 ## 2. Pull material into scratch (never committed)
 
@@ -36,6 +45,25 @@ while read -r u; do curl -sSL -o "$(echo $u | tr / _)" "<origin>$u"; done < asse
 Screenshot 8–12 scroll positions at 1440px and 3 at 390px (Playwright Chromium
 is cached locally) and read them — composition, rhythm and density are not
 recoverable from code.
+
+## 3b. Second gate — fingerprint
+
+Once signals are extracted (step 3), before decomposing:
+
+```bash
+bin/pool site "<url>" --signals "<distinctive css var names,lib:gsap,u:uTime,font:Geist,...>"
+```
+
+Compares the technique fingerprint against every site already harvested. Catches
+what URL matching cannot: the same site rehosted, and **two unrelated companies
+running the same page-builder template** — common enough at scale to badly skew
+`seen` counts if unnoticed.
+
+≥85% overlap blocks. 50–85% proceeds with a warning: real but low-yield, expect
+one or two new primitives at most.
+
+Exclude framework-generic tokens (`--tw-*`, `--color-*`, `--spacing`, default
+Tailwind names) from the signal set or every Tailwind site looks alike.
 
 ## 4. Decompose
 
@@ -100,9 +128,17 @@ primitive is heavy and refined wherever it is used.
 
 ```bash
 rm -rf .cache/harvest-*
-echo '{"url":"<url>","date":"<iso>","new":N,"sharpened":M}' >> ledger.jsonl
+bin/pool site add "<url>" --new N --sharpened M --signals "<same signal set>"
 bin/pool lint && bin/pool index
 ```
+
+Signals are stored hashed — the ledger supports similarity comparison but cannot
+be read back to infer what any site used.
+
+**`seen` discipline:** increment it only once per distinct site. Under `--force`
+re-harvest, add genuinely new primitives but leave every existing `seen`
+untouched — the counter means *distinct sites*, and inflating it silently breaks
+`bin/pool query --rare`.
 
 Report: new primitives (with ids), entries sharpened, candidates rejected as
 duplicates, new pool total, and whether `stats` crossed a structure threshold.
