@@ -4,7 +4,7 @@ category: perf
 tags: [resize,canvas,mobile,correctness]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []

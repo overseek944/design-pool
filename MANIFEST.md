@@ -1,6 +1,6 @@
 # Manifest
 
-419 primitives. Format: `category/id | axes cost | tags | gist`
+424 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -14,6 +14,7 @@ canvas/composed-arrival-field | E3 D3 W2 F5 $2 | shader stagger clock uniform re
 canvas/curl-of-potential-field | E2 D3 W2 F4 $3 | canvas flow field generative motion | Advecting anything through a hand-made velocity field pools it i
 canvas/derivative-width-edge-aa | neutral  $2 | shader canvas precision correctness detail | A procedural shape in a fragment shader gets no antialiasing for
 canvas/described-canvas-figure | neutral  $1 | canvas accessibility architecture diagram | A canvas carrying the argument — a diagram, a chart, a staged ex
+canvas/direction-sampled-burst | E4 D3 W2 F4 $2 | canvas particles generative distribution depth | Independent per-axis ranges can only ever fill a rectangle, so a
 canvas/dom-labels-in-normalised-canvas-space | neutral  $2 | canvas accessibility architecture correctness label | Text drawn with fillText cannot be selected, found, translated o
 canvas/eased-pointer-influence | E3 D2 W2 F5 $2 | shader interaction feel | Never feed raw pointer state to a shader. Keep a uMouseActive fl
 canvas/facing-weighted-directional-pull | E3 D2 W3 F5 $3 | shader canvas pointer motion generative | Uniform displacement inflates a form; a form reaching toward som
@@ -155,6 +156,7 @@ layout/translate-z-axonometric-stage | E1 D3 W2 F5 $3 | 3d depth diagram transfo
 layout/truncating-head-fixed-trailer | neutral  $1 | layout flex truncation correctness cards responsive | A header row pairing a variable-length label with a status badge
 layout/unit-cell-quantity-field | E1 D4 W2 F4 $2 | layout data grid indicator accessibility density | Show a count as one mark per unit, not a bar. Differences a bar 
 layout/viewport-height-bands | neutral  $1 | layout responsive media-query ornament correctness | Some decisions belong to the short axis. An opening frame, a pin
+layout/viewport-unit-role-split | neutral  $1 | layout viewport mobile responsive correctness | A phone has three viewport heights, and picking one for the whol
 light/blend-doubled-headline | E2 D2 W4 F5 $3 | type blend legibility contrast compositing | Set the headline twice in one grid cell: an opaque copy under th
 light/broadcast-light-source | E2 D2 W2 F5 $3 | light gradient custom-property ambient architecture | A panel lit at the pointer has one lamp, and only while a pointe
 light/counter-rotated-specular-layer | E2 D2 W3 F5 $2 | light gradient rotation material 3d | An object with its highlight painted into its own background spi
@@ -250,11 +252,13 @@ perf/loop-gated-on-attention | neutral  $2 | performance animation intersection-
 perf/markup-declared-instrumentation | neutral  $1 | architecture instrumentation events delegation maintenance | Declare the event name and its payload as data- attributes and l
 perf/media-query-parity-listeners | neutral  $1 | responsive correctness architecture motion breakpoint | Where script and stylesheet must agree on a layout, ask the brow
 perf/media-scoped-preload-tier | neutral  $1 | perf loading images responsive resource-hints critical-path | When script picks among art-directed sources — an orientation cr
+perf/off-thread-texture-downscale | neutral  $2 | performance texture webgl loading memory | Textures authored at 4K decode to tens of megabytes before anyth
 perf/offscreen-subtree-deferral | neutral  $1 | performance containment rendering scroll correctness | Below-fold grids of cards, figures or rows cost style, layout an
 perf/pixel-ratio-change-watch | neutral  $1 | performance canvas correctness resize media-query dpr | Device pixel ratio changes when a window is dragged between moni
 perf/post-teardown-asset-disposal | neutral  $2 | performance correctness lifecycle canvas architecture memory | An asynchronous asset load outlives the view that started it. Sc
 perf/prefetch-on-intent-band | neutral  $2 | performance navigation prefetch observer architecture | Prefetching is two policies, not one. Intent arms on mouseenter,
 perf/revert-split-on-resize | neutral  $1 | type motion correctness | Split text hard-codes line breaks at split time. On resize or we
+perf/scrim-over-filtered-bleed | neutral  $1 | performance media mobile compositing correctness | A filter, clip-path and transform stacked on one full-bleed imag
 perf/self-throttled-raf-loop | neutral  $1 | performance animation canvas battery frame-budget correctness | requestAnimationFrame offers the display's rate; it is not a con
 perf/shell-shaped-lazy-fallback | neutral  $2 | cls loading accessibility architecture correctness code-splitting | A lazy fallback is usually a spinner in a box that is not the co
 perf/single-flight-external-script | neutral  $2 | performance architecture correctness lifecycle embed | Several components on a page may each need the same third-party 
@@ -417,6 +421,7 @@ type/sub-baseline-marker-band | E2 D2 W3 F3 $1 | type emphasis highlight contras
 type/three-family-stack | E2 D3 W3 F4 $1 | type system | Geometric sans (body/headline) + mono (chrome/code) + display se
 type/tonal-lead-in-clause | E1 D2 W3 F5 $1 | type emphasis hierarchy editorial colour | Carry two levels inside one sentence: the clause holding the cla
 type/tracking-as-size-ratio | E1 D2 W3 F5 $1 | type tracking precision fluid tokens | Tracking fixed in px or em is wrong at one end of a fluid range:
+type/tracking-gap-centring | neutral  $1 | type tracking alignment optical correctness | Letter-spacing is added after every glyph including the last, so
 type/unit-grid-bitmap-lettering | E2 D3 W4 F2 $2 | type wordmark svg pixel asset-free | Draw a wordmark as filled cells on a small integer grid — a view
 type/variable-axis-tokens | E1 D2 W2 F5 $1 | type tokens opentype variable-font precision | A variable face is a continuum, not nine presets — so name the e
 type/viewport-locked-single-line | E1 D2 W4 F4 $1 | type responsive display unit correctness | A display line that must never break is not a wrapping problem t

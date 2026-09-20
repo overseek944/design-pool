@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,performance,particles,light]
 axes: none
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -67,3 +67,19 @@ ctx.fillStyle = LUT[value * 255 / MAXV | 0]
 ⚠ Clamp the index — a value at the top of the range rounds past the last entry
 and yields `undefined`, which canvas silently ignores rather than throwing.
 Rebuild on a theme change, never on resize.
+
+The falloff profile is the difference between a hot fragment and a blurry dot. A
+plain soft disc — one stop in, one at the rim — reads cheap at any size. Give the
+sprite a tight opaque core, a fast collapse and a long faint halo, and each mark
+gains presence without gaining radius: the core is what reads as substance, the
+halo is what gives it place. Bake the set two or three colour temperatures wide
+and index it by each mark's own lifetime — a field running hot at the source and
+cooling as it falls kills the flat single-tint tell that no amount of motion
+tuning fixes.
+```js
+g.addColorStop(0, `rgba(${c},1)`);     g.addColorStop(.10, `rgba(${c},.95)`)
+g.addColorStop(.24, `rgba(${c},.42)`); g.addColorStop(.52, `rgba(${c},.11)`)
+g.addColorStop(1, `rgba(${c},0)`)
+```
+⚠ A tight core is a hard edge — bake at 48–64px square or the aliasing the soft
+disc was hiding comes back with it.

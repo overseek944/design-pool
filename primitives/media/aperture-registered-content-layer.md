@@ -4,7 +4,7 @@ category: media
 tags: [media, mockup, responsive, layout, correctness]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -43,3 +43,19 @@ rebuilding it and correct by definition.
 ⚠ The capture must carry its true pixel `width`/`height` and fill the shell
 exactly, or every coordinate is off by the same unmeasured margin. Anything the
 overlay says the photograph also says — repaint the base, never contradict it.
+
+Both units above assume the base *fits* its box. A base under `object-fit: cover`
+or `background-size: cover` is cropped instead, and the crop changes at every
+width — so percentages and a `--px` unit alike drift off the artwork the moment
+the aspect ratio moves. Match the crop rather than measuring it: author the
+overlay as an SVG at the source's own pixel coordinates with
+`preserveAspectRatio="xMidYMid slice"`, which is the identical crop maths. Traced
+lines, hotspots and callouts then stay welded to the picture at every viewport
+with nothing to recompute.
+```html
+<svg viewBox="0 0 5056 3392" preserveAspectRatio="xMidYMid slice"
+     class="overlay" aria-hidden="true"><line x1="1204" y1="880" …/></svg>
+```
+⚠ `slice` matches `cover` and `meet` matches `contain` — base and overlay must
+name the same one, and the SVG's alignment keyword has to match `object-position`
+too, or the registration is off by the whole crop offset.

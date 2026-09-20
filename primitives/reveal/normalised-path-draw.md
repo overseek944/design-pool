@@ -4,7 +4,7 @@ category: reveal
 tags: [svg,stroke,reveal,draw,geometry,correctness]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -36,3 +36,20 @@ fails to a blank drawing.
 ```
 ⚠ Script must add `pending` before the paint that shows the figure, or the
 drawing flashes complete and redraws itself.
+
+Normalise to 100 rather than 1 and the same attribute buys the opposite trade.
+A dash written in those units is a *percentage of its own path*, so converting a
+fixed on-screen length into it keeps a travelling pulse the same visible size on
+a 5000-unit grid line and a 400-unit strut, and taking duration from the real
+measured length gives every pulse one speed instead of one duration. Pulses
+4–38% of the path; gap wider than 100 so the pattern cannot wrap a second dash
+back onto the start as the first leaves.
+```js
+const dash = Math.min(38, pulsePx / len * 100)
+el.style.strokeDasharray = `${dash} 200`
+el.animate([{ strokeDashoffset: dash }, { strokeDashoffset: -100 }],
+  { duration: len / speed * 1000, easing: 'linear', fill: 'none' })
+```
+⚠ Under `fill: 'none'` the element renders at its *inline* value for one frame
+after finishing — park `strokeDashoffset` at the animation's end value first or
+every pulse ends in a flash.

@@ -4,7 +4,7 @@ category: perf
 tags: [performance,webgl,capability,progressive-enhancement,correctness]
 axes: none
 cost: 2
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -68,3 +68,12 @@ renderer.setSize(w * SCALE[tier], h * SCALE[tier], false)   // false: keep CSS s
 ```
 ⚠ Read the tier at the size the canvas is *laid out*, not the window — a scene
 in a half-width panel is already paying a quarter of the full-bleed cost.
+
+`hardwareConcurrency` does not belong in the same disjunction as `deviceMemory`.
+Plenty of ordinary desktops and most of the last decade of laptops report four
+cores and render the full scene without complaint, so an `<= 4` test tiers them
+down for nothing while catching almost no device that needed it. Memory tracks
+the constraint that actually bites, and input class is its own ladder. Leave
+core count out unless work is genuinely being sharded across workers.
+⚠ Where it is used at all the threshold is not 4 — a machine reporting 2 is a
+real signal, 4 is noise.

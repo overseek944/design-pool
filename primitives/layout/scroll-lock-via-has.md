@@ -4,7 +4,7 @@ category: layout
 tags: [overlay,correctness,overflow,dialog,cls]
 axes: none
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -49,3 +49,17 @@ addEventListener('wheel', e => e.preventDefault(), { passive: false })
 ⚠ A non-passive `wheel` listener on the document taxes every scroll on the
 page — bind it on open and remove it on close, never at startup. Space and
 PageDown scroll too, and no pointer handler sees them.
+
+Lock `body`, never the root, on any page that contains a `position: sticky`.
+`overflow: hidden` on `html` makes the root a scroll container, and a sticky
+element resolves against its nearest scrolling ancestor — so every pinned
+section on the page silently stops pinning for as long as the overlay is open
+and resumes when it closes, which presents as a scroll bug nowhere near the
+overlay. `body`'s overflow propagates to the viewport, so the lock is identical
+and nothing below it changes container.
+```css
+body:has(.overlay) { overflow: hidden; overscroll-behavior: none }
+```
+⚠ Only one of the two propagates: if `body` already carries a non-`visible`
+`overflow` the propagation stops and the root keeps scrolling. Check the reset
+before relying on this.

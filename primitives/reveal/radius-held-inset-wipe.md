@@ -4,7 +4,7 @@ category: reveal
 tags: [reveal,clip-path,wipe,panel,motion]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -61,3 +61,18 @@ edge. 2–6px of bleed covers a hairline and its shadow.
 ```
 ⚠ Bleed only on the axis the wipe does not travel. Negative inset on the
 travelling axis makes the closed state already show a sliver of the element.
+
+Make the rider *emit* rather than merely arrive and the wipe stops reading as a
+mask and starts reading as an instrument cutting the content in: a 2–3px bar at
+the clip edge carrying a two-stop `box-shadow`, a tight bright halo inside a
+wide faint one. Clip and bar are separate animations and hold together only
+while duration and easing match exactly, so author both from one token. Fade the
+bar out over the last 5–10% or it reaches the far edge and parks there as a
+border.
+```css
+.blade { position: absolute; inset-block: 0; width: 2px; background: var(--signal);
+  box-shadow: 0 0 20px 3px var(--signal), 0 0 54px 10px #ffffff33 }
+@keyframes blade { 0% { left: 0 } 92% { left: 100%; opacity: 1 } to { opacity: 0 } }
+```
+⚠ Under `prefers-reduced-motion` drop the bar entirely rather than shortening
+it — a lit line parked at the edge of a static panel is worse than no reveal.
