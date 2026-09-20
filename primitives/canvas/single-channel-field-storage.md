@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,simulation,performance,texture,shader]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,20 @@ density  = doubleFbo(w, h, gl.R16F, gl.RED)    // one, and the hot texture
 ⚠ Needs WebGL2 and `EXT_color_buffer_float` — test both and keep a still image
 for when either is missing. Half float tops out near 65k: clamp accumulation or
 a long-lived source reaches `inf` and every pass reading it returns NaN.
+
+Do not sniff the format by extension string — allocate one and ask. Build a 4×4
+texture and framebuffer in the format you want, check
+`checkFramebufferStatus`, and on failure recurse *up* the ladder: single channel
+to two, two to four, and only then give up. A device that advertises the
+extension and still refuses the attachment is common enough that the string is
+not an answer. Where linear filtering is the missing piece rather than the
+format, degrade instead of bailing — drop the display resolution and any shading
+pass and keep the effect.
+```js
+const fmt = probe(gl.R16F, gl.RED) || probe(gl.RG16F, gl.RG) || probe(gl.RGBA16F, gl.RGBA)
+if (!fmt) return still()            // nothing usable: the static branch
+if (!ext.linearFiltering) { DYE_RES = 256; SHADING = false }
+```
+⚠ Probe before allocating anything at scene size — a failed attachment after
+the real buffers exist leaks them, and the teardown path is the one nobody
+tested.

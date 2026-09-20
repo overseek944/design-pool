@@ -4,7 +4,7 @@ category: perf
 tags: [responsive,correctness,architecture,motion,breakpoint]
 axes: none
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -38,3 +38,17 @@ new MutationObserver(relayout).observe(root, { attributeFilter: ['lang'] })
 ```
 ⚠ One entry point or the handlers race — two of these fire together routinely.
 Make it idempotent and read every measurement in one pass.
+
+A loop that is already running can afford a cheap backstop for the
+invalidations nothing reports at all — a sticky header collapsing, an image
+landing above the measured element, a late third-party insert. Re-read the
+geometry every 60–120 frames inside the existing frame callback, plus once on a
+300–500ms settle timer after mount. Two `getBoundingClientRect` reads a second
+is nothing next to the draw, and it removes the class of bug where the scene is
+correct until something upstream moves.
+```js
+if (++frames % 90 === 0) measure()            // inside the rAF you already have
+setTimeout(measure, 400)                      // post-mount settle
+```
+⚠ Only for a loop that runs continuously. Hanging a polling re-measure on a
+`setInterval` next to an idle scene is the leak this is supposed to avoid.

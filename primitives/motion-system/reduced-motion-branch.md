@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,accessibility,required]
 axes: none
 cost: 1
-seen: 34
+seen: 35
 requires: []
 conflicts: []
 completes: []
@@ -139,3 +139,29 @@ mq.addEventListener('change', load); load()
 ```
 ⚠ The still frame must be elected, not frame zero — and it is the *only* thing
 some readers ever see, so it carries the whole composition on its own.
+
+The branch is per *property*, not per animation. `reduce` asks for less motion,
+not less change — an opacity fade displaces nothing and is not what makes a
+reader ill, so a fade-up under `reduce` should keep fading and lose only the
+travel. Zero the transform's duration and leave the opacity's at 150–250ms;
+removing both makes content pop into place, which is a harsher arrival than the
+one being avoided. Separate transform channels make this expressible in CSS
+alone.
+```css
+@media (prefers-reduced-motion: reduce) {
+  .rise { transition: opacity .2s, translate 0s }   /* the fade survives */
+}
+```
+⚠ Only holds while the moving property is genuinely decorative travel. A
+displacement that carries meaning — a panel sliding in from the side it belongs
+to — has to be written to its end state, not merely made instant.
+
+A drawn still needs its clock elected, not zeroed. Setting every time term to
+rest gives the composition at t=0, which for anything that travels, accumulates
+or disperses is the empty frame nobody authored. Advance the shared clock to a
+representative value — a few seconds in, past the build — then draw once from
+the same path the loop uses and never request a frame. No second composition
+exists to drift.
+```js
+if (reduced) { clock = 4; draw(); return }      // same draw(), one frame
+```

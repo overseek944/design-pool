@@ -4,7 +4,7 @@ category: timing
 tags: [motion,easing,indicator,status,ambient]
 axes: {energy: 2, density: 1, weight: 2, finish: 3}
 cost: 1
-seen: 12
+seen: 13
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -36,3 +36,17 @@ phases are independently tunable — off 25–35% of the period for a caret, up 
 ```css
 @keyframes caret { 0%, 70%, 100% { opacity: 1 } 20%, 50% { opacity: 0 } }
 ```
+
+Push the duty cycle to its extreme and phase-offset a row of them and the
+instrument changes meaning: at 10–15% on, what the eye tracks is the *travelling*
+lit mark, so a step list reads as a playhead moving down it rather than as N
+independent indicators. The period is shared and the offsets are a fraction of
+it; a `linear` clock keeps the hand-off between neighbours even.
+```css
+.step { animation: pulse 3.3s linear infinite }
+.step:nth-child(n) { animation-delay: calc(var(--i) * .55s) }   /* period / count */
+@keyframes pulse { 0%, 13% { background: var(--on) } 22%, 100% { background: var(--off) } }
+```
+⚠ This encodes sequence position in motion alone. It stops existing under
+`reduce` and for anyone not watching — the real position still has to live in
+an `<ol>` or `aria-current`.

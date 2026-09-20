@@ -4,7 +4,7 @@ category: perf
 tags: [resize,canvas,mobile,correctness]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -36,3 +36,17 @@ setBox(p => Math.abs(p.w - w) < .1 && Math.abs(p.h - h) < .1 ? p : { w, h })
 ```
 ⚠ This is the opposite tolerance from the chrome band and the two coexist:
 sub-pixel to stop the feedback loop, tens of pixels to stop the address bar.
+
+A canvas needs the guard at the assignment, not only at the rebuild. Writing
+`canvas.width` reallocates and clears the backing store *even when the value is
+unchanged*, so a `ResizeObserver` firing on sub-pixel noise blanks the surface
+every time and the effect flickers in a way that looks like a rendering bug
+rather than a resize one. Compare the rounded integers first and assign only on
+a real difference.
+```js
+const cw = Math.round(w * dpr), ch = Math.round(h * dpr)
+if (c.width !== cw || c.height !== ch) { c.width = cw; c.height = ch }
+ctx.setTransform(dpr, 0, 0, dpr, 0, 0)        // the transform is cleared too
+```
+⚠ Re-apply the transform after any assignment that did land — it resets with
+the buffer, and a scene that skips it draws at device pixels for one frame.

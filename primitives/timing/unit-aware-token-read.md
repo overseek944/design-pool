@@ -4,7 +4,7 @@ category: timing
 tags: [tokens,correctness,motion,build]
 axes: none
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -64,3 +64,18 @@ const svh = () => probe.offsetHeight || innerHeight
 ⚠ `offsetHeight` rounds to an integer and forces layout — read it once per
 relayout, never inside a scroll handler, and keep one probe for the life of the
 page rather than building it per call.
+
+A *colour* token defeats both routes: `oklch()`, `color-mix()` and a chain of
+`var()` cannot be parsed by hand, and no layout property hands back a number.
+Make the engine resolve it — assign the token as `fillStyle` on a 1×1 scratch
+context, fill one pixel, and read the channels back. Any syntax the browser
+supports resolves, including ones postdating the code. Do it once per theme
+change, not per frame; `getImageData` is a readback.
+```js
+const g = document.createElement('canvas').getContext('2d', { willReadFrequently: true })
+g.fillStyle = getComputedStyle(el).color; g.fillRect(0, 0, 1, 1)
+const [r, gr, b] = g.getImageData(0, 0, 1, 1).data      // now usable as rgba()
+```
+⚠ `fillStyle` silently keeps its previous value on an unparseable string, so
+seed it with a known-bad colour and check it changed. The probe flattens alpha
+against nothing — read `globalAlpha` separately if the token carries one.

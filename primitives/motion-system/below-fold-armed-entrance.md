@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,correctness,progressive-enhancement,observer,reveal]
 axes: none
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,17 @@ els.forEach(el => {
 ⚠ Read positions before any layout the entrance itself causes, and in one pass —
 arming element by element reflows per element. Content that starts below the
 fold is still hidden, so a runtime that dies *after* setup needs a watchdog.
+
+The two halves can take different runtimes. Content above the fold needs no
+observer at all and no script either — give it a plain CSS `animation` with its
+delay inline, and it plays from the stylesheet before hydration, on a dead
+bundle, and on the first paint rather than a frame after it. Script then owns
+only the below-fold set, which is the half that genuinely needs to watch for an
+intersection.
+```jsx
+eager ? <div className="reveal-eager" style={{ animationDelay: `${d}s` }}>…</div>
+      : <Observed delay={d}>…</Observed>
+```
+⚠ The CSS path must carry its own `reduce` branch — it is not reached by the
+runtime's check. Collapse its duration rather than cancelling the animation, or
+`both` fill leaves the element at its 0% frame.

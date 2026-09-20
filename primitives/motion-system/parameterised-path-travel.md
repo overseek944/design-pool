@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,loop,ambient,diagram,css-only]
 axes: {energy: 3, density: 3, weight: 1, finish: 4}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -27,3 +27,17 @@ toward the destination to read as distance. Periods 4–9s, linear.
 ⚠ Gate it twice — `@supports (offset-path: path("M0 0 H 1"))` inside
 `prefers-reduced-motion: no-preference`. Without the feature query every
 traveller stacks at its untransformed origin instead of not appearing.
+
+A linear traversal reads as traffic — constant speed says the route is a
+conveyor. Where the path *converges* on something, shape the parameter rather
+than the clock: raise it to a power before evaluating position, so the traveller
+creeps at the origin and accelerates into the destination, and the geometry
+reads as attraction instead of transport. Exponent 1.4–2; above ~2.5 the first
+half stops moving perceptibly. The clock stays `linear`, so period and phase
+offsets remain independent of the shaping.
+```js
+const d = Math.pow(phase, 1.7)              // phase linear, distance shaped
+el.style.offsetDistance = d * 100 + '%'
+```
+⚠ Shape the parameter in one place only. A power curve on top of a non-linear
+easing compounds into a near-stop at the origin that reads as a stalled element.

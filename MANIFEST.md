@@ -1,6 +1,6 @@
 # Manifest
 
-410 primitives. Format: `category/id | axes cost | tags | gist`
+411 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -42,6 +42,7 @@ canvas/row-span-culled-field | neutral  $2 | perf field raster culling imagedata
 canvas/saturating-density-transfer | E1 D2 W2 F5 $1 | canvas shader color field opacity | An accumulating field has no upper bound but coverage does, so m
 canvas/screen-composited-understroke | E2 D2 W2 F5 $2 | canvas light stroke effect depth cheap | Canvas 2D has no cheap blur, so a glowing stroke is built from p
 canvas/scroll-driven-frame-atlas | E4 D3 W3 F4 $4 | canvas scroll performance | For scrubbed sequence playback, draw frames from a sprite atlas 
+canvas/signed-bow-connector-bundle | E1 D3 W1 F5 $2 | canvas connector diagram geometry svg | Connectors terminating at one hub, drawn straight, collapse into
 canvas/simulation-preroll | neutral  $1 | canvas simulation lifecycle loading generative | A simulation's worst frame is its first: an empty grid, a lone s
 canvas/single-channel-field-storage | neutral  $2 | canvas simulation performance texture shader | Choose the channel count per field rather than reaching for RGBA
 canvas/standard-uniform-set | neutral  $2 | shader architecture reference | A small reusable uniform contract covers most decorative shaders

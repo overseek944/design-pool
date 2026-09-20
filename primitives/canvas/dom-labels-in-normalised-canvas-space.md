@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,accessibility,architecture,correctness,label]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,16 @@ lbl.style.transform = 'translate(-50%,-50%)'
 ```
 ⚠ Holds only while the canvas draws in fractions of its own box; anything
 placed in absolute pixels drifts from its label on resize.
+
+The label layer is also the part that should leave first. Annotations are what
+needs the width — 8–10 words of tracked micro-type has no narrow-viewport form
+worth shipping — while the drawing itself is already in fractions and composes
+at any size. Hide the layer below the breakpoint and keep the canvas: the
+figure reads as a diagram wide and as a mark narrow, rather than as a diagram
+with unreadable type.
+```html
+<div class="labels hidden lg:block" aria-hidden="true">…</div>
+```
+⚠ Only safe while the labels are decorative restatements. If a label carries
+information the canvas does not, hiding it at one width hides it from that
+reader entirely — move it into the caption instead.

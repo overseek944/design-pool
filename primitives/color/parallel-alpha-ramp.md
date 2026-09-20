@@ -4,7 +4,7 @@ category: color
 tags: [color,tokens,alpha,borders,theming]
 axes: none
 cost: 2
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -33,3 +33,17 @@ foreground token gives one ladder that inverts with the theme for free.
 ```
 ⚠ Where `color-mix` is unsupported the whole ladder is invalid and every border
 vanishes — declare a flat `var(--fg)` fallback first.
+
+The ladder is not symmetric across the two grounds it inverts between. A white
+rule at 5% on near-black is visibly stronger than a black rule at 5% on
+near-white, because the same alpha buys more contrast against a dark field —
+so a texture, hairline or wash tuned in one theme arrives loud or invisible in
+the other. Author the light-on-dark steps at roughly half their dark-on-light
+siblings and check both, rather than deriving one from the other and trusting
+the arithmetic.
+```css
+:root            { --rule: oklch(25% 0 0 / .055) }    /* dark on light */
+[data-theme=night] { --rule: oklch(100% 0 0 / .025) } /* light on dark: ~half */
+```
+⚠ This is the one place a `color-mix` against the foreground token is wrong: it
+inverts the hue correctly and the *strength* not at all.

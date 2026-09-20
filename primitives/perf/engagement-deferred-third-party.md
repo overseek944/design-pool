@@ -4,7 +4,7 @@ category: perf
 tags: [performance,third-party,analytics,loading,idle,correctness]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -27,3 +27,19 @@ const id = requestIdleCallback?.(arm, { timeout: 2500 }) ?? setTimeout(arm, 1800
 ⚠ Guard the whole thing on hostname so preview and local builds never report.
 `requestIdleCallback` is absent in Safari — the `setTimeout` fallback is the
 path most readers take, not an edge case.
+
+The same lever serves first-party decoration, with capability rather than
+engagement as the predicate. An ambient effect that is wrong on a phone, wrong
+under `reduce`, and wrong on half the routes should not merely render nothing
+there — it should never be fetched. Resolve pointer class, motion preference and
+route into one boolean *above* the dynamic import, and the readers who would
+not have seen it pay nothing at all. Hiding it with a media query still costs
+every byte.
+```js
+const ok = matchMedia('(min-width: 900px) and (hover: hover) and (pointer: fine)').matches
+         && !reducedMotion && EFFECT_ROUTES.has(pathname)
+const Effect = ok ? lazy(() => import('./ambient')) : null
+```
+⚠ Evaluate the gate after mount, not during render, or the server and the
+client disagree and the markup is thrown away. Subscribe to the query's
+`change` so a window dragged to a large display can still arm it.

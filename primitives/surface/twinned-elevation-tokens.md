@@ -4,7 +4,7 @@ category: surface
 tags: [shadow,elevation,tokens,hover,card]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -60,3 +60,17 @@ count, only the colours and stop positions moved.
 ```
 ⚠ Gradient interpolation is a paint, not a composite — it repaints the box every
 frame. Cheap on a 44px control, not on a full-bleed panel.
+
+On a dark ground the *first* layer of every tier should be an inset hairline
+along the top edge, not a shadow at all. A panel one step lighter than its
+ground has no cast to give it an edge; a 1px inset highlight at 4–6% white is
+the whole read, and the ambient shadow underneath only seats it. Scale the
+highlight with the tier the way the blur scales, and put it at the same index
+in both members of a twinned pair so the lift still interpolates.
+```css
+--elev-1: 0 1px 0 oklch(100% 0 0 / .04) inset, 0 2px  8px oklch(0% 0 0 / .5);
+--elev-3: 0 1px 0 oklch(100% 0 0 / .06) inset, 0 24px 60px -24px oklch(0% 0 0 / .8);
+```
+⚠ The inset layer paints inside the border box, so it sits *under* a border and
+disappears on any panel with an opaque one. Give those the highlight as the
+border colour instead.
