@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,performance,particles,light]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -53,3 +53,17 @@ ctx.drawImage(spr.c, x, y, spr.w * k, spr.h * k)      // k = perspective factor
 ```
 ⚠ Bake at the largest size drawn and scale down, never up. Read the colour from
 a custom property at bake time — a theme flip needs a re-bake, not a filter.
+
+The same trade applies to the *ramp* rather than the pixels. A field colouring
+each mark from a value builds a `rgb(…)` string per mark per frame — allocation
+and parse in the innermost loop. Bake the ramp once into a 256-entry array of
+colour strings and index it with the quantised value; the per-mark cost becomes
+one array read. Two segments — ground to accent, accent to highlight — give a
+ramp with a usable mid-tone rather than a straight fade.
+```js
+const LUT = Array.from({ length: 256 }, (_, i) => mix2(ground, accent, high, i / 255))
+ctx.fillStyle = LUT[value * 255 / MAXV | 0]
+```
+⚠ Clamp the index — a value at the top of the range rounds past the last entry
+and yields `undefined`, which canvas silently ignores rather than throwing.
+Rebuild on a theme change, never on resize.

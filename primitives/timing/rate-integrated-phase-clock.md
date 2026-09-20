@@ -4,7 +4,7 @@ category: timing
 tags: [motion,timing,correctness,loop]
 axes: none
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -43,3 +43,24 @@ const head = (scrubbed * RATE + laneOffset) % 1      // not phase += dt * rate
 ⚠ This only holds while the scrubbed value is monotonic in scroll and smoothed
 upstream. Derive off a raw, unsmoothed offset and the loop inherits every wheel
 step as a jump.
+
+Integrating keeps the *position* continuous; it does nothing for the
+derivative. A track that halves its speed the instant a pointer arrives still
+shows a visible kink, because the velocity stepped. Ramp the rate itself toward
+its new target over 250–400ms on an ease-out, and the change reads as the thing
+slowing rather than as a cut.
+```js
+const k = Math.min(1, (t - changedAt) / 300)
+rate = from + (target - from) * (1 - (1 - k) ** 3)
+```
+A dragged track needs the same continuity on release. Sample a velocity from the
+pointer deltas, decay it exponentially, and add it to the phase *instead of* the
+ambient rate only while it is the larger of the two — the hand-off back to
+ambient motion then happens at the moment the two are equal, so there is no
+speed step at all. Decay constant 0.25–0.4s.
+```js
+if (Math.abs(fling) > Math.abs(rate)) { phase += fling * dt; fling *= Math.exp(-dt / .325) }
+else { fling = 0; phase += rate * dt }
+```
+⚠ Zero the fling whenever the loop stops requesting frames, or a tab returned
+to after a minute resumes a gesture the reader has forgotten making.

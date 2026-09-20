@@ -4,7 +4,7 @@ category: scroll
 tags: [accessibility,navigation,scroll,state,architecture]
 axes: none
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -45,3 +45,15 @@ pointer away, and hover a different one.
 ```
 ⚠ Both collapse under `forced-colors`, where author backgrounds are discarded —
 the current item still needs a mark of its own there.
+
+`location` is not the only option, and the wrong one on a numbered sequence. A
+process rail, a checkout ladder, a set of ordered steps takes
+`aria-current="step"`: it says *which of these you are on*, which is what the
+numbering already claims visually. Write `"false"` on the others rather than
+removing the attribute, so one selector covers every state and none of them is
+expressed by absence.
+```js
+links.forEach(a => a.setAttribute('aria-current', a.hash === `#${id}` ? 'step' : 'false'))
+```
+⚠ `step` implies the set is ordered and the reader is progressing through it.
+On a table of contents it overclaims — that is `location`.

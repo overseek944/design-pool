@@ -1,10 +1,11 @@
 # Manifest
 
-396 primitives. Format: `category/id | axes cost | tags | gist`
+400 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
 canvas/alpha-bucketed-path-batch | E2 D4 W1 F5 $3 | canvas svg performance generative texture batching | Thousands of individually-faded SVG marks means thousands of nod
+canvas/baked-cell-frame-stream | neutral  $4 | canvas animation precomputed payload performance field | An ambient field whose motion is authored rather than simulated 
 canvas/borrowed-scene-constructors | neutral  $2 | canvas 3d architecture interop bundle | A wrapper that owns the renderer — a globe, a model viewer, a 3D
 canvas/canvas-behind-dom-not-instead-of-it | neutral  $2 | canvas architecture accessibility | Absolutely-positioned inset-0 canvas with pointer-events-none un
 canvas/cell-quantised-arrival-front | E3 D3 W2 F4 $3 | shader reveal grid quantise front texture | A reveal front evaluated per pixel is a soft edge crossing a pic
@@ -81,6 +82,7 @@ interaction/hairline-native-scrubber | E2 D1 W1 F5 $1 | interaction accessibilit
 interaction/hysteretic-lock-zone | neutral  $1 | interaction pointer state correctness threshold | Any boolean derived from a continuous input — pointer inside a z
 interaction/idle-scroll-cue | E2 D1 W2 F4 $1 | scroll affordance feedback motion | A page whose motion is entirely scroll-driven stops when the rea
 interaction/inert-tracks-opacity | neutral  $1 | accessibility focus correctness overlay pointer-events | An element faded to opacity: 0 is still in the tab order, still 
+interaction/inherited-autocomplete-pass | neutral  $1 | forms autocomplete accessibility third-party correctness | A form you did not author — from a page builder, a CMS block, a 
 interaction/inline-target-floor | neutral  $1 | accessibility interaction correctness detail | A row of small print — legal links, meta, a footer — fails targe
 interaction/micro-interaction-defaults | E2 D2 W2 F5 $1 | interaction polish consistency | One transition duration (200ms) and one property set for every n
 interaction/native-disclosure-animation | E2 D2 W2 F5 $2 | motion disclosure accessibility progressive-enhancement height | ::details-content with interpolate-size: allow-keywords animates
@@ -227,6 +229,7 @@ perf/data-saver-media-branch | neutral  $1 | performance media-query bandwidth v
 perf/dead-banded-resize-rebuild | neutral  $1 | resize canvas mobile correctness | A generative scene that re-seeds on resize restarts every time a
 perf/device-hint-quality-tier | neutral  $2 | performance webgl capability progressive-enhancement correctness | Resolve one integer tier at startup and let every expensive deci
 perf/dual-epsilon-settle-halt | neutral  $1 | performance animation spring frame-budget correctness | Integrated motion approaches its target asymptotically and never
+perf/engagement-deferred-third-party | neutral  $2 | performance third-party analytics loading idle correctness | A tag that only observes engaged sessions should not compete wit
 perf/font-display-per-role | neutral  $1 | type font-loading cls performance correctness | font-display is a decision per face, not per project. Body and U
 perf/layer-order-preamble | neutral  $1 | architecture cascade css correctness code-splitting | Cascade layers are ordered by first mention, so with code-split 
 perf/loop-gated-on-attention | neutral  $2 | performance animation intersection-observer visibility battery correctness | An infinite decorative animation never stops — it keeps composit
@@ -383,6 +386,7 @@ type/fused-run-highlight | E1 D2 W2 F5 $2 | type annotation editorial diff state
 type/glyph-joined-sequence-rail | E1 D3 W1 F4 $1 | type list sequence metadata mono accessibility technical | A four-step process does not always deserve a diagram. Set it as
 type/language-conditional-type-tokens | neutral  $2 | type i18n tokens localisation correctness | The type scale is a function of script, not only viewport. Redef
 type/measured-inline-word-swap | E3 D2 W3 F5 $2 | type motion headline correctness | A word cycling inside a running headline relays out the whole li
+type/measured-line-bucket-stagger | neutral  $2 | type stagger reveal measurement font-loading correctness | A cascade down the rendered lines of a heading does not require 
 type/mono-as-ui-texture | E1 D3 W2 F4 $1 | type ui technical register | Run a monospace face for all chrome — nav, labels, captions, cou
 type/optical-width-text-fit | E1 D2 W4 F5 $3 | type fit measurement display responsive | A headline that must fill a fixed box cannot be sized by charact
 type/origin-flipped-wipe-underline | E3 D1 W2 F5 $1 | underline link hover transform-origin wipe cheap | A scaleX underline that grows from one end and shrinks back to i

@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,accessibility,required]
 axes: none
 cost: 1
-seen: 32
+seen: 33
 requires: []
 conflicts: []
 completes: []
@@ -127,3 +127,15 @@ reduced ? draw(STILL_PHASE) : loop()      // STILL_PHASE ~ .6–.8 of P
 ```
 ⚠ Elect the phase by looking at it, not by arithmetic — the most legible frame
 is rarely the one where the most things are on screen.
+
+When the motion *is* a payload, the branch is a network decision and not only a
+render one. A reader who has asked for less motion should not be sent the frames
+that carry it: elect a separate still frame, ship that inline, and let the fetch
+be the thing the branch guards. Re-check on the query's `change` event so a
+reader who turns motion back on gets the payload then, not never.
+```js
+const load = () => { if (data || mq.matches) return; fetch(url).then(…) }
+mq.addEventListener('change', load); load()
+```
+⚠ The still frame must be elected, not frame zero — and it is the *only* thing
+some readers ever see, so it carries the whole composition on its own.

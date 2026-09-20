@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,marquee,correctness,loop,overflow]
 axes: none
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -37,3 +37,17 @@ breakpoint.
 ```
 ⚠ The multiplier is the source drawing's geometry — re-export the asset and
 every number is wrong. Keep them next to a comment naming the drawing width.
+
+Where the track is built in script, the period does not have to be reasoned
+about at all — measure it. Repeat the content N times, then read the offset of
+the *first child of the second copy* minus the first child of the first: that
+distance is one repeat by construction, whatever the gap, whatever each item's
+width. Wrap a phase by it with a modulo and no seam can exist. Re-measure on a
+`ResizeObserver` and on every image `load`, which is when the number changes.
+```js
+const period = vertical ? kids[n].offsetTop  - kids[0].offsetTop
+                        : kids[n].offsetLeft - kids[0].offsetLeft
+track.style.transform = `translateX(${-gap - ((phase % period) + period) % period}px)`
+```
+⚠ Reading an offset before the webfont resolves measures the fallback's
+advance widths. Double-modulo, or a negative phase wraps to a negative offset.

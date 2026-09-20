@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,correctness,accessibility,progressive-enhancement,reveal]
 axes: none
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -52,3 +52,16 @@ returns the overlay to ordinary document flow whatever the reason.
 ```css
 html.no-scene .callout, html:not(.js) .callout { position: relative; opacity: 1 }
 ```
+
+The script arriving and then *declining* to animate is a third case, and neither
+the timer nor the `noscript` block covers it. Put the reduced-motion escape in
+the same rule that hides: the pre-hide class carries its own undo, so a runtime
+that branches away from animating leaves nothing hidden even if it forgets to
+clean up, and the guarantee is the stylesheet's rather than every code path's.
+```css
+.reveal-pending { opacity: 0 }
+@media (prefers-reduced-motion: reduce) { .reveal-pending { opacity: 1 } }
+```
+⚠ Specificity must match or exceed the hide rule — `!important` on both, or the
+media block after it in source order. It fires on a mid-session flip too, which
+the script's own setup-time branch does not.

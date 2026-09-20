@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,canvas,battery,frame-budget,correctness]
 axes: none
 cost: 1
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -77,3 +77,16 @@ addEventListener('scroll', () => { pending ||= requestAnimationFrame(run) },
 ⚠ `passive: true` on scroll and touch listeners, or the browser must wait to
 see whether the handler cancels the gesture. Cancel any pending frame on
 teardown.
+
+Where the *source* is already quantised the cap is not a tuning choice — it is
+the source's own rate. Baked frames at 24fps, a stepped counter, a feed sampled
+once a second: drawing between two source samples produces a frame identical to
+the last. Compare the derived index rather than the timestamp and the throttle
+needs no tolerance and no second number.
+```js
+const i = Math.floor(elapsed * SRC_FPS)
+if (i !== lastIndex) { draw(i); lastIndex = i }
+raf = requestAnimationFrame(step)
+```
+⚠ This forfeits interpolation between samples — right for a field or a counter,
+wrong for anything whose motion the eye tracks across the frame.

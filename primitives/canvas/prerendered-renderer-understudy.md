@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,progressive-enhancement,correctness,cls,state,architecture]
 axes: none
 cost: 3
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,16 @@ assignment, with no blank first frame and no layout shift either way.
 ```
 ⚠ Both layers are `aria-hidden` decoration or neither is. And keep the twin
 cheap — a twin that itself costs a frame has no one left to stand in for.
+
+Where the animated content is a *fetched payload*, the understudy need not be a
+twin at all: bake one elected frame in the same encoding, inline it in the
+bundle as base64, and hand it to the same decoder and the same renderer. First
+paint is a real frame rather than a stand-in, there is no second composition to
+drift out of sync, and the swap is one variable. A single frame of a quantised
+field is 200–600 bytes — small enough to inline, unlike a poster image.
+```js
+let frames = decode(atob(INLINE_FIRST_FRAME))     // one frame, immediately
+fetch(url).then(r => r.arrayBuffer()).then(b => { frames = decode(b); redraw() })
+```
+⚠ Inline bytes are uncacheable and sit in the entry chunk — one frame, never a
+handful. Elect it by looking at it; frame zero is usually the empty one.

@@ -4,7 +4,7 @@ category: scale
 tags: [progressive-enhancement,feature-detection,tokens,correctness,architecture]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

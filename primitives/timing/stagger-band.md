@@ -4,7 +4,7 @@ category: timing
 tags: [motion,rhythm,sequencing]
 axes: {energy: 3, density: 3, weight: 2, finish: 4}
 cost: 1
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []
@@ -45,3 +45,8 @@ window on a single normalised clock — `smoothstep(start, start + w, t)` — so
 whole cascade is one number. It is then scrubbable, reversible, interruptible,
 and reduced motion is `t = 1` rather than a branch. Window 0.12–0.25 of the run;
 spread the starts over the remainder.
+
+The band widens as the unit gets bigger. 60–80ms is right for siblings in a row;
+a cascade down the *lines* of a heading reads better nearer 40–55ms, because the
+eye is already travelling down them and the extra delay lands as lag rather than
+rhythm. Scale it to what is moving, not to a house number.

@@ -4,7 +4,7 @@ category: interaction
 tags: [motion,disclosure,accessibility,progressive-enhancement,height]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -58,3 +58,19 @@ a focused control inside a shut `<details>` scrolls its own ancestor.
               content-visibility .28s allow-discrete }
 .item[open]::details-content { block-size: auto; opacity: 1 }
 ```
+
+Where script must own the height anyway — a panel outside `<details>`, a
+measured target the keyword interpolation cannot reach — the from-value is the
+panel's *current* measured height, never its resting one. Read it with
+`getBoundingClientRect` at the moment of the toggle, animate to the measured
+target, write `auto` on finish, and on teardown pin the measured height before
+cancelling. Rapid toggling then reverses out of wherever it had got to instead
+of snapping to a closed box.
+```js
+const from = el.getBoundingClientRect().height           // mid-flight, not 0
+const a = el.animate([{ height: `${from}px` }, { height: `${to}px` }], { duration: 400, easing })
+a.onfinish = () => { el.style.height = open ? 'auto' : '0px' }
+```
+⚠ Mark the closed panel `inert` as well as `aria-hidden`, and `visibility:
+hidden` its contents — a zero-height overflow-hidden box still holds focusable
+children in the tab order.

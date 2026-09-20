@@ -4,7 +4,7 @@ category: reveal
 tags: [type,reveal,motion,technical,text]
 axes: {energy: 4, density: 3, weight: 2, finish: 3}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -66,3 +66,17 @@ short to show a cascade still shows direction.
 ```
 ⚠ Keep the tail above the contrast floor for the whole run — it is on screen long
 enough to be read, and it is the half that is not yet the real string.
+
+There is a structural answer to the width lock, the `TreeWalker` and the
+translation hazard together: never touch the original. Set it `color:
+transparent` so it keeps its box, its wrap geometry, its child markup and its
+accessible text, then append one `aria-hidden` absolutely-positioned span that
+inherits `font`, `letter-spacing` and `white-space: pre` and scramble *that*.
+Restore is removing a node and two inline styles. Swap only a fraction of the
+slots per tick — 15–30% — so the string stays readable while it churns.
+```css
+.scramble-overlay { position: absolute; inset: 0 auto auto 0; width: max-content;
+  font: inherit; letter-spacing: inherit; white-space: pre; pointer-events: none }
+```
+⚠ The overlay is only in register while the run is one line — on a wrapping
+block it stacks on the first line. Cap it at single-line labels and headings.

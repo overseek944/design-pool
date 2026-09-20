@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,architecture,accessibility]
 axes: none
 cost: 2
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
@@ -42,3 +42,14 @@ a tablet rotated into a wide layout keeps the phone's cap.
 const cap = matchMedia('(max-width: 900px)').matches ? 1.5 : 2
 r.setPixelRatio(Math.min(devicePixelRatio || 1, cap))
 ```
+
+Two caps are better than one, and the second is an *area* budget. A backing
+store's cost is pixels, not ratio, so a small inline canvas can afford full
+device ratio while a full-bleed one cannot — fold both into the same `min` and
+the decision stops needing breakpoints at all. Budget 2–3 megapixels; below it
+the ratio cap governs, above it the area cap takes over smoothly.
+```js
+const m = Math.min(devicePixelRatio || 1, 2, Math.sqrt(2.5e6 / (w * h)))
+```
+⚠ Recompute on every resize, not once — the same element crosses the budget
+when a panel opens beside it. Never on a canvas holding text or a hard edge.

@@ -4,7 +4,7 @@ category: timing
 tags: [tokens,correctness,motion,build]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -37,3 +37,16 @@ const px = parseFloat(getComputedStyle(probe).width)
 `@property` is supported. Duplicating the slope in script is the trap this
 replaces — the two copies drift at the next design change and nothing fails
 loudly.
+
+An easing token survives the trip better than a duration, and `linear()` is why
+it is worth making. A spring sampled into a `linear()` list is a plain string:
+declare it once as a custom property, and the same token drives a CSS
+`transition` and a WAAPI `easing` with no parsing and no second copy of the
+curve in script. A `cubic-bezier()` token works identically. This is the only
+way a JS-measured animation and a CSS one can be guaranteed to match.
+```js
+const ease = getComputedStyle(el).getPropertyValue('--spring').trim() || 'ease-out'
+el.animate([{ height: `${from}px` }, { height: `${to}px` }], { duration: 400, easing: ease })
+```
+⚠ `element.animate` throws on an empty string, so the fallback is required, not
+defensive — the property is empty until the stylesheet parses.
