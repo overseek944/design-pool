@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,transform,scale,focus,diagram,narrative]
 axes: {energy: 3, density: 2, weight: 3, finish: 5}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -38,3 +38,22 @@ the first frame.
 ```
 ⚠ One always-running transform on a large subtree; keep the scene off
 `will-change` and let the compositor promote only while it animates.
+
+Keyframes fix the tour at author time. Where the stops come from a script — a
+sequence pausing on whatever it just did — publish the camera as four custom
+properties instead, destination *and* duration together, and let one CSS
+`transition` interpolate. The move runs on the compositor with no frame loop, a
+scheduler that knows how long a beat is passes that number alongside the
+position, and a stop can be inserted without touching a `@keyframes` block.
+The same four properties are what any overlay reads to cancel the zoom.
+```css
+.stage { transform: translate(var(--cam-x), var(--cam-y)) scale(var(--cam-scale));
+         transform-origin: 0 0; transition: transform var(--cam-ms) var(--cam-ease) }
+```
+```js
+const move = (x, y, s, ms) => { const st = stage.style   // one task, one transition
+  st.setProperty('--cam-ms', ms + 'ms'); st.setProperty('--cam-scale', s.toFixed(3))
+  st.setProperty('--cam-x', Math.round(x) + 'px'); st.setProperty('--cam-y', Math.round(y) + 'px') }
+```
+⚠ Write all four in the same task. Split across frames it restarts the
+transition from wherever it had reached, and each move lands short.

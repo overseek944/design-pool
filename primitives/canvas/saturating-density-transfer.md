@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,shader,color,field,opacity]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,18 @@ gl_FragColor = vec4(mix(uGround, c, a), 1.0);
 ⚠ Hold `uMax` well below 1 anywhere copy sits over the field. The transfer
 flattens the top of the range but still approaches full opacity, so it
 guarantees no contrast floor on its own.
+
+Where the field is a *distance* rather than a density, running the same
+exponential twice isolates a band instead of filling one: `1 − exp(−k /
+exp(k·m))` peaks where `m` is small and collapses away from it, and the single
+`k` sets width and edge hardness together — raise it and the band both narrows
+and sharpens. Evaluate it once per palette entry with the sample point stepped
+a hair between them and the band separates into coloured plies along its own
+normal, dispersion for the cost of the loop. k 3–8, step .005–.02.
+```glsl
+float w = 1.0 - exp(-k / exp(k * m));     // m = distance field, k = 3..8
+sum += uColors[i] * w; cover = max(cover, w);
+```
+⚠ Emit `cover` as alpha rather than compositing against a guessed ground: the
+layer then sits on whatever the page actually is, and a palette or theme change
+cannot leave a rectangle behind it.

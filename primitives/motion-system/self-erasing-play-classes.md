@@ -4,7 +4,7 @@ category: motion-system
 tags: [architecture,progressive-enhancement,svg,accessibility,correctness,entrance]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,19 @@ Promise.all(el.getAnimations({ subtree: true }).map(a => a.finished))
 ```
 ⚠ Arm before first paint or the settled frame flashes. Re-arm only at ratio 0;
 at 0.1–0.3 it replays mid-view.
+
+Classes can only undo what CSS did. A sequence that types into nodes, scrolls
+a pane, injects rows or writes inline styles has no class to remove, and the
+second play starts from wherever the first stopped. Snapshot the subtree's
+`innerHTML` once at setup — the shipped, settled markup — and restore it to
+rewind: one assignment returns text, scroll offsets, attributes and injected
+nodes together, and the settled frame is by construction exactly what was
+served. Re-query every node after the write; the old references address a
+detached tree.
+```js
+const settled = stage.innerHTML              // the end state, as shipped
+const rewind = () => { stage.innerHTML = settled; delete stage.dataset.phase }
+```
+⚠ Listeners, observers and running animations inside the subtree die with it —
+delegate from the container or re-bind after each rewind. Never over a subtree
+holding an iframe, a media element or the focused node.

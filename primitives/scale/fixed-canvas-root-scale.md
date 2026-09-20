@@ -69,3 +69,21 @@ factor of 0.6–0.85 is the correct answer, not a failure to be responsive.
 @media (max-width: 40rem) {
   .stage { width: 480px; transform: rotateX(52deg) rotate(-37deg) scale(.7) } }
 ```
+
+Container query units give the same factor with no script, no first-paint
+flash and no transform at all: publish `--px: calc(100cqw / <designWidth>)` on
+an `inline-size` container and spend it as `calc(N * var(--px))`, where N is
+read straight off the mock. Nothing is transformed, so the scaled thing still
+composes with a camera or a parallax above it, and it nests — a 1922-wide
+stage holding a 780-wide panel each declare their own. Where the content is a
+real product surface, redefine the *design system's* spacing, type and radius
+tokens through the unit inside that scope and every component renders at
+miniature without knowing.
+```css
+.shell { container-type: inline-size; aspect-ratio: 1922 / 1320 }
+.stage { --px: calc(100cqw / 1922) }
+.stage .panel { --inset-md: calc(12 * var(--px)); --body-size: calc(14 * var(--px));
+                inline-size: calc(486 * var(--px)) }
+```
+⚠ Text sized this way carries the same WCAG 1.4.4 risk as the transform does,
+so the miniature must never be the only copy of anything that has to be read.

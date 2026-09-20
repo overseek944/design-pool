@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,accessibility,architecture,diagram]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -34,3 +34,19 @@ visually-hidden block.
 <figure role="img" aria-label="A week of meter readings against the learned
   baseline, with weekend load 38 percent above it flagged."> … </figure>
 ```
+
+The argument that saves a scrubbed canvas saves a *timed* re-enactment too,
+and the pruning is the mechanism rather than the cost: the subtree churns, the
+node does not, so one label written as the whole story in reading order stays
+true for the whole run. What makes it fair is the transport beside it — a
+demonstration that moves for more than five seconds owes a pause, and a seek
+turns the label's sequence into something a reader can actually reach. Serve
+the transport `hidden` and let the runtime reveal it on the one path where the
+thing really moves, so a page with no script never offers controls for a still
+picture.
+```html
+<div role="img" aria-label="…every beat, in order, as one sentence…">…</div>
+<div class="transport" hidden><button aria-label="Pause demo">Pause</button></div>
+```
+⚠ Label and film drift the first time a beat is added — generate it from the
+sequence's own step table, or review both together or neither.
