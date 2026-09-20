@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,intersection-observer,visibility,battery,correctness]
 axes: none
 cost: 2
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -72,3 +72,15 @@ single path — the CSS reset is one rule list, selected two ways.
   animation: none !important; transition: none !important } }
 .page[data-reduced-motion=true] *, .page[data-reduced-motion=true] ::before { /* same */ }
 ```
+
+When the loop stands in for a media element — a level meter, a waveform, a
+spinner over a stream — the transport is the term, and its truth lives in the
+element's events, not in the control that started it. `ended`, `pause`,
+`waiting` and `seeking` all arrive with no click, so a visualiser wired to the
+button keeps dancing over silence.
+```js
+['play','playing','pause','ended','waiting','seeking'].forEach(t =>
+  audio.addEventListener(t, () => el.dataset.running = String(!audio.paused && !audio.seeking)))
+```
+⚠ Bind the element, not the page: several players on one surface each own their
+own meter, and a shared flag stops all of them when any one ends.

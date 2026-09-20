@@ -4,7 +4,7 @@ category: layout
 tags: [layout,tokens,safe-area,responsive,correctness]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,16 @@ narrow, up to 80px wide.
 ```
 ⚠ `env()` resolves to zero unless the document ships `viewport-fit=cover`, and
 landscape is where insets actually bite — test there, not portrait.
+
+`max()` is the rule for a gutter and the wrong one for anything the reader must
+reach. Where the inset marks an area the hardware *takes* — a gesture bar under
+a docked action row, a notch over a close button — add instead of maximising:
+`max()` lets a 34px bar consume the whole 32px design value and the control ends
+up flush against it, while the sum keeps the designed breathing room above
+whatever the device claims. Gutters clamp, docked chrome accumulates.
+```css
+.dock { padding-block-end: calc(12px + env(safe-area-inset-bottom)) }
+```
+⚠ Accumulating on a full-height panel costs real estate: subtract the same
+`env()` from its height (`calc(100dvh - var(--bar) - env(safe-area-inset-bottom))`)
+or the last row sits below the fold on exactly the devices that have insets.

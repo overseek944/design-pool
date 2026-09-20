@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,focus,correctness,overlay,pointer-events]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,16 @@ el.inert = !on
 `el.contains(document.activeElement)` first and hand focus somewhere deliberate.
 `visibility: hidden` does the same job declaratively but cannot be transitioned
 alongside opacity without a `transition-behavior: allow-discrete` branch.
+
+Where the branch must be declarative and `allow-discrete` is not an option, pair
+the two properties on one transition and delay only the discrete one — by the
+fade duration on the way out, by zero on the way in. The element stays visible
+for the whole fade, then flips out of the tree in the same frame the fade ends,
+with no timer to leak and no class to forget.
+```css
+.panel     { opacity: 0; visibility: hidden;  transition: opacity .3s, visibility 0s .3s }
+.panel.on  { opacity: 1; visibility: visible; transition: opacity .3s, visibility 0s }
+```
+⚠ The delay and the fade are one number written twice: change the duration in
+one place and the element vanishes mid-fade or lingers as a dead hit target.
+Bind both to the same custom property.

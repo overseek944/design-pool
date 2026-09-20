@@ -1,6 +1,6 @@
 # Manifest
 
-245 primitives. Format: `category/id | axes cost | tags | gist`
+248 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -90,6 +90,7 @@ light/stacked-chromatic-bloom | E3 D2 W4 F4 $3 | effect glow filter svg depth | 
 media/approach-loaded-video | neutral  $2 | media video performance intersection-observer accessibility bandwidth | Background footage is usually the heaviest thing on a page and u
 media/aspect-locked-media | neutral  $1 | layout media cls | Lock every media slot with an explicit aspect-ratio and let widt
 media/blend-normalised-logo-wall | neutral  $1 | media logos blend-mode assets normalisation | Supplied logo files arrive as opaque rectangles — baked-in white
+media/child-reported-frame-height | neutral  $2 | media correctness architecture cls responsive | An iframe reporting its own height hands layout control to a cha
 media/dialog-scoped-embed-lifecycle | neutral  $2 | media performance dialog correctness lifecycle | A third-party embed is not yours to pause — you cannot reach int
 media/mask-swap-over-shared-paint | E2 D2 W2 F4 $2 | mask icon gradient media state | When a family of glyphs must share one fill — a gradient, a vide
 media/optical-height-logo-row | neutral  $1 | media logos normalisation scale responsive | Supplied marks are drawn to different conventions — a wordmark f
@@ -147,6 +148,7 @@ reveal/glyph-scramble-settle | E4 D3 W2 F3 $2 | type reveal motion technical tex
 reveal/masked-line-rise | E3 D2 W3 F5 $2 | type motion reveal | Split to lines, wrap each in an overflow-hidden outer with a tra
 reveal/mirrored-sign-pair | E3 D2 W3 F4 $2 | reveal motion rotation symmetry pairing | Two peer blocks on one row share a single progress value and rea
 reveal/normalised-path-draw | E3 D2 W2 F5 $1 | svg stroke reveal draw geometry correctness | A draw-on stroke normally needs the path's measured length, whic
+reveal/overhung-skew-fill-sweep | E3 D2 W2 F5 $2 | reveal interaction motion detail effect | Fill a control on hover behind a slanted edge, not a straight on
 reveal/radius-held-inset-wipe | E3 D2 W2 F5 $2 | reveal clip-path wipe panel motion | A panel widening under clip-path: inset() squares its corners of
 reveal/trailing-mask-sweep | E3 D3 W2 F4 $2 | reveal mask scan grid sweep technical | Reveal a field — a measurement grid, a texture, a dot matrix — b
 reveal/word-mask-variant | E4 D3 W3 F4 $2 | type motion reveal | Same nested-mask structure at word granularity (inline-block on 
@@ -182,6 +184,7 @@ scroll/scroll-beat-live-region | neutral  $1 | accessibility scroll aria-live na
 scroll/scrollbar-on-activity | E1 D1 W1 F5 $1 | scroll scrollbar chrome restraint state | A permanent scrollbar rules a line down every panel that owns on
 scroll/scrub-lag-band | E3 D2 W3 F5 $2 | scroll motion feel | scrub as a number adds catch-up lag in seconds and is what separ
 scroll/smooth-scroll-driving-timeline | E3 D2 W3 F5 $3 | scroll motion architecture | Pair a smooth-scroll library (Lenis) with the animation library'
+scroll/stale-scroll-request-guard | neutral  $2 | scroll correctness accessibility events navigation | A scroll request crossing an async boundary — posted by an embed
 scroll/sticky-as-cheap-pin | E1 D2 W2 F3 $1 | scroll layout performance | position: sticky for anything that only needs to hold position —
 scroll/tall-target-intersection-clause | neutral  $1 | scroll correctness observer reveal | intersectionRatio is a fraction of the element, so a section tal
 surface/backdrop-blur-tier-system | E1 D3 W3 F4 $3 | surface depth glass | Treat backdrop blur as a depth scale, not a decoration: sm for i
