@@ -4,7 +4,7 @@ category: timing
 tags: [motion,rhythm,sequencing]
 axes: {energy: 3, density: 3, weight: 2, finish: 4}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,8 @@ Ship the band as **two** tokens, not one value: a tight base at .06–.08s for
 siblings that should read as a single gesture, and a loose tier at .12–.15s for
 sequences meant to be counted — steps, beats, a list the reader is supposed to
 follow item by item. One token forces every group into the same reading.
+
+Without a script the stagger is *n* delay classes on one keyframe, stepping by
+the chosen band. It needs `animation-fill-mode: both`, or each element holds its
+*final* state through its own delay and the group flashes in before the sequence
+starts. Past eight classes, use the JS form.

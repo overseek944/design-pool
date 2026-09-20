@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,accessibility,required]
 axes: none
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -31,3 +31,9 @@ branch is three lines rather than one per component.
 
 The query can flip mid-session. Read `matches` once at setup and you miss the
 user reaching for the OS switch — listen for `change` and re-run the branch.
+
+Variant — for a blanket reset over code you do not own, collapse rather than
+cancel: `animation-duration: 1ms`, `animation-iteration-count: 1`,
+`transition-duration: 1ms`. `animation: none` cancels outright, so `animationend`
+never fires and a script waiting on it stalls with content still hidden. The
+iteration cap is the half that stops infinite loops.

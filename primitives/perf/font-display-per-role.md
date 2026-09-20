@@ -4,7 +4,7 @@ category: perf
 tags: [type,font-loading,cls,performance,correctness]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -28,3 +28,8 @@ discovery-plus-fetch window, and a face referenced from CSS is not discovered
 until the stylesheet parses. `<link rel=preload as=font crossorigin>` starts
 that fetch alongside the HTML and collapses the window, so `swap` is safe on
 the one or two faces worth preloading; `optional` stays for the rest.
+
+Split each face by `unicode-range` as well as by weight: the browser fetches
+only the subsets the rendered glyphs need, so a Latin page never pays for
+Cyrillic. The trap is that one stray character — a `№`, a diacritic — pulls a
+whole extra subset for one glyph. Audit the copy.

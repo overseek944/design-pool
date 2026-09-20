@@ -4,7 +4,7 @@ category: type
 tags: [type,tokens,opentype,variable-font,precision]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -32,3 +32,8 @@ Ship a real italic — a second variable file over the same weight range, not a
 synthesised oblique. With `font-synthesis: none` that pair is what keeps
 emphasis from shearing. It doubles the payload, so it earns its place only where
 italic carries meaning.
+
+`font-feature-settings` inherits, and feature *indices* are per-face: `ss01` set
+on `:root` reaches every family below, where the same tag selects an unrelated
+alternate or nothing. Reset to `normal` wherever the family changes — the mono
+tier especially — or scope the tokens per family.
