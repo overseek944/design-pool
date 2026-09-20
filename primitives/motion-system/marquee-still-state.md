@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,accessibility,marquee,correctness,overflow]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,10 @@ edge mask that now fades real content.
 }
 ```
 ⚠ Pause-on-hover is not a substitute: it needs a pointer and never fires.
+
+Variant — when wrapping would take over the page, make the still state a native
+horizontal scroller: keep the single-line width and the mask, which now marks a
+real affordance, and hand the track to the reader.
+```css
+.row { overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain }
+```

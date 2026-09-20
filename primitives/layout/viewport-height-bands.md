@@ -4,7 +4,7 @@ category: layout
 tags: [layout,responsive,media-query,ornament,correctness]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,8 @@ over 1300px.
 ```
 ⚠ Mobile chrome resizes the viewport mid-scroll, so a height query can flip on
 its own. Keep these behind a pointer-and-keyboard width.
+
+The strongest use is withdrawal, not adjustment. Height decides whether a
+pinned multi-screen section should exist at all — on a short window its lower
+half is unreachable — so gate the pin itself and let the section fall back to
+ordinary flow. Gates 700–780px.
