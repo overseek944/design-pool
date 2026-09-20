@@ -1,0 +1,356 @@
+#!/usr/bin/env node
+// Continuous harvest runner. State is local-only (queue/ is gitignored).
+import { readFileSync, writeFileSync, existsSync, mkdirSync, unlinkSync, appendFileSync } from 'fs'
+import { join, dirname } from 'path'
+import { fileURLToPath } from 'url'
+import { execSync, spawnSync } from 'child_process'
+
+const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
+const Q = join(ROOT, 'queue')
+const STATE = join(Q, 'state.json')
+const PAUSE = join(Q, 'PAUSE')
+const SITES = join(Q, 'sites.txt')
+const DASH = join(Q, 'dashboard.html')
+const POOL = join(ROOT, 'bin', 'pool')
+if (!existsSync(Q)) mkdirSync(Q, { recursive: true })
+if (!existsSync(join(Q, 'logs'))) mkdirSync(join(Q, 'logs'), { recursive: true })
+
+const SUFFIX = new Set(['co.uk','org.uk','ac.uk','gov.uk','co.jp','co.kr','com.au','net.au','org.au','com.br',
+  'com.cn','co.in','co.nz','co.za','com.mx','com.tr','com.sg','co.il','com.hk','github.io','vercel.app',
+  'netlify.app','pages.dev','webflow.io','framer.website','framer.app','wixsite.com','myshopify.com',
+  'notion.site','super.site','carrd.co','glitch.me','surge.sh','herokuapp.com','fly.dev','onrender.com','web.app'])
+function canon(u) {
+  const s = String(u).trim().toLowerCase().replace(/^[a-z]+:\/\//, '').split('#')[0].split('?')[0].replace(/\/+$/, '')
+  const [h, ...rest] = s.split('/')
+  const host = h.replace(/^www\./, '').replace(/:\d+$/, '')
+  return { host, full: host + (rest.length ? '/' + rest.join('/') : '') }
+}
+const siteKey = h => { const p = h.split('.'); return p.length <= 2 ? h
+  : SUFFIX.has(p.slice(-2).join('.')) ? p.slice(-3).join('.') : p.slice(-2).join('.') }
+
+const load = () => existsSync(STATE) ? JSON.parse(readFileSync(STATE, 'utf8'))
+  : { version: 1, created: new Date().toISOString(), sites: [] }
+const save = s => writeFileSync(STATE, JSON.stringify(s, null, 2))
+const arg = (k, d) => { const i = process.argv.indexOf('--' + k); return i > -1 ? process.argv[i + 1] : d }
+const has = k => process.argv.includes('--' + k)
+const git = a => execSync(`git ${a}`, { cwd: ROOT, encoding: 'utf8' }).trim()
+const tryGit = a => { try { return { ok: true, out: git(a) } } catch (e) { return { ok: false, out: String(e.stdout || '') + String(e.stderr || e.message) } } }
+const ledgerCount = () => { const f = join(ROOT, 'ledger.jsonl'); return existsSync(f) ? readFileSync(f, 'utf8').split('\n').filter(Boolean).length : 0 }
+const poolCount = () => { try { return +execSync(`"${POOL}" stats`, { cwd: ROOT, encoding: 'utf8' }).match(/primitives\s+(\d+)/)[1] } catch { return 0 } }
+
+// ── dashboard ────────────────────────────────────────────────────────────────
+const GLYPH = { done: '●', pending: '○', running: '▶', skipped: '⊘', failed: '✕' }
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]))
+const dur = ms => !ms ? '—' : ms < 60000 ? `${(ms / 1000).toFixed(0)}s` : `${Math.floor(ms / 60000)}m ${Math.round(ms % 60000 / 1000)}s`
+const when = t => !t ? '—' : new Date(t).toLocaleString('en-GB', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })
+
+function dashboard() {
+  const s = load(), n = {}
+  for (const k of ['done', 'pending', 'running', 'skipped', 'failed']) n[k] = s.sites.filter(x => x.status === k).length
+  const total = s.sites.length, settled = n.done + n.skipped + n.failed
+  const pct = total ? Math.round(settled / total * 100) : 0
+  const gained = s.sites.reduce((a, x) => a + (x.new || 0), 0)
+  const unpushed = s.sites.filter(x => x.commit && !x.pushed).length
+  const paused = existsSync(PAUSE)
+  let cum = 0
+  const rows = s.sites.map((x, i) => {
+    cum += x.new || 0
+    return `<tr class="${x.status}">
+      <td class="num">${i + 1}</td>
+      <td class="site"><span class="g" aria-hidden="true">${GLYPH[x.status]}</span> ${esc(x.url)}</td>
+      <td><span class="st ${x.status}">${x.status}</span></td>
+      <td class="num">${x.status === 'done' ? (x.new || 0) : '—'}</td>
+      <td class="num">${x.status === 'done' ? (x.sharpened || 0) : '—'}</td>
+      <td class="num">${x.status === 'done' ? cum : '—'}</td>
+      <td class="num">${dur(x.durationMs)}</td>
+      <td class="mut">${when(x.finished || x.started)}</td>
+      <td class="mut note">${esc(x.note || '')}</td></tr>`
+  }).join('')
+
+  writeFileSync(DASH, `<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Harvest Queue</title><style>
+:root{--bg:#000;--surface:#09090b;--line:#27272a;--fg:#ededed;--mut:#a1a1aa;--dim:#71717a;
+--done:#4ade80;--run:#fbbf24;--fail:#f87171;--pend:#a1a1aa;--skip:#71717a;
+--mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 14px/1.5 var(--mono);
+ -webkit-font-smoothing:antialiased;padding:2rem 1rem}
+.wrap{max-width:70rem;margin:0 auto}
+h1{font-size:1rem;font-weight:600;margin:0;letter-spacing:.02em;text-wrap:balance}
+header{display:flex;flex-wrap:wrap;gap:1rem;align-items:baseline;justify-content:space-between;margin-bottom:1.5rem}
+.sub{color:var(--mut);font-size:.75rem}
+.bar{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;padding:1rem;background:var(--surface);
+ border:1px solid var(--line);border-radius:6px;margin-bottom:1rem}
+.stat{display:flex;flex-direction:column;gap:.15rem}
+.stat b{font-size:1.4rem;font-weight:600;line-height:1}
+.stat span{font-size:.7rem;color:var(--mut);text-transform:uppercase;letter-spacing:.08em}
+progress{width:100%;height:6px;margin:1rem 0 0;appearance:none;border:0;display:block}
+progress::-webkit-progress-bar{background:var(--line);border-radius:3px}
+progress::-webkit-progress-value{background:var(--done);border-radius:3px}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+table{width:100%;border-collapse:collapse;font-size:.8rem;min-width:44rem}
+th{text-align:left;font-weight:500;color:var(--mut);font-size:.68rem;text-transform:uppercase;
+ letter-spacing:.08em;padding:.7rem .75rem;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:.55rem .75rem;border-bottom:1px solid #18181b;vertical-align:top}
+tr:last-child td{border-bottom:0}
+tr.running{background:#1c1917}
+.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.mut{color:var(--mut)}.note{font-size:.72rem;max-width:18rem}
+.site{white-space:nowrap}
+.g{display:inline-block;width:1em}
+tr.done .g{color:var(--done)}tr.running .g{color:var(--run)}tr.failed .g{color:var(--fail)}
+tr.pending .g{color:var(--pend)}tr.skipped .g{color:var(--skip)}
+.st{font-size:.68rem;text-transform:uppercase;letter-spacing:.06em}
+.st.done{color:var(--done)}.st.running{color:var(--run)}.st.failed{color:var(--fail)}
+.st.pending{color:var(--pend)}.st.skipped{color:var(--skip)}
+.flag{padding:.6rem .8rem;border:1px solid var(--line);border-left:2px solid var(--run);
+ border-radius:4px;margin-bottom:1rem;font-size:.78rem;color:var(--fg);background:var(--surface)}
+.empty{padding:3rem 1rem;text-align:center;color:var(--mut)}
+.empty code{color:var(--fg);background:#18181b;padding:.15rem .4rem;border-radius:3px}
+footer{margin-top:1.25rem;display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;
+ align-items:center;color:var(--dim);font-size:.72rem}
+label{display:inline-flex;gap:.4rem;align-items:center;cursor:pointer;color:var(--mut)}
+input[type=checkbox]{accent-color:var(--done);width:.9rem;height:.9rem}
+:focus-visible{outline:2px solid var(--done);outline-offset:2px}
+*{transition-duration:200ms}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style></head><body><div class="wrap">
+<header><div><h1>Harvest Queue</h1>
+<div class="sub">design-pool · ${poolCount()} primitives · ${ledgerCount()} site(s) mined</div></div>
+<div class="sub">generated ${new Date().toLocaleTimeString('en-GB')}</div></header>
+${paused ? '<div class="flag">⏸ PAUSED — runner will stop after the current site. <code>bin/pool-run resume</code></div>' : ''}
+${unpushed ? `<div class="flag">⚠ ${unpushed} commit(s) not pushed. Runner retries on next site; or <code>git push</code>.</div>` : ''}
+<div class="bar">
+<div class="stat"><b>${n.done}</b><span>done</span></div>
+<div class="stat"><b>${n.pending}</b><span>pending</span></div>
+<div class="stat"><b style="color:${n.running ? 'var(--run)' : 'inherit'}">${n.running}</b><span>running</span></div>
+<div class="stat"><b class="mut">${n.skipped}</b><span>skipped</span></div>
+<div class="stat"><b style="color:${n.failed ? 'var(--fail)' : 'inherit'}">${n.failed}</b><span>failed</span></div>
+<div class="stat"><b style="color:var(--done)">+${gained}</b><span>primitives gained</span></div>
+<progress value="${settled}" max="${total || 1}" aria-label="${pct}% of queue settled"></progress>
+</div>
+${total ? `<div class="scroll"><table><thead><tr>
+<th>#</th><th>site</th><th>status</th><th class="num">new</th><th class="num">sharp</th>
+<th class="num">pool</th><th class="num">took</th><th>when</th><th>note</th>
+</tr></thead><tbody>${rows}</tbody></table></div>`
+ : `<div class="scroll"><div class="empty"><p>Queue is empty.</p>
+    <p>Add sites to <code>queue/sites.txt</code> then run <code>bin/pool-run load</code>.</p></div></div>`}
+<footer><label><input type="checkbox" id="auto" checked> auto-refresh every 5s</label>
+<span>${settled}/${total} settled · ${pct}%</span></footer>
+</div><script>
+var b=document.getElementById('auto'),t;
+try{b.checked=localStorage.getItem('pr-auto')!=='0'}catch(e){}
+function sched(){clearTimeout(t);if(b.checked)t=setTimeout(function(){location.reload()},5000)}
+b.addEventListener('change',function(){try{localStorage.setItem('pr-auto',b.checked?'1':'0')}catch(e){};sched()});
+sched();
+</script></body></html>`)
+  return DASH
+}
+
+// ── commands ─────────────────────────────────────────────────────────────────
+const cmd = process.argv[2]
+
+function addUrls(urls, s) {
+  const led = existsSync(join(ROOT, 'ledger.jsonl'))
+    ? readFileSync(join(ROOT, 'ledger.jsonl'), 'utf8').split('\n').filter(Boolean).map(l => { try { return JSON.parse(l) } catch { return null } }).filter(Boolean) : []
+  let added = 0, dupList = 0, dupLedger = 0
+  for (const raw of urls) {
+    const c = canon(raw); if (!c.host || !c.host.includes('.')) continue
+    if (s.sites.some(x => x.url === c.full)) { dupList++; continue }
+    const key = siteKey(c.host)
+    const inLedger = led.find(e => e.url === c.full)
+    s.sites.push({ url: c.full, key, status: inLedger ? 'skipped' : 'pending',
+      new: 0, sharpened: 0, note: inLedger ? `already in ledger (${inLedger.date})` : '' })
+    inLedger ? dupLedger++ : added++
+  }
+  return { added, dupList, dupLedger }
+}
+
+if (cmd === 'add' || cmd === 'load') {
+  const s = load()
+  const urls = cmd === 'add' ? process.argv.slice(3).filter(a => !a.startsWith('--'))
+    : existsSync(arg('file', SITES)) ? readFileSync(arg('file', SITES), 'utf8').split('\n').map(l => l.split('#')[0].trim()).filter(Boolean)
+      : (console.error(`no such file: ${arg('file', SITES)}`), process.exit(1))
+  const r = addUrls(urls, s); save(s); dashboard()
+  console.log(`queued ${r.added} new · ${r.dupList} duplicate line(s) in list · ${r.dupLedger} already harvested`)
+  console.log(`pending: ${s.sites.filter(x => x.status === 'pending').length}   total: ${s.sites.length}`)
+}
+
+if (cmd === 'status' || cmd === 'list') {
+  const s = load()
+  if (!s.sites.length) console.log('queue empty — add sites to queue/sites.txt then: bin/pool-run load')
+  else s.sites.forEach((x, i) => console.log(
+    `${String(i + 1).padStart(3)}  ${GLYPH[x.status]} ${x.status.padEnd(8)} ${x.url.padEnd(38)}` +
+    `${x.status === 'done' ? `+${x.new} new, ${x.sharpened} sharp, ${dur(x.durationMs)}` : ''}${x.note ? '  ' + x.note : ''}`))
+  if (s.sites.length) {
+    const n = k => s.sites.filter(x => x.status === k).length
+    console.log(`\n${n('done')} done · ${n('pending')} pending · ${n('running')} running · ${n('skipped')} skipped · ${n('failed')} failed`)
+    if (existsSync(PAUSE)) console.log('⏸ PAUSED')
+  }
+}
+
+if (cmd === 'dash') { console.log(dashboard()) }
+if (cmd === 'open') { const p = dashboard(); spawnSync('open', [p]); console.log(p) }
+if (cmd === 'pause') { writeFileSync(PAUSE, new Date().toISOString()); dashboard(); console.log('⏸ paused — runner stops after the current site') }
+if (cmd === 'resume') { if (existsSync(PAUSE)) unlinkSync(PAUSE); dashboard(); console.log('▶ resumed — run: bin/pool-run start') }
+
+if (cmd === 'reset') {
+  const s = load(), t = process.argv[3]
+  const hit = x => t === '--all' ? true : t === '--failed' ? x.status === 'failed'
+    : t === '--stuck' ? x.status === 'running' : x.url === canon(t || '').full
+  let k = 0
+  for (const x of s.sites) if (hit(x) && x.status !== 'done') { x.status = 'pending'; x.note = ''; k++ }
+  save(s); dashboard(); console.log(`${k} site(s) reset to pending`)
+}
+
+if (cmd === 'next') {
+  const x = load().sites.find(x => x.status === 'pending')
+  console.log(x ? x.url : '')
+}
+
+if (cmd === 'start') {
+  const s = load()
+  for (const x of s.sites) if (x.status === 'running') { x.status = 'pending'; x.note = 'reset after interrupted run' }
+  save(s)
+
+  const dirty = tryGit('status --porcelain').out.split('\n').filter(Boolean)
+  if (dirty.length) {
+    const poolOwned = dirty.every(l => /\s(primitives\/|MANIFEST\.md|index\.json|ledger\.jsonl)/.test(l))
+    if (has('reset-dirty') && poolOwned) { tryGit('checkout -- .'); tryGit('clean -fd primitives'); console.log('discarded partial pool changes') }
+    else {
+      console.error(`✗ working tree is dirty (${dirty.length} change(s)) — refusing to start.\n`)
+      dirty.slice(0, 10).forEach(l => console.error('  ' + l))
+      console.error(poolOwned ? '\nAll changes are pool-owned. Re-run with --reset-dirty to discard them.'
+        : '\nCommit or stash your changes first.')
+      process.exit(1)
+    }
+  }
+
+  const limit = +arg('limit', 1e9), timeoutMs = +arg('timeout-min', 20) * 60000
+  const dry = has('dry-run')
+  let current = null
+  const bail = () => {
+    if (current) { const x = s.sites.find(y => y.url === current); if (x && x.status === 'running') { x.status = 'pending'; x.note = 'interrupted' } }
+    save(s); dashboard(); console.log('\n⏸ stopped — state saved. Resume with: bin/pool-run start'); process.exit(130)
+  }
+  process.on('SIGINT', bail); process.on('SIGTERM', bail)
+
+  const pending = s.sites.filter(x => x.status === 'pending').slice(0, limit)
+  if (!pending.length) { dashboard(); console.log('nothing pending'); process.exit(0) }
+  console.log(`${pending.length} site(s) to process${dry ? ' (DRY RUN)' : ''}\ndashboard: ${dashboard()}\n`)
+
+  for (const site of pending) {
+    if (existsSync(PAUSE)) { console.log('⏸ PAUSE present — stopping cleanly'); break }
+    current = site.url
+    site.status = 'running'; site.started = new Date().toISOString(); site.note = ''
+    save(s); dashboard()
+    const t0 = Date.now()
+    console.log(`\n${'─'.repeat(66)}\n▶ ${site.url}`)
+
+    // gate 1: url/domain duplicate (re-checked live — the ledger grows during a run)
+    const g = spawnSync(POOL, ['site', site.url], { cwd: ROOT, encoding: 'utf8' })
+    if (g.status !== 0) {
+      site.status = 'skipped'; site.note = (g.stdout || '').split('\n')[0].replace(/^[✗⚠]\s*/, '')
+      site.finished = new Date().toISOString(); site.durationMs = Date.now() - t0
+      save(s); dashboard(); console.log(`  ⊘ skipped — ${site.note}`); continue
+    }
+    if (dry) { site.status = 'pending'; site.note = 'dry run'; save(s); console.log('  (dry run — would harvest)'); continue }
+
+    const prompt = `You are the harvest agent for the design-pool repo at ${ROOT}.
+
+Harvest exactly ONE site: ${site.url}
+
+Follow agents/harvest.md in this repo precisely, after reading AGENTS.md.
+
+Hard requirements:
+- Do NOT run git commit, git add, or git push. The runner handles version control.
+- Work only inside .cache/ and delete it when finished.
+- Run the fingerprint gate (step 3b). If it blocks, write nothing and stop.
+- You MUST run: bin/pool site add "${site.url}" --new N --sharpened M --signals "..."
+- You MUST run: bin/pool index
+- Every new primitive: under 120 words, source-free (no site name anywhere),
+  with axes (or "none"), cost, and a parameter range rather than one frozen value.
+- Deduplicate against the existing pool by tag query before writing anything.
+  Finding zero new primitives is a valid, common outcome — do not invent entries.
+
+Finish by printing: HARVEST_RESULT new=<N> sharpened=<M>`
+
+    const headBefore = tryGit('rev-parse HEAD').out
+    const log = join(Q, 'logs', `${site.url.replace(/[^a-z0-9]/gi, '_')}.log`)
+    const r = spawnSync('claude', ['-p', prompt, '--permission-mode', 'bypassPermissions', '--add-dir', ROOT],
+      { cwd: ROOT, encoding: 'utf8', timeout: timeoutMs, maxBuffer: 64 * 1024 * 1024 })
+    writeFileSync(log, `$ ${site.url}\n\n${r.stdout || ''}\n--- stderr ---\n${r.stderr || ''}`)
+
+    if (r.error?.code === 'ETIMEDOUT') {
+      site.status = 'failed'; site.note = `timed out after ${arg('timeout-min', 20)}m`
+      tryGit('checkout -- .'); tryGit('clean -fd primitives')
+    } else if (r.status !== 0) {
+      site.status = 'failed'; site.note = `agent exited ${r.status}`.slice(0, 80)
+      tryGit('checkout -- .'); tryGit('clean -fd primitives')
+    } else {
+      // ground truth from git, not from the agent's self-report
+      const headAfter = tryGit('rev-parse HEAD').out
+      const agentCommitted = headAfter !== headBefore
+      if (agentCommitted) {
+        const d = tryGit(`diff --name-status ${headBefore}..HEAD`).out.split('\n').filter(Boolean)
+        site.new = d.filter(l => /^A\s+primitives\//.test(l)).length
+        site.sharpened = d.filter(l => /^M\s+primitives\//.test(l)).length
+        site.note = 'agent self-committed'
+      }
+      const porc = tryGit('status --porcelain').out.split('\n').filter(Boolean)
+      const isPrim = l => /primitives\//.test(l)
+      if (!agentCommitted) {
+        site.new = porc.filter(l => /^\?\?/.test(l) && isPrim(l)).length
+        site.sharpened = porc.filter(l => /^\s?M/.test(l) && isPrim(l)).length
+      }
+      if (porc.length || agentCommitted) {
+        let c = { ok: agentCommitted }
+        if (porc.length) {
+          tryGit('add -A')
+          const msg = `harvest: ${site.url} — ${site.new} new, ${site.sharpened} sharpened`
+          c = tryGit(`commit -q -m ${JSON.stringify(msg)}`)
+        }
+        if (c.ok) {
+          site.commit = tryGit('rev-parse --short HEAD').out
+          let pushed = false
+          for (let i = 0; i < 3 && !pushed; i++) { pushed = tryGit('push').ok; if (!pushed) execSync('sleep 3') }
+          site.pushed = pushed
+          if (!pushed) site.note = 'committed, push failed — will retry'
+          console.log(`  ✓ ${site.new} new, ${site.sharpened} sharpened → ${site.commit}${pushed ? ' pushed' : ' NOT PUSHED'}`)
+        } else { site.note = 'commit failed'; console.log('  ✗ commit failed') }
+      } else { site.note = 'no new primitives'; console.log('  · nothing new — pool already covers this site') }
+      site.status = 'failed' === site.status ? 'failed' : 'done'
+    }
+    site.finished = new Date().toISOString(); site.durationMs = Date.now() - t0
+    current = null; save(s); dashboard()
+
+    // retry any earlier failed pushes
+    if (s.sites.some(x => x.commit && !x.pushed)) {
+      if (tryGit('push').ok) { s.sites.forEach(x => { if (x.commit && !x.pushed) { x.pushed = true; if (x.note === 'committed, push failed — will retry') x.note = '' } }); save(s); dashboard(); console.log('  ↑ backlog pushed') }
+    }
+  }
+
+  const n = k => s.sites.filter(x => x.status === k).length
+  console.log(`\n${'─'.repeat(66)}\n${n('done')} done · ${n('pending')} pending · ${n('skipped')} skipped · ${n('failed')} failed`)
+  console.log(`pool: ${poolCount()} primitives · dashboard: ${DASH}`)
+}
+
+if (!['add','load','status','list','dash','open','pause','resume','reset','next','start'].includes(cmd))
+  console.log(`pool-run — continuous harvest runner (state in queue/, gitignored)
+
+  pool-run load [--file F]       load queue/sites.txt (or F) — skips list dupes + already-harvested
+  pool-run add <url...>          queue individual sites
+  pool-run start [opts]          process pending sites one at a time
+      --limit N                  stop after N sites
+      --dry-run                  show what would run, harvest nothing
+      --timeout-min M            per-site cap (default 20)
+      --reset-dirty              discard uncommitted pool changes before starting
+  pool-run pause | resume        PAUSE sentinel — stops cleanly after current site
+  pool-run status                text queue state
+  pool-run dash | open           regenerate / open the dashboard
+  pool-run reset <url|--failed|--stuck|--all>
+  pool-run next                  print next pending url (manual driver)
+
+Each site: dedup gate → harvest → verify via git → one commit → push.
+Ctrl-C is safe: current site returns to pending and the run resumes where it left off.`)
