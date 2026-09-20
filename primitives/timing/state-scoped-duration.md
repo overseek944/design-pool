@@ -4,7 +4,7 @@ category: timing
 tags: [motion,timing,transition,state,asymmetry]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,9 @@ magnitude apart on the same `opacity`.
 ⚠ Invert the ratio for anything the user acted on: response fast, dismissal
 faster. A slow exit on a control the user just dismissed reads as the interface
 arguing, not as polish.
+
+The same move works on a continuous loop: keep one keyframe and let the state
+selector change `animation-duration`, so intensity is a tempo rather than a
+second animation — an idle breath at 3–5s tightening to under 1.5s when the
+thing is active, with no swap and no restart. States that mean *stopped* take
+`animation-play-state: paused` on the same selector.

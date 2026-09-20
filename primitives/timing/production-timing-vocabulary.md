@@ -4,7 +4,7 @@ category: timing
 tags: [motion,easing,duration,reference,system]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -29,3 +29,9 @@ between two known positions.
 Range — the micro band reaches lower than the table suggests. `.12–.16s` on
 hover, background and colour changes reads as instantaneous response rather than
 as animation; reserve `.20–.35s` for micro-motion that actually travels.
+
+Ship the table as tokens named for the gesture rather than the number —
+`--dur-snap`, `--dur-quick`, `--dur-fade`, `--dur-cross`, `--dur-slide` — and a
+component picks an intent it can be reviewed against instead of typing a
+duration. Reach below the micro band for `snap` at 60–100ms: a state flip with
+no travel at all, where anything longer reads as lag rather than as motion.

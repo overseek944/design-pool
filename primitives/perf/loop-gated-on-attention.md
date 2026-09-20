@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,intersection-observer,visibility,battery,correctness]
 axes: none
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -31,3 +31,20 @@ A script-driven render loop is not reached by `animation-play-state` — the gat
 must stop requesting frames and restart on re-entry. Reset the loop's clock on
 resume, or motion driven from elapsed time jumps by however long it sat
 offscreen.
+
+Fold the motion preference into the same predicate rather than leaving it to a
+separate media query, and subscribe to the query's `change` — a reader reaching
+for the OS switch mid-session should stop the loop, not wait for a reload. The
+same predicate is where a reader's explicit pause belongs, so one attribute
+carries every reason the thing is not running.
+```js
+const run = () => el.dataset.running = String(onScreen && visible && !rm.matches && !userPaused)
+rm.addEventListener('change', run); document.addEventListener('visibilitychange', run)
+```
+
+Geometry and page visibility miss a third case: content that is on screen and
+in a visible tab but *authored* as absent — the inactive panel of a tab set, a
+carousel slide out of view. Ask the accessibility state, not the layout.
+```css
+[role="tabpanel"][aria-hidden="true"] * { animation-play-state: paused !important }
+```

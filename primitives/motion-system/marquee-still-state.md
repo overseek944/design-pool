@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,accessibility,marquee,correctness,overflow]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -37,3 +37,15 @@ between the two: at rest one line with `text-overflow: ellipsis`, armed only
 where the text genuinely overflows, and `ellipsis` swapped for `clip` while it
 runs — otherwise the ellipsis stays pinned at the trailing edge and eats the
 characters the scroll exists to show.
+
+Invert which state is authored: ship the wrapped still layout as the markup's
+default and let script upgrade it to a track once it has confirmed the
+capability it needs. The fallback is then the thing that always renders, not a
+branch nobody tests.
+```css
+.marquee:not([data-enhanced]) .track { animation: none; flex-wrap: wrap; width: 100% }
+```
+
+Give it a real pause control rather than relying on hover — a visible button
+above 44px that flips the same running flag. It is the only stop available to a
+touch reader, and it outranks every automatic gate.

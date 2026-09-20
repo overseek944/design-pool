@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,accessibility,required]
 axes: none
 cost: 1
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
@@ -47,3 +47,8 @@ each element at its authored 0%, which for a wipe is invisible.
 For a continuously-rendered surface the still state is a *drawn* frame: render
 once with every time term at rest and never re-request the loop. Skipping the
 draw leaves a blank canvas.
+
+A blanket reset that only collapses durations still strands any system whose
+resting state is *paused* or delayed — a marquee waiting on a play flag, a
+cascade holding at 0% behind `animation-delay`. Force both in the same reset:
+`animation-play-state: running !important` and `animation-delay: 0s !important`.

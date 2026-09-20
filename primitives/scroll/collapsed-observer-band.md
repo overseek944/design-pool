@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,observer,navigation,architecture,correctness]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -34,4 +34,16 @@ crossing instead of guessing from scroll position. Transition the colour over
 ```js
 { rootMargin: `-${navH}px 0px -90% 0px`, threshold: 0 }
 // nav.classList.toggle('over-light', e.target.dataset.navbg === 'light')
+```
+
+Where a section shorter than the band is possible, drop the observer and hit-test
+instead: on a throttled frame, walk the labelled sections and take the one whose
+box spans a single probe line, defaulting if none does. It costs a rAF and a
+handful of rect reads, and no section can slip through unnoticed because the
+question is asked of every candidate rather than answered by whoever fired last.
+```js
+const y = bar.getBoundingClientRect().bottom + 36
+let g = 'light'
+for (const s of sections) { const r = s.getBoundingClientRect()
+  if (r.top <= y && r.bottom > y) g = s.dataset.ground ?? 'light' }
 ```

@@ -4,7 +4,7 @@ category: media
 tags: [media,video,performance,intersection-observer,accessibility,bandwidth]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -26,3 +26,11 @@ new IntersectionObserver(es => es.forEach(e => {
 ```
 ⚠ Stripping `autoplay` leaves a no-JS reader a still frame, so supply a
 poster. `play()` rejects under gesture policy — catch it or every card logs.
+
+`play()` is async, and the gate can flip while it is pending — scrolled away,
+tab hidden, reader hit pause. Resolve against the *current* intent, not the one
+that started the call, or a video ends up playing in a state that asked for
+silence.
+```js
+wants = true; v.play().then(() => { if (!wants) v.pause() }).catch(() => {})
+```

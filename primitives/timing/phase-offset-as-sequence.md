@@ -4,7 +4,7 @@ category: timing
 tags: [motion,sequencing,rhythm,ambient,css]
 axes: {energy: 3, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -30,4 +30,14 @@ that far in. Same steady state, no build-up — and mandatory when the 0% frame 
 the empty one, as in a stepped flipbook.
 ```css
 .cell { animation-delay: calc(var(--i) * -.16s) }   /* -period/n */
+```
+
+Given hold plateaus, the same offset gives a crossfade with no script and no
+state: stack N layers on one keyframe that rises, holds, falls and stays at
+zero, then delay each by `period / N`. The plateau widths are the composition —
+overlap the fades by 3–5% of the period or the stack flashes through the ground
+between layers.
+```css
+.layer { opacity: 0; animation: xfade 25s linear infinite }
+@keyframes xfade { 0% { opacity: 0 } 4%, 24% { opacity: 1 } 28%, 100% { opacity: 0 } }
 ```
