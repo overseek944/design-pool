@@ -1,6 +1,6 @@
 # Manifest
 
-189 primitives. Format: `category/id | axes cost | tags | gist`
+194 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -17,6 +17,7 @@ canvas/scroll-driven-frame-atlas | E4 D3 W3 F4 $4 | canvas scroll performance | 
 canvas/standard-uniform-set | neutral  $2 | shader architecture reference | A small reusable uniform contract covers most decorative shaders
 canvas/unit-box-asset-framing | neutral  $2 | canvas correctness scale geometry architecture | A loaded 3D asset arrives at whatever scale and origin its expor
 color/declared-contrast-escalation | neutral  $1 | accessibility contrast tokens type color | prefers-contrast: more is not a second theme — it is permission 
+color/gamut-ladder-fallback | neutral  $1 | color tokens progressive-enhancement correctness | Ship every colour token twice: an sRGB hex baseline, then the wi
 color/near-black-single-ramp | E2 D2 W4 F4 $1 | color palette dark restraint | Pure #000 ground, off-white #ededed text, and ONE neutral ramp (
 color/parallel-alpha-ramp | neutral  $2 | color tokens alpha borders theming | Ship two neutral ramps of equal length: one opaque, one alpha-on
 color/root-filter-inversion | E2 D2 W4 F2 $2 | color dark filter invert theme effect | filter: invert(1) hue-rotate(180deg) on the root flips lightness
@@ -33,11 +34,13 @@ interaction/gesture-affordance-label | E1 D2 W2 F4 $1 | affordance interaction a
 interaction/hysteretic-lock-zone | neutral  $1 | interaction pointer state correctness threshold | Any boolean derived from a continuous input — pointer inside a z
 interaction/idle-scroll-cue | E2 D1 W2 F4 $1 | scroll affordance feedback motion | A page whose motion is entirely scroll-driven stops when the rea
 interaction/inert-tracks-opacity | neutral  $1 | accessibility focus correctness overlay pointer-events | An element faded to opacity: 0 is still in the tab order, still 
+interaction/inline-target-floor | neutral  $1 | accessibility interaction correctness detail | A row of small print — legal links, meta, a footer — fails targe
 interaction/micro-interaction-defaults | E2 D2 W2 F5 $1 | interaction polish consistency | One transition duration (200ms) and one property set for every n
 interaction/native-disclosure-animation | E2 D2 W2 F5 $2 | motion disclosure accessibility progressive-enhancement height | ::details-content with interpolate-size: allow-keywords animates
 interaction/offset-shadow-press | E3 D2 W4 F2 $1 | interaction state depth detail border | A hard offset shadow reads as a solid object sitting above the p
 interaction/outward-corner-target | E3 D2 W1 F5 $2 | interaction state focus border precision detail | Four L-brackets absent at rest, then flying outward past the ele
 interaction/paired-focus-offset-tokens | neutral  $1 | accessibility focus tokens correctness | Ship the focus ring as three tokens — width, an outer offset, an
+interaction/reserved-state-border | neutral  $1 | accessibility focus cls border correctness | A control that gains a border on focus or selection must carry t
 interaction/snap-scroll-as-dismiss-gesture | E3 D2 W2 F5 $3 | gesture dialog scroll accessibility sheet | Build a drag-to-dismiss sheet out of a scroll container rather t
 interaction/state-as-numeric-custom-property | E3 D2 W2 F5 $1 | interaction hover state tokens architecture | Express interaction state as a number, then derive every depende
 interaction/withheld-value-reveal | E2 D2 W3 F4 $1 | interaction disclosure redaction accessibility state | Withholding a figure claims more than printing it, but only if t
@@ -72,6 +75,7 @@ media/approach-loaded-video | neutral  $2 | media video performance intersection
 media/aspect-locked-media | neutral  $1 | layout media cls | Lock every media slot with an explicit aspect-ratio and let widt
 media/dialog-scoped-embed-lifecycle | neutral  $2 | media performance dialog correctness lifecycle | A third-party embed is not yours to pause — you cannot reach int
 media/mask-swap-over-shared-paint | E2 D2 W2 F4 $2 | mask icon gradient media state | When a family of glyphs must share one fill — a gradient, a vide
+media/single-source-focal-crop | neutral  $1 | media responsive performance detail | One photograph can hold a headline at every width without a seco
 media/stacked-contour-volume | E1 D4 W2 F5 $2 | svg mark depth stroke currentcolor | Describe a solid as a stack of cross-sections instead of as a sh
 media/stepped-transform-sprite | E3 D2 W2 F4 $2 | media sprite animation svg performance | Play a short looping illustration as a filmstrip: frames in one 
 media/video-as-surface-not-frame | E3 D2 W4 F4 $3 | media surface hero | autoplay muted loop playsinline preload="auto" with object-conta
@@ -120,6 +124,7 @@ scale/fixed-canvas-root-scale | E1 D2 W3 F4 $2 | scale layout proportion transfo
 scale/one-hairline-token | E1 D2 W1 F5 $1 | unit tokens border precision coherence | Every thin line in a system should be the same line. Declare one
 scale/percentage-root-with-divided-type | neutral  $2 | scale tokens accessibility unit architecture | Spacing and type share the rem and usually cannot be tuned apart
 scale/proportional-effect-radii | neutral  $1 | unit effect polish coherence | Express blur, glow and shadow radii in vh/vw rather than px, so 
+scale/registered-property-scope | neutral  $1 | tokens architecture animation correctness | @property registration is an API decision, not a formality. synt
 scale/role-named-spacing-tiers | neutral  $2 | tokens architecture rhythm layout scale | A t-shirt spacing scale makes every author guess which step a gi
 scale/sub-floor-density-breakpoint | neutral  $1 | responsive breakpoints density correctness | Designing to a 390px floor leaves a real 320–380px band unhandle
 scale/three-tier-token-redefinition | neutral  $2 | unit tokens architecture | One token name, three definitions: fluid desktop → fluid mobile 

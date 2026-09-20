@@ -4,7 +4,7 @@ category: layout
 tags: [architecture,z-index,tokens,correctness,overlay]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,9 @@ interaction hierarchy, readable without opening a component.
 }
 ```
 ⚠ A token is useless across a stacking context boundary — `transform`, `filter` or `will-change` on an ancestor traps a child below unrelated siblings whatever its value.
+
+The trap has a deliberate use. A child at `z-index: -1` paints behind its
+parent's background and vanishes; `isolation: isolate` on the parent opens a
+stacking context so negative-z children land above that background and below the
+content. One section can then carry a photograph and a scrim as two ordinary
+children, and the isolation stops either reaching the page behind.

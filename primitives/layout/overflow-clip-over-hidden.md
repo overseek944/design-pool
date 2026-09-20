@@ -4,7 +4,7 @@ category: layout
 tags: [overflow,correctness,accessibility,scroll]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -30,3 +30,10 @@ Variant — `clip` takes two axis values where `hidden` effectively cannot:
 glow escape vertically. `hidden visible` is silently computed back to
 `hidden hidden`, so this is the only way to get one-axis cropping without a
 mask.
+
+Page-level bleed is the case worth naming separately. Overflow set on `html` or
+`body` propagates to the viewport and takes the document's scrolling semantics
+with it; set on any other wrapper, `hidden` makes that wrapper the scroll
+container and every sticky inside it stops. Put `overflow-x: clip` on a wrapper
+element instead — it crops the same bleed, the root keeps its scrolling, and
+sticky descendants survive.

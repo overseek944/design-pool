@@ -4,7 +4,7 @@ category: type
 tags: [type,contrast,editorial,restraint]
 axes: {energy: 1, density: 2, weight: 3, finish: 5}
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,9 @@ Inverted dose — serif takes every heading, mono holds all chrome, sans drops t
 body copy alone. The register flips to *editorial with technical apparatus*.
 Needs a true display serif; a text serif at 48px+ reads as a document, not a
 voice.
+
+Between the accent phrase and the full inversion sits the lede. One serif
+paragraph under a sans headline, 18–22px with leading near 1.6, reads as a
+subtitle in a second voice while every other paragraph on the page stays sans. A
+whole sentence establishes the register where a single word only decorates it,
+and the dose stays countable: one element per section.

@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,navigation,focus,correctness,anchor]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,9 @@ h2[id] { scroll-margin-top: 32px } h2:focus { outline: none }
 ```
 ⚠ Suppressing the ring is only safe on a heading. On a link or a button it
 removes the focus indicator for every route into it.
+
+No listener is needed when the target itself is focusable. Put `tabindex="-1"`
+on the section or heading the fragment names and the browser's own fragment
+navigation sets the focus starting point there — which also works on a page
+opened directly at the hash, where a click handler never runs. Give every
+anchored landmark the attribute, not only the one the skip link points at.

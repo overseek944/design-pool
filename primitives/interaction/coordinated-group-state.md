@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,surface,hover]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -51,3 +51,10 @@ a child is hovered, and exactly one target is ever lit.
 ```
 ⚠ Only the affordance retracts; the outer target stays clickable, so keep the
 two regions distinguishable some other way — a cursor, a label, an inset.
+
+`:has()` also answers a question with no state in it: what is in this box. A
+control can trim its own padding when a leading icon is present, because a glyph
+carries less optical weight at an edge than a letterform does —
+`:has([data-icon=inline-start])` cuts the inline-start padding by a quarter to a
+third. Write it on the logical axis and the compensation flips with writing
+direction for free.

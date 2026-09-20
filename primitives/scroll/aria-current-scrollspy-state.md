@@ -4,7 +4,7 @@ category: scroll
 tags: [accessibility,navigation,scroll,state,architecture]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,10 @@ within it. Both at once reads as two current items.
 the link is reached, not when the page scrolls past the section it names — so on
 a page where scrolling is itself the content change, the attribute is correct
 and silent. It answers "where am I in this list", never "what just happened".
+
+The same trade applies to a control's own state. `aria-expanded`, `aria-invalid`
+and `aria-selected` are style hooks as good as any class, and keying off them
+makes a styled-but-unannounced state impossible to ship. It also reads
+negatively: `:not([aria-haspopup])` withholds a momentary press treatment from
+triggers whose real feedback is the expanded state, so one rule serves both kinds
+of button without a variant prop.
