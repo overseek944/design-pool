@@ -4,7 +4,7 @@ category: light
 tags: [effect,blend,compositing,dark]
 axes: {energy: 3, density: 3, weight: 3, finish: 4}
 cost: 3
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -33,3 +33,15 @@ into it. Dodge divides by the inverse, so it lifts the ground's own faint values
 hard while leaving true black untouched: a turbulence film reads as luminous
 grain on a dark surface instead of a grey veil. Keep it at 10–20% opacity — it
 clips to white fast and will blow out any highlight already in the layer.
+
+Variant — mask the blended layer so it never reaches the section's edges:
+a radial ellipse falling to transparent by 85–90% keeps a wide texture from
+ending on a visible rectangle, which is what usually gives these layers away.
+At 5–10% opacity a photographic or procedural plate stops reading as an image
+and starts reading as light already on the surface, which is the point — much
+above that and it is a picture behind the copy.
+```css
+.plate { position: absolute; inset: 0; opacity: .07; mix-blend-mode: screen;
+  background: url(plate.webp) center / cover no-repeat;
+  mask-image: radial-gradient(ellipse 75% 50% at center, #000 30%, transparent 88%) }
+```

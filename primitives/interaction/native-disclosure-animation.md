@@ -4,7 +4,7 @@ category: interaction
 tags: [motion,disclosure,accessibility,progressive-enhancement,height]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -45,3 +45,16 @@ closed. 0.2–0.32s, same curve as the native branch.
 ```
 ⚠ `overflow: hidden` on the inner child clips a focus ring that overflows it, so
 an inside control looks unfocused while open — pad the child or inset the ring.
+
+Transition `opacity` alongside the size and the panel resolves rather than
+unrolling — at these durations a body of text sliding in at full strength reads
+as mechanical. Run the fade slightly shorter than the height so it finishes
+into a settled box. Use the logical `block-size` and `overflow-y: clip`: `clip`
+crops without making the closed panel programmatically scrollable, which is how
+a focused control inside a shut `<details>` scrolls its own ancestor.
+```css
+.item::details-content { block-size: 0; opacity: 0; overflow-y: clip;
+  transition: block-size .28s var(--ease), opacity .24s var(--ease),
+              content-visibility .28s allow-discrete }
+.item[open]::details-content { block-size: auto; opacity: 1 }
+```

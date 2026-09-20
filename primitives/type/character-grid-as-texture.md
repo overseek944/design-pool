@@ -4,7 +4,7 @@ category: type
 tags: [type,texture,ornament,ascii]
 axes: {energy: 3, density: 5, weight: 2, finish: 3}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -45,3 +45,17 @@ content much above that.
 ```
 ⚠ Literal characters — `aria-hidden` the block or a screen reader spells the
 ramp out, and keep it clear of anything selectable.
+
+The same field drawn as a *figure* rather than a ground replaces an icon: a
+12–20 line block of characters composed into a recognisable object, set in the
+card's mark slot at 6–9px with `line-height` one pixel above the size so the
+cells stay square-ish. It carries no asset, inherits the type colour, and is
+crisp at every device ratio — and because it is text it needs a smaller step at
+narrow widths or it wraps and the drawing collapses. Drop one step, never
+scale: a fractional font-size breaks the grid.
+```css
+.figure { white-space: pre; font: 8px/9px var(--mono); overflow: hidden }
+@media (width <= 640px) { .figure { font-size: 6px; line-height: 7px } }
+```
+⚠ `aria-hidden` and `overflow: hidden` both — one stray long line reflows the
+whole card.

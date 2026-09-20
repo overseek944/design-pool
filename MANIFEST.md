@@ -1,6 +1,6 @@
 # Manifest
 
-299 primitives. Format: `category/id | axes cost | tags | gist`
+306 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -15,7 +15,10 @@ canvas/feature-scaled-sim-grid | neutral  $2 | canvas simulation performance res
 canvas/glyph-ramp-image-field | E2 D4 W2 F3 $4 | canvas type texture image ambient generative | Encode a photograph as a field of characters: draw it into an of
 canvas/hash-dither-before-quantise | E1 D3 W2 F4 $2 | canvas color ramp noise grain banding generative | Snapping a continuous value onto a short palette — eight to twel
 canvas/named-uv-spaces | neutral  $3 | shader architecture responsive correctness reference | One vertex shader can emit several named coordinate spaces so ea
+canvas/octave-summed-edge-profile | E2 D2 W2 F3 $1 | canvas generative motion noise field cheap | A horizon, a wave crest or a ribbon edge needs an organic profil
+canvas/ordered-dither-threshold-field | E2 D4 W3 F2 $2 | canvas texture pattern raster two-tone generative | Reduce a continuous field to exactly two colours by comparing ea
 canvas/override-material-edge-pass | E2 D3 W2 F5 $5 | webgl shader wireframe render-pass narrative | Render one set of geometry in two visual registers and cross-fad
+canvas/packed-word-pixel-writes | neutral  $2 | canvas performance raster imagedata correctness | Filling ImageData a byte at a time costs four indexed writes and
 canvas/palette-as-uniforms | neutral  $2 | shader color system | Pass the site's palette into the shader as named vec3 uniforms r
 canvas/parametric-thickness-variation | E3 D3 W2 F4 $3 | shader organic detail | Drive line or ribbon thickness with uThickness + uThickVary nois
 canvas/prebaked-gradient-sprite | neutral  $2 | canvas performance particles light | createRadialGradient allocates and rasterises on every call, so 
@@ -43,6 +46,7 @@ interaction/auto-advance-yields-to-input | E2 D2 W2 F5 $2 | carousel autoplay ac
 interaction/breakpoint-dual-mode-details | neutral  $2 | disclosure navigation responsive accessibility progressive-enhancement | One <details> can be a permanently-open sidebar above a breakpoi
 interaction/breakpoint-scoped-overlay-dismiss | neutral  $1 | navigation overlay responsive correctness accessibility | An overlay that exists only below a breakpoint — a mobile nav sh
 interaction/coordinated-group-state | E3 D2 W2 F5 $1 | interaction surface hover | Hover the container, animate the parts. A single group parent le
+interaction/copy-safe-sample-text | neutral  $1 | interaction code correctness detail usability | A terminal or code sample is there to be dragged over and pasted
 interaction/dimension-coded-position-dot | E2 D2 W2 F5 $1 | interaction state indicator accessibility carousel | Let the active item in a position indicator change size, not onl
 interaction/edge-hotzone-sibling-reveal | E2 D2 W2 F5 $2 | interaction hover panel chrome css-only accessibility | Reclaim the width a hidden rail costs without a toggle: park an 
 interaction/find-reachable-collapse | neutral  $1 | accessibility correctness disclosure search architecture | Collapsed content the browser's own find cannot reach is content
@@ -66,6 +70,7 @@ interaction/snap-scroll-as-dismiss-gesture | E3 D2 W2 F5 $3 | gesture dialog scr
 interaction/state-as-numeric-custom-property | E3 D2 W2 F5 $1 | interaction hover state tokens architecture | Express interaction state as a number, then derive every depende
 interaction/state-seeded-at-listener-attach | neutral  $1 | correctness state events scroll architecture | Events report transitions, not the current value. Any class deri
 interaction/withheld-value-reveal | E2 D2 W3 F4 $1 | interaction disclosure redaction accessibility state | Withholding a figure claims more than printing it, but only if t
+layout/argued-column-as-surface | E1 D3 W4 F5 $1 | layout table comparison surface contrast hierarchy | In a comparison matrix the column you are arguing for should be 
 layout/balanced-side-track-centring | neutral  $1 | layout grid alignment chrome correctness | space-between centres nothing: the middle child lands wherever t
 layout/border-clamped-annotation-leader | E1 D3 W1 F5 $2 | layout annotation connector svg diagram | A leader line drawn from a label's centre to its subject crosses
 layout/boxless-wrapper | neutral  $1 | layout grid architecture correctness accessibility | display: contents removes an element's box while keeping its chi
@@ -161,6 +166,7 @@ perf/loop-gated-on-attention | neutral  $2 | performance animation intersection-
 perf/markup-declared-instrumentation | neutral  $1 | architecture instrumentation events delegation maintenance | Declare the event name and its payload as data- attributes and l
 perf/media-query-parity-listeners | neutral  $1 | responsive correctness architecture motion breakpoint | Where script and stylesheet must agree on a layout, ask the brow
 perf/offscreen-subtree-deferral | neutral  $1 | performance containment rendering scroll correctness | Below-fold grids of cards, figures or rows cost style, layout an
+perf/pixel-ratio-change-watch | neutral  $1 | performance canvas correctness resize media-query dpr | Device pixel ratio changes when a window is dragged between moni
 perf/post-teardown-asset-disposal | neutral  $2 | performance correctness lifecycle canvas architecture memory | An asynchronous asset load outlives the view that started it. Sc
 perf/prefetch-on-intent-band | neutral  $2 | performance navigation prefetch observer architecture | Prefetching is two policies, not one. Intent arms on mouseenter,
 perf/revert-split-on-resize | neutral  $1 | type motion correctness | Split text hard-codes line breaks at split time. On resize or we
@@ -235,6 +241,7 @@ surface/gradient-dot-lattice | E1 D3 W1 F4 $1 | surface texture pattern blueprin
 surface/gradient-over-opaque-glass | E1 D3 W3 F5 $1 | surface glass gradient depth cheap performance | Glass without a backdrop filter: stack a vertical alpha gradient
 surface/grid-intersection-crosshair | E1 D3 W1 F5 $2 | surface grid detail blueprint ornament | Mark a grid intersection with a small plus centred exactly on th
 surface/hairline-overhang | E1 D2 W1 F5 $1 | surface detail precision | Negative inset of exactly 1px with calc(100% + 2px) sizing so a 
+surface/interleaved-ground-dissolve | E2 D3 W3 F2 $2 | surface color pattern section boundary texture | Carry one ground into another by interleaving their pixels at a 
 surface/intersected-raster-mask | E1 D4 W2 F4 $2 | surface mask texture print halftone | mask-composite: intersect turns a mask stack into a boolean AND,
 surface/inverted-bevel-state-pair | E2 D2 W2 F3 $1 | surface depth detail affordance state border | One inset hairline decides whether a box is raised or recessed, 
 surface/inverted-field-ground | E1 D2 W3 F4 $1 | surface form contrast figure-ground accessibility | Invert the form figure-ground: tint the panel below the page val

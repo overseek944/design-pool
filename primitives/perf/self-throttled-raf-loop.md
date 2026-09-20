@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,canvas,battery,frame-budget,correctness]
 axes: none
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -48,3 +48,16 @@ Compare with a tolerance of about a millisecond, not exactly. A 30fps cap tested
 `>= 33.3` against a 60Hz clock rejects the frame that lands at 33.2 and takes
 the next one at 49.9 — the loop runs at 20fps, not 30. `elapsed < interval - 1`
 keeps the intended rate on a panel whose period does not divide it.
+
+Let the rate include zero. A target of `0` makes the interval infinite, so the
+loop never draws of its own accord and the same render function is invoked
+directly by whatever actually changed — a scroll offset, a resize, a pointer
+move. One hook then serves both an ambient canvas and a purely reactive one
+with no second code path and no `if (animated)` branch at the call site.
+```js
+const step = t => { raf = requestAnimationFrame(step)
+  if (t - last < 1000 / fps) return; last = t; draw(t) }   // fps 0 → never
+if (fps > 0) raf = requestAnimationFrame(step)
+```
+⚠ Still request the first frame unconditionally, or a static canvas never
+paints at all.
