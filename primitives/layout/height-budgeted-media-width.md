@@ -4,7 +4,7 @@ category: layout
 tags: [layout,container-query,aspect,fit,cls]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -35,3 +35,18 @@ that binds simply changes as the viewport does.
 ⚠ `dvh` resolves against the *dynamic* viewport, so the stage resizes as mobile
 chrome retracts and anything measured from it has to follow; `svh` holds still at
 the cost of permanently reserving that chrome.
+
+The budget need not cost a container at all. Where the slot already carries an
+`aspect-ratio`, only one axis has to be solved: put the chrome allowance in the
+middle term of a `clamp()` against `svh` and let the ratio derive the other
+side. No `container-type: size`, so nothing above has to supply a definite
+height, and the floor and ceiling are the same two promises made in one
+declaration. Chrome budget as a rem sum of the stack above it, floor low enough
+that the media survives a landscape phone.
+```css
+.slot { aspect-ratio: 9 / 16; max-inline-size: 86vw;
+        block-size: clamp(12rem, 100svh - 27rem, 48rem) }
+```
+⚠ The rem term is a hand-tallied sum of everything sharing the fold — it does
+not track a heading that wraps to a third line at some width. Audit at the
+narrow end, where the wrapping happens and the clamp is already at its floor.

@@ -4,7 +4,7 @@ category: scale
 tags: [unit,typography,layout,responsive,poster]
 axes: {energy: 2, density: 2, weight: 4, finish: 4}
 cost: 3
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: [proportional-effect-radii, three-tier-token-redefinition]

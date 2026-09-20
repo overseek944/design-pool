@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,navigation,focus,correctness,anchor]
 axes: none
 cost: 1
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -51,3 +51,20 @@ with the chrome height as a token, and nothing that can be linked to is missed.
 ```css
 [id] { scroll-margin-top: var(--chrome, 88px) }
 ```
+
+Own the tween where the jump is part of the page's manner. Native smooth scroll
+exposes neither duration nor easing and each engine picks its own, so a
+deliberately unhurried arrival can only be authored: step `scrollTo` from a rAF
+loop over a fixed span with an ease-in-out cubic, and hand focus over on the
+final frame rather than the first. 600–1000ms — past that the reader starts
+scrolling themselves.
+```js
+const e = t => t < .5 ? 4*t*t*t : 1 - (-2*t + 2)**3 / 2
+const step = n => { const k = Math.min((n - t0) / 900, 1)
+  scrollTo({ top: y0 + dy * e(k), behavior: 'instant' })
+  k < 1 ? requestAnimationFrame(step) : focusTarget() }
+```
+⚠ No user gesture cancels a rAF loop, so a reader who scrolls mid-flight is
+fought all the way down — abort on `wheel`, `touchstart` and `keydown`. The
+reduce query has to be read here too: this path never reaches the UA's own
+cancellation.

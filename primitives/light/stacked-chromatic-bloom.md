@@ -4,7 +4,7 @@ category: light
 tags: [effect,glow,filter,svg,depth]
 axes: {energy: 3, density: 2, weight: 4, finish: 4}
 cost: 3
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: [overflow-visible-for-glow-bleed]

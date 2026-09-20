@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,parallax,media,surface,progressive-enhancement,performance]
 axes: {energy: 2, density: 1, weight: 3, finish: 3}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -38,3 +38,18 @@ body { background: url("data:image/svg+xml,…feTurbulence…") 0 0/180px 180px 
 ```
 ⚠ One pinned layer for the page, never one per section — the cost is charged per
 painted surface and they compound.
+
+Put the film *over* the content instead of behind it and the two costs above
+both go away: a fixed pseudo-element on the root is one composited layer that
+never repaints on scroll, and iOS honours it where it ignores
+`background-attachment`. It buys the same page-slides-beneath read with no
+background to coordinate and no per-section opt-in. The price is that it tints
+every glyph underneath, so the alpha has to drop by roughly a factor of five —
+3–6% rather than 15–30% — and it must be excused from hit-testing.
+```css
+body::after { content: ""; position: fixed; inset: 0; z-index: 900;
+  pointer-events: none; opacity: .04; background: url("data:image/svg+xml,…") }
+```
+⚠ Without `pointer-events: none` the plane swallows every click on the page.
+Audit body-text contrast *through* it — the measured ratio is what ships, not
+the token's.

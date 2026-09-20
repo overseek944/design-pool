@@ -1,6 +1,6 @@
 # Manifest
 
-379 primitives. Format: `category/id | axes cost | tags | gist`
+380 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -148,6 +148,7 @@ light/pointer-anchored-surface-light | E2 D2 W2 F5 $2 | light pointer hover grad
 light/relit-state-fill | E2 D2 W3 F4 $1 | light gradient hover control surface | A gradient-filled control usually signals hover by getting brigh
 light/screen-blend-light-layer | E3 D3 W3 F4 $3 | effect blend compositing dark | mix-blend-mode: screen on an overlay makes it add light and drop
 light/stacked-chromatic-bloom | E3 D2 W4 F4 $3 | effect glow filter svg depth | filter: drop-shadow() chains, and follows the alpha channel — so
+media/aperture-registered-content-layer | E1 D2 W2 F5 $2 | media mockup responsive layout correctness | Live content shown inside supplied frame artwork registers to an
 media/approach-loaded-video | neutral  $2 | media video performance intersection-observer accessibility bandwidth | Background footage is usually the heaviest thing on a page and u
 media/aspect-locked-media | neutral  $1 | layout media cls | Lock every media slot with an explicit aspect-ratio and let widt
 media/blend-normalised-logo-wall | neutral  $1 | media logos blend-mode assets normalisation | Supplied logo files arrive as opaque rectangles — baked-in white

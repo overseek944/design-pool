@@ -4,7 +4,7 @@ category: type
 tags: [type,contrast,editorial,restraint]
 axes: {energy: 1, density: 2, weight: 3, finish: 5}
 cost: 1
-seen: 15
+seen: 16
 requires: []
 conflicts: []
 completes: []
