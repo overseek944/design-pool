@@ -1,0 +1,182 @@
+#!/usr/bin/env node
+// design-pool CLI — zero dependencies, node >=16
+import { readdirSync, readFileSync, writeFileSync, statSync } from 'fs'
+import { join, dirname, basename } from 'path'
+import { fileURLToPath } from 'url'
+
+const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
+const PRIM = join(ROOT, 'primitives')
+const AX = ['energy', 'density', 'weight', 'finish']
+
+const walk = d => readdirSync(d).flatMap(f => {
+  const p = join(d, f)
+  return statSync(p).isDirectory() ? walk(p) : p.endsWith('.md') ? [p] : []
+})
+
+function parse(path) {
+  const raw = readFileSync(path, 'utf8')
+  const m = raw.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/)
+  if (!m) return null
+  const fm = {}, body = m[2].trim()
+  for (const line of m[1].split('\n')) {
+    const kv = line.match(/^([a-z]+):\s*(.*)$/); if (!kv) continue
+    const [, k, v] = kv
+    if (k === 'axes') {
+      fm.axes = v.trim() === 'none' ? null : Object.fromEntries(
+        [...v.matchAll(/([a-z]+)\s*:\s*(\d)/g)].map(x => [x[1], +x[2]]))
+    } else if (/^\[.*\]$/.test(v.trim())) {
+      fm[k] = v.trim().slice(1, -1).split(',').map(s => s.trim()).filter(Boolean)
+    } else if (/^\d+$/.test(v.trim())) { fm[k] = +v.trim() }
+    else fm[k] = v.trim()
+  }
+  fm.body = body
+  fm.gist = (body.split(/\n\s*\n/)[0] || '').replace(/\n/g, ' ')
+    .replace(/[`*]/g, '').replace(/\s+/g, ' ').trim()
+  fm.path = path
+  fm.category = fm.category || basename(dirname(path))
+  return fm
+}
+
+const load = () => walk(PRIM).map(parse).filter(Boolean)
+const vec = p => AX.map(a => p.axes?.[a] ?? 0)
+const dist = (a, b) => Math.sqrt(AX.reduce((s, k, i) => s + (vec(a)[i] - vec(b)[i]) ** 2, 0))
+const fmtAx = p => p.axes ? AX.map(a => a[0].toUpperCase() + p.axes[a]).join(' ') : 'neutral '
+const arg = (k, d) => { const i = process.argv.indexOf('--' + k); return i > -1 ? process.argv[i + 1] : d }
+const has = k => process.argv.includes('--' + k)
+
+const cmd = process.argv[2]
+const all = load()
+
+if (cmd === 'stats') {
+  const byCat = {}; all.forEach(p => byCat[p.category] = (byCat[p.category] || 0) + 1)
+  const sites = new Set(all.map(p => p.seen)).size
+  console.log(`primitives   ${all.length}`)
+  console.log(`neutral      ${all.filter(p => !p.axes).length}`)
+  console.log(`categories   ${Object.keys(byCat).length}`)
+  console.log(`index cost   ~${Math.round(all.length * 21 / 1000)}K tokens`)
+  console.log(`full pool    ~${Math.round(all.reduce((s, p) => s + p.body.length, 0) / 4000)}K tokens\n`)
+  Object.entries(byCat).sort((a, b) => b[1] - a[1])
+    .forEach(([c, n]) => console.log(`  ${c.padEnd(14)} ${String(n).padStart(4)}`))
+  const t = all.length
+  console.log(`\nstructure    ${t < 100 ? 'tier 1 — load whole pool'
+    : t < 400 ? 'tier 2 — manifest + selective load'
+      : 'tier 3 — sharded routing required'}`)
+  if (t >= 100 && t < 110) console.log('⚠ approaching tier 2 — run scripts/migrate.mjs')
+  if (t >= 400 && t < 420) console.log('⚠ approaching tier 3 — run scripts/migrate.mjs')
+}
+
+if (cmd === 'query') {
+  let r = all
+  const tags = arg('tags'); if (tags) r = r.filter(p => tags.split(',').some(t => (p.tags || []).includes(t.trim())))
+  const cat = arg('category'); if (cat) r = r.filter(p => p.category === cat)
+  const mc = arg('max-cost'); if (mc) r = r.filter(p => (p.cost || 0) <= +mc)
+  if (has('rare')) r = r.filter(p => (p.seen || 1) <= 2)
+  if (has('neutral')) r = r.filter(p => !p.axes)
+  for (const a of AX) {
+    const v = arg(a); if (!v) continue
+    const [lo, hi] = v.includes('-') ? v.split('-').map(Number) : [+v, +v]
+    r = r.filter(p => p.axes && p.axes[a] >= lo && p.axes[a] <= hi)
+  }
+  const lim = +arg('limit', 60)
+  r.slice(0, lim).forEach(p =>
+    console.log(`${(p.category + '/' + p.id).padEnd(46)} ${fmtAx(p)} $${p.cost}  ${p.gist.slice(0, 58)}`))
+  console.log(`\n${r.length} match${r.length === 1 ? '' : 'es'}${r.length > lim ? ` (showing ${lim})` : ''}`)
+}
+
+if (cmd === 'near') {
+  const seed = all.find(p => p.id === process.argv[3])
+  if (!seed) { console.error('unknown id'); process.exit(1) }
+  if (!seed.axes) { console.error('neutral primitive has no aesthetic position'); process.exit(1) }
+  all.filter(p => p.axes && p.id !== seed.id)
+    .map(p => [dist(seed, p), p]).sort((a, b) => a[0] - b[0]).slice(0, +arg('limit', 12))
+    .forEach(([d, p]) => console.log(
+      `${d.toFixed(2)}  ${(p.category + '/' + p.id).padEnd(44)} ${fmtAx(p)}  ${p.gist.slice(0, 50)}`))
+  console.log(`\nnearest in axis-space to ${seed.id} — candidates for coherent combination`)
+}
+
+if (cmd === 'show') {
+  process.argv.slice(3).filter(a => !a.startsWith('--')).forEach(id => {
+    const p = all.find(x => x.id === id)
+    if (!p) return console.error(`?? ${id}`)
+    console.log(`\n${'─'.repeat(70)}\n${p.category}/${p.id}   ${fmtAx(p)} cost:${p.cost}\n${'─'.repeat(70)}\n${p.body}`)
+  })
+}
+
+if (cmd === 'check') {
+  const ids = process.argv.slice(3).filter(a => !a.startsWith('--'))
+  const sel = ids.map(i => all.find(p => p.id === i)).filter(Boolean)
+  const missing = ids.filter(i => !all.find(p => p.id === i))
+  if (missing.length) console.log(`✗ unknown: ${missing.join(', ')}\n`)
+  const scored = sel.filter(p => p.axes)
+  let errors = 0, warns = 0
+
+  console.log(`selection    ${sel.length} primitives (${scored.length} scored, ${sel.length - scored.length} neutral)\n`)
+
+  const wide = []
+  if (scored.length) {
+    for (const a of AX) {
+      const v = scored.map(p => p.axes[a]), lo = Math.min(...v), hi = Math.max(...v), s = hi - lo
+      const tag = s <= 1 ? 'cohesive' : s === 2 ? 'acceptable' : 'CONTRAST'
+      if (s >= 3) wide.push(a)
+      console.log(`  ${a.padEnd(9)} ${lo}–${hi}  spread ${s}  ${tag}`)
+    }
+  }
+  if (wide.length === 0 && scored.length) console.log('\n  → uniformly cohesive. Safe, but no point of view. Consider pushing one axis.')
+  if (wide.length === 1) console.log(`\n  → contrast axis: ${wide[0]}. Deliberate tension — state why.`)
+  if (wide.length > 1) { console.log(`\n✗ ${wide.length} wide axes (${wide.join(', ')}) — incoherent, not bold. Narrow all but one.`); errors++ }
+
+  const idset = new Set(sel.map(p => p.id)), seen = new Set()
+  for (const p of sel) {
+    for (const c of p.conflicts || []) if (idset.has(c)) { console.log(`✗ conflict: ${p.id} ✕ ${c}`); errors++ }
+    for (const c of p.completes || []) if (!idset.has(c)) { console.log(`✗ ${p.id} requires ${c} to be correct`); errors++ }
+    for (const t of p.tension || []) { const k = [p.id, t].sort().join('|')
+      if (idset.has(t) && !seen.has(k)) { seen.add(k); console.log(`⚠ tension: ${p.id} ↔ ${t} — resolve explicitly`); warns++ } }
+  }
+  const cost = sel.reduce((s, p) => s + (p.cost || 0), 0)
+  const heavy = sel.filter(p => (p.cost || 0) >= 4).length
+  console.log(`\nbudget       ${cost} total, ${heavy} heavy`)
+  if (cost > 40) { console.log('⚠ high total cost — verify on mid-tier mobile'); warns++ }
+  if (heavy > 3) { console.log('⚠ >3 expensive primitives — likely jank'); warns++ }
+  console.log(`\n${errors ? `✗ ${errors} error(s)` : '✓ coherent'}${warns ? `, ${warns} warning(s)` : ''}`)
+  if (errors) process.exit(1)
+}
+
+if (cmd === 'index') {
+  const lines = all.sort((a, b) => (a.category + a.id).localeCompare(b.category + b.id))
+    .map(p => `${p.category}/${p.id} | ${fmtAx(p)} $${p.cost} | ${(p.tags || []).join(' ')} | ${p.gist.slice(0, 64)}`)
+  writeFileSync(join(ROOT, 'MANIFEST.md'),
+    `# Manifest\n\n${all.length} primitives. Format: \`category/id | axes cost | tags | gist\`\n` +
+    `Axes: E=energy D=density W=weight F=finish. Read \`axes.md\` first.\n\n\`\`\`\n${lines.join('\n')}\n\`\`\`\n`)
+  writeFileSync(join(ROOT, 'index.json'), JSON.stringify(
+    all.map(({ body, path, ...p }) => p), null, 0))
+  console.log(`wrote MANIFEST.md + index.json (${all.length} primitives)`)
+}
+
+if (cmd === 'lint') {
+  let bad = 0
+  const ids = new Set(all.map(p => p.id))
+  for (const p of all) {
+    if (!p.id) { console.log(`✗ ${p.path}: no id`); bad++ }
+    if (p.axes && AX.some(a => !(a in p.axes))) { console.log(`✗ ${p.id}: incomplete axes`); bad++ }
+    if (!p.cost) { console.log(`✗ ${p.id}: no cost`); bad++ }
+    for (const f of ['requires', 'conflicts', 'completes', 'tension'])
+      for (const r of p[f] || []) if (!ids.has(r)) { console.log(`✗ ${p.id}: ${f} → unknown '${r}'`); bad++ }
+    if (p.body.split(/\s+/).length > 170) { console.log(`⚠ ${p.id}: ${p.body.split(/\s+/).length} words — too long, split it`) }
+  }
+  const dupes = {}; all.forEach(p => (dupes[p.id] = (dupes[p.id] || 0) + 1))
+  Object.entries(dupes).filter(([, n]) => n > 1).forEach(([i]) => { console.log(`✗ duplicate id: ${i}`); bad++ })
+  console.log(bad ? `\n${bad} problem(s)` : '\n✓ clean')
+  if (bad) process.exit(1)
+}
+
+if (!['stats', 'query', 'near', 'show', 'check', 'index', 'lint'].includes(cmd))
+  console.log(`design-pool
+
+  pool stats                        size, distribution, restructure threshold
+  pool query [filters]              --tags --category --max-cost --rare --neutral
+                                    --energy 2-4 --density --weight --finish --limit
+  pool near <id>                    primitives closest in axis-space
+  pool show <id> [id...]            full text
+  pool check <id> [id...]           coherence, conflicts, correctness, budget
+  pool index                        regenerate MANIFEST.md + index.json
+  pool lint                         validate frontmatter and cross-refs`)

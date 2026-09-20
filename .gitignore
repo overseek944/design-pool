@@ -1,0 +1,4 @@
+.cache/
+scratch/
+node_modules/
+*.log

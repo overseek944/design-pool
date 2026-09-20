@@ -1,0 +1,27 @@
+---
+id: production-timing-vocabulary
+category: timing
+tags: [motion,easing,duration,reference,system]
+axes: {energy: 2, density: 2, weight: 2, finish: 5}
+cost: 1
+seen: 1
+requires: []
+conflicts: []
+completes: []
+tension: []
+---
+A coherent set beats a clever one. Durations cluster tightly and eases come from
+one family; variation lives in distance and stagger, not in easing curves.
+
+| Intent                     | Duration   | Ease            |
+|----------------------------|------------|-----------------|
+| Micro (hover, toggle)      | .20–.35s   | `power2.out`    |
+| Standard reveal            | .45–.55s   | `power2.out`    |
+| Emphasis / hero entrance   | .85–1.10s  | `power3.out`    |
+| Positional / layout move   | .60–.90s   | `power3.inOut`  |
+| Exit                       | .30–.40s   | `power2.in`     |
+| Ambient loop               | 2.0s+      | `none` (linear) |
+
+`.45s / power2.out` as the house default covers most of a page. Decelerating
+curves (`.out`) for anything entering; `.inOut` only when something travels
+between two known positions.
