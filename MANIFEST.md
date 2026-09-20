@@ -1,6 +1,6 @@
 # Manifest
 
-251 primitives. Format: `category/id | axes cost | tags | gist`
+257 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -16,6 +16,7 @@ canvas/palette-as-uniforms | neutral  $2 | shader color system | Pass the site's
 canvas/parametric-thickness-variation | E3 D3 W2 F4 $3 | shader organic detail | Drive line or ribbon thickness with uThickness + uThickVary nois
 canvas/precomputed-cell-attenuation-field | E1 D2 W2 F5 $2 | canvas legibility performance ambient contrast generative | A generative field at full strength everywhere either drowns the
 canvas/projected-label-visibility-budget | neutral  $3 | webgl label projection density correctness | Projecting a 3D point to screen coordinates gives a position for
+canvas/reseeded-noise-tile | E2 D3 W2 F3 $2 | canvas texture ambient generative performance | Per-pixel noise across a whole viewport every frame is a fill-ra
 canvas/scroll-driven-frame-atlas | E4 D3 W3 F4 $4 | canvas scroll performance | For scrubbed sequence playback, draw frames from a sprite atlas 
 canvas/standard-uniform-set | neutral  $2 | shader architecture reference | A small reusable uniform contract covers most decorative shaders
 canvas/svg-userspace-pointer-mapping | neutral  $1 | svg pointer correctness interaction geometry | An SVG with a viewBox is drawn in its own coordinate system, and
@@ -50,6 +51,7 @@ interaction/paired-focus-offset-tokens | neutral  $1 | accessibility focus token
 interaction/partial-modality-inert-siblings | neutral  $2 | interaction dialog accessibility inert focus correctness | Not every overlay should take the whole page. A panel hung off a
 interaction/pointer-transparent-copy-layer | neutral  $1 | interaction pointer accessibility layout correctness | Copy laid over a background that reacts to the pointer swallows 
 interaction/reserved-state-border | neutral  $1 | accessibility focus cls border correctness | A control that gains a border on focus or selection must carry t
+interaction/resting-default-expanding-row | E2 D2 W2 F5 $2 | interaction state hover accessibility layout | A row of panels that expand only on hover says nothing at rest —
 interaction/snap-scroll-as-dismiss-gesture | E3 D2 W2 F5 $3 | gesture dialog scroll accessibility sheet | Build a drag-to-dismiss sheet out of a scroll container rather t
 interaction/state-as-numeric-custom-property | E3 D2 W2 F5 $1 | interaction hover state tokens architecture | Express interaction state as a number, then derive every depende
 interaction/state-seeded-at-listener-attach | neutral  $1 | correctness state events scroll architecture | Events report transitions, not the current value. Any class deri
@@ -97,6 +99,7 @@ media/dialog-scoped-embed-lifecycle | neutral  $2 | media performance dialog cor
 media/mask-swap-over-shared-paint | E2 D2 W2 F4 $2 | mask icon gradient media state | When a family of glyphs must share one fill — a gradient, a vide
 media/optical-height-logo-row | neutral  $1 | media logos normalisation scale responsive | Supplied marks are drawn to different conventions — a wordmark f
 media/origin-conditional-sandbox | neutral  $1 | media iframe embed security correctness | A sandboxed iframe that is also allow-same-origin and served fro
+media/self-masked-cutout-overlay | E1 D2 W3 F4 $2 | media mask color effect detail | A cut-out subject on transparency cannot be graded from CSS — an
 media/sheared-ghost-silhouette | E1 D3 W2 F5 $2 | depth line-art silhouette projection stroke | Flat line work reads as volume if the outline is drawn twice. Ke
 media/single-source-focal-crop | neutral  $1 | media responsive performance detail | One photograph can hold a headline at every width without a seco
 media/stacked-contour-volume | E1 D4 W2 F5 $2 | svg mark depth stroke currentcolor | Describe a solid as a stack of cross-sections instead of as a sh
@@ -105,6 +108,7 @@ media/stepped-transform-sprite | E3 D2 W2 F4 $2 | media sprite animation svg per
 media/video-as-surface-not-frame | E3 D2 W4 F4 $3 | media surface hero | autoplay muted loop playsinline preload="auto" with object-conta
 media/welded-figure-caption | E1 D2 W2 F5 $1 | media figure caption accessibility editorial | A caption set as a paragraph under a figure reads as body copy a
 motion-system/attribute-driven-motion-hooks | neutral  $1 | architecture motion maintainability | Target animations off data- attributes, never class names. Styli
+motion-system/below-fold-armed-entrance | neutral  $1 | motion correctness progressive-enhancement observer reveal | An entrance system that hides content in CSS and un-hides it fro
 motion-system/camera-over-static-scene | E3 D2 W3 F5 $2 | motion transform scale focus diagram narrative | To walk a reader through a diagram, move the viewport rather tha
 motion-system/context-scoped-cleanup | neutral  $1 | motion lifecycle correctness | Create every animation inside a scoped context and revert it on 
 motion-system/distance-eased-camera-push | E2 D2 W3 F5 $3 | camera 3d easing scroll narrative | Interpolating a camera's position between two waypoints looks wr
@@ -207,6 +211,7 @@ surface/overflow-visible-for-glow-bleed | neutral  $1 | surface effect svg gotch
 surface/paired-hard-shadow-sheet | E1 D2 W2 F4 $1 | surface depth border detail editorial | To imply a second sheet under a panel, two zero-blur shadows do 
 surface/phase-matched-gradient-drift | E2 D2 W2 F4 $1 | surface gradient loop ambient background | An oversized gradient translated behind its box gives a ground a
 surface/projected-lattice-ground | E2 D3 W1 F4 $2 | surface grid texture ambient depth geometry | A flat hairline lattice reads as a sheet behind the page. Tilt t
+surface/quantised-ground-transition | E1 D2 W2 F3 $1 | surface color gradient tokens detail | Two flat sections meeting edge to edge give a hard seam; a smoot
 surface/radius-inset-connector-rail | E1 D3 W1 F5 $1 | diagram hairline precision detail schematic | Connectors in a node diagram are hairlines on pseudo-elements, n
 surface/receding-annulus-mask | E1 D3 W2 F4 $2 | surface mask gradient depth texture | Concentric rings that grow geometrically and fade as they widen 
 surface/receding-bar-plate | E2 D1 W2 F4 $1 | surface chrome scroll opacity accessibility | Invert the usual scroll chrome: a floating bar starts fully opaq
@@ -215,6 +220,7 @@ surface/scrim-terminated-ground | E1 D2 W2 F5 $1 | gradient ground surface secti
 surface/single-hue-lit-bead | E2 D2 W3 F5 $1 | surface gradient identity marker presence contrast | At 8–24px a flat disc is a dot; three stops make it a bead. Take
 surface/slope-held-diagonal-edge | E1 D2 W3 F4 $2 | surface clip-path edge section responsive geometry | A clip-path: polygon() with percentage vertices does not keep it
 surface/stacked-gradient-star-field | E2 D3 W1 F4 $1 | surface texture ambient depth performance | A regular lattice reads as ruled ground; an irregular point fiel
+surface/stepped-pixel-corner | E2 D3 W2 F2 $1 | surface ornament detail texture cheap | Erode a corner into discrete cells rather than rounding or slici
 surface/tangent-oriented-mark-field | E2 D4 W2 F5 $3 | surface texture generative ambient detail svg | A field of round dots reads as spray. Give each mark a long axis
 surface/tiled-dash-border | E1 D2 W1 F4 $2 | surface border dash precision texture | border-style: dashed offers no control — dash length is derived 
 surface/tiled-shape-edge-mask | E2 D3 W2 F3 $2 | surface mask edge ornament texture section | Cut a section boundary with a shape rather than a straight line:

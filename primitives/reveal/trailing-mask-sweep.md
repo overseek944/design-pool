@@ -4,7 +4,7 @@ category: reveal
 tags: [reveal,mask,scan,grid,sweep,technical]
 axes: {energy: 3, density: 3, weight: 2, finish: 4}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,16 @@ Trail 80–160px; sweeps of 1.2–2.5s across a full panel.
 ```
 ⚠ `mask-position` is not compositor-accelerated everywhere — declare
 `will-change: mask-position` and keep the swept layer to one element, not a stack.
+
+Size the mask *larger than the box* instead of measuring a trail in pixels:
+`mask-size: 100% 220–300%` makes the ramp proportional to the element, and the
+whole sweep is then `mask-position: 0 100%` to `0 0` with no `calc` and nothing
+to re-tune per breakpoint. The soft edge stays the same fraction of the panel on
+a phone and on a wide display, where a fixed 120px trail is most of the first
+and a hairline on the second.
+```css
+.panel { mask-image: linear-gradient(180deg, transparent 0 47%, #000 53% 100%);
+  mask-size: 100% 250%; mask-repeat: no-repeat; mask-position: 0 100% }
+```
+⚠ The gradient's own stops now measure against the oversized mask, not the box —
+a "6%" feather is 6% of 250%, so soften it by the same multiple you grew by.

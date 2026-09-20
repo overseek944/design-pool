@@ -4,7 +4,7 @@ category: surface
 tags: [surface,border,motion,svg]
 axes: {energy: 4, density: 3, weight: 3, finish: 4}
 cost: 3
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: [overflow-visible-for-glow-bleed]
@@ -39,3 +39,20 @@ do.
 ```
 ⚠ The inner fill is a real element in flow — anything positioned against
 `.frame` now measures from outside the ring, not from the content edge.
+
+A fourth construction spins the gradient rather than the element, which nothing
+else here can do: register the angle with `@property` so it interpolates at all
+— an unregistered custom property jumps from 0 to 360 with no frames between —
+then animate it to `360deg`. The ring holds still while only its light moves, so
+nothing inside inherits a rotation. Add the bloom as a second copy behind at
+`inset: -4 to -8px` with the angle negated and 6–10px of blur: counter-rotating,
+the two beat against each other and the glow never syncs with the edge it came
+from. Period 4–8s.
+```css
+@property --a { syntax: "<angle>"; initial-value: 0deg; inherits: false }
+.ring { background: conic-gradient(from var(--a), #f8f9fc, #7e8494 38%, #f8f9fc) }
+.ring::after { background: conic-gradient(from calc(var(--a) * -1), …); filter: blur(7px) }
+@keyframes spin { to { --a: 360deg } }
+```
+⚠ `@property` is the whole trick — without registration the animation silently
+does nothing at all rather than degrading.

@@ -4,7 +4,7 @@ category: reveal
 tags: [reveal,clip-path,wipe,panel,motion]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -35,3 +35,17 @@ travels the laid-out text. 12–25 characters per second.
 ⚠ Single line only: a right-side inset clips the whole box, so a wrapped string
 reveals every line in parallel. n is per string — one shared value makes short
 labels stutter and long ones slide.
+
+`n` per string is a setup read, not an authoring chore: take the run's own
+`textContent.length`, clamp it at 35–45, and set `steps(n)` and the duration
+together as inline styles. Duration as a constant per character with a ceiling —
+40–50ms each, capped near 0.9s — keeps the cadence identical across a two-word
+label and a full line while stopping the long one from outstaying its reveal.
+```js
+const n = Math.min(el.textContent.trim().length, 40)
+el.style.transitionDuration = `${Math.min(n * 46, 900)}ms`
+el.style.transitionTimingFunction = `steps(${n}, end)`
+```
+⚠ Give the three edges the clip is *not* travelling a negative inset of a few
+percent. At exactly `0` the clip shaves antialiasing off ascenders and
+descenders, and the line looks a half-pixel short of the one beside it.

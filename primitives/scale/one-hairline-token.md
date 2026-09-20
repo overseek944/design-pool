@@ -4,7 +4,7 @@ category: scale
 tags: [unit,tokens,border,precision,coherence]
 axes: {energy: 1, density: 2, weight: 1, finish: 5}
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -36,3 +36,16 @@ either the interior look ruled like a table or the container look unbounded.
 ⚠ Two tints is the ceiling. A third reads as an inconsistency rather than a
 hierarchy, and none of them may be the only thing separating two interactive
 rows.
+
+Spend the same token as a `gap` rather than a border and a grid rules itself:
+set the line colour as the container's background, open a one-hairline gap, and
+let every cell paint the ground. Interior lines are the container showing
+through, so they cannot double at a join, no `:last-child` rule is needed to
+strip a trailing edge, and a reflow at any breakpoint re-rules the grid for free.
+```css
+.grid { display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: var(--hair); background: var(--line); border: var(--hair) solid var(--line) }
+.grid > * { background: var(--ground) }
+```
+⚠ Cells must be opaque — a translucent one shows the rule colour across its
+whole face, not just at its edge.
