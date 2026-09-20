@@ -4,7 +4,7 @@ category: media
 tags: [layout,media,cls]
 axes: none
 cost: 1
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
@@ -52,3 +52,16 @@ render a challenge has nowhere to put it.
 ```js
 const BOX = { normal: [300, 65], compact: [150, 140], invisible: [0, 0] }
 ```
+
+A script-drawn stage is a media slot with no intrinsic size at all: a canvas
+sized only from JavaScript is zero-height until the first measure, so the page
+reflows on hydration and the `ResizeObserver` gets a useless first tick. Put
+the ratio and a pixel floor on the *container* and let the canvas fill it
+absolutely — the box then exists at first paint, before any script, and every
+later measurement reads a real rectangle.
+```css
+.stage  { position: relative; aspect-ratio: 16 / 8.6; min-height: 220px }
+.stage > canvas { position: absolute; inset: 0; width: 100%; height: 100% }
+```
+⚠ The floor matters more than the ratio on a narrow screen, where a wide ratio
+collapses the stage to a strip — restate both at the mobile breakpoint.

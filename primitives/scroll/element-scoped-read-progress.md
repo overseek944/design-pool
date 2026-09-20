@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,progress,correctness,observer,reading]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -22,3 +22,17 @@ const f = run > 0 ? Math.min(1, Math.max(0, -b.top / run)) : 0
 new ResizeObserver(update).observe(el)
 ```
 ⚠ Without the `run > 0` branch a short page pins the indicator at zero forever.
+
+Measure against the viewport's *midline* rather than its top when the rail
+tracks which step is being read instead of how much is left. Progress is then
+`(innerHeight / 2 - top) / height`, which needs no `run > 0` guard because the
+divisor is the element's own height and can never go negative — the short-page
+failure disappears with the formula. A step commits as it reaches the middle of
+the screen, which is where the reader is looking.
+```js
+const b = el.getBoundingClientRect()
+const f = clamp01((innerHeight * .5 - b.top) / b.height)
+```
+⚠ The rail keeps reporting once its section leaves; drop it to 0.3–0.4 opacity
+when the tracked box is entirely above or below the viewport, or a full bar
+hangs beside unrelated content.

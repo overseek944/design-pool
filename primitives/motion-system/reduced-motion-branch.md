@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,accessibility,required]
 axes: none
 cost: 1
-seen: 19
+seen: 20
 requires: []
 conflicts: []
 completes: []
@@ -75,3 +75,16 @@ draw(); return
 ```
 ⚠ Bound the loop by iteration count as well as by the settled test — a rule that
 never converges otherwise hangs the main thread instead of playing too long.
+
+Where the sequence is *authored* rather than simulated, the still state is the
+schedule fast-forwarded: walk every cue in order, calling each immediately with
+no waiting, then draw once and never request a frame. The reader sees the final
+composition — every stage resolved, every log line present — and it cannot
+drift from the animated version because it is the same list of cues.
+```js
+cues.forEach(c => c.fn())      // no clock, no waiting
+draw()
+```
+⚠ Only safe when the cues are idempotent end-state writes. A cue that toggles,
+appends or increments runs the whole timeline's worth of side effects in one
+tick and lands somewhere the animation never reaches.

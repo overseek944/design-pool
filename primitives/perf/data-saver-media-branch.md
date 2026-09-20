@@ -4,7 +4,7 @@ category: perf
 tags: [performance,media-query,bandwidth,video,progressive-enhancement,accessibility]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,16 @@ bands dropped, remaining media deferred. Target 10–25% of the default transfer
 ```
 ⚠ It never fires by default and support is partial, so the branch may only
 remove. Put no layout, contrast or content decision inside it.
+
+The query has a script-side twin that actually fires: `navigator.connection.saveData`
+is set by the browser's own data-saver switch, which readers turn on far more
+often than they set a CSS-level preference. Fold it into the same predicate as
+reduced motion and resolve one boolean at startup — a reader on a metered
+connection and a reader who asked for stillness both want the static branch,
+and downstream code should not have to know which one it is serving.
+```js
+const still = matchMedia('(prefers-reduced-motion: reduce)').matches ||
+              !!navigator.connection?.saveData
+```
+⚠ Chromium-only and absent behind privacy settings, so it may only add
+restraint — never gate content or a control on it being false.

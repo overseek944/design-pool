@@ -4,7 +4,7 @@ category: layout
 tags: [diagram,svg,schematic,accessibility,responsive]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -29,3 +29,17 @@ that edge moves when the node is sized fluidly. Derive the inset as a token —
 `--node-half: calc(var(--node-size) / 2)` against a `clamp()` size — and every
 endpoint, halo radius and label offset tracks one declaration across the whole
 range with nothing measured in script.
+
+The stroke problem the aspect ratio causes has its own fix: `vector-effect:
+non-scaling-stroke` applies stroke width after the viewBox transform, so a
+hairline stays the authored width at every container size and survives
+`preserveAspectRatio="none"` without shearing. Dash patterns hold their
+proportions with it too. Author the connectors at whatever user-space width
+reads well and let the effect, not a `calc()` against the container, keep them
+at one weight.
+```css
+.lines line { stroke-width: 1.5; vector-effect: non-scaling-stroke }
+```
+⚠ It pins the stroke to *device* pixels, so a deliberately heavy rule stops
+growing with the diagram and reads thin at large sizes — use it for hairlines
+only, not for strokes that carry weight.

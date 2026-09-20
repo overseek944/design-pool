@@ -1,12 +1,13 @@
 # Manifest
 
-257 primitives. Format: `category/id | axes cost | tags | gist`
+263 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
 canvas/alpha-bucketed-path-batch | E2 D4 W1 F5 $3 | canvas svg performance generative texture batching | Thousands of individually-faded SVG marks means thousands of nod
 canvas/canvas-behind-dom-not-instead-of-it | neutral  $2 | canvas architecture accessibility | Absolutely-positioned inset-0 canvas with pointer-events-none un
 canvas/described-canvas-figure | neutral  $1 | canvas accessibility architecture diagram | A canvas carrying the argument — a diagram, a chart, a staged ex
+canvas/dom-labels-in-normalised-canvas-space | neutral  $2 | canvas accessibility architecture correctness label | Text drawn with fillText cannot be selected, found, translated o
 canvas/eased-pointer-influence | E3 D2 W2 F5 $2 | shader interaction feel | Never feed raw pointer state to a shader. Keep a uMouseActive fl
 canvas/glyph-ramp-image-field | E2 D4 W2 F3 $4 | canvas type texture image ambient generative | Encode a photograph as a field of characters: draw it into an of
 canvas/hash-dither-before-quantise | E1 D3 W2 F4 $2 | canvas color ramp noise grain banding generative | Snapping a continuous value onto a short palette — eight to twel
@@ -14,8 +15,10 @@ canvas/named-uv-spaces | neutral  $3 | shader architecture responsive correctnes
 canvas/override-material-edge-pass | E2 D3 W2 F5 $5 | webgl shader wireframe render-pass narrative | Render one set of geometry in two visual registers and cross-fad
 canvas/palette-as-uniforms | neutral  $2 | shader color system | Pass the site's palette into the shader as named vec3 uniforms r
 canvas/parametric-thickness-variation | E3 D3 W2 F4 $3 | shader organic detail | Drive line or ribbon thickness with uThickness + uThickVary nois
+canvas/prebaked-gradient-sprite | neutral  $2 | canvas performance particles light | createRadialGradient allocates and rasterises on every call, so 
 canvas/precomputed-cell-attenuation-field | E1 D2 W2 F5 $2 | canvas legibility performance ambient contrast generative | A generative field at full strength everywhere either drowns the
 canvas/projected-label-visibility-budget | neutral  $3 | webgl label projection density correctness | Projecting a 3D point to screen coordinates gives a position for
+canvas/resampled-path-travel | neutral  $2 | canvas performance motion connector architecture | Moving a marker along a curve by solving the curve every frame c
 canvas/reseeded-noise-tile | E2 D3 W2 F3 $2 | canvas texture ambient generative performance | Per-pixel noise across a whole viewport every frame is a fill-ra
 canvas/scroll-driven-frame-atlas | E4 D3 W3 F4 $4 | canvas scroll performance | For scrubbed sequence playback, draw frames from a sprite atlas 
 canvas/standard-uniform-set | neutral  $2 | shader architecture reference | A small reusable uniform contract covers most decorative shaders
@@ -228,6 +231,7 @@ surface/twinned-elevation-tokens | E1 D2 W2 F5 $1 | shadow elevation tokens hove
 surface/user-space-ruling-path | E1 D3 W1 F5 $1 | surface svg texture blueprint diagram cheap | Rule a drawing inside its own viewBox, not behind it. A single <
 timing/asymmetric-enter-exit-delay | E3 D2 W2 F5 $1 | motion sequencing state transition | A staggered group should cascade in and collapse out together. C
 timing/capped-total-stagger | neutral  $1 | motion sequencing scale | For unknown-length collections use stagger:{amount} not stagger:
+timing/cue-list-on-looping-clock | neutral  $2 | motion timing loop architecture correctness | A multi-beat scripted sequence built from chained timers cannot 
 timing/cumulative-gap-schedule | E3 D2 W2 F4 $1 | motion sequencing choreography entrance | A hand-authored entrance is a list of pauses, not absolute delay
 timing/non-linear-loop-periods | E3 D3 W2 F4 $2 | motion ambient rhythm | Give concurrent ambient loops coprime-ish periods (4s / 5s / 7s)
 timing/opacity-masked-loop-cut | E3 D2 W2 F4 $2 | timing keyframes loop opacity conveyor | A track that reads as endless usually means duplicated DOM. One 
@@ -242,12 +246,14 @@ timing/segment-eased-keyframes | E3 D2 W2 F5 $1 | motion easing keyframes choreo
 timing/stagger-band | E3 D3 W2 F4 $1 | motion rhythm sequencing | Sibling stagger lives in a narrow band: .06–.08s reads as one ge
 timing/state-scoped-duration | E2 D2 W2 F5 $1 | motion timing transition state asymmetry | Put transition-duration on the state selector rather than the ba
 timing/stepped-two-frame-blink | E2 D1 W2 F3 $1 | motion easing indicator status ambient | An indicator that fades reads as decoration; one that snaps betw
+timing/trapezoidal-visibility-envelope | neutral  $1 | motion timing loop architecture | Elements that appear, hold and leave on one shared timeline do n
 timing/unit-aware-token-read | neutral  $1 | tokens correctness motion build | Script reading duration tokens out of computed style must parse 
 type/balanced-headline-wrap | neutral  $1 | type polish | text-wrap: balance on every headline so line lengths even out in
 type/cap-height-trim | neutral  $1 | type spacing precision alignment | Every text block ships with invisible half-leading above and bel
 type/character-grid-as-texture | E3 D5 W2 F3 $2 | type texture ornament ascii | A field of monospace glyphs (+ x X 8 0 @ # % $) on a grid, used 
 type/em-sheared-highlight | E3 D2 W4 F4 $1 | type highlight clip-path emphasis inline scale | A slanted block behind a phrase gives a headline a cut-in, marke
 type/language-conditional-type-tokens | neutral  $2 | type i18n tokens localisation correctness | The type scale is a function of script, not only viewport. Redef
+type/measured-inline-word-swap | E3 D2 W3 F5 $2 | type motion headline correctness | A word cycling inside a running headline relays out the whole li
 type/mono-as-ui-texture | E1 D3 W2 F4 $1 | type ui technical register | Run a monospace face for all chrome — nav, labels, captions, cou
 type/optical-width-text-fit | E1 D2 W4 F5 $3 | type fit measurement display responsive | A headline that must fill a fixed box cannot be sized by charact
 type/padded-ordinal-counter | E1 D2 W2 F4 $1 | type list counter detail technical | 01 02 … 09 10 numbering without hand-written zeros and without t
