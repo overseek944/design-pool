@@ -4,7 +4,7 @@ category: type
 tags: [numerals,data,motion,correctness]
 axes: {energy: 2, density: 3, weight: 3, finish: 5}
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []

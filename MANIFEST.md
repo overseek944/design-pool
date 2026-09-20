@@ -1,6 +1,6 @@
 # Manifest
 
-287 primitives. Format: `category/id | axes cost | tags | gist`
+293 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -60,6 +60,7 @@ interaction/pointer-transparent-copy-layer | neutral  $1 | interaction pointer a
 interaction/proxy-painted-native-control | neutral  $1 | accessibility focus forms input correctness keyboard | Keep the real <input> and paint a sibling. Clip it to a 1×1 rect
 interaction/reserved-state-border | neutral  $1 | accessibility focus cls border correctness | A control that gains a border on focus or selection must carry t
 interaction/resting-default-expanding-row | E2 D2 W2 F5 $2 | interaction state hover accessibility layout | A row of panels that expand only on hover says nothing at rest —
+interaction/row-forwarded-stretched-focus | neutral  $1 | accessibility focus link correctness cards | A link stretched over its whole row or card — a pseudo-element a
 interaction/snap-scroll-as-dismiss-gesture | E3 D2 W2 F5 $3 | gesture dialog scroll accessibility sheet | Build a drag-to-dismiss sheet out of a scroll container rather t
 interaction/state-as-numeric-custom-property | E3 D2 W2 F5 $1 | interaction hover state tokens architecture | Express interaction state as a number, then derive every depende
 interaction/state-seeded-at-listener-attach | neutral  $1 | correctness state events scroll architecture | Events report transitions, not the current value. Any class deri
@@ -70,6 +71,7 @@ layout/boxless-wrapper | neutral  $1 | layout grid architecture correctness acce
 layout/breakout-grid-named-lines | neutral  $2 | layout grid tokens architecture full-bleed | One grid on the page wrapper with named lines for the bleed gutt
 layout/collision-band-gutter | neutral  $2 | layout container-query annotation responsive correctness | Margin notes need room beside the reading column, but only in a 
 layout/column-aligned-disclosure | E1 D2 W2 F5 $2 | layout grid disclosure alignment native | Let a <details> row sit on the page's column grid: make the <sum
+layout/container-budgeted-column-drop | neutral  $2 | layout container-query table responsive accessibility correctness | A dense row carries more columns than a narrow container can hol
 layout/container-edge-rule-lattice | E1 D3 W1 F5 $2 | layout grid hairline precision responsive technical | Draw the measurement system, not only the content. Vertical hair
 layout/count-threshold-shape-shift | neutral  $1 | layout has quantity-query chrome css-only density | Let a container change what it is once its contents pass a count
 layout/cropped-stage-mock | E1 D2 W2 F5 $2 | layout responsive overflow media scale detail | Show a framed artifact — a handset, a browser chrome, a console 
@@ -101,6 +103,7 @@ light/blend-doubled-headline | E2 D2 W4 F5 $3 | type blend legibility contrast c
 light/emitted-light-not-borders | E2 D1 W3 F5 $2 | color effect depth restraint | Separate surfaces with glow and luminance rather than 1px solid.
 light/gradient-through-text | E3 D2 W4 F3 $2 | color type effect | background-clip: text with a transparent fill turns a headline i
 light/offscreen-anchored-wash | E1 D2 W2 F4 $1 | gradient ground atmosphere ambient color cheap | A radial gradient centred inside its box shows its hot core and 
+light/pointer-anchored-surface-light | E2 D2 W2 F5 $2 | light pointer hover gradient custom-properties surface | Let a panel light where the pointer is rather than uniformly. On
 light/screen-blend-light-layer | E3 D3 W3 F4 $3 | effect blend compositing dark | mix-blend-mode: screen on an overlay makes it add light and drop
 light/stacked-chromatic-bloom | E3 D2 W4 F4 $3 | effect glow filter svg depth | filter: drop-shadow() chains, and follows the alpha channel — so
 media/approach-loaded-video | neutral  $2 | media video performance intersection-observer accessibility bandwidth | Background footage is usually the heaviest thing on a page and u
@@ -119,12 +122,14 @@ media/state-preserving-frame-relocation | neutral  $3 | media iframe embed lifec
 media/stepped-transform-sprite | E3 D2 W2 F4 $2 | media sprite animation svg performance | Play a short looping illustration as a filmstrip: frames in one 
 media/video-as-surface-not-frame | E3 D2 W4 F4 $3 | media surface hero | autoplay muted loop playsinline preload="auto" with object-conta
 media/welded-figure-caption | E1 D2 W2 F5 $1 | media figure caption accessibility editorial | A caption set as a paragraph under a figure reads as body copy a
+motion-system/additively-gated-reveal | E2 D2 W2 F4 $1 | motion reveal accessibility progressive-enhancement correctness scroll | Most machinery around entrances exists because the from-state is
 motion-system/attribute-driven-motion-hooks | neutral  $1 | architecture motion maintainability | Target animations off data- attributes, never class names. Styli
 motion-system/below-fold-armed-entrance | neutral  $1 | motion correctness progressive-enhancement observer reveal | An entrance system that hides content in CSS and un-hides it fro
 motion-system/camera-over-static-scene | E3 D2 W3 F5 $2 | motion transform scale focus diagram narrative | To walk a reader through a diagram, move the viewport rather tha
 motion-system/context-scoped-cleanup | neutral  $1 | motion lifecycle correctness | Create every animation inside a scoped context and revert it on 
 motion-system/distance-eased-camera-push | E2 D2 W3 F5 $3 | camera 3d easing scroll narrative | Interpolating a camera's position between two waypoints looks wr
 motion-system/fire-on-arrival-propagation | E3 D3 W2 F5 $3 | entrance propagation graph canvas emergent | An entrance authored as a list of delays must be rewritten whene
+motion-system/first-paint-entry-style | neutral  $1 | motion transition css-only progressive-enhancement state | An element that did not exist a frame ago has no previous value 
 motion-system/gap-compensated-loop-distance | neutral  $1 | motion marquee correctness loop overflow | A duplicated track loops seamlessly only when it travels exactly
 motion-system/keyframe-variant-bank | E3 D4 W2 F3 $2 | motion generative ambient tokens architecture | Phase and period offsets only ever translate one curve; they can
 motion-system/marquee-playhead | E3 D3 W2 F5 $3 | marquee motion state observer rhythm | Give a moving track one stationary reading position. A marker si
@@ -214,6 +219,7 @@ scroll/sticky-as-cheap-pin | E1 D2 W2 F3 $1 | scroll layout performance | positi
 scroll/tall-target-intersection-clause | neutral  $1 | scroll correctness observer reveal | intersectionRatio is a fraction of the element, so a section tal
 surface/backdrop-blur-tier-system | E1 D3 W3 F4 $3 | surface depth glass | Treat backdrop blur as a depth scale, not a decoration: sm for i
 surface/baseline-closed-area-path | E2 D2 W2 F5 $1 | svg chart sparkline data precision | A sparkline's tinted area and its stroke must never disagree by 
+surface/blended-grain-over-gradient | E1 D3 W3 F4 $1 | surface texture grain gradient blend-mode banding | A wide gradient across a saturated panel bands on 8-bit displays
 surface/corner-tick-frame | E1 D2 W1 F5 $1 | surface border frame detail currentcolor precision | Four short L-marks at the corners instead of a closed border: th
 surface/dash-phase-flow | E2 D2 W1 F5 $1 | svg dash motion connector diagram precision | Animating stroke-dashoffset on a dashed connector makes a static
 surface/detached-blur-shadow-plate | E1 D2 W4 F4 $2 | surface depth shadow blur mock hero | Past roughly 40px of blur box-shadow stops reading as shadow, an

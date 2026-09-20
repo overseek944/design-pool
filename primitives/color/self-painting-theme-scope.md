@@ -4,7 +4,7 @@ category: color
 tags: [color,tokens,theming,architecture,dark]
 axes: none
 cost: 2
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -60,3 +60,14 @@ input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:foc
 ```
 ⚠ The shadow paints over any inset bevel or focus ring on the same element, so a
 focused autofilled field loses its state. Carry that state on an outline.
+
+A scope whose ground is a *gradient* cannot pick its tokens against one
+backdrop value. Every token in the block — text, muted text, rule, focus ring —
+has to clear contrast at the worst point along the ramp, not the average, which
+in practice means one near-black or near-white foreground for the whole band
+rather than a tinted one. Scope the ring too: a global accent ring chosen
+against the page ground disappears on a saturated panel.
+```css
+.tone-warm { --fg: #120a0f; --muted: #4a2838; --line: var(--fg); --ring: var(--fg);
+  background-image: linear-gradient(112deg, var(--a), var(--mid) 48%, var(--b)) }
+```

@@ -4,7 +4,7 @@ category: motion-system
 tags: [architecture,motion,maintainability]
 axes: none
 cost: 1
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []

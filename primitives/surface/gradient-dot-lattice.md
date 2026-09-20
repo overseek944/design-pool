@@ -4,7 +4,7 @@ category: surface
 tags: [surface,texture,pattern,blueprint,cheap]
 axes: {energy: 1, density: 3, weight: 1, finish: 4}
 cost: 1
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -46,4 +46,16 @@ carry further than specks.
 background-image: linear-gradient(90deg,  var(--rule) 1px, transparent 0),
                   linear-gradient(180deg, var(--rule) 1px, transparent 0);
 background-size: 60px 60px;
+```
+
+`repeating-conic-gradient` is the generator the pitch logic does *not*
+transfer to. Its stops are angular, so a fan of hairline rays self-graduates —
+dense at the origin, opening out with distance — and the origin must be pushed
+outside the box or the convergence point sits in the layout as a visible knot.
+Anchor it past one corner, mask the near end, and the ground reads as
+perspective rather than as pattern. Ray every 5–8°, line 0.05–0.1° of that.
+```css
+background: repeating-conic-gradient(from 258deg at 38% 112%,
+  transparent 0deg 5.8deg, var(--rule) 5.86deg 5.92deg);
+mask-image: linear-gradient(transparent 12%, #000)
 ```

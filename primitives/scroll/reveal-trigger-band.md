@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,reveal,thresholds]
 axes: {energy: 2, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -32,3 +32,10 @@ new IntersectionObserver(cb, { rootMargin: "0px 0px -60px 0px", threshold: .12 }
 ```
 ⚠ A `threshold` is a fraction of the *element*: on anything taller than the root
 it can never be met. Use `0` there and let `rootMargin` do all the work.
+
+A scroll-driven timeline states the same band as a range rather than a trigger:
+`animation-range: entry 15% entry 55%` scrubs the entrance across the element's
+own crossing of the fold instead of firing at a line. The numbers are not the
+observer's — they measure entry progress, where `entry 100%` is fully arrived,
+so the 80–90% band above becomes a *window* roughly 10–20% to 50–60%. Cheaper
+than either: no library, no observer, and it recomputes free on resize.

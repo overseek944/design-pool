@@ -4,7 +4,7 @@ category: media
 tags: [mask,icon,gradient,media,state]
 axes: {energy: 2, density: 2, weight: 2, finish: 4}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,15 @@ with a slight scale, and the fill never re-renders underneath. Cross-fade
 ```
 ⚠ A mask reads alpha only — artwork whose meaning lives in its internal
 colours cannot be drawn this way.
+
+Where the family is a *variant set* rather than a morph — a tier seal, a status
+glyph, one mark per state — put the mask source in an inherited custom property
+and let the state attribute redefine it. One `::after` rule then serves every
+member, the icon inherits its size in `em` and its colour from `currentColor`,
+and adding a variant is one declaration rather than a new element.
+```css
+[data-tier]            { --seal: var(--seal-check) }
+[data-tier=top]        { --seal: var(--seal-star) }
+[data-tier]::after     { content: ""; width: 1.05em; height: 1.05em;
+  background: currentColor; mask: var(--seal) center / contain no-repeat }
+```

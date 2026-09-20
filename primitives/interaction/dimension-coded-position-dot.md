@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,state,indicator,accessibility,carousel]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -38,3 +38,13 @@ a CSS transition drifts the moment the tab is backgrounded, because timers
 throttle and animations do not.
 ⚠ `animationend` bubbles from descendants too; check the target, and drop the
 listener when the step changes or a stale rail advances the sequence twice.
+
+The same trick makes a one-shot signal self-clearing. A value that just changed
+— a balance, a count, a saved state — flashes by gaining a `data-` flag; let
+the element drop the flag in its own `animationend` and the duration lives only
+in the stylesheet, where retuning it needs no matching constant in script. A
+second change arriving mid-flash removes and re-adds the flag rather than
+stacking a timer on a timer.
+```jsx
+<b data-flash={flashing || undefined} onAnimationEnd={() => setFlashing(false)} />
+```
