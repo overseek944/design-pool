@@ -4,7 +4,7 @@ category: color
 tags: [color,tokens,alpha,borders,theming]
 axes: none
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []

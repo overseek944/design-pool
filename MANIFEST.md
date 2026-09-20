@@ -1,6 +1,6 @@
 # Manifest
 
-267 primitives. Format: `category/id | axes cost | tags | gist`
+270 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -69,6 +69,7 @@ layout/container-edge-rule-lattice | E1 D3 W1 F5 $2 | layout grid hairline preci
 layout/count-threshold-shape-shift | neutral  $1 | layout has quantity-query chrome css-only density | Let a container change what it is once its contents pass a count
 layout/cropped-stage-mock | E1 D2 W2 F5 $2 | layout responsive overflow media scale detail | Show a framed artifact — a handset, a browser chrome, a console 
 layout/em-reserved-swap-height | neutral  $1 | layout layout-shift responsive correctness tabs | Content that swaps in place — a tab's copy, a rotating claim — c
+layout/float-wrapped-figure | E1 D3 W2 F4 $1 | layout type editorial responsive detail | Neither grid nor flex wraps running text around a picture — floa
 layout/fractional-grid-with-fluid-rail | E1 D3 W3 F4 $2 | layout grid asymmetry | Asymmetric two-column via minmax() where the rail is viewport-pr
 layout/height-budgeted-media-width | neutral  $2 | layout container-query aspect fit cls | When a card must fit one screen exactly — media plus chrome, not
 layout/in-flow-overlay-header | neutral  $1 | layout sticky overlay correctness cls | A header that must float over the first section and still stick 
@@ -184,6 +185,7 @@ scroll/collapsed-observer-band | neutral  $1 | scroll observer navigation archit
 scroll/css-owned-pin-geometry | neutral  $2 | scroll pin architecture correctness responsive | Let the stylesheet decide whether a section pins and for how lon
 scroll/element-scoped-read-progress | neutral  $2 | scroll progress correctness observer reading | Reading progress belongs to the article, not the document. Measu
 scroll/embed-claims-wheel-on-hover | neutral  $1 | scroll embed iframe overflow pointer correctness | An interactive embed inside a scrolling page — a map, a 3D scene
+scroll/fixed-attachment-band | E2 D1 W3 F3 $1 | scroll parallax media surface progressive-enhancement performance | A full-bleed decorative band whose image is pinned to the viewpo
 scroll/hoisted-scroll-timeline | neutral  $2 | scroll motion architecture progressive-enhancement | A named scroll-timeline is visible only to descendants of the sc
 scroll/once-versus-toggle | neutral  $1 | scroll reveal ux | Two reveal policies, chosen per intent, never mixed arbitrarily:
 scroll/overflow-probe-via-scroll-timeline | neutral  $2 | scroll overflow progressive-enhancement correctness | A scroll-driven animation only advances if its scroll port can a
@@ -270,5 +272,6 @@ type/tracking-as-size-ratio | E1 D2 W3 F5 $1 | type tracking precision fluid tok
 type/variable-axis-tokens | E1 D2 W2 F5 $1 | type tokens opentype variable-font precision | A variable face is a continuum, not nine presets — so name the e
 type/viewport-locked-single-line | E1 D2 W4 F4 $1 | type responsive display unit correctness | A display line that must never break is not a wrapping problem t
 type/wavy-annotation-underline | E2 D2 W2 F2 $1 | type underline link detail informal | A wavy decoration stops reading as a link and starts reading as 
+type/webfont-scoped-to-inline-svg | neutral  $1 | type svg correctness architecture progressive-enhancement | An SVG setting live text in a brand face renders in that face on
 type/width-stable-changing-number | E2 D3 W3 F5 $1 | numerals data motion correctness | A figure that animates or streams needs two guarantees, and tabu
 ```

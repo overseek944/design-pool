@@ -4,7 +4,7 @@ category: type
 tags: [type,emphasis,hierarchy,editorial,colour]
 axes: {energy: 1, density: 2, weight: 3, finish: 5}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,11 @@ reflow, where a two-block hierarchy starts to look like a stranded label.
 ⚠ The muted half is still body copy: hold it at ≥4.5:1, not the 3:1 a
 decorative grey gets away with. Put the muted step 55–75% of the way from
 background to foreground; below that the split stops reading as deliberate.
+
+The split can be made in hue rather than lightness — the claim in the accent,
+the remainder at full foreground. That inverts the weighting: the accent clause
+is figure rather than what survives a fade, which is what a display-size
+paragraph needs, since a muted half at 50–70px reads as an unfinished render
+instead of a second voice. Both halves are body copy now, so the accent owes
+4.5:1 against the page ground and must be picked for that, not for how it
+behaves on a button.

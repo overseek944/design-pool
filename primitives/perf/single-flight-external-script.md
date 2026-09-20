@@ -4,7 +4,7 @@ category: perf
 tags: [performance,architecture,correctness,lifecycle,embed]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,14 @@ export const load = (src, cb = 'onVendorReady') => p ??= new Promise(res => {
 ```
 ⚠ Never reject and clear the promise on error without a backoff — remounting
 consumers will then retry the failed load on every render.
+
+Module scope is the wrong holder when the DOM outlives the module — a soft
+navigation, a second island, a late-hydrating bundle. The tag is already in the
+head and a fresh promise starts a second fetch anyway. Dedupe against the
+document instead, and mark the tag itself once it fires so a later caller can
+tell *loaded* from *in flight*.
+```js
+const s = [...document.scripts].find(x => x.src === src)
+if (s) return s.dataset.ready ? Promise.resolve()
+                              : new Promise(r => s.addEventListener('load', r))
+```

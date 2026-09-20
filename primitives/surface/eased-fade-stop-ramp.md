@@ -4,7 +4,7 @@ category: surface
 tags: [surface,gradient,fade,mask,precision]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -33,3 +33,11 @@ into a wash on the long one and compresses into a hard edge on the short one.
 mask-image: linear-gradient(to bottom, #000 calc(100% - 80px),
   #0009 calc(100% - 64px), #0004 calc(100% - 32px), transparent 100%)
 ```
+
+Crossed ramps over one photograph are two different jobs, not one applied twice.
+The ramp along the text axis is asymmetric — dense at the copy edge, clear by
+60–100% — so it buys contrast only where words are and leaves the far side of
+the picture intact. The ramp along the scroll axis is dense at *both* ends: the
+top seats a transparent header, the bottom hands off to the next section.
+Weight them the same and the whole frame greys, which is the flat overlay this
+was meant to replace.

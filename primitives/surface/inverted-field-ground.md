@@ -4,7 +4,7 @@ category: surface
 tags: [surface,form,contrast,figure-ground,accessibility]
 axes: {energy: 1, density: 2, weight: 3, finish: 4}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,10 @@ grid of wells.
 the 3:1 non-text floor for a control boundary. Keep a hairline on the field or
 push the tint past a 3:1 step. Placeholder contrast is measured against the
 field, not the panel.
+
+The opposite reduction also works: delete the field box and leave a single 2px
+rule under each label, so the form reads as a document being filled rather than
+a rack of wells. Cheapest treatment there is on a dark panel, and it fails one
+specific way — that rule is now the entire control boundary, so it owes 3:1 at
+rest, and recolouring the same 2px on focus is not a focus indicator. Keep the
+outline and let the rule move with it.

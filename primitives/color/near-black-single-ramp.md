@@ -4,7 +4,7 @@ category: color
 tags: [color,palette,dark,restraint]
 axes: {energy: 2, density: 2, weight: 4, finish: 4}
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -39,3 +39,10 @@ paper instead of printed into it. The faint rung is where this fails: a warm
 grey that looks correctly quiet against warm paper is routinely near 3:1, so it
 is a rung for decoration and non-essential labels only, and anything that must
 be read moves up to the softened rung.
+
+Range — the tint need not be the accent's own hue. Ground the page in a cold
+near-black and spend the accent warm: the accent stops being the room dimmed
+and becomes the only light in it, one hue carrying structure and the other
+attention, with neither competing on saturation. This is the case that needs
+the ground lifted — at 4–6% lightness there is no room above it for a five-rung
+elevation ramp that still reads as one colour. Put it at 10–14%.

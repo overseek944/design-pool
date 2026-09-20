@@ -4,7 +4,7 @@ category: layout
 tags: [header,scroll,sticky,chrome]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -31,3 +31,12 @@ CTA, the announcement text beside a badge — on the same threshold, so what is
 left sits at its rest spacing inside the capsule instead of being squeezed into
 it. Whatever is cut has to be redundant; the capsule is the whole nav from that
 point down the page.
+
+The change need not be geometric. Hold the box exactly and move only the ground
+— transparent over the hero, then a translucent plate with a backdrop blur and a
+hairline at the same threshold — and the bar stops reading as chrome over the
+art and starts reading as chrome over the document, with nothing to reflow and
+no links to re-centre. Plate alpha 0.7–0.85: low enough to show movement behind
+it, high enough that its own contrast does not depend on what is passing under.
+⚠ The blur holds a compositor layer for the entire scroll. Drop the blur, not
+the plate, under `prefers-reduced-transparency` or on a low device tier.
