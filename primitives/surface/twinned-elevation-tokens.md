@@ -4,7 +4,7 @@ category: surface
 tags: [shadow,elevation,tokens,hover,card]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -35,3 +35,16 @@ greying the ground. Offset and blur roughly 1:2, offsets 16–40px.
 ```
 ⚠ A blur that large repaints on every size change — carry it on a static
 wrapper, not on the element being animated.
+
+The same rule governs an attention pulse. A ring that appears and goes needs
+both ends of the keyframe to carry the *same* shadow list, the resting end set
+to zero spread and zero alpha — `color-mix(in srgb, var(--accent) 0%,
+transparent)` — so the layer interpolates instead of popping, and a spread-only
+ring costs no layout and no reflow the way an `outline` or a border would.
+Spread 3–6px, alpha 10–18% at the peak, period 2–3s.
+```css
+@keyframes hint { 0%, to { box-shadow: 0 0 0 0   color-mix(in srgb, var(--accent)  0%, transparent) }
+                  50%    { box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 14%, transparent) } }
+```
+⚠ Stack it after any resting shadow in the same list, at the same index in both
+frames — a pulse added as a second list is the mismatch this entry is about.

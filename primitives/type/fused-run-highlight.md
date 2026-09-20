@@ -4,7 +4,7 @@ category: type
 tags: [type,annotation,editorial,diff,state]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []

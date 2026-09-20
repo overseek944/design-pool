@@ -1,6 +1,6 @@
 # Manifest
 
-272 primitives. Format: `category/id | axes cost | tags | gist`
+277 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -64,6 +64,7 @@ layout/balanced-side-track-centring | neutral  $1 | layout grid alignment chrome
 layout/border-clamped-annotation-leader | E1 D3 W1 F5 $2 | layout annotation connector svg diagram | A leader line drawn from a label's centre to its subject crosses
 layout/boxless-wrapper | neutral  $1 | layout grid architecture correctness accessibility | display: contents removes an element's box while keeping its chi
 layout/breakout-grid-named-lines | neutral  $2 | layout grid tokens architecture full-bleed | One grid on the page wrapper with named lines for the bleed gutt
+layout/collision-band-gutter | neutral  $2 | layout container-query annotation responsive correctness | Margin notes need room beside the reading column, but only in a 
 layout/column-aligned-disclosure | E1 D2 W2 F5 $2 | layout grid disclosure alignment native | Let a <details> row sit on the page's column grid: make the <sum
 layout/container-edge-rule-lattice | E1 D3 W1 F5 $2 | layout grid hairline precision responsive technical | Draw the measurement system, not only the content. Vertical hair
 layout/count-threshold-shape-shift | neutral  $1 | layout has quantity-query chrome css-only density | Let a container change what it is once its contents pass a count
@@ -193,11 +194,13 @@ scroll/overflow-probe-via-scroll-timeline | neutral  $2 | scroll overflow progre
 scroll/pin-and-progress-stack | E4 D3 W4 F4 $4 | scroll layout narrative | Pin a tall container and drive discrete state from a single scru
 scroll/pointer-scoped-snap | neutral  $1 | scroll snap pointer input correctness | Mandatory snap is right for a thumb and wrong for a wheel: a tra
 scroll/pre-hydration-scroll-restore | neutral  $2 | scroll navigation hydration restoration architecture | A client-routed page that restores scroll after hydration shows 
+scroll/probe-reach-tail-space | neutral  $2 | scroll layout observer correctness | A scroll probe sits on a fixed line — the midpoint, or just unde
 scroll/reveal-trigger-band | E2 D2 W2 F4 $1 | scroll reveal thresholds | Entrance triggers fire at top 85%–top 90% — just inside the fold
 scroll/scripted-scroll-abort-band | neutral  $1 | scroll correctness accessibility events navigation | A scripted scroll animation owns the viewport for its whole dura
 scroll/scroll-beat-live-region | neutral  $1 | accessibility scroll aria-live narrative correctness | When scrolling is what changes the content — a pinned scene, a c
 scroll/scrollbar-on-activity | E1 D1 W1 F5 $1 | scroll scrollbar chrome restraint state | A permanent scrollbar rules a line down every panel that owns on
 scroll/scrub-lag-band | E3 D2 W3 F5 $2 | scroll motion feel | scrub as a number adds catch-up lag in seconds and is what separ
+scroll/self-driven-scroll-blackout | neutral  $1 | scroll state observer correctness | Any state derived from scroll position — an active section, a hi
 scroll/smooth-scroll-driving-timeline | E3 D2 W3 F5 $3 | scroll motion architecture | Pair a smooth-scroll library (Lenis) with the animation library'
 scroll/stale-scroll-request-guard | neutral  $2 | scroll correctness accessibility events navigation | A scroll request crossing an async boundary — posted by an embed
 scroll/sticky-as-cheap-pin | E1 D2 W2 F3 $1 | scroll layout performance | position: sticky for anything that only needs to hold position —
@@ -240,6 +243,7 @@ timing/capped-total-stagger | neutral  $1 | motion sequencing scale | For unknow
 timing/cue-list-on-looping-clock | neutral  $2 | motion timing loop architecture correctness | A multi-beat scripted sequence built from chained timers cannot 
 timing/cumulative-gap-schedule | E3 D2 W2 F4 $1 | motion sequencing choreography entrance | A hand-authored entrance is a list of pauses, not absolute delay
 timing/decaying-loop-restart-gap | E2 D1 W2 F5 $1 | loop timing sequence restraint demo attention | A self-restarting demonstration does not want one restart gap. A
+timing/dwelling-phase-ring | neutral  $2 | timing state loop choreography architecture demo | A looping demonstration written as a schedule of effects has to 
 timing/non-linear-loop-periods | E3 D3 W2 F4 $2 | motion ambient rhythm | Give concurrent ambient loops coprime-ish periods (4s / 5s / 7s)
 timing/opacity-masked-loop-cut | E3 D2 W2 F4 $2 | timing keyframes loop opacity conveyor | A track that reads as endless usually means duplicated DOM. One 
 timing/overshoot-for-pop-elements | E4 D2 W2 F3 $1 | motion easing delight | back.out(n) on small elements that should feel physical — badges
@@ -257,6 +261,7 @@ timing/trapezoidal-visibility-envelope | neutral  $1 | motion timing loop archit
 timing/unit-aware-token-read | neutral  $1 | tokens correctness motion build | Script reading duration tokens out of computed style must parse 
 type/balanced-headline-wrap | neutral  $1 | type polish | text-wrap: balance on every headline so line lengths even out in
 type/cap-height-trim | neutral  $1 | type spacing precision alignment | Every text block ships with invisible half-leading above and bel
+type/char-count-stepped-reveal | E3 D1 W2 F4 $1 | type motion css-only custom-properties keyframes | A per-character reveal is one number. Publish the character coun
 type/character-grid-as-texture | E3 D5 W2 F3 $2 | type texture ornament ascii | A field of monospace glyphs (+ x X 8 0 @ # % $) on a grid, used 
 type/em-sheared-highlight | E3 D2 W4 F4 $1 | type highlight clip-path emphasis inline scale | A slanted block behind a phrase gives a headline a cut-in, marke
 type/fused-run-highlight | E1 D2 W2 F5 $2 | type annotation editorial diff state | Marking a run of blocks — changed lines, an annotated passage — 

@@ -4,7 +4,7 @@ category: layout
 tags: [layout,responsive,overflow,media,scale,detail]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -32,3 +32,17 @@ viewport luxury, not the component's identity.
 @media (width <= 520px) { .stage { height: auto; overflow: visible;
   mask-image: none; -webkit-mask-image: none } }
 ```
+
+The crop also answers the narrow viewport where a real interface will not
+reflow. Rather than rebuilding the product's chrome at phone width — which
+shows something the reader will never see — render it at its native width
+inside the card and let the frame clip it, anchored so the region that carries
+the point stays in view. It reads as a window onto a real application; a
+reflowed imitation reads as a diagram of one. Native width 900–1280px behind a
+300–360px aperture.
+```css
+.aperture { overflow: hidden; container-type: inline-size }
+.aperture > .app { inline-size: 1120px; margin-inline-start: -180px }
+```
+⚠ Nothing inside is operable at that scale, so make it inert and give the card
+one real control of its own — a link out, or a full-screen affordance.

@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,observer,navigation,architecture,correctness]
 axes: none
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
