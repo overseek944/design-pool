@@ -4,7 +4,7 @@ category: media
 tags: [layout,media,cls]
 axes: none
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -16,3 +16,9 @@ become a deliberate rhythm rather than whatever the asset happened to be.
 ```css
 .slot { aspect-ratio: 16/10.5 }
 ```
+
+Where the slot's height is set by a sibling rather than by itself — a media
+panel beside a column of copy — swap the ratio for a floor at that breakpoint
+(`aspect-ratio: auto` plus `min-height`), or a wide ratio on a wide column
+makes the panel absurdly tall. Same purpose, different reservation: the floor
+still holds the space before content arrives.

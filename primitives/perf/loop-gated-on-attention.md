@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,intersection-observer,visibility,battery,correctness]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,8 @@ el.querySelectorAll('svg').forEach(s => onScreen && visible ? s.unpauseAnimation
 ```
 ⚠ SMIL ignores `animation-play-state` — it needs the `pauseAnimations()` call.
 Pausing holds the current frame, so anything mid-wipe freezes visibly cropped.
+
+A script-driven render loop is not reached by `animation-play-state` — the gate
+must stop requesting frames and restart on re-entry. Reset the loop's clock on
+resume, or motion driven from elapsed time jumps by however long it sat
+offscreen.

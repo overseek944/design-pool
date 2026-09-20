@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,architecture,accessibility]
 axes: none
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,9 @@ const m = Math.min(devicePixelRatio || 1, 2)
 c.width = Math.round(w * m); c.height = Math.round(h * m)
 ctx.setTransform(m, 0, 0, m, 0, 0)
 ```
+
+The same cap belongs on a WebGL renderer, where the API is
+`setPixelRatio(Math.min(devicePixelRatio, 2))` and the cost is fragment
+shading rather than fill. Set it once and again on resize; renderers do not
+re-read it, and a window dragged between a retina and an external panel
+otherwise renders at the old ratio.

@@ -4,7 +4,7 @@ category: layout
 tags: [overlay,correctness,overflow,dialog,cls]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,8 @@ html:has(.overlay) { overflow: hidden; overscroll-behavior: none;
 ⚠ Fixed-position siblings need the same compensation or they jump sideways.
 This does not stop the overlay's own descendants from chaining their scroll to
 the page — `overscroll-behavior: contain` on the panel is still required.
+
+Where the lock must stay imperative, restore the *previous* value, never the
+empty string. Two stacked overlays that each write `overflow: hidden` and clear
+it to `''` unlock the page when the inner one closes, and a root that carried
+its own `overflow` loses it permanently.

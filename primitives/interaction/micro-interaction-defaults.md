@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,polish,consistency]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -22,3 +22,8 @@ Widened — the band runs `120–300ms` in practice. Marketing and editorial
 surfaces sit at `300ms` on a long-tail ease-out, where the settle is meant to be
 noticed as finish; tools stay at the bottom. Above `300ms` state feedback stops
 reading as response and starts reading as latency.
+
+Name the properties. `transition: all` eventually catches a layout property —
+`gap`, `padding`, `width` — and a hover that relayouts its row cannot be
+composited and can nudge its neighbours. To open a gap on hover, translate the
+child and leave the box alone.

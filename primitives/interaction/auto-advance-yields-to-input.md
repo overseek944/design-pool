@@ -4,7 +4,7 @@ category: interaction
 tags: [carousel,autoplay,accessibility,state]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -22,3 +22,9 @@ const pick = i => { setActive(i); setAuto(false)
 ⚠ Bind `onFocus` alongside `onMouseEnter` or keyboard users get no pause at
 all. Make each item a real button with `aria-pressed`, and clear the resume
 timer on unmount.
+
+On a direct-manipulation surface — an orbiting model, a pannable map — hover is
+not interaction and focus never arrives, so bind to the control's own drag
+`start` and `end` instead and measure the quiet window from release. Suspend on
+`start`, arm the resume timer on `end`; a timer armed on `start` expires
+mid-drag and the idle motion fights the hand still holding the object.
