@@ -4,7 +4,7 @@ category: timing
 tags: [tokens,correctness,motion,build]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -50,3 +50,17 @@ el.animate([{ height: `${from}px` }, { height: `${to}px` }], { duration: 400, ea
 ```
 ⚠ `element.animate` throws on an empty string, so the fallback is required, not
 defensive — the property is empty until the stylesheet parses.
+
+The same probe answers a unit script cannot reach at all. `innerHeight` is the
+*large* viewport, so a section budgeted in `svh` and the same budget recomputed
+in JS disagree by the whole height of mobile chrome; `dvh` and `lvh` are
+equally unreadable, and there is no formula to reimplement — only the engine
+knows. Carry the declaration on a hidden zero-width fixed element and read its
+`offsetHeight` back.
+```js
+probe.style.cssText = 'position:fixed;width:0;height:100svh;visibility:hidden'
+const svh = () => probe.offsetHeight || innerHeight
+```
+⚠ `offsetHeight` rounds to an integer and forces layout — read it once per
+relayout, never inside a scroll handler, and keep one probe for the life of the
+page rather than building it per call.

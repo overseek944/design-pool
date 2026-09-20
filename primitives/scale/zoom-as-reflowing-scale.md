@@ -4,7 +4,7 @@ category: scale
 tags: [unit,scale,architecture,responsive,correctness]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -38,3 +38,21 @@ section. 0.78–0.9 reads as denser, above 1.05 as an accessibility setting.
 under it is wrong by the factor. Recover it from the element itself —
 `offsetWidth / getBoundingClientRect().width` — rather than reading the token,
 which misses browser zoom and any nested opt-out.
+
+The factor need not be authored. Where a block must fit a height it does not
+own, solve for it: clear the property, measure the real overflow against the
+budget, set `zoom` to the ratio, and repeat two or three times because the
+reflow changes the measurement. Floor it — under about 0.6 the content is no
+longer readable and the section should drop something instead — and remove the
+property outright when a pass says it already fits, so nothing pays for a scale
+of 1.
+```js
+for (let i = 0; i < 3; i++) {
+  const top = el.getBoundingClientRect().top, room = budget - top
+  const need = bottomOf(el) - top                    // deepest descendant
+  if (need <= room + 2) break
+  el.style.zoom = (z = Math.max(.6, room / need * z)).toFixed(3) }
+```
+⚠ `getBoundingClientRect().bottom` is the element's own box — a descendant
+overflowing it is not in that number. Walk the subtree for the true bottom, and
+re-run on `fonts.ready`, not only on resize.

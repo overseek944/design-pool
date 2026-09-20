@@ -4,7 +4,7 @@ category: layout
 tags: [overlay,correctness,overflow,dialog,cls]
 axes: none
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -34,3 +34,18 @@ Lock the element that actually scrolls. An app shell that pins `html, body` to
 written against the root a no-op — the overlay opens and the pane underneath
 still moves. Key the `:has()` off whichever ancestor owns the overflow, and
 where more than one pane can scroll, off each of them.
+
+Where the page's own layout is a function of `scrollY` — a fixed stage scrubbed
+by a spacer — hiding overflow is the wrong lock entirely: it collapses the
+scroll height, and the scene underneath resets to its first frame. Leave
+scrolling intact and re-pin instead. Cancel `wheel` and `touchmove`
+non-passively, restore the stored offset from any `scroll` that slips through,
+and swallow the scrolling keys unless focus is already inside the panel.
+```js
+const y = scrollY
+addEventListener('scroll', () => scrollY !== y && scrollTo(0, y), { passive: true })
+addEventListener('wheel', e => e.preventDefault(), { passive: false })
+```
+⚠ A non-passive `wheel` listener on the document taxes every scroll on the
+page — bind it on open and remove it on close, never at startup. Space and
+PageDown scroll too, and no pointer handler sees them.

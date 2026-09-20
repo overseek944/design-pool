@@ -4,7 +4,7 @@ category: layout
 tags: [layout,container-query,table,responsive,accessibility,correctness]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -28,3 +28,18 @@ at ~52rem, down to one column plus a trailing action at ~32rem.
 ```
 ⚠ Hidden and visible must be exclusive at every width — the same threshold in
 both rules — or a screen reader announces the value twice.
+
+Where the row is a step indicator rather than data, the threshold can be
+measured instead of chosen. Restore every cell, ask the track whether it still
+overflows — `scrollWidth > clientWidth + 2` — and only then reduce, keeping the
+current step and dropping its neighbours. The gate is the real content at the
+real width, so a long label in one language collapses a row that a breakpoint
+would have let overflow.
+```js
+cells.forEach(c => c.style.display = '')
+if (track.scrollWidth > track.clientWidth + 2)
+  cells.forEach((c, i) => { if (i !== current) c.style.display = 'none' })
+```
+⚠ Restore before measuring or the second pass reads the collapsed width and the
+row never expands again. It forces layout — run it from the same debounced
+relayout as every other measurement, not per frame.

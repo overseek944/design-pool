@@ -4,7 +4,7 @@ category: media
 tags: [media,performance,dialog,correctness,lifecycle]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

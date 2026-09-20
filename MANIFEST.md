@@ -1,6 +1,6 @@
 # Manifest
 
-405 primitives. Format: `category/id | axes cost | tags | gist`
+407 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -208,6 +208,7 @@ motion-system/mpath-bound-traveller | E3 D1 W1 F5 $1 | motion svg path marker lo
 motion-system/named-completed-motion-state | neutral  $1 | motion state correctness accessibility reveal progressive-enhancement | Give a choreographed scene three named states — waiting, playing
 motion-system/namespaced-hook-families | neutral  $1 | architecture motion scale | Prefix hooks by section (data-why-card, data-why-canvas, data-wh
 motion-system/non-converging-decorative-meter | E2 D2 W2 F4 $1 | motion mock meter progress accessibility | A meter animated inside a product mock gets read as data. Fill i
+motion-system/normalised-viewport-pointer-route | E3 D2 W2 F5 $3 | motion pointer demonstration scroll narrative | A drawn pointer walking a product is authored once if its route 
 motion-system/origin-signed-entrance | E3 D2 W2 F5 $1 | motion tabs state custom-properties transition | A tab set whose panels all enter from the same side throws away 
 motion-system/parameterised-path-travel | E3 D3 W1 F4 $2 | motion loop ambient diagram css-only | One keyframe animating offset-distance from 0% to 100% drives an
 motion-system/path-scrubbed-entrance | E3 D2 W2 F5 $3 | motion scroll motion-path choreography scrub | Give each element its own curve instead of a shared translate. A
@@ -230,6 +231,7 @@ perf/analytic-stand-in-until-live | neutral  $2 | data loading architecture visu
 perf/byte-measured-entry-gate | neutral  $3 | performance loading progress fetch overlay correctness | An overlay held while an asset loads is usually a timer pretendi
 perf/data-saver-media-branch | neutral  $1 | performance media-query bandwidth video progressive-enhancement accessibility | prefers-reduced-data: reduce is a reader saying their connection
 perf/dead-banded-resize-rebuild | neutral  $1 | resize canvas mobile correctness | A generative scene that re-seeds on resize restarts every time a
+perf/derived-epsilon-write-guard | neutral  $1 | performance frame-budget animation correctness architecture | A scrubbed frame writes dozens of values, nearly all unchanged —
 perf/device-hint-quality-tier | neutral  $2 | performance webgl capability progressive-enhancement correctness | Resolve one integer tier at startup and let every expensive deci
 perf/dual-epsilon-settle-halt | neutral  $1 | performance animation spring frame-budget correctness | Integrated motion approaches its target asymptotically and never
 perf/engagement-deferred-third-party | neutral  $2 | performance third-party analytics loading idle correctness | A tag that only observes engaged sessions should not compete wit
