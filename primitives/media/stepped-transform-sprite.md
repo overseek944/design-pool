@@ -4,7 +4,7 @@ category: media
 tags: [media,sprite,animation,svg,performance]
 axes: {energy: 3, density: 2, weight: 2, finish: 4}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,14 @@ observer release it, so idle sequences cost nothing. 8–16 frames over 0.6–2s
 }
 ```
 ⚠ `steps(n)` must match the frame count exactly or the loop drifts; one wide strip is also one large decode, so cap the row width.
+
+When the frames are DOM rather than one image — glyphs, spans, subtrees — stack
+them in one grid cell instead of sliding a strip. Frames need no common width,
+nothing decodes, and the still state is one child.
+```css
+.stack { display: inline-grid }  .frame { grid-area: 1/1;
+  animation: show .64s step-end infinite }   /* slice = 1/n exactly */
+@keyframes show { 0%, 24.99% { opacity: 1 } 25%, to { opacity: 0 } }
+@media (prefers-reduced-motion: reduce) { .frame { opacity: 0; animation: none }
+  .frame:first-child { opacity: 1 } }
+```

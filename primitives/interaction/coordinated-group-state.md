@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,surface,hover]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -32,3 +32,12 @@ only change colour need neither. Travel 1–3px — past that it reads as a jump
 recede instead of the target gaining: `.list:has(a:hover) a:not(:hover)
 { opacity: .4 }`. Subtractive emphasis, for a long list of equals. Run the dim
 1.3–1.6× slower than the colour beside it so it never snaps.
+
+Where the part's response is a *loop*, declare it always and gate
+`animation-play-state` rather than adding the animation on hover — adding it
+restarts from 0% each entry, so a sweep across three cards reads as three false
+starts. Name pseudo-elements explicitly; they are not descendants.
+```css
+.tile .anim, .tile .anim::after { animation-play-state: paused }
+.tile:hover .anim, .tile:hover .anim::after { animation-play-state: running }
+```

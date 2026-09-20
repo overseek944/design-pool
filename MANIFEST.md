@@ -1,6 +1,6 @@
 # Manifest
 
-168 primitives. Format: `category/id | axes cost | tags | gist`
+172 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -32,6 +32,7 @@ interaction/hysteretic-lock-zone | neutral  $1 | interaction pointer state corre
 interaction/idle-scroll-cue | E2 D1 W2 F4 $1 | scroll affordance feedback motion | A page whose motion is entirely scroll-driven stops when the rea
 interaction/micro-interaction-defaults | E2 D2 W2 F5 $1 | interaction polish consistency | One transition duration (200ms) and one property set for every n
 interaction/native-disclosure-animation | E2 D2 W2 F5 $2 | motion disclosure accessibility progressive-enhancement height | ::details-content with interpolate-size: allow-keywords animates
+interaction/offset-shadow-press | E3 D2 W4 F2 $1 | interaction state depth detail border | A hard offset shadow reads as a solid object sitting above the p
 interaction/paired-focus-offset-tokens | neutral  $1 | accessibility focus tokens correctness | Ship the focus ring as three tokens — width, an outer offset, an
 interaction/snap-scroll-as-dismiss-gesture | E3 D2 W2 F5 $3 | gesture dialog scroll accessibility sheet | Build a drag-to-dismiss sheet out of a scroll container rather t
 interaction/state-as-numeric-custom-property | E3 D2 W2 F5 $1 | interaction hover state tokens architecture | Express interaction state as a number, then derive every depende
@@ -69,6 +70,7 @@ media/video-as-surface-not-frame | E3 D2 W4 F4 $3 | media surface hero | autopla
 motion-system/attribute-driven-motion-hooks | neutral  $1 | architecture motion maintainability | Target animations off data- attributes, never class names. Styli
 motion-system/camera-over-static-scene | E3 D2 W3 F5 $2 | motion transform scale focus diagram narrative | To walk a reader through a diagram, move the viewport rather tha
 motion-system/context-scoped-cleanup | neutral  $1 | motion lifecycle correctness | Create every animation inside a scoped context and revert it on 
+motion-system/keyframe-variant-bank | E3 D4 W2 F3 $2 | motion generative ambient tokens architecture | Phase and period offsets only ever translate one curve; they can
 motion-system/marquee-playhead | E3 D3 W2 F5 $3 | marquee motion state observer rhythm | Give a moving track one stationary reading position. A marker si
 motion-system/marquee-still-state | neutral  $1 | motion accessibility marquee correctness overflow | A marquee's reduced-motion state is not a paused marquee. The tr
 motion-system/motion-runtime-watchdog | neutral  $2 | motion correctness accessibility progressive-enhancement reveal | A reveal system that hides content in CSS and un-hides it from J
@@ -103,7 +105,9 @@ scale/conditional-token-space-toggle | neutral  $2 | tokens architecture css cor
 scale/endpoint-named-fluid-tokens | neutral  $1 | tokens fluid naming architecture responsive | Name a fluid token after the two pixel values it interpolates be
 scale/fixed-canvas-root-scale | E1 D2 W3 F4 $2 | scale layout proportion transform responsive | Author the page once at one pixel width and scale the whole canv
 scale/one-hairline-token | E1 D2 W1 F5 $1 | unit tokens border precision coherence | Every thin line in a system should be the same line. Declare one
+scale/percentage-root-with-divided-type | neutral  $2 | scale tokens accessibility unit architecture | Spacing and type share the rem and usually cannot be tuned apart
 scale/proportional-effect-radii | neutral  $1 | unit effect polish coherence | Express blur, glow and shadow radii in vh/vw rather than px, so 
+scale/role-named-spacing-tiers | neutral  $2 | tokens architecture rhythm layout scale | A t-shirt spacing scale makes every author guess which step a gi
 scale/sub-floor-density-breakpoint | neutral  $1 | responsive breakpoints density correctness | Designing to a 390px floor leaves a real 320–380px band unhandle
 scale/three-tier-token-redefinition | neutral  $2 | unit tokens architecture | One token name, three definitions: fluid desktop → fluid mobile 
 scale/viewport-proportional-scale | E2 D2 W4 F4 $3 | unit typography layout responsive poster | Size type AND spacing in vw so the page scales as one proportion

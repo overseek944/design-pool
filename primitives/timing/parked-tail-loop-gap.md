@@ -4,7 +4,7 @@ category: timing
 tags: [motion,timing,rhythm,detail]
 axes: {energy: 3, density: 1, weight: 2, finish: 4}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,12 @@ the remainder of each cycle. Duty cycle and period then tune independently.
 ```
 ⚠ The parked frame must be genuinely off-stage — overflow-clipped or past the
 container — or the rest reads as a stuck element rather than a pause.
+
+Two dwells rather than one where the element has to be *read* at both ends — a
+status line panning a long string needs a beat on the first words and on the
+last. Hold the start to 10–18% and the end from 82–90%; the beats come out of
+the travel, not off the period, so raise the duration when you add them.
+```css
+@keyframes pan { 0%, 14% { transform: translate(0) }
+                 86%, to { transform: translateX(calc(-1 * var(--run))) } }
+```

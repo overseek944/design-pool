@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,accessibility,marquee,correctness,overflow]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -31,3 +31,9 @@ real affordance, and hand the track to the reader.
 ```css
 .row { overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain }
 ```
+
+A single-line label that scrolls only *because* it might clip has a third state
+between the two: at rest one line with `text-overflow: ellipsis`, armed only
+where the text genuinely overflows, and `ellipsis` swapped for `clip` while it
+runs — otherwise the ellipsis stays pinned at the trailing edge and eats the
+characters the scroll exists to show.
