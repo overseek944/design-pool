@@ -4,7 +4,7 @@ category: perf
 tags: [type,font-loading,cls,performance,correctness]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -22,3 +22,9 @@ fallback either way so both outcomes occupy the same box.
 @font-face { font-family:BodyFB;  src:local(Arial); size-adjust:107%; ascent-override:90% }
 ```
 ⚠ `optional` means many first visits never show the body face at all.
+
+Preload changes which value is right. `font-display` governs only the
+discovery-plus-fetch window, and a face referenced from CSS is not discovered
+until the stylesheet parses. `<link rel=preload as=font crossorigin>` starts
+that fetch alongside the HTML and collapses the window, so `swap` is safe on
+the one or two faces worth preloading; `optional` stays for the rest.

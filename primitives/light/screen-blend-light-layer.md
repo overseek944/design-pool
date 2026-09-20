@@ -4,7 +4,7 @@ category: light
 tags: [effect,blend,compositing,dark]
 axes: {energy: 3, density: 3, weight: 3, finish: 4}
 cost: 3
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -20,3 +20,10 @@ group in `isolation: isolate` so the blend can't reach the page background.
 Variant — `overlay` instead of `screen` for film grain: it lightens highlights
 and darkens shadows, so the tile reads as texture across the whole tonal range
 rather than washing dark areas out. Tile 128–256px at 0.5–0.9 opacity.
+
+Variant — `multiply` is the light-ground counterpart: it keeps darks and drops
+whites, so a supplied logo carrying a baked white box composites onto a tinted
+section with no matte and no re-cut asset. It also darkens every colour in the
+mark against anything but pure white, so check the brand colours at the tint
+you are actually using, and never reach for it on a dark ground — there the
+whole mark disappears.

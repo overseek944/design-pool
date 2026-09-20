@@ -4,7 +4,7 @@ category: layout
 tags: [layout,type,metadata,responsive,hairline]
 axes: {energy: 1, density: 3, weight: 2, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,9 @@ the row is too narrow — no breakpoint, no second markup.
 ```
 ⚠ Row padding 8–16px. Values longer than three or four words wrap and the
 second column stops reading as a column.
+
+When the value is a figure rather than a phrase, invert it: figure in a fixed
+first column of 100–130px, caption second, rows aligned on the baseline. The
+numbers start on one vertical line instead of ragging to whatever length each
+happens to be, and `white-space: nowrap` keeps a range like `40–50%` from
+breaking across its dash.
