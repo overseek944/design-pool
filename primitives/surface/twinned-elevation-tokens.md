@@ -4,7 +4,7 @@ category: surface
 tags: [shadow,elevation,tokens,hover,card]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -48,3 +48,15 @@ Spread 3–6px, alpha 10–18% at the peak, period 2–3s.
 ```
 ⚠ Stack it after any resting shadow in the same list, at the same index in both
 frames — a pulse added as a second list is the mismatch this entry is about.
+
+The same arithmetic governs `background-image`. Two gradients interpolate only
+when they are the same function with the same number of stops; differ and the
+fill hard-swaps mid-transition, which on a button reads as a flash rather than a
+state. Author the hover fill as the resting fill's twin — same type, same stop
+count, only the colours and stop positions moved.
+```css
+.btn       { background-image: linear-gradient(#4dc6ff, #00aeff 62%, #1bb6ff) }
+.btn:hover { background-image: linear-gradient(#007bb8, #00aeff 38%, #4dc6ff) }
+```
+⚠ Gradient interpolation is a paint, not a composite — it repaints the box every
+frame. Cheap on a 44px control, not on a full-bleed panel.

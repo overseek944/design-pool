@@ -4,7 +4,7 @@ category: layout
 tags: [layout,sticky,overlay,correctness,cls]
 axes: none
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -34,3 +34,16 @@ clicks and text selection across the full page width.
 .bar { position: fixed; inset: 24px 24px auto; pointer-events: none }
 .bar a, .bar button { pointer-events: auto }
 ```
+
+An overlay bar above an asymmetric layout has nothing to align to: a centred
+`max-width` inner lands the nav in the wrong place the moment the page beneath
+is split rather than centred. Give the bar the *same* `grid-template-columns` as
+the section under it and put the links in the matching track — the bar inherits
+the layout's geometry instead of restating it, and one edit to the split moves
+both. Collapse both to a single track at the same breakpoint.
+```css
+.stage, .overlay-bar { grid-template-columns: 1fr minmax(0, var(--aside, 46vw)) }
+.overlay-bar { position: absolute; inset: 0 0 auto; display: grid }
+```
+⚠ The two rules are one decision written twice — carry the track list in a
+custom property or they drift apart at the next breakpoint.

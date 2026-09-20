@@ -1,6 +1,6 @@
 # Manifest
 
-335 primitives. Format: `category/id | axes cost | tags | gist`
+339 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -125,6 +125,7 @@ light/emitted-light-not-borders | E2 D1 W3 F5 $2 | color effect depth restraint 
 light/gradient-through-text | E3 D2 W4 F3 $2 | color type effect | background-clip: text with a transparent fill turns a headline i
 light/offscreen-anchored-wash | E1 D2 W2 F4 $1 | gradient ground atmosphere ambient color cheap | A radial gradient centred inside its box shows its hot core and 
 light/pointer-anchored-surface-light | E2 D2 W2 F5 $2 | light pointer hover gradient custom-properties surface | Let a panel light where the pointer is rather than uniformly. On
+light/relit-state-fill | E2 D2 W3 F4 $1 | light gradient hover control surface | A gradient-filled control usually signals hover by getting brigh
 light/screen-blend-light-layer | E3 D3 W3 F4 $3 | effect blend compositing dark | mix-blend-mode: screen on an overlay makes it add light and drop
 light/stacked-chromatic-bloom | E3 D2 W4 F4 $3 | effect glow filter svg depth | filter: drop-shadow() chains, and follows the alpha channel — so
 media/approach-loaded-video | neutral  $2 | media video performance intersection-observer accessibility bandwidth | Background footage is usually the heaviest thing on a page and u
@@ -175,6 +176,7 @@ motion-system/self-erasing-play-classes | neutral  $1 | architecture progressive
 motion-system/sequenced-root-view-transition | E2 D1 W2 F5 $2 | motion navigation transition accessibility | The default root view transition cross-fades outgoing and incomi
 motion-system/settling-strike-envelope | E4 D2 W3 F3 $2 | flicker envelope keyframe-table shader portable data | Something powering on does not fade — it strikes, drops out, cat
 motion-system/slot-permutation-rotation | E2 D3 W2 F5 $3 | motion grid state responsive | To show more items than a grid has cells, swap one cell at a tim
+motion-system/stepped-follow-transition | E3 D1 W2 F3 $1 | motion pointer transition steps character | Anything that follows the pointer glides, and glide reads as liq
 motion-system/svg-geometry-keyframes | E3 D2 W2 F5 $1 | motion svg diagram precision detail | r, cx, cy, x, y and width are CSS properties on SVG, not just at
 motion-system/transient-class-scoped-transition | neutral  $2 | motion-system view-transition theme correctness reduced-motion | A view transition, or a global colour transition, must animate f
 perf/analytic-stand-in-until-live | neutral  $2 | data loading architecture visualisation labelling | A visual driven by a live feed has three bad first frames: empty
@@ -270,6 +272,7 @@ surface/inverted-bevel-state-pair | E2 D2 W2 F3 $1 | surface depth detail afford
 surface/inverted-field-ground | E1 D2 W3 F4 $1 | surface form contrast figure-ground accessibility | Invert the form figure-ground: tint the panel below the page val
 surface/masked-edge-highlight | E1 D2 W2 F5 $2 | surface border light mask detail | A hairline that is bright at one point and fades to nothing arou
 surface/multi-edge-mask-fade | E1 D2 W2 F5 $2 | surface mask edge composition bleed | Let an oversized panel run past the layout and dissolve instead 
+surface/node-centred-connector-falloff | E1 D2 W2 F5 $1 | surface mask connector sequence detail | A rule running the length of a step list is equally present ever
 surface/overflow-visible-for-glow-bleed | neutral  $1 | surface effect svg gotcha | SVG clips to its viewBox by default, which decapitates any drop-
 surface/painted-border-band | E1 D2 W3 F5 $1 | surface border frame texture css-only detail | The border box is a paintable band, not just an outline. Give an
 surface/paired-hard-shadow-sheet | E1 D2 W2 F4 $1 | surface depth border detail editorial | To imply a second sheet under a panel, two zero-blur shadows do 
@@ -316,6 +319,7 @@ type/balanced-headline-wrap | neutral  $1 | type polish | text-wrap: balance on 
 type/cap-height-trim | neutral  $1 | type spacing precision alignment | Every text block ships with invisible half-leading above and bel
 type/char-count-stepped-reveal | E3 D1 W2 F4 $1 | type motion css-only custom-properties keyframes | A per-character reveal is one number. Publish the character coun
 type/character-grid-as-texture | E3 D5 W2 F3 $2 | type texture ornament ascii | A field of monospace glyphs (+ x X 8 0 @ # % $) on a grid, used 
+type/em-locked-wordmark-mark | E1 D2 W2 F5 $1 | type logo alignment detail scale | A lock-up whose mark is sized in pixels needs a new value at eve
 type/em-sheared-highlight | E3 D2 W4 F4 $1 | type highlight clip-path emphasis inline scale | A slanted block behind a phrase gives a headline a cut-in, marke
 type/frame-cycled-glyph-indicator | E3 D1 W2 F3 $1 | indicator mono glyph loading state motion | An indeterminate wait does not need a drawn shape. Step one text
 type/fused-run-highlight | E1 D2 W2 F5 $2 | type annotation editorial diff state | Marking a run of blocks — changed lines, an annotated passage — 
