@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,marquee,correctness,loop,overflow]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,17 @@ half a gap. The seam shows as a stutter once per cycle. Subtract it, or drop
 ```
 ⚠ The error is small and periodic, so it reads as jank rather than as a bug —
 outline the two halves in contrasting colours before trusting the eye.
+
+Where the track is artwork rather than text, measure it in the artwork's own
+units and the miscount cannot happen. Publish one unit as `viewport / drawing
+width`, then express the plate, the gap and the travel as multiples of it: the
+keyframe translates exactly plate + gap by construction, and the whole strip
+keeps its internal proportions at every viewport instead of being re-tuned per
+breakpoint.
+```css
+.track { --u: calc(228vw / 628); --plate: calc(var(--u) * 500.77);
+         --gap: calc(var(--u) * 25.36); gap: var(--gap) }
+@keyframes run { to { transform: translate3d(calc(-1 * (var(--plate) + var(--gap))), 0, 0) } }
+```
+⚠ The multiplier is the source drawing's geometry — re-export the asset and
+every number is wrong. Keep them next to a comment naming the drawing width.

@@ -4,7 +4,7 @@ category: reveal
 tags: [reveal,clip-path,wipe,panel,motion]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -49,3 +49,15 @@ el.style.transitionTimingFunction = `steps(${n}, end)`
 ⚠ Give the three edges the clip is *not* travelling a negative inset of a few
 percent. At exactly `0` the clip shaves antialiasing off ascenders and
 descenders, and the line looks a half-pixel short of the one beside it.
+
+A clip that sits flush on the perpendicular axis shaves whatever the element
+paints past its own box — a stroke's cap, a glow, antialiasing on a hairline.
+Give the clip negative insets on that axis at both ends and it bleeds instead
+of cropping, so a 1px rule draws on cleanly rather than arriving with a trimmed
+edge. 2–6px of bleed covers a hairline and its shadow.
+```css
+@keyframes draw { from { clip-path: inset(-4px 100% -4px 0) }
+                  to   { clip-path: inset(-4px 0) } }
+```
+⚠ Bleed only on the axis the wipe does not travel. Negative inset on the
+travelling axis makes the closed state already show a sliver of the element.

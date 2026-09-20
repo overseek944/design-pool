@@ -1,12 +1,14 @@
 # Manifest
 
-306 primitives. Format: `category/id | axes cost | tags | gist`
+312 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
 canvas/alpha-bucketed-path-batch | E2 D4 W1 F5 $3 | canvas svg performance generative texture batching | Thousands of individually-faded SVG marks means thousands of nod
 canvas/borrowed-scene-constructors | neutral  $2 | canvas 3d architecture interop bundle | A wrapper that owns the renderer — a globe, a model viewer, a 3D
 canvas/canvas-behind-dom-not-instead-of-it | neutral  $2 | canvas architecture accessibility | Absolutely-positioned inset-0 canvas with pointer-events-none un
+canvas/cell-quantised-arrival-front | E3 D3 W2 F4 $3 | shader reveal grid quantise front texture | A reveal front evaluated per pixel is a soft edge crossing a pic
+canvas/composed-arrival-field | E3 D3 W2 F5 $2 | shader stagger clock uniform reveal perf | Thousands of elements cannot each own a tween. Derive every elem
 canvas/curl-of-potential-field | E2 D3 W2 F4 $3 | canvas flow field generative motion | Advecting anything through a hand-made velocity field pools it i
 canvas/described-canvas-figure | neutral  $1 | canvas accessibility architecture diagram | A canvas carrying the argument — a diagram, a chart, a staged ex
 canvas/dom-labels-in-normalised-canvas-space | neutral  $2 | canvas accessibility architecture correctness label | Text drawn with fillText cannot be selected, found, translated o
@@ -153,6 +155,7 @@ motion-system/reduced-motion-branch | neutral  $1 | motion accessibility require
 motion-system/scrubbable-waapi-timeline | E3 D2 W3 F5 $3 | motion scroll scrub architecture performance | A scroll-scrubbed timeline needs no animation library. Build eve
 motion-system/self-dissolving-entrance-queue | neutral  $2 | motion sequencing correctness reveal scroll | Serialising entrances stops a long page arriving as noise, but a
 motion-system/sequenced-root-view-transition | E2 D1 W2 F5 $2 | motion navigation transition accessibility | The default root view transition cross-fades outgoing and incomi
+motion-system/settling-strike-envelope | E4 D2 W3 F3 $2 | flicker envelope keyframe-table shader portable data | Something powering on does not fade — it strikes, drops out, cat
 motion-system/slot-permutation-rotation | E2 D3 W2 F5 $3 | motion grid state responsive | To show more items than a grid has cells, swap one cell at a tim
 motion-system/svg-geometry-keyframes | E3 D2 W2 F5 $1 | motion svg diagram precision detail | r, cx, cy, x, y and width are CSS properties on SVG, not just at
 motion-system/transient-class-scoped-transition | neutral  $2 | motion-system view-transition theme correctness reduced-motion | A view transition, or a global colour transition, must animate f
@@ -231,6 +234,7 @@ scroll/tall-target-intersection-clause | neutral  $1 | scroll correctness observ
 surface/backdrop-blur-tier-system | E1 D3 W3 F4 $3 | surface depth glass | Treat backdrop blur as a depth scale, not a decoration: sm for i
 surface/baseline-closed-area-path | E2 D2 W2 F5 $1 | svg chart sparkline data precision | A sparkline's tinted area and its stroke must never disagree by 
 surface/blended-grain-over-gradient | E1 D3 W3 F4 $1 | surface texture grain gradient blend-mode banding | A wide gradient across a saturated panel bands on 8-bit displays
+surface/channel-split-refraction-glass | E1 D3 W3 F5 $4 | glass backdrop-filter svg-filter refraction chromatic depth | A blur says frosted; a displacement says solid and thick. Refere
 surface/corner-tick-frame | E1 D2 W1 F5 $1 | surface border frame detail currentcolor precision | Four short L-marks at the corners instead of a closed border: th
 surface/dash-phase-flow | E2 D2 W1 F5 $1 | svg dash motion connector diagram precision | Animating stroke-dashoffset on a dashed connector makes a static
 surface/detached-blur-shadow-plate | E1 D2 W4 F4 $2 | surface depth shadow blur mock hero | Past roughly 40px of blur box-shadow stops reading as shadow, an
@@ -241,6 +245,7 @@ surface/gradient-dot-lattice | E1 D3 W1 F4 $1 | surface texture pattern blueprin
 surface/gradient-over-opaque-glass | E1 D3 W3 F5 $1 | surface glass gradient depth cheap performance | Glass without a backdrop filter: stack a vertical alpha gradient
 surface/grid-intersection-crosshair | E1 D3 W1 F5 $2 | surface grid detail blueprint ornament | Mark a grid intersection with a small plus centred exactly on th
 surface/hairline-overhang | E1 D2 W1 F5 $1 | surface detail precision | Negative inset of exactly 1px with calc(100% + 2px) sizing so a 
+surface/instance-scoped-filter-id | neutral  $1 | svg filter architecture correctness component | Filters, gradients and masks resolve by id against the whole doc
 surface/interleaved-ground-dissolve | E2 D3 W3 F2 $2 | surface color pattern section boundary texture | Carry one ground into another by interleaving their pixels at a 
 surface/intersected-raster-mask | E1 D4 W2 F4 $2 | surface mask texture print halftone | mask-composite: intersect turns a mask stack into a boolean AND,
 surface/inverted-bevel-state-pair | E2 D2 W2 F3 $1 | surface depth detail affordance state border | One inset hairline decides whether a box is raised or recessed, 
@@ -297,6 +302,7 @@ type/language-conditional-type-tokens | neutral  $2 | type i18n tokens localisat
 type/measured-inline-word-swap | E3 D2 W3 F5 $2 | type motion headline correctness | A word cycling inside a running headline relays out the whole li
 type/mono-as-ui-texture | E1 D3 W2 F4 $1 | type ui technical register | Run a monospace face for all chrome — nav, labels, captions, cou
 type/optical-width-text-fit | E1 D2 W4 F5 $3 | type fit measurement display responsive | A headline that must fill a fixed box cannot be sized by charact
+type/origin-flipped-wipe-underline | E3 D1 W2 F5 $1 | underline link hover transform-origin wipe cheap | A scaleX underline that grows from one end and shrinks back to i
 type/padded-ordinal-counter | E1 D2 W2 F4 $1 | type list counter detail technical | 01 02 … 09 10 numbering without hand-written zeros and without t
 type/role-leading-ladder | E1 D2 W3 F5 $1 | type tokens scale rhythm precision | Leading is a function of role, not of size, and the ladder is st
 type/serif-accent-in-technical-context | E1 D2 W3 F5 $1 | type contrast editorial restraint | One high-contrast serif, used sparingly against a geometric sans

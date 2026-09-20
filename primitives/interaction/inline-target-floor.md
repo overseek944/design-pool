@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,interaction,correctness,detail]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -37,3 +37,15 @@ padding have overlapping hit boxes and one silently steals the other's taps.
 Check spacing between neighbours against twice the padding, and keep the
 negative margin off any edge where it would drag the element out of a clipping
 parent.
+
+The overlap that ⚠ warns about is arithmetic, not judgement: derive the overhang
+from the row's own `gap` rather than from the floor. At `gap / 2 + half the
+visible mark`, the hit boxes tile the row exactly — every pixel between two
+marks belongs to the nearer one and none of it belongs to both. Publish it as a
+property so changing the gap re-solves the targets.
+```css
+.strip { --gap: .75rem; --hit: calc(var(--gap) / 2 + .35rem); gap: var(--gap) }
+.strip button::after { content: ""; position: absolute; inset: calc(var(--hit) * -1) }
+```
+⚠ This guarantees no overlap, not that the target is big enough — a tight gap
+still lands under the floor. Where it does, widen the gap; that is the knob.

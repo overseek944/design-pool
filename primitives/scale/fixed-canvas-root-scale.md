@@ -4,7 +4,7 @@ category: scale
 tags: [scale,layout,proportion,transform,responsive]
 axes: {energy: 1, density: 2, weight: 3, finish: 4}
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -44,3 +44,15 @@ without it the unscaled canvas paints at full size for a frame.
 .stage { position: absolute; inset: 0 auto auto 0; width: 1200px; height: 746px;
          transform-origin: 0 0; transform: scale(var(--f)) }
 ```
+
+Where the WCAG risk above is unacceptable, keep the factor and drop the
+transform: declare a unitless scalar and multiply it into each derived length.
+Layout still reflows, `rem` still answers browser zoom, and the component resizes
+as one object — a caller rescales the whole part by setting one number, with a
+nested second scalar for a sub-part that needs to run larger than its parent.
+```css
+.part  { --s: 1; --gap: calc(.5vw * var(--s) * var(--sub, 1)) }
+@media (max-width: 40rem) { .part { --s: 3.6 } }
+```
+⚠ Every length must carry the multiplier or the component tears apart at extreme
+values — one forgotten padding is the bug, and it only shows at the far end.

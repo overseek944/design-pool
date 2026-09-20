@@ -4,7 +4,7 @@ category: reveal
 tags: [reveal,mask,scan,grid,sweep,technical]
 axes: {energy: 3, density: 3, weight: 2, finish: 4}
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -38,3 +38,16 @@ and a hairline on the second.
 ```
 ⚠ The gradient's own stops now measure against the oversized mask, not the box —
 a "6%" feather is 6% of 250%, so soften it by the same multiple you grew by.
+
+Put opacity on *both* sides of the band and the sweep stops revealing and starts
+passing through: a narrow window of visibility travels the element and leaves it
+as it was. That is a different statement — a leading edge says *this is arriving*,
+a band says *something crossed here*. Band 8–14% of the oversized mask; wider and
+the two edges stop reading as one object.
+```css
+.band { mask-image: linear-gradient(100deg, transparent 0 42%, #000 46% 54%, transparent 58%);
+        mask-size: 300% 100%; mask-repeat: no-repeat }
+@keyframes pass { from { mask-position: 100% 0 } 32%, to { mask-position: 0 0 } }
+```
+⚠ The element is invisible outside the band, so this cannot carry content —
+only a highlight layer over content that is painted anyway.

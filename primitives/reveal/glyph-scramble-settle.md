@@ -4,7 +4,7 @@ category: reveal
 tags: [type,reveal,motion,technical,text]
 axes: {energy: 4, density: 3, weight: 2, finish: 3}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -41,3 +41,16 @@ el.style.minHeight = el.offsetHeight + 'px'; el.setAttribute('aria-busy', 'true'
 ⚠ Restore every node's original string on the final frame and clear both the
 height lock and `aria-busy`, or a translation layer and the next resize both
 inherit the scramble.
+
+Constant *length* is not constant *width* in a proportional face — the string
+twitches horizontally for the whole run. Measure every candidate glyph once on a
+canvas at the computed font, then substitute only within a width band of about
+2% of the font size. The scramble holds still, keeps the real face instead of a
+symbol pool, and needs no width lock. Resolve each slot at a position-derived
+point of one tween — `.15 + (i + 1) / n * .85` — so the word settles left to
+right without per-character timelines.
+```js
+const w = {}; for (const c of POOL) w[c] = ctx.measureText(c).width
+const swap = c => POOL.filter(x => Math.abs(w[x] - w[c]) <= .02 * size)
+```
+⚠ Measure after the webfont resolves; the fallback's metrics band differently.
