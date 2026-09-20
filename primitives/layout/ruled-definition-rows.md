@@ -4,7 +4,7 @@ category: layout
 tags: [layout,type,metadata,responsive,hairline]
 axes: {energy: 1, density: 3, weight: 2, finish: 5}
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -29,3 +29,17 @@ first column of 100–130px, caption second, rows aligned on the baseline. The
 numbers start on one vertical line instead of ragging to whatever length each
 happens to be, and `white-space: nowrap` keeps a range like `40–50%` from
 breaking across its dash.
+
+A metric that reads value-first must still be `dt` then `dd` in the markup — the
+content model requires it and the pair is announced in that order.
+`flex-direction: column-reverse` inverts only the paint, so the figure sits
+above its label with nothing reordered. Below the narrow breakpoint switch to
+`row-reverse` on the baseline with a `min-inline-size` in `ch` on the value, and
+a stack of three becomes a list whose numbers still start on one line.
+```css
+.metric { display:flex; flex-direction:column-reverse; border-top:1.5px solid var(--ink) }
+@media (width <= 520px) { .metric { flex-direction:row-reverse; align-items:baseline }
+  .metric dd { flex:none; min-inline-size:5ch } }
+```
+⚠ Safe only because neither part is focusable — reversing flow around
+interactive children splits tab order from reading order.

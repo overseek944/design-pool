@@ -4,7 +4,7 @@ category: media
 tags: [media,logos,blend-mode,assets,normalisation]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -38,3 +38,13 @@ where a height-sized row cannot. Tile 32–48px, inset 15–25% of it.
 ```
 ⚠ The tiles become the visual rhythm — a wordmark shrinks to illegibility inside
 one, so pair each with a text label rather than relying on the mark alone.
+
+Desaturate before blending and both remaining failure modes go at once:
+`grayscale(1)` makes every mark one neutral, so nothing is eaten for being the
+wrong hue and no brand colour shifts against the tint. The row reads as one set
+rather than a scatter of competing palettes. It costs the colours — the right
+trade in a proof row, the wrong one in a partner directory. Opacity 0.85–0.95
+so the marks sit behind the copy.
+```css
+.wall img { filter: grayscale(1); mix-blend-mode: multiply; opacity: .88 }
+```

@@ -4,7 +4,7 @@ category: color
 tags: [color,tokens,theming,architecture,dark]
 axes: none
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []

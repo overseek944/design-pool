@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,navigation,focus,correctness,anchor]
 axes: none
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -43,3 +43,11 @@ scrollTo({ top: y, behavior: rm.matches ? 'instant' : 'smooth' })
 ```
 ⚠ Write the hash yourself once you preventDefault — otherwise the address bar
 never advances and a reload or a share link returns to the top.
+
+Key the offset on `[id]`, not on headings. Anything can be a fragment target — a
+figure, a row, an empty alias span — and a rule scoped to `h2[id]` silently
+drops all of them under the fixed header. One attribute selector at the root
+with the chrome height as a token, and nothing that can be linked to is missed.
+```css
+[id] { scroll-margin-top: var(--chrome, 88px) }
+```

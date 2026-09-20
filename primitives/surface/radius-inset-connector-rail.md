@@ -4,7 +4,7 @@ category: surface
 tags: [diagram,hairline,precision,detail,schematic]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -29,3 +29,16 @@ node: a 4–10px ring in the *page background* colour knocks the lines out
 behind it without touching their geometry.
 `box-shadow: 0 0 0 6px var(--bg)`, before any glow in the same declaration.
 Over an image or a gradient the ring becomes a visible disc.
+
+A pseudo-element connector can change direction at a breakpoint for the price of
+one rotation, which an SVG overlay cannot. Draw the arrowhead as two borders on
+a small square turned 45°; re-anchor it from the row's right edge to below its
+centre and turn it to 135°, and a horizontal flow becomes a vertical one along
+with the grid — no second element, nothing measured.
+```css
+.step:not(:last-child)::after { content:""; width:8px; height:8px; position:absolute;
+  border-top:1.5px solid var(--line); border-right:1.5px solid var(--line);
+  top:50%; right:-22px; transform:translateY(-50%) rotate(45deg) }
+@media (width <= 900px) { .step:not(:last-child)::after {
+  inset:auto auto -16px 50%; transform:translateX(-50%) rotate(135deg) } }
+```

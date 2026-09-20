@@ -4,7 +4,7 @@ category: layout
 tags: [layout,responsive,overflow,media,scale,detail]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -22,3 +22,13 @@ derived rather than guessed, and retune only those two per breakpoint.
 .feed  { height: calc(var(--h) - var(--top) - 200px); overscroll-behavior: contain }
 ```
 ⚠ The crop must fall on filler, never on a control or the last line of content.
+
+Release the crop entirely below the width at which the visible part stops being
+enough. A stage that reads as a teaser beside a column of copy is, on a phone,
+the only view of that content there is — so drop the height, the `overflow` and
+any edge mask together and let the artifact render whole. The crop is a wide-
+viewport luxury, not the component's identity.
+```css
+@media (width <= 520px) { .stage { height: auto; overflow: visible;
+  mask-image: none; -webkit-mask-image: none } }
+```

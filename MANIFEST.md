@@ -1,6 +1,6 @@
 # Manifest
 
-263 primitives. Format: `category/id | axes cost | tags | gist`
+267 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -34,6 +34,7 @@ color/runtime-shade-derivation | neutral  $1 | color tokens theming architecture
 color/self-painting-theme-scope | neutral  $2 | color tokens theming architecture dark | A theme is one class that both defines the semantic colour token
 color/sequence-value-ramp | E1 D2 W3 F4 $1 | color hierarchy surface sequence contrast | Tint a row of peer surfaces along one lightness ramp so sequence
 color/status-triad-tokens | neutral  $1 | color tokens accessibility contrast correctness state | A status is three tokens, not one, because the same hue is asked
+interaction/aliased-fragment-target | neutral  $1 | navigation anchor fragment accessibility architecture url | A section can answer to more than one fragment without renaming 
 interaction/anchor-focus-handoff | neutral  $1 | accessibility navigation focus correctness anchor | An in-page link that only scrolls leaves the keyboard where it w
 interaction/auto-advance-yields-to-input | E2 D2 W2 F5 $2 | carousel autoplay accessibility state | A self-advancing sequence must stop the instant a reader touches
 interaction/breakpoint-dual-mode-details | neutral  $2 | disclosure navigation responsive accessibility progressive-enhancement | One <details> can be a permanently-open sidebar above a breakpoi
@@ -87,6 +88,7 @@ layout/self-drawing-grid-debug | neutral  $2 | layout grid tooling debug archite
 layout/shared-percent-coordinate-space | E1 D3 W1 F5 $2 | diagram svg schematic accessibility responsive | A node diagram wants SVG lines and real DOM nodes: strokes that 
 layout/single-edge-cell-rules | E1 D3 W1 F5 $1 | layout grid hairline rules precision | In a ruled grid every interior line is drawn by both neighbours 
 layout/stacking-register | neutral  $1 | architecture z-index tokens correctness overlay | One file owns every stacking value in the product as named token
+layout/truncating-head-fixed-trailer | neutral  $1 | layout flex truncation correctness cards responsive | A header row pairing a variable-length label with a status badge
 layout/viewport-height-bands | neutral  $1 | layout responsive media-query ornament correctness | Some decisions belong to the short axis. An opening frame, a pin
 light/blend-doubled-headline | E2 D2 W4 F5 $3 | type blend legibility contrast compositing | Set the headline twice in one grid cell: an opaque copy under th
 light/emitted-light-not-borders | E2 D1 W3 F5 $2 | color effect depth restraint | Separate surfaces with glow and luminance rather than 1px solid.
@@ -165,6 +167,7 @@ scale/breakpoint-fallback-chain | neutral  $2 | tokens responsive architecture c
 scale/conditional-token-space-toggle | neutral  $2 | tokens architecture css correctness | A custom property whose value is an empty token stream is a CSS 
 scale/endpoint-named-fluid-tokens | neutral  $1 | tokens fluid naming architecture responsive | Name a fluid token after the two pixel values it interpolates be
 scale/fixed-canvas-root-scale | E1 D2 W3 F4 $2 | scale layout proportion transform responsive | Author the page once at one pixel width and scale the whole canv
+scale/inline-style-custom-property-hatch | neutral  $1 | tokens responsive breakpoint architecture cascade custom-properties | Markup that carries its layout in style attributes — server-rend
 scale/one-hairline-token | E1 D2 W1 F5 $1 | unit tokens border precision coherence | Every thin line in a system should be the same line. Declare one
 scale/percentage-root-with-divided-type | neutral  $2 | scale tokens accessibility unit architecture | Spacing and type share the rem and usually cannot be tuned apart
 scale/proportional-effect-radii | neutral  $1 | unit effect polish coherence | Express blur, glow and shadow radii in vh/vw rather than px, so 
@@ -233,6 +236,7 @@ timing/asymmetric-enter-exit-delay | E3 D2 W2 F5 $1 | motion sequencing state tr
 timing/capped-total-stagger | neutral  $1 | motion sequencing scale | For unknown-length collections use stagger:{amount} not stagger:
 timing/cue-list-on-looping-clock | neutral  $2 | motion timing loop architecture correctness | A multi-beat scripted sequence built from chained timers cannot 
 timing/cumulative-gap-schedule | E3 D2 W2 F4 $1 | motion sequencing choreography entrance | A hand-authored entrance is a list of pauses, not absolute delay
+timing/decaying-loop-restart-gap | E2 D1 W2 F5 $1 | loop timing sequence restraint demo attention | A self-restarting demonstration does not want one restart gap. A
 timing/non-linear-loop-periods | E3 D3 W2 F4 $2 | motion ambient rhythm | Give concurrent ambient loops coprime-ish periods (4s / 5s / 7s)
 timing/opacity-masked-loop-cut | E3 D2 W2 F4 $2 | timing keyframes loop opacity conveyor | A track that reads as endless usually means duplicated DOM. One 
 timing/overshoot-for-pop-elements | E4 D2 W2 F3 $1 | motion easing delight | back.out(n) on small elements that should feel physical — badges

@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,accessibility,architecture,diagram]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -22,3 +22,15 @@ past that, move it to a visually-hidden paragraph and `aria-describedby` it.
 ```
 ⚠ `role="img"` prunes the subtree, so fallback markup inside the element stops
 being read. Decoration takes `aria-hidden` instead — both are decisions.
+
+The same decision governs a figure built out of DOM — a chart of divs, a record
+of labelled rows. `role="img"` collapses the subtree into one node, which is
+exactly what is wanted: otherwise a reader walks forty unframed numbers. A
+*timed* re-enactment cannot be labelled at all, because no one sentence is true
+of it for more than a second — `aria-hidden` it and put the story in the
+section's visible lede, where it serves every reader instead of hiding in a
+visually-hidden block.
+```html
+<figure role="img" aria-label="A week of meter readings against the learned
+  baseline, with weekend load 38 percent above it flagged."> … </figure>
+```

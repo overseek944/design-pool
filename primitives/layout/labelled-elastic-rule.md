@@ -4,7 +4,7 @@ category: layout
 tags: [layout,type,hairline,metadata,editorial]
 axes: {energy: 1, density: 2, weight: 1, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,18 @@ anchor for it.
 ⚠ Both labels want the smallest mono tier, 10–12px at 0.18–0.24em tracking. At
 body size the band stops reading as apparatus and competes with the heading
 under it.
+
+Where the label belongs centred on the rule rather than at one end, knock it out
+instead of splitting the line: one absolutely-positioned rule spanning the band,
+the label over it carrying the ground as its own background plus 10–16px of
+side padding. The rule can then be dashed or doubled and stays continuous
+underneath, which the flex form cannot manage, and the label centres itself with
+nothing measured.
+```css
+.band { position: relative; text-align: center }
+.band::before { content:""; position:absolute; top:50%; left:0; right:0;
+  border-top: var(--hair,1.5px) dashed var(--line) }
+.band span { position: relative; background: var(--ground); padding: 0 12px }
+```
+⚠ The knockout must be painted in the section's actual ground — over a gradient
+or an image it shows as a solid patch.
