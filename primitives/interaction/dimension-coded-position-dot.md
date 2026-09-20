@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,state,indicator,accessibility,carousel]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -48,3 +48,17 @@ stacking a timer on a timer.
 ```jsx
 <b data-flash={flashing || undefined} onAnimationEnd={() => setFlashing(false)} />
 ```
+
+When a step's dwell is a real asset's duration, let the asset be the clock
+rather than restating it as a CSS time. Drive each rail's width from
+`currentTime / duration` and fire the advance from `ended`: the indicator cannot
+disagree with what is playing, a slow decode holds the bar instead of running
+past it, and retiming means re-cutting the clip and nothing else. Transition the
+width at 100–200ms linear to absorb the event's coarse cadence.
+```jsx
+<video onTimeUpdate={e => setP(e.currentTarget.currentTime / e.currentTarget.duration)}
+       onEnded={() => setI(i => (i + 1) % n)} />
+```
+⚠ `timeupdate` fires every ~250ms, not per frame — without the transition the
+bar visibly steps. A rail row given `role="tab"` owes arrow keys and a roving
+`tabindex`, or it is a tablist in name only.

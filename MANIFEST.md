@@ -1,6 +1,6 @@
 # Manifest
 
-388 primitives. Format: `category/id | axes cost | tags | gist`
+391 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -168,6 +168,7 @@ media/frameless-alpha-artwork | E1 D2 W2 F3 $2 | media illustration assets trans
 media/mask-swap-over-shared-paint | E2 D2 W2 F4 $2 | mask icon gradient media state | When a family of glyphs must share one fill — a gradient, a vide
 media/optical-height-logo-row | neutral  $1 | media logos normalisation scale responsive | Supplied marks are drawn to different conventions — a wordmark f
 media/origin-conditional-sandbox | neutral  $1 | media iframe embed security correctness | A sandboxed iframe that is also allow-same-origin and served fro
+media/seek-throttled-video-scrub | E3 D2 W3 F5 $4 | media video scroll scrub timeline performance | A video can be the scrubbed property: write currentTime from scr
 media/self-masked-cutout-overlay | E1 D2 W3 F4 $2 | media mask color effect detail | A cut-out subject on transparency cannot be graded from CSS — an
 media/sheared-ghost-silhouette | E1 D3 W2 F5 $2 | depth line-art silhouette projection stroke | Flat line work reads as volume if the outline is drawn twice. Ke
 media/single-source-focal-crop | neutral  $1 | media responsive performance detail | One photograph can hold a headline at every width without a seco
@@ -218,6 +219,7 @@ motion-system/stepped-follow-transition | E3 D1 W2 F3 $1 | motion pointer transi
 motion-system/svg-geometry-keyframes | E3 D2 W2 F5 $1 | motion svg diagram precision detail | r, cx, cy, x, y and width are CSS properties on SVG, not just at
 motion-system/transient-class-scoped-transition | neutral  $2 | motion-system view-transition theme correctness reduced-motion | A view transition, or a global colour transition, must animate f
 perf/analytic-stand-in-until-live | neutral  $2 | data loading architecture visualisation labelling | A visual driven by a live feed has three bad first frames: empty
+perf/byte-measured-entry-gate | neutral  $3 | performance loading progress fetch overlay correctness | An overlay held while an asset loads is usually a timer pretendi
 perf/data-saver-media-branch | neutral  $1 | performance media-query bandwidth video progressive-enhancement accessibility | prefers-reduced-data: reduce is a reader saying their connection
 perf/dead-banded-resize-rebuild | neutral  $1 | resize canvas mobile correctness | A generative scene that re-seeds on resize restarts every time a
 perf/device-hint-quality-tier | neutral  $2 | performance webgl capability progressive-enhancement correctness | Resolve one integer tier at startup and let every expensive deci
@@ -277,6 +279,7 @@ scroll/element-scoped-read-progress | neutral  $2 | scroll progress correctness 
 scroll/embed-claims-wheel-on-hover | neutral  $1 | scroll embed iframe overflow pointer correctness | An interactive embed inside a scrolling page — a map, a 3D scene
 scroll/fixed-attachment-band | E2 D1 W3 F3 $1 | scroll parallax media surface progressive-enhancement performance | A full-bleed decorative band whose image is pinned to the viewpo
 scroll/hoisted-scroll-timeline | neutral  $2 | scroll motion architecture progressive-enhancement | A named scroll-timeline is visible only to descendants of the sc
+scroll/layout-release-broadcast | neutral  $1 | scroll measurement correctness overlay architecture events | Anything holding the document at a size it will not keep — an en
 scroll/occluded-sibling-fold-progress | E2 D2 W2 F5 $3 | scroll sticky depth progress responsive | A card in a sticky stack should recede by how much of it is cove
 scroll/once-versus-toggle | neutral  $1 | scroll reveal ux | Two reveal policies, chosen per intent, never mixed arbitrarily:
 scroll/overflow-probe-via-scroll-timeline | neutral  $2 | scroll overflow progressive-enhancement correctness | A scroll-driven animation only advances if its scroll port can a

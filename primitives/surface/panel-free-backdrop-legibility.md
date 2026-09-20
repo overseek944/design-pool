@@ -4,7 +4,7 @@ category: surface
 tags: [backdrop-filter,legibility,photography,contrast,surface,type]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -53,3 +53,16 @@ as a box because it has no edge where the eye looks.
 ```
 ⚠ Below the column's own breakpoint the veil is the viewport — drop the mask and
 raise the alpha instead, or the feather eats the first and last characters.
+
+Over *moving* footage the argument inverts. A blur is recomposited against every
+decoded frame, and an alpha tuned against one frame fails against the brightest —
+the two answers above are the expensive and the unreliable one. Take the plate,
+and stop it breaking the picture by shrink-wrapping each line instead of the
+block: a set of tight opaque runs interrupts the frame in slivers, and the gaps
+between them are where the footage still reads. Padding 0.4–0.8em, one radius.
+```css
+.line { display: table; background: var(--paper); border-radius: .6rem;
+        padding: .45em .8em; margin-block-end: .5rem }
+```
+⚠ `display: table` shrink-wraps but drops out of a flex row — wrap each line in
+its own block. Ragged plate edges are the point; centred text makes them noise.

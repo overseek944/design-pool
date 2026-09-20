@@ -4,7 +4,7 @@ category: media
 tags: [media,video,performance,intersection-observer,accessibility,bandwidth]
 axes: none
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -47,3 +47,17 @@ p.subscribe('startedPlaying', () => { p.mute(); p.setVolume(0) })
 ```
 ⚠ Vendor callbacks fire after teardown. Guard each one against a mount that has
 already been replaced, or a late `startedPlaying` unmutes a player nobody can see.
+
+A video you intend to *seek* wants the opposite warm-up. It must hold a decoded
+frame before the first write, and under gesture policy on a phone it holds
+nothing until a user event has touched it: call `play()`, pause on the next tick
+and park `currentTime` a millisecond in, then repeat that once from a
+`touchstart` listener. `preload="none"` also means `loadedmetadata` may never
+fire, so prime on a timer as well — 2–4s — or the seek path stays dead.
+```js
+const prime = () => { const r = v.play(); Promise.resolve(r)
+  .then(() => { v.pause(); v.currentTime = .001 }, () => {}) }
+addEventListener('touchstart', prime, { once: true, passive: true })
+```
+⚠ The prime can be seen: one frame plays before the pause lands. Keep the
+element at `opacity: 0` or behind its poster until the first seek has settled.
