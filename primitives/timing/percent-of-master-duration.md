@@ -4,7 +4,7 @@ category: timing
 tags: [timing,choreography,keyframes,css-animation,token,sequence]
 axes: {energy: 2, density: 3, weight: 2, finish: 5}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,13 @@ under 8s the holds disappear. Keep a beat's hold as a pair of equal stops.
 ⚠ Percentages are unreadable as intent — leave the authored seconds in a comment
 or the next edit is arithmetic. Independently-started animations still begin at
 different wall times; see a shared-clock driver if exact phase lock matters.
+
+The same construction runs far shorter than ambient if the beat is a *pulse*:
+hold 1.5–3s total, spend the first 20–30% on the move and make every remaining
+stop identical so the rest of the cycle is dead air. Read as a heartbeat rather
+than a sequence, and a dozen elements sharing that one period stay locked with
+no delay to drift.
+```css
+@keyframes step { 0% { transform: translate(0) } 25%, 100% { transform: translate(4px) } }
+```
+⚠ Below ~1.2s the hold stops registering and it reads as a twitch.

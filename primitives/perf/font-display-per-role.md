@@ -4,7 +4,7 @@ category: perf
 tags: [type,font-loading,cls,performance,correctness]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -33,3 +33,17 @@ Split each face by `unicode-range` as well as by weight: the browser fetches
 only the subsets the rendered glyphs need, so a Latin page never pays for
 Cyrillic. The trap is that one stray character — a `№`, a diacritic — pulls a
 whole extra subset for one glyph. Audit the copy.
+
+One metric-matched fallback is not enough for two reasons. `local()` resolves
+differently per platform and there is no query for installed fonts — so declare
+a second fallback family against the platform's own default (`local(Roboto)`,
+`local(Noto Serif)`) with its own overrides and order both in the stack; the
+first whose `local()` resolves wins. And a variable face's advance widths drift
+with weight, so one `size-adjust` is wrong at both ends: split the fallback by
+`font-weight` range and override each band separately.
+```css
+@font-face { font-family: BodyFB; font-weight: 100 424; src: local(Arial);
+  size-adjust: 94.93%; ascent-override: 100.92%; descent-override: 25.49% }
+```
+⚠ Measure the overrides against the real fallback, not a guess — wrong values
+shift layout in the opposite direction and are worse than no match at all.

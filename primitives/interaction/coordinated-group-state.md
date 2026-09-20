@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,surface,hover]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -41,3 +41,13 @@ starts. Name pseudo-elements explicitly; they are not descendants.
 .tile .anim, .tile .anim::after { animation-play-state: paused }
 .tile:hover .anim, .tile:hover .anim::after { animation-play-state: running }
 ```
+
+The `:has()` inversion has a second use — *yielding*. Where an interactive
+region wraps smaller interactive children, both claim hover and the reader
+cannot tell which will fire. Let the outer one retract its own affordance while
+a child is hovered, and exactly one target is ever lit.
+```css
+.target:has(a:hover) > .mark { opacity: 0; transform: scale(0) }
+```
+⚠ Only the affordance retracts; the outer target stays clickable, so keep the
+two regions distinguishable some other way — a cursor, a label, an inset.

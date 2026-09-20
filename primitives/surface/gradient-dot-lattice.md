@@ -4,7 +4,7 @@ category: surface
 tags: [surface,texture,pattern,blueprint,cheap]
 axes: {energy: 1, density: 3, weight: 1, finish: 4}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,13 @@ itself. No image request, no tile seam, and it retints from a token.
 ```
 ⚠ Speck alpha 3–8%. Past that a fine pitch moirés against small text and against
 the device pixel grid at fractional DPR. `multiply` needs an opaque backdrop.
+
+Swap the generator and the same pitch logic gives other marks.
+`repeating-linear-gradient` at 45° is hatching — it reads as a cut or an
+excluded region the way it does on a technical drawing, so it marks a band as
+structure rather than content. Run it at 1px of line per 10–14px of gap; tighter
+and it moirés, looser and it stops reading as a fill. Dropped to `to bottom` at
+2px on, 2px off it becomes a scanline instead, which reads as signal.
+```css
+background: repeating-linear-gradient(45deg, transparent 0 10px, var(--line) 10px 11px)
+```

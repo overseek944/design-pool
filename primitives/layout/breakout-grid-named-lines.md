@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,tokens,architecture,full-bleed]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -36,3 +36,14 @@ side and bleeds off the viewport on the other.
 ```
 ⚠ `100vw` here includes the scrollbar and drifts the copy off the sections
 below it — measure a container-typed wrapper instead.
+
+Where `100vw` genuinely is the right measure — a rule that must span the window,
+not the container — subtract the scrollbar in CSS rather than reaching for JS:
+on the root, `100vw` includes it and `100%` does not, so the difference *is* its
+width. Cache it once as a token and every breakout reads the same number.
+```css
+:root { --sbw: calc(100vw - 100%) }
+.rule { width: calc(100vw - var(--sbw)) }
+```
+⚠ Only valid measured on an element whose containing block is the root and that
+is not itself scrolling — anywhere else the two quantities are unrelated.

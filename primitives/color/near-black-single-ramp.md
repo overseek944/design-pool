@@ -4,7 +4,7 @@ category: color
 tags: [color,palette,dark,restraint]
 axes: {energy: 2, density: 2, weight: 4, finish: 4}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,11 @@ Two raised steps hold as well as one when the ground stays at true `#000` —
 around `#191919` for the card and `#333` for anything nested inside it. That is
 the ceiling: a third step lands close enough to the second that the eye reads
 noise, and a divider is cheaper than another fill.
+
+Range — the ground need not be neutral. Take the accent hue down to roughly 8%
+lightness and the near-black is a deep tint of it (`#23000a` under a hot
+orange): every surface then reads as the same light source dimmed, and one
+saturated block of the accent used once as a full fill lands far harder than it
+would on grey. Keep chroma low enough that the ground still reads as black
+beside white text, and hold the tint to a single hue — two tinted darks in one
+page read as a colour cast, not a decision.
