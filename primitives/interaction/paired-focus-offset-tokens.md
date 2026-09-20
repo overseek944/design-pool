@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,focus,tokens,correctness]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,8 @@ cropped away and the ring disappears.
 ```
 ⚠ `currentColor` follows the theme, but still check 3:1 against both grounds.
 Width below .125rem disappears against busy imagery.
+
+Third case — inline text links want a *larger* outer offset than solid
+controls, roughly double. A ring drawn tight to a run of text collides with
+descenders and with the underline; pushing it out separates the ring from the
+glyphs so both stay readable. Controls .125–.25rem, inline links .25–.375rem.
