@@ -4,7 +4,7 @@ category: timing
 tags: [timing,choreography,keyframes,css-animation,token,sequence]
 axes: {energy: 2, density: 3, weight: 2, finish: 5}
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -48,3 +48,17 @@ compromise.
 ⚠ Later entries in the list win on any property two of them both touch, and the
 loop is usually listed first — so the one-shot must not name the looped
 property or it silently freezes the loop.
+
+Split the declaration so the clock has exactly one home: a base class carries
+duration, timing function, iteration count and `animation-fill-mode: both`, and
+each participant's own class supplies nothing but `animation-name`. Ten
+elements then share one timing decision instead of ten copies of it, and adding
+an eleventh is one line. `both` matters — without it a participant whose window
+opens at 30% paints its unanimated state for the first three-tenths of every
+cycle.
+```css
+.beat     { animation: var(--seq) linear infinite both }
+.beat--b  { animation-name: reveal-b }
+```
+⚠ Shorthand `animation` in the base resets `animation-name` to `none`; the
+modifier must come after it in source order or nothing plays.

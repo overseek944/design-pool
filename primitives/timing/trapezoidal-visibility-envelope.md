@@ -4,7 +4,7 @@ category: timing
 tags: [motion,timing,loop,architecture]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -37,3 +37,15 @@ period identical and moving only the stop percentages.
 ```
 ⚠ Without a hold at the end the loop restarts the instant it resolves and the
 beat never lands. Keep the final plateau at 30% of the cycle or more.
+
+Hang a second property on the same envelope and the beat stops reading as a
+fade. A small `blur()` released over the entry ramp — 1.5–3px to zero — makes
+each participant resolve into focus rather than brighten, which distinguishes
+arriving from merely being turned on. It costs nothing extra: the same two
+percentage stops already in the keyframe carry both properties.
+```css
+@keyframes arrive { 0%, 18% { opacity: 0; filter: blur(2px) }
+  26%, 92% { opacity: 1; filter: blur(0) } to { opacity: 0 } }
+```
+⚠ `filter` on a held element is a compositor layer for the whole cycle, not
+just the ramp — fine for a handful of participants, not for dozens.

@@ -4,7 +4,7 @@ category: surface
 tags: [surface,depth,glass]
 axes: {energy: 1, density: 3, weight: 3, finish: 4}
 cost: 3
-seen: 13
+seen: 14
 requires: []
 conflicts: []
 completes: []

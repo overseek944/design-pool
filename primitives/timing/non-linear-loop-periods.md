@@ -4,7 +4,7 @@ category: timing
 tags: [motion,ambient,rhythm]
 axes: {energy: 3, density: 3, weight: 2, finish: 4}
 cost: 2
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -22,3 +22,14 @@ The same rule governs parallel *tracks*, where the period is content width ÷
 speed rather than a declared duration. Two lanes at different speeds still
 resync if their content is the same length — vary both, and run them in opposite
 directions. 55–75px/s reads as drift rather than transport.
+
+The rule also rescues its opposite. A scene deliberately phase-locked to one
+master duration is rigorous and slightly dead, because every part restarts on
+the same frame forever. Give exactly one ornamental part — a sweep, a pulse, a
+flicker — its own short period that does not divide the master, and the
+composite stops announcing its loop point while the meaningful parts stay
+locked. One such part, not two; a second turns the discipline back into noise.
+```css
+.scene > * { animation-duration: 10s }   /* locked */
+.beam      { animation: sweep 2.4s ease-in-out infinite }
+```

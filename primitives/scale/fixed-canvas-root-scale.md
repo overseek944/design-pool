@@ -4,7 +4,7 @@ category: scale
 tags: [scale,layout,proportion,transform,responsive]
 axes: {energy: 1, density: 2, weight: 3, finish: 4}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -56,3 +56,16 @@ nested second scalar for a sub-part that needs to run larger than its parent.
 ```
 ⚠ Every length must carry the multiplier or the component tears apart at extreme
 values — one forgotten padding is the bug, and it only shows at the far end.
+
+Where the stage is a transformed scene rather than a flat canvas, the factor
+has nowhere of its own to live: a second `transform` on the same element
+replaces the first, silently flattening the scene. Concatenate the scale into
+the same declaration as the scene's own rotation, and let the breakpoint swap
+the whole declaration rather than one term. A component whose children are
+absolute pixel coordinates has no fluid path at all — a static per-breakpoint
+factor of 0.6–0.85 is the correct answer, not a failure to be responsive.
+```css
+.stage { width: min(78vw, 560px); transform: rotateX(52deg) rotate(-37deg) }
+@media (max-width: 40rem) {
+  .stage { width: 480px; transform: rotateX(52deg) rotate(-37deg) scale(.7) } }
+```

@@ -4,7 +4,7 @@ category: surface
 tags: [surface,grid,texture,ambient,depth,geometry]
 axes: {energy: 2, density: 3, weight: 1, finish: 4}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []

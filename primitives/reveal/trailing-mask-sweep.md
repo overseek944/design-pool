@@ -51,3 +51,16 @@ the two edges stop reading as one object.
 ```
 ⚠ The element is invisible outside the band, so this cannot carry content —
 only a highlight layer over content that is painted anyway.
+
+Written as a stepped `clip-path: polygon()` instead of a moving mask, the
+reveal front becomes a hard corner advancing in two axes at once — a region
+being mapped rather than a wipe passing over. Each keyframe is one polygon, so
+the front can turn, pause and jump the way a survey does; there is no ramp to
+tune. Three to six steps; fewer reads as a slideshow.
+```css
+@keyframes map { 0% { clip-path: polygon(0 78%,18% 78%,18% 100%,0 100%) }
+  50% { clip-path: polygon(0 0,66% 0,66% 100%,0 100%) }
+  82% { clip-path: polygon(0 0,100% 0,100% 100%,0 100%) } }
+```
+⚠ Polygons interpolate only vertex-for-vertex — every stop needs the same
+point count in the same order, or the step snaps instead of growing.
