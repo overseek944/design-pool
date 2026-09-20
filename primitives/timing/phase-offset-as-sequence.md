@@ -4,7 +4,7 @@ category: timing
 tags: [motion,sequencing,rhythm,ambient,css]
 axes: {energy: 3, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -41,3 +41,10 @@ between layers.
 .layer { opacity: 0; animation: xfade 25s linear infinite }
 @keyframes xfade { 0% { opacity: 0 } 4%, 24% { opacity: 1 } 28%, 100% { opacity: 0 } }
 ```
+
+⚠ The offset must be `animation-delay`. `transition-delay` is a different
+property and silently does nothing to a keyframe animation — utility frameworks
+map a bare `delay-*` class to the transition one, so a stack authored this way
+renders perfectly in review and runs dead in phase, every member peaking on the
+same frame. The tell is that the group reads as one blinking object rather than
+as travel; check the computed `animation-delay`, not the class list.

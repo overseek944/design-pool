@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,focus,tokens,correctness]
 axes: none
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -28,3 +28,15 @@ Third case — inline text links want a *larger* outer offset than solid
 controls, roughly double. A ring drawn tight to a run of text collides with
 descenders and with the underline; pushing it out separates the ring from the
 glyphs so both stay readable. Controls .125–.25rem, inline links .25–.375rem.
+
+`currentColor` fails on any control whose text colour was chosen against its own
+fill rather than against the ground — a white label on a solid button rings
+white on white the moment the ring clears the box. There the ring colour belongs
+to the *surface*, not the element: ship one token per ground tier, set it on the
+section, and let every control inside inherit it. Two covers most pages, three
+with a saturated band.
+```css
+.on-light { --focus: var(--ink) }
+.on-dark, .on-brand { --focus: #fff }
+:where(a,button,[tabindex]):focus-visible { outline-color: var(--focus) }
+```

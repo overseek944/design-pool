@@ -1,6 +1,6 @@
 # Manifest
 
-235 primitives. Format: `category/id | axes cost | tags | gist`
+237 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -83,6 +83,7 @@ layout/viewport-height-bands | neutral  $1 | layout responsive media-query ornam
 light/blend-doubled-headline | E2 D2 W4 F5 $3 | type blend legibility contrast compositing | Set the headline twice in one grid cell: an opaque copy under th
 light/emitted-light-not-borders | E2 D1 W3 F5 $2 | color effect depth restraint | Separate surfaces with glow and luminance rather than 1px solid.
 light/gradient-through-text | E3 D2 W4 F3 $2 | color type effect | background-clip: text with a transparent fill turns a headline i
+light/offscreen-anchored-wash | E1 D2 W2 F4 $1 | gradient ground atmosphere ambient color cheap | A radial gradient centred inside its box shows its hot core and 
 light/screen-blend-light-layer | E3 D3 W3 F4 $3 | effect blend compositing dark | mix-blend-mode: screen on an overlay makes it add light and drop
 light/stacked-chromatic-bloom | E3 D2 W4 F4 $3 | effect glow filter svg depth | filter: drop-shadow() chains, and follows the alpha channel — so
 media/approach-loaded-video | neutral  $2 | media video performance intersection-observer accessibility bandwidth | Background footage is usually the heaviest thing on a page and u
@@ -197,6 +198,7 @@ surface/radius-inset-connector-rail | E1 D3 W1 F5 $1 | diagram hairline precisio
 surface/receding-annulus-mask | E1 D3 W2 F4 $2 | surface mask gradient depth texture | Concentric rings that grow geometrically and fade as they widen 
 surface/receding-bar-plate | E2 D1 W2 F4 $1 | surface chrome scroll opacity accessibility | Invert the usual scroll chrome: a floating bar starts fully opaq
 surface/rotating-conic-border | E4 D3 W3 F4 $3 | surface border motion svg | An animated gradient border without a pseudo-element hack: an SV
+surface/scrim-terminated-ground | E1 D2 W2 F5 $1 | gradient ground surface section seam cheap | A decorative ground that stops at its section's edge leaves a ho
 surface/single-hue-lit-bead | E2 D2 W3 F5 $1 | surface gradient identity marker presence contrast | At 8–24px a flat disc is a dot; three stops make it a bead. Take
 surface/slope-held-diagonal-edge | E1 D2 W3 F4 $2 | surface clip-path edge section responsive geometry | A clip-path: polygon() with percentage vertices does not keep it
 surface/stacked-gradient-star-field | E2 D3 W1 F4 $1 | surface texture ambient depth performance | A regular lattice reads as ruled ground; an irregular point fiel

@@ -4,7 +4,7 @@ category: surface
 tags: [surface,texture,pattern,blueprint,cheap]
 axes: {energy: 1, density: 3, weight: 1, finish: 4}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -34,4 +34,16 @@ and it moirés, looser and it stops reading as a fill. Dropped to `to bottom` at
 2px on, 2px off it becomes a scanline instead, which reads as signal.
 ```css
 background: repeating-linear-gradient(45deg, transparent 0 10px, var(--line) 10px 11px)
+```
+
+Two `linear-gradient`s and one `background-size` give the third generator: an
+orthogonal rule grid, one hairline stop per axis. Run it over a coloured ground
+rather than a flat one and drop the alpha to 2–4% — the ground shows through
+every cell, so the grid reads as scale reference for the surface instead of as a
+pattern on it. Pitch 40–80px, wider than the dot lattice tolerates because lines
+carry further than specks.
+```css
+background-image: linear-gradient(90deg,  var(--rule) 1px, transparent 0),
+                  linear-gradient(180deg, var(--rule) 1px, transparent 0);
+background-size: 60px 60px;
 ```

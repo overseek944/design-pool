@@ -4,7 +4,7 @@ category: timing
 tags: [motion,easing,duration,reference,system]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -35,3 +35,11 @@ Ship the table as tokens named for the gesture rather than the number —
 component picks an intent it can be reviewed against instead of typing a
 duration. Reach below the micro band for `snap` at 60–100ms: a state flip with
 no travel at all, where anything longer reads as lag rather than as motion.
+
+Inside one entrance the distance is a function of the element's size, not of its
+turn. The same 16px lift that carries a line of text is invisible under a
+page-width image, and the image's travel read at text scale overshoots. Scale
+both together — roughly 2× the travel and 1.3–1.6× the duration for a
+full-width block against the copy above it — and the group arrives at one
+apparent speed instead of as a rigid slab. Text 12–24px, page-width media
+32–56px, same ease throughout.
