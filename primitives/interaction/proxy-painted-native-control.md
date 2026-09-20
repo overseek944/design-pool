@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,focus,forms,input,correctness,keyboard]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -27,3 +27,15 @@ box is the usual failure.
 ```
 ⚠ Wrap both in a `<label>` or the proxy is not a hit target. Forced colors
 strips the painted fill — put a glyph inside the box, not colour alone.
+
+The adjacent-sibling combinator constrains DOM order: the painted proxy has to
+follow the input. Where it cannot — a file input whose drop zone wraps the label,
+an icon before the control — hang the state on the wrapper with `:has()` instead
+and the two can sit in any order. Same states, same forwarding, no structural
+debt.
+```css
+.field:has(> .sr:focus-visible) .box { outline: 2px solid currentColor;
+                                       outline-offset: 2px }
+```
+⚠ `:has()` on a wrapper matches any descendant that satisfies it — scope the
+inner selector with `>` or a nested control lights its parent's proxy too.

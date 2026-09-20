@@ -4,7 +4,7 @@ category: surface
 tags: [backdrop-filter,legibility,photography,contrast,surface,type]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []

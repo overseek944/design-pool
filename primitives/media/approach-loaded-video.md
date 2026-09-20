@@ -4,7 +4,7 @@ category: media
 tags: [media,video,performance,intersection-observer,accessibility,bandwidth]
 axes: none
 cost: 2
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -61,3 +61,17 @@ addEventListener('touchstart', prime, { once: true, passive: true })
 ```
 ⚠ The prime can be seen: one frame plays before the pause lands. Keep the
 element at `opacity: 0` or behind its poster until the first seek has settled.
+
+The pause control's label is not a function of its own clicks. The element
+changes state without being asked — autoplay refused, the observer pausing on
+exit, low-power mode, the native context menu — so a label derived from a click
+counter eventually announces the opposite of what pressing it will do. Bind it
+to the media's own `play` and `pause` events and let the click do nothing but
+call the method; the label then describes the element rather than the last
+interaction.
+```js
+v.addEventListener('play',  () => setPlaying(true))
+v.addEventListener('pause', () => setPlaying(false))
+```
+⚠ The visible text and the `aria-label` must be derived from the same state, or
+the two describe different actions to different readers.

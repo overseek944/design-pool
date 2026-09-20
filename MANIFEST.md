@@ -1,6 +1,6 @@
 # Manifest
 
-417 primitives. Format: `category/id | axes cost | tags | gist`
+419 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -128,6 +128,7 @@ layout/fractional-grid-with-fluid-rail | E1 D3 W3 F4 $2 | layout grid asymmetry 
 layout/ghost-sizer-twin | neutral  $1 | layout architecture correctness hover reflow | A box that grows on interaction — scales, lifts on Z, expands a 
 layout/height-budgeted-media-width | neutral  $2 | layout container-query aspect fit cls | When a card must fit one screen exactly — media plus chrome, not
 layout/in-flow-overlay-header | neutral  $1 | layout sticky overlay correctness cls | A header that must float over the first section and still stick 
+layout/intrinsic-floored-auto-track | neutral  $1 | layout grid responsive correctness overflow breakpoints | repeat(auto-fit, minmax(<floor>, 1fr)) reflows a row of cards wi
 layout/intrinsic-size-abstaining-child | neutral  $1 | layout correctness type detail | A width: fit-content block is sized by its widest child, which i
 layout/labelled-elastic-rule | E1 D2 W1 F5 $1 | layout type hairline metadata editorial | A section divider carries more than separation when the rule its
 layout/legibility-floor-scroll-port | neutral  $1 | overflow responsive scroll correctness table figure | A table or a diagram has a width below which it stops being read
@@ -363,6 +364,7 @@ surface/slope-held-diagonal-edge | E1 D2 W3 F4 $2 | surface clip-path edge secti
 surface/stacked-blur-radius-ramp | E1 D2 W3 F5 $3 | surface blur glass scrim depth legibility | Masking one backdrop-filter plate fades the result, not the radi
 surface/stacked-gradient-star-field | E2 D3 W1 F4 $1 | surface texture ambient depth performance | A regular lattice reads as ruled ground; an irregular point fiel
 surface/stepped-pixel-corner | E2 D3 W2 F2 $1 | surface ornament detail texture cheap | Erode a corner into discrete cells rather than rounding or slici
+surface/subthreshold-photographic-ground | E1 D2 W2 F4 $1 | surface texture ground section photography cheap | A section ground that should not be flat and should not be a pic
 surface/tangent-oriented-mark-field | E2 D4 W2 F5 $3 | surface texture generative ambient detail svg | A field of round dots reads as spray. Give each mark a long axis
 surface/tiled-dash-border | E1 D2 W1 F4 $2 | surface border dash precision texture | border-style: dashed offers no control — dash length is derived 
 surface/tiled-shape-edge-mask | E2 D3 W2 F3 $2 | surface mask edge ornament texture section | Cut a section boundary with a shape rather than a straight line:

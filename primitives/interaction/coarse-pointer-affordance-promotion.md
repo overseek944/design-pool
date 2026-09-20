@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,interaction,touch,correctness,media-query]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -40,3 +40,17 @@ const precise = matchMedia('(hover: hover) and (pointer: fine)').matches
 ⚠ Both queries describe the primary pointer only, so a machine with a mouse
 attached later still reports the touch answer until something re-evaluates.
 Subscribe to `change` on each.
+
+A third modality is neither hover nor touch. A control faded out at rest is
+still focusable, so a keyboard reader tabs to something they cannot see — and
+making it `inert` instead trades one unreachable state for another. Add the
+control's own `:focus-visible` to the reveal selector, not the container's
+`:focus-within`, which lights the overlay for any focus passing through the
+card. The reveal then has one rule per pointer class and none of them is a
+fallback for the others.
+```css
+.thumb:hover .ctrl, .ctrl:focus-visible { opacity: 1 }
+```
+⚠ The control must be visible *before* it is operated, so it cannot transition
+in from `visibility: hidden` or `display: none` on focus — only opacity and
+transform may carry the reveal.
