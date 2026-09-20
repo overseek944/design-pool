@@ -4,7 +4,7 @@ category: scale
 tags: [unit,typography,layout,responsive,poster]
 axes: {energy: 2, density: 2, weight: 4, finish: 4}
 cost: 3
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: [proportional-effect-radii, three-tier-token-redefinition]
@@ -22,3 +22,8 @@ size. Always terminate in a px floor.
 ```
 ⚠ `vw` ignores user font-size preference and browser zoom — WCAG 1.4.4 risk.
 Poster/marketing pages only. Never docs, dashboards, or >150 words of body copy.
+
+Variant — for a headline that must fit the first screen, drive it from viewport
+*height* instead: `max(min(4–7lvh, <cap>), <floor>)`. `lvh` rather than `vh` so
+a collapsing mobile URL bar does not resize type mid-scroll. The cap and floor
+are separate tokens, redefinable per breakpoint and per language.

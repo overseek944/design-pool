@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,polish,consistency]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -17,3 +17,8 @@ variation in micro-timing reads as sloppiness, not personality.
 Range — `120–200ms` is the usable band, not `200ms` alone. Pick one value inside
 it and hold it everywhere; interfaces that want to feel like tools sit at the
 bottom of the band, marketing surfaces at the top.
+
+Widened — the band runs `120–300ms` in practice. Marketing and editorial
+surfaces sit at `300ms` on a long-tail ease-out, where the settle is meant to be
+noticed as finish; tools stay at the bottom. Above `300ms` state feedback stops
+reading as response and starts reading as latency.
