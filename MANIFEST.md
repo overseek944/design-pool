@@ -1,14 +1,17 @@
 # Manifest
 
-281 primitives. Format: `category/id | axes cost | tags | gist`
+287 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
 canvas/alpha-bucketed-path-batch | E2 D4 W1 F5 $3 | canvas svg performance generative texture batching | Thousands of individually-faded SVG marks means thousands of nod
+canvas/borrowed-scene-constructors | neutral  $2 | canvas 3d architecture interop bundle | A wrapper that owns the renderer — a globe, a model viewer, a 3D
 canvas/canvas-behind-dom-not-instead-of-it | neutral  $2 | canvas architecture accessibility | Absolutely-positioned inset-0 canvas with pointer-events-none un
+canvas/curl-of-potential-field | E2 D3 W2 F4 $3 | canvas flow field generative motion | Advecting anything through a hand-made velocity field pools it i
 canvas/described-canvas-figure | neutral  $1 | canvas accessibility architecture diagram | A canvas carrying the argument — a diagram, a chart, a staged ex
 canvas/dom-labels-in-normalised-canvas-space | neutral  $2 | canvas accessibility architecture correctness label | Text drawn with fillText cannot be selected, found, translated o
 canvas/eased-pointer-influence | E3 D2 W2 F5 $2 | shader interaction feel | Never feed raw pointer state to a shader. Keep a uMouseActive fl
+canvas/feature-scaled-sim-grid | neutral  $2 | canvas simulation performance resolution texture | Size a field simulation's grid by the smallest feature worth see
 canvas/glyph-ramp-image-field | E2 D4 W2 F3 $4 | canvas type texture image ambient generative | Encode a photograph as a field of characters: draw it into an of
 canvas/hash-dither-before-quantise | E1 D3 W2 F4 $2 | canvas color ramp noise grain banding generative | Snapping a continuous value onto a short palette — eight to twel
 canvas/named-uv-spaces | neutral  $3 | shader architecture responsive correctness reference | One vertex shader can emit several named coordinate spaces so ea
@@ -78,6 +81,7 @@ layout/in-flow-overlay-header | neutral  $1 | layout sticky overlay correctness 
 layout/intrinsic-size-abstaining-child | neutral  $1 | layout correctness type detail | A width: fit-content block is sized by its widest child, which i
 layout/labelled-elastic-rule | E1 D2 W1 F5 $1 | layout type hairline metadata editorial | A section divider carries more than separation when the rule its
 layout/legibility-floor-scroll-port | neutral  $1 | overflow responsive scroll correctness table figure | A table or a diagram has a width below which it stops being read
+layout/live-dimension-callout | E1 D2 W1 F5 $2 | layout chrome annotation measurement technical | Annotate the frame with its own measurements and a page reads as
 layout/measured-copy-keepout | neutral  $2 | layout measurement legibility canvas | Background art told to keep clear of the copy is usually given a
 layout/occupancy-negotiated-label-placement | neutral  $4 | layout label annotation collision diagram correctness | Annotations placed independently overlap the moment two anchors 
 layout/overflow-clip-over-hidden | neutral  $1 | overflow correctness accessibility scroll | overflow: clip crops without creating a scroll container. hidden
@@ -139,6 +143,7 @@ motion-system/sequenced-root-view-transition | E2 D1 W2 F5 $2 | motion navigatio
 motion-system/slot-permutation-rotation | E2 D3 W2 F5 $3 | motion grid state responsive | To show more items than a grid has cells, swap one cell at a tim
 motion-system/svg-geometry-keyframes | E3 D2 W2 F5 $1 | motion svg diagram precision detail | r, cx, cy, x, y and width are CSS properties on SVG, not just at
 motion-system/transient-class-scoped-transition | neutral  $2 | motion-system view-transition theme correctness reduced-motion | A view transition, or a global colour transition, must animate f
+perf/analytic-stand-in-until-live | neutral  $2 | data loading architecture visualisation labelling | A visual driven by a live feed has three bad first frames: empty
 perf/data-saver-media-branch | neutral  $1 | performance media-query bandwidth video progressive-enhancement accessibility | prefers-reduced-data: reduce is a reader saying their connection
 perf/dead-banded-resize-rebuild | neutral  $1 | resize canvas mobile correctness | A generative scene that re-seeds on resize restarts every time a
 perf/device-hint-quality-tier | neutral  $2 | performance webgl capability progressive-enhancement correctness | Resolve one integer tier at startup and let every expensive deci
@@ -219,6 +224,7 @@ surface/gradient-dot-lattice | E1 D3 W1 F4 $1 | surface texture pattern blueprin
 surface/gradient-over-opaque-glass | E1 D3 W3 F5 $1 | surface glass gradient depth cheap performance | Glass without a backdrop filter: stack a vertical alpha gradient
 surface/grid-intersection-crosshair | E1 D3 W1 F5 $2 | surface grid detail blueprint ornament | Mark a grid intersection with a small plus centred exactly on th
 surface/hairline-overhang | E1 D2 W1 F5 $1 | surface detail precision | Negative inset of exactly 1px with calc(100% + 2px) sizing so a 
+surface/intersected-raster-mask | E1 D4 W2 F4 $2 | surface mask texture print halftone | mask-composite: intersect turns a mask stack into a boolean AND,
 surface/inverted-bevel-state-pair | E2 D2 W2 F3 $1 | surface depth detail affordance state border | One inset hairline decides whether a box is raised or recessed, 
 surface/inverted-field-ground | E1 D2 W3 F4 $1 | surface form contrast figure-ground accessibility | Invert the form figure-ground: tint the panel below the page val
 surface/masked-edge-highlight | E1 D2 W2 F5 $2 | surface border light mask detail | A hairline that is bright at one point and fades to nothing arou

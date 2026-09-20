@@ -4,7 +4,7 @@ category: type
 tags: [numerals,data,motion,correctness]
 axes: {energy: 2, density: 3, weight: 3, finish: 5}
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -30,3 +30,12 @@ the exact original back on the final frame rather than a re-formatted
 equivalent. Anything else silently drops a currency mark, a `+`, or a
 localised separator — and it will be a translated or edited DOM you are
 overwriting, not the one you authored.
+
+Poll faster than the unit you display, but write only when the rendered string
+changes. A one-second interval drifts and eventually skips a second visibly;
+250ms never does, and the equality check means the DOM still takes at most one
+write per second. The same guard is what lets a readout share a rAF loop with
+everything else without becoming the reason it reflows.
+```js
+const next = fmt(remaining()); if (next !== last) { last = next; el.textContent = next }
+```

@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,motion,feel]
 axes: {energy: 3, density: 2, weight: 3, finish: 5}
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -23,4 +23,14 @@ so the same page feels tight at 60Hz and sluggish at 120.
 ```js
 const k = 1 - Math.exp(-dt / (LAG * 1000 / 3))
 disp += (target - disp) * k
+```
+
+Where the smoothed quantity is cyclic — a longitude, a hue, a heading — the
+same loop takes the long way round whenever the target crosses the wrap: 355°
+to 5° eases backwards through 180 instead of forwards through 10. Wrap the
+*difference* into ±half a turn before applying the coefficient, and keep the
+accumulator unwrapped so it never fights its own modulo.
+```js
+const d = ((target - cur + 540) % 360) - 180      // shortest arc
+cur += d * (1 - Math.exp(-dt / tau))
 ```

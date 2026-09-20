@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,texture,ambient,generative,performance]
 axes: {energy: 2, density: 3, weight: 2, finish: 3}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
