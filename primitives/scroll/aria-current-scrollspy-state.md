@@ -4,7 +4,7 @@ category: scroll
 tags: [accessibility,navigation,scroll,state,architecture]
 axes: none
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -33,3 +33,15 @@ makes a styled-but-unannounced state impossible to ship. It also reads
 negatively: `:not([aria-haspopup])` withholds a momentary press treatment from
 triggers whose real feedback is the expanded state, so one rule serves both kinds
 of button without a variant prop.
+
+The current-item treatment must differ from `:hover` in kind, not in degree.
+Where both resolve to the same fill, hovering the current item does nothing and
+hovering any peer impersonates it — the list reports the wrong location for as
+long as the pointer rests there. Give current the channel that survives with the
+pointer away, and hover a different one.
+```css
+.nav a[aria-current] { background: var(--ink); color: var(--ground) }
+.nav a:not([aria-current]):hover { border-color: var(--ink) }
+```
+⚠ Both collapse under `forced-colors`, where author backgrounds are discarded —
+the current item still needs a mark of its own there.

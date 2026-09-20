@@ -1,6 +1,6 @@
 # Manifest
 
-339 primitives. Format: `category/id | axes cost | tags | gist`
+341 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -76,6 +76,7 @@ interaction/proxy-painted-native-control | neutral  $1 | accessibility focus for
 interaction/reserved-state-border | neutral  $1 | accessibility focus cls border correctness | A control that gains a border on focus or selection must carry t
 interaction/resting-default-expanding-row | E2 D2 W2 F5 $2 | interaction state hover accessibility layout | A row of panels that expand only on hover says nothing at rest —
 interaction/row-forwarded-stretched-focus | neutral  $1 | accessibility focus link correctness cards | A link stretched over its whole row or card — a pseudo-element a
+interaction/runtime-assembled-href | neutral  $1 | interaction correctness accessibility link progressive-enhancement | A destination you would rather not serve in the markup can be sp
 interaction/snap-scroll-as-dismiss-gesture | E3 D2 W2 F5 $3 | gesture dialog scroll accessibility sheet | Build a drag-to-dismiss sheet out of a scroll container rather t
 interaction/state-as-numeric-custom-property | E3 D2 W2 F5 $1 | interaction hover state tokens architecture | Express interaction state as a number, then derive every depende
 interaction/state-seeded-at-listener-attach | neutral  $1 | correctness state events scroll architecture | Events report transitions, not the current value. Any class deri
@@ -255,6 +256,7 @@ surface/backdrop-blur-tier-system | E1 D3 W3 F4 $3 | surface depth glass | Treat
 surface/baseline-closed-area-path | E2 D2 W2 F5 $1 | svg chart sparkline data precision | A sparkline's tinted area and its stroke must never disagree by 
 surface/blended-grain-over-gradient | E1 D3 W3 F4 $1 | surface texture grain gradient blend-mode banding | A wide gradient across a saturated panel bands on 8-bit displays
 surface/channel-split-refraction-glass | E1 D3 W3 F5 $4 | glass backdrop-filter svg-filter refraction chromatic depth | A blur says frosted; a displacement says solid and thick. Refere
+surface/control-cleared-decoration-band | E1 D3 W2 F4 $2 | surface decoration contrast accessibility header | Artwork sharing a box with a control — a band behind a header, a
 surface/corner-tick-frame | E1 D2 W1 F5 $1 | surface border frame detail currentcolor precision | Four short L-marks at the corners instead of a closed border: th
 surface/dash-phase-flow | E2 D2 W1 F5 $1 | svg dash motion connector diagram precision | Animating stroke-dashoffset on a dashed connector makes a static
 surface/detached-blur-shadow-plate | E1 D2 W4 F4 $2 | surface depth shadow blur mock hero | Past roughly 40px of blur box-shadow stops reading as shadow, an

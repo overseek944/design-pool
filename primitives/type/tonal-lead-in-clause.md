@@ -4,7 +4,7 @@ category: type
 tags: [type,emphasis,hierarchy,editorial,colour]
 axes: {energy: 1, density: 2, weight: 3, finish: 5}
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -31,3 +31,15 @@ paragraph needs, since a muted half at 50–70px reads as an unfinished render
 instead of a second voice. Both halves are body copy now, so the accent owes
 4.5:1 against the page ground and must be picked for that, not for how it
 behaves on a button.
+
+Where the lifted run is `<em>` rather than a styled span, the default italic
+arrives with it. A geometric sans usually ships no drawn italic, so the browser
+shears the roman and the emphasis reads as a rendering fault rather than a
+second voice — cancel it and let the tonal lift carry the emphasis alone. Change
+the paint, never the element: it is still announced as emphasis, and a face with
+a true italic can opt back in. One weight step, 550–650 on a variable face.
+```css
+.prose em { font-style: normal; font-weight: 600; color: var(--fg) }
+```
+⚠ Not for runs longer than a clause — past that it stops reading as emphasis and
+wants the sentence split above.
