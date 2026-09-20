@@ -4,7 +4,7 @@ category: color
 tags: [color,hierarchy,surface,sequence,contrast]
 axes: {energy: 1, density: 2, weight: 3, finish: 4}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -22,3 +22,15 @@ destination. Derive every step from one mix so the ramp cannot drift.
 ⚠ Travel is bounded by the ink on it: 6–14% per step across 3–5 steps. Once the
 darkest drops under 4.5:1 the ink must flip, and the flip shows as a seam
 mid-row. Back-load the ramp when the last item is an arrival, not an end.
+
+The rule inverts where the set has no order. Peer options, quotes, unrelated
+categories — a lightness ramp asserts a progression the reader then looks for
+and cannot find. Rotate a small closed set of tints at *equal* lightness
+instead: hue carries variety, value carries nothing, and one ink passes on all
+of them. Three to five tints, cycled by index, held within about 4% lightness of
+each other so no member reads as first or last.
+```css
+.card { background: var(--tint-a) } .card:nth-child(3n+2) { background: var(--tint-b) }
+```
+⚠ Equal lightness by eye is not equal lightness — mix each tint into the same
+`oklch` L or the row develops an accidental ranking in greyscale and in print.

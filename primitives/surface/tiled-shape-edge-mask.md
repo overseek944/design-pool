@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,edge,ornament,texture,section]
 axes: {energy: 2, density: 3, weight: 2, finish: 3}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -30,3 +30,14 @@ band stretched full-bleed with `preserveAspectRatio="none"` and every stroke on
 `vector-effect: non-scaling-stroke`, which holds authored weights exact through
 a stretch that would otherwise smear them. Layer a fat translucent stroke as a
 body, a hairline over it, a dashed pass for texture. Band height 100–180px.
+
+Where the band is painted rather than drawn, its own alpha is the cut: a
+full-bleed asset feathered along one edge needs no mask, no tile and no repeat,
+and the boundary is authored in the artwork where it can be irregular in a way
+a repeating tile cannot. Commit to one soft edge only — the opposite edge stays
+hard and butts a flat ground, so the band has a decided side. Bleed the asset
+past both ends and let `object-fit: cover` crop rather than stretch.
+⚠ It pins the seam to one aspect ratio: the feathered edge lands at a different
+height at every width, so any content aligned to it needs its own anchor. A
+band this wide is the page's heaviest asset — it earns its place once, not at
+every section boundary.

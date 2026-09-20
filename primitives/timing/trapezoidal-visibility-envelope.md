@@ -4,7 +4,7 @@ category: timing
 tags: [motion,timing,loop,architecture]
 axes: none
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -63,3 +63,15 @@ const a = up(t, .02, .1) * down(t, .72 * dur, .3) * master
 ```
 ⚠ Every term must reach 1 somewhere or the element never hits full strength —
 overlapping ramps silently cap a beat at a fraction of its intended value.
+
+The blur release is not confined to a loop — it is the sharpest thing available
+to a one-shot entrance, where a figure resolving into focus reads as being
+*measured* rather than faded in. Same two stops, `both` fill so the delay holds
+the blurred frame, and the range runs wider off a loop: 1.5–5px, the top of it
+only on something set large enough to carry it.
+```css
+@keyframes settle { from { opacity: 0; filter: blur(4px); translate: 0 12px } }
+```
+⚠ `filter` on a large element forces a full-size offscreen buffer every frame —
+fine on a figure, ruinous applied to a whole section. Land on `filter: none`,
+never `blur(0)`, so the buffer is released at the end rather than kept alive.

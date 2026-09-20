@@ -1,6 +1,6 @@
 # Manifest
 
-323 primitives. Format: `category/id | axes cost | tags | gist`
+326 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -54,6 +54,7 @@ interaction/copy-safe-sample-text | neutral  $1 | interaction code correctness d
 interaction/dimension-coded-position-dot | E2 D2 W2 F5 $1 | interaction state indicator accessibility carousel | Let the active item in a position indicator change size, not onl
 interaction/edge-hotzone-sibling-reveal | E2 D2 W2 F5 $2 | interaction hover panel chrome css-only accessibility | Reclaim the width a hidden rail costs without a toggle: park an 
 interaction/find-reachable-collapse | neutral  $1 | accessibility correctness disclosure search architecture | Collapsed content the browser's own find cannot reach is content
+interaction/gap-spanning-hover-bridge | E2 D2 W2 F5 $1 | interaction hover panel menu css-only accessibility | A panel held off its trigger by a visual gap is unreachable by h
 interaction/gesture-affordance-label | E1 D2 W2 F4 $1 | affordance interaction accessibility detail ux | A surface whose only affordance is a gesture — drag to orbit, sc
 interaction/hysteretic-lock-zone | neutral  $1 | interaction pointer state correctness threshold | Any boolean derived from a continuous input — pointer inside a z
 interaction/idle-scroll-cue | E2 D1 W2 F4 $1 | scroll affordance feedback motion | A page whose motion is entirely scroll-driven stops when the rea
@@ -125,6 +126,7 @@ media/blend-normalised-logo-wall | neutral  $1 | media logos blend-mode assets n
 media/child-reported-frame-height | neutral  $2 | media correctness architecture cls responsive | An iframe reporting its own height hands layout control to a cha
 media/crop-coupled-scrim | neutral  $1 | media video legibility overlay accessibility responsive | Footage behind a headline crops differently at every width, so a
 media/dialog-scoped-embed-lifecycle | neutral  $2 | media performance dialog correctness lifecycle | A third-party embed is not yours to pause — you cannot reach int
+media/frameless-alpha-artwork | E1 D2 W2 F3 $2 | media illustration assets transparency composition | Artwork exported on transparency with a feathered edge does not 
 media/mask-swap-over-shared-paint | E2 D2 W2 F4 $2 | mask icon gradient media state | When a family of glyphs must share one fill — a gradient, a vide
 media/optical-height-logo-row | neutral  $1 | media logos normalisation scale responsive | Supplied marks are drawn to different conventions — a wordmark f
 media/origin-conditional-sandbox | neutral  $1 | media iframe embed security correctness | A sandboxed iframe that is also allow-same-origin and served fro
@@ -317,6 +319,7 @@ type/origin-flipped-wipe-underline | E3 D1 W2 F5 $1 | underline link hover trans
 type/padded-ordinal-counter | E1 D2 W2 F4 $1 | type list counter detail technical | 01 02 … 09 10 numbering without hand-written zeros and without t
 type/role-leading-ladder | E1 D2 W3 F5 $1 | type tokens scale rhythm precision | Leading is a function of role, not of size, and the ladder is st
 type/serif-accent-in-technical-context | E1 D2 W3 F5 $1 | type contrast editorial restraint | One high-contrast serif, used sparingly against a geometric sans
+type/sourced-display-figure | neutral  $1 | type figures provenance correctness editorial accessibility | A number set at display size stops being prose and becomes a cla
 type/sub-baseline-marker-band | E2 D2 W3 F3 $1 | type emphasis highlight contrast accessibility | A full accent block behind a phrase has to clear 4.5:1 against t
 type/three-family-stack | E2 D3 W3 F4 $1 | type system | Geometric sans (body/headline) + mono (chrome/code) + display se
 type/tonal-lead-in-clause | E1 D2 W3 F5 $1 | type emphasis hierarchy editorial colour | Carry two levels inside one sentence: the clause holding the cla

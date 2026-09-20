@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,polish,consistency]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 13
+seen: 14
 requires: []
 conflicts: []
 completes: []
@@ -38,3 +38,17 @@ The press travels further than the hover lifts because it has to register as
 the stronger event under a finger that is covering the control. Useful band is
 1.01–1.04 up and .95–.98 down; past that a text button looks like it is
 breathing.
+
+The ban on animating a layout property has one deliberate exception: where the
+*intent* is encroachment — a hovered pill in a dense row growing past its own
+box into its neighbours so the row reads as elastic rather than gridded.
+Translation cannot express it, because the item has to take space it does not
+own. Symmetric negative inline margin and a z-index raise is the honest form.
+Name the property, never `all`; cap the row at five or six items; keep it inside
+`hover: hover`. Travel 8–20px per side.
+```css
+@media (hover: hover) { .pill:hover { margin-inline: -16px; z-index: 1 } }
+```
+⚠ This reflows the row on every frame of the transition, so it is the one place
+the 120–200ms band is too fast to hide the cost — 300–400ms, and nothing else
+animating in that row.
