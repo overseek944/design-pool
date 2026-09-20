@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,polish,consistency]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -27,3 +27,7 @@ Name the properties. `transition: all` eventually catches a layout property —
 `gap`, `padding`, `width` — and a hover that relayouts its row cannot be
 composited and can nudge its neighbours. To open a gap on hover, translate the
 child and leave the box alone.
+
+The ceiling is about travel, not time. A repaint-only change — colour, opacity,
+border tint — holds at 350–500ms, where the same duration on a transform reads
+as lag. Two tokens, if a surface wants slow colour and quick movement.

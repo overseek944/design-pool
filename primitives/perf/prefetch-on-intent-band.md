@@ -4,7 +4,7 @@ category: perf
 tags: [performance,navigation,prefetch,observer,architecture]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,7 @@ onLeave = () => clearTimeout(t)
 ```
 ⚠ Viewport prefetch on a long page eventually fetches every route on it — the
 threshold limits *when*, not *how many*. Skip both under `navigator.connection.saveData`.
+
+Bound the cache: a 30–90s TTL and a cap near 8 entries, evicted oldest-first.
+Validate before storing — a redirect or a non-HTML content type means the URL
+went somewhere else, and caching it hands the router the wrong document.

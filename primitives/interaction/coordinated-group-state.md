@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,surface,hover]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -27,3 +27,8 @@ A part that *moves* on parent hover wants two guards, not one: `hover: hover` so
 a tap on a touch device does not strand it displaced under sticky `:hover`, and
 a reduced-motion branch so the nudge is colour or weight instead. Parts that
 only change colour need neither. Travel 1–3px — past that it reads as a jump.
+
+`:has()` inverts it — the container reacts to a *descendant's* hover, so peers
+recede instead of the target gaining: `.list:has(a:hover) a:not(:hover)
+{ opacity: .4 }`. Subtractive emphasis, for a long list of equals. Run the dim
+1.3–1.6× slower than the colour beside it so it never snaps.

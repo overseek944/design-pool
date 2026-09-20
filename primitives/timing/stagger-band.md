@@ -4,7 +4,7 @@ category: timing
 tags: [motion,rhythm,sequencing]
 axes: {energy: 3, density: 3, weight: 2, finish: 4}
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -33,3 +33,8 @@ starts. Past eight classes, use the JS form.
 That ceiling is on *classes*, not CSS: generated markup can carry the delay
 inline and author an uneven schedule per element — 240/400/560/1100ms — playing
 from first paint, not after hydration.
+
+A group nested inside a staggered group needs its own band, not the parent's.
+Start the child's run at the parent slot it occupies and step it from there, so
+the inner items read as belonging to that slot rather than as more siblings:
+`t = parentIndex * outer + childIndex * inner`, inner at or below outer.

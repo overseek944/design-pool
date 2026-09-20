@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,hairline,rules,precision]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -30,3 +30,7 @@ reading as a rule and starts reading as a box.
 Inverse solution — paint the field background in the rule colour and open a
 `gap` of one hairline between opaque cells. The gaps *are* the rules: no
 doubling, no pseudo-element. Costs a frame border; fails on a transparent cell.
+
+A single strip needs neither trick: `.col + .col { border-left }` rules every
+pair and nothing outside. Flip the axis to `border-top` wherever the strip
+stacks, or every separator collapses onto one edge.

@@ -4,7 +4,7 @@ category: scale
 tags: [scale,layout,proportion,transform,responsive]
 axes: {energy: 1, density: 2, weight: 3, finish: 4}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,10 @@ keeps the factor near 1 where most readers sit.
 overflows sideways below it — the wrapper height above is mandatory, not tidying.
 Type sized this way ignores browser zoom and user font size: WCAG 1.4.4 risk, so
 narrow widths need their own design width, not a smaller factor.
+
+Inside a fluid column `100vw` is the wrong denominator — measure the container
+and publish `container / designWidth` as the property, so the factor tracks the
+column through sidebars and breakpoints.
+```js
+new ResizeObserver(() => box.style.setProperty('--f', box.clientWidth / 1400)).observe(box)
+```

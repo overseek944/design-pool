@@ -1,6 +1,6 @@
 # Manifest
 
-163 primitives. Format: `category/id | axes cost | tags | gist`
+168 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -61,6 +61,7 @@ light/screen-blend-light-layer | E3 D3 W3 F4 $3 | effect blend compositing dark 
 light/stacked-chromatic-bloom | E3 D2 W4 F4 $3 | effect glow filter svg depth | filter: drop-shadow() chains, and follows the alpha channel — so
 media/approach-loaded-video | neutral  $2 | media video performance intersection-observer accessibility bandwidth | Background footage is usually the heaviest thing on a page and u
 media/aspect-locked-media | neutral  $1 | layout media cls | Lock every media slot with an explicit aspect-ratio and let widt
+media/dialog-scoped-embed-lifecycle | neutral  $2 | media performance dialog correctness lifecycle | A third-party embed is not yours to pause — you cannot reach int
 media/mask-swap-over-shared-paint | E2 D2 W2 F4 $2 | mask icon gradient media state | When a family of glyphs must share one fill — a gradient, a vide
 media/stacked-contour-volume | E1 D4 W2 F5 $2 | svg mark depth stroke currentcolor | Describe a solid as a stack of cross-sections instead of as a sh
 media/stepped-transform-sprite | E3 D2 W2 F4 $2 | media sprite animation svg performance | Play a short looping illustration as a filmstrip: frames in one 
@@ -76,6 +77,8 @@ motion-system/path-scrubbed-entrance | E3 D2 W2 F5 $3 | motion scroll motion-pat
 motion-system/reduced-motion-branch | neutral  $1 | motion accessibility required | Branch at setup, not per-animation: if the user prefers reduced 
 motion-system/scrubbable-waapi-timeline | E3 D2 W3 F5 $3 | motion scroll scrub architecture performance | A scroll-scrubbed timeline needs no animation library. Build eve
 motion-system/self-dissolving-entrance-queue | neutral  $2 | motion sequencing correctness reveal scroll | Serialising entrances stops a long page arriving as noise, but a
+motion-system/sequenced-root-view-transition | E2 D1 W2 F5 $2 | motion navigation transition accessibility | The default root view transition cross-fades outgoing and incomi
+motion-system/slot-permutation-rotation | E2 D3 W2 F5 $3 | motion grid state responsive | To show more items than a grid has cells, swap one cell at a tim
 perf/data-saver-media-branch | neutral  $1 | performance media-query bandwidth video progressive-enhancement accessibility | prefers-reduced-data: reduce is a reader saying their connection
 perf/font-display-per-role | neutral  $1 | type font-loading cls performance correctness | font-display is a decision per face, not per project. Body and U
 perf/layer-order-preamble | neutral  $1 | architecture cascade css correctness code-splitting | Cascade layers are ordered by first mention, so with code-split 
@@ -137,6 +140,7 @@ surface/overflow-visible-for-glow-bleed | neutral  $1 | surface effect svg gotch
 surface/radius-inset-connector-rail | E1 D3 W1 F5 $1 | diagram hairline precision detail schematic | Connectors in a node diagram are hairlines on pseudo-elements, n
 surface/receding-bar-plate | E2 D1 W2 F4 $1 | surface chrome scroll opacity accessibility | Invert the usual scroll chrome: a floating bar starts fully opaq
 surface/rotating-conic-border | E4 D3 W3 F4 $3 | surface border motion svg | An animated gradient border without a pseudo-element hack: an SV
+surface/stacked-gradient-star-field | E2 D3 W1 F4 $1 | surface texture ambient depth performance | A regular lattice reads as ruled ground; an irregular point fiel
 surface/tiled-dash-border | E1 D2 W1 F4 $2 | surface border dash precision texture | border-style: dashed offers no control — dash length is derived 
 surface/tiled-shape-edge-mask | E2 D3 W2 F3 $2 | surface mask edge ornament texture section | Cut a section boundary with a shape rather than a straight line:
 timing/asymmetric-enter-exit-delay | E3 D2 W2 F5 $1 | motion sequencing state transition | A staggered group should cascade in and collapse out together. C
@@ -144,6 +148,7 @@ timing/capped-total-stagger | neutral  $1 | motion sequencing scale | For unknow
 timing/cumulative-gap-schedule | E3 D2 W2 F4 $1 | motion sequencing choreography entrance | A hand-authored entrance is a list of pauses, not absolute delay
 timing/non-linear-loop-periods | E3 D3 W2 F4 $2 | motion ambient rhythm | Give concurrent ambient loops coprime-ish periods (4s / 5s / 7s)
 timing/overshoot-for-pop-elements | E4 D2 W2 F3 $1 | motion easing delight | back.out(n) on small elements that should feel physical — badges
+timing/parked-tail-loop-gap | E3 D1 W2 F4 $1 | motion timing rhythm detail | A sweep that should pass, rest, then pass again cannot get its r
 timing/percent-of-master-duration | E2 D3 W2 F5 $2 | timing choreography keyframes css-animation token sequence | For a long multi-beat loop, give every participating element the
 timing/phase-offset-as-sequence | E3 D2 W2 F4 $1 | motion sequencing rhythm ambient css | Same period, different phase. Give every looping indicator in a 
 timing/production-timing-vocabulary | E2 D2 W2 F5 $1 | motion easing duration reference system | A coherent set beats a clever one. Durations cluster tightly and

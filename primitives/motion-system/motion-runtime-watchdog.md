@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,correctness,accessibility,progressive-enhancement,reveal]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,11 @@ d.setAttribute('data-motion-off','')}},3000)</script>
 [data-motion-ready] [data-rv] { opacity: 0 }
 ```
 ⚠ A runtime arriving after the timer must not re-hide content already on screen.
+
+The timer covers a bundle that failed; it does not cover script switched off,
+where nothing ever runs to start it. Add a `<noscript>` block in the head that
+flattens the hidden state outright — no timer, no flash, and the two branches do
+not overlap because one of them only exists when the other cannot.
+```html
+<noscript><style>[data-rv]{opacity:1!important;transform:none!important}</style></noscript>
+```

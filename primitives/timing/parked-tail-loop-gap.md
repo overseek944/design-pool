@@ -1,0 +1,25 @@
+---
+id: parked-tail-loop-gap
+category: timing
+tags: [motion,timing,rhythm,detail]
+axes: {energy: 3, density: 1, weight: 2, finish: 4}
+cost: 1
+seen: 1
+requires: []
+conflicts: []
+completes: []
+tension: []
+---
+A sweep that should pass, rest, then pass again cannot get its rest from
+`animation-delay` — that delays the first iteration only, so every later pass
+runs back-to-back. Put the rest inside the keyframes: finish the travel at
+55–70% and repeat the end state at `to`, and the element parks out of frame for
+the remainder of each cycle. Duty cycle and period then tune independently.
+
+```css
+.sheen { animation: sweep 6s ease-in-out infinite }   /* 4–9s */
+@keyframes sweep { 0% { transform: translateX(0) }
+                   60%, to { transform: translateX(400%) } }
+```
+⚠ The parked frame must be genuinely off-stage — overflow-clipped or past the
+container — or the rest reads as a stuck element rather than a pause.
