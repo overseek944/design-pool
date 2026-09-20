@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,generative,ambient,tokens,architecture]
 axes: {energy: 3, density: 4, weight: 2, finish: 3}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,7 @@ only opacity animating.
 ⚠ Every track is parsed and kept resident — past ~40 the stylesheet cost stops
 paying. Under `prefers-reduced-motion` set `animation: none` *and* an explicit
 resting opacity, or elements freeze wherever their track happened to start.
+
+Where instances differ by one *scalar* rather than by schedule, skip the bank:
+read a custom property with a fallback from inside the keyframe, and one block
+serves every element off a single inline declaration.
