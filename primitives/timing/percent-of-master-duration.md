@@ -4,7 +4,7 @@ category: timing
 tags: [timing,choreography,keyframes,css-animation,token,sequence]
 axes: {energy: 2, density: 3, weight: 2, finish: 5}
 cost: 2
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -62,3 +62,16 @@ cycle.
 ```
 ⚠ Shorthand `animation` in the base resets `animation-name` to `none`; the
 modifier must come after it in source order or nothing plays.
+
+Inside one continuous track a *discrete* change is a pair of stops a fraction of
+a percent apart: `13.6%` then `14%` cuts a panel from one state to the next with
+no visible tween, and a 0.6%-wide dip in `scale` reads as a click. A whole
+scripted demonstration — pointer travel, presses, panel swaps, a bar stepping
+through stages — then lives in one keyframe block per element, with no state
+machine and nothing to reset. Cut pairs 0.3–0.8% of the period.
+```css
+@keyframes panel { 0%,13.6% { opacity: 1 } 14%,94.6% { opacity: 0 } 95%,100% { opacity: 1 } }
+@keyframes press { 11.4% { scale: 1 } 12% { scale: .85 } 12.6% { scale: 1 } }
+```
+⚠ Sub-percent gaps are below the resolution of most animation inspectors —
+annotate them in the source or the next edit rounds them back into tweens.

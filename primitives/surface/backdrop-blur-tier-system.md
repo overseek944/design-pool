@@ -4,7 +4,7 @@ category: surface
 tags: [surface,depth,glass]
 axes: {energy: 1, density: 3, weight: 3, finish: 4}
 cost: 3
-seen: 17
+seen: 18
 requires: []
 conflicts: []
 completes: []
@@ -44,3 +44,17 @@ reduced branch has to name `backdrop-filter: none` *and* the alpha, since the
 @media (prefers-reduced-transparency: reduce) {
   .panel { background: rgb(28 21 18 / 1); backdrop-filter: none } }
 ```
+
+Put the filter on a `z-index: -1` pseudo-element, not on the bar itself.
+`backdrop-filter` opens a stacking context *and* a containing block for fixed
+descendants, so a dropdown or popover anchored inside the bar is trapped by the
+very rule that frosted it. The pseudo also lets the plate overshoot the bar's
+edge and be masked, so the blur dissolves rather than ending on a ruled line —
+overshoot and fade distance the same value, 0.75–1.5rem.
+```css
+.bar::before { content: ""; position: absolute; inset: 0 0 -1rem; z-index: -1;
+  pointer-events: none; backdrop-filter: blur(12px);
+  mask-image: linear-gradient(#000 calc(100% - 1rem), #0000) }
+```
+⚠ The bar needs `isolation: isolate`, or `z-index: -1` drops the plate behind
+the page background instead of behind the bar's own content.

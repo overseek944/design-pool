@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,focus,correctness,overlay,pointer-events]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -39,3 +39,17 @@ with no timer to leak and no class to forget.
 ⚠ The delay and the fade are one number written twice: change the duration in
 one place and the element vanishes mid-fade or lingers as a dead hit target.
 Bind both to the same custom property.
+
+Where the element must also surrender its *space*, put `max-height` on the same
+transition and start the fade late rather than together: delay the opacity by
+the shortfall so it lands on the collapse's final frame. Content that finishes
+fading while the box is still open reads as two events; landing them together
+reads as one. Fade 50–65% of the collapse period, delayed by the remainder.
+```css
+.row     { max-height: 0; opacity: 0; visibility: hidden;
+           transition: max-height .2s ease-out, opacity .12s ease-out, visibility 0s .2s }
+.row.on  { max-height: 2rem; opacity: 1; visibility: visible;
+           transition: max-height .2s ease-out, opacity .12s ease-out 80ms, visibility 0s }
+```
+⚠ `max-height` must be near the row's real height. The ease runs from the
+declared ceiling, so a generous guess spends its first frames closing empty air.

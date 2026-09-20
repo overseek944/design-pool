@@ -1,6 +1,6 @@
 # Manifest
 
-343 primitives. Format: `category/id | axes cost | tags | gist`
+347 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -69,6 +69,7 @@ interaction/inline-target-floor | neutral  $1 | accessibility interaction correc
 interaction/micro-interaction-defaults | E2 D2 W2 F5 $1 | interaction polish consistency | One transition duration (200ms) and one property set for every n
 interaction/native-disclosure-animation | E2 D2 W2 F5 $2 | motion disclosure accessibility progressive-enhancement height | ::details-content with interpolate-size: allow-keywords animates
 interaction/offset-shadow-press | E3 D2 W4 F2 $1 | interaction state depth detail border | A hard offset shadow reads as a solid object sitting above the p
+interaction/one-sided-hover-delay | E2 D2 W2 F5 $1 | interaction hover delay css-only restraint pointer | A hover-revealed panel wants patience on the way in and none on 
 interaction/outward-corner-target | E3 D2 W1 F5 $2 | interaction state focus border precision detail | Four L-brackets absent at rest, then flying outward past the ele
 interaction/paired-focus-offset-tokens | neutral  $1 | accessibility focus tokens correctness | Ship the focus ring as three tokens — width, an outer offset, an
 interaction/partial-modality-inert-siblings | neutral  $2 | interaction dialog accessibility inert focus correctness | Not every overlay should take the whole page. A panel hung off a
@@ -91,6 +92,7 @@ layout/collision-band-gutter | neutral  $2 | layout container-query annotation r
 layout/column-aligned-disclosure | E1 D2 W2 F5 $2 | layout grid disclosure alignment native | Let a <details> row sit on the page's column grid: make the <sum
 layout/container-budgeted-column-drop | neutral  $2 | layout container-query table responsive accessibility correctness | A dense row carries more columns than a narrow container can hol
 layout/container-edge-rule-lattice | E1 D3 W1 F5 $2 | layout grid hairline precision responsive technical | Draw the measurement system, not only the content. Vertical hair
+layout/container-solved-overlap-stride | E1 D4 W2 F5 $2 | layout overlap measurement resize-observer density quantity | Do not pick how far a row of fixed-width cards overlaps — solve 
 layout/count-threshold-shape-shift | neutral  $1 | layout has quantity-query chrome css-only density | Let a container change what it is once its contents pass a count
 layout/cropped-stage-mock | E1 D2 W2 F5 $2 | layout responsive overflow media scale detail | Show a framed artifact — a handset, a browser chrome, a console 
 layout/cross-card-band-alignment | E1 D3 W1 F5 $2 | layout grid subgrid cards hairline datasheet alignment | A row of cards aligns at its outer edges and nowhere else: each 
@@ -117,6 +119,7 @@ layout/self-drawing-grid-debug | neutral  $2 | layout grid tooling debug archite
 layout/shared-percent-coordinate-space | E1 D3 W1 F5 $2 | diagram svg schematic accessibility responsive | A node diagram wants SVG lines and real DOM nodes: strokes that 
 layout/single-edge-cell-rules | E1 D3 W1 F5 $1 | layout grid hairline rules precision | In a ruled grid every interior line is drawn by both neighbours 
 layout/stacking-register | neutral  $1 | architecture z-index tokens correctness overlay | One file owns every stacking value in the product as named token
+layout/stateful-chrome-inset-contract | neutral  $2 | layout chrome tokens custom-property architecture overlay correctness | Fixed chrome should publish the space it takes as root custom pr
 layout/sticky-underlay-reveal | E2 D1 W3 F4 $1 | layout scroll sticky depth css-only section | Invert the usual arrival: a panel placed after the content and s
 layout/translate-z-axonometric-stage | E1 D3 W2 F5 $3 | 3d depth diagram transform stage | A cutaway model — floor, walls, shelving, a mover — is buildable
 layout/truncating-head-fixed-trailer | neutral  $1 | layout flex truncation correctness cards responsive | A header row pairing a variable-length label with a status badge
@@ -276,6 +279,7 @@ surface/inverted-field-ground | E1 D2 W3 F4 $1 | surface form contrast figure-gr
 surface/masked-edge-highlight | E1 D2 W2 F5 $2 | surface border light mask detail | A hairline that is bright at one point and fades to nothing arou
 surface/multi-edge-mask-fade | E1 D2 W2 F5 $2 | surface mask edge composition bleed | Let an oversized panel run past the layout and dissolve instead 
 surface/node-centred-connector-falloff | E1 D2 W2 F5 $1 | surface mask connector sequence detail | A rule running the length of a step list is equally present ever
+surface/offcanvas-ellipse-horizon | E1 D2 W1 F5 $1 | surface hairline geometry ambient background depth | A curve whose radius exceeds the viewport cannot be drawn inside
 surface/overflow-visible-for-glow-bleed | neutral  $1 | surface effect svg gotcha | SVG clips to its viewBox by default, which decapitates any drop-
 surface/painted-border-band | E1 D2 W3 F5 $1 | surface border frame texture css-only detail | The border box is a paintable band, not just an outline. Give an
 surface/paired-hard-shadow-sheet | E1 D2 W2 F4 $1 | surface depth border detail editorial | To imply a second sheet under a panel, two zero-blur shadows do 
