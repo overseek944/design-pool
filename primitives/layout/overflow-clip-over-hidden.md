@@ -4,7 +4,7 @@ category: layout
 tags: [overflow,correctness,accessibility,scroll]
 axes: none
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -37,3 +37,14 @@ with it; set on any other wrapper, `hidden` makes that wrapper the scroll
 container and every sticky inside it stops. Put `overflow-x: clip` on a wrapper
 element instead — it crops the same bleed, the root keeps its scrolling, and
 sticky descendants survive.
+
+The two-declaration form repeats itself at every use site. Invert the polarity
+instead: define the fallback in a root property that exists *only* where the
+feature is missing, and let `var()`'s own fallback slot carry the modern value.
+One declaration per element, and the browser split is stated once.
+```css
+@supports not (overflow: clip) { :root { --clip: hidden } }
+.fill { overflow: var(--clip, clip) }
+```
+⚠ Worth the indirection above roughly a dozen call sites; below that the plain
+`@supports` block is the more readable of the two.

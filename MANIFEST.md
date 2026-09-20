@@ -1,6 +1,6 @@
 # Manifest
 
-363 primitives. Format: `category/id | axes cost | tags | gist`
+366 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -111,6 +111,7 @@ layout/intrinsic-size-abstaining-child | neutral  $1 | layout correctness type d
 layout/labelled-elastic-rule | E1 D2 W1 F5 $1 | layout type hairline metadata editorial | A section divider carries more than separation when the rule its
 layout/legibility-floor-scroll-port | neutral  $1 | overflow responsive scroll correctness table figure | A table or a diagram has a width below which it stops being read
 layout/live-dimension-callout | E1 D2 W1 F5 $2 | layout chrome annotation measurement technical | Annotate the frame with its own measurements and a page reads as
+layout/matted-opening-frame | E1 D1 W2 F5 $1 | frame viewport hero media radius safe-area | Inset the opening frame from every viewport edge and the page ba
 layout/measured-copy-keepout | neutral  $2 | layout measurement legibility canvas | Background art told to keep clear of the copy is usually given a
 layout/occupancy-negotiated-label-placement | neutral  $4 | layout label annotation collision diagram correctness | Annotations placed independently overlap the moment two anchors 
 layout/overflow-clip-over-hidden | neutral  $1 | overflow correctness accessibility scroll | overflow: clip crops without creating a scroll container. hidden
@@ -241,6 +242,7 @@ scale/proportional-effect-radii | neutral  $1 | unit effect polish coherence | E
 scale/registered-property-scope | neutral  $1 | tokens architecture animation correctness | @property registration is an API decision, not a formality. synt
 scale/role-named-spacing-tiers | neutral  $2 | tokens architecture rhythm layout scale | A t-shirt spacing scale makes every author guess which step a gi
 scale/sub-floor-density-breakpoint | neutral  $1 | responsive breakpoints density correctness | Designing to a 390px floor leaves a real 320–380px band unhandle
+scale/supported-feature-as-scalar | neutral  $1 | progressive-enhancement feature-detection tokens correctness architecture | A feature query usually swaps a rule block. Have it write a numb
 scale/three-tier-token-redefinition | neutral  $2 | unit tokens architecture | One token name, three definitions: fluid desktop → fluid mobile 
 scale/viewport-centred-band | neutral  $1 | tokens responsive unit layout rhythm | A hero that should sit optically centred but must not vanish on 
 scale/viewport-proportional-scale | E2 D2 W4 F4 $3 | unit typography layout responsive poster | Size type AND spacing in vw so the page scales as one proportion
@@ -339,6 +341,7 @@ timing/stepped-two-frame-blink | E2 D1 W2 F3 $1 | motion easing indicator status
 timing/trapezoidal-visibility-envelope | neutral  $1 | motion timing loop architecture | Elements that appear, hold and leave on one shared timeline do n
 timing/unit-aware-token-read | neutral  $1 | tokens correctness motion build | Script reading duration tokens out of computed style must parse 
 type/balanced-headline-wrap | neutral  $1 | type polish | text-wrap: balance on every headline so line lengths even out in
+type/breakpoint-swapped-family-roles | E1 D2 W3 F5 $1 | type responsive breakpoint tokens pairing serif | Which of two faces can carry display size is a function of rende
 type/cap-height-trim | neutral  $1 | type spacing precision alignment | Every text block ships with invisible half-leading above and bel
 type/char-count-stepped-reveal | E3 D1 W2 F4 $1 | type motion css-only custom-properties keyframes | A per-character reveal is one number. Publish the character coun
 type/character-grid-as-texture | E3 D5 W2 F3 $2 | type texture ornament ascii | A field of monospace glyphs (+ x X 8 0 @ # % $) on a grid, used 

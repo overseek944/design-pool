@@ -4,7 +4,7 @@ category: color
 tags: [color,tokens,progressive-enhancement,correctness]
 axes: none
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -37,3 +37,19 @@ the baseline as the pre-computed result, never the thing being mixed.
 ⚠ Proportions under ~10% are where this bites: the fallback is not slightly
 wrong, it is an order of magnitude too strong, and it passes review on any
 browser that supports the feature.
+
+Re-declaring the token is not the only polarity. Author both values as *twin*
+tokens — `--x` wide-gamut, `--x-srgb` the converted baseline — and let a single
+`@supports not` block reorder the `var()` chain the consumers read, so the
+fallback wins by preference rather than by overwrite. Both values then stay
+reachable by name, which is what a canvas `fillStyle`, an SVG attribute or an
+exported asset needs; and because each is authored rather than derived, the
+under-10% mix failure above cannot occur.
+```css
+.t                                     { color: var(--fg) }
+@supports not (color: color(display-p3 1 1 1)) {
+  .t                                   { color: var(--fg-srgb, var(--fg)) } }
+```
+⚠ Twin tokens double the surface that can drift. Generate the sRGB side from
+the wide one at build time; two hand-maintained palettes diverge within a
+release.

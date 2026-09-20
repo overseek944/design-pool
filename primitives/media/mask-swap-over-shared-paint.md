@@ -4,7 +4,7 @@ category: media
 tags: [mask,icon,gradient,media,state]
 axes: {energy: 2, density: 2, weight: 2, finish: 4}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -36,3 +36,16 @@ and adding a variant is one declaration rather than a new element.
 [data-tier]::after     { content: ""; width: 1.05em; height: 1.05em;
   background: currentColor; mask: var(--seal) center / contain no-repeat }
 ```
+
+Leave the layer list open. Ending the shorthand with `, var(--extra, none)`
+hands every caller a second mask layer — a notch, a corner fade, a cut — without
+touching the rule, and putting the compositing operator in a variable of its own
+lets that layer add to the shape or subtract from it from the call site.
+```css
+.icon { mask: var(--glyph) alpha no-repeat center / auto var(--mask-op, add),
+              var(--extra, none) }
+```
+⚠ An empty layer is a no-op under `add` and destructive under `subtract` or
+`intersect` — subtracting the glyph from nothing erases the icon. Default the
+operator to `add` and let the call site change it only when it also supplies the
+layer.

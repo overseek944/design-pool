@@ -4,7 +4,7 @@ category: scale
 tags: [tokens,radius,architecture,correctness,surface]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -27,3 +27,10 @@ corners visibly disagree, the inner one reading too round. Ladder roughly
 ⚠ Outer = inner + padding, so changing a card's padding changes its correct
 radius. Where the padding is fluid, derive it —
 `calc(var(--r-control) + var(--pad))` — rather than pinning a step.
+
+The ladder stops climbing. Past roughly a 480px box the eye judges a corner
+locally — against the centimetre of edge either side of it, not against the
+whole surface — so a panel at 370px and the same surface at 1400px both want
+about 16px, and a radius scaled with its container reads as a different shape at
+every width. Fix the radius at the top of the ladder and let the gutter around
+it scale instead.
