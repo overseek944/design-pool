@@ -4,7 +4,7 @@ category: timing
 tags: [motion,rhythm,sequencing]
 axes: {energy: 3, density: 3, weight: 2, finish: 4}
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -38,3 +38,10 @@ A group nested inside a staggered group needs its own band, not the parent's.
 Start the child's run at the parent slot it occupies and step it from there, so
 the inner items read as belonging to that slot rather than as more siblings:
 `t = parentIndex * outer + childIndex * inner`, inner at or below outer.
+
+Delays do not scale to marks that are not elements. Where a thousand things are
+drawn in one batched pass, give each a start offset and read its progress as a
+window on a single normalised clock — `smoothstep(start, start + w, t)` — so the
+whole cascade is one number. It is then scrubbable, reversible, interruptible,
+and reduced motion is `t = 1` rather than a branch. Window 0.12–0.25 of the run;
+spread the starts over the remainder.

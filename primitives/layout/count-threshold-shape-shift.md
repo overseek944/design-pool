@@ -4,7 +4,7 @@ category: layout
 tags: [layout,has,quantity-query,chrome,css-only,density]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,9 @@ a ladder.
 ⚠ Only `:nth-child(n of S)` counts *matching* children — plain `nth-of-type`
 counts by tag, so one hidden sibling of the same element crosses the threshold
 silently. The flip can fire mid-insert, so animate compositable properties only.
+
+Presence is the other threshold. `:has()` on a decorative child lets a container
+concede to it — a heading that drops a step of its clamp where a graphic shares
+its box, and keeps the full scale everywhere the graphic is absent. The
+concession travels with the component instead of living in a modifier class the
+next author has to know to pass.

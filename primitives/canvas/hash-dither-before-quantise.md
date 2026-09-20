@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,color,ramp,noise,grain,banding,generative]
 axes: {energy: 1, density: 3, weight: 2, finish: 4}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,9 @@ const out = L[i] + (L[Math.min(L.length - 1, i + 1)] - L[i]) * (f - i)
 ⚠ Clamp before indexing — the jitter pushes both ends out of bounds. Seed the
 hash with a time term only if the grain should move; drifting it per frame
 reintroduces flicker at low frame rates.
+
+The same hash has a second job: per-element variation seeded from an index
+rather than a coordinate. Size, angle, phase and intro offset all fall out of
+`hash(i + k)` for a few fixed `k`, which costs no stored table and — being pure
+— produces byte-identical output on a server and in the client that hydrates it.
+`Math.random()` in the same place is a hydration mismatch.

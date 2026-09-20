@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,canvas,battery,frame-budget,correctness]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -43,3 +43,8 @@ r.shadowMap.needsUpdate = moving ? frame % 2 === 0 : frame % 60 === 0
 ```
 ⚠ Anything that moves between refreshes drags a stale shadow. Force one update
 on the frame a transition ends.
+
+Compare with a tolerance of about a millisecond, not exactly. A 30fps cap tested
+`>= 33.3` against a 60Hz clock rejects the frame that lands at 33.2 and takes
+the next one at 49.9 — the loop runs at 20fps, not 30. `elapsed < interval - 1`
+keeps the intended rate on a panel whose period does not divide it.

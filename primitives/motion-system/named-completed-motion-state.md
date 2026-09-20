@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,state,correctness,accessibility,reveal,progressive-enhancement]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,13 @@ const play = () => { if (!canAnimate) return set('complete')
 ```
 ⚠ Without the third state the reduced-motion path inherits the `waiting` styles
 and the section stays blank for the readers least able to debug it.
+
+A continuously-rendered surface has no discrete state to name, and nothing in
+the DOM for a test to assert on. Publish the numbers instead — a frame counter,
+a mark count, the progress scalar — on the same attribute namespace, and a test
+can wait for real advancement rather than sleeping and hoping.
+```js
+el.dataset.frames = ++n; el.dataset.progress = p.toFixed(3)
+```
+⚠ An attribute write per frame is a style invalidation per frame; keep it on
+the container only, and behind a flag if anything selects on it.

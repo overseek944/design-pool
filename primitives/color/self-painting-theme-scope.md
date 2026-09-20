@@ -4,7 +4,7 @@ category: color
 tags: [color,tokens,theming,architecture,dark]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -30,3 +30,9 @@ var(--slate-panel)` becomes `var(--carbon-panel)` in one place, and a theme that
 is a darker cut of an existing one costs a palette block rather than a fork of
 every role. Keep the two namespaces in separate files — the moment a role
 aliases another role, the indirection stops being traceable.
+
+A single inverted band inside an otherwise light page does not need a whole
+theme — redeclare only the tokens whose relationship to the ground changed
+(muted text, rules, any accent that must lift off a dark field) and let the rest
+cascade. Three or four declarations on the section, and every component inside
+inverts untouched.

@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,legibility,performance,ambient,contrast,generative]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,9 @@ const alpha = Math.min(base * (1 - field[i]), .36)
 ⚠ Rebuild in the resize handler, never the frame loop — a stale field leaves the
 well off-centre after a rotation. Cap the final alpha too; attenuation alone
 guarantees no contrast floor.
+
+Where the copy is a block flush to one edge rather than a centred mass, the
+envelope collapses to one axis: a linear ramp over 80–150px from the text's
+outer edge, clamped, with a second ramp holding the field off the bottom rule.
+Two `clamp`-shaped multiplies and no distance call at all — worth taking when
+the well would only ever be rectangular.

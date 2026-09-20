@@ -4,7 +4,7 @@ category: layout
 tags: [overflow,responsive,scroll,correctness,table,figure]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -22,3 +22,14 @@ and bottom lines hold while the content slides under them.
 ```
 ⚠ Without `overscroll-behavior-inline: contain` a swipe running off the end of
 the strip chains to the browser's back gesture and leaves the page.
+
+A port that scrolls is content a keyboard must be able to reach, and a plain
+`overflow-x: auto` div is not focusable — the rows past the fold are
+unreachable without a mouse. Give it `tabindex="0"`, a `role="region"` and a
+label naming what scrolls, then style the ring: it is a real stop in the tab
+order and must look like one.
+```html
+<div class="port" tabindex="0" role="region" aria-label="Results by model">
+```
+⚠ Only make it focusable while it actually overflows, or it is a dead tab stop
+at every width where the table fits.

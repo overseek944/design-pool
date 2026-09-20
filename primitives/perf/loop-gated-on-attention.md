@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,intersection-observer,visibility,battery,correctness]
 axes: none
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -47,4 +47,13 @@ in a visible tab but *authored* as absent — the inactive panel of a tab set, a
 carousel slide out of view. Ask the accessibility state, not the layout.
 ```css
 [role="tabpanel"][aria-hidden="true"] * { animation-play-state: paused !important }
+```
+
+Fold teardown into the same predicate rather than relying on cancellation. A
+frame already queued when the view unmounts still fires, so the flag the cleanup
+sets must be one of the terms — and the predicate has to be consulted again at
+the *top of the callback*, not only where frames are requested.
+```js
+const run = () => !destroyed && !rm.matches && onScreen && !document.hidden
+const frame = t => { raf = null; if (!run()) return; draw(t); raf = requestAnimationFrame(frame) }
 ```
