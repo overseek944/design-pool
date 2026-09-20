@@ -4,7 +4,7 @@ category: light
 tags: [color,type,effect]
 axes: {energy: 3, density: 2, weight: 4, finish: 3}
 cost: 2
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -32,3 +32,15 @@ element.
 ⚠ The reduced-motion branch must restore `-webkit-text-fill-color: currentColor`
 and drop the image. `animation: none` alone leaves the fill transparent — the
 text is simply gone. Same trap behind any `@supports` fallback.
+
+A gradient across a headline is only as legible as its worst stop, and hues
+taken straight off the palette usually put that floor well under the body text's.
+Mix every stop 15–30% back toward the foreground colour: the sweep survives, the
+contrast floor is set by a token that already passes, and one stop list then
+works in both themes.
+```css
+background: linear-gradient(135deg, var(--fg) 0%,
+  color-mix(in oklab, var(--brand) 75%, var(--fg)) 60%, var(--accent) 100%);
+```
+⚠ Score each stop against the ground on its own — an average of the stops is not
+a contrast ratio, and the failing one is usually the saturated middle.

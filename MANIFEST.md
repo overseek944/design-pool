@@ -1,6 +1,6 @@
 # Manifest
 
-217 primitives. Format: `category/id | axes cost | tags | gist`
+219 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -62,6 +62,7 @@ layout/legibility-floor-scroll-port | neutral  $1 | overflow responsive scroll c
 layout/occupancy-negotiated-label-placement | neutral  $4 | layout label annotation collision diagram correctness | Annotations placed independently overlap the moment two anchors 
 layout/overflow-clip-over-hidden | neutral  $1 | overflow correctness accessibility scroll | overflow: clip crops without creating a scroll container. hidden
 layout/per-edge-clip-polygon | neutral  $1 | overflow clip correctness bleed | overflow only works per axis, so there is no way to crop one edg
+layout/ring-placed-upright-labels | E1 D3 W2 F4 $2 | layout diagram radial label geometry | Rotating a container to arrange labels around a circle tips ever
 layout/ruled-definition-rows | E1 D3 W2 F5 $1 | layout type metadata responsive hairline | Metadata reads as a datasheet when it is a list of label-to-valu
 layout/safe-area-floor-gutter | neutral  $1 | layout tokens safe-area responsive correctness | A gutter written as a plain value gets eaten by notches, rounded
 layout/scroll-contracted-bar | E2 D2 W2 F5 $2 | header scroll sticky chrome | A header can start edge-to-edge and contract into an inset float
@@ -97,6 +98,7 @@ motion-system/marquee-still-state | neutral  $1 | motion accessibility marquee c
 motion-system/motion-runtime-watchdog | neutral  $2 | motion correctness accessibility progressive-enhancement reveal | A reveal system that hides content in CSS and un-hides it from J
 motion-system/named-completed-motion-state | neutral  $1 | motion state correctness accessibility reveal progressive-enhancement | Give a choreographed scene three named states — waiting, playing
 motion-system/namespaced-hook-families | neutral  $1 | architecture motion scale | Prefix hooks by section (data-why-card, data-why-canvas, data-wh
+motion-system/non-converging-decorative-meter | E2 D2 W2 F4 $1 | motion mock meter progress accessibility | A meter animated inside a product mock gets read as data. Fill i
 motion-system/origin-signed-entrance | E3 D2 W2 F5 $1 | motion tabs state custom-properties transition | A tab set whose panels all enter from the same side throws away 
 motion-system/path-scrubbed-entrance | E3 D2 W2 F5 $3 | motion scroll motion-path choreography scrub | Give each element its own curve instead of a shared translate. A
 motion-system/paused-as-authored-rest | neutral  $1 | motion architecture correctness scene performance | A decorative scene whose resting state is running has already pl

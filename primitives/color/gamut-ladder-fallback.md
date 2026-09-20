@@ -4,7 +4,7 @@ category: color
 tags: [color,tokens,progressive-enhancement,correctness]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,17 @@ colour somebody authored rather than one the engine clamped.
 ```
 ⚠ Convert, never re-pick — the two must match on an sRGB display or the fallback
 becomes a second palette.
+
+The same ladder over a *derived* value fails harder. When the upgrade is a mix
+down to a few percent and the baseline is the ingredient, a browser that misses
+the probe paints the mix at full strength — a 5% hairline arrives opaque. Author
+the baseline as the pre-computed result, never the thing being mixed.
+```css
+:root { --rule: #ffffff0d }
+@supports (color: color-mix(in oklab, red, red)) {
+  :root { --rule: color-mix(in oklab, var(--fg) 5%, transparent) }
+}
+```
+⚠ Proportions under ~10% are where this bites: the fallback is not slightly
+wrong, it is an order of magnitude too strong, and it passes review on any
+browser that supports the feature.

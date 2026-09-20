@@ -24,3 +24,14 @@ effect; past 2–3px it reads as a jump rather than a hover.
 ```
 ⚠ A shadow change is invisible in forced-colors and to low-vision readers —
 carry the state in a border or colour too.
+
+On a dark ground a conventional shadow has nothing darker to cast and simply
+disappears. Give it spread equal and opposite to its y-offset: the shadow box
+collapses back onto the element's own rect and only the blur escapes downward,
+so the dark pools under the panel as contact rather than haloing its sides and
+greying the ground. Offset and blur roughly 1:2, offsets 16–40px.
+```css
+--contact: 0 30px 60px -30px #00000099;
+```
+⚠ A blur that large repaints on every size change — carry it on a static
+wrapper, not on the element being animated.

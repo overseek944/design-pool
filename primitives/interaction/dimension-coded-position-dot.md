@@ -29,3 +29,12 @@ For a row of steps that advances itself, promote the indicator to the hairline
 already above each step: `scaleX()` from `transform-origin: left` over the
 step's dwell, past steps full and future ones dimmed to .35–.5. A rule has no
 radius to distort, so the `scaleX` objection above does not apply.
+
+Let that rail's animation *be* the timer rather than mirror one. `animation:
+fill var(--dwell) linear forwards` with the advance fired from `animationend`
+cannot desync from what the reader sees, and suspending is one
+`animation-play-state: paused` on the same element — where a `setTimeout` beside
+a CSS transition drifts the moment the tab is backgrounded, because timers
+throttle and animations do not.
+⚠ `animationend` bubbles from descendants too; check the target, and drop the
+listener when the step changes or a stale rail advances the sequence twice.

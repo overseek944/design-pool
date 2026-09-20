@@ -27,3 +27,14 @@ falloff begins; moving the centre re-aims the light. Plateau 0–20%, falloff
 }
 ```
 ⚠ Not a contrast-bearing edge — on the far side the border is invisible, so never let it be the only thing separating an interactive control.
+
+Across a row of peers the centre is not a constant. A distant source means every
+panel takes the *same* centre; a near one means the centre steps with position —
+30%, 50%, 70% across three — so the row reads as one lamp above it rather than
+three copies of one card. Decide which before tuning any single panel; the usual
+mistake is tuning one and repeating it.
+```css
+.row > * { --hi-x: calc(50% + (var(--i) - 1) * 20%) }
+```
+⚠ Step past the panel's own edges and the highlight leaves the box entirely —
+cap the spread so the extreme origins still land inside 0–100%.
