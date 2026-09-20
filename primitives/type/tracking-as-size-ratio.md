@@ -4,7 +4,7 @@ category: type
 tags: [type,tracking,precision,fluid,tokens]
 axes: {energy: 1, density: 2, weight: 3, finish: 5}
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -27,3 +27,9 @@ Past −.08 letterforms collide at every size.
 Widened — uppercase micro-labels of one to three words take +.08 to +.12 at
 9–11px: too few letters for the extra space to accumulate into a gap. Past
 three words hold under +.08, or the label stops reading as language.
+
+A single word carries far more than the +.12 ceiling: at 9–11px a lone label of
+8–12 letters holds +.25 to +.40 and reads as a plate stamped on an instrument
+rather than as running text, because there is no inter-word gap for the tracking
+to compete with. The ceiling is set by word count, not by size — two words at
++.30 stop being a phrase and read as two separate objects.

@@ -4,7 +4,7 @@ category: layout
 tags: [layout,type,hairline,metadata,editorial]
 axes: {energy: 1, density: 2, weight: 1, finish: 5}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -40,3 +40,14 @@ nothing measured.
 ```
 ⚠ The knockout must be painted in the section's actual ground — over a gradient
 or an image it shows as a solid patch.
+
+A third form fixes what the knockout cannot. Give the label a short rule span on
+*each* side as flex siblings — 2–3rem, hairline — and the band centres over any
+ground at all: a gradient, a photograph, a video frame. Nothing is painted to
+hide a line behind the text because no line passes behind it. It costs two nodes
+and gives up the continuous dashed rule; take it whenever the section ground is
+not a flat colour.
+```css
+.band { display: flex; align-items: center; justify-content: center; gap: 1rem }
+.band > .rule { inline-size: 2.5rem; block-size: var(--hair,1px); background: var(--line) }
+```

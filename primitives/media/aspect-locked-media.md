@@ -4,7 +4,7 @@ category: media
 tags: [layout,media,cls]
 axes: none
 cost: 1
-seen: 16
+seen: 17
 requires: []
 conflicts: []
 completes: []
@@ -65,3 +65,12 @@ later measurement reads a real rectangle.
 ```
 ⚠ The floor matters more than the ratio on a narrow screen, where a wide ratio
 collapses the stage to a strip — restate both at the mobile breakpoint.
+
+A ratio is the wrong reservation when peer slots hold assets of unrelated
+shapes — a tall object, a wide one, and a card carrying no asset at all.
+`aspect-ratio` ties the slot's height to its own column width, so cards at
+different widths put their media at different heights and the row loses its
+internal alignment. A fixed band of 140–200px with the content centred and
+`object-fit: contain` inside it aligns them, and gives an empty card somewhere
+to say it is empty. The reservation is preserved either way — a declared height
+is not a collapsed one.

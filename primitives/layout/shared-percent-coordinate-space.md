@@ -4,7 +4,7 @@ category: layout
 tags: [diagram,svg,schematic,accessibility,responsive]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -43,3 +43,12 @@ at one weight.
 ⚠ It pins the stroke to *device* pixels, so a deliberately heavy rule stops
 growing with the diagram and reads thin at large sizes — use it for hairlines
 only, not for strokes that carry weight.
+
+`preserveAspectRatio="none"` shears strokes only along the axis the box
+stretches on, so leaders drawn strictly horizontal or vertical are immune: a
+horizontal line's visible thickness is scaled by the vertical factor alone,
+which is uniform along its whole length. Where the annotation can be routed as
+an L — label out to a gutter, then straight in to the subject — the overlay
+needs neither `vector-effect` nor a square box, and the layer stays two `<line>`
+elements over a picture of any ratio. Author 0.1–0.3 user units and expect
+0.5–1.5px once scaled.

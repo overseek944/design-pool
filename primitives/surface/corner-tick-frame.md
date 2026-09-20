@@ -4,7 +4,7 @@ category: surface
 tags: [surface,border,frame,detail,currentcolor,precision]
 axes: {energy: 1, density: 2, weight: 1, finish: 5}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -41,3 +41,11 @@ drawn within it. `shape-rendering: crispEdges` keeps a stepped arm hard.
 ```
 ⚠ Four nodes instead of none. Worth it only where the arm carries a shape — for
 plain hairline Ls the pseudo-element stays cheaper and inherits colour for free.
+
+Two marks on one diagonal, not four: an opposed pair *crops* where four corners
+*frame*. Top-left and bottom-right is enough for the eye to close the rectangle,
+it halves the paint, and it leaves the other two corners free for a badge, a
+counter or an image that overflows the box. Keep the pair on the reading
+diagonal or the asymmetry reads as a bug rather than a convention — and note
+that the four-layer `background` above already draws exactly this pair; a true
+four-corner frame takes eight layers.

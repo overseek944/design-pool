@@ -1,6 +1,6 @@
 # Manifest
 
-333 primitives. Format: `category/id | axes cost | tags | gist`
+335 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -91,6 +91,7 @@ layout/container-budgeted-column-drop | neutral  $2 | layout container-query tab
 layout/container-edge-rule-lattice | E1 D3 W1 F5 $2 | layout grid hairline precision responsive technical | Draw the measurement system, not only the content. Vertical hair
 layout/count-threshold-shape-shift | neutral  $1 | layout has quantity-query chrome css-only density | Let a container change what it is once its contents pass a count
 layout/cropped-stage-mock | E1 D2 W2 F5 $2 | layout responsive overflow media scale detail | Show a framed artifact — a handset, a browser chrome, a console 
+layout/cross-card-band-alignment | E1 D3 W1 F5 $2 | layout grid subgrid cards hairline datasheet alignment | A row of cards aligns at its outer edges and nowhere else: each 
 layout/em-reserved-swap-height | neutral  $1 | layout layout-shift responsive correctness tabs | Content that swaps in place — a tab's copy, a rotating claim — c
 layout/float-wrapped-figure | E1 D3 W2 F4 $1 | layout type editorial responsive detail | Neither grid nor flex wraps running text around a picture — floa
 layout/fractional-grid-with-fluid-rail | E1 D3 W3 F4 $2 | layout grid asymmetry | Asymmetric two-column via minmax() where the rail is viewport-pr
@@ -318,6 +319,7 @@ type/character-grid-as-texture | E3 D5 W2 F3 $2 | type texture ornament ascii | 
 type/em-sheared-highlight | E3 D2 W4 F4 $1 | type highlight clip-path emphasis inline scale | A slanted block behind a phrase gives a headline a cut-in, marke
 type/frame-cycled-glyph-indicator | E3 D1 W2 F3 $1 | indicator mono glyph loading state motion | An indeterminate wait does not need a drawn shape. Step one text
 type/fused-run-highlight | E1 D2 W2 F5 $2 | type annotation editorial diff state | Marking a run of blocks — changed lines, an annotated passage — 
+type/glyph-joined-sequence-rail | E1 D3 W1 F4 $1 | type list sequence metadata mono accessibility technical | A four-step process does not always deserve a diagram. Set it as
 type/language-conditional-type-tokens | neutral  $2 | type i18n tokens localisation correctness | The type scale is a function of script, not only viewport. Redef
 type/measured-inline-word-swap | E3 D2 W3 F5 $2 | type motion headline correctness | A word cycling inside a running headline relays out the whole li
 type/mono-as-ui-texture | E1 D3 W2 F4 $1 | type ui technical register | Run a monospace face for all chrome — nav, labels, captions, cou
