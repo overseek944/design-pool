@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,scrollbar,chrome,restraint,state]
 axes: {energy: 1, density: 1, weight: 1, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,16 @@ addEventListener('scroll', e => {          // capture — scroll does not bubble
 ```
 ⚠ Reserve the track with `scrollbar-gutter: stable`. `scrollbar-color` and
 `::-webkit-scrollbar` are rival styling models — pick one.
+
+The two styling models are not merely rival, they are exclusive per element:
+where any `::-webkit-scrollbar` rule matches, Chromium switches that scroller to
+the legacy path and the standard properties beside it stop applying. Shipping
+both blocks therefore leaves one of them dead — usually the standard one, which
+is the one that will outlive the other. Scope whichever survives to the
+scroller's own class rather than the root, so a panel opts in without every
+scroller on the page inheriting a theme.
+```css
+.pane { scrollbar-width: thin; scrollbar-color: var(--thumb) var(--track) }
+```
+⚠ Thumb against track wants 2.5–3:1 and the track against the panel about 1.3–2:1
+— a scrollbar tinted down to decoration has stopped reporting position.

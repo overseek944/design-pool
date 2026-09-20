@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,focus,tokens,correctness]
 axes: none
 cost: 1
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -40,3 +40,18 @@ with a saturated band.
 .on-dark, .on-brand { --focus: #fff }
 :where(a,button,[tabindex]):focus-visible { outline-color: var(--focus) }
 ```
+
+One `:focus-visible` rule at the root is the right default, but it needs a
+declared way out. Any control that already draws its own focus state — a field
+whose border changes, a row that tints — otherwise carries two rings. Ship the
+opt-out as one named class beside the tokens rather than as per-component
+overrides, so the exceptions stay countable.
+```css
+:focus-visible { outline:var(--focus-w) solid var(--focus);
+                 outline-offset:var(--focus-out) }
+.self-focus:focus-visible { outline:none }
+```
+⚠ Drawing the ring as `box-shadow` instead costs two things: any ancestor with
+`overflow: hidden` clips it away, and the `outline: none` that has to come with
+it erases the ring completely in forced-colors mode, where box-shadow is not
+painted at all.

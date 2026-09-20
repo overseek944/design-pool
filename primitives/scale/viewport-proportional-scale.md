@@ -4,7 +4,7 @@ category: scale
 tags: [unit,typography,layout,responsive,poster]
 axes: {energy: 2, density: 2, weight: 4, finish: 4}
 cost: 3
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: [proportional-effect-radii, three-tier-token-redefinition]
@@ -41,3 +41,16 @@ re-proportioned rather than shrunk. No WCAG risk here — nothing in it is text.
                       --seat: 24cqw }
 @media (width >= 640px) { .scene [data-stage] { --seat: 19cqw } }
 ```
+
+Type and spacing need not share one rate, and usually should not. Drive both
+from `vw` but give the gaps a coefficient a quarter to a third of the type's: at
+the wide end a strictly proportional gap opens into a hole, at the narrow end it
+closes to nothing. Where the two rates only need a floor and a cap rather than
+per-breakpoint control, `clamp()` is the cheaper spelling and the exactness it
+surrenders lands on spacing, where it costs least.
+```css
+h1     { font-size:  clamp(1.1rem, 5.3vw, 4.75rem) }
+h1 + p { margin-top: clamp(.75rem, 1.3vw, 1.5rem) }    /* ≈ .25× the type rate */
+```
+⚠ Ratios of .2–.4 hold. At 1.0 the page is one proportional unit again, which is
+the decision above, not a tuning of it.

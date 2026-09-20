@@ -4,7 +4,7 @@ category: type
 tags: [type,system]
 axes: {energy: 2, density: 3, weight: 3, finish: 4}
 cost: 1
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -29,3 +29,17 @@ never for a heading, a label or a line of prose — does not read as a fourth
 voice, because it appears once per screen in a fixed position and is understood
 as a mark rather than as type. That is the one place to spend a face too
 mannered to set anything in.
+
+Assign the face at the content root of the route, not globally and not per
+component. The default voice sits on the document element; a marketing route
+sets the display family on its own `<main>`, a reading route sets the text
+family on its. Everything inside inherits, so one component renders in the right
+voice wherever it is mounted and no heading rule ever names a family.
+```css
+html { font-family: var(--ui) }
+main[data-voice="display"] { font-family: var(--display) }
+main[data-voice="reading"] { font-family: var(--reading) }
+```
+⚠ This holds only while components inherit — one `font-family` hardcoded in a
+shared component pins it to a single voice, and the mistake is invisible until
+the second route ships.

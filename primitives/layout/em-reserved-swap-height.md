@@ -4,7 +4,7 @@ category: layout
 tags: [layout,layout-shift,responsive,correctness,tabs]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,17 @@ mobile worst case everywhere.
 ```
 ⚠ Reserved space is dead space while the short variant shows. Past roughly two
 surplus lines, cross-fade through a shared box instead of swapping in place.
+
+The same reservation runs on the inline axis for a state marker. Give the marker
+a permanent `em`-square box in the flow — never shrinking, sized in `em` so it
+tracks the type it labels — and change only its opacity: the row never reflows
+when the selection moves, and the marker rescales with a fluid heading for free.
+0.35–0.5em reads as a mark beside text without becoming a bullet.
+```css
+.item       { display:flex; align-items:center; gap:.5em }
+.item .mark { flex:none; inline-size:.4em; block-size:.4em;
+              opacity:0; transition:opacity .2s }
+.item[aria-current] .mark { opacity:1 }
+```
+⚠ Opacity leaves the marker in the accessibility tree and in the hit area —
+`aria-hidden` it and let `aria-current` carry the state to a reader.
