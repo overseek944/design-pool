@@ -4,7 +4,7 @@ category: media
 tags: [layout,media,cls]
 axes: none
 cost: 1
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -41,3 +41,14 @@ reserves a square and collapses on swap.
 ```
 ⚠ The placeholder's numbers must match the real asset — a stale ratio is a
 shift that no `aspect-ratio` rule above it can correct.
+
+A third-party widget is the same reservation with a different source of truth.
+You do not control what it renders, but its size variants are documented and
+fixed, so hold one map from variant name to box and let the same entry both size
+the host element and configure the widget — the reservation cannot then drift
+from what arrives. Give an invisible variant a real `0 × 0` box with
+`overflow: hidden` rather than `display: none`, or a widget that decides to
+render a challenge has nowhere to put it.
+```js
+const BOX = { normal: [300, 65], compact: [150, 140], invisible: [0, 0] }
+```
