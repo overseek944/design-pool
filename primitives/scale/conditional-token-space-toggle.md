@@ -4,7 +4,7 @@ category: scale
 tags: [tokens,architecture,css,correctness]
 axes: none
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []

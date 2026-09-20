@@ -4,7 +4,7 @@ category: interaction
 tags: [motion,disclosure,accessibility,progressive-enhancement,height]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -31,3 +31,17 @@ transition. Without the keyword-interpolation opt-in the open state jumps
 straight to its height and there is no transition left to suppress, so the
 reduced branch is one wrapper instead of a second rule. `height: auto` on the
 open state behaves identically to `fit-content` here and reads more plainly.
+
+Where `::details-content` is not available, the fallback is not a guessed
+`max-height` — it is `grid-template-rows` interpolating `0fr` to `1fr` with the
+content in a `min-height: 0; overflow: hidden` child. The row track resolves to
+the content's real height at both ends, so the easing is correct at any length,
+and the whole thing is two declarations on a wrapper that costs nothing when
+closed. 0.2–0.32s, same curve as the native branch.
+```css
+.panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .22s var(--ease) }
+.panel[data-open] { grid-template-rows: 1fr }
+.panel > * { min-height: 0; overflow: hidden }
+```
+⚠ `overflow: hidden` on the inner child clips a focus ring that overflows it, so
+an inside control looks unfocused while open — pad the child or inset the ring.

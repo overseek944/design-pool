@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,accessibility,required]
 axes: none
 cost: 1
-seen: 22
+seen: 23
 requires: []
 conflicts: []
 completes: []
@@ -88,3 +88,30 @@ draw()
 ⚠ Only safe when the cues are idempotent end-state writes. A cue that toggles,
 appends or increments runs the whole timeline's worth of side effects in one
 tick and lands somewhere the animation never reaches.
+
+Where the scene is CSS, the still state is decided per element by what the
+element *means*, not by one blanket rule. Narrative parts — a card that
+travelled, a bar that filled, a line that faded in — get their end state
+written out as a static declaration, so the diagram still says the thing it was
+animating to say. Purely decorative parts — a scan beam, a drifting field — are
+removed rather than frozen, because a loop stopped mid-cycle is a composition
+nobody authored. A semantic indicator is *slowed*, not stopped: a caret that
+stops blinking stops reading as a caret.
+```css
+@media (prefers-reduced-motion: reduce) {
+  .card { transform: translateX(var(--travel)); animation: none !important }
+  .bar  { clip-path: none; animation: none !important }
+  .beam { display: none }
+  .caret { animation-duration: 2s }          /* 1s → 1.5–3s, never none */
+}
+```
+⚠ A blanket `animation-duration: .01ms !important` reset reaches the caret too —
+restate the slowed value after it, or the clamp wins on equal specificity.
+
+Clamp transitions to a small non-zero duration rather than to `0s` wherever
+script waits on `transitionend`. At `0s` the event never fires in some engines
+and a state machine that advances on it stalls with the interface half-open.
+8–20ms is imperceptible and still dispatches.
+```css
+@media (prefers-reduced-motion: reduce) { .card, .panel { transition-duration: 10ms } }
+```

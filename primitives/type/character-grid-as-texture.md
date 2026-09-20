@@ -4,7 +4,7 @@ category: type
 tags: [type,texture,ornament,ascii]
 axes: {energy: 3, density: 5, weight: 2, finish: 3}
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -28,3 +28,20 @@ link's prefix — instead of an icon that must be drawn.
 
 Full-bleed behind copy, cap alpha at 0.25–0.4 — a light colour alone breaks the
 contrast floor under a dense patch.
+
+Pick the glyphs for their *ink density* and the field becomes a gradient rather
+than a uniform wash: a ramp like `. : + = # @` run left to right inside one
+`<pre>` with `white-space: pre` and `line-height: 1` reads as a band fading
+across the panel. One node, no grid, no per-cell spans, and it re-flows to
+nothing on a narrow viewport because it simply clips. Alpha 0.04–0.08 against a
+near-black ground; the ramp stops reading as texture and starts reading as
+content much above that.
+```css
+.band { white-space: pre; line-height: 1; font-size: 10px;
+        color: color-mix(in oklab, currentColor 5%, transparent) }
+```
+```
+  ....:::+++==+++:....        ..:++==++:..
+```
+⚠ Literal characters — `aria-hidden` the block or a screen reader spells the
+ramp out, and keep it clear of anything selectable.

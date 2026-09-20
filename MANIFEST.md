@@ -1,6 +1,6 @@
 # Manifest
 
-293 primitives. Format: `category/id | axes cost | tags | gist`
+299 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -45,6 +45,7 @@ interaction/breakpoint-scoped-overlay-dismiss | neutral  $1 | navigation overlay
 interaction/coordinated-group-state | E3 D2 W2 F5 $1 | interaction surface hover | Hover the container, animate the parts. A single group parent le
 interaction/dimension-coded-position-dot | E2 D2 W2 F5 $1 | interaction state indicator accessibility carousel | Let the active item in a position indicator change size, not onl
 interaction/edge-hotzone-sibling-reveal | E2 D2 W2 F5 $2 | interaction hover panel chrome css-only accessibility | Reclaim the width a hidden rail costs without a toggle: park an 
+interaction/find-reachable-collapse | neutral  $1 | accessibility correctness disclosure search architecture | Collapsed content the browser's own find cannot reach is content
 interaction/gesture-affordance-label | E1 D2 W2 F4 $1 | affordance interaction accessibility detail ux | A surface whose only affordance is a gesture — drag to orbit, sc
 interaction/hysteretic-lock-zone | neutral  $1 | interaction pointer state correctness threshold | Any boolean derived from a continuous input — pointer inside a z
 interaction/idle-scroll-cue | E2 D1 W2 F4 $1 | scroll affordance feedback motion | A page whose motion is entirely scroll-driven stops when the rea
@@ -78,6 +79,7 @@ layout/cropped-stage-mock | E1 D2 W2 F5 $2 | layout responsive overflow media sc
 layout/em-reserved-swap-height | neutral  $1 | layout layout-shift responsive correctness tabs | Content that swaps in place — a tab's copy, a rotating claim — c
 layout/float-wrapped-figure | E1 D3 W2 F4 $1 | layout type editorial responsive detail | Neither grid nor flex wraps running text around a picture — floa
 layout/fractional-grid-with-fluid-rail | E1 D3 W3 F4 $2 | layout grid asymmetry | Asymmetric two-column via minmax() where the rail is viewport-pr
+layout/ghost-sizer-twin | neutral  $1 | layout architecture correctness hover reflow | A box that grows on interaction — scales, lifts on Z, expands a 
 layout/height-budgeted-media-width | neutral  $2 | layout container-query aspect fit cls | When a card must fit one screen exactly — media plus chrome, not
 layout/in-flow-overlay-header | neutral  $1 | layout sticky overlay correctness cls | A header that must float over the first section and still stick 
 layout/intrinsic-size-abstaining-child | neutral  $1 | layout correctness type detail | A width: fit-content block is sized by its widest child, which i
@@ -139,6 +141,7 @@ motion-system/named-completed-motion-state | neutral  $1 | motion state correctn
 motion-system/namespaced-hook-families | neutral  $1 | architecture motion scale | Prefix hooks by section (data-why-card, data-why-canvas, data-wh
 motion-system/non-converging-decorative-meter | E2 D2 W2 F4 $1 | motion mock meter progress accessibility | A meter animated inside a product mock gets read as data. Fill i
 motion-system/origin-signed-entrance | E3 D2 W2 F5 $1 | motion tabs state custom-properties transition | A tab set whose panels all enter from the same side throws away 
+motion-system/parameterised-path-travel | E3 D3 W1 F4 $2 | motion loop ambient diagram css-only | One keyframe animating offset-distance from 0% to 100% drives an
 motion-system/path-scrubbed-entrance | E3 D2 W2 F5 $3 | motion scroll motion-path choreography scrub | Give each element its own curve instead of a shared translate. A
 motion-system/paused-as-authored-rest | neutral  $1 | motion architecture correctness scene performance | A decorative scene whose resting state is running has already pl
 motion-system/reduced-motion-branch | neutral  $1 | motion accessibility required | Branch at setup, not per-animation: if the user prefers reduced 
@@ -177,6 +180,7 @@ reveal/radius-held-inset-wipe | E3 D2 W2 F5 $2 | reveal clip-path wipe panel mot
 reveal/trailing-mask-sweep | E3 D3 W2 F4 $2 | reveal mask scan grid sweep technical | Reveal a field — a measurement grid, a texture, a dot matrix — b
 reveal/word-mask-variant | E4 D3 W3 F4 $2 | type motion reveal | Same nested-mask structure at word granularity (inline-block on 
 scale/breakpoint-fallback-chain | neutral  $2 | tokens responsive architecture components css | Let a caller pass per-breakpoint values as custom properties and
+scale/concentric-radius-ladder | neutral  $1 | tokens radius architecture correctness surface | Radius belongs to a surface's role, not to an author's taste: na
 scale/conditional-token-space-toggle | neutral  $2 | tokens architecture css correctness | A custom property whose value is an empty token stream is a CSS 
 scale/endpoint-named-fluid-tokens | neutral  $1 | tokens fluid naming architecture responsive | Name a fluid token after the two pixel values it interpolates be
 scale/fixed-canvas-root-scale | E1 D2 W3 F4 $2 | scale layout proportion transform responsive | Author the page once at one pixel width and scale the whole canv
@@ -193,6 +197,7 @@ scale/viewport-centred-band | neutral  $1 | tokens responsive unit layout rhythm
 scale/viewport-proportional-scale | E2 D2 W4 F4 $3 | unit typography layout responsive poster | Size type AND spacing in vw so the page scales as one proportion
 scale/zoom-as-reflowing-scale | neutral  $1 | unit scale architecture responsive correctness | zoom is the one scale that reflows. transform: scale() leaves th
 scroll/anchor-into-scrubbed-pin | neutral  $2 | scroll navigation anchor correctness pin | An in-page link into a scrubbed pin lands at the top of the pin 
+scroll/append-stream-anchor-release | neutral  $1 | scroll correctness stream log architecture | Engines silently hold the reading position steady when content i
 scroll/aria-current-scrollspy-state | neutral  $1 | accessibility navigation scroll state architecture | A table of contents entry is a location, and the platform has a 
 scroll/collapsed-observer-band | neutral  $1 | scroll observer navigation architecture correctness | Squeeze an observer's root to a single horizontal line and "whic
 scroll/css-owned-pin-geometry | neutral  $2 | scroll pin architecture correctness responsive | Let the stylesheet decide whether a section pins and for how lon
@@ -292,6 +297,7 @@ type/sub-baseline-marker-band | E2 D2 W3 F3 $1 | type emphasis highlight contras
 type/three-family-stack | E2 D3 W3 F4 $1 | type system | Geometric sans (body/headline) + mono (chrome/code) + display se
 type/tonal-lead-in-clause | E1 D2 W3 F5 $1 | type emphasis hierarchy editorial colour | Carry two levels inside one sentence: the clause holding the cla
 type/tracking-as-size-ratio | E1 D2 W3 F5 $1 | type tracking precision fluid tokens | Tracking fixed in px or em is wrong at one end of a fluid range:
+type/unit-grid-bitmap-lettering | E2 D3 W4 F2 $2 | type wordmark svg pixel asset-free | Draw a wordmark as filled cells on a small integer grid — a view
 type/variable-axis-tokens | E1 D2 W2 F5 $1 | type tokens opentype variable-font precision | A variable face is a continuum, not nine presets — so name the e
 type/viewport-locked-single-line | E1 D2 W4 F4 $1 | type responsive display unit correctness | A display line that must never break is not a wrapping problem t
 type/wavy-annotation-underline | E2 D2 W2 F2 $1 | type underline link detail informal | A wavy decoration stops reading as a link and starts reading as 

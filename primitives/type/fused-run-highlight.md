@@ -4,7 +4,7 @@ category: type
 tags: [type,annotation,editorial,diff,state]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,17 @@ test across a list boundary or every nested list reopens the band.
 ⚠ A wash alone does not say *what* changed — pair it with a word or a marker.
 A list item cannot take the bleed as padding without dragging its marker along;
 paint that ground on a negatively-inset `::after`.
+
+The transient counterpart marks what *just* changed rather than what differs: a
+tint at full strength held briefly, then decayed to transparent in one shot with
+`animation-fill-mode: both`. Holding before the fade is what makes it legible —
+a mark that begins decaying at 0% is gone before the eye reaches it. Hold 25–35%
+of the cycle, total 1.2–3s. The mark leaves no residue, so a row that changes
+ten times does not accumulate ten highlights.
+```css
+@keyframes flash { 0%, 30% { background: color-mix(in oklab, var(--accent) 6%, transparent) }
+                   to      { background: transparent } }
+.changed { animation: flash 1.6s var(--ease) both; border-radius: var(--r-control) }
+```
+⚠ Colour alone announces nothing. Pair it with a live region or a persistent
+marker for anyone who was not looking at that row when it fired.
