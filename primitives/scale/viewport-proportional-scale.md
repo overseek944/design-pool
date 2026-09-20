@@ -4,7 +4,7 @@ category: scale
 tags: [unit,typography,layout,responsive,poster]
 axes: {energy: 2, density: 2, weight: 4, finish: 4}
 cost: 3
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: [proportional-effect-radii, three-tier-token-redefinition]
@@ -27,3 +27,17 @@ Variant — for a headline that must fit the first screen, drive it from viewpor
 *height* instead: `max(min(4–7lvh, <cap>), <floor>)`. `lvh` rather than `vh` so
 a collapsing mobile URL bar does not resize type mid-scroll. The cap and floor
 are separate tokens, redefinable per breakpoint and per language.
+
+The same construction scoped to a container sizes the *parts of a drawing*
+rather than type: declare every element of a scene — rail width, band depths,
+seat widths — in `cqw` on one `inline-size` container, and the whole thing
+scales as one object wherever it is placed. Floor selectively with `max()`:
+only the parts that stop being legible get a px minimum, the rest keep scaling.
+Retune the ratios at a breakpoint, not just the sizes, so a wide scene can be
+re-proportioned rather than shrunk. No WCAG risk here — nothing in it is text.
+```css
+.scene { container-type: inline-size }
+.scene [data-stage] { --rail: max(1.6cqw, 8px); --band: max(14.5cqw, 112px);
+                      --seat: 24cqw }
+@media (width >= 640px) { .scene [data-stage] { --seat: 19cqw } }
+```

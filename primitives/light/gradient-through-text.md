@@ -4,7 +4,7 @@ category: light
 tags: [color,type,effect]
 axes: {energy: 3, density: 2, weight: 4, finish: 3}
 cost: 2
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -44,3 +44,19 @@ background: linear-gradient(135deg, var(--fg) 0%,
 ```
 ⚠ Score each stop against the ground on its own — an average of the stops is not
 a contrast ratio, and the failing one is usually the saturated middle.
+
+Sweeping `background-position` plays or stops and nothing else. Make the
+highlight's *position* a registered `<percentage>` and write every stop relative
+to it — `background-size: 100% 100%`, no tiling — and the sweep becomes a value:
+transitionable, interruptible, settable from scroll or from state, parkable
+mid-travel. Shape it with graded shoulders rather than three stops (±2–3% glint,
+±7% soft, ±14–23% falloff) and it reads as a glint over a surface instead of a
+band crossing it. Run −18%→118% so it clears both ends.
+```css
+@property --sweep { syntax: "<percentage>"; inherits: false; initial-value: -18% }
+background-image: linear-gradient(100deg, var(--base) 0,
+  var(--soft) calc(var(--sweep) - 7%), var(--hot) var(--sweep),
+  var(--soft) calc(var(--sweep) + 7%), var(--base) calc(var(--sweep) + 23%));
+```
+⚠ Wrapped text needs `box-decoration-break: clone` or the gradient spans the
+whole inline box and every line after the first gets only its tail.
