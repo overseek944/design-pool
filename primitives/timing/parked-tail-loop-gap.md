@@ -4,7 +4,7 @@ category: timing
 tags: [motion,timing,rhythm,detail]
 axes: {energy: 3, density: 1, weight: 2, finish: 4}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -32,3 +32,17 @@ the travel, not off the period, so raise the duration when you add them.
 @keyframes pan { 0%, 14% { transform: translate(0) }
                  86%, to { transform: translateX(calc(-1 * var(--run))) } }
 ```
+
+Push the duty cycle past about 9:1 and the keyframe stops being a loop with a
+rest and becomes a *scheduler*: hold the resting state from `0%` to 92–97%, put
+the whole event in the tail, and one infinite animation fires a brief,
+apparently unprompted burst forever with no timer, no listener and nothing to
+tear down. Period is the spacing — 5–12s for something that should feel
+occasional. Give two elements different periods and the bursts stop coinciding.
+```css
+.mark { animation: 8s step-end infinite blip }     /* 5–12s */
+@keyframes blip { 0%, 96% { opacity: .15 } 97% { opacity: 1 } to { opacity: .15 } }
+```
+⚠ The gap is exact, so a burst on a long period is still perfectly regular — it
+reads as random only because it is rare. Anything that must not repeat on a
+schedule still needs a real random interval.

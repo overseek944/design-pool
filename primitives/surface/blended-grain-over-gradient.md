@@ -4,7 +4,7 @@ category: surface
 tags: [surface,texture,grain,gradient,blend-mode,banding]
 axes: {energy: 1, density: 3, weight: 3, finish: 4}
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -56,3 +56,18 @@ background-blend-mode: multiply
 ```
 ⚠ Desaturate inside the filter with `feColorMatrix type="saturate" values="0"`
 or the turbulence arrives in colour and tints the stock.
+
+Where the grain belongs to the *page* rather than to one panel, the
+background-layer form cannot reach: it only ever composites inside its own box.
+One fixed element at `inset: 0` with `mix-blend-mode` blends against everything
+painted beneath it instead — sections, imagery, cards — for a single
+viewport-sized paint that never repeats per component and never scrolls out of
+register. `multiply` at 2–4% on light stock, `soft-light` at 3–6% on dark.
+```css
+.grain { position: fixed; inset: 0; z-index: 0; pointer-events: none;
+         opacity: .025; mix-blend-mode: multiply; background: var(--tile) 0 0/150px }
+```
+⚠ It is a blend layer over the whole document: anything that must stay exact —
+a logo, a chart's series colours, a photograph — has to sit above it, and
+`aria-hidden` is mandatory. Mask the plane in below the fold if a full-bleed
+hero should stay clean.

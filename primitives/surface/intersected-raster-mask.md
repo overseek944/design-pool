@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,texture,print,halftone]
 axes: {energy: 1, density: 4, weight: 2, finish: 4}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -29,3 +29,18 @@ mask-composite: intersect;
 composite mode the layers union and nothing is cut. Periods within about 2× of
 each other beat into moiré — separate them, and keep the finest above 2px at
 the rendered size.
+
+One `conic-gradient` of hard stops is a whole *checker* in a single layer, which
+rulings cannot produce: alternate opaque and transparent quadrants from a corner
+and the tile reads as a grid rather than as line work. Intersected with a plain
+directional fade it gives a field that is chequered where it is present and gone
+where it is not — a dissolve with visible structure instead of a smooth ramp.
+Size the conic layer with `mask-size` to set the cell; 8–24px reads as texture,
+40px+ as pattern.
+```css
+mask-image: linear-gradient(#0000, #000),
+  conic-gradient(from 90deg, #000 90deg, #0000 90deg 180deg, #000 180deg 270deg, #0000 270deg);
+mask-size: 100% 100%, 16px 16px;
+```
+⚠ Hard stops alias badly at fractional sizes — keep the cell an even integer and
+off a transformed ancestor, or the checker shimmers while scrolling.

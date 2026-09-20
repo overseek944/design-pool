@@ -4,7 +4,7 @@ category: color
 tags: [color,tokens,theming,architecture]
 axes: none
 cost: 1
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -60,3 +60,18 @@ for (const [k, v] of Object.entries(set)) root.style.setProperty(`--brand-${k}`,
 ```
 ⚠ Ground-mixed shades carry no contrast guarantee at all — two of these three
 will fail against the ground they were mixed from. Check each before use.
+
+Relative colour syntax does what no mix can: decompose a colour into its own
+channels and re-author only the ones you want. `oklch(from <c> l c h / a)`
+exposes `l`, `c`, `h` and `alpha` as numbers inside the function, so a highlight
+can be *the same hue, lighter* rather than a step toward white — and the seed
+can be `currentColor`, which no token has to name. A component then tints itself
+from whatever ink it inherits, in every context, with one declaration.
+```css
+--hi: oklch(from currentColor max(.82, calc(l + .34)) c h / calc(alpha * .9));
+--wash: oklch(from currentColor l calc(c * .4) h / calc(alpha * .12));
+```
+⚠ Unsupported engines drop the whole declaration, so the property must already
+hold a usable value — declare the fallback first, never rely on the cascade
+below it. Clamp derived lightness with `min()`/`max()`: `l + .4` on an already
+pale ink silently exceeds 1 and flattens to white.

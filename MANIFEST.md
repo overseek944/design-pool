@@ -1,6 +1,6 @@
 # Manifest
 
-424 primitives. Format: `category/id | axes cost | tags | gist`
+425 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -274,6 +274,7 @@ reveal/mirrored-sign-pair | E3 D2 W3 F4 $2 | reveal motion rotation symmetry pai
 reveal/normalised-path-draw | E3 D2 W2 F5 $1 | svg stroke reveal draw geometry correctness | A draw-on stroke normally needs the path's measured length, whic
 reveal/overhung-skew-fill-sweep | E3 D2 W2 F5 $2 | reveal interaction motion detail effect | Fill a control on hover behind a slanted edge, not a straight on
 reveal/radius-held-inset-wipe | E3 D2 W2 F5 $2 | reveal clip-path wipe panel motion | A panel widening under clip-path: inset() squares its corners of
+reveal/step-held-band-tear | E4 D2 W3 F2 $2 | motion easing text clip-path reveal glitch | An arrival that should read as a signal resolving rather than fa
 reveal/trailing-mask-sweep | E3 D3 W2 F4 $2 | reveal mask scan grid sweep technical | Reveal a field — a measurement grid, a texture, a dot matrix — b
 reveal/word-mask-variant | E4 D3 W3 F4 $2 | type motion reveal | Same nested-mask structure at word granularity (inline-block on 
 scale/breakpoint-fallback-chain | neutral  $2 | tokens responsive architecture components css | Let a caller pass per-breakpoint values as custom properties and

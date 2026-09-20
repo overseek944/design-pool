@@ -4,7 +4,7 @@ category: motion-system
 tags: [idle,loop,character,randomness,raf,ambient]
 axes: {energy: 3, density: 2, weight: 2, finish: 4}
 cost: 3
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -38,3 +38,15 @@ recent.push(i); while (recent.length > Math.min(20, pool.length / 3)) recent.shi
 ```
 ⚠ Size the ring against the *visible* pool, not the total — a ring longer than
 what is on screen starves the picker and the field goes still.
+
+For a pool small enough that a recent-ring would swallow it — three states, four
+labels, five glyphs — advance by a random *stride* instead of picking a member:
+`(i + 1 + floor(random() * (n - 1))) % n` lands anywhere except where it already
+is, so a repeat is impossible by construction with no stored history at all.
+The `+ 1` is the whole guarantee; without it the stride can be zero.
+```js
+i = (i + 1 + Math.random() * (n - 1) | 0) % n
+```
+⚠ At n = 2 it degenerates to strict alternation, which is a visible pattern —
+below three members, vary the *interval* instead, since the value cannot carry
+the variation.

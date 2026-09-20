@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,edge,composition,bleed]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 22
+seen: 23
 requires: []
 conflicts: []
 completes: []
@@ -92,3 +92,18 @@ on the scrolled content equal to the fade height, so the last line clears it.
 ```
 ⚠ Only over an opaque, known colour — on a gradient or an image the painted
 band is a visible rectangle.
+
+Derive the fade distance from the layout rather than tuning it: on a full-bleed
+rail inside a fixed measure, `max(<floor>, (100% - <measure>) / 2)` makes the
+fade exactly the page gutter, so the track dissolves precisely where the content
+column begins instead of at an arbitrary offset. The mask then tracks every
+viewport width for free, and the floor keeps it from collapsing to nothing below
+the measure.
+```css
+.rail { --fade: max(32px, calc((100% - 1092px) / 2));
+  mask-image: linear-gradient(90deg, #0000 0, #000 var(--fade),
+                              #000 calc(100% - var(--fade)), #0000 100%) }
+```
+⚠ `100%` is the rail's own width — correct only where the rail is genuinely
+full-bleed. Nested inside a padded container it resolves to the wrong basis and
+the fade lands short of the gutter.

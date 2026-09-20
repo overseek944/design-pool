@@ -4,7 +4,7 @@ category: layout
 tags: [layout,table,comparison,surface,contrast,hierarchy]
 axes: {energy: 1, density: 3, weight: 4, finish: 5}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -39,3 +39,20 @@ pair to verify rather than two.
 ⚠ A wash that faint is easy to leave unchecked. Body text over the tinted cell
 is a different pair from body text over the ground — verify both, and keep the
 tint under 12% or the ink on it has to change after all.
+
+The panel does not have to be made of cells at all. Let one custom property own
+the column width, set `table-layout: fixed`, then place a single absolutely
+positioned overlay across the full height at `right: calc(var(--col) * n)` —
+wash, border, corner marks and all — with `pointer-events: none`. The surface is
+now one element rather than a cell in every row, so `border-collapse: separate`
+and per-row rules no longer stripe it, re-ordering columns is one number, and
+the decoration never has to be kept in sync with the markup that carries the
+data.
+```css
+table { table-layout: fixed }  .col { width: var(--col) }
+.sheet { position: absolute; inset-block: 0; right: calc(var(--col) * 3);
+         width: var(--col); pointer-events: none; background: var(--wash) }
+```
+⚠ It is decoration outside the table's semantics — the header still has to name
+the column. An overlay indexed from the right breaks the moment a column drops
+at a breakpoint; recompute the multiplier with the column count, or hide it.
