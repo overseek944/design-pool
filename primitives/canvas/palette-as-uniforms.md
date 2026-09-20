@@ -4,7 +4,7 @@ category: canvas
 tags: [shader,color,system]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -16,3 +16,18 @@ system, and one token change propagates to the canvas.
 ```glsl
 uniform vec3 uColorOrange; uniform vec3 uColorPurple; uniform vec3 uColorNavy;
 ```
+
+Read the token rather than restating it. `getComputedStyle(document
+.documentElement).getPropertyValue('--ground')` resolves whatever the cascade
+currently says, with a literal only as the fallback — the shader and the
+stylesheet then share one definition instead of two that agree today. Re-run the
+whole read on theme change and the canvas follows a runtime toggle; subscribe to
+both an explicit theme event and `prefers-color-scheme`, because a page with a
+manual override has two sources for the same fact.
+```js
+const tok = (n, f) => new Color(gcs(root).getPropertyValue(n).trim() || f)
+const sync = () => u.uPaper.value.copy(tok('--ground', '#f5f3f0'))
+addEventListener('themechange', sync)
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change', sync)
+```
+⚠ `getComputedStyle` is a layout read — do it on theme change, never per frame.

@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,canvas,battery,frame-budget,correctness]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,20 @@ const step = t => { if (t - last >= 1000 / FPS) { draw(t); last = t }
 ⚠ Cancel the handle on teardown or a second loop stacks on the first. Drive
 motion from the timestamp, never a frame counter, or the speed changes with the
 cap.
+
+The rate is not one number either. A loop tracking an input needs the full rate
+*while the input moves* and almost nothing once it settles: compare this frame's
+driving value to the last, and after 1–2s of no change fall to every fourth
+frame, returning to full the moment it differs. A scrubbed scene left parked
+then costs a quarter of a still image.
+
+The same divisor belongs on auxiliary render targets, which are usually the
+expensive half and rarely need the main rate. Turn automatic shadow refresh off
+and drive it yourself — every 2nd frame while something moves, every 30th–60th
+while the scene is only being looked at.
+```js
+r.shadowMap.autoUpdate = false
+r.shadowMap.needsUpdate = moving ? frame % 2 === 0 : frame % 60 === 0
+```
+⚠ Anything that moves between refreshes drags a stale shadow. Force one update
+on the frame a transition ends.

@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,correctness,accessibility,events,navigation]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,17 @@ stop.forEach(e => document.addEventListener(e, abort, { passive: true }))
 ```
 ⚠ Abort must leave the scroll where the reader put it, not snap to the target.
 Under `prefers-reduced-motion` skip the tween entirely and jump.
+
+The band widens once abort is armed. Where the tween is a *traversal* — paging
+between sections rather than nudging to an anchor — scale the duration with the
+distance and let it run long: 1.4–1.8s base plus ~0.5s per viewport travelled,
+capped near 3s. The reader is never trapped, because the first wheel or touch
+ends it, and a long continuous move across several screens reads as travel where
+a 700ms one reads as a cut.
+
+This is also the affordance that makes a scroll-driven narrative keyboard-usable
+at all — arrow keys step the same tween between sections, with the document ends
+as the first and last stop. Guard the handler against typing:
+```js
+if (/INPUT|TEXTAREA/.test(e.target.tagName) || e.target.isContentEditable) return
+```

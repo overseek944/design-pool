@@ -4,7 +4,7 @@ category: scroll
 tags: [accessibility,navigation,scroll,state,architecture]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -21,3 +21,8 @@ pulled back by the rail width so it sits on the line, not beside it.
 ```
 ⚠ `page` marks the current document in a site nav, `location` a position
 within it. Both at once reads as two current items.
+
+`aria-current` marks a location; it does not announce one. It is surfaced when
+the link is reached, not when the page scrolls past the section it names — so on
+a page where scrolling is itself the content change, the attribute is correct
+and silent. It answers "where am I in this list", never "what just happened".

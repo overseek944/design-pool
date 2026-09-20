@@ -4,7 +4,7 @@ category: layout
 tags: [layout,responsive,media-query,ornament,correctness]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -28,3 +28,14 @@ The strongest use is withdrawal, not adjustment. Height decides whether a
 pinned multi-screen section should exist at all — on a short window its lower
 half is unreachable — so gate the pin itself and let the section fall back to
 ordinary flow. Gates 700–780px.
+
+`pointer: coarse` is the discriminator the width was standing in for. The case a
+height band usually means is a phone turned sideways — 380–500px tall, wide, and
+nothing fits — which a width query cannot distinguish from a wide desktop
+window, and a width *floor* excludes outright. Ask for the three facts that
+actually define it.
+```css
+@media (orientation: landscape) and (height <= 500px) and (pointer: coarse) {
+  .stage { min-height: 0; padding-block: 1rem }
+}
+```

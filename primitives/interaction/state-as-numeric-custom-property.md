@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,hover,state,tokens,architecture]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,19 @@ into one value with weights around 0.9/0.1 for a base motion the pointer nudges.
 ```
 ⚠ An unregistered custom property does not interpolate — the flag jumps.
 Transition the derived properties, or `@property` it with `syntax: "<number>"`.
+
+The scalar can be global. Script writes it once on the root element's inline
+style and any subtree reacts, however far from the source — which is the only
+way an overlay and a fixed cursor treatment can share one hover state without a
+common ancestor. CSS cannot compare a custom property's value in a selector, so
+match the declaration itself:
+```js
+document.documentElement.style.setProperty('--focus', hit ? '1' : '0')
+```
+```css
+html[style*="--focus: 1"] body { cursor: crosshair }
+```
+⚠ Fragile by construction — the selector matches text, so it breaks on a
+whitespace change and cannot survive a `@property` registration that normalises
+the serialisation. Use it for coarse, cosmetic state only; anything a component
+depends on belongs in an attribute.

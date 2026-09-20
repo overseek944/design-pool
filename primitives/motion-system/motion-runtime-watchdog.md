@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,correctness,accessibility,progressive-enhancement,reveal]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -32,4 +32,23 @@ flattens the hidden state outright — no timer, no flash, and the two branches 
 not overlap because one of them only exists when the other cannot.
 ```html
 <noscript><style>[data-rv]{opacity:1!important;transform:none!important}</style></noscript>
+```
+
+Inverted polarity, where the risk is script *absent* rather than script late:
+an inline script in the head adds a class to the root, and every hidden state is
+scoped under it. No timer, no `noscript` duplicate of the hidden rules, and the
+flag cannot be set by anything that has not already run.
+```html
+<script>document.documentElement.classList.add('js')</script>
+```
+```css
+html.js [data-reveal] { opacity: 0 }
+```
+One flag, several causes. A layout that only makes sense with a runtime present
+— callouts absolutely positioned over a canvas, a fixed stage behind them —
+needs the same escape hatch when the *canvas* is what failed. Add a second class
+from the renderer's own `try`/`catch`, select on both, and one block of CSS
+returns the overlay to ordinary document flow whatever the reason.
+```css
+html.no-scene .callout, html:not(.js) .callout { position: relative; opacity: 1 }
 ```

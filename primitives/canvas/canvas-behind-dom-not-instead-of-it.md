@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,architecture,accessibility]
 axes: none
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -32,3 +32,13 @@ The same cap belongs on a WebGL renderer, where the API is
 shading rather than fill. Set it once and again on resize; renderers do not
 re-read it, and a window dragged between a retina and an external panel
 otherwise renders at the old ratio.
+
+The cap is one number per class of device, not one number. A phone at 3× pays
+the fragment cost of a 9× area for a layer nobody inspects at arm's length, and
+its thermal budget is the one that matters: clamp to 1.5 below the mobile
+breakpoint and 2 above it. Re-read the branch on resize alongside the ratio, or
+a tablet rotated into a wide layout keeps the phone's cap.
+```js
+const cap = matchMedia('(max-width: 900px)').matches ? 1.5 : 2
+r.setPixelRatio(Math.min(devicePixelRatio || 1, cap))
+```

@@ -4,7 +4,7 @@ category: type
 tags: [type,system]
 axes: {energy: 2, density: 3, weight: 3, finish: 4}
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,9 @@ Third assignment — display serif for *headlines*, sans for body and UI, mono
 for the metadata tier only. Unlike serif-as-body it needs no screen-text cut,
 because the serif never runs below about 28px, and it gives a technical product
 an editorial voice that the sans-headline arrangement cannot reach.
+
+The ceiling counts *text* faces. A fourth cut used for the wordmark alone —
+never for a heading, a label or a line of prose — does not read as a fourth
+voice, because it appears once per screen in a fixed position and is understood
+as a mark rather than as type. That is the one place to spend a face too
+mannered to set anything in.
