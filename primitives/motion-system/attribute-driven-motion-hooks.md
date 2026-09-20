@@ -4,7 +4,7 @@ category: motion-system
 tags: [architecture,motion,maintainability]
 axes: none
 cost: 1
-seen: 13
+seen: 14
 requires: []
 conflicts: []
 completes: []
@@ -31,4 +31,15 @@ which is the hidden one half the time. Resolve to the copy that is not inside
 the currently hidden variant rather than trusting document order.
 ```js
 const q = id => all(id).find(e => !e.closest(compact() ? '[data-desk]' : '[data-mob]'))
+```
+
+Inside inline SVG the fallback of "just use document order" is actively wrong:
+document order *is* paint order, so a set exported from a drawing tool is in
+stacking order, not reading order. A cascade keyed on the query result then runs
+back to front or scrambled, and only on the artwork that happened to be layered
+that way. Carry the sequence index on the node and sort by it, and the animation
+survives anyone re-stacking a layer.
+```js
+const bars = [...svg.querySelectorAll('[data-i]')]
+  .sort((a, b) => a.dataset.i - b.dataset.i)
 ```

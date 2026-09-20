@@ -4,7 +4,7 @@ category: type
 tags: [type,spacing,precision,alignment]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
