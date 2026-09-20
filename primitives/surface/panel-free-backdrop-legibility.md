@@ -4,7 +4,7 @@ category: surface
 tags: [backdrop-filter,legibility,photography,contrast,surface,type]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -66,3 +66,17 @@ between them are where the footage still reads. Padding 0.4–0.8em, one radius.
 ```
 ⚠ `display: table` shrink-wraps but drops out of a flex row — wrap each line in
 its own block. Ragged plate edges are the point; centred text makes them noise.
+
+Before the bar earns its filter it is transparent over whatever the opening
+frame happens to show, and there neither a plate nor a scrim is wanted. Shadow
+the glyphs themselves — `text-shadow` on the links, `drop-shadow()` on a mark
+supplied as an image — and scope both to the *un*-glassed state so they are
+removed the moment the backdrop filter takes over. A shadow costs no
+compositing layer and follows the letterforms, so it holds over any frame; left
+under the glass it reads as smudge. Offset 0–1px, blur 5–8px, 40–60% black.
+```css
+.bar:not(.is-glass) a     { text-shadow: 0 1px 6px #0000008c }
+.bar:not(.is-glass) .mark { filter: drop-shadow(0 1px 6px #00000073) }
+```
+⚠ A shadow is not contrast. Measure the links against the brightest frame the
+footage reaches, and darken the frame itself if they fail.

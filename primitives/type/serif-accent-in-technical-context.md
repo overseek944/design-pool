@@ -4,7 +4,7 @@ category: type
 tags: [type,contrast,editorial,restraint]
 axes: {energy: 1, density: 2, weight: 3, finish: 5}
 cost: 1
-seen: 18
+seen: 19
 requires: []
 conflicts: []
 completes: []
@@ -68,3 +68,16 @@ it. A serif on the record title or section head of a rendered UI panel — the
 sans holding every control and label beside it — says the software itself was
 considered, which no amount of editorial serif in the marketing copy claims on
 its behalf. One line per mock; past that the mock stops reading as software.
+
+An accent used only as an accent can be bought in one style. Where the serif
+appears exclusively italic — a phrase inside a headline, a two-word lede —
+request the italic axis alone and the second family costs one file rather than a
+roman-and-italic pair, which is most of the argument against carrying one at
+all. Two weights at most; the moment a roman is needed for a heading, the dose
+has already outgrown the word accent.
+```html
+<link rel=stylesheet href="…?family=Accent:ital,wght@1,400;1,500&display=swap">
+```
+⚠ With no roman in the set an `<em>` nested inside the accent has nothing to
+toggle to and the engine synthesises an upright — check the nesting cases before
+dropping the second file.

@@ -4,7 +4,7 @@ category: surface
 tags: [gradient,ground,surface,section,seam,cheap]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -37,3 +37,17 @@ Keep the plateau within 2–5% lightness of the page or it becomes a stripe.
 ```css
 .band { background: linear-gradient(var(--page), var(--page-sunk) 30% 78%, var(--page)) }
 ```
+
+A seam can be dissolved rather than faded out. Give the boundary its own element
+of zero layout height, hang a 60–140px band off it with `translateY(-50%)`, and
+give the band a `backdrop-filter` masked to nothing at both ends. Neither
+section changes colour, so this survives a decorative ground on one side and a
+photograph on the other — where the ramp above needs one known page token on
+both. Blur 4–10px, one band per boundary.
+```css
+.seam::before { content: ""; position: absolute; inset: 0 0 auto; height: 120px;
+  transform: translateY(-50%); backdrop-filter: blur(6px);
+  mask-image: linear-gradient(transparent, #000 45% 55%, transparent) }
+```
+⚠ A backdrop filter reads back everything under its box every frame it is on
+screen — keep the band short, and never put one between two moving layers.
