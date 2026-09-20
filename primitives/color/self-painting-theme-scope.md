@@ -4,7 +4,7 @@ category: color
 tags: [color,tokens,theming,architecture,dark]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -22,3 +22,11 @@ per-component dark rules, no duplicated selectors.
 ⚠ `color-scheme` has to ride along or form controls, scrollbars and autofill
 stay on the old ground. Any component that hardcodes a colour survives one theme
 and breaks in the other, silently — audit for literals, not for themes.
+
+Two levels of naming buy a third theme almost free: components read a role
+namespace, the role namespace is a block of aliases pointing at a palette
+namespace, and a variant theme redefines only the palette. `--panel:
+var(--slate-panel)` becomes `var(--carbon-panel)` in one place, and a theme that
+is a darker cut of an existing one costs a palette block rather than a fork of
+every role. Keep the two namespaces in separate files — the moment a role
+aliases another role, the indirection stops being traceable.

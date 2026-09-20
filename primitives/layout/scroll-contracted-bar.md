@@ -4,7 +4,7 @@ category: layout
 tags: [header,scroll,sticky,chrome]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,11 @@ reflows the page and jitters the links inside it. Threshold 16–48px scrolled.
 ⚠ Centre the links inside the plate, not the bar, or they slide during the
 contraction. Read the scroll with a passive listener, and keep the outer
 height fixed so anchor `scroll-padding-top` stays correct.
+
+The contraction has to shed content, not only width. A bar that loses 30–40% of
+its inline size while carrying the same labels crushes them into each other, and
+the rounding reads as a bug. Cut the optional half — the secondary clause of a
+CTA, the announcement text beside a badge — on the same threshold, so what is
+left sits at its rest spacing inside the capsule instead of being squeezed into
+it. Whatever is cut has to be redundant; the capsule is the whole nav from that
+point down the page.

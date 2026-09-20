@@ -4,7 +4,7 @@ category: scale
 tags: [scale,tokens,accessibility,unit,architecture]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,10 @@ html { font-size: 120% }                 /* 105–135% useful */
 ⚠ Third-party and framework rem values are not divided and will render at the
 full factor. Either restate them as tokens or accept that borrowed components
 run one step large.
+
+Prose and chrome want two ladders, not one. A tool's labels, chips and counters
+live in a 10.5–18px band where the document's ratio gives steps too coarse to
+land on — the useful increments there are half a pixel, not a full one — so
+publish a second, shorter scale for chrome and let components pick the ladder
+that matches their register. Express it against the same root rather than in
+raw `px`, or the chrome alone stops answering the reader's font-size.

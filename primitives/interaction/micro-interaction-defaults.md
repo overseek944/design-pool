@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,polish,consistency]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -31,3 +31,10 @@ child and leave the box alone.
 The ceiling is about travel, not time. A repaint-only change — colour, opacity,
 border tint — holds at 350–500ms, where the same duration on a transform reads
 as lag. Two tokens, if a surface wants slow colour and quick movement.
+
+Ship hover and press as two root tokens, not per-component numbers, and make
+them asymmetric around rest: `--hover-scale: 1.02` against `--press-scale: .97`.
+The press travels further than the hover lifts because it has to register as
+the stronger event under a finger that is covering the control. Useful band is
+1.01–1.04 up and .95–.98 down; past that a text button looks like it is
+breathing.

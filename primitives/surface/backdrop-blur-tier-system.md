@@ -4,7 +4,7 @@ category: surface
 tags: [surface,depth,glass]
 axes: {energy: 1, density: 3, weight: 3, finish: 4}
 cost: 3
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,8 @@ Tiers can trade places rather than stack. A bar that is a full-width `sm` plate
 at rest and an inset `xl` capsule once scrolled should move the glass between
 the two layers — outer to transparent as the inner plate takes it up — so only
 one element is compositing a backdrop filter at any moment.
+
+On a dark ground add `brightness(1.05–1.12)` after the saturate. Blur over dark
+content averages toward the ground and the plate sinks into it; the brightness
+pass lifts it back to reading as a layer above, which is the one thing the blur
+was meant to say. Above ~1.15 the text behind the glass starts to ghost through.
