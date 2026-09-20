@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,parallax,media,surface,progressive-enhancement,performance]
 axes: {energy: 2, density: 1, weight: 3, finish: 3}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []

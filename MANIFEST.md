@@ -1,6 +1,6 @@
 # Manifest
 
-312 primitives. Format: `category/id | axes cost | tags | gist`
+313 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -254,6 +254,7 @@ surface/masked-edge-highlight | E1 D2 W2 F5 $2 | surface border light mask detai
 surface/multi-edge-mask-fade | E1 D2 W2 F5 $2 | surface mask edge composition bleed | Let an oversized panel run past the layout and dissolve instead 
 surface/overflow-visible-for-glow-bleed | neutral  $1 | surface effect svg gotcha | SVG clips to its viewBox by default, which decapitates any drop-
 surface/paired-hard-shadow-sheet | E1 D2 W2 F4 $1 | surface depth border detail editorial | To imply a second sheet under a panel, two zero-blur shadows do 
+surface/panel-free-backdrop-legibility | E1 D2 W2 F5 $2 | backdrop-filter legibility photography contrast surface type | Copy over a photograph usually gets a plate, and the plate break
 surface/phase-matched-gradient-drift | E2 D2 W2 F4 $1 | surface gradient loop ambient background | An oversized gradient translated behind its box gives a ground a
 surface/projected-lattice-ground | E2 D3 W1 F4 $2 | surface grid texture ambient depth geometry | A flat hairline lattice reads as a sheet behind the page. Tilt t
 surface/quantised-ground-transition | E1 D2 W2 F3 $1 | surface color gradient tokens detail | Two flat sections meeting edge to edge give a hard seam; a smoot
