@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,legibility,performance,ambient,contrast,generative]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -43,3 +43,18 @@ if (x > .2*w && x < .8*w && y > .16*h && y < .84*h) continue   // copy lives her
 ```
 ⚠ A hard boundary becomes legible as an edge once the field is dense enough to
 read as a texture. Past that point pay for the soft envelope.
+
+On the GPU the envelope needs no buffer at all: hand the copy's box to the
+display pass as one `vec4` — centre and half-extent in the canvas's normalised
+space — and evaluate the well per pixel. Measuring the element beats assuming a
+fraction, because the well stays correct through a long headline, a translated
+string or a breakpoint change, and the whole envelope is four floats that move
+only when layout does. Clear 88–95% at the centre, `smoothstep` out to 1.0 of
+the half-extent.
+```glsl
+vec2 q = (vUv - uMask.xy) / uMask.zw;
+float keep = 1.0 - 0.93 * (1.0 - smoothstep(0.55, 1.0, length(q)));
+```
+⚠ Measure on resize and after webfonts land, then cache. Reading
+`getBoundingClientRect` inside the render call forces layout every frame, which
+costs more than the buffer this was meant to replace.
