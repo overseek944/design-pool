@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,performance,raster,imagedata,correctness]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []

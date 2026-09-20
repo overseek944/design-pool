@@ -4,7 +4,7 @@ category: type
 tags: [type,tokens,scale,rhythm,precision]
 axes: {energy: 1, density: 2, weight: 3, finish: 5}
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -30,3 +30,17 @@ tight geometric with short extenders; a large-x-height grotesque at 3rem+ wants
 descenders on the very block the rung exists for. Treat `.9–1.1` as the display
 band and pick inside it by setting the real headline, not by inheriting the
 token from another project.
+
+Leading alone is half a role. A role that names only `line-height` still leaves
+size, weight and tracking to be picked per component, which is exactly where a
+scale drifts. Ship them as a matched set — `--type-{size,weight,leading,tracking}`
+per role — and let one class bind all four plus the family, so a component asks
+for `display`, `title`, `body`, `prose`, `control` or `caption` and cannot
+half-apply one.
+```css
+.type-body { font-family: var(--font-sans);  font-size: var(--type-size-body);
+  font-weight: var(--type-weight-body); line-height: var(--type-leading-body);
+  letter-spacing: var(--type-tracking-body) }
+```
+⚠ Roles should outnumber sizes, not match them. Two roles resolving to the same
+size is ordinary; two sizes inside one role means it is really two roles.

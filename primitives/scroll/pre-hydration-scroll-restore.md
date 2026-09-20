@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,navigation,hydration,restoration,architecture]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,16 @@ to different places.
 ⚠ Leave `scrollRestoration` on `auto` and the browser's own restore races this
 one. Blocking by design: keep it inline and under ~1KB, since a fetched script
 lands after the paint it exists to beat.
+
+A forward navigation needs its own reset, and a global `scroll-behavior: smooth`
+silently captures it: `scrollTo({ top: 0 })` after a route change animates the
+whole document height, so the reader watches the old page scroll away before the
+new one arrives. Pass `behavior: 'instant'` explicitly, and run the reset only on
+a push — on a pop, do nothing and let the restore above win.
+```js
+if (type !== 'POP') location.hash
+  ? document.querySelector(location.hash)?.scrollIntoView()
+  : window.scrollTo({ top: 0, behavior: 'instant' })
+```
+⚠ Take the navigation type from the router's own signal, not by comparing URLs —
+a back button landing on the route it left is indistinguishable that way.

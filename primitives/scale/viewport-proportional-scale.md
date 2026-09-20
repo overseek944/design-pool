@@ -4,7 +4,7 @@ category: scale
 tags: [unit,typography,layout,responsive,poster]
 axes: {energy: 2, density: 2, weight: 4, finish: 4}
 cost: 3
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: [proportional-effect-radii, three-tier-token-redefinition]
@@ -62,3 +62,15 @@ container, and `width: max(.5cqw, 1px)` does not save it: the value is a
 `min-width`/`min-height` and leave `width` proportional. The rule of thumb:
 `max()` for anything that only has to stay legible, the `min-*` properties for
 anything that has to stay visible at all.
+
+Two bases inside one `min()` and the binding constraint switches with the window.
+A display line sized `min(9–10cqw, 8–10vh)` grows with the column it sits in until
+the viewport gets short, at which point the height term takes over and the line
+still clears the fold on a laptop in landscape — the case a width-only clamp
+always overflows. Keep both terms fluid and put the floor outside them.
+```css
+h1 { font-size: max(2.5rem, min(9.3cqw, 9vh)) }
+```
+⚠ The `cqw` term needs `container-type: inline-size` on an ancestor or it resolves
+against the viewport and the `min()` quietly degrades to a width clamp that looks
+right at every width you test at full height.

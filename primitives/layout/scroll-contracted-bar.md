@@ -4,7 +4,7 @@ category: layout
 tags: [header,scroll,sticky,chrome]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -40,3 +40,17 @@ no links to re-centre. Plate alpha 0.7–0.85: low enough to show movement behin
 it, high enough that its own contrast does not depend on what is passing under.
 ⚠ The blur holds a compositor layer for the entire scroll. Drop the blur, not
 the plate, under `prefers-reduced-transparency` or on a low device tier.
+
+A third ground, with no edge at all: drop the plate and fade in an `aria-hidden`
+gradient scrim beneath the bar, taller than it — opaque page colour to
+transparent over 4–7rem — on the same threshold. Content dissolves upward into
+the chrome instead of being cut by a hairline, so there is no line to keep
+aligned at every breakpoint and nothing reads as a bar laid over a document.
+```css
+.scrim { position: absolute; inset: 0 0 auto; height: 6rem; opacity: 0;
+  background: linear-gradient(var(--bg), rgb(var(--bg) / .7) 45%, transparent);
+  transition: opacity .3s } [data-scrolled] .scrim { opacity: 1 }
+```
+⚠ A scrim is not a contrast guarantee — its lower half is nearly transparent, so
+the bar's own links must hold their ratio against the darkest thing that can pass
+under them. Keep it `pointer-events: none`; it is larger than the controls.

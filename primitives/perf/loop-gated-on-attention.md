@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,intersection-observer,visibility,battery,correctness]
 axes: none
 cost: 2
-seen: 14
+seen: 15
 requires: []
 conflicts: []
 completes: []
@@ -84,3 +84,17 @@ button keeps dancing over silence.
 ```
 ⚠ Bind the element, not the page: several players on one surface each own their
 own meter, and a shared flag stops all of them when any one ends.
+
+`prefers-reduced-motion` is the one term in the predicate that should not stop
+the loop from *drawing*. Freeze the clock instead — pass `t = 0` into the same
+render — and keep the dirty flag, so the canvas holds one still composition and
+redraws it on resize, on theme change and on re-entry. Folding the preference in
+beside visibility and intersection leaves a decorative field blank, which is a
+missing layer rather than a calmer page.
+```js
+const draw = t => render(rm.matches ? 0 : t / 1000)
+const frame = t => { raf = null; if (!live()) return
+  if (dirty || !rm.matches) { draw(t); dirty = false; loop() } }
+```
+⚠ Only for a loop whose frame at `t = 0` is already a complete image. A sweep or
+an entrance has no meaningful first frame — those hold their *end* state instead.
