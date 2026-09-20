@@ -4,7 +4,7 @@ category: interaction
 tags: [pointer,drag,interaction,correctness,accessibility]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -27,3 +27,18 @@ el.addEventListener('click', e => { if (d > 6) {
 ⚠ Capture redirects every later event to the captor, so nested controls lose
 hover for the duration. Neither capture nor the threshold gives a keyboard user
 any way in — the surface still needs its own key handling.
+
+`pointerup` is not the only way a captured gesture ends. `pointercancel` fires
+when the browser takes the gesture over — a scroll wins, a system gesture starts
+— and `lostpointercapture` fires whenever capture goes away for any reason at
+all, including the node being removed. Point all three at one release function
+and guard it so running twice is harmless. A handler that listens only for
+`pointerup` leaves its flag set, and the surface stays stuck mid-drag until the
+next press.
+```js
+const release = e => { if (!dragging) return; dragging = false
+  if (el.hasPointerCapture(e.pointerId)) el.releasePointerCapture(e.pointerId) }
+el.onpointerup = el.onpointercancel = el.onlostpointercapture = release
+```
+⚠ `lostpointercapture` fires after an explicit release too, so idempotence is
+not defensive here — it is the ordinary path.

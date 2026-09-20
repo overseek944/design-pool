@@ -1,6 +1,6 @@
 # Manifest
 
-394 primitives. Format: `category/id | axes cost | tags | gist`
+396 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -30,6 +30,7 @@ canvas/packed-generation-state-texture | neutral  $3 | canvas shader simulation 
 canvas/packed-word-pixel-writes | neutral  $2 | canvas performance raster imagedata correctness | Filling ImageData a byte at a time costs four indexed writes and
 canvas/palette-as-uniforms | neutral  $2 | shader color system | Pass the site's palette into the shader as named vec3 uniforms r
 canvas/parametric-thickness-variation | E3 D3 W2 F4 $3 | shader organic detail | Drive line or ribbon thickness with uThickness + uThickVary nois
+canvas/path-data-construction-overlay | E1 D4 W1 F5 $3 | svg path annotation overlay technical diagram | Artwork on the page already carries its own construction. Walk t
 canvas/prebaked-gradient-sprite | neutral  $2 | canvas performance particles light | createRadialGradient allocates and rasterises on every call, so 
 canvas/precomputed-cell-attenuation-field | E1 D2 W2 F5 $2 | canvas legibility performance ambient contrast generative | A generative field at full strength everywhere either drowns the
 canvas/prerendered-renderer-understudy | neutral  $3 | canvas progressive-enhancement correctness cls state architecture | A canvas that may not run should degrade to a picture, not to an
@@ -225,6 +226,7 @@ perf/byte-measured-entry-gate | neutral  $3 | performance loading progress fetch
 perf/data-saver-media-branch | neutral  $1 | performance media-query bandwidth video progressive-enhancement accessibility | prefers-reduced-data: reduce is a reader saying their connection
 perf/dead-banded-resize-rebuild | neutral  $1 | resize canvas mobile correctness | A generative scene that re-seeds on resize restarts every time a
 perf/device-hint-quality-tier | neutral  $2 | performance webgl capability progressive-enhancement correctness | Resolve one integer tier at startup and let every expensive deci
+perf/dual-epsilon-settle-halt | neutral  $1 | performance animation spring frame-budget correctness | Integrated motion approaches its target asymptotically and never
 perf/font-display-per-role | neutral  $1 | type font-loading cls performance correctness | font-display is a decision per face, not per project. Body and U
 perf/layer-order-preamble | neutral  $1 | architecture cascade css correctness code-splitting | Cascade layers are ordered by first mention, so with code-split 
 perf/loop-gated-on-attention | neutral  $2 | performance animation intersection-observer visibility battery correctness | An infinite decorative animation never stops — it keeps composit

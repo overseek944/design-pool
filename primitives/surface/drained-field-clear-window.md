@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,backdrop-filter,focus,attention,de-emphasis]
 axes: {energy: 2, density: 2, weight: 3, finish: 5}
 cost: 3
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,18 @@ Blur 1.5–4px, hole radius 60–120px, feather over 2–5% of the stop pair.
 ```
 ⚠ Ship the `-webkit-mask-*` pair or Safari fills the hole. A backdrop filter over
 a large area is real compositor cost — one such layer per view, not per card.
+
+Invert the polarity and the window stops hiding and starts revealing: mask a
+*second* rendering of the same subject to the hole instead of punching a hole in
+a wash. Registered on the original at the same size, it reads as a lens — the
+thing is still there, shown another way — where the drained version reads as an
+instruction about where to look. What sits under the lens can be anything the
+subject can also be: a wireframe, a heat map, an uncorrected exposure. Radius
+6–14rem, feather over the last 25–35% of the circle.
+```css
+.lens { position: absolute; inset: 0; pointer-events: none;
+  mask-image: radial-gradient(circle var(--r,10rem) at var(--x) var(--y), #000 0 72%, transparent) }
+```
+⚠ Both layers must share one coordinate space or the lens shows a subject offset
+from itself. Gate on `(hover: hover) and (pointer: fine)` — a window that only
+exists where a pointer is has no touch equivalent worth shipping.

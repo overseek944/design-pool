@@ -4,7 +4,7 @@ category: interaction
 tags: [correctness,responsive,overlay,accessibility,hover,focus]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,17 @@ it tracks the trigger, the panel tracks the viewport.
 ```
 ⚠ Nesting the panel inside its `<button>` folds the description into the
 button's accessible name. Keep it a sibling, named by `aria-describedby`.
+
+The same clamp applies one level down — a label floating inside a drawing rather
+than inside the window — and there it has to be computed in the drawing's own
+units, because the element is one SVG and CSS has no view of where the label
+landed in it. Place the readout on the leading side of its subject by default and
+flip it within a margin of the edge: to the left near the right boundary, below
+instead of above near the top. Two comparisons, no measurement.
+```js
+x = px > W - 112 ? px - 112 : px + 12      // flips left near the right edge
+y = py < 32    ? py + 24  : py - 12        // drops below near the top
+```
+⚠ Flipping on the pointer's position rather than the label's measured box only
+holds while the text has a known maximum length. A formatted coordinate pair
+does; a translated string does not.

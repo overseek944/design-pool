@@ -4,7 +4,7 @@ category: surface
 tags: [surface,border,frame,detail,currentcolor,precision]
 axes: {energy: 1, density: 2, weight: 1, finish: 5}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -49,3 +49,18 @@ counter or an image that overflows the box. Keep the pair on the reading
 diagonal or the asymmetry reads as a bug rather than a convention — and note
 that the four-layer `background` above already draws exactly this pair; a true
 four-corner frame takes eight layers.
+
+Two marks rather than four, and closed rather than open: keep the full border,
+then straddle one small square over each end of a single diagonal, filled with
+the page background so it punches through the line. The frame stops reading as
+registration and starts reading as a *selected object* — those squares are the
+handles a drawing tool would put on a selection, and the eye supplies the rest
+without a label. 6–10px square, offset outward by half its own size.
+```css
+.sel::before, .sel::after { content: ""; position: absolute; width: 8px;
+  height: 8px; background: var(--canvas); border: inherit }
+.sel::before { top: -4px; left: -4px }  .sel::after { bottom: -4px; right: -4px }
+```
+⚠ All four corners reads as a scatter of dots at small sizes; the diagonal pair
+is what makes it a selection. Still decoration — a genuinely selected state has
+to be announced, not only drawn.

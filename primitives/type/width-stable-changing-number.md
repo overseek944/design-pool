@@ -4,7 +4,7 @@ category: type
 tags: [numerals,data,motion,correctness]
 axes: {energy: 2, density: 3, weight: 3, finish: 5}
 cost: 1
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []
@@ -39,3 +39,17 @@ everything else without becoming the reason it reflows.
 ```js
 const next = fmt(remaining()); if (next !== last) { last = next; el.textContent = next }
 ```
+
+Reserving width on the container is not enough once each digit is its *own*
+animating box: outgoing and incoming glyphs have to occupy one cell, so give the
+slot an explicit `em` advance and stack both in it. Tabular figures do not help
+here — the slot is sized, not the glyph — and one advance for every slot is
+wrong for the separators, which need a narrower cell or the number spaces out
+around each comma. Digit .55–.7em, separator .3–.4em.
+```css
+.slot { display: inline-grid; place-items: center; width: .62em; overflow: clip }
+.slot[data-narrow] { width: .36em }          /* , . : and a lining 1 */
+.slot > * { grid-area: 1/1 }
+```
+⚠ Under reduced motion remove the outgoing glyph with `display: none` rather
+than pausing its animation — two glyphs held in one cell is unreadable, not calm.
