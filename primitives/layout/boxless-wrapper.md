@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,architecture,correctness,accessibility]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []

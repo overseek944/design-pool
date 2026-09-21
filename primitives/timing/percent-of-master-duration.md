@@ -4,7 +4,7 @@ category: timing
 tags: [timing,choreography,keyframes,css-animation,token,sequence]
 axes: {energy: 2, density: 3, weight: 2, finish: 5}
 cost: 2
-seen: 13
+seen: 14
 requires: []
 conflicts: []
 completes: []
@@ -101,3 +101,18 @@ Cover 3–5% at each end, and it must sit above every participant.
 ```
 ⚠ It hides the reset by hiding the scene — it cannot be used where the loop
 runs over a transparent or textured ground the veil cannot match.
+
+Declarative SVG animation has no `animation-delay`, and spreading a set with
+`begin` offsets gives every element its own start — the drift a shared period
+exists to prevent. Give each `<animate>` the identical `dur` and carry its phase
+in `keyTimes` instead; an `animateMotion` waits and parks with
+`keyPoints="0;0;1;1"` against the same stops. The figure then has exactly one
+period, which script can read with `getCurrentTime()` and stop in full with
+`pauseAnimations()`.
+```html
+<animate attributeName="opacity" values="0;0;1;1;0;0"
+  keyTimes="0;.085;.108;.40;.423;1" dur="8.125s" repeatCount="indefinite"/>
+```
+⚠ `keyTimes` must start at 0, end at 1 and match `values` in length, or the
+animation is dropped with no error. No media query reaches any of this — the
+reduced-motion branch has to be the script call.

@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,svg,path,marker,loop,diagram]
 axes: {energy: 3, density: 1, weight: 1, finish: 5}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
