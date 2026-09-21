@@ -4,7 +4,7 @@ category: canvas
 tags: [shader,color,system]
 axes: none
 cost: 2
-seen: 13
+seen: 14
 requires: []
 conflicts: []
 completes: []
@@ -73,3 +73,18 @@ sync(); requestAnimationFrame(sync); const id = setTimeout(sync, SWAP + 20)
 ⚠ Cancel the pending timeout on teardown and on a second toggle, or a fast
 double-switch lands the stale read after the new one and the canvas keeps the
 theme the reader just left.
+
+The palette need not reach the effect at all. Where a chain of passes only ever
+produces a tonal field, let them run in whatever colours are convenient and add
+one terminal pass that reads luminance and mixes between exactly two token
+uniforms. No upstream stage learns the brand, an effect lifted from elsewhere
+obeys it unedited, and retinting the whole field is two `uniform3f` calls. Bias
+the window low and narrow — only the brightest few percent should reach the
+accent — or the ground colour stops governing. Window 0.05–0.15 to 0.25–0.4.
+```glsl
+float l = dot(texture(tInput, vUv).rgb, vec3(0.299, 0.587, 0.114));
+fragColor = vec4(mix(uGround, uAccent, smoothstep(0.08, 0.3, l)), 1.0);
+```
+⚠ Two tones is the whole output — anything the field must keep separable needs
+a third stop or its own layer. Neither token is free to be picked for the
+shader: both are the page's, so the field inherits their contrast ratio.

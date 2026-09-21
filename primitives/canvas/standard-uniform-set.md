@@ -4,7 +4,7 @@ category: canvas
 tags: [shader,architecture,reference]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -38,3 +38,15 @@ Carry discrete variants as floats on that same path, not as ints. Branch on
 ranges (`u_shape < .5`, `< 1.5`, else) and the mode rides the numeric setter
 like everything else, survives a generic tween, and can be authored as a slider
 while prototyping. Reserve `uniform1i` for things that are genuinely counts.
+
+One location cache across several programs must key on the program as well as
+the name. `getUniformLocation` returns a handle scoped to the program it was
+queried against, so a `uTime` cached from the first program and reused on the
+second writes into nothing — silently, exactly like a misspelling. Key on
+`program.id + name` and the same dispatch serves any number of programs.
+```js
+const key = `${p.id}|${name}`
+let l = cache.get(key); if (l === undefined) cache.set(key, l = gl.getUniformLocation(p.prog, name))
+```
+⚠ `undefined` and `null` differ here — a miss must be stored as `null` and
+tested with `!== undefined`, or every frame re-queries every absent uniform.

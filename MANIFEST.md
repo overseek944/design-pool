@@ -1,6 +1,6 @@
 # Manifest
 
-746 primitives. Format: `category/id | axes cost | tags | gist`
+749 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -16,6 +16,7 @@ canvas/bucketed-depth-order | neutral  $2 | canvas performance depth particles b
 canvas/canvas-behind-dom-not-instead-of-it | neutral  $2 | canvas architecture accessibility | Absolutely-positioned inset-0 canvas with pointer-events-none un
 canvas/cell-quantised-arrival-front | E3 D3 W2 F4 $3 | shader reveal grid quantise front texture | A reveal front evaluated per pixel is a soft edge crossing a pic
 canvas/cell-resolved-screen-pass | E2 D4 W2 F4 $4 | shader webgl halftone texture render-pass generative | Screening a render into dots need not change whatever drew it. A
+canvas/cellular-displacement-warp | E2 D3 W2 F5 $3 | canvas shader webgl texture generative field | Smooth noise warps a field continuously — everything stretches a
 canvas/chord-solved-tile-width | neutral  $3 | canvas 3d geometry texture seam correctness | Flat quads tiled along a curve — a ribbon of frames, a spiral of
 canvas/clip-ejected-vertex-filter | neutral  $2 | shader webgl points culling perf | A point cloud whose visible subset changes — a facing hemisphere
 canvas/composed-arrival-field | E3 D3 W2 F5 $2 | shader stagger clock uniform reveal perf | Thousands of elements cannot each own a tween. Derive every elem
@@ -43,6 +44,7 @@ canvas/half-pixel-hairline-grid | E1 D2 W1 F5 $1 | canvas hairline correctness d
 canvas/harmonic-feedback-uv-warp | E2 D3 W2 F5 $2 | shader generative texture field webgl noise | Adding one displacement to a coordinate bends a field; feeding t
 canvas/hash-dither-before-quantise | E1 D3 W2 F4 $2 | canvas color ramp noise grain banding generative | Snapping a continuous value onto a short palette — eight to twel
 canvas/hash-tuned-effect-constants | neutral  $1 | canvas generative authoring debug parameters | Every generative effect carries a dozen constants — curl, dissip
+canvas/highlight-weighted-bokeh | E1 D2 W3 F5 $3 | canvas shader webgl blur light texture | A box or gaussian blur averages a bright point away. Weight ever
 canvas/home-sprung-particle-medium | E2 D3 W2 F5 $3 | canvas field pointer motion generative | A field of marks positioned from the pointer each frame travels 
 canvas/import-time-material-reauthor | neutral  $2 | canvas material import architecture correctness scene | An imported model arrives wearing whatever its exporter wrote — 
 canvas/irrational-stride-variation | neutral  $1 | canvas generative field deterministic correctness scatter | Math.random() for per-index variation costs a stored array, a di
@@ -86,6 +88,7 @@ canvas/single-channel-field-storage | neutral  $2 | canvas simulation performanc
 canvas/standard-uniform-set | neutral  $2 | shader architecture reference | A small reusable uniform contract covers most decorative shaders
 canvas/stateless-phase-pair-field | neutral  $3 | canvas architecture morph scrub points field correctness | A scrubbed field of marks usually keeps a live position per mark
 canvas/svg-userspace-pointer-mapping | neutral  $1 | svg pointer correctness interaction geometry | An SVG with a viewBox is drawn in its own coordinate system, and
+canvas/swapped-target-pass-chain | neutral  $3 | canvas shader webgl architecture correctness | One long fragment shader cannot be reordered, disabled or tuned 
 canvas/tilted-heightfield-mark-sheet | E2 D3 W1 F4 $3 | canvas 3d projection field depth scenery | Deep scenery on a 2D context needs no renderer: sample a summed-
 canvas/unit-box-asset-framing | neutral  $2 | canvas correctness scale geometry architecture | A loaded 3D asset arrives at whatever scale and origin its expor
 canvas/uv-reconstructed-sphere-normal | E2 D1 W3 F5 $2 | shader canvas light geometry generative | A lit sphere in a fragment shader needs no geometry, no normal b

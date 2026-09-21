@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,canvas,battery,frame-budget,correctness]
 axes: none
 cost: 1
-seen: 20
+seen: 21
 requires: []
 conflicts: []
 completes: []
@@ -160,3 +160,17 @@ if (e >= interval) { i = (i + Math.floor(e / interval)) % period
 ⚠ Catching up is wrong for anything a reader is watching land — a counter
 ticking, a card dealing. Clamp the jump to one step there and accept the drift;
 only ambient loops want the clock honoured over the frames.
+
+Gate on what the layer is actually worth, not only on whether it is on screen.
+Where something else already computes a visibility scalar — a fade driven by
+scroll, a cross-faded backdrop — the loop can read that ref and skip the frame
+below a threshold, which covers the case an observer misses entirely: fully
+visible geometry faded to nothing. Rebase the clock on the way out, or the
+accumulated time jumps by the whole idle span when it resumes. Threshold
+0.01–0.05.
+```js
+if ((vis.current ?? 1) < 0.01) { last = now; return raf = requestAnimationFrame(step) }
+```
+⚠ Reading a ref, not state — a per-frame gate that re-renders defeats itself.
+The rebase makes wall clock and phase disagree; anything that must stay in step
+with a second timeline needs the clamp above instead.

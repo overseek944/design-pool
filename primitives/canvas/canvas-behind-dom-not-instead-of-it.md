@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,architecture,accessibility]
 axes: none
 cost: 2
-seen: 26
+seen: 27
 requires: []
 conflicts: []
 completes: []
@@ -96,3 +96,17 @@ so a utility framework cannot outrank it.
 ⚠ `contain: strict` implies size containment, so the canvas contributes nothing
 to the host's height and the host must have its own — a host sized only by this
 child collapses to zero and the field never appears.
+
+The cap has a floor below 1, and a band-limited field should use it. A layer
+whose last stage is a wide blur carries no detail finer than that blur, so
+rendering it at a *fraction* of CSS pixels and letting `LINEAR` filtering
+upscale is free — the frequencies the sampling would lose are not there. A
+full-bleed ambient field at 0.4–0.6 costs a fifth of what it costs at 1×, which
+is often the difference between shipping it and not. Never below 1 for anything
+with an edge, a mark or a gradient boundary.
+```js
+const m = Math.min(devicePixelRatio || 1, softField ? 0.5 : 2)
+```
+⚠ The upscale is the browser's, so the element still needs its full CSS size
+and the filter must be `LINEAR` — `NEAREST` on a half-size target turns a soft
+field into visible blocks.

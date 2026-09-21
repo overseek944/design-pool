@@ -4,7 +4,7 @@ category: timing
 tags: [motion,keyframes,loop,sequence,cycle]
 axes: {energy: 2, density: 2, weight: 2, finish: 3}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -29,3 +29,19 @@ cycle each, four to six states.
 ⚠ A hard cut mid-word is unreadable at speed — under about 2s per dwell use a
 crossfade instead. Live text swapping under a clock needs `aria-live` or it is
 announced on every cut; mark it decorative otherwise.
+
+Drop `step-end` and the same paired stops give the opposite reading. With an
+ordinary easing the pair still holds — the two stops share a value — but the
+gap *between* pairs interpolates, so the element rests on each state and then
+glides to the next. A highlight walking down a fixed-pitch list is then one
+keyframe and one duration: the pitch is the only number repeated, and each hop
+carries the whole easing curve. Dwell 10–14% of the cycle, hop 4–6%, one pair
+per row.
+```css
+@keyframes walk { 0%,11% { translate: 0 0 } 15%,27% { translate: 0 var(--pitch) }
+                  31%,43% { translate: 0 calc(2 * var(--pitch)) } }
+.cursor { animation: walk 12s ease-in-out infinite }
+```
+⚠ The last pair must end at 100% or the element snaps home across the cycle
+boundary. Anything the reader is meant to act on cannot be selected by a clock —
+this marks a demonstration, never a control.

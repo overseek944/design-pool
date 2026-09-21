@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,svg,identity,loading,state,reduced-motion]
 axes: {energy: 3, density: 1, weight: 2, finish: 5}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -29,3 +29,17 @@ says it is. Entrance 0.5–0.9s with slight overshoot; loop 1.2–2s, extreme
 ⚠ Reduced motion may cancel the entrance outright; it may not cancel the wait.
 Stop the rotation and substitute a still busy state, or the only sign that
 anything is pending disappears.
+
+The seam need not be a hinge. A mark whose parts are a row of bars does the
+same double duty on `scaleY` — still at rest, breathing while something is
+listening or working — and `transform-box: fill-box` is required there for the
+same reason: without it each bar scales about the viewBox origin and the row
+flies apart instead of pulsing in place. Anchor the origin to the row's centre
+line so bars grow both ways. Extremes 0.4–0.6 to 1.0–1.1, period 0.8–1.6s.
+```css
+.bar { transform-box: fill-box; transform-origin: 50% 50%;
+       animation: pulse 1.5s ease-in-out infinite }
+```
+⚠ `fill-box` resolves against the element's own bounding box, so a bar drawn as
+a zero-width line has nothing to scale about. Give it a real stroke box or use
+a rect.
