@@ -4,7 +4,7 @@ category: media
 tags: [media,video,legibility,overlay,accessibility,responsive]
 axes: none
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,19 @@ part of the picture. Roughly +0.2–0.35 alpha across the range.
 ```
 ⚠ Measure contrast at both ends and against the brightest frame — a loop that
 passes on frame one can fail mid-play.
+
+The gradient's *angle* is a layout fact, not an art-direction one. Where copy
+sits beside the picture the scrim runs along the inline axis; at the width where
+the copy stacks above it, the same scrim must be restated block-wise or it
+darkens the edge nobody is reading over. Stack a second, shorter gradient from
+the page ground at the trailing edge — 15–25% — and the frame fuses into the
+section instead of ending on a seam.
+```css
+.scrim { background: linear-gradient(90deg, #000c, #0002 60%, transparent 80%),
+                     linear-gradient(0deg, var(--ground), transparent 21%) }
+@media (width <= 50rem) { .scrim { background:
+  linear-gradient(180deg, var(--ground), transparent 30%),
+  linear-gradient(0deg, var(--ground), transparent 20%) } }
+```
+⚠ The two layers compound where they meet — measure the corner they share, not
+the average, and against the brightest frame.

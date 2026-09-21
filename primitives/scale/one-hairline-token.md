@@ -4,7 +4,7 @@ category: scale
 tags: [unit,tokens,border,precision,coherence]
 axes: {energy: 1, density: 2, weight: 1, finish: 5}
 cost: 1
-seen: 12
+seen: 13
 requires: []
 conflicts: []
 completes: []
@@ -49,3 +49,17 @@ strip a trailing edge, and a reflow at any breakpoint re-rules the grid for free
 ```
 ⚠ Cells must be opaque — a translucent one shows the rule colour across its
 whole face, not just at its edge.
+
+One width, two styles. Where a rule is apparatus rather than structure — the
+divider between entries in an index, the boundary of a provisional block —
+dashing it halves the ink without touching the token, so it separates at a
+weight no solid line of the same colour can reach. Hold it as a register: solid
+is the edge of a thing, dashed is the edge of a reading. Mixing them by taste
+loses both, so pick one role for dashed and keep it across the product.
+```css
+.section + .section { border-top: var(--hair) dashed var(--line) }
+.panel               { border: var(--hair) solid var(--edge) }
+```
+⚠ Below .0625rem dashes render as a grey wash rather than a line — drop to a
+solid rule at a lower tint instead. `border-style: dashed` gives no control over
+period or phase; where the corner has to land cleanly, tile the pattern.

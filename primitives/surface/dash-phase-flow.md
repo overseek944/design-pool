@@ -4,7 +4,7 @@ category: surface
 tags: [svg,dash,motion,connector,diagram,precision]
 axes: {energy: 2, density: 2, weight: 1, finish: 5}
 cost: 1
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []
@@ -69,3 +69,19 @@ number of its own dash periods.
 ⚠ Two infinite animations on one element is two compositor tickets — keep both
 on `opacity` and `stroke-dashoffset` only, and kill both in the reduced-motion
 branch rather than just the travel.
+
+A pattern that is mostly gap stops being a flowing line and becomes a light
+travelling an invisible one. Give the path a multi-segment array whose final gap
+is most of the period — `2 2 7 89` against a period of 100 — and only a short
+broken cluster is ever painted; the route is implied by where the glimmer goes.
+The arithmetic is unchanged: travel a whole number of periods. Cluster 8–15% of
+the period, 10–20s for a circuit, and one `animation-delay` per path so a bundle
+never flashes in unison.
+```css
+.filament { stroke-dasharray: 2 2 7 89; stroke-dashoffset: 100;
+            animation: glimmer 13s linear infinite var(--delay) }
+@keyframes glimmer { to { stroke-dashoffset: -100 } }
+```
+⚠ At this duty cycle nothing tells a reader the route exists between passes —
+lay it over artwork that already carries the geometry, never where the line *is*
+the information.

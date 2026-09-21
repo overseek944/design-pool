@@ -4,7 +4,7 @@ category: media
 tags: [layout,media,cls]
 axes: none
 cost: 1
-seen: 25
+seen: 26
 requires: []
 conflicts: []
 completes: []
@@ -74,3 +74,18 @@ internal alignment. A fixed band of 140–200px with the content centred and
 `object-fit: contain` inside it aligns them, and gives an empty card somewhere
 to say it is empty. The reservation is preserved either way — a declared height
 is not a collapsed one.
+
+Which ratio is right is a function of the column's share of the viewport, not of
+the picture. A slot inside a 30–40% track can be near-square for very little
+scroll; the same ratio full-bleed on a phone is most of the screen and the
+reader scrolls past a wall to reach the next sentence. Widen the crop as the
+column widens relative to the viewport — roughly 1.2 in a third-width track,
+1.4–1.7 at full bleed — and the image holds a near-constant fraction of the
+screen at every width.
+```css
+.plate { aspect-ratio: 1.22 }
+@media (width <= 37.5rem) { .plate { aspect-ratio: 1.4 } }
+```
+⚠ Under `object-fit: cover` a restated ratio is a re-crop: pair each with an
+`object-position` that keeps the subject inside the narrower band, or widening
+silently cuts the top of the frame.

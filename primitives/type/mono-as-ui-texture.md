@@ -4,7 +4,7 @@ category: type
 tags: [type,ui,technical,register]
 axes: {energy: 1, density: 3, weight: 2, finish: 4}
 cost: 1
-seen: 24
+seen: 25
 requires: []
 conflicts: []
 completes: []
@@ -30,3 +30,14 @@ Tracking 0.08–0.14em, uppercase, and one size for the whole product.
 .label { font: 12px/14px var(--font-mono); letter-spacing: .12em;
          text-transform: uppercase }
 ```
+
+The full dose runs mono for prose as well, and it costs the two devices a type
+system usually leans on. A fixed advance and one usable weight make size steps
+read as noise rather than rank, so the whole page collapses into a 3–4px range —
+11px apparatus, 13–15px for body and headings alike — and hierarchy moves to
+case, underline and position: uppercase for labels, underlined sentence case for
+headings, order and indentation for the rest. Mono also sets 10–15% wider than a
+proportional face at the same size, so drop the measure to 60–68 characters.
+⚠ Below 15px a mono body measurably slows reading. This dose suits pages that
+are scanned rather than read at length, and every line-height wants 1.4–1.6 to
+stay open.
