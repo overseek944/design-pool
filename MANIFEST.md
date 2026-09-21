@@ -1,6 +1,6 @@
 # Manifest
 
-641 primitives. Format: `category/id | axes cost | tags | gist`
+643 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -213,6 +213,7 @@ layout/gridline-borne-value-label | E1 D3 W1 F5 $1 | chart axis label mono hairl
 layout/height-budgeted-media-width | neutral  $2 | layout container-query aspect fit cls | When a card must fit one screen exactly — media plus chrome, not
 layout/implication-subtracted-spans | neutral  $2 | intervals annotation data correctness architecture | Independent detectors flag overlapping ranges, and drawn as they
 layout/in-flow-overlay-header | neutral  $1 | layout sticky overlay correctness cls | A header that must float over the first section and still stick 
+layout/interior-line-anchored-bleed | neutral  $1 | layout full-bleed aspect-ratio composition responsive | A bleeding backdrop positioned by its top edge drifts: widen the
 layout/intrinsic-floored-auto-track | neutral  $1 | layout grid responsive correctness overflow breakpoints | repeat(auto-fit, minmax(<floor>, 1fr)) reflows a row of cards wi
 layout/intrinsic-size-abstaining-child | neutral  $1 | layout correctness type detail | A width: fit-content block is sized by its widest child, which i
 layout/labelled-elastic-rule | E1 D2 W1 F5 $1 | layout type hairline metadata editorial | A section divider carries more than separation when the rule its
@@ -556,6 +557,7 @@ surface/rotating-conic-border | E4 D3 W3 F4 $3 | surface border motion svg | An 
 surface/scanline-register-overlay | E1 D3 W2 F2 $1 | overlay scanline texture video register decoration | Footage from mismatched sources — an archive still, a head camer
 surface/scrim-terminated-ground | E1 D2 W2 F5 $1 | gradient ground surface section seam cheap | A decorative ground that stops at its section's edge leaves a ho
 surface/single-hue-lit-bead | E2 D2 W3 F5 $1 | surface gradient identity marker presence contrast | At 8–24px a flat disc is a dot; three stops make it a bead. Take
+surface/slat-partitioned-blur-veil | E1 D3 W2 F5 $3 | backdrop-filter glass blur edge bleed surface | A blur plate over bleeding artwork says faded, and what was behi
 surface/slope-held-diagonal-edge | E1 D2 W3 F4 $2 | surface clip-path edge section responsive geometry | A clip-path: polygon() with percentage vertices does not keep it
 surface/smil-driven-filter-parameter | E2 D2 W2 F4 $3 | svg-filter feturbulence displacement ambient motion texture accessibility | A surface that should read as alive rather than animated wants i
 surface/stacked-blur-radius-ramp | E1 D2 W3 F5 $3 | surface blur glass scrim depth legibility | Masking one backdrop-filter plate fades the result, not the radi

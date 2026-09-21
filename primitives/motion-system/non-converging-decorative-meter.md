@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,mock,meter,progress,accessibility]
 axes: {energy: 2, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -37,3 +37,16 @@ audiences get the same claim at the same resolution.
 message — a bare "62 percent" band label leaves the reader worse off than the
 default. A level that is genuinely unknown is not a zero: withhold the meter
 rather than render an empty one.
+
+Where the surface is a still frame rather than a live one, oscillation is wrong
+for the opposite reason: it makes the only moving thing in a screenshot the
+thing that reports nothing. Run the fill once to a partial width and stop.
+`both` holds the end state, and a deliberate 20–35% says *underway* where 100%
+says *done* and a loop says *decorative*. Durations 6–10s — slow enough that it
+is never the subject.
+```css
+.meter i { animation: fill 8s linear both }      /* to { inline-size: 27% } */
+```
+⚠ Its reduced-motion form is that end width declared statically, not the
+animation removed: `animation: none` on a bar whose width lives only in the
+keyframes leaves it empty, which reads as a failed load.

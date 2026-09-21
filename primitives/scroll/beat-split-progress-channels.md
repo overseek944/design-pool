@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,scrub,choreography,custom-properties,sequence,architecture]
 axes: {energy: 3, density: 3, weight: 2, finish: 5}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,31 @@ root.style.setProperty('--merge', ch(p, .54, .16).toFixed(4))   // one per beat
 ⚠ The rule that turns the scrub off — short viewport, reduced motion, dead
 script — must neutralise every consumer too, or the channels hold 0 and the
 scene paints empty.
+
+A beat that must appear *and* leave is two channels, not one keyframe. Give it
+an enter and an exit, multiply them for opacity and subtract them for travel,
+and the element rises into place and keeps going the same way instead of
+reversing out — no sequencing, since both are pure functions of the scalar.
+Overlap one beat's exit with the next beat's enter by 0–0.06 of the scroll: a
+gap reads as a pause, an overlap as a handoff.
+```css
+opacity:   calc(var(--enter) * (1 - var(--exit)));
+transform: translateY(calc((1 - var(--enter)) * 18px - var(--exit) * 18px))
+```
+
+Not every consumer is a `calc()`. Colour, shadow and border cannot be reached
+from a unitless scalar, so the scrub needs a second, non-numeric channel:
+quantise the same progress into a band name on a data attribute and let those
+properties transition on their own clock while the numbers keep tracking the
+scroll exactly. Three or four bands — more and the switches read as flicker.
+```js
+const band = p < .32 ? 'work' : p < .68 ? 'decision' : 'follow'
+if (band !== el.dataset.phase) el.dataset.phase = band
+```
+```css
+[data-phase="decision"] .card { box-shadow: inset 0 2px var(--accent) }
+.card { transition: box-shadow .3s }
+```
+⚠ Write the attribute only on change — one per frame is a style invalidation
+per frame. Never transition the `calc()`-driven properties themselves or the
+scrub lags its own input.
