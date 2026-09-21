@@ -98,3 +98,20 @@ appear.
 ⚠ Visible overflow gives the corner radius nothing to cut, so any child that
 paints to the plate's edge — a grain layer, a gradient — needs `border-radius:
 inherit` of its own from that breakpoint up.
+
+One listener, two thresholds. Whether the document has moved at all and whether
+the bar has left the opening section are different questions, and a bar that
+answers both from one number either draws its edge late or changes its ground
+early. Read them in the same passive handler and publish them as separate
+attributes, so the edge treatment and anything that depends on what is *behind*
+the bar — an inverted mark, a CTA that only appears once the hero's has gone —
+are styled apart. A few pixels for the first, 0.6–0.75 of the viewport for the
+second.
+```js
+const y = scrollY
+bar.dataset.scrolled = y > 8                    /* detached from the top */
+bar.dataset.pastHero = y > innerHeight * .65
+```
+⚠ The second threshold is a guess at the hero's height until it is measured —
+observe the hero itself, or a short one flips the state while the reader is
+still inside it.

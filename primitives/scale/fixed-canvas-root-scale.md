@@ -114,3 +114,19 @@ Three steps over 750–1000px of height, 0.6–0.85, is enough.
 ```
 ⚠ The reserved box has to shrink with it or the scaled stage leaves a growing
 band of dead space under itself at every step.
+
+A design width is not required to scale a subtree, and fixing one costs the
+content its breakpoints. Where the region must still reflow — a product replica
+that has to answer a phone and a desktop — give the scaled child a *reciprocal
+percentage* width and let the wrapper state the compensated height: it lays out
+against a box `1 / f` wider than the one it occupies, then shrinks back onto it
+exactly. Apparent density drops; every query inside still fires at the width the
+content actually got. Factor 0.82–0.92.
+```css
+.wrap  { --f: .88; height: calc(760px * var(--f)); overflow: hidden }
+.inner { width: calc(100% / var(--f));
+         transform: scale(var(--f)); transform-origin: top left }
+```
+⚠ The height is the one term that cannot be derived — it is the child's
+*unscaled* height, so anything sized by its own content needs a measured value
+rather than a literal, and a wrong one crops or leaves a band.

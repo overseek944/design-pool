@@ -4,7 +4,7 @@ category: timing
 tags: [timing,state,loop,choreography,architecture,demo]
 axes: none
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: [loop-gated-on-attention]

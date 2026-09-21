@@ -4,7 +4,7 @@ category: color
 tags: [color,tokens,product,mock,architecture]
 axes: none
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []

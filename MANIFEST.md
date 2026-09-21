@@ -1,6 +1,6 @@
 # Manifest
 
-700 primitives. Format: `category/id | axes cost | tags | gist`
+701 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -608,6 +608,7 @@ surface/rim-banded-geometry-lens | E1 D3 W3 F5 $4 | glass backdrop-filter svg-fi
 surface/rotating-conic-border | E4 D3 W3 F4 $3 | surface border motion svg | An animated gradient border without a pseudo-element hack: an SV
 surface/scanline-register-overlay | E1 D3 W2 F2 $1 | overlay scanline texture video register decoration | Footage from mismatched sources — an archive still, a head camer
 surface/scrim-terminated-ground | E1 D2 W2 F5 $1 | gradient ground surface section seam cheap | A decorative ground that stops at its section's edge leaves a ho
+surface/shadow-borne-card-edge | E1 D2 W2 F5 $1 | surface shadow border elevation tokens detail | A white card on an off-white ground has no border that works: at
 surface/single-hue-lit-bead | E2 D2 W3 F5 $1 | surface gradient identity marker presence contrast | At 8–24px a flat disc is a dot; three stops make it a bead. Take
 surface/slat-partitioned-blur-veil | E1 D3 W2 F5 $3 | backdrop-filter glass blur edge bleed surface | A blur plate over bleeding artwork says faded, and what was behi
 surface/slope-held-diagonal-edge | E1 D2 W3 F4 $2 | surface clip-path edge section responsive geometry | A clip-path: polygon() with percentage vertices does not keep it

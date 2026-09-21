@@ -25,3 +25,19 @@ const link = f <= .3 ? 0 : (f - .3) / .7
 ⚠ Fill by height inside an `overflow: hidden` wrapper, never by opacity — a
 half-filled node must still read as the current one. Decoration only: the
 position still owes `aria-current` and a spoken count.
+
+Spend the connector's share on the compositor. The link is a one-pixel track
+with `overflow: hidden` holding an absolutely-inset child scaled on X from its
+left edge, so a fraction arriving every frame writes one transform and touches
+no layout. The node then carries the other two states in colour alone — a
+completed step keeps the ground and takes the accent on its border, the current
+one inverts to solid ink — so *done* is never read as *next*, with no tick to
+draw and nothing to animate.
+```css
+.link    { position: relative; height: 1px; overflow: hidden; background: var(--rule) }
+.link > i{ position: absolute; inset: 0; background: var(--accent);
+           transform: scaleX(var(--f)); transform-origin: left center }
+```
+⚠ A fill written from a scroll handler must carry no `transition` of its own, or
+every frame starts an ease the next frame overrides and the rail trails the
+scroll. Transition the *node's* colours instead, 250–350ms.
