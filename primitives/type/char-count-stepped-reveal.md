@@ -4,7 +4,7 @@ category: type
 tags: [type,motion,css-only,custom-properties,keyframes]
 axes: {energy: 3, density: 1, weight: 2, finish: 4}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -47,3 +47,17 @@ const type = () => { el.textContent = TEXT.slice(0, ++i)
 ⚠ Never inside a live region: a per-character write is announced per character.
 Under reduced motion put the finished string in the DOM and skip the pass — a
 typing effect has nothing to degrade to but its own result.
+
+The caret the reveal needs is four declarations, and the one that matters is
+`steps(1)`: a terminal caret is a square wave, and an eased opacity fade reads
+as a pulsing dot instead. Size it in `em` off the text it trails and pull it
+back onto the baseline with a small negative `vertical-align`, so it tracks
+every size the line is ever set at; `currentColor` keeps it on the ink.
+Height 0.85–1em, width 1–2px, period 0.7–1.1s.
+```css
+.caret { display: inline-block; width: 2px; height: .9em; vertical-align: -.12em;
+         background: currentColor; animation: blink .8s steps(1) infinite }
+@keyframes blink { 50% { opacity: 0 } }
+```
+⚠ It is the one blink a reduced-motion branch should slow rather than stop — a
+caret that holds still stops reading as a caret.

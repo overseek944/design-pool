@@ -4,7 +4,7 @@ category: timing
 tags: [timing,choreography,keyframes,css-animation,token,sequence]
 axes: {energy: 2, density: 3, weight: 2, finish: 5}
 cost: 2
-seen: 12
+seen: 13
 requires: []
 conflicts: []
 completes: []
@@ -87,3 +87,17 @@ period; below 2% it reads as a flicker rather than a reset.
 ```
 ⚠ The window must be identical everywhere. One element fading a percent late
 draws the eye straight to the seam the technique exists to hide.
+
+That synchronisation problem disappears if one node carries the blackout for
+everyone: an absolutely-positioned veil in the scene's ground colour, opaque at
+`0%` and again over the last fraction of the period, transparent through the
+middle. Participants then need no wrap window at all and their start and end
+states never have to agree — adding a nineteenth element changes nothing.
+Cover 3–5% at each end, and it must sit above every participant.
+```css
+.veil { position: absolute; inset: 0; background: var(--ground); pointer-events: none;
+        animation: veil var(--seq) linear infinite }
+@keyframes veil { 0% { opacity: 1 } 4%, 96% { opacity: 0 } 99.6%, to { opacity: 1 } }
+```
+⚠ It hides the reset by hiding the scene — it cannot be used where the loop
+runs over a transparent or textured ground the veil cannot match.

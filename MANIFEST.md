@@ -1,6 +1,6 @@
 # Manifest
 
-527 primitives. Format: `category/id | axes cost | tags | gist`
+528 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -163,6 +163,7 @@ layout/cross-card-band-alignment | E1 D3 W1 F5 $2 | layout grid subgrid cards ha
 layout/document-underlay-window | E2 D1 W3 F4 $2 | layout stacking reveal video section fixed | Give the document one fixed, full-viewport media layer at a nega
 layout/em-reserved-swap-height | neutral  $1 | layout layout-shift responsive correctness tabs | Content that swaps in place — a tab's copy, a rotating claim — c
 layout/evicting-stream-window | E3 D4 W2 F4 $2 | stream overflow live-data log dom performance | An append-only stream in a scroll container grows without bound 
+layout/facing-edge-tangent-connector | E1 D3 W1 F5 $2 | layout connector svg diagram geometry | A straight rule between a box and a line of text in the facing c
 layout/float-wrapped-figure | E1 D3 W2 F4 $1 | layout type editorial responsive detail | Neither grid nor flex wraps running text around a picture — floa
 layout/fractional-grid-with-fluid-rail | E1 D3 W3 F4 $2 | layout grid asymmetry | Asymmetric two-column via minmax() where the rail is viewport-pr
 layout/geometry-scoped-connector-overlay | neutral  $1 | layout diagram connector responsive correctness architecture | An overlay of connectors is a picture of one arrangement, not of

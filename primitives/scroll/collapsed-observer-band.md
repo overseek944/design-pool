@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,observer,navigation,architecture,correctness]
 axes: none
 cost: 1
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -73,3 +73,18 @@ tuned by editing one class, and a `w-px` keeps it from widening anything.
 ```
 ⚠ Sized in `rem`, the band moves with the root scale; sized in `px` it does
 not. Pick whichever matches what the threshold is meant to track.
+
+Where the answer wanted is *how many have passed* rather than *which one is
+here* — a panel accumulating a line per item as the column scrolls by — take
+the highest index whose top has crossed the probe line, not the one spanning
+it. The cursor is then monotone in scroll position, an item shorter than any
+band cannot slip through unseen, and the same number drives both the active
+item's emphasis and the length of what the panel shows. Probe at 50–60% of the
+viewport, where a reader's attention already sits.
+```js
+let n = -1
+items.forEach((el, i) => { if (el.getBoundingClientRect().top < .55 * innerHeight) n = i })
+setActive(n); setShown(lines.slice(0, n + 1))
+```
+⚠ Monotone in position, not in time — scrolling back up must retract the panel
+too, or the accumulation becomes a one-way animation that cannot be replayed.

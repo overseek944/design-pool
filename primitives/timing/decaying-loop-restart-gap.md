@@ -4,7 +4,7 @@ category: timing
 tags: [loop,timing,sequence,restraint,demo,attention]
 axes: {energy: 2, density: 1, weight: 2, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,15 @@ timer = setTimeout(restart, gap)
 ⚠ The held frame is the *last* one, so it has to be a legible end state on its
 own — a sequence that finishes mid-transition parks on a half-drawn frame for
 seconds at a time.
+
+The same asymmetry belongs *inside* one pass, not only at its restart. Give the
+opening beat a short dwell so a reader arriving mid-scroll sees the thing move
+almost immediately, the middle beats an even one, and the closing beat two to
+three times the middle so the resolved composition is legible before the wrap.
+A flat delay per step makes the entrance feel dead and the ending feel snatched
+at once. Opening 0.5–0.8×, closing 1.5–2× the middle step.
+```js
+const dwell = i === 0 ? 700 : i >= steps.length ? 3400 : 2100
+```
+⚠ Read the index, not a counter that survives the wrap — on the second pass the
+opening beat must be short again, or the loop accelerates away from the reader.

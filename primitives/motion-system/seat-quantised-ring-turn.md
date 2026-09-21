@@ -4,7 +4,7 @@ category: motion-system
 tags: [radial,rotation,counter-rotation,custom-property,loop]
 axes: {energy: 2, density: 3, weight: 2, finish: 5}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,18 @@ runs once with `both` and needs no loop, reset or reverse. 6–12s.
 ```
 ⚠ An identical end state also means the move demonstrates nothing — it reads as
 a mechanism idling. Two rotations per child; keep `n` under about twelve.
+
+The same paired rotation runs perpetually rather than terminally: identical
+duration, `linear`, `infinite`, the child's keyframe the negation of the
+ring's. Logos, faces and labels then orbit without ever tipping, and nothing
+needs untwisting per frame. Two rings at unrelated periods — 14s and 22s, not
+14s and 28s — read as a mechanism rather than a clock. 10–30s; under 8s the
+orbit reads as a spinner.
+```css
+.ring  { animation: spin var(--p) linear infinite }
+.child { animation: spin var(--p) linear infinite reverse }
+@keyframes spin { to { rotate: 1turn } }
+```
+⚠ Two compositor tickets per orbiting child, and the pair only stays in phase
+while both start together — anything that restarts one animation alone
+(a class toggle, a re-render that re-declares it) tips every child permanently.

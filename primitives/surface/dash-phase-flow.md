@@ -4,7 +4,7 @@ category: surface
 tags: [svg,dash,motion,connector,diagram,precision]
 axes: {energy: 2, density: 2, weight: 1, finish: 5}
 cost: 1
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
@@ -85,3 +85,16 @@ never flashes in unison.
 ⚠ At this duty cycle nothing tells a reader the route exists between passes —
 lay it over artwork that already carries the geometry, never where the line *is*
 the information.
+
+Direction is the cheap half of the meaning and needs no second keyframe:
+`animation-direction: reverse` on a modifier class runs the same travel the
+other way. One pattern, one period, one arithmetic check, and a bundle can say
+*into* and *out of* at the same time — which is the whole point where the two
+readings are opposites, a source feeding a document against a document
+answering a query. Keep the two tints distinguishable by more than direction;
+a reader watching one line at a time cannot see the contrast.
+```css
+.beam          { stroke-dasharray: 7 6; animation: march .9s linear infinite }
+.beam--inbound { animation-direction: reverse }
+@keyframes march { to { stroke-dashoffset: -13 } }   /* one period */
+```
