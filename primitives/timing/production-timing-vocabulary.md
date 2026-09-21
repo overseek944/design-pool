@@ -4,7 +4,7 @@ category: timing
 tags: [motion,easing,duration,reference,system]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 32
+seen: 33
 requires: []
 conflicts: []
 completes: []
@@ -70,3 +70,19 @@ only invisible where nothing else is moving beside it.
 ⚠ The tail is still live: a reader who scrolls at 0.6s is watching the last 30%
 crawl, and a second element entering during it inherits a stale-looking
 neighbour. Pair a long tail with a one-shot trigger, never with a scrub.
+
+Split an *entrance* the same way and it stops being one keyframe block: opacity,
+rotation, blur and travel become four named animations on one element, each
+reading its own duration and easing token, so any channel is retuned without
+touching the others. Only one of them may overshoot. A curve that exceeds 1 is
+meaningless on opacity, which clamps and simply stalls at the top, and on blur,
+where the excursion goes negative and clamps to `0`. Give the overshoot to the
+channel with headroom past its end value — the translate — and hold the rest on
+a monotone out-curve.
+```css
+.in { animation: fade var(--d) var(--ease-out) forwards,
+                 bob  var(--d) cubic-bezier(.34, 1.35, .64, 1) forwards }
+```
+⚠ Four tracks is four things to keep in phase. Share one duration token and vary
+only the easing, or the element arrives in pieces — and delay any interior
+stroke behind the container by 60–120ms so it draws onto something at rest.

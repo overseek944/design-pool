@@ -4,7 +4,7 @@ category: surface
 tags: [shadow,elevation,tokens,hover,card]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []
@@ -88,3 +88,18 @@ y +40–60% at the apex; hold both ends on the same keyframe as the transform.
 ```
 ⚠ Two animations on one element is two tracks to keep in phase — same duration,
 same timing function, or the shadow leads the object within a few cycles.
+
+Which *channel* carries elevation swaps with the theme, so one set of tier names
+has to be rebuilt rather than recoloured. On light ground the separation is
+shadow, and the surface ramp can collapse — every tier above the third is the
+same white. Invert it and the shadow has nothing left to darken: the surface
+ramp does the work and has to keep stepping all the way up, 5–8 L* per tier. The
+edge layer inverts with it — an outer `0 0 0 1px` on a dark panel paints onto
+the ground as a halo, so it becomes `inset`.
+```css
+:root { --surface-3: #fff;    --shadow-3: 0 0 0 1px var(--edge), 0 3px 3px -1.5px var(--drop) }
+.dark { --surface-3: #252525; --shadow-3: inset 0 0 0 1px var(--edge), 0 3px 3px -1.5px var(--drop) }
+```
+⚠ The collapsed light ramp hides a whole class of bug: a panel separated by tier
+*lightness* alone looks right in dark and vanishes in light. Every tier has to
+be checked in both, not derived from one.

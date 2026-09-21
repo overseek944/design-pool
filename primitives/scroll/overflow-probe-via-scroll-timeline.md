@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,overflow,progressive-enhancement,correctness]
 axes: none
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: [conditional-token-space-toggle]

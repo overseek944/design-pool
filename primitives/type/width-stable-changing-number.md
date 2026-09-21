@@ -4,7 +4,7 @@ category: type
 tags: [numerals,data,motion,correctness]
 axes: {energy: 2, density: 3, weight: 3, finish: 5}
 cost: 1
-seen: 27
+seen: 28
 requires: []
 conflicts: []
 completes: []
@@ -130,3 +130,17 @@ and leave the rendered text untouched until the first animated frame.
 ⚠ Reading the target by parsing the rendered text instead makes every
 formatting decision load-bearing: a thin space, a localised separator or a
 trailing `+` turns into `NaN`, and the figure animates to nothing.
+
+Per-digit slots keyed by their index from the *left* re-index the whole figure
+the moment it gains a digit: every wheel is handed a new value at once and the
+number appears to spin where it should have carried. Key from the right instead
+and the ones column stays the ones column across the change, with only the new
+leading slot mounting. The rule holds wherever a sequence is written
+right-aligned and grows at its head — a slot's identity is its place value, not
+its position in the string.
+```jsx
+str.split('').map((ch, i) => <Slot key={str.length - i} char={ch} />)
+```
+⚠ A freshly mounted slot must arrive already showing its digit, not roll to it
+from zero — a leading `1` that counts up from `0` reads as the figure briefly
+being ten times wrong.

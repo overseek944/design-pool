@@ -1,6 +1,6 @@
 # Manifest
 
-754 primitives. Format: `category/id | axes cost | tags | gist`
+756 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -184,6 +184,7 @@ interaction/offset-shadow-press | E3 D2 W4 F2 $1 | interaction state depth detai
 interaction/one-sided-hover-delay | E2 D2 W2 F5 $1 | interaction hover delay css-only restraint pointer | A hover-revealed panel wants patience on the way in and none on 
 interaction/outward-corner-target | E3 D2 W1 F5 $2 | interaction state focus border precision detail | Four L-brackets absent at rest, then flying outward past the ele
 interaction/overdamped-surface-tilt | E2 D1 W3 F5 $1 | interaction pointer transform motion restraint custom-property | Most pointer-reactive surfaces try to keep up, and keeping up re
+interaction/overflow-traversing-label | E3 D2 W2 F5 $1 | overflow hover focus type css-only detail | A label too long for its row is usually handed a tooltip or left
 interaction/override-released-system-preference | neutral  $1 | theme preference accessibility correctness state | A page that mirrors prefers-color-scheme and also ships a toggle
 interaction/paired-focus-offset-tokens | neutral  $1 | accessibility focus tokens correctness | Ship the focus ring as three tokens — width, an outer offset, an
 interaction/partial-modality-inert-siblings | neutral  $2 | interaction dialog accessibility inert focus correctness | Not every overlay should take the whole page. A panel hung off a
@@ -645,6 +646,7 @@ surface/polarity-crossing-panel-ground | E1 D2 W4 F5 $1 | surface gradient contr
 surface/progress-raised-horizon-band | E2 D1 W3 F5 $2 | surface gradient scroll scrub ground section-transition | A light section handed to a dark one by a fixed gradient is a pr
 surface/projected-lattice-ground | E2 D3 W1 F4 $2 | surface grid texture ambient depth geometry | A flat hairline lattice reads as a sheet behind the page. Tilt t
 surface/quantised-ground-transition | E1 D2 W2 F3 $1 | surface color gradient tokens detail | Two flat sections meeting edge to edge give a hard seam; a smoot
+surface/quantised-tick-arc | E1 D3 W2 F5 $2 | svg data measurement precision geometry detail | A filled arc is a percentage the eye misjudges by ten points. A 
 surface/radius-inset-connector-rail | E1 D3 W1 F5 $1 | diagram hairline precision detail schematic | Connectors in a node diagram are hairlines on pseudo-elements, n
 surface/receding-annulus-mask | E1 D3 W2 F4 $2 | surface mask gradient depth texture | Concentric rings that grow geometrically and fade as they widen 
 surface/receding-bar-plate | E2 D1 W2 F4 $1 | surface chrome scroll opacity accessibility | Invert the usual scroll chrome: a floating bar starts fully opaq

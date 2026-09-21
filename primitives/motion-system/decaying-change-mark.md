@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion-system,feedback,live-data,emphasis]
 axes: {energy: 3, density: 1, weight: 2, finish: 4}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -38,3 +38,17 @@ that is already hovered, selected or muted.
 ```
 ⚠ Direction encoded as hue alone is the red-green pair by default, and it is
 gone by the next frame either way — put the sign or an arrow in the text too.
+
+Where the events being marked have a *size* — a batch of twelve arriving against
+a single one — the envelope's peak can carry it while its shape stays fixed.
+Drive one normalised amplitude from script, multiply it into whatever the mark
+paints, and a run of flashes becomes a rhythm with loud beats rather than noise.
+The shape must be asymmetric or a big event and a small one look alike at the
+top: attack 60–120ms, hold about as long, decay 400–800ms.
+```js
+const k = t < A ? 1 - (1 - t / A) ** 3 : t < 2 * A ? 1 : Math.max(0, 1 - (t - 2 * A) / D) ** 2
+set(peak * k)                      // peak 0–1, scaled by the event's magnitude
+```
+⚠ Under reduced motion write the peak once and clear it after ~150ms rather than
+skipping it — the change still registers, nothing travels. Amplitude encoding a
+quantity must also exist as text; twice as bright is not a readable number.

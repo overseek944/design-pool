@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,navigation,transition,chrome,accessibility]
 axes: {energy: 2, density: 1, weight: 2, finish: 5}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -40,3 +40,19 @@ so nothing in script knows about presentation.
 ⚠ The class selects only groups that were actually captured — an element that
 never received a unique name is absent from the pseudo tree and the rule misses
 it silently, which looks identical to the animation being wrong.
+
+A named region's snapshot does not inherit its `border-radius`. The group, the
+image pair and both snapshots are square boxes, so a rounded panel morphs with
+hard corners for the whole transition and snaps round only at the end. Give all
+four the radius as `clip-path: inset(0 round R)` — which clips the snapshot
+image, not merely the box — from the same token the element itself reads. And
+where the rest of the page should not move at all, `animation: none` on the root
+pair leaves exactly the named region animating.
+```css
+::view-transition-group(panel), ::view-transition-image-pair(panel),
+::view-transition-old(panel),   ::view-transition-new(panel) { clip-path: inset(0 round .375rem) }
+::view-transition-old(root), ::view-transition-new(root) { animation: none }
+```
+⚠ Killing the root pair's animation stacks both snapshots at full opacity with
+the new one on top, so everything outside the named region swaps instantly.
+Anything that was meant to cross-fade needs a name of its own.
