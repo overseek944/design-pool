@@ -4,7 +4,7 @@ category: timing
 tags: [motion,sequencing,state,transition]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -55,3 +55,20 @@ arriving behind it.
 timing function as well and the two directions stop being the same move, which
 reads as a glitch rather than as a reversal. The total still has to clear the
 cap above, now in both directions.
+
+The rule that only the delay may differ holds for a group reversing; a *pointer*
+affordance is the case where it does not. Entering is the performance — long,
+with overshoot — and leaving should be short and monotone, because a pointer
+crossing a control on its way somewhere else must not trigger a second one.
+Diverge duration and easing, and flip the delay on the secondary property so the
+composite un-forms in the order it formed. Enter 0.8–1.1s with an overshoot
+curve, leave 0.4–0.6s without.
+```css
+.btn .slug { transition: transform .6s cubic-bezier(.34,1.15,.5,1),
+                         border-radius .35s var(--ease) .2s }
+.btn:is(:hover, :focus-visible) .slug {
+  transition: transform 1s cubic-bezier(.32,2,.4,1), border-radius .2s var(--ease) 0ms }
+```
+⚠ An overshoot curve past 1 travels outside its own range, so anything clipped
+by an ancestor pops. Give `:focus-visible` the same rule as `:hover` in one
+selector, or keyboard users get the resting transition and no affordance.

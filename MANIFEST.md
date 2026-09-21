@@ -1,6 +1,6 @@
 # Manifest
 
-683 primitives. Format: `category/id | axes cost | tags | gist`
+686 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -300,6 +300,7 @@ media/alpha-threshold-fuse-filter | E3 D2 W3 F4 $2 | svg filter mark liquid stat
 media/aperture-registered-content-layer | E1 D2 W2 F5 $2 | media mockup responsive layout correctness | Live content shown inside supplied frame artwork registers to an
 media/approach-loaded-video | neutral  $2 | media video performance intersection-observer accessibility bandwidth | Background footage is usually the heaviest thing on a page and u
 media/aspect-locked-media | neutral  $1 | layout media cls | Lock every media slot with an explicit aspect-ratio and let widt
+media/barrier-synced-media-layers | neutral  $2 | video media correctness layering loading | Two clips composited as layers — a base pass and a treated one c
 media/blend-normalised-logo-wall | neutral  $1 | media logos blend-mode assets normalisation | Supplied logo files arrive as opaque rectangles — baked-in white
 media/build-captured-product-shot | neutral  $2 | media asset build product screenshot architecture correctness | A page showing the product either carries a hand-kept screenshot
 media/canvas-driven-favicon | E3 D2 W2 F4 $2 | media icon canvas motion browser detail | The tab strip is a surface a page can paint. Render the mark int
@@ -351,6 +352,7 @@ media/zero-box-vector-template-store | neutral  $1 | svg use defs architecture p
 motion-system/additively-gated-reveal | E2 D2 W2 F4 $1 | motion reveal accessibility progressive-enhancement correctness scroll | Most machinery around entrances exists because the from-state is
 motion-system/anchored-log-zoom-camera | E3 D2 W2 F5 $3 | camera zoom canvas interpolation diagram scene | A 2D camera interpolating scale linearly rushes the far half of 
 motion-system/antipodal-mark-pass | E3 D1 W2 F5 $1 | motion-system hover icon affordance | Send a mark out of one corner and back in from the opposite one,
+motion-system/argument-registered-function-transition | neutral  $2 | custom-property registered-property transition clip-path interpolation architecture | A CSS function interpolates only between the same shape in compa
 motion-system/attribute-driven-motion-hooks | neutral  $1 | architecture motion maintainability | Target animations off data- attributes, never class names. Styli
 motion-system/below-fold-armed-entrance | neutral  $1 | motion correctness progressive-enhancement observer reveal | An entrance system that hides content in CSS and un-hides it fro
 motion-system/camera-over-static-scene | E3 D2 W3 F5 $2 | motion transform scale focus diagram narrative | To walk a reader through a diagram, move the viewport rather tha
@@ -560,6 +562,7 @@ surface/drained-field-clear-window | E2 D2 W3 F5 $3 | surface mask backdrop-filt
 surface/eased-fade-stop-ramp | E1 D2 W2 F5 $2 | surface gradient fade mask precision | A two-stop fade interpolates alpha linearly and the eye reads th
 surface/end-faded-section-rule | E1 D1 W1 F5 $1 | hairline divider gradient section restraint | A full-bleed rule declares a measure it does not have: run it ed
 surface/fill-derived-shadow-ramp | E1 D2 W3 F5 $1 | surface depth shadow color-mix tokens control | A saturated control's shadow should be made of its own colour, n
+surface/geometry-mirrored-effect-proxy | neutral  $3 | svg filter measurement architecture correctness chrome | Some effects exist only for SVG — a fusing filter, one stroke ar
 surface/gradient-dot-lattice | E1 D3 W1 F4 $1 | surface texture pattern blueprint cheap | One radial-gradient plus a background-size gives a dot lattice a
 surface/gradient-over-opaque-glass | E1 D3 W3 F5 $1 | surface glass gradient depth cheap performance | Glass without a backdrop filter: stack a vertical alpha gradient
 surface/grid-intersection-crosshair | E1 D3 W1 F5 $2 | surface grid detail blueprint ornament | Mark a grid intersection with a small plus centred exactly on th

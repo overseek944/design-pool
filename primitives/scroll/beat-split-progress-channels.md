@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,scrub,choreography,custom-properties,sequence,architecture]
 axes: {energy: 3, density: 3, weight: 2, finish: 5}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -67,3 +67,18 @@ the controller owns. Retuning a beat stops being a code change.
 ⚠ Unregistered, these are tokens: readable in `calc()` but never interpolable,
 so the whole chain is only as smooth as the driver written to it. Nothing may
 `transition` on them.
+
+The write guard is stronger formatted than compared. Round to the precision the
+value will be written at, then compare the *string* — `toFixed(1) + 'px'` — and
+every sub-pixel jitter in the driver collapses to one token that matches the
+last, so a slow scroll writes on a handful of frames instead of all of them.
+Comparing the float first fails exactly where it matters: two values that differ
+in the seventh decimal are one identical declaration. One cache entry per
+channel, keyed by name.
+```js
+const w = (prop, key, v) => { if (last[key] === v) return; last[key] = v
+  root.style.setProperty(prop, v) }
+w('--mask-inset', 'mi', inset.toFixed(1) + 'px')
+```
+⚠ Precision is a decision, not a default. Round a translate to whole pixels and
+a slow scrub steps; round an opacity to two places and it bands.

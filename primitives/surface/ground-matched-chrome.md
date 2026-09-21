@@ -4,7 +4,7 @@ category: surface
 tags: [chrome,nav,scroll,contrast,theme,accessibility]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -53,3 +53,20 @@ isolate` so it stops at the page, and keep it `pointer-events: none`.
 cannot be stated, so nothing carrying text, an icon a reader must identify or a
 focus ring may use it — those still owe a ratio on each ground separately. Mid
 greys difference toward mid grey and the layer disappears.
+
+Cheaper than either, and correct where sections overlap: hit-test one point.
+`elementFromPoint` at the bar's own band, inset from the edge so the bar's
+controls are not what answers, returns the topmost painted element there, and
+`closest()` walks up to whatever declared a tone — one call regardless of how
+many sections are marked, and paint order decides ties for free. Keep the rect
+scan as the fallback for a point that lands on nothing. Then publish the result
+as an attribute and let every other floating element — a progress rail, a
+back-to-top — observe *it* rather than run its own probe.
+```js
+const tone = document.elementFromPoint(1, bar.getBoundingClientRect().bottom)
+  ?.closest('[data-tone]')?.dataset.tone
+new MutationObserver(sync).observe(bar, { attributeFilter: ['data-tone'] })
+```
+⚠ It skips `pointer-events: none` layers and returns whatever is under them,
+which is usually right and occasionally not. It also only sees inside the
+viewport — a probe point below the fold returns null, never a section.

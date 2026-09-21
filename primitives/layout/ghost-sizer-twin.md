@@ -4,7 +4,7 @@ category: layout
 tags: [layout,architecture,correctness,hover,reflow]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []

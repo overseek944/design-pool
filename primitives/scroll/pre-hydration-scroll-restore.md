@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,navigation,hydration,restoration,architecture]
 axes: none
 cost: 2
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []

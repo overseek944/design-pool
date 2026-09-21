@@ -4,7 +4,7 @@ category: reveal
 tags: [type,motion,reveal]
 axes: {energy: 3, density: 2, weight: 3, finish: 5}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: [revert-split-on-resize, will-change-on-split-children]
@@ -31,3 +31,16 @@ tracks a `clamp()`ed display size. 0.3–0.6em is usually enough.
 ```
 ⚠ Only headroom is free. Padding on the *bottom* edge reopens the crop the rise
 travels out of, and the line is then visible before it starts.
+
+Current split utilities own the mask themselves — `mask: "lines"` generates the
+wrapper — and size it to the line's font-metric box, which crops descenders on
+`g`, `y`, `p`, `j`. The headroom trick still applies, on the other edge and much
+smaller: 0.08–0.12em of bottom padding taken straight back as a negative margin.
+Target the generated wrapper through `:has(> .lineClass)` rather than the
+library's internal class name, which is not part of its contract.
+```css
+[data-lines] :has(> .split-line) { padding-block-end: .1em; margin-block-end: -.1em }
+```
+⚠ This is the edge the rise travels out of, so every pixel of it shows the line
+early. Keep it under 0.12em, and prefer a face whose descenders sit inside the
+metric box to opening the crop further.
