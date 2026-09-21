@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,interaction,correctness,detail]
 axes: none
 cost: 1
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -49,3 +49,19 @@ property so changing the gap re-solves the targets.
 ```
 ⚠ This guarantees no overlap, not that the target is big enough — a tight gap
 still lands under the floor. Where it does, widen the gap; that is the knob.
+
+Overlap is only a hazard where the pointer is imprecise, so gate the overhang
+on `(pointer: coarse)` and it disappears on a mouse: the pad is sized as *at
+least* the floor rather than as a fixed negative inset, and a precise pointer
+keeps the tight target the layout was drawn for. This is the one reachability
+branch a media query may carry, because failing it leaves a target that is
+merely small — not one that is absent.
+```css
+@media (pointer: coarse) {
+  .ctl::after { content: ""; position: absolute; inline-size: 100%;
+    block-size: 100%; min-inline-size: 44px; min-block-size: 44px }
+}
+```
+⚠ A touchscreen laptop reports `coarse`, so the pads arm for its mouse too —
+harmless here, and the reason this gate is safe where hiding a control behind
+the same query is not.

@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,focus,cls,border,correctness]
 axes: none
 cost: 1
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -51,3 +51,16 @@ it. Rail 2–4px.
 ```
 ⚠ The rail paints *over* the padding rather than beside it, so give the leading
 cell at least its width of inline-start padding or the text sits on the mark.
+
+The same clip decision governs a border that is permanently *translucent*
+rather than transparent: `border-box` blends it against the control's own fill,
+`padding-box` against the ground behind it. Which one is right flips with the
+theme — a pale fill on a pale page wants the ground blend to stay visible, a
+dark fill on a dark page wants the fill blend or the edge reads as a gap.
+```css
+.btn      { border: 1px solid #ffffff14 }
+:root:not(.dark) .btn { background-clip: padding-box }
+```
+⚠ `padding-box` with a rounded corner leaves the fill short of the border's
+inner curve — a hairline of ground appears at each corner before it does along
+the sides. Check the corners, not the edges.

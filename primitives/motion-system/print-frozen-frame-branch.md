@@ -4,7 +4,7 @@ category: motion-system
 tags: [print,correctness,motion,fallback,accessibility]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

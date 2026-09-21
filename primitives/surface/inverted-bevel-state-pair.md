@@ -4,7 +4,7 @@ category: surface
 tags: [surface,depth,detail,affordance,state,border]
 axes: {energy: 2, density: 2, weight: 2, finish: 3}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -49,3 +49,17 @@ a gradient and the whole effect goes. Depth 2–4px; past that it reads as a fra
 ⚠ The construction encodes one hard-coded light direction and one fill
 luminance — it does not survive a theme flip, so scope it to a deliberately
 period surface rather than to the control system.
+
+Over a dark ground the fix is to move the highlight, not to retint it. The lit
+edge is the one facing the page's own light, and on dark that is the *under*
+side — so the same control takes `0 1px` in light and `0 -1px` in dark, each at
+a few percent of the opposite extreme. Flipping only the colour leaves a bright
+seam along the top; flipping the edge keeps one light source across both
+themes. 4–8% either way, doubled on a saturated fill.
+```css
+.btn         { box-shadow: inset 0 1px 0 #0000000f }
+.dark .btn   { box-shadow: inset 0 -1px 0 #ffffff0f }
+```
+⚠ Press has to stay distinguishable from rest in both — invert to `0 1px` of
+the *ground* colour on `:active` rather than removing the edge, or the dark
+theme's pressed state is simply flat.
