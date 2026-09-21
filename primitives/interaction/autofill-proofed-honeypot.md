@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,correctness,form,detail,progressive-enhancement]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -29,3 +29,16 @@ is then dropped in silence.
 ⚠ Every rejection here is silent by design, so a false positive is invisible to
 you and terminal for the user. Log them rather than only counting, and never
 leave it the sole gate on a form someone has to get through.
+
+A second gate is free and independent of the first: stamp when the form mounted
+and drop a submission that arrives faster than a person could have typed it.
+Scripts post in milliseconds; a reader on the shortest form takes seconds.
+Answer both gates with the same success state a real sender sees, so a bot
+learns nothing to tune against.
+```js
+const t0 = performance.now()                                  // at mount
+if (hp || performance.now() - t0 < 1500) return showSuccess() // 1.5–3s
+```
+⚠ A password manager can complete a short form in well under a second — keep
+the floor where a fast human still clears it, and stamp at mount rather than
+at first paint or a bfcache restore rejects a returning reader.

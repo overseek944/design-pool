@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,focus,forms,input,correctness,keyboard]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -39,3 +39,15 @@ debt.
 ```
 ⚠ `:has()` on a wrapper matches any descendant that satisfies it — scope the
 inner selector with `>` or a nested control lights its parent's proxy too.
+
+`<input type=file>` needs no proxy at all: its button is a real pseudo-element.
+Style `::file-selector-button` and the control keeps the native picker, the
+keyboard path and the label association with nothing to forward — the one case
+where the sibling structure above is pure cost.
+```css
+input[type=file]::file-selector-button { font: inherit; border: 0;
+  padding: .5rem 1rem; background: var(--fill); color: var(--on-fill) }
+```
+⚠ The pseudo-element inherits no typography, so it renders in the platform UI
+face until `font` is set. The filename beside it can be neither styled nor
+relabelled, so a design that needs its own wording still wants the proxy.

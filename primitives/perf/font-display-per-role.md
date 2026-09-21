@@ -4,7 +4,7 @@ category: perf
 tags: [type,font-loading,cls,performance,correctness]
 axes: none
 cost: 1
-seen: 13
+seen: 14
 requires: []
 conflicts: []
 completes: []
@@ -47,3 +47,11 @@ with weight, so one `size-adjust` is wrong at both ends: split the fallback by
 ```
 ⚠ Measure the overrides against the real fallback, not a guess — wrong values
 shift layout in the opposite direction and are worse than no match at all.
+
+A subset inlined as a `data:` URI cancels the split. `unicode-range` gates the
+*fetch*, and there is no fetch — those bytes ship inside the render-blocking
+stylesheet on every view whether or not one glyph in the range is drawn. Four
+Cyrillic cuts inlined that way are ~20KB of first paint a Latin page never
+renders. Inline at most the one Latin subset of one face.
+⚠ Audit the generated CSS, not the config: font tooling inlines small subsets
+by default and the unused ones are invisible in a network panel.

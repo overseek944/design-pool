@@ -1,6 +1,6 @@
 # Manifest
 
-520 primitives. Format: `category/id | axes cost | tags | gist`
+523 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -131,6 +131,7 @@ interaction/partial-modality-inert-siblings | neutral  $2 | interaction dialog a
 interaction/pointer-transparent-copy-layer | neutral  $1 | interaction pointer accessibility layout correctness | Copy laid over a background that reacts to the pointer swallows 
 interaction/pre-hydration-nested-link | neutral  $2 | accessibility links hydration progressive-enhancement correctness | A card that navigates but contains its own link cannot be an anc
 interaction/proxy-painted-native-control | neutral  $1 | accessibility focus forms input correctness keyboard | Keep the real <input> and paint a sibling. Clip it to a 1×1 rect
+interaction/rejected-file-input-reset | neutral  $1 | correctness form input file detail | Check a chosen file's real type and byte length before any uploa
 interaction/reserved-state-border | neutral  $1 | accessibility focus cls border correctness | A control that gains a border on focus or selection must carry t
 interaction/resting-default-expanding-row | E2 D2 W2 F5 $2 | interaction state hover accessibility layout | A row of panels that expand only on hover says nothing at rest —
 interaction/row-forwarded-stretched-focus | neutral  $1 | accessibility focus link correctness cards | A link stretched over its whole row or card — a pseudo-element a
@@ -496,6 +497,7 @@ type/frame-cycled-glyph-indicator | E3 D1 W2 F3 $1 | indicator mono glyph loadin
 type/fused-run-highlight | E1 D2 W2 F5 $2 | type annotation editorial diff state | Marking a run of blocks — changed lines, an annotated passage — 
 type/glyph-joined-sequence-rail | E1 D3 W1 F4 $1 | type list sequence metadata mono accessibility technical | A four-step process does not always deserve a diagram. Set it as
 type/grid-counted-leading | neutral  $2 | type tokens scale rhythm leading architecture | Set leading as a whole count of one shared unit instead of a rat
+type/hyphenated-justified-measure | E1 D3 W2 F5 $1 | type prose editorial measure correctness | Justified body copy sets a page as a printed specification rathe
 type/language-conditional-type-tokens | neutral  $2 | type i18n tokens localisation correctness | The type scale is a function of script, not only viewport. Redef
 type/measured-inline-word-swap | E3 D2 W3 F5 $2 | type motion headline correctness | A word cycling inside a running headline relays out the whole li
 type/measured-line-bucket-stagger | neutral  $2 | type stagger reveal measurement font-loading correctness | A cascade down the rendered lines of a heading does not require 
@@ -523,5 +525,6 @@ type/variable-axis-tokens | E1 D2 W2 F5 $1 | type tokens opentype variable-font 
 type/viewport-locked-single-line | E1 D2 W4 F4 $1 | type responsive display unit correctness | A display line that must never break is not a wrapping problem t
 type/wavy-annotation-underline | E2 D2 W2 F2 $1 | type underline link detail informal | A wavy decoration stops reading as a link and starts reading as 
 type/webfont-scoped-to-inline-svg | neutral  $1 | type svg correctness architecture progressive-enhancement | An SVG setting live text in a brand face renders in that face on
+type/weight-dropped-display-line | E1 D2 W4 F5 $1 | type display headline hierarchy contrast | A display block can carry its own hierarchy with no second size,
 type/width-stable-changing-number | E2 D3 W3 F5 $1 | numerals data motion correctness | A figure that animates or streams needs two guarantees, and tabu
 ```

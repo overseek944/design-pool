@@ -4,7 +4,7 @@ category: type
 tags: [type,tracking,precision,fluid,tokens]
 axes: {energy: 1, density: 2, weight: 3, finish: 5}
 cost: 1
-seen: 15
+seen: 16
 requires: []
 conflicts: []
 completes: []
@@ -33,3 +33,10 @@ A single word carries far more than the +.12 ceiling: at 9–11px a lone label o
 rather than as running text, because there is no inter-word gap for the tracking
 to compete with. The ceiling is set by word count, not by size — two words at
 +.30 stop being a phrase and read as two separate objects.
+
+The word-count ceiling is really a ratio against the word space, which is why
+it lifts with size: a space runs about .25em in most sans faces, and a label
+stops reading as a phrase once the tracked gap approaches half of that. At
+9–11px that caps a multi-word label near +.08; at 13–15px the same five words
+hold +.10 to +.14 and still scan as one line. Measure it against the rendered
+space, not against a word count.
