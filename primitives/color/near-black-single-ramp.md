@@ -4,7 +4,7 @@ category: color
 tags: [color,palette,dark,restraint]
 axes: {energy: 2, density: 2, weight: 4, finish: 4}
 cost: 1
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []
@@ -46,3 +46,16 @@ and becomes the only light in it, one hue carrying structure and the other
 attention, with neither competing on saturation. This is the case that needs
 the ground lifted — at 4–6% lightness there is no room above it for a five-rung
 elevation ramp that still reads as one colour. Put it at 10–14%.
+
+Lifting the ground is not the only way to buy elevation at 4–6% lightness. Climb
+a little chroma along one hue with each rung instead — panel, raised panel,
+rule, bright rule, each a step further from neutral than the last — and hairline
+every boundary. Lightness alone gives two distinguishable surfaces that far
+down; lightness plus a chroma ladder gives four or five without the page reading
+any lighter.
+```css
+--panel: #0f111c; --panel-2: #131627; --rule: #21243a; --rule-bright: #2e3252;
+```
+⚠ Every rung is still near-black, so body contrast is owed against the lightest
+surface the text may sit on, not against the page ground — check the type on the
+raised panel, not on the field behind it.

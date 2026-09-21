@@ -4,7 +4,7 @@ category: type
 tags: [type,motion,css-only,custom-properties,keyframes]
 axes: {energy: 3, density: 1, weight: 2, finish: 4}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -34,3 +34,16 @@ reservation and the reveal fight each other.
 .line { animation: type calc(var(--chars) * 40ms) steps(var(--chars), end) both }
 @keyframes type { from { clip-path: inset(0 100% 0 0) } }
 ```
+
+Uniform steps are the tell when a line should read as typed by a hand rather
+than printed by a machine, and that case is the one worth paying script for.
+Write a character per timeout with the delay redrawn each time, 25–60ms, and
+hold the result 300–600ms past the last glyph so the line is visibly finished
+before its consequence appears.
+```js
+const type = () => { el.textContent = TEXT.slice(0, ++i)
+  if (i <= TEXT.length) setTimeout(type, 26 + Math.random() * 34) }
+```
+⚠ Never inside a live region: a per-character write is announced per character.
+Under reduced motion put the finished string in the DOM and skip the pass — a
+typing effect has nothing to degrade to but its own result.

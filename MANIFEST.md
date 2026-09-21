@@ -1,6 +1,6 @@
 # Manifest
 
-493 primitives. Format: `category/id | axes cost | tags | gist`
+496 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -67,6 +67,7 @@ canvas/warm-started-relaxation | neutral  $1 | canvas simulation performance sha
 color/chroma-weighted-peer-rank | E1 D2 W3 F5 $1 | color hierarchy accent icon grid contrast | Two grids of identical cards on one page read as equally importa
 color/declared-contrast-escalation | neutral  $1 | accessibility contrast tokens type color | prefers-contrast: more is not a second theme — it is permission 
 color/disposition-token-set | neutral  $1 | color tokens state correctness accessibility | A review queue is not a severity display, and borrowing success/
+color/embedded-replica-palette-split | neutral  $1 | color tokens product mock architecture | A page embedding a working replica of the product needs two toke
 color/gamut-ladder-fallback | neutral  $1 | color tokens progressive-enhancement correctness | Ship every colour token twice: an sRGB hex baseline, then the wi
 color/near-black-single-ramp | E2 D2 W4 F4 $1 | color palette dark restraint | Pure #000 ground, off-white #ededed text, and ONE neutral ramp (
 color/parallel-alpha-ramp | neutral  $2 | color tokens alpha borders theming | Ship two neutral ramps of equal length: one opaque, one alpha-on
@@ -152,6 +153,7 @@ layout/cropped-stage-mock | E1 D2 W2 F5 $2 | layout responsive overflow media sc
 layout/cross-card-band-alignment | E1 D3 W1 F5 $2 | layout grid subgrid cards hairline datasheet alignment | A row of cards aligns at its outer edges and nowhere else: each 
 layout/document-underlay-window | E2 D1 W3 F4 $2 | layout stacking reveal video section fixed | Give the document one fixed, full-viewport media layer at a nega
 layout/em-reserved-swap-height | neutral  $1 | layout layout-shift responsive correctness tabs | Content that swaps in place — a tab's copy, a rotating claim — c
+layout/evicting-stream-window | E3 D4 W2 F4 $2 | stream overflow live-data log dom performance | An append-only stream in a scroll container grows without bound 
 layout/float-wrapped-figure | E1 D3 W2 F4 $1 | layout type editorial responsive detail | Neither grid nor flex wraps running text around a picture — floa
 layout/fractional-grid-with-fluid-rail | E1 D3 W3 F4 $2 | layout grid asymmetry | Asymmetric two-column via minmax() where the rail is viewport-pr
 layout/geometry-scoped-connector-overlay | neutral  $1 | layout diagram connector responsive correctness architecture | An overlay of connectors is a picture of one arrangement, not of
@@ -456,6 +458,7 @@ timing/rate-integrated-phase-clock | neutral  $1 | motion timing correctness loo
 timing/role-offset-cascade | E3 D2 W2 F5 $1 | timing motion sequencing choreography tokens | Split a cascade into two independent halves: the group's entry t
 timing/segment-eased-keyframes | E3 D2 W2 F5 $1 | motion easing keyframes choreography loop | animation-timing-function declared inside a keyframe block sets 
 timing/stagger-band | E3 D3 W2 F4 $1 | motion rhythm sequencing | Sibling stagger lives in a narrow band: .06–.08s reads as one ge
+timing/state-coded-arrival-rate | E3 D3 W2 F4 $1 | timing live-data state stream rhythm | A live stream that changes mode usually recolours its rows and n
 timing/state-scoped-duration | E2 D2 W2 F5 $1 | motion timing transition state asymmetry | Put transition-duration on the state selector rather than the ba
 timing/stepped-two-frame-blink | E2 D1 W2 F3 $1 | motion easing indicator status ambient | An indicator that fades reads as decoration; one that snaps betw
 timing/trapezoidal-visibility-envelope | neutral  $1 | motion timing loop architecture | Elements that appear, hold and leave on one shared timeline do n

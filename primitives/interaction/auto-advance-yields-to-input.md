@@ -4,7 +4,7 @@ category: interaction
 tags: [carousel,autoplay,accessibility,state]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -43,3 +43,16 @@ const arm = () => { clearTimeout(t)
 ⚠ Re-arm from the `change` event on the reduced-motion query, not only from its
 value at startup — a reader who turns motion off mid-page otherwise keeps the
 rotation they just asked to stop.
+
+Where the sequence demonstrates a product rather than rotating content, the
+handover costs nothing provided the script never had its own code path: let each
+beat call the same handler the reader's control calls, so there is one state
+machine and the schedule is merely another caller. Abandoning is then a flag the
+loop's own re-arm consults — clearing the pending timer is not enough when the
+last beat's whole job is to schedule the next pass.
+```js
+BEATS.forEach(([at, fn]) => t.push(setTimeout(() => { if (!driven) fn() }, at)))
+```
+⚠ Those handlers must be idempotent: a beat already queued when the reader acts
+still fires, and applying the same change twice has to be a no-op rather than a
+second increment.

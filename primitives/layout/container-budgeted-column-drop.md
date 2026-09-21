@@ -4,7 +4,7 @@ category: layout
 tags: [layout,container-query,table,responsive,accessibility,correctness]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -43,3 +43,17 @@ if (track.scrollWidth > track.clientWidth + 2)
 ⚠ Restore before measuring or the second pass reads the collapsed width and the
 row never expands again. It forces layout — run it from the same debounced
 relayout as every other measurement, not per frame.
+
+Where every cell is identity rather than context — a log line's clock, actor,
+hook, verdict and object — there is no column to drop and the budget has to be
+paid in width. Narrow the fixed tracks, step the row's type down one notch, and
+keep the tail on `minmax(0,1fr)` with an ellipsis so truncation lands on the one
+field that survives it. Roughly a fifth off the tracks and .05–.08rem off the
+type carries a five-column row to 390px.
+```css
+@media (width <= 35rem) { .row { font-size: .62rem;
+  grid-template-columns: 60px 80px 80px 52px minmax(0, 1fr) } }
+```
+⚠ Every cell needs `min-width: 0` and the tail needs `overflow: hidden`. One
+unbreakable path in the last column otherwise widens the whole grid past its
+container instead of clipping inside it.
