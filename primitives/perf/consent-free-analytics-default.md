@@ -4,7 +4,7 @@ category: perf
 tags: [architecture,analytics,third-party,privacy,layout,correctness]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -39,3 +39,19 @@ onConsent(ok => ok ? (tag.opt_in_capturing(),
 ⚠ The proxy path must not be a guessable vendor name, or the blocklists catch
 up with it; and re-configuring persistence writes storage immediately, so the
 call has to sit behind the granted branch, never beside it.
+
+Cookieless is not the same as carrying nothing. The SDK still derives
+`$current_url`, `$referrer` and page properties from whatever sits in the
+address bar, so a reset token or an email in a query string leaves the page
+anyway. Rebuild the payload in the last-hop hook rather than trimming it:
+declare the events you send and the values each field may take, drop any event
+missing from that table, and re-add only the handful of SDK fields ingestion
+needs — 8–16, not the whole bag. Strip URLs to origin plus path. The table is
+then the audit, and nothing new ships by accident.
+```js
+before_send: e => schema[e.event]
+  ? { ...e, properties: pick(e.properties, schema[e.event], KEEP_SDK) }
+  : null                                   // unknown event: never sent
+```
+⚠ Enumerate field *values*, not only names — a free-text field passed through
+because its name was on the list is how form input reaches a vendor.

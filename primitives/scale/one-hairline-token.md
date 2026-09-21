@@ -4,7 +4,7 @@ category: scale
 tags: [unit,tokens,border,precision,coherence]
 axes: {energy: 1, density: 2, weight: 1, finish: 5}
 cost: 1
-seen: 20
+seen: 21
 requires: []
 conflicts: []
 completes: []
@@ -109,3 +109,17 @@ be defended from it.
 ⚠ Below roughly .85px the 1× rendering fades far enough that a bounding box
 loses its edge entirely. Choose the value against the ground it is drawn on and
 check it at 1×, which is the only place the difference exists.
+
+The token is deliberately spent twice in one place: an inline link whose whole
+hover state is its underline thickening from one hairline to two. Decoration is
+not layout, so nothing reflows and no neighbouring line moves, and the colour
+is inherited, so the link needs no accent token and cannot fail a contrast the
+body text already passes. Offset .18–.25em keeps the heavier stroke clear of
+the descenders. This is the link affordance for a design with no colour to
+spend, not an addition to one that has.
+```css
+a       { text-decoration-thickness: var(--hair); text-underline-offset: .22em }
+a:hover { text-decoration-thickness: calc(var(--hair) * 2) }
+```
+⚠ Two hairlines is the ceiling — past it the stroke reads as a highlight, and
+`text-decoration-skip-ink` cuts visibly wider notches around every descender.

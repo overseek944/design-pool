@@ -4,7 +4,7 @@ category: type
 tags: [type,selection,highlight,contrast,accessibility,cheap]
 axes: {energy: 1, density: 1, weight: 2, finish: 5}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,16 @@ composites against that element's background and not the page's.
 ```
 ⚠ `::selection` honours only a handful of properties, and `forced-colors`
 overrides it outright — which is correct. Never let the highlight carry meaning.
+
+The opaque form is right in exactly one case: a page with a single ink and a
+single ground. There are no role colours to flatten and no coloured sample to
+protect, so setting both `color` and `background-color` to the swapped pair
+states the selection as an inversion — the strongest mark available, and one
+that keeps the contrast the page already passes instead of diluting it to a
+wash. Swap the page's own two values; a third colour here reads as a bug.
+```css
+::selection { color: var(--ground); background-color: var(--ink) }
+```
+⚠ Audit every inverted region, dark panel and caption over art first — the
+moment a second ground exists this stops being an inversion and becomes an
+arbitrary block.

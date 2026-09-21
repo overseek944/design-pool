@@ -4,7 +4,7 @@ category: layout
 tags: [layout,viewport,mobile,responsive,correctness]
 axes: none
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
