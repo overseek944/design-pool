@@ -1,6 +1,6 @@
 # Manifest
 
-772 primitives. Format: `category/id | axes cost | tags | gist`
+775 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -221,6 +221,7 @@ interaction/substituted-driver-on-coarse-pointer | neutral  $2 | pointer touch f
 interaction/supplied-cursor-affordance-pair | E2 D2 W3 F3 $1 | interaction pointer detail chrome accessibility | Replacing the arrow is a strong voice, and the failure is replac
 interaction/tilt-exempt-anchor-layer | E2 D2 W3 F5 $2 | interaction pointer transform 3d depth architecture | A surface that tilts under the pointer tilts everything in it, i
 interaction/timestamp-guarded-double-activation | neutral  $1 | events click pointer correctness architecture accessibility | A component that synthesises its own tap alongside the native cl
+interaction/transition-shed-demo-handoff | E2 D1 W2 F4 $2 | affordance drag transition correctness demo | A control whose only affordance is a drag can advertise itself b
 interaction/transparent-stroke-hit-area | neutral  $1 | accessibility svg interaction touch correctness detail | A small mark inside a viewBox — a path node, a scrubber dot — is
 interaction/twin-suppressed-persistent-action | neutral  $2 | interaction sticky state observer accessibility | A persistent action pinned to the viewport is right through the 
 interaction/viewport-clamped-anchored-popover | neutral  $1 | correctness responsive overlay accessibility hover focus | A popover sized against its trigger gets clipped by the window: 
@@ -602,9 +603,11 @@ scroll/stale-scroll-request-guard | neutral  $2 | scroll correctness accessibili
 scroll/sticky-as-cheap-pin | E1 D2 W2 F3 $1 | scroll layout performance | position: sticky for anything that only needs to hold position —
 scroll/tall-target-intersection-clause | neutral  $1 | scroll correctness observer reveal | intersectionRatio is a fraction of the element, so a section tal
 scroll/transform-hosted-scroll-wrapper | neutral  $3 | scroll architecture correctness transform pin | Smoothing the whole page without a library: a spacer takes the m
+scroll/underlaid-first-panel-track | E3 D2 W3 F4 $3 | scroll pin sticky sequence layout | A lateral run of N full-viewport panels needs only an (N−1)×100v
 scroll/wheel-owned-scrub-stage | E3 D2 W3 F5 $3 | scrub wheel stage progress transport pointer pin | A timeline whose length has nothing to do with viewport heights 
 scroll/whole-item-rail-page | neutral  $1 | scroll rail pagination control measurement correctness | An arrow that scrolls a horizontal rail by a fixed distance — 30
 scroll/wrapper-hosted-snap-deck | neutral  $2 | scroll snap responsive breakpoint correctness architecture | Vertical snap on the document fights collapsing mobile chrome an
+scroll/write-ordered-scroll-probe | neutral  $2 | scroll correctness measurement timing | A probe that reads rects to decide state — which ground is under
 surface/addressable-cell-lattice | E1 D3 W1 F4 $2 | lattice grid hairline pointer-events node-budget decoration | A hairline lattice drawn as two gradients costs one node and ans
 surface/arc-length-colour-ramp-stroke | E3 D2 W2 F5 $3 | svg stroke gradient color dash effect | An SVG gradient paints in the element's box, so a stroke that cu
 surface/axis-stretched-noise-veil | E1 D3 W2 F4 $3 | surface noise svg-filter gradient atmosphere blend-mode | Evenly blurred noise reads as grain. Blur turbulence anisotropic

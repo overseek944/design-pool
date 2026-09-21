@@ -26,3 +26,16 @@ body { transition: background-color var(--swap) var(--ease),
 ⚠ An unregistered custom property cannot be transitioned, so the delay is
 silently dropped and the flip lands on frame one. Register every ink token,
 including the one on controls whose ground inverts. Reduced motion zeroes both.
+
+Where the ground changes because the reader scrolled a new section under fixed
+chrome, rather than because a theme flipped, the ink has no companion tween to
+be halfway with: the ground arrives at a seam, in one frame, and every frame of
+a 200–400ms colour tween on the ink is a value that fits neither side. Step it
+at the crossing and spend the duration on something the contrast does not
+depend on — a fill, a hairline, a shadow.
+```css
+.chrome { transition: color 0s, background-color .24s var(--ease) }
+```
+⚠ The crossing is where the *ink* sits, not where the section edge meets the
+viewport top — probe on the element's own band or the step lands early and the
+label flips while still over the old ground.

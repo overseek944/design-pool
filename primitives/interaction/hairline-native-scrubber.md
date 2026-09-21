@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,accessibility,control,scrub,native,diagram]
 axes: {energy: 2, density: 1, weight: 1, finish: 5}
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -70,3 +70,17 @@ at the ends. Track 4–8px, thumb 16–22px.
 ⚠ The webkit thumb needs `margin-block-start: calc((var(--track) - var(--thumb)) / 2)`
 to sit on the track it now paints; Firefox centres its own. `90deg` is physical —
 the control reverses in RTL and the gradient does not, so mirror the stop there.
+
+The input need not be the visible mark at all. Stretched transparent across a
+whole media box — `inset: 0`, full size, `opacity: 0` — it becomes a drag
+surface for a reveal that has no control of its own, and the handle is painted
+separately at the same fraction with `pointer-events: none`. Pointer, touch and
+every key binding still arrive, and the box keeps whatever cursor the gesture
+deserves.
+```css
+.surface > input[type=range] { position: absolute; inset: 0; width: 100%;
+  height: 100%; margin: 0; opacity: 0; cursor: ew-resize }
+```
+⚠ An invisible input is still the default thumb width, so its value tops out
+before the pointer reaches either edge. Correct the painted handle with the
+thumb geometry above, or force the thumb to 1px so raw percentage is true.

@@ -4,7 +4,7 @@ category: light
 tags: [color,type,effect]
 axes: {energy: 3, density: 2, weight: 4, finish: 3}
 cost: 2
-seen: 31
+seen: 32
 requires: []
 conflicts: []
 completes: []
@@ -197,3 +197,17 @@ zero, on the axis the eye leaves by.
 reader must actually read can live there. Where the string is pure ornament mark
 it `aria-hidden`; where it carries the step number, that number has to exist as
 ordinary text somewhere in the card as well.
+
+Clipping the filled copy turns the same mechanism into a gauge. Stack two
+identical copies of the text: a solid one underneath, and the image-filled one
+over it under `clip-path: inset(L 0 0)`, so the fill appears only below level
+`L`. A figure then reads as filled to a line rather than as coloured, and `L`
+is one settable number — animatable, scrubbable, bindable to the value it
+reports.
+```css
+.fill { position: absolute; inset: 0; clip-path: inset(calc(100% - var(--l)) 0 0);
+  background: var(--texture); -webkit-background-clip: text; color: transparent }
+```
+⚠ Two copies is two readings: mark the clipped one `aria-hidden` and
+`pointer-events: none`. They must share every metric — one inherited
+`font-size` or `letter-spacing` apart and the fill slips off the letterforms.
