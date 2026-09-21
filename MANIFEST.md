@@ -1,6 +1,6 @@
 # Manifest
 
-769 primitives. Format: `category/id | axes cost | tags | gist`
+772 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -8,6 +8,7 @@ canvas/absorbing-field-boundary | neutral  $1 | canvas simulation shader texture
 canvas/age-shaded-traversal-field | E2 D4 W2 F5 $3 | canvas ambient texture generative progress grid | A field that reads as being worked through rather than animating
 canvas/alpha-bucketed-path-batch | E2 D4 W1 F5 $3 | canvas svg performance generative texture batching | Thousands of individually-faded SVG marks means thousands of nod
 canvas/alpha-gated-cell-population | E1 D3 W2 F4 $3 | canvas generative field image mask silhouette grid | A field of marks in the shape of an arbitrary form usually means
+canvas/area-proportional-mark-population | neutral  $1 | canvas field particles performance responsive density | A generative field authored at one mark count is two different c
 canvas/background-matched-scene-fog | E1 D2 W3 F5 $1 | canvas fog depth background integration scene | A rendered scene ends at its canvas rectangle, so it reads as an
 canvas/baked-cell-frame-stream | neutral  $4 | canvas animation precomputed payload performance field | An ambient field whose motion is authored rather than simulated 
 canvas/bisected-heightfield-march | neutral  $4 | canvas shader generative performance projection | A heightfield is not a distance field, so sphere tracing has not
@@ -49,6 +50,7 @@ canvas/home-sprung-particle-medium | E2 D3 W2 F5 $3 | canvas field pointer motio
 canvas/import-time-material-reauthor | neutral  $2 | canvas material import architecture correctness scene | An imported model arrives wearing whatever its exporter wrote — 
 canvas/irrational-stride-variation | neutral  $1 | canvas generative field deterministic correctness scatter | Math.random() for per-index variation costs a stored array, a di
 canvas/lattice-quantised-mark-draw | E2 D3 W2 F4 $2 | canvas particles grid lattice generative texture | A particle field drawn at its simulated position floats over the
+canvas/lifetime-enveloped-mark-respawn | E2 D3 W1 F5 $1 | canvas field particles motion generative recycling | A fixed pool of marks recycled on exhaustion makes birth and dea
 canvas/liveness-floor-reseed | neutral  $2 | canvas generative simulation ambient lifecycle correctness | Most interesting generative rules are also mortal. A lattice, a 
 canvas/named-uv-spaces | neutral  $3 | shader architecture responsive correctness reference | One vertex shader can emit several named coordinate spaces so ea
 canvas/normalised-morph-target-set | E3 D4 W2 F4 $3 | canvas particles morph generative shape | One field of marks can be several forms. Write each form as a pu
@@ -729,6 +731,7 @@ type/delimiter-marked-inline-code | E1 D2 W2 F5 $1 | type code inline prose deli
 type/edge-cropped-monument-glyph | E1 D2 W5 F4 $1 | type lettering identity display bleed layout | One glyph of the wordmark, set at architectural scale and allowe
 type/em-locked-wordmark-mark | E1 D2 W2 F5 $1 | type logo alignment detail scale | A lock-up whose mark is sized in pixels needs a new value at eve
 type/em-sheared-highlight | E3 D2 W4 F4 $1 | type highlight clip-path emphasis inline scale | A slanted block behind a phrase gives a headline a cut-in, marke
+type/first-line-indent-paragraph-mark | E1 D3 W2 F5 $1 | type prose editorial paragraph rhythm | Paragraphs separated only by a blank line read as interface copy
 type/frame-cycled-glyph-indicator | E3 D1 W2 F3 $1 | indicator mono glyph loading state motion | An indeterminate wait does not need a drawn shape. Step one text
 type/fused-run-highlight | E1 D2 W2 F5 $2 | type annotation editorial diff state | Marking a run of blocks — changed lines, an annotated passage — 
 type/glyph-joined-sequence-rail | E1 D3 W1 F4 $1 | type list sequence metadata mono accessibility technical | A four-step process does not always deserve a diagram. Set it as

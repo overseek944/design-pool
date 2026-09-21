@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,trail,composite,motion,field]
 axes: {energy: 3, density: 3, weight: 2, finish: 4}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -39,3 +39,16 @@ ctx.fillStyle = g; ctx.fillRect(0, 0, w, h); ctx.restore()
 ⚠ `save`/`restore` around it or the composite op and the clip leak into every
 later draw. The gradient erases alpha, so over an opaque backing it reveals the
 backing rather than the page.
+
+Where the canvas is opaque anyway — a full-bleed ground the page never shows
+through — fill with the ground colour at low alpha instead of erasing. Each
+frame the framebuffer converges toward the ground rather than toward
+transparent, so the residue the ⚠ above describes lands a few levels off the
+ground and is invisible, where `destination-out` leaves it as ink floating over
+the page. It also takes a tint: fill a hair warmer than the ground and the
+tails cool as they age. Alpha .06–.12, `alpha: false` on the context.
+```js
+ctx.fillStyle = 'rgba(5,6,8,.085)'; ctx.fillRect(0, 0, w, h)   // ground, not erase
+```
+⚠ It commits the layer to one ground colour — nothing beneath it can show
+through, and a theme change means re-tuning the fill, not just the marks.

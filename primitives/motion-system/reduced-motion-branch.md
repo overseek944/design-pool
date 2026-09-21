@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,accessibility,required]
 axes: none
 cost: 1
-seen: 86
+seen: 87
 requires: []
 conflicts: []
 completes: []
@@ -266,3 +266,17 @@ onPointerMove = e => { if (!dragging) return
 draw. Where the render is expensive, coalesce to one `requestAnimationFrame`
 per event burst; that is a frame the preference does not object to, because it
 is the reader's own movement.
+
+The bounded loop above steps state and draws once, which is wrong wherever the
+image lives in the framebuffer rather than in state — trails, feedback, any
+effect built by compositing over the previous frame. Stepping and drawing once
+yields a single frame of bare marks that looks nothing like the running effect.
+Run the whole `draw` in the loop instead, accumulation included, and stop; the
+still is the composite a reader would have arrived at. 40–120 iterations, enough
+for the decay to reach its floor.
+```js
+if (reduced) { for (let i = 0; i < 60; i++) draw(); return }   // draw, not step
+```
+⚠ Time still for it to look settled, not still because it froze — a preroll
+this short leaves a trail-based field visibly sparse. Check the count against
+the fade, not by eye on one machine.

@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,flow,field,generative,motion]
 axes: {energy: 2, density: 3, weight: 2, finish: 4}
 cost: 3
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -45,3 +45,18 @@ v += vec2(g.y, -g.x) * uStrength * dt;         // divergence-free body force
 ⚠ Scale `p` by the aspect ratio or the waves stretch with the viewport. The
 solver's own dissipation eats injected velocity every step, so the strength
 that reads right here is well above what the same field needs used directly.
+
+Sample the field for *direction only* and let each mark carry its own constant
+speed. Density then stops depending on the field's magnitude — nothing pools
+where the flow slows — and the two controls separate: the potential shapes the
+composition, the speed distribution is the texture. A field of marks at mixed
+rates reads as strata sliding past each other rather than as one medium, which
+is what a divergence-free velocity field cannot give you. Speeds spread over
+2–4×, the slowest still crossing the frame inside a minute.
+```js
+const a = Math.atan2(vy, vx)                    // magnitude discarded
+p.x += Math.cos(a) * p.spd; p.y += Math.sin(a) * p.spd
+```
+⚠ Normalising throws away the field's stagnation points, so marks push straight
+through where the flow should hold them — the composition loses its still
+centres and reads as uniform drift.
