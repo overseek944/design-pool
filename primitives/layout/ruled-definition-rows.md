@@ -4,7 +4,7 @@ category: layout
 tags: [layout,type,metadata,responsive,hairline]
 axes: {energy: 1, density: 3, weight: 2, finish: 5}
 cost: 1
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -43,3 +43,17 @@ a stack of three becomes a list whose numbers still start on one line.
 ```
 ⚠ Safe only because neither part is focusable — reversing flow around
 interactive children splits tab order from reading order.
+
+`space-between` only resolves a two-part row. Add a third element — a leading
+icon tile, a status chip — and the free space is redistributed between all of
+them, so the label drifts and no two rows agree on where the middle starts.
+Grid with a single elastic track instead: `auto 1fr auto` pins the leading
+column to its widest member across every row, holds the figure hard right, and
+puts all the slack in one place that carries no content.
+```css
+.row { display: grid; grid-template-columns: auto 1fr auto;
+  align-items: center; column-gap: 20px; padding-block: 18px }
+```
+⚠ Rows must share a grid — or a fixed width on the lead column — for the icons
+to line up. Sized per row, `auto` resolves to each row's own content and the
+column reappears ragged.

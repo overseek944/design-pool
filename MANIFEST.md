@@ -1,6 +1,6 @@
 # Manifest
 
-476 primitives. Format: `category/id | axes cost | tags | gist`
+478 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -468,8 +468,10 @@ type/rule-ranked-aside-tier | E1 D2 W2 F5 $1 | type hierarchy register annotatio
 type/serif-accent-in-technical-context | E1 D2 W3 F5 $1 | type contrast editorial restraint | One high-contrast serif, used sparingly against a geometric sans
 type/sourced-display-figure | neutral  $1 | type figures provenance correctness editorial accessibility | A number set at display size stops being prose and becomes a cla
 type/state-dimmed-subordinate-tier | E1 D2 W2 F5 $1 | type hierarchy state accessibility contrast | Where several panels of a stepper are on screen at once and one 
+type/stroked-inline-stadium-mark | E1 D2 W2 F5 $1 | type emphasis border hairline detail radius | Emphasis by outline rather than by fill: a hairline capsule draw
 type/struck-superseded-figure | E1 D2 W3 F5 $1 | type figures comparison hierarchy decoration | A before/after figure pair usually spends a label on each side. 
 type/sub-baseline-marker-band | E2 D2 W3 F3 $1 | type emphasis highlight contrast accessibility | A full accent block behind a phrase has to clear 4.5:1 against t
+type/subordinate-pair-separator | E1 D2 W3 F5 $1 | type figures hierarchy detail unit | One quantity stated twice — two currencies, metric beside imperi
 type/three-family-stack | E2 D3 W3 F4 $1 | type system | Geometric sans (body/headline) + mono (chrome/code) + display se
 type/tonal-lead-in-clause | E1 D2 W3 F5 $1 | type emphasis hierarchy editorial colour | Carry two levels inside one sentence: the clause holding the cla
 type/tracking-as-size-ratio | E1 D2 W3 F5 $1 | type tracking precision fluid tokens | Tracking fixed in px or em is wrong at one end of a fluid range:

@@ -4,7 +4,7 @@ category: type
 tags: [type,emphasis,hierarchy,editorial,colour]
 axes: {energy: 1, density: 2, weight: 3, finish: 5}
 cost: 1
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -43,3 +43,17 @@ a true italic can opt back in. One weight step, 550–650 on a variable face.
 ```
 ⚠ Not for runs longer than a clause — past that it stops reading as emphasis and
 wants the sentence split above.
+
+The split can run the other way: hold the whole sentence at full text contrast
+and promote the load-bearing clauses into the accent hue instead of demoting
+the rest. Promotion scales where demotion does not — three or four marked
+phrases across a long passage still read as one emphasis tier, whereas three
+muted remainders leave the paragraph mostly grey. The cost is that the accent
+is now body copy and owes the full 4.5:1 against the ground, which most brand
+accents clear only on a dark ground.
+```css
+.claim mark { background: none; color: var(--accent) }
+```
+⚠ Hue is the only cue, so it is gone in greyscale and for a red-green
+deficiency. Mark the phrase with `<strong>` or `<em>` where it is genuinely
+stressed rather than styling a bare span.
