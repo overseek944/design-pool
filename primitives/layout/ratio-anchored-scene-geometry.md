@@ -4,7 +4,7 @@ category: layout
 tags: [layout,architecture,responsive,tokens,geometry,css-only]
 axes: none
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -42,3 +42,17 @@ const p = Object.fromEntries(Object.keys(WIDE).map(k => [k, mix(WIDE[k], NARROW[
 ⚠ Only for parameters that are genuinely continuous — interpolating a count, an
 index or an enum yields values neither preset intends. Those stay on a
 threshold.
+
+A section that wants to be viewport-tall over a fixed-ratio backdrop needs a
+second ceiling, or a tall window asks the artwork to fill a box it was never
+composed for and `cover` eats the sides. Take the smaller of two: the viewport
+height, and the height the picture reaches at full width — `100 / ratio`
+expressed in `vw`. On a wide window the ratio binds and the frame stays whole;
+on a tall one the viewport binds; written as `min-height`, content is still the
+floor under both.
+```css
+.stage { min-height: min(100svh, 42.9vw) }      /* 42.9 = 100 / 2.33 */
+```
+⚠ Below the width where the section stops being a picture with copy over it the
+`vw` term collapses to a band too short to read in — release it to `auto` there
+and let the content set the height.

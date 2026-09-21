@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,measurement,responsive,choreography,diagram]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 3
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: [reduced-motion-branch, dead-banded-resize-rebuild]
@@ -55,3 +55,22 @@ const r = el.getBoundingClientRect(); gsap.set(el, { x, y })
 ```
 ⚠ Only synchronous work may sit between the two writes — an `await` or a frame
 boundary lets the untransformed pose reach the screen as a jump.
+
+The fraction stops are a *spatial* easing curve, independent of the timing
+function: place the midpoint at 0.55 of the delta but 0.35 of the duration and
+the element hangs near its origin then arrives fast, which no easing on its own
+expresses. Carry a z term under one `perspective()` and the travel reads as
+depth rather than slide. Restore the element to CSS control on `finish` *and*
+`cancel` — clear the inline transform, opacity and `will-change` — or `fill:
+'both'` pins it at its end pose forever and the compositor layer never retires.
+```js
+const P = 'perspective(900px)'
+el.animate([{ transform: `${P} translate3d(${dx}px,${dy}px,120px) scale(.2)`, opacity: 0 },
+  { transform: `${P} translate3d(${dx*.55}px,${dy*.55}px,70px) scale(.75)`, opacity: 1, offset: .35 },
+  { transform: 'none', opacity: 1 }], { duration: 560, delay, fill: 'both' })
+  .addEventListener('finish', () => el.style.cssText = '')
+```
+⚠ `cancel` needs the same handler or an interrupted run leaves the start pose
+inline. `perspective()` inside `transform` is per-element, so participants at
+different screen positions get different vanishing points — fine for an
+arrival, wrong for a group that must share one.

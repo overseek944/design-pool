@@ -4,7 +4,7 @@ category: timing
 tags: [timing,choreography,keyframes,css-animation,token,sequence]
 axes: {energy: 2, density: 3, weight: 2, finish: 5}
 cost: 2
-seen: 22
+seen: 23
 requires: []
 conflicts: []
 completes: []
@@ -191,3 +191,18 @@ A badge that fades in at 0.3s and out at 8s is then invisible for eight seconds.
 ```
 ⚠ The bug scales with the gap: at a 200ms delay it reads as a flicker, at 8s as
 a missing element, so it survives review on a short scene and breaks on a long one.
+
+A gesture assembled from several parts of one mark — a face, its brows, the
+sparks around it — takes the same construction with the *settle* staggered
+rather than the start: one duration on every part, `both`, and each part's
+motion front-loaded into its own fraction of the timeline. The parts land in
+order with no delay to maintain, the gesture is guaranteed to finish on one
+frame, and the remaining tail is deliberate dead air in which the mark is simply
+a legible static icon. Motion inside the first 30–58%, total 2–2.5s.
+```css
+.part { animation: var(--gesture) cubic-bezier(.2,.78,.3,1) both }  /* --gesture: 2.4s */
+@keyframes brows { 0%,7% { translate: 0 5px } 18% { translate: 0 -4px } 34%,to { translate: 0 } }
+```
+⚠ Repeat every settle pose at `to`. A part whose last authored stop is earlier
+interpolates from there back to the element's base value across the whole tail,
+and the hold everything else is keeping becomes a slow drift on that one part.

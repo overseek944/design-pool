@@ -4,7 +4,7 @@ category: media
 tags: [media,video,legibility,overlay,accessibility,responsive]
 axes: none
 cost: 1
-seen: 14
+seen: 15
 requires: []
 conflicts: []
 completes: []
@@ -86,3 +86,17 @@ one crop drifts off the subject at the next. Clear to 40–50%, ground by 95–1
 ⚠ The hole is where alpha is lowest and detail highest, so any copy reaching
 into it is being read against raw picture. Keep the text on the ramped side and
 re-measure the hole's *position* at each crop, not only its size.
+
+Where the copy is short — a headline and a line under it — the scrim can be
+dropped and legibility carried per glyph instead. A wide, soft `text-shadow` in
+a dark tint of the picture's *own* hue, never black, darkens only the pixels the
+letterforms sit on: the frame keeps full strength everywhere, nothing has to be
+restated when the copy rewraps, and there is no layer to re-tune at each crop.
+Blur 12–24px, 2–4px down, alpha 0.4–0.6.
+```css
+.head { color: #f4f2ec; text-shadow: 0 3px 18px rgb(4 47 46 / .5) }
+```
+⚠ It protects glyph edges, not counters and gaps, so it holds only at heavy
+display weights — a light or thin face has too little ink to cast enough shadow.
+No contrast tool scores it either; sample the rendered pixels against the
+brightest frame by hand.

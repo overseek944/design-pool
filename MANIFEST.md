@@ -1,6 +1,6 @@
 # Manifest
 
-767 primitives. Format: `category/id | axes cost | tags | gist`
+769 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -240,6 +240,7 @@ layout/container-budgeted-column-drop | neutral  $2 | layout container-query tab
 layout/container-edge-rule-lattice | E1 D3 W1 F5 $2 | layout grid hairline precision responsive technical | Draw the measurement system, not only the content. Vertical hair
 layout/container-solved-overlap-stride | E1 D4 W2 F5 $2 | layout overlap measurement resize-observer density quantity | Do not pick how far a row of fixed-width cards overlaps — solve 
 layout/content-spanning-note-bracket | E1 D2 W1 F5 $1 | layout annotation editorial rule accessibility | A note set in the margin beside a long block never says which ro
+layout/count-derived-stack-extent | E1 D4 W2 F5 $1 | layout overlap stack calc responsive composition | Absolutely-positioned children contribute no height, so an overl
 layout/count-threshold-shape-shift | neutral  $1 | layout has quantity-query chrome css-only density | Let a container change what it is once its contents pass a count
 layout/count-varied-centred-lattice | E1 D4 W2 F5 $2 | layout lattice tessellation flex field responsive | A tessellated field — hexagons, staggered chips, a brick course 
 layout/cropped-stage-mock | E1 D2 W2 F5 $2 | layout responsive overflow media scale detail | Show a framed artifact — a handset, a browser chrome, a console 
@@ -601,6 +602,7 @@ scroll/tall-target-intersection-clause | neutral  $1 | scroll correctness observ
 scroll/transform-hosted-scroll-wrapper | neutral  $3 | scroll architecture correctness transform pin | Smoothing the whole page without a library: a spacer takes the m
 scroll/wheel-owned-scrub-stage | E3 D2 W3 F5 $3 | scrub wheel stage progress transport pointer pin | A timeline whose length has nothing to do with viewport heights 
 scroll/whole-item-rail-page | neutral  $1 | scroll rail pagination control measurement correctness | An arrow that scrolls a horizontal rail by a fixed distance — 30
+scroll/wrapper-hosted-snap-deck | neutral  $2 | scroll snap responsive breakpoint correctness architecture | Vertical snap on the document fights collapsing mobile chrome an
 surface/addressable-cell-lattice | E1 D3 W1 F4 $2 | lattice grid hairline pointer-events node-budget decoration | A hairline lattice drawn as two gradients costs one node and ans
 surface/arc-length-colour-ramp-stroke | E3 D2 W2 F5 $3 | svg stroke gradient color dash effect | An SVG gradient paints in the element's box, so a stroke that cu
 surface/axis-stretched-noise-veil | E1 D3 W2 F4 $3 | surface noise svg-filter gradient atmosphere blend-mode | Evenly blurred noise reads as grain. Blur turbulence anisotropic
