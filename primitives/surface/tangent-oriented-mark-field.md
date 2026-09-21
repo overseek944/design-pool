@@ -4,7 +4,7 @@ category: surface
 tags: [surface,texture,generative,ambient,detail,svg]
 axes: {energy: 2, density: 4, weight: 2, finish: 5}
 cost: 3
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -37,3 +37,28 @@ float m = h < 0.76 ? square(p, s) : diamond(p, s * 1.18);
 ```
 ⚠ One hash fed two offsets, not one hash reused — an unshifted second call makes
 shape and size agree and the field bands.
+
+Scale the angle jitter by the *signal* driving the field rather than by distance
+from a curve, and the field narrates its own strength: marks lie at their own
+angles where the drive is weak and snap into alignment where it is strong, so
+order appears to emerge rather than to be applied. `(1 − t)²` on the scatter and a
+matching growth in mark length say it twice. Scatter 100–150° at zero signal.
+```js
+const a = Math.atan2(fy, fx) + (h - 0.5) * 2.6 * (1 - t) * (1 - t)
+const len = LEN + GROW * t                       // short and loose → long and ruled
+```
+⚠ At full scatter the marks must still be long enough to read as oriented, or the
+weak region degrades to the spray this technique exists to avoid.
+
+A uniform mark reads as print; a material reads as grains. Give each mark a stable
+per-position hash and spend it on three things at once — length ±40–50%, its own
+darkness a shade either side of the field value, and for roughly a third of them a
+smaller companion speck offset *perpendicular* to the long axis. Beside, never on
+top: a collinear second mark just reads as one longer mark.
+```js
+const half = (LEN + GROW * t) * (0.55 + 0.9 * h2) * 0.5
+if (h3 > 0.56) push(x - dy / half * off, y + dx / half * off, dx * 0.45, dy * 0.45)
+```
+⚠ Derive the extra hashes from the first by a multiply-and-fract, not by a second
+call at the same coordinate — an unshifted hash makes length and darkness agree
+and the field bands.

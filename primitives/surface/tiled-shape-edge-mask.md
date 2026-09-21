@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,edge,ornament,texture,section]
 axes: {energy: 2, density: 3, weight: 2, finish: 3}
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -41,3 +41,22 @@ past both ends and let `object-fit: cover` crop rather than stretch.
 height at every width, so any content aligned to it needs its own anchor. A
 band this wide is the page's heaviest asset — it earns its place once, not at
 every section boundary.
+
+Neither masking nor a stretched band survives a boundary against *photographic*
+ground: a mask cuts to whatever the band paints, and a painted band has to fake a
+colour the neighbour is not. Invert it — give the incoming section a pseudo-element
+carrying a curve filled with **its own** flat ground colour, and overlap it into the
+neighbour. The curve is then a hole, and what shows through is the real neighbour,
+textured or not. A hairline stroked along the same path reads as the edge itself.
+Overlap 40–70px.
+```css
+#next::before { content: ""; position: absolute; top: -53px; left: 0; right: 0;
+  height: 54px; background: url("data:image/svg+xml,<svg …
+    preserveAspectRatio='none'><path d='M0,30 C470,15 980,44 1440,27 L1440,54 L0,54 Z'
+    fill='%23101215'/></svg>") no-repeat 100% 100% }
+```
+⚠ A data-URI fill cannot read a custom property — every colour is a literal
+duplicated from the token it mirrors, and changing a ground silently desyncs its
+divider. Keep the token name in a comment beside each one, and give the arc a
+different control-point pair per boundary: identical curves repeated down a page
+read as a template.

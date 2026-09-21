@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,navigation,focus,correctness,anchor]
 axes: none
 cost: 1
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []
@@ -68,3 +68,20 @@ const step = n => { const k = Math.min((n - t0) / 900, 1)
 fought all the way down — abort on `wheel`, `touchstart` and `keydown`. The
 reduce query has to be read here too: this path never reaches the UA's own
 cancellation.
+
+A smooth jump lands short whenever anything below the fold gains height while the
+browser is still animating — a late image, a swapped font, a video replacing its
+poster. The scroll finished correctly; the target moved afterwards. Once the
+position settles, re-measure and close the gap, subtracting the target's own
+`scroll-margin-top`. Poll at 150–200ms, give up after 10–15 tries, and treat any
+`wheel`, `touchstart` or `keydown` as the reader taking over — a correction that
+fights a deliberate scroll is worse than landing short.
+```js
+if (Date.now() - lastScrollAt < 140) return            // still animating
+const gap = target.getBoundingClientRect().top - scrollMarginTop(target)
+if (Math.abs(gap) < 2) return done()
+scrollBy({ top: gap, behavior: reduced ? 'auto' : 'smooth' })
+```
+⚠ Fixing the cause is the better half of this: intrinsic `width`/`height` on every
+image below the fold removes most of the drift, and the correction then only covers
+what cannot be reserved.

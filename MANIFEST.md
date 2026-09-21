@@ -1,6 +1,6 @@
 # Manifest
 
-440 primitives. Format: `category/id | axes cost | tags | gist`
+443 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -12,6 +12,7 @@ canvas/canvas-behind-dom-not-instead-of-it | neutral  $2 | canvas architecture a
 canvas/cell-quantised-arrival-front | E3 D3 W2 F4 $3 | shader reveal grid quantise front texture | A reveal front evaluated per pixel is a soft edge crossing a pic
 canvas/composed-arrival-field | E3 D3 W2 F5 $2 | shader stagger clock uniform reveal perf | Thousands of elements cannot each own a tween. Derive every elem
 canvas/curl-of-potential-field | E2 D3 W2 F4 $3 | canvas flow field generative motion | Advecting anything through a hand-made velocity field pools it i
+canvas/delay-binned-source-history | E2 D2 W2 F5 $4 | canvas field pointer motion generative | A field evaluated from the driver's current pose updates everywh
 canvas/derivative-width-edge-aa | neutral  $2 | shader canvas precision correctness detail | A procedural shape in a fragment shader gets no antialiasing for
 canvas/described-canvas-figure | neutral  $1 | canvas accessibility architecture diagram | A canvas carrying the argument — a diagram, a chart, a staged ex
 canvas/direction-sampled-burst | E4 D3 W2 F4 $2 | canvas particles generative distribution depth | Independent per-axis ranges can only ever fill a rectangle, so a
@@ -23,6 +24,7 @@ canvas/glyph-ramp-image-field | E2 D4 W2 F3 $4 | canvas type texture image ambie
 canvas/half-pixel-hairline-grid | E1 D2 W1 F5 $1 | canvas hairline correctness diagram pixel-ratio performance | A one-pixel canvas line drawn on an integer coordinate straddles
 canvas/hash-dither-before-quantise | E1 D3 W2 F4 $2 | canvas color ramp noise grain banding generative | Snapping a continuous value onto a short palette — eight to twel
 canvas/hash-tuned-effect-constants | neutral  $1 | canvas generative authoring debug parameters | Every generative effect carries a dozen constants — curl, dissip
+canvas/home-sprung-particle-medium | E2 D3 W2 F5 $3 | canvas field pointer motion generative | A field of marks positioned from the pointer each frame travels 
 canvas/irrational-stride-variation | neutral  $1 | canvas generative field deterministic correctness scatter | Math.random() for per-index variation costs a stored array, a di
 canvas/liveness-floor-reseed | neutral  $2 | canvas generative simulation ambient lifecycle correctness | Most interesting generative rules are also mortal. A lattice, a 
 canvas/named-uv-spaces | neutral  $3 | shader architecture responsive correctness reference | One vertex shader can emit several named coordinate spaces so ea
@@ -38,6 +40,7 @@ canvas/prebaked-gradient-sprite | neutral  $2 | canvas performance particles lig
 canvas/precomputed-cell-attenuation-field | E1 D2 W2 F5 $2 | canvas legibility performance ambient contrast generative | A generative field at full strength everywhere either drowns the
 canvas/prerendered-renderer-understudy | neutral  $3 | canvas progressive-enhancement correctness cls state architecture | A canvas that may not run should degrade to a picture, not to an
 canvas/projected-label-visibility-budget | neutral  $3 | webgl label projection density correctness | Projecting a 3D point to screen coordinates gives a position for
+canvas/quantised-level-set-gather | E2 D3 W2 F5 $3 | canvas field flow generative texture | Particles advected through a smooth field spread into a haze: ev
 canvas/resampled-path-travel | neutral  $2 | canvas performance motion connector architecture | Moving a marker along a curve by solving the curve every frame c
 canvas/reseeded-noise-tile | E2 D3 W2 F3 $2 | canvas texture ambient generative performance | Per-pixel noise across a whole viewport every frame is a fill-ra
 canvas/row-span-culled-field | neutral  $2 | perf field raster culling imagedata architecture | A field summed from a handful of radial sources costs width × he

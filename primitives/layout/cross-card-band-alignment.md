@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,subgrid,cards,hairline,datasheet,alignment]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -39,3 +39,16 @@ under every short title. 2–3 lines.
 ```
 ⚠ An em floor is a floor, not a clamp: a title running to three lines still
 pushes its own card's band down, and only subgrid drags the others with it.
+
+`lh` states the reservation exactly where `em` states it arithmetically:
+`min-height: calc(2lh + 16px)` is two lines plus the box's own padding, and it
+re-solves when leading changes without anyone recomputing `2 × 1.3`. Declare a px
+value first and the `calc` second so engines without the unit keep the old floor.
+The padding term is not optional under a global `border-box`.
+```css
+figcaption { padding: 8px 10px; min-height: 50px; min-height: calc(2lh + 16px) }
+```
+⚠ Worth the reservation only where the element is *bottom*-anchored in its card —
+`margin-top: auto` — because there a caption wrapping to one more line lifts its
+own figure and breaks the row's shared edge. Top-anchored captions just run longer
+and align fine.

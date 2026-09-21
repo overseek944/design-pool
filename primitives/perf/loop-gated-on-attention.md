@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,intersection-observer,visibility,battery,correctness]
 axes: none
 cost: 2
-seen: 29
+seen: 30
 requires: []
 conflicts: []
 completes: []
@@ -134,3 +134,17 @@ absent, and it costs a single frame.
 ```js
 if (rm.matches) { cancelAnimationFrame(raf); video.pause(); if (onScreen) draw(0); return }
 ```
+
+The gate has a blind side: state that changes *while* the loop is stopped. A hidden
+tab never runs the frame that would have applied it, so a transition left mid-flight
+is still mid-flight on return and repaints from the wrong pose. Anywhere state can
+be mutated off-frame, branch on `document.hidden`: snap every eased value to its
+target, render once synchronously, and return without scheduling.
+```js
+function poke() { dirty = true
+  if (document.hidden) { angle = targetAngle; morph = shape; draw(0); dirty = false }
+  else schedule() }
+```
+⚠ Not the same as resetting the clock on resume. That fixes elapsed-time drift;
+this fixes state that was never integrated at all — and a `visibilitychange`
+handler alone cannot, because by then the intermediate frames are gone.

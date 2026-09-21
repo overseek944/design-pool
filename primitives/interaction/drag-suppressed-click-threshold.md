@@ -4,7 +4,7 @@ category: interaction
 tags: [pointer,drag,interaction,correctness,accessibility]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -42,3 +42,18 @@ el.onpointerup = el.onpointercancel = el.onlostpointercapture = release
 ```
 ⚠ `lostpointercapture` fires after an explicit release too, so idempotence is
 not defensive here — it is the ordinary path.
+
+Convert pointer coordinates against a rect captured at `pointerdown`, not against
+live layout state the drag handler reads back each move. A resize mid-gesture — a
+rotation, an address bar collapsing, a sibling growing — updates that state
+asynchronously, and the pointer maths spends a few frames in a coordinate space
+that no longer exists, which reads as the object jumping out from under the finger.
+Refresh the cached rect from the resize handler instead, guarded on the gesture
+being live.
+```js
+onpointerdown = e => { rect = el.getBoundingClientRect() }
+onpointermove = e => { x = (e.clientX - rect.left) / rect.width }   // cached, not live
+new ResizeObserver(() => { layout(); if (dragging) rect = el.getBoundingClientRect() })
+```
+⚠ Store the grab offset at `pointerdown` too — recentring on the pointer instead
+teleports the object by half its size on the first move of every drag.
