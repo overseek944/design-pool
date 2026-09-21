@@ -4,7 +4,7 @@ category: surface
 tags: [surface,clip-path,edge,section,responsive,geometry]
 axes: {energy: 1, density: 2, weight: 3, finish: 4}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -39,3 +39,18 @@ and a 1200px panel, which is what a bevel has to do to read as one material.
 ⚠ Vertex count grows fast — a four-corner staircase runs to 28 points, each
 re-authored by hand if the step size changes. Generate the list, or keep it to a
 single chamfer. Steps below ~3px stop resolving and read as a soft corner.
+
+`clip-path` takes no radius and `border-radius` does not survive it, so a
+non-rectangular shape that still needs soft corners has to draw them: sample
+each corner's arc into 5–9 vertices and emit the polygon from a helper rather
+than by hand. A hexagon, a pentagon plate or a chamfered badge then keeps the
+corner softness of everything around it instead of ending in points, which is
+what makes it read as the same material and not as an icon. Corner radius
+5–12% of the shorter side.
+```js
+const arc = (cx,cy,r,a0,a1,n=7) => Array.from({length:n+1}, (_,i) =>
+  { const a = a0 + (a1-a0)*i/n; return `${cx+r*Math.cos(a)}% ${cy+r*Math.sin(a)}%` })
+```
+⚠ The output is 40+ vertices, unreadable and unmaintainable by hand — keep the
+generator in the build, never the expanded list, or the next radius change is
+a rewrite. Sampling below five points per corner reads as a visible facet.

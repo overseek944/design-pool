@@ -4,7 +4,7 @@ category: light
 tags: [gradient,ground,atmosphere,ambient,color,cheap]
 axes: {energy: 1, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: [eased-fade-stop-ramp]
@@ -118,3 +118,17 @@ from a moving source rather than a stack of flat bands. Accent .04–.10, ellips
 ```
 ⚠ Keep the set closed — three or four named recipes, chosen per section — or
 the anchors stop alternating and every ground drifts to the same corner.
+
+Size the ellipse in `vh` on *both* axes where the wash belongs to the opening
+screen rather than to its box. Percentages resolve against the element, so a
+wash tuned on a laptop stretches into a flat band on a wide monitor and loses
+its shape; stated as `ellipse 120vh 40vh at 50% 0` it holds the same
+proportion, and the same fraction of the fold, at every width. Anchor it at the
+top edge and the light reads as coming from above the viewport. Width
+100–160vh against depth 30–50vh.
+```css
+.hero::before { background: radial-gradient(ellipse 120vh 40vh at 50% 0,
+                  var(--wash), transparent) }
+```
+⚠ `vh` ignores the mobile URL bar's collapse, so the wash resizes mid-scroll on
+iOS — use `svh` where the hero is pinned to the first screen.

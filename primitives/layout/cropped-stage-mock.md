@@ -4,7 +4,7 @@ category: layout
 tags: [layout,responsive,overflow,media,scale,detail]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -46,3 +46,19 @@ reflowed imitation reads as a diagram of one. Native width 900–1280px behind a
 ```
 ⚠ Nothing inside is operable at that scale, so make it inert and give the card
 one real control of its own — a link out, or a full-screen affordance.
+
+Where the artifact must be shown whole, `scale()` replaces the crop: author the
+mock at the width its type and spacing were designed for and shrink it into the
+aperture with `transform-origin: top center`, one factor per instance. Three
+mocks of different native widths then share an apparent density — which is what
+makes them read as one product rather than three screenshots — and none of them
+loses a control to a clipped edge. Factors 0.7–0.95; below that body copy stops
+being legible at the card's size.
+```css
+.mock { position: absolute; top: 22px; left: 50%;
+        transform: translateX(-50%) scale(.77); transform-origin: top center }
+```
+⚠ A transform does not shrink the layout box, so the card reserves the mock's
+*unscaled* height unless the stage states its own — and text inside is scaled
+rather than resized, so it renders at a sub-pixel size the browser's minimum
+font setting will not protect.

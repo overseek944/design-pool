@@ -4,7 +4,7 @@ category: light
 tags: [effect,blend,compositing,dark]
 axes: {energy: 3, density: 3, weight: 3, finish: 4}
 cost: 3
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []
@@ -78,3 +78,14 @@ on the section ground.
 ⚠ There is no partial fix — either the chrome goes fully opaque at the page
 colour, or the mark needs a real alpha channel. A matte that is merely close is
 worse than a visible one, because it only shows at some scroll positions.
+
+Variant — `soft-light` with the layer's own fill held at pure white or pure
+black. The layer then carries no hue at all: it only lifts or sinks the
+luminance already under it, so one decorative field composites correctly over
+any gradient, tint or photograph without being re-tuned per section. Because
+the whole effect lives in one fill value, the theme flip is that value —
+`fill: light-dark(#fff, #000)` — and the field lightens a light ground and
+darkens a dark one from a single declaration. Opacity 0.5–0.8; below that it
+stops registering, since soft-light's response near mid-grey is very flat.
+⚠ Nothing in the layer can carry meaning — over a mid-tone ground it drops to
+almost nothing, and `forced-colors` discards the blend entirely.

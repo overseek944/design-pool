@@ -4,7 +4,7 @@ category: scale
 tags: [tokens,fluid,naming,architecture,responsive]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -35,3 +35,17 @@ first argument at every width, and the overlap is frozen.
 ```
 ⚠ Carry the signs into the name for the same reason the positive ramps carry
 their endpoints — otherwise the next reader repairs the order the wrong way round.
+
+The same naming argument applies to the *static* scale, and answers the oldest
+objection to `rem` type: name each token after the pixel size the design
+specifies and hold a `rem` value in it. The handoff vocabulary survives — a
+spec that says 13px is satisfied by a token called 13px — while every size
+still answers to the reader's root setting, so nobody has to choose between a
+legible scale and an accessible one. The name is mechanical, so there is no
+judgement per call site and no step anyone has to learn.
+```css
+--font-size-13px: 0.8125rem;   /* 13 ÷ 16 */
+--font-size-18px: 1.125rem;
+```
+⚠ The name is a lie at any root size but the default, which is the point —
+never compute against it, and never mix a raw `px` value into the same scale.

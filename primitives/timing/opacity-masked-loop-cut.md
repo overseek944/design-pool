@@ -4,7 +4,7 @@ category: timing
 tags: [timing,keyframes,loop,opacity,conveyor]
 axes: {energy: 3, density: 2, weight: 2, finish: 4}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -28,3 +28,18 @@ translate. Give the blind window 8–12% of the cycle.
 ```
 ⚠ The stops either side of the cut must hold identical opacity or it strobes.
 Peers on one period all cut at the same instant — offset their phase.
+
+The cut need not happen in the track that carries it. Put the opacity pulse on
+the parent and the stepped property on a child, both on the same duration, and
+the child's change lands inside the parent's trough — so a property that
+*would* interpolate steps instead. A mark cycling seven hues then blinks each
+one in rather than sliding through the mud between them, which is the only way
+a hue cycle reads as a set of states and not as a rainbow. Hold each value
+across a range and change it on the stop adjacent to opacity zero.
+```css
+.mark      { animation: pulse var(--seq) infinite }          /* 0%,to:1  7.14%:0 */
+.mark path { animation: hue   var(--seq) infinite }
+@keyframes hue { 7.14% { fill: var(--a) } 7.15%, 21.42% { fill: var(--b) } }
+```
+⚠ The two animations start together only if they are declared together — a
+child mounted later begins its own cycle and the step drifts into view.

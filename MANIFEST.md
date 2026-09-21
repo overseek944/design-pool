@@ -1,6 +1,6 @@
 # Manifest
 
-672 primitives. Format: `category/id | axes cost | tags | gist`
+674 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -93,6 +93,7 @@ color/declared-contrast-escalation | neutral  $1 | accessibility contrast tokens
 color/disposition-token-set | neutral  $1 | color tokens state correctness accessibility | A review queue is not a severity display, and borrowing success/
 color/embedded-replica-palette-split | neutral  $1 | color tokens product mock architecture | A page embedding a working replica of the product needs two toke
 color/gamut-ladder-fallback | neutral  $1 | color tokens progressive-enhancement correctness | Ship every colour token twice: an sRGB hex baseline, then the wi
+color/ground-indexed-inverting-ramp | neutral  $2 | color tokens theming naming architecture contrast | Number a neutral ramp by distance from the page ground rather th
 color/lightness-preserved-neutral-tint | neutral  $2 | color tokens theming neutral contrast | Greys left literally grey under a coloured theme read as a secon
 color/midpoint-switched-ink | E2 D1 W2 F5 $2 | theme transition contrast color custom-properties legibility | A theme toggle that tweens paper and ink on one curve passes thr
 color/near-black-single-ramp | E2 D2 W4 F4 $1 | color palette dark restraint | Pure #000 ground, off-white #ededed text, and ONE neutral ramp (
@@ -211,6 +212,7 @@ layout/container-edge-rule-lattice | E1 D3 W1 F5 $2 | layout grid hairline preci
 layout/container-solved-overlap-stride | E1 D4 W2 F5 $2 | layout overlap measurement resize-observer density quantity | Do not pick how far a row of fixed-width cards overlaps — solve 
 layout/content-spanning-note-bracket | E1 D2 W1 F5 $1 | layout annotation editorial rule accessibility | A note set in the margin beside a long block never says which ro
 layout/count-threshold-shape-shift | neutral  $1 | layout has quantity-query chrome css-only density | Let a container change what it is once its contents pass a count
+layout/count-varied-centred-lattice | E1 D4 W2 F5 $2 | layout lattice tessellation flex field responsive | A tessellated field — hexagons, staggered chips, a brick course 
 layout/cropped-stage-mock | E1 D2 W2 F5 $2 | layout responsive overflow media scale detail | Show a framed artifact — a handset, a browser chrome, a console 
 layout/cross-card-band-alignment | E1 D3 W1 F5 $2 | layout grid subgrid cards hairline datasheet alignment | A row of cards aligns at its outer edges and nowhere else: each 
 layout/document-underlay-window | E2 D1 W3 F4 $2 | layout stacking reveal video section fixed | Give the document one fixed, full-viewport media layer at a nega

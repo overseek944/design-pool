@@ -4,7 +4,7 @@ category: type
 tags: [type,polish]
 axes: none
 cost: 1
-seen: 75
+seen: 76
 requires: []
 conflicts: []
 completes: []
@@ -54,3 +54,17 @@ h1 br.narrow { display: none }
 ```
 ⚠ A `<br>` is read as a line break by screen readers and copies as a newline —
 fine between sentences, wrong mid-clause. Break where you would break aloud.
+
+`text-wrap` is a shorthand over `text-wrap-mode` and `text-wrap-style`, and it
+resets both. Setting `text-wrap: balance` on a title nested inside something
+deliberately held at `nowrap` therefore turns wrapping back on as a side
+effect, which reads as a bug in a control strip or a truncated cell. Reach for
+the longhand `text-wrap-style: balance` wherever the mode is someone else's
+decision — it changes the rag and leaves the wrapping alone.
+```css
+.cell   { text-wrap-mode: nowrap }
+.cell h5 { text-wrap-style: balance }     /* not text-wrap: balance */
+```
+⚠ The longhands landed later than the shorthand, so an engine that balances via
+`text-wrap` may ignore `text-wrap-style` — the fallback is an unbalanced rag,
+never a broken layout, which is why this is safe to ship unguarded.

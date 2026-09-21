@@ -4,7 +4,7 @@ category: type
 tags: [indicator,mono,glyph,loading,state,motion]
 axes: {energy: 3, density: 1, weight: 2, finish: 3}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -42,3 +42,18 @@ whole indicator is two rules. Period 1–1.6s over 3–4 stops.
 ⚠ `ch` is the width of `0`, not of the glyph being revealed — for periods or
 braille it over-reserves and the sentence after it sits a little far off. Measure
 the real set and use a fixed `em` value where the gap shows.
+
+The third form animates `content` on a pseudo-element directly — no timer, no
+width arithmetic, the sequence written as the keyframes themselves. It is the
+shortest of the three and the least portable: `content` is not an interpolable
+property, so engines that decline to animate it leave the pseudo-element
+showing frame zero forever, and where frame zero is `""` the indicator is
+simply absent. Reserve the widest state on the host and left-align, or the
+sentence after it still moves.
+```css
+.wait::after { content: ""; display: inline-block; width: 3ch; text-align: left;
+               animation: dots 1.4s infinite }
+@keyframes dots { 0%,20%{content:""} 40%{content:"."} 60%{content:".."} 80%,to{content:"..."} }
+```
+⚠ Make frame zero the *final* state, not the empty one, so a non-animating
+engine shows a complete ellipsis rather than nothing at all.

@@ -4,7 +4,7 @@ category: timing
 tags: [timing,choreography,keyframes,css-animation,token,sequence]
 axes: {energy: 2, density: 3, weight: 2, finish: 5}
 cost: 2
-seen: 18
+seen: 19
 requires: []
 conflicts: []
 completes: []
@@ -130,3 +130,19 @@ Total 1.8–3.2s; past 4s the reader has already tried to scroll.
 ⚠ Zero-opacity text is not painted content, so the stop at which copy arrives is
 the floor for Largest Contentful Paint — a long entrance fails the metric on its
 own, however cheap each animation is.
+
+A one-shot sequence on a single element needs neither a master percentage nor a
+state machine: list the animations and stagger the comma-separated
+`animation-delay` beside them. Each beat stays a two-stop keyframe block with
+its own duration, `forwards` holds every finished state, and the running order
+is one line to read and one number to retime. This is the right shape for an
+entrance that draws, settles and then hands over — a sequence played once, not
+a loop.
+```css
+.stencil { stroke-dasharray: 0 300;
+  animation: draw .5s ease-out forwards, fade .4s ease-out forwards;
+  animation-delay: .05s, 1.1s }
+```
+⚠ The lists are matched by position and the shorter one *cycles* rather than
+padding — two names against one delay silently gives both the same delay, and
+the whole sequence collapses into one beat.
