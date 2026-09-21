@@ -4,7 +4,7 @@ category: layout
 tags: [layout,measurement,legibility,canvas]
 axes: none
 cost: 2
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -101,3 +101,18 @@ at runtime still has to be measured.
 ⚠ It clears the art's *box*, not its ink — artwork with transparent margin
 reserves space it does not use and the gap reads as double. Crop the asset to
 its subject before trusting the number.
+
+Where the art is *one* element rather than a field, invert the search instead of
+pushing back. Enumerate the lattice of legal positions once — the pitch the
+ground is already drawn on — drop every cell inside the padded copy rect, and
+choose from what survives. The result is always on the grid and always clear of
+the text, with no displacement vector to tune and no chance of landing half over
+a descender. Pad 24–40px beyond the measured box.
+```js
+const free = cells.filter(c => !(c.x > t.left - pad && c.x < t.right + pad &&
+                                 c.y > t.top - pad && c.y < t.bottom + pad))
+place(free[Math.floor(seed * free.length)])
+```
+⚠ Re-run on `document.fonts.ready` as well as on resize. The fallback face and
+the real one give different copy rects, and a position chosen against the
+fallback can end up sitting on the headline once the webfont lands.

@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,accessibility,required]
 axes: none
 cost: 1
-seen: 66
+seen: 67
 requires: []
 conflicts: []
 completes: []
@@ -191,3 +191,20 @@ site, including ones added later, inherits it.
 ⚠ The property split is not a licence to keep scale. A large element easing
 from .9 to 1 is movement in the peripheral field and triggers exactly what the
 preference is about; only genuinely static properties survive the branch.
+
+A mask is the one property whose rest state is not a final position. A layer
+revealed by animating `mask-position` is still masked when the animation stops,
+so `animation: none` under `reduce` leaves whatever the mask was clipping
+clipped for good — and where the mask exists only to make the reveal possible,
+the honest still state is `mask-image: none`, not a settled offset. Decide per
+layer whether the residue is composition or leftover: a feathered edge that
+meets a neighbour is worth keeping, a wipe never is.
+```css
+@media (prefers-reduced-motion: reduce) {
+  .swept { animation: none; mask-image: none }        /* not mask-position: 0 0 */
+  .swept::after { opacity: 0; animation: none }       /* and kill the second pass */
+}
+```
+⚠ Removing the mask also removes any softening the layer relied on at its own
+edges — restate a static mask rather than dropping it where the fade is part of
+the design.

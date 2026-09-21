@@ -4,7 +4,7 @@ category: reveal
 tags: [reveal,mask,scan,grid,sweep,technical]
 axes: {energy: 3, density: 3, weight: 2, finish: 4}
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -82,3 +82,21 @@ surface rather than as a reveal. Tile 30–50% of the element, 8–20s.
 ⚠ It never stops, so it is the first thing to withdraw under
 `prefers-reduced-motion` — and by `display: none` on the layer, not
 `animation: none`, which leaves a static banded mask painted over the texture.
+
+A band cut into the revealing layer takes the field away as it passes. Put the
+band on a second, *brighter* copy of the same generator stacked over the settled
+one and the pass turns additive: the base never drops out, and what travels is a
+highlight rather than a hole. Give that band several alpha stops rather than two
+— faint leading edge, hard core, longer tail — and one pass reads as light
+crossing a ruled surface instead of a rectangle sliding over it. Copy at 2–3×
+the base alpha, band 10–16% of the oversized mask.
+```css
+.field::after { content: ""; position: absolute; inset: 0; background-size: inherit;
+  background-image: /* same generator, 2-3x alpha */; opacity: 0;
+  mask-image: linear-gradient(135deg, #0000 36%, #0003 41%, #0000 44%, #000c 47%,
+                              #000 50%, #0004 53%, #0000 58%);
+  mask-size: 300% 300%; mask-repeat: no-repeat; animation: pass 3.2s ease-in-out both }
+```
+⚠ The copy doubles the layer's paint for the length of the pass. Hold it at
+`opacity: 0` at both ends of the keyframes so it costs nothing at rest, and keep
+it off whatever is already the page's largest paint.

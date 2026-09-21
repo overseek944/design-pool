@@ -4,7 +4,7 @@ category: timing
 tags: [tokens,correctness,motion,build]
 axes: none
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -79,3 +79,19 @@ const [r, gr, b] = g.getImageData(0, 0, 1, 1).data      // now usable as rgba()
 ⚠ `fillStyle` silently keeps its previous value on an unparseable string, so
 seed it with a known-bad colour and check it changed. The probe flattens alpha
 against nothing — read `globalAlpha` separately if the token carries one.
+
+Computed style reports the *current interpolated* value of a property that is
+mid-animation, not the declared one, which makes a CSS timeline readable from
+script without a second copy of its duration anywhere. Poll the one property
+that is moving and derive the dependent event from it — a second element
+released once a wipe has passed the point it belongs at, a handler armed at a
+threshold. The same read answers whether the animation exists at all: a property
+computing to its unanimated value is the reduced-motion branch, and the right
+response there is to fire immediately rather than wait.
+```js
+const s = getComputedStyle(el)
+if (s.maskImage === 'none' || parseFloat(s.maskPosition) <= 45) release()
+```
+⚠ Every `getComputedStyle` read forces a style recalculation — poll one property
+on a rAF you already own, never several, and stop the loop the frame the gate
+opens or this costs more than the timeline it is reading.

@@ -4,7 +4,7 @@ category: media
 tags: [media,sprite,animation,svg,performance]
 axes: {energy: 3, density: 2, weight: 2, finish: 4}
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -49,3 +49,17 @@ moves; `view-box` for anything hinged.
 ```
 ⚠ Without either value the origin resolves against the *reference box*, which
 for SVG children is the nearest viewport — usually not what the artwork implies.
+
+Nothing requires the stepped property to be a translation. Put `steps()` on a
+*rotation* and one drawn object becomes its own filmstrip: `rotateY` through
+360° quantised to 8–12 steps reads as a coin, a token or a card flipping, with
+no frames authored, no strip to decode and one element in the DOM. The step
+count is the whole design — fewer than 8 and the object jumps, more than 14 and
+it stops reading as frames and starts reading as a stuttering spin.
+```css
+.token { animation: flip 1.2s steps(10, end) infinite }   /* 8–12 steps, 1–1.8s */
+@keyframes flip { to { transform: rotateY(360deg) } }
+```
+⚠ A flat shape is edge-on at 90° and 270° and disappears for that frame, so the
+count must not land on them: `steps(8)` and `steps(12)` both do, `steps(10)`
+does not. Pair with `shape-rendering: crispEdges` if the art is pixel-aligned.

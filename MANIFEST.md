@@ -1,6 +1,6 @@
 # Manifest
 
-618 primitives. Format: `category/id | axes cost | tags | gist`
+621 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -116,6 +116,7 @@ interaction/copy-with-selection-fallback | neutral  $1 | interaction clipboard a
 interaction/coreference-trace-highlight | E2 D3 W2 F5 $2 | interaction annotation cross-reference highlight accessibility diagram | Where one value recurs across panels — a figure in a table, the 
 interaction/count-indexed-sheet-stack | E2 D3 W2 F5 $3 | sheet overlay stack gesture depth transform | A stack of sheets needs one number, not a state machine: how man
 interaction/cross-context-preference-sync | neutral  $1 | theme preferences storage correctness accessibility | A stored preference is a fact about the reader, not about one ta
+interaction/cursor-tracked-vanishing-point | E3 D3 W2 F5 $3 | interaction pointer 3d depth field transform hover | Tiles pushed toward the reader on Z all shear toward the contain
 interaction/dimension-coded-position-dot | E2 D2 W2 F5 $1 | interaction state indicator accessibility carousel | Let the active item in a position indicator change size, not onl
 interaction/dismissal-escalated-reprompt | neutral  $2 | interaction prompt cadence persistence restraint correctness | A recurring prompt — install, subscribe, upgrade — needs a caden
 interaction/drag-suppressed-click-threshold | neutral  $2 | pointer drag interaction correctness accessibility | A surface that answers to drag and also holds links fires a clic
@@ -152,6 +153,7 @@ interaction/paired-focus-offset-tokens | neutral  $1 | accessibility focus token
 interaction/partial-modality-inert-siblings | neutral  $2 | interaction dialog accessibility inert focus correctness | Not every overlay should take the whole page. A panel hung off a
 interaction/pointer-transparent-copy-layer | neutral  $1 | interaction pointer accessibility layout correctness | Copy laid over a background that reacts to the pointer swallows 
 interaction/pre-hydration-nested-link | neutral  $2 | accessibility links hydration progressive-enhancement correctness | A card that navigates but contains its own link cannot be an anc
+interaction/proximity-revealed-target | E2 D1 W2 F5 $2 | interaction pointer accessibility focus custom-properties affordance pointer-events | A control meant to be found rather than advertised can key its o
 interaction/proxy-painted-native-control | neutral  $1 | accessibility focus forms input correctness keyboard | Keep the real <input> and paint a sibling. Clip it to a 1×1 rect
 interaction/rejected-file-input-reset | neutral  $1 | correctness form input file detail | Check a chosen file's real type and byte length before any uploa
 interaction/reserved-state-border | neutral  $1 | accessibility focus cls border correctness | A control that gains a border on focus or selection must carry t
@@ -386,6 +388,7 @@ perf/dual-epsilon-settle-halt | neutral  $1 | performance animation spring frame
 perf/engagement-deferred-third-party | neutral  $2 | performance third-party analytics loading idle correctness | A tag that only observes engaged sessions should not compete wit
 perf/fixed-point-coordinate-payload | neutral  $2 | perf payload data points precision | A large coordinate set shipped as JSON floats spends most of its
 perf/font-display-per-role | neutral  $1 | type font-loading cls performance correctness | font-display is a decision per face, not per project. Body and U
+perf/index-windowed-field-update | neutral  $2 | performance pointer field grid correctness batching | A field of elements driven from the pointer does not need visiti
 perf/layer-order-preamble | neutral  $1 | architecture cascade css correctness code-splitting | Cascade layers are ordered by first mention, so with code-split 
 perf/loop-gated-on-attention | neutral  $2 | performance animation intersection-observer visibility battery correctness | An infinite decorative animation never stops — it keeps composit
 perf/markup-declared-instrumentation | neutral  $1 | architecture instrumentation events delegation maintenance | Declare the event name and its payload as data- attributes and l

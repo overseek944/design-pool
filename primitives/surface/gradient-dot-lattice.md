@@ -4,7 +4,7 @@ category: surface
 tags: [surface,texture,pattern,blueprint,cheap]
 axes: {energy: 1, density: 3, weight: 1, finish: 4}
 cost: 1
-seen: 26
+seen: 27
 requires: []
 conflicts: []
 completes: []
@@ -88,3 +88,20 @@ body   { background-size: 44px 44px }
 ```
 ⚠ A non-integer ratio beats against the outer grid along the frame's edge. Two
 tiers is the ceiling — a third nested ruling reads as moiré, not as structure.
+
+One pitch is a texture; two are a drawing. Stack the orthogonal rule generator
+at a coarse and a fine pitch in a single `background-image` — an integer ratio,
+the coarse pair at roughly double the alpha — and the ground reads as a drafting
+sheet with major and minor divisions rather than as a uniform mesh. Close the
+stack with a flat wash so the whole field tints from one declaration. Fine
+24–40px, coarse 4× that, alphas near 20% and 10%.
+```css
+background-image:
+  linear-gradient(90deg, var(--major) 1px, #0000 1px), linear-gradient(var(--major) 1px, #0000 1px),
+  linear-gradient(90deg, var(--minor) 1px, #0000 1px), linear-gradient(var(--minor) 1px, #0000 1px),
+  linear-gradient(var(--wash), var(--wash));
+background-size: 128px 128px, 128px 128px, 32px 32px, 32px 32px, 100% 100%;
+```
+⚠ A non-integer ratio walks the coarse lines off the fine ones and no two cells
+come out the same size. Both pitches need whole-pixel values or the two layers
+alias differently and the majors look heavier on one axis.
