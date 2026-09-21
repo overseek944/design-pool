@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,edge,composition,bleed]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 28
+seen: 29
 requires: []
 conflicts: []
 completes: []
@@ -136,3 +136,17 @@ fades.
 ⚠ Unregistered, the same declaration silently does not animate — no error, the
 edge just snaps. Name the four in logical pairs (`-s`/`-e` beside `-t`/`-b`) or
 the mask flips wrong in RTL.
+
+Where the ground behind the element is a known flat colour, an opaque gradient
+*overlay* does the same job with no mask at all: an absolutely-positioned strip
+on the edge running from `transparent` to that ground. It costs a node per edge
+and is defeated the moment the ground becomes a gradient or an image, but it
+needs no `mask-composite`, no prefix pair, and it cannot be clipped away by an
+ancestor that already owns the element's own mask. Strip 32–64px.
+```css
+.rail::after { position: absolute; inset: 0 0 0 auto; width: 48px;
+  background: linear-gradient(to right, #fff0, var(--ground)) }
+```
+⚠ `#fff0` and `transparent` are the same premultiplied colour, but a named
+`transparent` against a dark ground still ramps through black in sRGB — always
+write the ground's own hue at zero alpha.

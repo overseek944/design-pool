@@ -4,7 +4,7 @@ category: color
 tags: [color,tokens,theming,architecture]
 axes: none
 cost: 1
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []
@@ -75,3 +75,18 @@ from whatever ink it inherits, in every context, with one declaration.
 hold a usable value — declare the fallback first, never rely on the cascade
 below it. Clamp derived lightness with `min()`/`max()`: `l + .4` on an already
 pale ink silently exceeds 1 and flattens to white.
+
+The *direction* of a derived step is the part that has to be themed, not the
+colour. Hold the lightness delta as a signed token — negative on a light theme,
+positive on a dark one — and one derivation rule gives every control a border
+darker than its own face in light mode and lighter in dark, with no second
+declaration and no per-theme colour table. It generalises: any component that
+derives a neighbour shade reads the same token.
+```css
+:root { --step: -8% }            /* dark theme: +9% */
+.btn { --edge: hsl(var(--fill));  /* fallback first */
+       --edge: hsl(from hsl(var(--fill)) h s calc(l + var(--step)) / alpha) }
+```
+⚠ Near either end of the lightness range the step runs out of room and clamps,
+so the border vanishes on a near-white or near-black fill — the two faces most
+likely to need one.

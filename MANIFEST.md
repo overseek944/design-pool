@@ -1,6 +1,6 @@
 # Manifest
 
-458 primitives. Format: `category/id | axes cost | tags | gist`
+461 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -91,6 +91,7 @@ interaction/dimension-coded-position-dot | E2 D2 W2 F5 $1 | interaction state in
 interaction/drag-suppressed-click-threshold | neutral  $2 | pointer drag interaction correctness accessibility | A surface that answers to drag and also holds links fires a clic
 interaction/edge-hotzone-sibling-reveal | E2 D2 W2 F5 $2 | interaction hover panel chrome css-only accessibility | Reclaim the width a hidden rail costs without a toggle: park an 
 interaction/edge-traversing-knob | E3 D2 W2 F5 $1 | interaction state affordance motion detail | A control states its direction by sending its own mark the whole
+interaction/fill-agnostic-state-plate | E2 D2 W2 F5 $1 | hover state pseudo-element theme system contrast | A hover token per fill does not scale: a control faced with an i
 interaction/find-reachable-collapse | neutral  $1 | accessibility correctness disclosure search architecture | Collapsed content the browser's own find cannot reach is content
 interaction/focus-handoff-on-self-removal | neutral  $1 | accessibility focus correctness form state | A control that removes itself when used — a form replaced by its
 interaction/focusable-graphic-regions | neutral  $2 | accessibility svg focus diagram correctness | A drawing whose parts answer to the pointer — a map, a schematic
@@ -249,6 +250,7 @@ motion-system/parameterised-path-travel | E3 D3 W1 F4 $2 | motion loop ambient d
 motion-system/path-scrubbed-entrance | E3 D2 W2 F5 $3 | motion scroll motion-path choreography scrub | Give each element its own curve instead of a shared translate. A
 motion-system/paused-as-authored-rest | neutral  $1 | motion architecture correctness scene performance | A decorative scene whose resting state is running has already pl
 motion-system/pivot-segmented-route | E3 D2 W2 F5 $2 | motion path diagram keyframes | Interpolating position and heading together makes a marker cut d
+motion-system/print-frozen-frame-branch | neutral  $1 | print correctness motion fallback accessibility | Anything a reader will print or save as PDF — a report, an invoi
 motion-system/reduced-motion-branch | neutral  $1 | motion accessibility required | Branch at setup, not per-animation: if the user prefers reduced 
 motion-system/residual-length-trail-lock | E2 D2 W1 F5 $2 | motion svg stroke path diagram | A trail and the mover drawing it are two animations; time alone 
 motion-system/scheduled-event-aliveness | E3 D2 W2 F4 $3 | idle loop character randomness raf ambient | Anything idling on sines reads as a mechanism — the period is au
@@ -367,6 +369,7 @@ surface/dash-phase-flow | E2 D2 W1 F5 $1 | svg dash motion connector diagram pre
 surface/detached-blur-shadow-plate | E1 D2 W4 F4 $2 | surface depth shadow blur mock hero | Past roughly 40px of blur box-shadow stops reading as shadow, an
 surface/drained-field-clear-window | E2 D2 W3 F5 $3 | surface mask backdrop-filter focus attention de-emphasis | Direct attention by de-emphasising everything else: a full-bleed
 surface/eased-fade-stop-ramp | E1 D2 W2 F5 $2 | surface gradient fade mask precision | A two-stop fade interpolates alpha linearly and the eye reads th
+surface/end-faded-section-rule | E1 D1 W1 F5 $1 | hairline divider gradient section restraint | A full-bleed rule declares a measure it does not have: run it ed
 surface/fill-derived-shadow-ramp | E1 D2 W3 F5 $1 | surface depth shadow color-mix tokens control | A saturated control's shadow should be made of its own colour, n
 surface/gradient-dot-lattice | E1 D3 W1 F4 $1 | surface texture pattern blueprint cheap | One radial-gradient plus a background-size gives a dot lattice a
 surface/gradient-over-opaque-glass | E1 D3 W3 F5 $1 | surface glass gradient depth cheap performance | Glass without a backdrop filter: stack a vertical alpha gradient

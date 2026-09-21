@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,generative,ambient,tokens,architecture]
 axes: {energy: 3, density: 4, weight: 2, finish: 3}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -30,3 +30,15 @@ resting opacity, or elements freeze wherever their track happened to start.
 Where instances differ by one *scalar* rather than by schedule, skip the bank:
 read a custom property with a fallback from inside the keyframe, and one block
 serves every element off a single inline declaration.
+Express the animated value as a `calc()` *multiple* of that property rather than
+as an absolute, and the block becomes amplitude-relative: every element returns
+to its own resting value at 0% and 100%, so a field whose members sit at twenty
+different opacities breathes without any of them jumping to a shared level on
+the first frame. Peak 1.8–2.5× rest; an absolute peak flattens the field the
+moment it plays.
+```css
+@keyframes breathe { 0%, to { opacity: var(--rest, .3) }
+                     50% { opacity: calc(var(--rest, .3) * 2.2) } }
+```
+⚠ `calc()` will happily exceed 1 — clamp with `min()` or the brightest members
+all saturate to the same ceiling and the variation you paid for disappears.

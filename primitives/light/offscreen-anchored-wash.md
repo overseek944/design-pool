@@ -4,7 +4,7 @@ category: light
 tags: [gradient,ground,atmosphere,ambient,color,cheap]
 axes: {energy: 1, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: [eased-fade-stop-ramp]

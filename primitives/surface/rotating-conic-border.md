@@ -4,7 +4,7 @@ category: surface
 tags: [surface,border,motion,svg]
 axes: {energy: 4, density: 3, weight: 3, finish: 4}
 cost: 3
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: [overflow-visible-for-glow-bleed]
@@ -22,8 +22,13 @@ three at different periods and directions for a border that never repeats.
 Variant — static gradient border with no SVG and no overhang: a pseudo-element
 with `padding: 1–2px`, the gradient as its background, and two identical mask
 layers clipped to `content-box, border-box` composited with `exclude`. Leaves
-only the ring, inherits `border-radius` exactly, but cannot bleed glow outside
-the box.
+only the ring, inherits `border-radius` exactly, and a `filter: drop-shadow()`
+on the same element *does* escape the box — the mask resolves first, so the
+shadow is cast by the ring's own shape rather than by the padding rect. 4–8px
+at 60–80% alpha; the halo is what stops a 2px ring reading as a hairline.
+```css
+.ring { filter: drop-shadow(0 0 6px rgb(255 130 60 / .8)) }
+```
 
 Third construction, no mask and no SVG at all: give the element the gradient as
 its own background and 2–6px of padding, then let an opaque child fill the
