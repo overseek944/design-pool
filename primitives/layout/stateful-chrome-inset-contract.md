@@ -42,3 +42,18 @@ root.style.setProperty('--nav-offset', hidden ? '0px' : h + 'px')
 ```
 ⚠ Add the class that enables transitions one frame *after* the first write, or
 every consumer animates from zero on load.
+
+A banner stacked above pinned chrome inverts which number is the stable one. The
+banner scrolls away and never comes back, so the height anchors and focus must
+clear is the pinned bar alone — publish the pair and every in-page jump lands
+with a banner-sized hole above it for the rest of the session. Sticky offsets
+still want the pair while the banner is on screen, which is the occupying value,
+not the reserved one.
+```css
+:root { --pin-h: 4rem; --banner-h: 2.75rem }
+html { scroll-padding-block-start: var(--pin-h) }
+.bar { position: sticky; inset-block-start: 0 }
+```
+⚠ A dismissible banner makes the occupying value change without a scroll event —
+rewrite it on dismiss, or every sticky panel below holds a gap under a bar that
+is gone.

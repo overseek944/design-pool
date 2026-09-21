@@ -4,7 +4,7 @@ category: media
 tags: [media,logos,normalisation,scale,responsive]
 axes: none
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -51,3 +51,17 @@ rhythm; the art keeps its weight.
 ```
 ⚠ Nothing clips the overhang — budget the row's gap for the widest overshoot,
 and restate the offsets where the row stacks.
+
+Height is not the only convention a supplied set breaks. Some marks arrive
+light-on-dark, baked into an opaque rectangle, and on a tinted row they read as
+redactions no sizing rule can fix. Give every slot the same plate — one radius,
+one height, the lightest ground in the set — so the odd mark's own rectangle is
+contained by a frame the reader already sees as a container rather than sitting
+on the section like a hole. Padding 12–20% of the slot height.
+```css
+.slot { display: grid; place-items: center; background: var(--paper);
+        border-radius: 8px; padding: 0 1.25rem; block-size: 4.5rem }
+```
+⚠ Never normalise a supplied mark with `filter` or `mix-blend-mode`: it is a
+trademark, altering it is usually outside the licence, and a mid-value logo goes
+to mush either way. Ask for the transparent variant or plate it.

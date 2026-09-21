@@ -4,7 +4,7 @@ category: timing
 tags: [motion,timing,rhythm,detail]
 axes: {energy: 3, density: 1, weight: 2, finish: 4}
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -46,3 +46,17 @@ occasional. Give two elements different periods and the bursts stop coinciding.
 ⚠ The gap is exact, so a burst on a long period is still perfectly regular — it
 reads as random only because it is rare. Anything that must not repeat on a
 schedule still needs a real random interval.
+
+The rest can be bought with distance rather than with repeated keyframes. Run a
+linear travel that starts and ends far outside the clip — six to twelve times
+the element's own width — and it is off-stage for most of the cycle with two
+keyframes and one number to tune. On `ease-in-out` the slow ends both fall
+outside the frame, so what crosses is the fast middle: a glint rather than a
+drift, which a parked tail on a linear curve cannot give you.
+```css
+@keyframes pass { from { transform: translateX(-200%) skewX(-20deg) }
+                  to   { transform: translateX(800%)  skewX(-20deg) } }
+```
+⚠ Duty cycle is now the overshoot's job, so widening the element shortens the
+visible pass — express the travel in the element's own width, not in a percentage
+of the container it happens to sit in.
