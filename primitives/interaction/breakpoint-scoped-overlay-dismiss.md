@@ -4,7 +4,7 @@ category: interaction
 tags: [navigation,overlay,responsive,correctness,accessibility]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -37,3 +37,15 @@ if (inside) nav.querySelector('.brand, [data-persistent]')?.focus()
 ⚠ The same applies in the other direction: a control that only exists above the
 breakpoint strands focus on the way down. Pick the destination per direction,
 not one fallback for both.
+
+The script-free form of the same overlay has the same bug and nothing to call.
+A `<details>` menu hidden above the breakpoint keeps its `open` attribute
+through the crossing and is still open on the way back down — `display: none`
+does not clear it. Reset the attribute from the same query, or, where the page
+must work with script off, pick a disclosure whose open state is harmless wide:
+an in-flow list that simply becomes the horizontal nav.
+```js
+wide.addEventListener('change', () => { if (wide.matches) d.open = false })
+```
+⚠ A hidden `<details>` is still `[open]` to a selector — a scroll lock or body
+class keyed off `:has(details[open])` survives the crossing too.

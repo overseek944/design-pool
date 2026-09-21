@@ -4,7 +4,7 @@ category: media
 tags: [media,figure,caption,accessibility,editorial]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []

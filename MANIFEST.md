@@ -1,6 +1,6 @@
 # Manifest
 
-665 primitives. Format: `category/id | axes cost | tags | gist`
+666 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -321,6 +321,7 @@ media/origin-conditional-sandbox | neutral  $1 | media iframe embed security cor
 media/overscan-relaxed-plate | E2 D1 W3 F5 $2 | media image reveal scale motion observer | A plate that scales up on arrival rests at a non-integer factor 
 media/predicate-tiered-video-encode | neutral  $2 | media video responsive performance bandwidth correctness | A <video> has no srcset and no sizes, so nothing picks an encode
 media/pseudo-element-pictogram-set | E1 D2 W2 F4 $2 | icon css-only pseudo-element tokens diagram | A set of small technical pictograms — a frame, a scatter, a cyli
+media/ratio-split-view-pair | E1 D3 W2 F4 $1 | media figure aspect grid editorial | One subject argued from two views — as photographed, and as the 
 media/reduce-restored-media-transport | neutral  $1 | media video accessibility scroll scrub correctness | Where scroll is the only transport for a continuous medium, pref
 media/reduce-swapped-clip-still | neutral  $1 | media video accessibility reduced-motion correctness | An autoplaying loop cannot honour prefers-reduced-motion by paus
 media/seam-dissolved-video-loop | E2 D1 W3 F5 $3 | media video loop crossfade seam ambient | loop cuts from the last frame to the first, and unless the clip 

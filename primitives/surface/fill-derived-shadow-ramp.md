@@ -4,7 +4,7 @@ category: surface
 tags: [surface,depth,shadow,color-mix,tokens,control]
 axes: {energy: 1, density: 2, weight: 3, finish: 5}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -59,3 +59,16 @@ box-shadow: rgb(255 255 255 / .13) .06px  .36px .37px -.83px,
 ⚠ Offsetting x as well as y gives the stack a light direction, which every
 other shadow on the page then has to share — a page mixing directional and
 straight-down ramps reads as two light sources and neither looks intentional.
+
+The emission form runs further than the range above once the ground is
+near-black: offset 6–18px, blur 24–56px, alpha to .20 at rest still reads as a
+lamp rather than a plate, because there is no ground detail for the pool to
+muddy. Put most of the hover in the *alpha* — .18 up to .28–.34 — and only a
+few pixels into offset and blur. A hover that grows the geometry as much as it
+brightens reads as the control moving toward the reader instead of switching on.
+```css
+.btn        { box-shadow: 0 18px 45px rgb(120 214 255 / .18); transition: .2s }
+.btn:hover  { box-shadow: 0 22px 56px rgb(120 214 255 / .32) }
+```
+⚠ Past about .30 the pool reads as a halo on anything lighter than ~8% grey —
+check it against the section it sits in, not against the page token.
