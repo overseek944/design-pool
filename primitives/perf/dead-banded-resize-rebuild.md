@@ -4,7 +4,7 @@ category: perf
 tags: [resize,canvas,mobile,correctness]
 axes: none
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -64,3 +64,21 @@ const q = Math.round(t * RUNGS) / RUNGS      // identical q ⇒ no work downstre
 ⚠ The two compose rather than compete: dead-band the raw size to absorb browser
 chrome, quantise the derived parameter to bound the work. Quantising a *length*
 instead is visible — the layout steps.
+
+A resize the band *accepts* leaves a second problem the band does not touch:
+every offset the reader's position was derived from has moved, so holding
+`scrollY` holds a pixel that now means something else. Where the scene is
+scroll-driven it already computes a semantic coordinate — which beat, how far
+through it — so re-anchor from that instead: suspend the loop, let two frames
+pass so the new layout has settled, remeasure, invert the coordinate back to
+pixels and jump there without animation.
+```js
+const { i, f } = mark                                  // beat index + fraction
+suspended = true
+rAF(() => rAF(() => { measure()
+  scrollTo({ top: tops[i] + ((tops[i + 1] ?? end) - tops[i]) * f - vh * .55, behavior: 'auto' })
+  suspended = false }))
+```
+⚠ Suspend the driver across the two frames or it reads the old offsets against
+the new viewport and writes a visible wrong pose first. One frame is not enough
+— the remeasure must happen after layout, not after style.

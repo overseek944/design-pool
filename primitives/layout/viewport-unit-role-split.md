@@ -4,7 +4,7 @@ category: layout
 tags: [layout,viewport,mobile,responsive,correctness]
 axes: none
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,18 @@ constant — never `dvh` — so nothing moves while the address bar slides.
 ```
 ⚠ A single `dvh` in this chain reintroduces the shift the constant exists to
 remove. Desktop resolves the gap to zero, so one rule ships everywhere.
+
+Script needs the same role split and has no units to say it with. `innerHeight`
+is the *large* viewport — it keeps counting the strip behind a collapsed address
+bar — so a scrubber placing its read-line at `scrollY + h * 0.55` puts that line
+below what the reader can actually see, by the height of the browser chrome.
+Read `visualViewport.height` for anything compared against what is on screen,
+and subscribe to its `resize`: the collapse fires there and not always on
+`window`.
+```js
+const vh = () => window.visualViewport?.height ?? window.innerHeight
+visualViewport?.addEventListener('resize', onScroll)
+```
+⚠ Not for measuring the *document* — `scrollHeight - innerHeight` is still the
+right scroll maximum, and mixing the two heights in one clamp loses the last
+screen of travel.

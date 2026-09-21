@@ -1,6 +1,6 @@
 # Manifest
 
-606 primitives. Format: `category/id | axes cost | tags | gist`
+611 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -8,6 +8,7 @@ canvas/absorbing-field-boundary | neutral  $1 | canvas simulation shader texture
 canvas/age-shaded-traversal-field | E2 D4 W2 F5 $3 | canvas ambient texture generative progress grid | A field that reads as being worked through rather than animating
 canvas/alpha-bucketed-path-batch | E2 D4 W1 F5 $3 | canvas svg performance generative texture batching | Thousands of individually-faded SVG marks means thousands of nod
 canvas/alpha-gated-cell-population | E1 D3 W2 F4 $3 | canvas generative field image mask silhouette grid | A field of marks in the shape of an arbitrary form usually means
+canvas/background-matched-scene-fog | E1 D2 W3 F5 $1 | canvas fog depth background integration scene | A rendered scene ends at its canvas rectangle, so it reads as an
 canvas/baked-cell-frame-stream | neutral  $4 | canvas animation precomputed payload performance field | An ambient field whose motion is authored rather than simulated 
 canvas/bisected-heightfield-march | neutral  $4 | canvas shader generative performance projection | A heightfield is not a distance field, so sphere tracing has not
 canvas/borrowed-scene-constructors | neutral  $2 | canvas 3d architecture interop bundle | A wrapper that owns the renderer — a globe, a model viewer, a 3D
@@ -28,6 +29,7 @@ canvas/direction-sampled-burst | E4 D3 W2 F4 $2 | canvas particles generative di
 canvas/displacement-driven-colour-ramp | E2 D2 W2 F5 $3 | shader gradient surface generative ambient | A displaced surface normally needs a light to be legible — norma
 canvas/document-spanned-viewport-field | neutral  $2 | canvas scroll background generative architecture performance | A decorative field belongs either to the viewport or to the docu
 canvas/dom-labels-in-normalised-canvas-space | neutral  $2 | canvas accessibility architecture correctness label | Text drawn with fillText cannot be selected, found, translated o
+canvas/drawn-texture-set | neutral  $2 | canvas texture procedural weight architecture scene | Every map a scene needs — worn floor, printed label, belt tread,
 canvas/eased-pointer-influence | E3 D2 W2 F5 $2 | shader interaction feel | Never feed raw pointer state to a shader. Keep a uMouseActive fl
 canvas/facing-weighted-directional-pull | E3 D2 W3 F5 $3 | shader canvas pointer motion generative | Uniform displacement inflates a form; a form reaching toward som
 canvas/feature-scaled-sim-grid | neutral  $2 | canvas simulation performance resolution texture | Size a field simulation's grid by the smallest feature worth see
@@ -37,6 +39,7 @@ canvas/half-pixel-hairline-grid | E1 D2 W1 F5 $1 | canvas hairline correctness d
 canvas/hash-dither-before-quantise | E1 D3 W2 F4 $2 | canvas color ramp noise grain banding generative | Snapping a continuous value onto a short palette — eight to twel
 canvas/hash-tuned-effect-constants | neutral  $1 | canvas generative authoring debug parameters | Every generative effect carries a dozen constants — curl, dissip
 canvas/home-sprung-particle-medium | E2 D3 W2 F5 $3 | canvas field pointer motion generative | A field of marks positioned from the pointer each frame travels 
+canvas/import-time-material-reauthor | neutral  $2 | canvas material import architecture correctness scene | An imported model arrives wearing whatever its exporter wrote — 
 canvas/irrational-stride-variation | neutral  $1 | canvas generative field deterministic correctness scatter | Math.random() for per-index variation costs a stored array, a di
 canvas/liveness-floor-reseed | neutral  $2 | canvas generative simulation ambient lifecycle correctness | Most interesting generative rules are also mortal. A lattice, a 
 canvas/named-uv-spaces | neutral  $3 | shader architecture responsive correctness reference | One vertex shader can emit several named coordinate spaces so ea
@@ -62,6 +65,7 @@ canvas/reseeded-noise-tile | E2 D3 W2 F3 $2 | canvas texture ambient generative 
 canvas/rotated-screen-halftone | E2 D4 W3 F4 $3 | canvas texture field print raster generative | An axis-aligned dot grid beats against the pixel lattice and rea
 canvas/row-span-culled-field | neutral  $2 | perf field raster culling imagedata architecture | A field summed from a handful of radial sources costs width × he
 canvas/saturating-density-transfer | E1 D2 W2 F5 $1 | canvas shader color field opacity | An accumulating field has no upper bound but coverage does, so m
+canvas/scene-exempt-label-layer | E1 D2 W1 F5 $2 | canvas label type scene legibility layer | An annotation inside a 3D scene should move and occlude like the
 canvas/screen-composited-understroke | E2 D2 W2 F5 $2 | canvas light stroke effect depth cheap | Canvas 2D has no cheap blur, so a glowing stroke is built from p
 canvas/scroll-driven-frame-atlas | E4 D3 W3 F4 $4 | canvas scroll performance | For scrubbed sequence playback, draw frames from a sprite atlas 
 canvas/shell-reprojected-displacement | E2 D3 W2 F5 $2 | shader canvas generative noise silhouette geometry | Noise added straight to a point on a generated form moves it out
@@ -253,6 +257,7 @@ light/relit-state-fill | E2 D2 W3 F4 $1 | light gradient hover control surface |
 light/screen-blend-light-layer | E3 D3 W3 F4 $3 | effect blend compositing dark | mix-blend-mode: screen on an overlay makes it add light and drop
 light/self-derived-bloom-understudy | E2 D2 W3 F5 $2 | glow bloom filter svg line-art decoration | A glow authored as its own asset stops matching the artwork the 
 light/shadow-opposed-frame-halo | E1 D2 W3 F5 $1 | glow media surface depth dark-mode | A large dark plate on a dark ground reads as a hole cut in the p
+light/single-caster-shadow-budget | neutral  $2 | light shadow performance scene budget tier | Shadow cost is per casting light, not per scene: four lamps with
 light/stacked-chromatic-bloom | E3 D2 W4 F4 $3 | effect glow filter svg depth | filter: drop-shadow() chains, and follows the alpha channel — so
 light/stop-built-soft-glow | E1 D2 W2 F4 $1 | gradient glow decoration performance cheap banding | A blurred lamp holds a composited buffer the size of its box plu
 light/target-aimed-travelling-beam | E3 D2 W3 F5 $2 | light beam rotation scroll decoration custom-properties | A directional light that moves — a beam, a shaft, a cone — keeps

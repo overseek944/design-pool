@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,intersection-observer,visibility,battery,correctness]
 axes: none
 cost: 2
-seen: 49
+seen: 50
 requires: []
 conflicts: []
 completes: []
@@ -220,3 +220,19 @@ new IntersectionObserver(([e]) => el.toggleAttribute('data-idle', !e.isIntersect
 ⚠ The inflated root also means nothing below the fold is ever reported idle on a
 short page — pair it with the visibility and reduced-motion terms, which do not
 depend on geometry.
+
+Intersection and page visibility both answer geometry, and neither sees an
+element the *cascade* has taken out: an ancestor at `opacity: 0`, a collapsed
+panel, `content-visibility: hidden`. An observer happily reports it intersecting
+and the loop renders into something nobody can see. `checkVisibility()` answers
+all of those in one call and belongs in the predicate beside the other terms —
+it is the direct form of the aria-state variant above, for a loop driven from
+script rather than paused from CSS.
+```js
+const shown = () => el.checkVisibility?.({ checkOpacity: true,
+  checkVisibilityCSS: true, opacityProperty: true, visibilityProperty: true }) ?? true
+const live = () => !destroyed && shown() && onScreen && !document.hidden
+```
+⚠ It is a forced style resolution — once per frame at the top of the callback,
+never per element in a loop over many. The `?? true` matters: where the method
+is missing the gate must fall open, not closed.

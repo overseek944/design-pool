@@ -4,7 +4,7 @@ category: perf
 tags: [performance,texture,webgl,loading,memory]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

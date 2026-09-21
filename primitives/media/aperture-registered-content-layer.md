@@ -4,7 +4,7 @@ category: media
 tags: [media, mockup, responsive, layout, correctness]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -73,3 +73,17 @@ layers scale together because they share one user space.
 ⚠ Both layers must use the same fit. A raster with `object-fit: cover` and an
 overlay with the default `preserveAspectRatio` drift apart the moment the box
 stops matching the intrinsic ratio.
+
+The interior radius needs no container query either: a two-value percentage
+radius — `6.5% / 3.1%` — resolves each axis against that axis of the box, so an
+aperture inset in percentages and rounded in percentages tracks the artwork's
+corner through every width with nothing declared on the parent. It is the only
+form that works where the frame cannot be a container, and it composes with a
+transform where `cqw` does not.
+```css
+.screen { position: absolute; inset: 13.35% 21.49% 10.08% 21.48%;
+          border-radius: 6.5% / 3.1%; overflow: hidden }
+```
+⚠ The two figures are not interchangeable — a single percentage is read against
+the *width* for both axes, so it re-rounds into an obvious ellipse on anything
+that is not square. Measure both from the artwork.
