@@ -4,7 +4,7 @@ category: surface
 tags: [surface,texture,grain,gradient,blend-mode,banding]
 axes: {energy: 1, density: 3, weight: 3, finish: 4}
 cost: 1
-seen: 16
+seen: 17
 requires: []
 conflicts: []
 completes: []
@@ -100,3 +100,18 @@ themes from one asset.
 ```
 ⚠ Tune it against the palest surface in the theme rather than the page ground —
 a white card sitting under a full-bleed grain is where the film shows first.
+
+Over a photograph both the blend mode and the amount change. The picture already
+carries its own sensor grain, so the layer's job is to seat the plate in the
+page's noise floor rather than lay a film over a flat surface: `overlay`, which
+pushes highlights up and shadows down around the midpoint, at 25–45% — an order
+above the few per cent a flat panel takes. Scope it to the frame alongside the
+scrim, not to the section, or the amount that reads as emulsion over the image
+reads as dirt over the type.
+```css
+.frame > .grain { position: absolute; inset: 0; pointer-events: none;
+  background: var(--noise) 0 0/256px; mix-blend-mode: overlay; opacity: .38 }
+```
+⚠ Overlay drives both ends away from mid-grey, so copy burnt into the picture
+loses contrast exactly where the grain bites hardest. Measure the caption
+against the graded, grained frame — never against the source file.

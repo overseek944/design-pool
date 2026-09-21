@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,rail,pagination,control,measurement,correctness]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -39,3 +39,13 @@ const i = items.reduce((b, el, n, a) => Math.abs(el.getBoundingClientRect().left
 ```
 ⚠ One rect read per item per scroll event. Debounce it, or drive it from an
 `IntersectionObserver` and keep the rect pass for the two clamped ends.
+
+Read the gap rather than restating it. `getComputedStyle(port).columnGap`
+returns the resolved value — including a `clamp()` the stylesheet retunes per
+breakpoint — so the pitch tracks the CSS with nothing duplicated in script and
+nothing to re-sync when the gap changes. An unset `column-gap` computes to
+`normal`, which parses to `NaN` and silently poisons the whole pitch, so the
+`|| 0` is load-bearing rather than defensive.
+```js
+const gap = parseFloat(getComputedStyle(port).columnGap) || 0
+```

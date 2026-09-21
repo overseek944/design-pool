@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,edge,composition,bleed]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 52
+seen: 53
 requires: []
 conflicts: []
 completes: []
@@ -178,3 +178,16 @@ mask-position: 0 0, 100% 0; mask-repeat: no-repeat;
 ⚠ An overlay scrollbar reserves no gutter at all and the second strip then eats
 14px of the fade for nothing. Measure `offsetWidth - clientWidth` and drop the
 layer when it is zero — and remember the gutter is on the left under `rtl`.
+
+Over a flat, known ground the cheap form is two positioned gradient layers in
+that ground's own colour instead of a mask — no `mask-composite`, no `-webkit-`
+pair, and it composites like any other paint. It fails the moment the ground
+stops being flat: a gradient band, an image, a theme swap, and the fade shows as
+a pair of coloured bars. Take the mask whenever the surface behind the rail is
+not a single token.
+```css
+.edge { position: absolute; inset-block: 0; inline-size: clamp(3rem, 6vw, 5rem);
+  pointer-events: none; background: linear-gradient(90deg, var(--ground), transparent) }
+```
+⚠ `pointer-events: none` on both, or the fades sit over the track's first and
+last items and swallow the drag that scrolls it.

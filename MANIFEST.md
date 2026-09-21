@@ -1,6 +1,6 @@
 # Manifest
 
-707 primitives. Format: `category/id | axes cost | tags | gist`
+711 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -143,6 +143,7 @@ interaction/exemplar-field-placeholder | neutral  $1 | form input placeholder ac
 interaction/fail-open-css-state-toggle | neutral  $1 | interaction css-only progressive-enhancement disclosure correctness accessibility | A visually hidden checkbox plus :has() gives expand, filter and 
 interaction/fill-agnostic-state-plate | E2 D2 W2 F5 $1 | hover state pseudo-element theme system contrast | A hover token per fill does not scale: a control faced with an i
 interaction/find-reachable-collapse | neutral  $1 | accessibility correctness disclosure search architecture | Collapsed content the browser's own find cannot reach is content
+interaction/focus-exit-dismissal | neutral  $1 | accessibility interaction focus correctness state | A panel that closes on an outside click and on Escape is still b
 interaction/focus-handoff-on-self-removal | neutral  $1 | accessibility focus correctness form state | A control that removes itself when used — a form replaced by its
 interaction/focus-held-chrome-retraction | neutral  $1 | interaction correctness accessibility focus keyboard scroll chrome navigation | A bar that retracts on downward scroll must ask more than which 
 interaction/focus-released-occlusion | neutral  $1 | interaction accessibility focus sticky correctness css-only | Any arrangement that deliberately covers one element with anothe
@@ -283,6 +284,7 @@ layout/unfloored-zero-scale-bars | E1 D3 W2 F5 $1 | chart axis label correctness
 layout/unit-cell-quantity-field | E1 D4 W2 F4 $2 | layout data grid indicator accessibility density | Show a count as one mark per unit, not a bar. Differences a bar 
 layout/viewport-height-bands | neutral  $1 | layout responsive media-query ornament correctness | Some decisions belong to the short axis. An opening frame, a pin
 layout/viewport-unit-role-split | neutral  $1 | layout viewport mobile responsive correctness | A phone has three viewport heights, and picking one for the whol
+layout/weighted-free-space-rows | neutral  $1 | layout grid responsive rhythm measurement | A block sized to the viewport has leftover height; fixed gaps po
 layout/width-budgeted-inline-remainder | neutral  $2 | layout responsive overflow navigation measurement observer correctness | A row of peers that must hold one line — filter chips, tool tabs
 light/blend-doubled-headline | E2 D2 W4 F5 $3 | type blend legibility contrast compositing | Set the headline twice in one grid cell: an opaque copy under th
 light/broadcast-light-source | E2 D2 W2 F5 $3 | light gradient custom-property ambient architecture | A panel lit at the pointer has one lamp, and only while a pointe
@@ -354,6 +356,7 @@ media/stacked-contour-volume | E1 D4 W2 F5 $2 | svg mark depth stroke currentcol
 media/state-preserving-frame-relocation | neutral  $3 | media iframe embed lifecycle dom correctness | appendChild removes and reinserts: an iframe reloads, a video re
 media/stepped-transform-sprite | E3 D2 W2 F4 $2 | media sprite animation svg performance | Play a short looping illustration as a filmstrip: frames in one 
 media/time-mapped-annotation-track | E2 D3 W2 F5 $3 | media video timeline annotation seek evidence | Findings about a recording belong on the recording's own axis. P
+media/transfer-table-gradient-map | E1 D2 W3 F5 $2 | media color filter svg normalisation | A filter chain lays one hue over a photograph; a transfer table 
 media/underpainted-inline-lqip | neutral  $2 | media loading performance correctness cls | The photograph carrying an opening frame arrives after layout, a
 media/unowned-frame-message-guard | neutral  $1 | media iframe embed security correctness events | A widget script injects its own iframe, so the page holds no con
 media/video-as-surface-not-frame | E3 D2 W4 F4 $3 | media surface hero | autoplay muted loop playsinline preload="auto" with object-conta
@@ -682,6 +685,7 @@ type/measured-inline-word-swap | E3 D2 W3 F5 $2 | type motion headline correctne
 type/measured-line-bucket-stagger | neutral  $2 | type stagger reveal measurement font-loading correctness | A cascade down the rendered lines of a heading does not require 
 type/mixed-magnitude-figure-band | E1 D3 W4 F5 $1 | numerals metric alignment layout data | A row of headline figures rarely shares a digit count — four dig
 type/mono-as-ui-texture | E1 D3 W2 F4 $1 | type ui technical register | Run a monospace face for all chrome — nav, labels, captions, cou
+type/name-extending-hidden-suffix | neutral  $1 | accessibility label correctness type navigation | Every card ending in the same two words — Read more, View — hand
 type/optical-width-text-fit | E1 D2 W4 F5 $3 | type fit measurement display responsive | A headline that must fill a fixed box cannot be sized by charact
 type/origin-flipped-wipe-underline | E3 D1 W2 F5 $1 | underline link hover transform-origin wipe cheap | A scaleX underline that grows from one end and shrinks back to i
 type/padded-ordinal-counter | E1 D2 W2 F4 $1 | type list counter detail technical | 01 02 … 09 10 numbering without hand-written zeros and without t
