@@ -4,7 +4,7 @@ category: media
 tags: [media,sprite,animation,svg,performance]
 axes: {energy: 3, density: 2, weight: 2, finish: 4}
 cost: 2
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -63,3 +63,18 @@ it stops reading as frames and starts reading as a stuttering spin.
 ⚠ A flat shape is edge-on at 90° and 270° and disappears for that frame, so the
 count must not land on them: `steps(8)` and `steps(12)` both do, `steps(10)`
 does not. Pair with `shape-rendering: crispEdges` if the art is pixel-aligned.
+
+`view-box` also makes the origin a *parameter*. Because it resolves against
+coordinates every sibling shares, each member of a set can name its own pivot
+in the artwork's own numbers and one `@keyframes` block then serves the whole
+set — three shapes each breathing about their own centre, one rule, no
+generated block per instance. Pair it with a per-member duration off the same
+custom-property mechanism and the group drifts apart for free.
+```css
+.disc { transform-box: view-box; transform-origin: var(--ox) var(--oy);
+        animation: breathe var(--dur) ease-in-out infinite alternate }
+.disc-a { --ox: 852px; --oy: 308px; --dur: 11s }   /* 9–18s */
+```
+⚠ The origin is read in user units, so a `px` suffix here is the viewBox's
+pixel, not the screen's. A value copied off a rendered measurement lands
+somewhere the artwork never specified.

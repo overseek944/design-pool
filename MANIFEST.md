@@ -1,6 +1,6 @@
 # Manifest
 
-690 primitives. Format: `category/id | axes cost | tags | gist`
+694 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -99,6 +99,7 @@ color/ground-indexed-inverting-ramp | neutral  $2 | color tokens theming naming 
 color/lightness-preserved-neutral-tint | neutral  $2 | color tokens theming neutral contrast | Greys left literally grey under a coloured theme read as a secon
 color/midpoint-switched-ink | E2 D1 W2 F5 $2 | theme transition contrast color custom-properties legibility | A theme toggle that tweens paper and ink on one curve passes thr
 color/near-black-single-ramp | E2 D2 W4 F4 $1 | color palette dark restraint | Pure #000 ground, off-white #ededed text, and ONE neutral ramp (
+color/overprinted-pigment-group | E1 D2 W4 F3 $1 | color blend texture editorial surface cheap | Overlap flat saturated shapes under mix-blend-mode: multiply and
 color/parallel-alpha-ramp | neutral  $2 | color tokens alpha borders theming | Ship two neutral ramps of equal length: one opaque, one alpha-on
 color/pattern-encoded-series | E1 D3 W2 F4 $2 | color accessibility pattern data contrast texture | Hue alone cannot carry series identity — it fails in greyscale, 
 color/read-position-hue-drift | E2 D2 W2 F4 $2 | color scroll ambient gradient filter | A long page reads as one undifferentiated field when every secti
@@ -200,6 +201,7 @@ interaction/transparent-stroke-hit-area | neutral  $1 | accessibility svg intera
 interaction/twin-suppressed-persistent-action | neutral  $2 | interaction sticky state observer accessibility | A persistent action pinned to the viewport is right through the 
 interaction/viewport-clamped-anchored-popover | neutral  $1 | correctness responsive overlay accessibility hover focus | A popover sized against its trigger gets clipped by the window: 
 interaction/visibility-probed-app-escape | neutral  $2 | interaction navigation link mobile correctness fallback | A control that hands off to a native app has no success callback
+interaction/withdrawn-motion-pause-control | neutral  $1 | accessibility motion control state chrome cheap | Perpetual decorative motion owes the reader a stop, and an OS pr
 interaction/withheld-value-reveal | E2 D2 W3 F4 $1 | interaction disclosure redaction accessibility state | Withholding a figure claims more than printing it, but only if t
 layout/argued-column-as-surface | E1 D3 W4 F5 $1 | layout table comparison surface contrast hierarchy | In a comparison matrix the column you are arguing for should be 
 layout/balanced-side-track-centring | neutral  $1 | layout grid alignment chrome correctness | space-between centres nothing: the middle child lands wherever t
@@ -247,6 +249,7 @@ layout/named-container-scope | neutral  $1 | layout container-query correctness 
 layout/occupancy-negotiated-label-placement | neutral  $4 | layout label annotation collision diagram correctness | Annotations placed independently overlap the moment two anchors 
 layout/overflow-clip-over-hidden | neutral  $1 | overflow correctness accessibility scroll | overflow: clip crops without creating a scroll container. hidden
 layout/per-edge-clip-polygon | neutral  $1 | overflow clip correctness bleed | overflow only works per axis, so there is no way to crop one edg
+layout/prefix-selected-segment-level | E1 D3 W2 F4 $1 | css-only state accessibility data detail cheap | A discrete level — three of ten segments lit — usually costs a c
 layout/provenance-split-label-row | E1 D3 W1 F5 $1 | layout type label truncation provenance correctness detail | A row of labels usually holds two kinds at once: terms from a co
 layout/rail-preserved-track-collapse | E1 D3 W2 F5 $1 | layout grid responsive rhythm editorial | A three-track row — marker rail, title, supporting column — usua
 layout/ranked-apparatus-column | E1 D3 W1 F5 $1 | layout grid metadata responsive editorial hierarchy | Section apparatus — an ordinal, a two-word gloss, a mark — belon
@@ -623,6 +626,7 @@ timing/cycle-seam-reshuffle | E2 D3 W2 F5 $2 | timing loop motion svg variation 
 timing/decaying-loop-restart-gap | E2 D1 W2 F5 $1 | loop timing sequence restraint demo attention | A self-restarting demonstration does not want one restart gap. A
 timing/dwelling-phase-ring | neutral  $2 | timing state loop choreography architecture demo | A looping demonstration written as a schedule of effects has to 
 timing/expanding-shadow-beacon | E2 D1 W2 F4 $1 | motion indicator status ambient glow | A mark that blinks reports a state; one that throws a ring outwa
+timing/graduation-registered-traversal | E2 D2 W1 F5 $1 | motion diagram svg rhythm precision loop | A marker crossing a drawn scale reads as drift unless its stops 
 timing/half-wave-endpoint-deviation | E3 D1 W2 F5 $1 | motion easing interpolation character | To add a bulge to a scrubbed interpolation — an arc over a strai
 timing/inert-keyframe-lifetime | neutral  $1 | timing lifecycle css-animation cleanup accessibility | A transient overlay — a burst, a ripple, a one-shot badge — usua
 timing/lead-in-separated-arrival | E2 D2 W2 F5 $1 | timing motion sequence stream demo mock cadence delay | A mock of anything that arrives over a network — streamed tokens

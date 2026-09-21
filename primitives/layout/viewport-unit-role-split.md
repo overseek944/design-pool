@@ -4,7 +4,7 @@ category: layout
 tags: [layout,viewport,mobile,responsive,correctness]
 axes: none
 cost: 1
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -40,3 +40,16 @@ visualViewport?.addEventListener('resize', onScroll)
 ⚠ Not for measuring the *document* — `scrollHeight - innerHeight` is still the
 right scroll maximum, and mixing the two heights in one clamp loses the last
 screen of travel.
+
+An in-flow first screen wants a ceiling as well as a fit. `svh` alone hands a
+tall desktop window a hero four times the height of its own content, with the
+copy stranded mid-void; a px cap inside `min()` lets it fill a laptop and stop
+growing after that, while the subtraction keeps fixed chrome out of the
+reckoning. Caps 720–900px, and `min-height` rather than `height` so the content
+can always win.
+```css
+.hero { min-height: min(820px, calc(100svh - var(--header))) }
+```
+⚠ The subtrahend is a second copy of the header's height — take it from the
+same token the header is sized from, or a chrome change leaves the first screen
+overflowing by exactly the drift.

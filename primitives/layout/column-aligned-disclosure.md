@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,disclosure,alignment,native]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
