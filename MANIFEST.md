@@ -1,6 +1,6 @@
 # Manifest
 
-676 primitives. Format: `category/id | axes cost | tags | gist`
+678 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -59,6 +59,7 @@ canvas/palette-as-uniforms | neutral  $2 | shader color system | Pass the site's
 canvas/parametric-thickness-variation | E3 D3 W2 F4 $3 | shader organic detail | Drive line or ribbon thickness with uThickness + uThickVary nois
 canvas/path-data-construction-overlay | E1 D4 W1 F5 $3 | svg path annotation overlay technical diagram | Artwork on the page already carries its own construction. Walk t
 canvas/pattern-space-from-smooth-twin | neutral  $3 | canvas shader grid noise correctness generative | A ruled overlay drawn in a noisy surface's coordinates inherits 
+canvas/peak-table-spectrum-profile | E2 D2 W1 F5 $2 | canvas generative field data precision technical | Summed sines read as a wave. Measurement reads as a quiet baseli
 canvas/per-state-still-understudy | neutral  $3 | canvas media perf progressive-enhancement 3d fallback accessibility | A heavy renderer deferred behind one poster freezes the figure a
 canvas/periodic-organic-blend-scalar | E2 D3 W2 F4 $2 | shader generative noise parameters surface | Noise alone always reads organic; a periodic function alone alwa
 canvas/perspective-divisor-depth-cue | E2 D3 W2 F5 $2 | canvas depth projection wireframe stroke 3d | An armature projected onto a 2D context — a skeleton, a rig, an 
@@ -148,6 +149,7 @@ interaction/gesture-affordance-label | E1 D2 W2 F4 $1 | affordance interaction a
 interaction/hairline-native-scrubber | E2 D1 W1 F5 $1 | interaction accessibility control scrub native diagram | A diagram that scrubs deserves a real <input type=range>, not a 
 interaction/height-traded-card-panes | E2 D3 W2 F4 $2 | interaction hover card media layout transition | A card that reveals a summary on hover usually grows — shoving i
 interaction/history-entry-backed-overlay | neutral  $2 | interaction overlay history dismiss mobile correctness | An overlay opened from a button owns no history entry, so the ba
+interaction/hover-previewed-disclosure | neutral  $1 | interaction disclosure navigation hover progressive-enhancement correctness | A menu that should fall open under a mouse and still answer a ta
 interaction/hysteretic-lock-zone | neutral  $1 | interaction pointer state correctness threshold | Any boolean derived from a continuous input — pointer inside a z
 interaction/idle-scroll-cue | E2 D1 W2 F4 $1 | scroll affordance feedback motion | A page whose motion is entirely scroll-driven stops when the rea
 interaction/inert-tracks-opacity | neutral  $1 | accessibility focus correctness overlay pointer-events | An element faded to opacity: 0 is still in the tab order, still 

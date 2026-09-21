@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,performance,depth,particles,batching,quantise]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -27,3 +27,14 @@ for (let b = 0; b < B; b++) { ctx.globalAlpha = floor + b / B * range
 ⚠ Take `lo` and `k` from the frame's own extent, not a fixed range, or the
 marks collapse into one bucket as the scene scales. Order holds between buckets
 only — marks that must never overlap wrongly still need a sort.
+
+Where depth is assigned once and never changes — a parallax field whose marks
+keep their layer for life — neither the sort nor the buckets are needed at all.
+Sort the array once at spawn and the storage order *is* the paint order for the
+life of the field; the per-frame cost drops to zero and re-sorting is a resize
+concern, not a frame concern. Only reach for buckets when z is itself animated.
+```js
+marks.sort((a, b) => a.z - b.z)          // once, in the same pass that spawns them
+```
+⚠ Anything that adds marks later must insert in order rather than push, or new
+marks paint over near ones regardless of their depth.

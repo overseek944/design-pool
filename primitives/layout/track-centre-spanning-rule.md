@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,connector,geometry,correctness,responsive]
 axes: {energy: 1, density: 2, weight: 1, finish: 5}
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -42,3 +42,21 @@ references the column count or the gap, so it re-solves under any template.
 ⚠ The legs land on cell centres, not on the children's own centres — correct
 only while each child fills its track. It also needs `overflow: visible` on the
 cells, since every segment but the last reaches outside its own box.
+
+Where the connector is a *direction* rather than a rule — a flow arrow between
+steps — one pseudo-element serves both arrangements, because a border-triangle's
+heading is only which three borders are transparent. The breakpoint that turns
+the row into a column rewrites four properties and moves the anchor from
+right-centre to bottom-centre; no second node, no rotation, no icon per axis.
+Size 10–14px, on `:not(:last-child)` so the last step has no tail.
+```css
+.step:not(:last-child)::after { content: ""; position: absolute;
+  border: 12px solid transparent; border-left-color: var(--line);
+  right: -16px; top: calc(50% - 12px) }
+@media (max-width: 900px) { .step:not(:last-child)::after {
+  border-left-color: transparent; border-top-color: var(--line);
+  right: auto; top: auto; left: calc(50% - 12px); bottom: -16px } }
+```
+⚠ It sits outside the step's box, so a clipped or `overflow: hidden` card eats
+it. Decorative only — the order is already in the source, and a triangle carries
+no accessible name.

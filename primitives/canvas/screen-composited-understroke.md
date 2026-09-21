@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,light,stroke,effect,depth,cheap]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

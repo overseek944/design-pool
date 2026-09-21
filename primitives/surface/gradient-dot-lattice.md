@@ -4,7 +4,7 @@ category: surface
 tags: [surface,texture,pattern,blueprint,cheap]
 axes: {energy: 1, density: 3, weight: 1, finish: 4}
 cost: 1
-seen: 28
+seen: 29
 requires: []
 conflicts: []
 completes: []
@@ -121,3 +121,21 @@ separate `opacity`, so a theme flips both without the gradient being restated.
 ⚠ `opacity` on the patch fades anything inside it, so the plate has to be a
 sibling over the field, not a child of it. Pitch 12–18px at figure scale —
 coarser and the overhang reads as a second box.
+
+Two axes rule a sheet; a third at 45° over them stops reading as paper and
+starts reading as a *lattice* — a repeating cell with a brace across it, which
+is how crystal structures and trusses are drawn. Same generator, one more
+`linear-gradient`, its period matched to the cell diagonal so the brace lands on
+corners rather than wandering across faces. Rotate the whole layer 4–8° to take
+the rules off the pixel grid, and keep the diagonal a stop fainter than the
+orthogonals or it reads as the primary structure.
+```css
+background-image:
+  linear-gradient(90deg, var(--rule) 0 2px, #0000 2px 54px),
+  linear-gradient( 0deg, var(--rule) 0 2px, #0000 2px 54px),
+  linear-gradient(45deg, #0000 42%, var(--brace) 42% 43.2%, #0000 43.2%);
+background-size: 162px 162px; transform: rotate(6deg)
+```
+⚠ Rotation empties the corners — inset the layer by 10–15% to refill them. A
+diagonal period that is not the cell diagonal beats against the grid and the
+brace drifts cell by cell across the field.
