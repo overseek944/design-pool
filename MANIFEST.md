@@ -1,6 +1,6 @@
 # Manifest
 
-461 primitives. Format: `category/id | axes cost | tags | gist`
+464 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -160,6 +160,7 @@ layout/per-edge-clip-polygon | neutral  $1 | overflow clip correctness bleed | o
 layout/reserved-gutter-pinned-action | neutral  $1 | layout overflow correctness affordance scrim accessibility | An action pinned over a horizontally scrolling strip — a copy bu
 layout/reserved-slot-detached-bleed | neutral  $1 | layout bleed cls decorative responsive | The rectangle a decorative field occupies and the rectangle it p
 layout/ring-placed-upright-labels | E1 D3 W2 F4 $2 | layout diagram radial label geometry | Rotating a container to arrange labels around a circle tips ever
+layout/root-attribute-composition-variant | neutral  $1 | layout variant experiment css-only architecture | Two arrangements of one section — a split hero against a centred
 layout/ruled-definition-rows | E1 D3 W2 F5 $1 | layout type metadata responsive hairline | Metadata reads as a datasheet when it is a list of label-to-valu
 layout/safe-area-floor-gutter | neutral  $1 | layout tokens safe-area responsive correctness | A gutter written as a plain value gets eaten by notches, rounded
 layout/scripted-depth-projected-dom | E3 D3 W2 F5 $4 | 3d projection depth transform dom | preserve-3d puts real DOM in depth but rotates the glyphs with i
@@ -225,6 +226,7 @@ motion-system/camera-over-static-scene | E3 D2 W3 F5 $2 | motion transform scale
 motion-system/context-scoped-cleanup | neutral  $1 | motion lifecycle correctness | Create every animation inside a scoped context and revert it on 
 motion-system/counter-scaled-camera-overlay | neutral  $1 | camera transform overlay cursor correctness | Anything drawn for the reader over a zooming scene — a synthetic
 motion-system/deadline-bounded-animated-close | neutral  $1 | motion correctness state architecture | A state change that waits on an animation never happens when the
+motion-system/decaying-change-mark | E3 D1 W2 F4 $1 | motion-system feedback live-data emphasis | Marking a value that just changed with styling it keeps turns an
 motion-system/distance-cued-focus-wheel | E2 D2 W2 F5 $2 | list rotation blur depth mask custom-property | A rotating list that only fades its neighbours reads flat. Stack
 motion-system/distance-eased-camera-push | E2 D2 W3 F5 $3 | camera 3d easing scroll narrative | Interpolating a camera's position between two waypoints looks wr
 motion-system/drive-mode-scoped-transition | neutral  $1 | motion scroll scrub custom-properties correctness architecture | A property that eases on arrival and later tracks a continuous i
@@ -347,6 +349,7 @@ scroll/pointer-scoped-snap | neutral  $1 | scroll snap pointer input correctness
 scroll/pre-hydration-scroll-restore | neutral  $2 | scroll navigation hydration restoration architecture | A client-routed page that restores scroll after hydration shows 
 scroll/probe-reach-tail-space | neutral  $2 | scroll layout observer correctness | A scroll probe sits on a fixed line — the midpoint, or just unde
 scroll/progress-keyed-copy-retreat | E2 D1 W2 F5 $2 | scroll overlay reveal choreography pin | Copy framing a pinned stage has done its work by the time the st
+scroll/range-offset-scroll-stagger | E2 D2 W2 F5 $2 | scroll scroll-driven stagger sequence css-only | A scroll timeline has no clock, so animation-delay and any stagg
 scroll/reveal-trigger-band | E2 D2 W2 F4 $1 | scroll reveal thresholds | Entrance triggers fire at top 85%–top 90% — just inside the fold
 scroll/scripted-scroll-abort-band | neutral  $1 | scroll correctness accessibility events navigation | A scripted scroll animation owns the viewport for its whole dura
 scroll/scroll-beat-live-region | neutral  $1 | accessibility scroll aria-live narrative correctness | When scrolling is what changes the content — a pinned scene, a c

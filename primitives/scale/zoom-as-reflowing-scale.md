@@ -4,7 +4,7 @@ category: scale
 tags: [unit,scale,architecture,responsive,correctness]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -56,3 +56,18 @@ for (let i = 0; i < 3; i++) {
 ⚠ `getBoundingClientRect().bottom` is the element's own box — a descendant
 overflowing it is not in that number. Walk the subtree for the true bottom, and
 re-run on `fonts.ready`, not only on resize.
+
+`zoom` on a descendant does not opt out of an ancestor's — the used factor is
+the product down the tree, so `zoom: 1` inside a scaled subtree still renders
+scaled. Publish the reciprocal as a second token next to the factor and true
+size becomes a class: anything that must match real pixels rather than the
+document's density — an overlay sized against OS chrome, a QR code, a map tile,
+a portalled popover — cancels back out with it. Viewport units inside that
+subtree are then unmultiplied again and must lose the division.
+```css
+:root       { --z: .85; --unz: 1.17647; zoom: var(--z) }   /* 1 / --z */
+.true-size  { zoom: var(--unz) }
+```
+⚠ The pair is one number written twice and nothing checks it. Derive it —
+`calc(1 / var(--z))` is valid for `zoom` — or a retune of the factor silently
+leaves every cancelling layer at the wrong scale.

@@ -4,7 +4,7 @@ category: layout
 tags: [layout,has,quantity-query,chrome,css-only,density]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -31,3 +31,14 @@ concede to it — a heading that drops a step of its clamp where a graphic share
 its box, and keeps the full scale everywhere the graphic is absent. The
 concession travels with the component instead of living in a modifier class the
 next author has to know to pass.
+
+The document root can concede the same way. Properties only `html` can carry —
+`scroll-padding-top` for fixed chrome, `overscroll-behavior`, `color-scheme`, a
+density `zoom` — are usually toggled by a script that knows which route
+rendered; `html:has(.marker)` lets the page itself decide, resolved at parse
+with no script and no flash.
+```css
+html:has(.doc-page) { scroll-padding-top: 5.5rem; zoom: 1 }
+```
+⚠ Only if the marker is in the served HTML. Mounted by script after hydration,
+the root property flips a frame late and the whole document jumps.
