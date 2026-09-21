@@ -1,6 +1,6 @@
 # Manifest
 
-758 primitives. Format: `category/id | axes cost | tags | gist`
+760 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -100,6 +100,7 @@ color/chroma-weighted-peer-rank | E1 D2 W3 F5 $1 | color hierarchy accent icon g
 color/declared-contrast-escalation | neutral  $1 | accessibility contrast tokens type color | prefers-contrast: more is not a second theme — it is permission 
 color/disposition-token-set | neutral  $1 | color tokens state correctness accessibility | A review queue is not a severity display, and borrowing success/
 color/embedded-replica-palette-split | neutral  $1 | color tokens product mock architecture | A page embedding a working replica of the product needs two toke
+color/externally-owned-brand-token-pair | neutral  $1 | color tokens theming third-party contrast icon correctness | A third-party brand colour is fixed by its owner, so deriving th
 color/gamut-ladder-fallback | neutral  $1 | color tokens progressive-enhancement correctness | Ship every colour token twice: an sRGB hex baseline, then the wi
 color/ground-indexed-inverting-ramp | neutral  $2 | color tokens theming naming architecture contrast | Number a neutral ramp by distance from the page ground rather th
 color/lightness-preserved-neutral-tint | neutral  $2 | color tokens theming neutral contrast | Greys left literally grey under a coloured theme read as a secon
@@ -116,6 +117,7 @@ color/runtime-shade-derivation | neutral  $1 | color tokens theming architecture
 color/self-painting-theme-scope | neutral  $2 | color tokens theming architecture dark | A theme is one class that both defines the semantic colour token
 color/sequence-value-ramp | E1 D2 W3 F4 $1 | color hierarchy surface sequence contrast | Tint a row of peer surfaces along one lightness ramp so sequence
 color/status-triad-tokens | neutral  $1 | color tokens accessibility contrast correctness state | A status is three tokens, not one, because the same hue is asked
+color/theme-shifted-series-window | neutral  $2 | color tokens theming data chart contrast correctness | A series palette tuned on paper goes muddy against ink, and inve
 color/transform-bracketing-hue-pair | E1 D2 W2 F5 $1 | color diagram semantics pipeline hue accessibility | A pipeline figure whose input and output look alike asks the rea
 color/utility-scale-token-reclamation | neutral  $2 | color tokens theming architecture correctness | A codebase committed to a utility framework has its palette froz
 color/worst-case-ground-ink | neutral  $1 | color contrast accessibility icon correctness | A mark handed to a surface you do not own — a favicon in the tab

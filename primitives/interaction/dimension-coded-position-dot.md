@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,state,indicator,accessibility,carousel]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []
@@ -85,3 +85,19 @@ from length.
 ```
 ⚠ The grown mark clips against the track's own overflow on the outer lanes —
 reserve the extra height in the lane's box rather than in the mark's.
+
+Size is not the only channel that survives without hue. Where the markers are
+large enough to have a shape at all — numbered step plates, chapter chips — code
+the current one as a different *silhouette* instead: an irregular or organic
+outline standing against the system's plain rounded rectangle. Nothing reflows,
+the row keeps one optical weight, and the cue reads at a glance on a ground
+whose contrast the component does not own.
+```css
+.step     { border-radius: var(--r) }
+.step[aria-current] { border-radius: 0; clip-path: url(#blob) }
+```
+⚠ A concave outline has less usable inner area than the rect it replaces, so the
+ordinal inside wants to be set smaller — quietly reintroducing the size
+difference this was chosen to avoid. Pad the glyph in and hold one type size
+across the row. Silhouette reaches no screen reader: `aria-current` still does
+the work.

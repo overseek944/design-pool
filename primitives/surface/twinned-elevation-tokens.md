@@ -4,7 +4,7 @@ category: surface
 tags: [shadow,elevation,tokens,hover,card]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
@@ -103,3 +103,17 @@ the ground as a halo, so it becomes `inset`.
 ⚠ The collapsed light ramp hides a whole class of bug: a panel separated by tier
 *lightness* alone looks right in dark and vanishes in light. Every tier has to
 be checked in both, not derived from one.
+
+A list carrying both a cast layer and an `inset` rim highlight has two halves
+that move in *opposite* directions across a theme flip. Paper takes almost no
+cast but needs a near-opaque rim to read as a lit edge; against ink the cast
+deepens and that same rim must drop to a whisper or the panel looks chalked.
+Ship the whole list per theme rather than swapping one colour inside it. Cast
+6–10% alpha light against 12–18% dark, rim 70–90% light against 10–20% dark.
+```css
+:root { --lift: 0 4px 20px #0c124914, inset 0 1px 2px #fffc }
+.dark { --lift: 0 4px 20px #00000026, inset 0 1px 2px #ffffff26 }
+```
+⚠ Both branches still owe the same layer count — a theme that drops the rim
+layer entirely hard-swaps at the midpoint of any transition between them, which
+is the flicker this entry opens by avoiding.

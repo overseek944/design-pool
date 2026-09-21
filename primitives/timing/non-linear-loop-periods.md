@@ -4,7 +4,7 @@ category: timing
 tags: [motion,ambient,rhythm]
 axes: {energy: 3, density: 3, weight: 2, finish: 4}
 cost: 2
-seen: 18
+seen: 19
 requires: []
 conflicts: []
 completes: []
@@ -76,3 +76,18 @@ translation, rotation, skew.
 ```
 ⚠ Mirror the signed terms only. Flipping a vertical rise as well gives half the
 set a path that sinks, and a field where some members fall reads as a fault.
+
+Period, phase and direction all vary the *schedule* of one shape — two drifters
+sharing a keyframe still trace the same figure, and on a slow loop a reader
+reads that as one thing copied even though the pair never resync. Give each its
+own **waypoint count** too: stops at 25/50/75% against stops at 33/66%, so the
+paths differ in kind rather than in timing. Two to four interior stops; past
+that the excursions shrink into jitter. Slow ambient drift, 8–20s, is where the
+difference has time to register.
+```css
+@keyframes drift-a { 25%{translate:-8px -10px} 50%{translate:4px -6px}
+                     75%{translate:-3px -12px} }
+@keyframes drift-b { 33%{translate:6px -8px}   66%{translate:-4px -5px} }
+```
+⚠ Hold every path to one travel budget. A drifter given more stops that also
+ranges further stops reading as a peer and starts reading as the broken one.
