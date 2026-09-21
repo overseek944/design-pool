@@ -1,6 +1,6 @@
 # Manifest
 
-514 primitives. Format: `category/id | axes cost | tags | gist`
+516 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -129,6 +129,7 @@ interaction/overdamped-surface-tilt | E2 D1 W3 F5 $1 | interaction pointer trans
 interaction/paired-focus-offset-tokens | neutral  $1 | accessibility focus tokens correctness | Ship the focus ring as three tokens — width, an outer offset, an
 interaction/partial-modality-inert-siblings | neutral  $2 | interaction dialog accessibility inert focus correctness | Not every overlay should take the whole page. A panel hung off a
 interaction/pointer-transparent-copy-layer | neutral  $1 | interaction pointer accessibility layout correctness | Copy laid over a background that reacts to the pointer swallows 
+interaction/pre-hydration-nested-link | neutral  $2 | accessibility links hydration progressive-enhancement correctness | A card that navigates but contains its own link cannot be an anc
 interaction/proxy-painted-native-control | neutral  $1 | accessibility focus forms input correctness keyboard | Keep the real <input> and paint a sibling. Clip it to a 1×1 rect
 interaction/reserved-state-border | neutral  $1 | accessibility focus cls border correctness | A control that gains a border on focus or selection must carry t
 interaction/resting-default-expanding-row | E2 D2 W2 F5 $2 | interaction state hover accessibility layout | A row of panels that expand only on hover says nothing at rest —
@@ -322,6 +323,7 @@ perf/paired-probe-engine-window | neutral  $2 | progressive-enhancement feature-
 perf/pixel-ratio-change-watch | neutral  $1 | performance canvas correctness resize media-query dpr | Device pixel ratio changes when a window is dragged between moni
 perf/post-teardown-asset-disposal | neutral  $2 | performance correctness lifecycle canvas architecture memory | An asynchronous asset load outlives the view that started it. Sc
 perf/prefetch-on-intent-band | neutral  $2 | performance navigation prefetch observer architecture | Prefetching is two policies, not one. Intent arms on mouseenter,
+perf/prerender-gated-first-view | neutral  $1 | performance correctness analytics navigation prerender | A page can be fully loaded, scripted and laid out with nobody ha
 perf/revert-split-on-resize | neutral  $1 | type motion correctness | Split text hard-codes line breaks at split time. On resize or we
 perf/scrim-over-filtered-bleed | neutral  $1 | performance media mobile compositing correctness | A filter, clip-path and transform stacked on one full-bleed imag
 perf/self-throttled-raf-loop | neutral  $1 | performance animation canvas battery frame-budget correctness | requestAnimationFrame offers the display's rate; it is not a con

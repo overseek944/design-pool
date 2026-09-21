@@ -4,7 +4,7 @@ category: scale
 tags: [progressive-enhancement,feature-detection,tokens,correctness,architecture]
 axes: none
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -27,3 +27,19 @@ flag pays back 2–6px only where they land.
 ⚠ Only arithmetic values can be flagged this way — a keyword still needs the
 rule block. `@supports` tests parsing, not quality: a browser that parses the
 feature and renders it poorly raises the flag anyway.
+
+The scalar is arithmetic-only, but the same inversion reaches keywords if the
+property is left *unset* rather than zeroed. An undefined custom property falls
+through to the `var()` fallback slot, so the modern value lives at every call
+site and the feature query only has to define the override — one `@supports`
+block serving hundreds of declarations with no rule duplication and no
+specificity to manage. It runs in either polarity: `@supports not` to install a
+fallback, plain `@supports` to release a hardcoded one.
+```css
+@supports not (overflow: clip) { :root { --clip-fb: hidden } }
+@supports (aspect-ratio: 1)    { :root { --ar-h: auto } }
+.panel { overflow: var(--clip-fb, clip); height: var(--ar-h, 520px) }
+```
+⚠ Any value at all consumes the slot, including an empty one — `--clip-fb: ;`
+is legal and is what a build step emits for a blank token. It substitutes
+nothing, and the declaration is then dropped as invalid at computed-value time.

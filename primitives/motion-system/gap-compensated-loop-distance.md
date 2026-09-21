@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,marquee,correctness,loop,overflow]
 axes: none
 cost: 1
-seen: 15
+seen: 16
 requires: []
 conflicts: []
 completes: []
@@ -82,3 +82,17 @@ run(ws.reduce((a, b) => a + b, 0) + gap * (ws.length - 1) > port.clientWidth + 1
 ⚠ The zero-width bail is the whole guard: an image with no intrinsic size
 measures 0, the sum lands under the container, and the track is decided *static*
 at precisely the moment it has no content to measure.
+
+Marking the copies `aria-hidden` is half the fix. It removes them from the
+accessibility tree and leaves every link and button inside them in the tab
+order — a focusable node under `aria-hidden` is the one ARIA rule the platform
+actively flags, and a keyboard reader landing there is on content sliding out
+from under them. `inert` covers focus, hit-testing and the tree in one
+property. Managing `tabindex` by hand instead only works if the original value
+is stashed first, since a count re-derived on resize can promote a copy back to
+real content.
+```js
+for (const c of copies) c.inert = true          // not aria-hidden alone
+```
+⚠ `inert` on an ancestor of the focused element drops focus to the body. Apply
+it when the copy is built, not from the `ResizeObserver` — that fires mid-read.

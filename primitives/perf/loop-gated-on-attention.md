@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,intersection-observer,visibility,battery,correctness]
 axes: none
 cost: 2
-seen: 40
+seen: 41
 requires: []
 conflicts: []
 completes: []
@@ -148,3 +148,19 @@ function poke() { dirty = true
 ⚠ Not the same as resetting the clock on resume. That fixes elapsed-time drift;
 this fixes state that was never integrated at all — and a `visibilitychange`
 handler alone cannot, because by then the intermediate frames are gone.
+
+Where the loop is a Web Animation rather than a rAF render, most of the
+bookkeeping above belongs to the platform. `pause()` holds `currentTime`, so a
+resume is already in phase — no accumulator, no clock reset — and there is no
+teardown flag to thread, because cancelling the animation stops it. The gate
+also stops being binary: `playbackRate` is continuous, so a hover, a low-power
+hint or a `reduce` ramp can settle it at 0.2–0.5 instead of stopping it, and
+the change lands mid-cycle with no seam.
+```js
+const anim = track.animate({ transform: ['none', `translateX(${-period}px)`] },
+  { duration: period / speed * 1000, iterations: Infinity, easing: 'linear' })
+const gate = () => onScreen && !document.hidden ? anim.play() : anim.pause()
+```
+⚠ A duration derived from a measured distance means every resize builds a new
+animation — cancel the previous one first, or two run superimposed and the
+track jitters at the difference of their rates.
