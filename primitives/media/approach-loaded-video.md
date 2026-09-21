@@ -4,7 +4,7 @@ category: media
 tags: [media,video,performance,intersection-observer,accessibility,bandwidth]
 axes: none
 cost: 2
-seen: 27
+seen: 28
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -279,3 +279,21 @@ v.play().catch(() => { v.muted = true; v.play().catch(() => {}) })
 needs a visible unmute control or the sound is simply lost. Never the only path
 to the information, and once a reader mutes it themselves that outranks every
 later entry.
+
+Stripping `autoplay` at runtime races the parser — the attribute is in the
+markup, so the engine may have begun the fetch and the playback before a script
+removes it, which is exactly the transfer a data-saver or reduced-motion branch
+existed to prevent. Withhold it instead: ship the element with neither
+`autoplay` nor a `src`, resolve the predicate, then *set* the attribute and call
+`play()` as the belt to its braces. Nothing is requested until the gate answers.
+```html
+<video muted loop playsinline preload="none" poster="/still.jpg"
+       data-src="/loop-1080.mp4"><source></video>
+```
+```js
+if (open) { s.src = v.dataset.src; v.load()
+  v.setAttribute('autoplay', ''); v.play()?.catch(() => {}) }
+```
+⚠ The attribute only starts anything while the element is still muted, and a
+no-JS reader now gets the poster and no clip at all — so the poster is the
+content, not a placeholder for it.

@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,correctness,transition,observer,reveal]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -44,3 +44,18 @@ requestAnimationFrame(() => requestAnimationFrame(() => {
 paint at all, so anything that must be armed before the reader can see it keeps
 the forced read. Restarting a transition in place is the same shape: clear it,
 reset in the same tick, re-attach on the next frame.
+
+A frame separator on a *one-shot* reveal is a liveness bet. A tab backgrounded
+or throttled before its first paint never runs the callback, and the content
+sits at its from-state until the reader comes back to a blank screen. Race the
+frames against a short timer, guarded so whichever loses is a no-op: the reveal
+then degrades to arriving already settled, which is the correct failure.
+150–300ms — past a normal frame pair, under a reader's notice.
+```js
+let shown = false
+const show = () => { if (shown) return; shown = true; els.forEach(e => e.classList.add('in')) }
+requestAnimationFrame(() => requestAnimationFrame(show))
+setTimeout(show, 200)
+```
+⚠ Only where the reveal has somewhere safe to land. A sequence whose delays were
+computed per element collapses into one step when the timer wins.

@@ -4,7 +4,7 @@ category: media
 tags: [media,video,legibility,overlay,accessibility,responsive]
 axes: none
 cost: 1
-seen: 17
+seen: 18
 requires: []
 conflicts: []
 completes: []

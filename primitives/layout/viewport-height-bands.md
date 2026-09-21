@@ -4,7 +4,7 @@ category: layout
 tags: [layout,responsive,media-query,ornament,correctness]
 axes: none
 cost: 1
-seen: 20
+seen: 21
 requires: []
 conflicts: []
 completes: []
@@ -69,3 +69,15 @@ should give up the fold first.
 keep the floor above the point where the heading touches what sits under it.
 Mobile chrome resizes the viewport mid-scroll here too, so this belongs behind
 the same pointer-and-keyboard width as the queries above.
+
+There is a band below every real device, reached by zoom rather than by
+hardware: 400% on a laptop leaves roughly 200–350px of layout height. A page
+that locked its own scrolling — `overflow: hidden` for a one-screen composition
+— traps everything clipped out of that band with no way to reach it, which is
+the reflow failure in its purest form. Give the lock a floor and hand the
+document its scrollbar back. Gate 320–360px.
+```css
+@media (max-height: 340px) { body { overflow-y: auto } }
+```
+⚠ Height bands normally flip on their own as mobile chrome slides; this one
+cannot, because no phone is ever this short — it fires under zoom or not at all.

@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,correctness,accessibility,progressive-enhancement,reveal]
 axes: none
 cost: 2
-seen: 15
+seen: 16
 requires: []
 conflicts: []
 completes: []
@@ -108,3 +108,18 @@ what a dead bundle looks like. Delay 3–6s, well past the timer it backs.
 ⚠ Only for a layer whose failure state is *absent*. Content hidden awaiting a
 reveal has no such frame to animate to — there the CSS cannot know the target
 pose and the inline script remains the only release.
+
+A timer picks a number nobody can defend — too short cancels a slow bundle, too
+long holds a blank first screen for seconds. `DOMContentLoaded` is a deadline
+the document already has. Set the flag optimistically in the head and, from the
+same script, un-set it at that event unless the runtime has raised a health bit
+— written as the *last* statement of its setup, so anything throwing on the way
+leaves it falsy. Hidden before first paint, released at a known moment.
+```js
+d.classList.add('js')                       // head: hides before first paint
+addEventListener('DOMContentLoaded',
+  () => { if (!window.__ready) d.classList.remove('js') })
+```
+⚠ Covers only a runtime that had its chance by then. A deferred or dynamically
+imported bundle registers after the event, so the handshake is the floor under
+the timer there, not a replacement for it.

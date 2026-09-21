@@ -1,6 +1,6 @@
 # Manifest
 
-794 primitives. Format: `category/id | axes cost | tags | gist`
+795 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -298,6 +298,7 @@ layout/published-occupancy-inset | neutral  $2 | layout custom-properties panel 
 layout/rail-preserved-track-collapse | E1 D3 W2 F5 $1 | layout grid responsive rhythm editorial | A three-track row — marker rail, title, supporting column — usua
 layout/ranked-apparatus-column | E1 D3 W1 F5 $1 | layout grid metadata responsive editorial hierarchy | Section apparatus — an ordinal, a two-word gloss, a mark — belon
 layout/ratio-anchored-scene-geometry | neutral  $2 | layout architecture responsive tokens geometry css-only | A layered illustration sized in pixels at one breakpoint and re-
+layout/ratio-released-viewport-lock | neutral  $1 | layout responsive viewport aspect-ratio chrome mobile correctness | A page locked to one screen — 100svh, root overflow: hidden, chr
 layout/reserved-gutter-pinned-action | neutral  $1 | layout overflow correctness affordance scrim accessibility | An action pinned over a horizontally scrolling strip — a copy bu
 layout/reserved-slot-detached-bleed | neutral  $1 | layout bleed cls decorative responsive | The rectangle a decorative field occupies and the rectangle it p
 layout/ring-placed-upright-labels | E1 D3 W2 F4 $2 | layout diagram radial label geometry | Rotating a container to arrange labels around a circle tips ever

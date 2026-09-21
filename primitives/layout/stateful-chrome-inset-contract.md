@@ -4,7 +4,7 @@ category: layout
 tags: [layout,chrome,tokens,custom-property,architecture,overlay,correctness]
 axes: none
 cost: 2
-seen: 15
+seen: 16
 requires: []
 conflicts: []
 completes: []
@@ -115,3 +115,21 @@ html.has-banner .snap-stop     { min-height: calc(100dvh - var(--banner-h)) }
 ⚠ The snap container and its stops must subtract the *same* term. Shorten only
 the container and every stop overshoots by the reserve, which reads as snapping
 being broken rather than as a sizing bug.
+
+Chrome of constant height can be published once; chrome that *wraps* — a footer
+row of links that becomes two rows, a bar reflowing under a long label — has no
+constant, and `resize` misses most of what changes it. Re-measure on four
+signals: resize, `orientationchange`, `document.fonts.ready` (a swapped face
+re-wraps the row), and a `ResizeObserver` on the bar, which is the only one that
+sees text-zoom and in-page translation. Keep a static fallback in the `var()`
+slot for the paint before the first measure — one to two rows' worth.
+```js
+const set = () => root.style.setProperty('--bar-h', bar.offsetHeight + 'px')
+set(); addEventListener('resize', set, { passive: true })
+document.fonts?.ready.then(set); new ResizeObserver(set).observe(bar)
+```
+```css
+.content { padding-block-end: calc(var(--bar-h, 7rem) + 1.5rem) }
+```
+⚠ Read the height off the element, never off the property it writes — where the
+bar's own size depends on that variable the observer re-fires on its own reflow.
