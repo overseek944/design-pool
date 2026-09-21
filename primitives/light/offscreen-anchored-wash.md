@@ -4,7 +4,7 @@ category: light
 tags: [gradient,ground,atmosphere,ambient,color,cheap]
 axes: {energy: 1, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 12
+seen: 13
 requires: []
 conflicts: []
 completes: [eased-fade-stop-ramp]
@@ -132,3 +132,19 @@ top edge and the light reads as coming from above the viewport. Width
 ```
 ⚠ `vh` ignores the mobile URL bar's collapse, so the wash resizes mid-scroll on
 iOS — use `svh` where the hero is pinned to the first screen.
+
+`vh` on both axes is the right unit for a wash that belongs to the fold, and the
+wrong one for a layer that belongs to the *viewport* — at 9:16 a `vh`-sized
+circle is wider than the screen, at 21:9 it is a band. Size and offset it in
+`vmax` instead and it references whichever axis is actually long, so one
+declaration holds its proportion through a rotation with no breakpoint. Push the
+centre out by roughly 40% of the diameter and only the falloff is ever in frame.
+Diameter 45–70vmax, offset 20–45vmax.
+```css
+.wash { position: absolute; width: 58vmax; aspect-ratio: 1; border-radius: 50%;
+        inset: -24vmax -14vmax auto auto;
+        background: radial-gradient(circle, rgb(var(--accent)/.17), #0000 68%) }
+```
+⚠ `vmax` grows with the long axis, so a short wide window scales it off-screen
+while a tall narrow one fills the fold with it — check both orientations, not
+just two widths.

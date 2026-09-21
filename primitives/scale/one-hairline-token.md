@@ -4,7 +4,7 @@ category: scale
 tags: [unit,tokens,border,precision,coherence]
 axes: {energy: 1, density: 2, weight: 1, finish: 5}
 cost: 1
-seen: 21
+seen: 22
 requires: []
 conflicts: []
 completes: []
@@ -123,3 +123,19 @@ a:hover { text-decoration-thickness: calc(var(--hair) * 2) }
 ```
 ⚠ Two hairlines is the ceiling — past it the stroke reads as a highlight, and
 `text-decoration-skip-ink` cuts visibly wider notches around every descender.
+
+Thickness is one channel; the decoration's *colour* is the other, and it is the
+one to spend where the ink ramp already has a faint rung. Hold the underline at
+the rule tint — well under the text's own contrast — and resolve both it and the
+text to full ink on hover: at rest the link is marked without the underline
+competing with the prose it sits in, and the hover strengthens two properties at
+once rather than recolouring one. Offset .25–.35em at this weight, since a faint
+stroke reads as dirt when it touches a descender.
+```css
+a       { color: var(--muted); text-decoration-color: var(--line);
+          text-underline-offset: .3em; transition: color .2s, text-decoration-color .2s }
+a:hover { color: var(--ink); text-decoration-color: currentColor }
+```
+⚠ The underline is decoration, not contrast — the resting *text* colour still
+owes 4.5:1, and a tint chosen so the rule "disappears" fails `prefers-contrast`
+unless the faint rung is redeclared there.
