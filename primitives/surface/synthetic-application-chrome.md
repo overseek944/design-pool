@@ -4,7 +4,7 @@ category: surface
 tags: [frame,chrome,media,mock,product,decoration]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -59,3 +59,15 @@ column count or the seams double.
 ```
 ⚠ Only where the apparatus is invented. Chrome a reader is meant to learn —
 a real product tour — has to survive, because hiding it changes the claim.
+
+A title bar is not the only synthetic chrome, and it is the wrong one where the
+claim is *inside* the product rather than a window of it. A fixed rail of
+sections down one side, a breadcrumb strip across the content, and the embed
+reads as a workspace with no desktop OS implied — which also survives being
+reproduced at container widths a window frame cannot. Rail 8–14rem, breadcrumb
+strip the same height as the rail's first row so the two corners agree.
+```css
+.shell { display: grid; grid-template-columns: clamp(8rem, 18%, 14rem) minmax(0, 1fr) }
+```
+⚠ Breadcrumb depth is a claim about navigation. Two levels read as a location;
+four imply a hierarchy the reader will look for and not find.

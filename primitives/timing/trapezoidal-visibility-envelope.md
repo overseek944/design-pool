@@ -4,7 +4,7 @@ category: timing
 tags: [motion,timing,loop,architecture]
 axes: none
 cost: 1
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -75,3 +75,16 @@ only on something set large enough to carry it.
 ⚠ `filter` on a large element forces a full-size offscreen buffer every frame —
 fine on a figure, ruinous applied to a whole section. Land on `filter: none`,
 never `blur(0)`, so the buffer is released at the end rather than kept alive.
+
+Where the clock is already published as several rising channels, a window needs
+no third term: subtract the channel that opens the *next* beat from the one that
+opens this element's. The difference rises with the first, plateaus while only
+it is at 1, and falls as the second climbs — so nothing can outlive the beat
+that replaces it, and retiming that beat retimes both edges at once. One
+declaration, no script.
+```css
+.streams { opacity: calc(var(--stream) - var(--merge)) }
+```
+⚠ Only for monotone channels where the second starts no earlier than the first.
+Otherwise the difference goes negative, clamps, and the element is dark through
+a stretch it should be visible.

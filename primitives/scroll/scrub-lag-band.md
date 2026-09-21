@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,motion,feel]
 axes: {energy: 3, density: 2, weight: 3, finish: 5}
 cost: 2
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -57,3 +57,18 @@ visibly linger.
 ```js
 const k = 1 - Math.pow(.5, dt / H)                 // H in the same units as dt
 ```
+
+Clearing the timestamp on the way out only covers a *deliberate* pause. A GC
+stall, a restored background tab or a blocked main thread delivers a delta of
+seconds through a path that never exited, and the value closes the whole gap in
+one frame. Clamp the delta itself at the top of the loop — 30–60ms, two to four
+frames — and each degrades to a slightly fast catch-up. A per-frame
+displacement ceiling does the same where the range makes even a clamped delta
+visible.
+```js
+const dt = Math.min((now - last) / 1000, .05); last = now       // real stamp
+disp += Math.sign(d) * Math.min(Math.abs(d), Math.abs(d) * k, MAX_RATE * dt)
+```
+⚠ Clamp the delta, never the accumulator — advance `last` to the true timestamp
+or two long frames in a row each measure from a stale base and the loop falls
+permanently behind the input.

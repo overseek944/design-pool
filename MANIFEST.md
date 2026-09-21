@@ -1,6 +1,6 @@
 # Manifest
 
-542 primitives. Format: `category/id | axes cost | tags | gist`
+543 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -388,6 +388,7 @@ scale/zoom-as-reflowing-scale | neutral  $1 | unit scale architecture responsive
 scroll/anchor-into-scrubbed-pin | neutral  $2 | scroll navigation anchor correctness pin | An in-page link into a scrubbed pin lands at the top of the pin 
 scroll/append-stream-anchor-release | neutral  $1 | scroll correctness stream log architecture | Engines silently hold the reading position steady when content i
 scroll/aria-current-scrollspy-state | neutral  $1 | accessibility navigation scroll state architecture | A table of contents entry is a location, and the platform has a 
+scroll/beat-split-progress-channels | E3 D3 W2 F5 $2 | scroll scrub choreography custom-properties sequence architecture | A scrubbed multi-beat scene needs no state machine and no per-el
 scroll/collapsed-observer-band | neutral  $1 | scroll observer navigation architecture correctness | Squeeze an observer's root to a single horizontal line and "whic
 scroll/css-owned-pin-geometry | neutral  $2 | scroll pin architecture correctness responsive | Let the stylesheet decide whether a section pins and for how lon
 scroll/docked-travelling-mark | E3 D1 W2 F5 $3 | scroll anchor continuity measurement architecture | One mark crossing the whole page ties unrelated sections into a 
