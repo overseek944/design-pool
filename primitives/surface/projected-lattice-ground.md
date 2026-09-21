@@ -4,7 +4,7 @@ category: surface
 tags: [surface,grid,texture,ambient,depth,geometry]
 axes: {energy: 2, density: 3, weight: 1, finish: 4}
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -43,3 +43,19 @@ terminate.
 ⚠ Skew shears the strokes too, so a hairline is thinner on one axis than the
 other — draw it in SVG where stroke width is yours to set, or accept the
 difference at alphas this low.
+
+Fixed is the wrong position where the plane belongs to one section rather than
+to the page. Absolutely positioned inside a clipped section, the same transform
+costs a compositor layer only while that section is on screen, the mask can be
+authored against the section's own height instead of the viewport's, and the
+horizon can be placed *above* the content — `transform-origin: center bottom`
+with the box pulled up past the section's top edge — so the plane reads as a
+ceiling the layout hangs from. Overhang the box 6–12% on each side or the
+rotation empties the corners. Perspective from 600px once the box is short.
+```css
+.section { position: relative; overflow: hidden }
+.section > .ground { position: absolute; inset: -44% -8% auto; height: 720px;
+  transform-origin: center bottom; transform: perspective(680px) rotateX(58deg) scale(1.2) }
+```
+⚠ The section needs the clip — without it the tilted box paints over whatever
+follows, and an oversized ground is the one layer nobody thinks to look for.

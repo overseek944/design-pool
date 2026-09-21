@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,navigation,hydration,restoration,architecture]
 axes: none
 cost: 2
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -71,3 +71,16 @@ document.fonts.ready.then(() => rAF(() => rAF(() => {
 ```
 ⚠ Decode the fragment before looking it up — a percent-encoded or non-ASCII id
 never matches `getElementById`, and the correction silently never runs.
+
+A reload is not a back navigation, and a page whose opening screen is an
+authored entrance should say so. Restoring mid-document there drops the reader
+past a sequence that has already played to nobody, with no way back to it but a
+manual scroll. Read the navigation type rather than guessing from the URL and
+reset to the top on `reload` only, leaving `back_forward` to the restore above.
+```js
+const nav = performance.getEntriesByType('navigation')[0]
+if (nav?.type === 'reload') addEventListener('load', () => scrollTo(0, 0), { once: true })
+```
+⚠ It is the entrance that earns this, not the preference for a tidy top — a
+long document reloaded during reading loses the reader's place for nothing.
+Never extend it to a fragment the reader arrived at deliberately.

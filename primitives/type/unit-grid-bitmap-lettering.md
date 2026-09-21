@@ -4,7 +4,7 @@ category: type
 tags: [type,wordmark,svg,pixel,asset-free]
 axes: {energy: 2, density: 3, weight: 4, finish: 2}
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -59,3 +59,28 @@ instead of sitting beside it. Transition 60–120ms per cell.
 ⚠ It is a picture made of characters, so a reader hears the ink spelled out cell
 by cell — `aria-hidden` the whole plate and carry the real word in a
 visually-hidden node beside it.
+
+Shrink the grid to 3×3 and the same construction is an *icon family* rather than
+lettering: each member is one pattern of lit cells, so a set of any size is
+authored as a set of bit patterns with no drawing, no sprite and no depiction to
+get wrong. Identity comes from the pattern being distinct, which is a far weaker
+requirement than a mark being recognisable — and it retints from `currentColor`
+like the type beside it. Cell 5–8px, gutter 0.6–0.8 of a cell.
+```css
+.mark { display: grid; gap: .7em; grid: repeat(3, 1em) / repeat(3, 1em); font-size: 6px }
+.mark i { background: currentColor } .mark i.off { visibility: hidden }
+```
+
+With every cell already a node, the mark can *assemble*: send each one out along
+its own offset from the centre and let them return, delay ordered by ring so the
+figure implodes rather than fading. Hold the centre cell at rest throughout —
+without an anchor the mark is briefly absent, and absence is what a reader
+notices. Offset 1.5–2× the cell, scale from 0.15, 40–60ms a ring.
+```css
+.mark i { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(.15);
+          transition: opacity .22s, transform .76s cubic-bezier(.16,1,.3,1) }
+.is-in .mark i { opacity: 1; transform: none }
+```
+⚠ Meaningless by construction, like any non-depictive mark — `aria-hidden`, with
+a text label carrying the meaning. The pre-state belongs behind the flag that
+proves script is alive, or a dead bundle ships nine invisible cells.

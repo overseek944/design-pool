@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,edge,composition,bleed]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 56
+seen: 57
 requires: []
 conflicts: []
 completes: []
@@ -207,3 +207,18 @@ second; neither alone does both, and one of each is cheaper than four.
 ⚠ `intersect` takes the darker of the two everywhere, so a radial already at 50%
 halves the linear ramp's plateau as well as its edge. Author the radial's centre
 opaque and put all the falloff in the linear layer, or tune each twice.
+
+The painted form is not actually defeated by a gradient ground — only by
+assuming the ground is one token. Where the ground is a *linear* gradient, each
+edge's band ramps to the ground's own colour **at that edge**, so the two ends
+of the same panel fade to different colours and the pixels under them stay
+opaque: a scrollbar, a focus ring and a selection all survive where a mask would
+have taken them. It holds only while the band is short enough that the ground is
+near-constant across it — 10–18% of the gradient's axis.
+```css
+.panel { background: linear-gradient(var(--top), var(--bot)) }
+.panel::before { inset: 0 0 auto; height: 15%; background: linear-gradient(var(--top), #0000) }
+.panel::after  { inset: auto 0 0; height: 15%; background: linear-gradient(#0000, var(--bot)) }
+```
+⚠ Two tokens to keep in sync with one gradient — derive all three from the same
+pair, or a retune moves the ground and leaves the bands behind as visible steps.

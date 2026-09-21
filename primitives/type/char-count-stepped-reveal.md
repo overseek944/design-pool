@@ -4,7 +4,7 @@ category: type
 tags: [type,motion,css-only,custom-properties,keyframes]
 axes: {energy: 3, density: 1, weight: 2, finish: 4}
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -61,3 +61,27 @@ Height 0.85–1em, width 1–2px, period 0.7–1.1s.
 ```
 ⚠ It is the one blink a reduced-motion branch should slow rather than stop — a
 caret that holds still stops reading as a caret.
+
+Across more than one line the caret is one node that *moves*, not one per line:
+type a line, then re-insert the same element after the next one so the cursor
+walks down the block the way a terminal does. The pause between lines is its own
+number, longer than the per-character delay — 150–300ms — or the break reads as
+a slow character rather than as a return.
+```js
+lines[++i] && lines[i].insertAdjacentElement('afterend', caret)
+setTimeout(next, 220)                                    // between lines
+```
+
+Split lines also decide how the heading is announced. Put the whole string in
+`aria-label` on the container and `aria-hidden` on every line, and the reveal
+has no accessible presence at all: the heading is announced once, complete, at
+whatever moment the reader reaches it, and the script is free to empty and
+refill the visible nodes. It also makes the reduced-motion branch a pure return
+— leave the text in place and never start.
+```html
+<h1 data-type aria-label="Built for the whole pipeline">
+  <span aria-hidden="true"><span data-text="Built for">Built for</span></span>
+```
+⚠ The authored text must ship inside the spans as well, not only in the
+attribute — script that never runs then leaves a finished heading rather than an
+empty one, and the label is the duplicate instead of the source.

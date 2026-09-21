@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,hairline,rules,precision]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 1
-seen: 29
+seen: 30
 requires: []
 conflicts: []
 completes: []
@@ -55,3 +55,21 @@ than the rule saves.
 ⚠ The clip cuts what a cell paints outward as well — a focus ring or a hover
 lift on an edge cell is sliced by the frame. Inset the ring with a negative
 `outline-offset` rather than dropping the clip.
+
+Rules selected by `nth-child` do not survive a column-count change. `:nth-child(odd)`
+means "left column" at two up and nothing at all at one, so a field that ruled
+correctly on a desktop grows a stray interior line down the side of a stacked
+list and loses its closing edge. Derive the edges from the count instead — one
+custom property the media query rewrites, `nth-child(<count>n)` for the trailing
+column and `nth-last-child(-n + <count>)` for the final row — or accept that
+every collapse needs a full reset block, which is where the rule that was
+forgotten always is.
+```css
+.field { --cols: 2 }
+@media (width <= 48rem) { .field { --cols: 1 } }
+.cell:nth-child(2n) { border-right: 0 }     /* restated per breakpoint */
+```
+⚠ `nth-child` takes no `var()`, so the count cannot actually be read from the
+property — it is a label for the breakpoint, and the selectors still have to be
+written twice. Where the field is a real grid, `grid-column: <last>` or `:has()`
+on the row is the version that genuinely tracks the count.

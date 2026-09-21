@@ -4,7 +4,7 @@ category: media
 tags: [icon,css-only,pseudo-element,tokens,diagram]
 axes: {energy: 1, density: 2, weight: 2, finish: 4}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

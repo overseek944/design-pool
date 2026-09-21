@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,marquee,correctness,loop,overflow]
 axes: none
 cost: 1
-seen: 25
+seen: 26
 requires: []
 conflicts: []
 completes: []
@@ -96,3 +96,17 @@ for (const c of copies) c.inert = true          // not aria-hidden alone
 ```
 ⚠ `inert` on an ancestor of the focused element drops focus to the body. Apply
 it when the copy is built, not from the `ResizeObserver` — that fires mid-read.
+
+Two lanes running opposite ways cost one declaration, not a second keyframe set
+— and it is the duplicate that makes it free. `animation-direction: reverse`
+plays the same track backward, and because every multiple of one repeat is the
+same composition, the reversed lane needs no corrected start pose: paused at
+time zero it displays the `to` frame, which is indistinguishable from the `from`
+frame on a track that tiles. Stagger the lanes' durations 10–25% apart as well,
+or the pair reads as one hinged object rather than as two.
+```css
+.lane--back { animation-direction: reverse; animation-duration: 36s }   /* vs 30s */
+```
+⚠ Only on a seamless duplicated track. A reel that does not tile — a list
+translated by a measured pitch — parks at its end pose under the same
+declaration, so reversing it needs the static transform authored to match.

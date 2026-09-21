@@ -1,6 +1,6 @@
 # Manifest
 
-749 primitives. Format: `category/id | axes cost | tags | gist`
+750 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -129,6 +129,7 @@ interaction/autofill-proofed-honeypot | neutral  $1 | accessibility correctness 
 interaction/axis-swapped-disclosure | neutral  $2 | disclosure responsive layout-animation breakpoint accessibility | A detail panel opens downward in a stacked column and sideways b
 interaction/background-drawn-control-affordance | neutral  $1 | forms native-control dark-ground affordance select | appearance: none on a <select> deletes its arrow, and it takes n
 interaction/breakpoint-dual-mode-details | neutral  $2 | disclosure navigation responsive accessibility progressive-enhancement | One <details> can be a permanently-open sidebar above a breakpoi
+interaction/breakpoint-relocated-panel | neutral  $2 | disclosure responsive dom breakpoint accessibility correctness | A row of triggers whose detail opens in one shared panel below t
 interaction/breakpoint-scoped-overlay-dismiss | neutral  $1 | navigation overlay responsive correctness accessibility | An overlay that exists only below a breakpoint — a mobile nav sh
 interaction/clamped-drag-pose-drift-home | E2 D1 W4 F5 $2 | pointer interaction 3d rotation detail | An object the reader can turn should not map pointer position to
 interaction/coarse-pointer-affordance-promotion | neutral  $1 | accessibility interaction touch correctness media-query | Controls that fade in on :hover — a play button on a thumbnail, 

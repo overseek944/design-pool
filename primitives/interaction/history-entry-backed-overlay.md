@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,overlay,history,dismiss,mobile,correctness]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,25 @@ useEffect(() => { if (!open) return
 ```
 ⚠ Unmounting without consuming the entry leaves a dead state the reader must
 press back through twice. Push once per open, never per state change inside.
+
+In-page state takes `replaceState`, not `pushState`, and the difference is what
+the back gesture is expected to undo. An overlay covers the page, so back should
+close it; an inline disclosure inside a section does not, so pushing an entry
+per open turns back into a panel-by-panel rewind of a page the reader never
+left. Replace instead — the URL is copyable and the address bar names what is
+open, at no cost to the stack.
+```js
+history.replaceState(null, '', panel ? '#' + panel.id : '#section')
+```
+
+Either verb is a lie until the URL is *read back*. A fragment naming a collapsed
+panel has to open it rather than scroll to a hidden box, on cold load and on
+every `popstate` — and the same routing has to intercept in-page links, or a
+link to the panel from elsewhere on the page scrolls to nothing.
+```js
+const open = () => { const t = document.getElementById(decodeURIComponent(location.hash.slice(1)))
+  if (t) owns(t) ? show(t) : t.scrollIntoView() }
+addEventListener('popstate', () => requestAnimationFrame(open))
+```
+⚠ Decode before the lookup and guard it — a malformed fragment throws out of
+`decodeURIComponent` and takes the rest of the boot with it.
