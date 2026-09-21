@@ -4,7 +4,7 @@ category: media
 tags: [media,video,accessibility,reduced-motion,correctness]
 axes: none
 cost: 1
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -55,3 +55,20 @@ a flat frame and never downloads the animation.
 ⚠ Every frame of a GIF is a full uncompressed bitmap in memory once decoded, so
 a panel of them costs far more than the transfer suggests, and `loading="lazy"`
 defers that bill rather than reducing it. Three or more in a view is a video.
+
+At runtime the `src` attribute *is* the animated raster's transport, and it is
+the only one: removing it stops the loop and releases every decoded frame,
+reassigning it restarts from frame one. That makes two policies affordable that
+a `<video>` gets for free — warm the step either side of the current one through
+a detached `new Image()` so a move is instant, and drop every `src` in the
+sequence while the page is actually moving, restoring on a 100–200ms scroll-idle
+timer. Debounce the eviction 0.5–1s so a reader passing back and forth does not
+watch panels blank.
+```js
+const warm = i => { const w = new Image(); w.src = srcs[i] }   // decode only
+const stop = img => img.removeAttribute('src')
+const play = (img, i) => { if (img.getAttribute('src') !== srcs[i]) img.src = srcs[i] }
+```
+⚠ Restarting from frame one is visible on a long loop — acceptable for a short
+cycle, wrong for anything a reader is meant to follow. Keep a poster underneath
+so the eviction reveals a still rather than the container's background.

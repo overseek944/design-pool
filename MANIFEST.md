@@ -1,6 +1,6 @@
 # Manifest
 
-788 primitives. Format: `category/id | axes cost | tags | gist`
+790 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -191,6 +191,7 @@ interaction/modality-gated-port-scroll | neutral  $1 | interaction accessibility
 interaction/momentum-gated-wheel-step | neutral  $2 | interaction wheel input gesture correctness | A trackpad flick is one gesture and hundreds of events, so a ste
 interaction/mounted-empty-status-slot | neutral  $1 | accessibility correctness form layout state css-only | A live region only announces if it was in the document before th
 interaction/native-disclosure-animation | E2 D2 W2 F5 $2 | motion disclosure accessibility progressive-enhancement height | ::details-content with interpolate-size: allow-keywords animates
+interaction/native-drag-capture-guard | neutral  $1 | pointer drag scroll correctness interaction | Images and links are draggable by default, so a press-and-move i
 interaction/nearest-sample-path-pick | neutral  $2 | interaction svg pointer diagram correctness | Dozens of hairline curves crossing in one figure cannot be hit-t
 interaction/offset-shadow-press | E3 D2 W4 F2 $1 | interaction state depth detail border | A hard offset shadow reads as a solid object sitting above the p
 interaction/one-sided-hover-delay | E2 D2 W2 F5 $1 | interaction hover delay css-only restraint pointer | A hover-revealed panel wants patience on the way in and none on 
@@ -422,6 +423,7 @@ motion-system/counter-scaled-camera-overlay | neutral  $1 | camera transform ove
 motion-system/coverage-field-threshold-wave | E3 D4 W2 F4 $2 | field grid threshold cells shimmer generative | A field of cells carrying a coverage value — how much of some fo
 motion-system/deadline-bounded-animated-close | neutral  $1 | motion correctness state architecture | A state change that waits on an animation never happens when the
 motion-system/decaying-change-mark | E3 D1 W2 F4 $1 | motion-system feedback live-data emphasis | Marking a value that just changed with styling it keeps turns an
+motion-system/differential-scale-depth-stack | E3 D2 W3 F5 $2 | motion transform scale depth parallax scroll | Depth on a push needs no perspective and no Z. Stack co-located 
 motion-system/distance-cued-focus-wheel | E2 D2 W2 F5 $2 | list rotation blur depth mask custom-property | A rotating list that only fades its neighbours reads flat. Stack
 motion-system/distance-eased-camera-push | E2 D2 W3 F5 $3 | camera 3d easing scroll narrative | Interpolating a camera's position between two waypoints looks wr
 motion-system/drive-mode-scoped-transition | neutral  $1 | motion scroll scrub custom-properties correctness architecture | A property that eases on arrival and later tracks a continuous i

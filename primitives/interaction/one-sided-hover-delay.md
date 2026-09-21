@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,hover,delay,css-only,restraint,pointer]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []

@@ -4,7 +4,7 @@ category: perf
 tags: [performance,scroll,intersection-observer,scrub,listener,correctness]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: [state-seeded-at-listener-attach]

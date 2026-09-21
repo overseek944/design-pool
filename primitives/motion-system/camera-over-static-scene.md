@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,transform,scale,focus,diagram,narrative]
 axes: {energy: 3, density: 2, weight: 3, finish: 5}
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -57,3 +57,17 @@ const move = (x, y, s, ms) => { const st = stage.style   // one task, one transi
 ```
 ⚠ Write all four in the same task. Split across frames it restarts the
 transition from wherever it had reached, and each move lands short.
+
+The resampling warning above has a treatment rather than only a prohibition.
+Past roughly 2× a raster subject is soft whatever you do, so spend the softness
+deliberately: ramp a blur on the same scalar that drives the push, arriving
+around 12–30px at the deepest point. The frame then reads as a lens losing focus
+as it closes rather than as an image running out of pixels, and the push can go
+to 4× on artwork that would not survive 1.5× sharp.
+```css
+.plate { transform: scale(var(--push)); filter: blur(var(--defocus, 0px)) }
+/* --defocus written from a later window of the same driver than --push */
+```
+⚠ Start the blur *after* the push, not with it — a frame that is soft at rest
+reads as a loading state. Blur on a full-bleed layer is a full-viewport filter
+pass every frame: give it its own layer and drop it outright below a device tier.

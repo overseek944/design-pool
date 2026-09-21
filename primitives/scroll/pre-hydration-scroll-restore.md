@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,navigation,hydration,restoration,architecture]
 axes: none
 cost: 2
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -84,3 +84,20 @@ if (nav?.type === 'reload') addEventListener('load', () => scrollTo(0, 0), { onc
 ⚠ It is the entrance that earns this, not the preference for a tidy top — a
 long document reloaded during reading loses the reader's place for nothing.
 Never extend it to a fragment the reader arrived at deliberately.
+
+Everything *derived* from scroll position has the same race and no inline script
+of its own. A header's ground, a scrollspy, a progress rail all compute at init
+against a document still parked at zero, so a restored page paints its opening
+state and corrects a frame later. Persist the derived state beside the offset,
+render from it, and hold the first recomputation until `pageshow` — by then the
+restore has landed and the reading is true. Mark the pre-rendered state so the
+runtime knows to wait rather than to trust its own first measurement.
+```js
+if (bar.hasAttribute('data-restored'))
+  addEventListener('pageshow', settle, { once: true })   // settle() clears the mark, then updates
+else update()
+```
+⚠ `pageshow` does not fire on a same-document router pop — pair it with the
+router's own signal, or a client-side back leaves the mark set and the state
+frozen. Session state must be keyed by path: one value for the whole origin
+restores the wrong chrome on every other route.

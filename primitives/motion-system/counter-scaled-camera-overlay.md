@@ -4,7 +4,7 @@ category: motion-system
 tags: [camera,transform,overlay,cursor,correctness]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,17 @@ any other value and the two visibly separate mid-move. Holds over 1/0.2–1/1.5.
 ⚠ `transform-origin` must be the mark's hotspot, not its centre, or it drifts
 off target as it counter-scales. Using the `scale` channel leaves `transform`
 free for the overlay's own press or nudge.
+
+`border-radius` is not a transform and the `scale` channel cannot reach it: a
+corner on a box scaled 3× is drawn at 3× the authored radius, so a card pushed
+into the frame arrives visibly rounder than it was designed. Divide the resting
+radius by the live factor and write it as a length — the corner then holds one
+apparent size through the whole push. The same division is what a `scaleX`-only
+morph needs to stop its corners going elliptical.
+```js
+el.style.borderRadius = `${rest / scale}px`     // rest 12–24px
+```
+⚠ A length written per frame is a style invalidation per frame — round it to
+0.1px and compare against the last string before writing. Only for a box whose
+radius is small relative to its side; at pill radii the division overshoots and
+the corner flattens.
