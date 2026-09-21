@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,accessibility,control,scrub,native,diagram]
 axes: {energy: 2, density: 1, weight: 1, finish: 5}
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -54,3 +54,19 @@ air around the thumb takes it negative near zero.
 ⚠ Transition the fill's size and the marker's offset together, over one
 duration and one curve. Either alone lags the other by the whole duration and
 the two visibly separate mid-drag.
+
+Filling the track behind the thumb is two different mechanisms, and only one is
+free of the drift above. Firefox measures `::-moz-range-progress` itself, so it
+is exact for free; WebKit and Blink have no such pseudo-element and want a
+hard-stopped gradient on `::-webkit-slider-runnable-track`, fed from one custom
+property the `input` handler writes. Give that stop the thumb-corrected position
+rather than the raw percentage or the two engines disagree by up to half a thumb
+at the ends. Track 4–8px, thumb 16–22px.
+```css
+.s::-webkit-slider-runnable-track { block-size: var(--track);
+  background: linear-gradient(90deg, var(--fill) var(--at), var(--rail) var(--at)) }
+.s::-moz-range-progress { block-size: var(--track); background: var(--fill) }
+```
+⚠ The webkit thumb needs `margin-block-start: calc((var(--track) - var(--thumb)) / 2)`
+to sit on the track it now paints; Firefox centres its own. `90deg` is physical —
+the control reverses in RTL and the gradient does not, so mirror the stop there.

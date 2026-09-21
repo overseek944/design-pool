@@ -4,7 +4,7 @@ category: media
 tags: [media,video,performance,intersection-observer,accessibility,bandwidth]
 axes: none
 cost: 2
-seen: 24
+seen: 25
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -249,3 +249,18 @@ const fire = e => { if (!e.isTrusted || (e.key && !['Enter',' '].includes(e.key)
 ```
 ⚠ Subscribers must re-check their own gate inside the callback — a gesture
 anywhere on the page reaches every clip, including the ones scrolled past.
+
+A resolved `play()` is not playback. Under a low-power or battery-saver mode the
+promise settles, `playing` may even fire, and the element never advances — so a
+reveal gated on either leaves the copy sitting over a frozen frame that reads as
+a still nobody art-directed. Assert the clock instead: record `currentTime`,
+wait 600–1200ms, and require `!paused` *and* a delta past one frame interval at
+the clip's own rate. Ship the element already hidden over its poster layer and
+let only the verified case reveal it; anything else arms the gesture retry.
+```js
+const t0 = v.currentTime
+setTimeout(() => !v.paused && v.currentTime > t0 + .05 ? reveal() : armRetry(), 900)
+```
+⚠ Size the delta *above* one frame — 0.05 clears 25fps, not 12 — or a single
+decoded frame passes as motion. Clear the timer on unmount and on a reader's
+own pause, or the check fires against an element they deliberately stopped.

@@ -1,6 +1,6 @@
 # Manifest
 
-740 primitives. Format: `category/id | axes cost | tags | gist`
+741 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -151,6 +151,7 @@ interaction/focus-exit-dismissal | neutral  $1 | accessibility interaction focus
 interaction/focus-handoff-on-self-removal | neutral  $1 | accessibility focus correctness form state | A control that removes itself when used — a form replaced by its
 interaction/focus-held-chrome-retraction | neutral  $1 | interaction correctness accessibility focus keyboard scroll chrome navigation | A bar that retracts on downward scroll must ask more than which 
 interaction/focus-released-occlusion | neutral  $1 | interaction accessibility focus sticky correctness css-only | Any arrangement that deliberately covers one element with anothe
+interaction/focus-within-welded-field-group | E1 D2 W2 F5 $1 | interaction form field focus accessibility control | Two native controls that together produce one value — country co
 interaction/focusable-graphic-regions | neutral  $2 | accessibility svg focus diagram correctness | A drawing whose parts answer to the pointer — a map, a schematic
 interaction/gap-spanning-hover-bridge | E2 D2 W2 F5 $1 | interaction hover panel menu css-only accessibility | A panel held off its trigger by a visual gap is unreachable by h
 interaction/gesture-affordance-label | E1 D2 W2 F4 $1 | affordance interaction accessibility detail ux | A surface whose only affordance is a gesture — drag to orbit, sc

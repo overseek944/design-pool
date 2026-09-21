@@ -4,7 +4,7 @@ category: type
 tags: [type,accessibility,responsive,navigation,correctness]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -51,3 +51,21 @@ const short = t => { const c = t.indexOf(':')
 ⚠ The semantic cut and the CSS clip must not both fire on the same label or it
 is shortened twice. Pick one per list: punctuation where the source has a
 reliable convention, the clip where it does not.
+
+Past the width where even an abbreviation fits, the terminal case is no text at
+all: a legend chip or a diagram node becomes its dot or glyph alone. There is no
+second string to swap to, so the rule above inverts — move the *only* label into
+a 1px clip rather than `display: none`, and no `aria-label` is needed, because
+the word is still in the DOM carrying the name, the find and the translation.
+Let the mark take what the words vacated: gap to 0, padding equal on all sides,
+glyph up 20–40%.
+```css
+@media (width <= 26rem) {
+  .chip { gap: 0; padding: 11px }
+  .chip .long { position: absolute; inline-size: 1px; block-size: 1px;
+                overflow: hidden; clip-path: inset(50%); white-space: nowrap }
+}
+```
+⚠ That padding around a 10px glyph is a 32px square — under the 44px minimum
+target, and the width forcing the shed is the width that can least afford a
+missed tap. Pad to the target, not to the mark.
