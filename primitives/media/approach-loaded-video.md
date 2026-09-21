@@ -4,7 +4,7 @@ category: media
 tags: [media,video,performance,intersection-observer,accessibility,bandwidth]
 axes: none
 cost: 2
-seen: 26
+seen: 27
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -264,3 +264,18 @@ setTimeout(() => !v.paused && v.currentTime > t0 + .05 ? reveal() : armRetry(), 
 ⚠ Size the delta *above* one frame — 0.05 clears 25fps, not 12 — or a single
 decoded frame passes as motion. Clear the timer on unmount and on a reader's
 own pause, or the check fires against an element they deliberately stopped.
+
+Where the clip is the content rather than the ground, the gate may ask for sound
+— and nothing can be queried first, so the attempt *is* the query. Try unmuted,
+and on the rejection retry muted rather than leaving a dead frame; a reader who
+has already clicked anything on the page gets audio, everyone else gets picture.
+Pre-set `volume` to 0.4–0.6, since a clip that arrives at full scale after a
+silent page is the same failure by another route.
+```js
+v.muted = false
+v.play().catch(() => { v.muted = true; v.play().catch(() => {}) })
+```
+⚠ The two branches are indistinguishable to the layout, so the muted outcome
+needs a visible unmute control or the sound is simply lost. Never the only path
+to the information, and once a reader mutes it themselves that outranks every
+later entry.

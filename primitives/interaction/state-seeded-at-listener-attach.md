@@ -4,7 +4,7 @@ category: interaction
 tags: [correctness,state,events,scroll,architecture]
 axes: none
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []

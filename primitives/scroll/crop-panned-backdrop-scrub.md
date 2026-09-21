@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,parallax,media,scrub,surface,performance]
 axes: {energy: 2, density: 1, weight: 3, finish: 4}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -21,5 +21,6 @@ leaves frame at one end.
 ```
 ⚠ The pan range *is* the crop overflow, so a picture whose aspect matches its
 box has none and the effect silently does nothing — force headroom with
-`background-size: auto 130%` on the pan axis. It repaints rather than
+`background-size: auto 125–150%` on the pan axis — the higher end where the
+layer is also scaled or inset past its box, so no edge can enter frame. It repaints rather than
 composites: decorative layers only, and hold the still under reduced motion.

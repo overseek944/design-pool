@@ -4,7 +4,7 @@ category: reveal
 tags: [reveal,text,steps,clip-path,typing,layout-safety]
 axes: {energy: 3, density: 2, weight: 2, finish: 3}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
