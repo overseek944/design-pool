@@ -4,7 +4,7 @@ category: type
 tags: [type,emphasis,hierarchy,editorial,colour]
 axes: {energy: 1, density: 2, weight: 3, finish: 5}
 cost: 1
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []
@@ -57,3 +57,17 @@ accents clear only on a dark ground.
 ⚠ Hue is the only cue, so it is gone in greyscale and for a red-green
 deficiency. Mark the phrase with `<strong>` or `<em>` where it is genuinely
 stressed rather than styling a bare span.
+
+Over a photograph neither split holds on its own: the ground's luminance varies
+across the line, so a muted remainder disappears in the bright quarter and an
+accent clause disappears in the dark one. Stack the channels instead — a weight
+step, a hue step and a real drawn italic on the promoted clause — and the
+hierarchy survives wherever the line lands, because no single cue is carrying
+it. Weight gap 120–180 on a variable face; the pair still owes 4.5:1 against
+the *darkest and lightest* pixel it can cross, which usually means a scrim.
+```css
+.claim     { color: var(--fg-cool); font-weight: 470 }
+.claim em  { color: var(--fg); font-weight: 630; font-style: italic }
+```
+⚠ Three channels at once is the ceiling — add a fourth and the clauses stop
+reading as one sentence.

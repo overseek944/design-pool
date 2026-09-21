@@ -4,7 +4,7 @@ category: surface
 tags: [surface,grid,texture,ambient,depth,geometry]
 axes: {energy: 2, density: 3, weight: 1, finish: 4}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -28,3 +28,18 @@ corners the rotation empties.
 ⚠ A fixed perspective layer is a compositor layer for the whole session — one
 per page, never animated. Rule alpha 2–5%: projection stacks cells near the
 horizon and doubles apparent density there.
+
+Where the lattice should read as *off-axis* rather than as a floor, `skewY` is
+the cheaper transform and a different effect: no 3D context, no compositor
+layer held for the session, and cells that stay uniform, so there is no horizon
+for them to converge into and no moiré to mask. It buys only a few degrees
+before the tilt reads as a mistake, and it empties the same corners — a small
+overscale refills them. Pair it with a focal mask and the ground has no edge to
+terminate.
+```css
+.lattice { transform: skewY(4deg) scale(1.08);       /* 2–6deg, scale 1.05–1.15 */
+  mask-image: radial-gradient(70% 72% at 50% 48%, #fff, #0000) }
+```
+⚠ Skew shears the strokes too, so a hairline is thinner on one axis than the
+other — draw it in SVG where stroke width is yours to set, or accept the
+difference at alphas this low.

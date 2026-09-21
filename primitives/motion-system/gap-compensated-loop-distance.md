@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,marquee,correctness,loop,overflow]
 axes: none
 cost: 1
-seen: 12
+seen: 13
 requires: []
 conflicts: []
 completes: []
@@ -51,3 +51,16 @@ track.style.transform = `translateX(${-gap - ((phase % period) + period) % perio
 ```
 ⚠ Reading an offset before the webfont resolves measures the fallback's
 advance widths. Double-modulo, or a negative phase wraps to a negative offset.
+
+How many copies is the other measured question, and two is right only when the
+content is already wider than its container. Below that the track runs out and
+a gap opens at the trailing edge once per cycle. Derive the count from the same
+two widths the period came from — `ceil(container / content)` to fill it, plus
+two so the seam stays offscreen while one copy translates out — and re-derive it
+in the `ResizeObserver` that already runs.
+```js
+const n = content > 0 ? Math.max(3, Math.ceil(container / content) + 2) : 1
+```
+⚠ Only the first copy is real content; mark the rest `aria-hidden`. The count
+rises as the content shortens, so a one-word track on a wide viewport clones far
+more than a full sentence does — cap it if each copy is expensive.

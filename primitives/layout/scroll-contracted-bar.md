@@ -4,7 +4,7 @@ category: layout
 tags: [header,scroll,sticky,chrome]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -68,3 +68,19 @@ guessed. Fade opacity on the same clock or the last glyphs shear off mid-letter.
 ⚠ A `max-inline-size: 0` label is still in the accessibility tree and still
 found by the browser's find — fine for a wordmark the mark already names, wrong
 for anything carrying information.
+
+Contract on the compositor instead of on layout. Hold every box still and give
+the bar a text-free backing plate as an absolutely-inset sibling, then animate
+only that plate's `scaleX` and the two edge clusters' `translateX` — the centre
+track is the fixed point, so the links cannot slide because nothing's width ever
+changed. Derive the travel from the two widths rather than tuning it. A
+`max-inline-size` transition runs on the main thread; this one does not, which is
+what it takes to stay smooth *during* the scroll that triggers it.
+```js
+const target = Math.min(Math.max(840, measured), full)   // 640–1100 target
+plate.style.transform = `scaleX(${target / full})`       // plate carries blur, border, radius
+edge.style.transform  = `translateX(${(full - target) / 2 + pad}px)`  // pad 8–20px
+```
+⚠ `scaleX` distorts the plate's `border-radius` into an ellipse — keep it small
+(12–20px) or counter-scale a child, and never put text on the plate. Cancel the
+edge transforms outright under `prefers-reduced-motion`.
