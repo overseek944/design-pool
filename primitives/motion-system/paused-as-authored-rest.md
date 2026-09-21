@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,architecture,correctness,scene,performance]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: [loop-gated-on-attention]
@@ -37,3 +37,17 @@ const onPref = e => { clearInterval(t); t = null; if (e.matches) setIndex(0); el
 ⚠ The same argument applies to a generative scene: hold it at a still frame the
 composition was designed around — frame zero, or a seed chosen for it — rather
 than at whatever the clock reached before the preference was read.
+
+A once-only entrance fails the other way: it does not show the middle of a loop,
+it shows nothing. `animation: … both` starts at load, so anything behind a boot
+overlay — a loader, a splash, a font swap — has finished before the overlay
+leaves and the page arrives already settled. The same lever holds it: a flag on
+the root, `animation-play-state: paused`, dropped when the overlay drops.
+Overlay 0.8–1.4s.
+```css
+html[data-loading] .rise, html[data-loading] .hero-in { animation-play-state: paused }
+```
+⚠ The flag has to be in the served markup, not added by script, or the first
+frames escape before it lands — and it must be removed on every exit path
+including the failed one, under a hard ceiling. An asset that never resolves
+otherwise freezes every entrance at frame zero, which reads as blank, not slow.

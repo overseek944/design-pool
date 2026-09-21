@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,edge,composition,bleed]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 51
+seen: 52
 requires: []
 conflicts: []
 completes: []
@@ -162,3 +162,19 @@ img { mask-image: radial-gradient(closest-side, #000 55%, transparent 96%) }
 ```
 ⚠ Keep the `-webkit-mask-image` twin — an unprefixed-only rule is ignored
 outright in older WebKit and the image ships as a hard square, not a soft one.
+
+Layers need not composite; they can partition. `mask-size` and `mask-position`
+cut the box into strips, one layer each — so a top fade over a scrolling pane
+can hand the scrollbar gutter a second, fully opaque layer, and the fade stops
+washing out the scrollbar sitting inside it. The strips do not overlap, so there
+is no `mask-composite` and no prefix pair to get wrong. Gutter 10–16px, matched
+to the track the pane actually renders.
+```css
+mask-image: linear-gradient(to bottom, transparent 0, #000 40px, #000 100%),
+            linear-gradient(#000, #000);
+mask-size: calc(100% - 14px) 100%, 14px 100%;
+mask-position: 0 0, 100% 0; mask-repeat: no-repeat;
+```
+⚠ An overlay scrollbar reserves no gutter at all and the second strip then eats
+14px of the fade for nothing. Measure `offsetWidth - clientWidth` and drop the
+layer when it is zero — and remember the gutter is on the left under `rtl`.

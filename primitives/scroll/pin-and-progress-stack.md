@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,layout,narrative]
 axes: {energy: 4, density: 3, weight: 4, finish: 4}
 cost: 4
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: [context-scoped-cleanup, reduced-motion-branch]
@@ -43,3 +43,21 @@ spacer.style.height = (at + 100) + 'vh'
 ⚠ The stage is outside the flow, so nothing in it is reachable by find-in-page
 or a fragment link beyond the current beat, and the browser will restore a
 scroll position the stage has not built yet.
+
+A beat is two budgets, not one. Split each table entry into a hold and a travel:
+scroll spent in the hold moves nothing, so the state that just landed can be read
+before the next one starts, and only the travel is what the scalar consumes.
+Normalise the output over beats rather than over distance and every consumer
+stays in uniform units while the budgets stay unequal. Holds 0.2–0.6 of the
+beat's own travel; past 1.0 the page reads as stuck rather than as holding.
+```js
+let d = scrolled, done = 0
+for (const b of beats) {
+  if (d <= b.hold * unit) break; d -= b.hold * unit
+  const f = Math.min(1, d / (b.travel * unit)); done += f
+  if (f < 1) break; d -= b.travel * unit }
+const p = done / beats.length
+```
+⚠ Collapse the holds to zero under `prefers-reduced-motion` rather than
+shortening them. A hold is scroll that does nothing, which is precisely what a
+reader who asked for less motion reads as the page having stopped responding.

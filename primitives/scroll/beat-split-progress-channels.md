@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,scrub,choreography,custom-properties,sequence,architecture]
 axes: {energy: 3, density: 3, weight: 2, finish: 5}
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []

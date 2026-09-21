@@ -4,7 +4,7 @@ category: layout
 tags: [header,scroll,sticky,chrome]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 15
+seen: 16
 requires: []
 conflicts: []
 completes: []
@@ -115,3 +115,18 @@ bar.dataset.pastHero = y > innerHeight * .65
 ⚠ The second threshold is a guess at the hero's height until it is measured —
 observe the hero itself, or a short one flips the state while the reader is
 still inside it.
+
+The threshold is not the only input. A bar that hosts its own menus must not
+contract while one is open — the capsule shrinks out from under a panel anchored
+to it — so publish a veto as a root attribute the handler ANDs in, and dispatch
+an event when it changes so the test re-runs instead of waiting for a scroll that
+may never come. Engage and release on different thresholds, 32–48 and 8–16, or a
+bar parked on the line flickers.
+```js
+const apply = () => set(!root.hasAttribute('data-bar-hold') &&
+  (contracted ? scrollY > 12 : scrollY > 40))
+addEventListener('bar:hold', apply)        // menu open and close both dispatch
+```
+⚠ Releasing the veto must re-run the test, not restore what was there before — a
+menu opened at the top and closed halfway down otherwise leaves the bar expanded
+over content it should already have detached from.

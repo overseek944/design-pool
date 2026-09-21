@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,scrollbar,chrome,restraint,state]
 axes: {energy: 1, density: 1, weight: 1, finish: 5}
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -53,3 +53,17 @@ painting into it, and the hit area stays the full width. Border 2–3px against 
 ⚠ The rule has to be repeated on `:hover`: changing only `background` there
 drops the clip and the border alongside it, and the thumb jumps to full width
 under the pointer.
+
+The same reveal with no script: leave `scrollbar-color` transparent at rest,
+set it on `:hover` and `:focus-within`, and transition the property itself.
+`focus-within` is the half an activity listener misses — a reader who tabs into
+the pane has not scrolled it, so nothing stamps the element and the thumb stays
+invisible under the caret that is moving through it. Transition 120–200ms;
+longer and the thumb lands after the pointer has gone looking for it.
+```css
+.pane { scrollbar-color: transparent transparent; transition: scrollbar-color .15s }
+.pane:hover, .pane:focus-within { scrollbar-color: var(--thumb) transparent }
+```
+⚠ Scope it to `@media (hover: hover)`. On touch the scrollbar is already an
+overlay that appears on use, and the rest state there is a pane whose only
+position cue is one that can never be triggered.

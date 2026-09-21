@@ -4,7 +4,7 @@ category: reveal
 tags: [reveal,motion,rotation,symmetry,pairing,scroll,parallax]
 axes: {energy: 3, density: 2, weight: 3, finish: 4}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

@@ -1,6 +1,6 @@
 # Manifest
 
-704 primitives. Format: `category/id | axes cost | tags | gist`
+705 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -525,6 +525,7 @@ scroll/element-scoped-read-progress | neutral  $2 | scroll progress correctness 
 scroll/embed-claims-wheel-on-hover | neutral  $1 | scroll embed iframe overflow pointer correctness | An interactive embed inside a scrolling page — a map, a 3D scene
 scroll/end-clamped-section-spy | neutral  $1 | scroll navigation correctness architecture | A scroll spy that takes the last section whose top has crossed a
 scroll/fixed-attachment-band | E2 D1 W3 F3 $1 | scroll parallax media surface progressive-enhancement performance | A full-bleed decorative band whose image is pinned to the viewpo
+scroll/floor-merged-autoplay-progress | neutral  $2 | scroll progress autoplay accessibility architecture | A sequence that moves only while the page moves is a flick on a 
 scroll/fully-entered-recede | E2 D1 W2 F5 $2 | scroll scroll-driven view-timeline scale transition | A tall artifact parked between two sections reads as a wall to b
 scroll/height-aware-sticky-offset | neutral  $2 | scroll sticky layout correctness viewport | top: 0 is only right while the sticky element fits the viewport.
 scroll/hoisted-scroll-timeline | neutral  $2 | scroll motion architecture progressive-enhancement | A named scroll-timeline is visible only to descendants of the sc

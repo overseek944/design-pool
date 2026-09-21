@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,loop,ambient,diagram,css-only]
 axes: {energy: 3, density: 3, weight: 1, finish: 4}
 cost: 2
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -72,3 +72,19 @@ every frame, which is fine for a handful of 4–6px marks and never for a field.
 ⚠ `top` is a percentage of the parent's height and `left` of its width, so a
 parent whose aspect ratio changes shears the route. Lock the ratio, or the
 waypoints only hold at the shape they were picked at.
+
+Absolute user units are the objection the variant above answers by giving
+`offset-path` up. It can be answered without that: measure the two boxes the
+route joins, emit the `path()` string from their live geometry, and write it to
+the same custom property inside a `ResizeObserver`. The declaration never
+changes, only the string, so every traveller on it keeps its keyframe — or takes
+a scrubbed scalar in `offset-distance` instead. Round to one decimal, and turn
+each elbow with a quadratic 8–16px in from the corner so nothing snaps through a
+right angle.
+```js
+const d = `M ${r(ax)} ${r(ay)} L ${r(ax)} ${r(by - 12)} Q ${r(ax)} ${r(by)} ${r(ax - 12)} ${r(by)} …`
+el.style.setProperty('--route', `path("${d}")`)
+```
+⚠ Observe every box the route touches, not only the wrapper — a sibling that
+reflows inside an unchanged width fires nothing on the container, and the path
+goes on pointing at where the box used to be.

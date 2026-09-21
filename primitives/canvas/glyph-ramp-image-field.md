@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,type,texture,image,ambient,generative]
 axes: {energy: 2, density: 4, weight: 2, finish: 3}
 cost: 4
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: [canvas-behind-dom-not-instead-of-it]
