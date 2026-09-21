@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,texture,ambient,generative,performance]
 axes: {energy: 2, density: 3, weight: 2, finish: 3}
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -40,3 +40,18 @@ float g = hash(floor(gl_FragCoord.xy * uGrainScale + o));
 ```
 ⚠ Drive the grain from a clock separate from the surface's, or slowing the
 animation slows the grain with it and the texture turns to crawling blobs.
+
+Neither form is needed where the grain may be *slow*. Take a CSS dot lattice and
+animate it with `steps(n, end)`: the field jumps between n fixed sub-pixel
+offsets and holds between them, so there is no canvas, no timer, no per-frame
+fill — the compositor repaints n times over the whole period and the tile never
+resolves because it never sits still long enough to be read. It is a surface
+breathing rather than film; a rate this low reads as wrong the moment the
+content under it moves. Steps 4–8 over 5–10s, offsets 1–3px.
+```css
+.shimmer { background: radial-gradient(var(--speck) 1px, #0000 1.4px) 0 0 / 5px 5px;
+           animation: jitter 7s steps(6, end) infinite }
+@keyframes jitter { 25% { opacity: .5; translate: -2px 1px } 75% { translate: -1px -1px } }
+```
+⚠ Inset the layer past its box on all sides, or each step exposes the un-tiled
+edge. Cancel under reduced motion — the still tile is already the texture.

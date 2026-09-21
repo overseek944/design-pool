@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,correctness,accessibility,progressive-enhancement,reveal]
 axes: none
 cost: 2
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []

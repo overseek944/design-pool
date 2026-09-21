@@ -1,6 +1,6 @@
 # Manifest
 
-592 primitives. Format: `category/id | axes cost | tags | gist`
+593 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -350,6 +350,7 @@ motion-system/sequenced-root-view-transition | E2 D1 W2 F5 $2 | motion navigatio
 motion-system/settling-strike-envelope | E4 D2 W3 F3 $2 | flicker envelope keyframe-table shader portable data | Something powering on does not fade — it strikes, drops out, cat
 motion-system/slot-permutation-rotation | E2 D3 W2 F5 $3 | motion grid state responsive | To show more items than a grid has cells, swap one cell at a tim
 motion-system/split-track-puppet-pointer | E2 D2 W2 F5 $2 | demo cursor choreography spring loop | A synthetic pointer demonstrating an interface is two motions, n
+motion-system/state-keyed-descendant-transition | neutral  $1 | motion reveal transition correctness reduced-motion architecture | One observer entry can drive more than one animation. Let the se
 motion-system/stepped-follow-transition | E3 D1 W2 F3 $1 | motion pointer transition steps character | Anything that follows the pointer glides, and glide reads as liq
 motion-system/sub-fusion-tremor | E5 D1 W1 F4 $1 | motion loop drag state micro-interaction | Below roughly 100ms a period stops reading as motion and starts 
 motion-system/svg-geometry-keyframes | E3 D2 W2 F5 $1 | motion svg diagram precision detail | r, cx, cy, x, y and width are CSS properties on SVG, not just at

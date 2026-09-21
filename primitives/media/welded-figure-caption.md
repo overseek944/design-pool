@@ -4,7 +4,7 @@ category: media
 tags: [media,figure,caption,accessibility,editorial]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -53,3 +53,18 @@ screen, which `FIG. 01` cannot.
 ```
 ⚠ Mark the separators `aria-hidden` or each one is announced as "slash", and do
 not repeat the crumb as the image's `alt` — the location is then read twice.
+
+A third way to weld, for a figure that already carries a shadow and cannot take
+a border: give the wrapper a decorative plate at `inset: 0` — a tint, a grain, a
+soft wash — and let it run *past* the figure to sit under the caption. The
+figure floats on the plate, the caption lies on it, and the two are one object
+because they share a ground rather than a frame. Nothing is added to the caption
+itself, so it stays ordinary text at ordinary contrast.
+```css
+.wrap { position: relative }                       /* holds figure + caption */
+.wrap::before { content: ""; position: absolute; inset: 0; z-index: -1;
+  border-radius: 1rem; background: var(--atmosphere) }
+```
+⚠ The plate is decoration, so `aria-hidden` and `pointer-events: none`. Keep it
+within 3–6% of the section ground or it becomes a panel the caption is trapped
+in.

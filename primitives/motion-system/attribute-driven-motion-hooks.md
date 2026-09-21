@@ -4,7 +4,7 @@ category: motion-system
 tags: [architecture,motion,maintainability]
 axes: none
 cost: 1
-seen: 14
+seen: 15
 requires: []
 conflicts: []
 completes: []
@@ -43,3 +43,16 @@ survives anyone re-stacking a layer.
 const bars = [...svg.querySelectorAll('[data-i]')]
   .sort((a, b) => a.dataset.i - b.dataset.i)
 ```
+
+Read the parameters at *reveal* time rather than at setup where the hook drives
+a CSS `transition` instead of a scripted timeline. A `transition-delay` written
+once at setup belongs to the property forever, so the same element later
+re-transitioning — a hover, a theme swap, a resize — inherits an arrival delay
+that has nothing to do with it. Write the declaration in the same statement that
+adds the settled class and the delay is scoped to the one arrival.
+```js
+const show = el => { if (el.dataset.delay) el.style.transitionDelay = `${el.dataset.delay}ms`
+                     el.classList.add('is-visible') }
+```
+⚠ Clear it on the transition's `end` event if anything else on the element
+animates the same property — an inline style outranks every rule in the sheet.

@@ -4,7 +4,7 @@ category: color
 tags: [color,tokens,accessibility,contrast,correctness,state]
 axes: none
 cost: 1
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []

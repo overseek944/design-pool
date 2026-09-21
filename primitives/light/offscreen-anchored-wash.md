@@ -4,7 +4,7 @@ category: light
 tags: [gradient,ground,atmosphere,ambient,color,cheap]
 axes: {energy: 1, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: [eased-fade-stop-ramp]
@@ -104,3 +104,17 @@ on *every* card as a hover state: a pseudo-element carrying one ellipse centred
 past the bottom edge, transitioning `opacity` alone, so the card lights from
 beneath instead of tinting. Nothing animates but a composited opacity, so a
 twelve-card grid costs what one card costs. Centre 110–130% down, fade 0.4–0.6s.
+
+The low-alpha interior form does transfer to a light ground, but only if the
+wash is *chromatic*: a neutral at 5% on near-white is invisible, where the
+accent hue at the same alpha is felt before it is seen. Anchor one per corner
+region and rotate which corner across consecutive full-bleed sections — top
+right, then top left, then bottom right — and the page reads as one room lit
+from a moving source rather than a stack of flat bands. Accent .04–.10, ellipse
+90–120%, one or two anchors per section.
+```css
+.warm { background: radial-gradient(120% 90% at 75% 18%, rgb(var(--accent)/.10), #0000 60%),
+          radial-gradient(90% 80% at 12% 95%, rgb(var(--ink)/.07), #0000 55%), var(--paper) }
+```
+⚠ Keep the set closed — three or four named recipes, chosen per section — or
+the anchors stop alternating and every ground drifts to the same corner.
