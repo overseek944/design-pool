@@ -1,6 +1,6 @@
 # Manifest
 
-509 primitives. Format: `category/id | axes cost | tags | gist`
+511 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -188,6 +188,7 @@ layout/scroll-contracted-bar | E2 D2 W2 F5 $2 | header scroll sticky chrome | A 
 layout/scroll-lock-via-has | neutral  $1 | overlay correctness overflow dialog cls | Lock the page behind an overlay from CSS alone by keying off the
 layout/self-drawing-grid-debug | neutral  $2 | layout grid tooling debug architecture | A layout system worth having can show its own work. One class re
 layout/shared-percent-coordinate-space | E1 D3 W1 F5 $2 | diagram svg schematic accessibility responsive | A node diagram wants SVG lines and real DOM nodes: strokes that 
+layout/sibling-deferred-block-spacing | neutral  $1 | layout has spacing rhythm css-only correctness architecture | A markdown or CMS renderer emits a figure and its caption as fla
 layout/single-edge-cell-rules | E1 D3 W1 F5 $1 | layout grid hairline rules precision | In a ruled grid every interior line is drawn by both neighbours 
 layout/slot-attribute-child-contract | neutral  $1 | layout architecture composition naming css-only | Let the arrangement own its children's boxes. A part publishes o
 layout/stacking-register | neutral  $1 | architecture z-index tokens correctness overlay | One file owns every stacking value in the product as named token
@@ -498,6 +499,7 @@ type/rule-ranked-aside-tier | E1 D2 W2 F5 $1 | type hierarchy register annotatio
 type/serif-accent-in-technical-context | E1 D2 W3 F5 $1 | type contrast editorial restraint | One high-contrast serif, used sparingly against a geometric sans
 type/sourced-display-figure | neutral  $1 | type figures provenance correctness editorial accessibility | A number set at display size stops being prose and becomes a cla
 type/state-dimmed-subordinate-tier | E1 D2 W2 F5 $1 | type hierarchy state accessibility contrast | Where several panels of a stepper are on screen at once and one 
+type/stroke-restored-display-contrast | E1 D2 W4 F4 $1 | type display contrast accent accessibility ornament | A display glyph filled with a high-chroma accent fails against i
 type/stroked-inline-stadium-mark | E1 D2 W2 F5 $1 | type emphasis border hairline detail radius | Emphasis by outline rather than by fill: a hairline capsule draw
 type/struck-superseded-figure | E1 D2 W3 F5 $1 | type figures comparison hierarchy decoration | A before/after figure pair usually spends a label on each side. 
 type/sub-baseline-marker-band | E2 D2 W3 F3 $1 | type emphasis highlight contrast accessibility | A full accent block behind a phrase has to clear 4.5:1 against t

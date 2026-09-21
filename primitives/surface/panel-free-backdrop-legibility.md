@@ -4,7 +4,7 @@ category: surface
 tags: [backdrop-filter,legibility,photography,contrast,surface,type]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -95,3 +95,16 @@ new IntersectionObserver(([e]) => e.isIntersecting &&
 ```
 ⚠ One permanent treatment is only safe where every section the bar can reach
 shares a ground. Measure the links against the lightest one, not the first.
+
+A masthead's filter box is not its content box. Where the bar's contents are
+centred in a capped measure it is tempting to hang the `backdrop-filter` on that
+same element, and the blur then stops at the measure's edges: two vertical seams
+run down the page with sharp content outside them and smeared content within,
+and every scroll drags text across the join. Filter the full-bleed bar and
+centre a child inside it.
+```css
+.bar   { backdrop-filter: blur(8px) }                 /* spans the viewport */
+.inner { width: min(100%, var(--measure)); margin-inline: auto }
+```
+⚠ The seam is invisible against a flat ground and obvious the moment anything
+crosses it — check against the widest element the page can scroll under the bar.

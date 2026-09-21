@@ -4,7 +4,7 @@ category: surface
 tags: [surface,texture,pattern,blueprint,cheap]
 axes: {energy: 1, density: 3, weight: 1, finish: 4}
 cost: 1
-seen: 18
+seen: 19
 requires: []
 conflicts: []
 completes: []
@@ -59,3 +59,19 @@ background: repeating-conic-gradient(from 258deg at 38% 112%,
   transparent 0deg 5.8deg, var(--rule) 5.86deg 5.92deg);
 mask-image: linear-gradient(transparent 12%, #000)
 ```
+
+Beat two of them together and the lattice stops being a lattice.
+`repeating-radial-gradient` puts the pitch in the gradient rather than in
+`background-size`, so a second layer can carry a *different* period — make the
+two mutually prime (11×13 against 17×19) and they realign only every few hundred
+pixels, which is far enough that the eye finds no tile. The result reads as
+grain, not as ruling, for the price of two paint layers: no filter to rasterise,
+no data URI, no request. Dot stop 0.3–0.5px into a 4–6px gap, white at 8–12%.
+```css
+background-image:
+  repeating-radial-gradient(circle at 17% 29%, #ffffff1a 0 .4px, #0000 .7px 4px),
+  repeating-radial-gradient(circle at 73% 61%, #ffffff14 0 .3px, #0000 .6px 5px);
+background-size: 11px 13px, 17px 19px
+```
+⚠ Sub-pixel stops resolve against the device ratio — the field thins to nothing
+at 1x and doubles at 3x. Check both, and raise the alpha rather than the radius.

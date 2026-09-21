@@ -4,7 +4,7 @@ category: type
 tags: [type,polish]
 axes: none
 cost: 1
-seen: 51
+seen: 52
 requires: []
 conflicts: []
 completes: []
@@ -29,3 +29,15 @@ Hand-set breaks are the other half of this decision and they cancel it —
 line on purpose, keep the breaks and drop `balance`, then switch them off below
 the width at which they strand single words: `h1 br { display: none }` in a
 600–760px query. Authored breaks surviving to 390px are how orphans ship.
+
+Neither `balance` nor a hand break settles a *fluid* heading, where the same
+string re-wraps at every step of the clamp. Cap the measure in `ch`: the unit
+resolves against the element's own font size, so a heading sized
+`clamp(3rem, 8vw, 8rem)` holds the same characters per line — and therefore the
+same rag — from 390px to 2560px, with nothing to switch off at a breakpoint.
+10–14ch for a two- or three-word display line, 15–20ch where it carries a clause.
+```css
+h1 { font-size: clamp(3.25rem, 8.6vw, 8.7rem); max-width: 12ch; line-height: .91 }
+```
+⚠ `1ch` is the `0` advance, narrower than the average letter in a proportional
+face — a 12ch cap holds nearer 15 characters. Set it by looking, not by counting.

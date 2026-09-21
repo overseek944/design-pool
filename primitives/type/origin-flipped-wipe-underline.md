@@ -4,7 +4,7 @@ category: type
 tags: [underline,link,hover,transform-origin,wipe,cheap]
 axes: {energy: 3, density: 1, weight: 2, finish: 5}
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -72,3 +72,10 @@ sibling can drive with no script at all.
 ```
 ⚠ A strike that only greys the text carries no meaning to a screen reader —
 wrap the run in `<s>` or `<del>`, or state the status in words.
+
+The same wipe written as `right: 100% → 0` on an absolutely-positioned bar needs
+no `transform-origin` at all and is the form to avoid: an inset is a layout
+property, so every frame re-resolves the pseudo-element's box instead of
+compositing a transform already on the GPU. It buys nothing the `scaleX` form
+does not have — a bar scaled on X keeps its authored height — so take it only
+where the bar must also change thickness as it draws.
