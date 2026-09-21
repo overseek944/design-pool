@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,backdrop-filter,focus,attention,de-emphasis]
 axes: {energy: 2, density: 2, weight: 3, finish: 5}
 cost: 3
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -38,3 +38,17 @@ subject can also be: a wireframe, a heat map, an uncorrected exposure. Radius
 ⚠ Both layers must share one coordinate space or the lens shows a subject offset
 from itself. Gate on `(hover: hover) and (pointer: fine)` — a window that only
 exists where a pointer is has no touch equivalent worth shipping.
+
+The window need not follow a pointer, and the second rendering need not be a
+filtered one. Snap it to named regions of the subject — one control per region,
+the plate animating between their rects — and the mechanism survives touch and
+the keyboard, because the selection is a button rather than a position. Then let
+the two renderings differ in *ground* instead: pale artwork over the page tint is
+nearly absent, the same artwork over an inverted plate is high-contrast, so
+moving the plate moves legibility with no mask and no filter. Travel 0.35–0.6s.
+```css
+.plate { position: absolute; inset-inline: 0; background: var(--ink);
+  top: var(--region-y); height: var(--region-h); transition: top .45s, height .45s }
+```
+⚠ The regions are the control's states — name them in the button, not only in
+the picture. Hold the artwork's box fixed or plate and drawing desynchronise on resize.

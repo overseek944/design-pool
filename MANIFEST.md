@@ -1,6 +1,6 @@
 # Manifest
 
-728 primitives. Format: `category/id | axes cost | tags | gist`
+730 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -97,6 +97,7 @@ color/embedded-replica-palette-split | neutral  $1 | color tokens product mock a
 color/gamut-ladder-fallback | neutral  $1 | color tokens progressive-enhancement correctness | Ship every colour token twice: an sRGB hex baseline, then the wi
 color/ground-indexed-inverting-ramp | neutral  $2 | color tokens theming naming architecture contrast | Number a neutral ramp by distance from the page ground rather th
 color/lightness-preserved-neutral-tint | neutral  $2 | color tokens theming neutral contrast | Greys left literally grey under a coloured theme read as a secon
+color/media-sampled-index-chip | E1 D2 W3 F5 $2 | color accent media contrast grid | One brand accent repeated across a grid of unrelated photographs
 color/midpoint-switched-ink | E2 D1 W2 F5 $2 | theme transition contrast color custom-properties legibility | A theme toggle that tweens paper and ink on one curve passes thr
 color/near-black-single-ramp | E2 D2 W4 F4 $1 | color palette dark restraint | Pure #000 ground, off-white #ededed text, and ONE neutral ramp (
 color/overprinted-pigment-group | E1 D2 W4 F3 $1 | color blend texture editorial surface cheap | Overlap flat saturated shapes under mix-blend-mode: multiply and
@@ -611,6 +612,7 @@ surface/nine-slice-control-chrome | E1 D2 W3 F5 $2 | surface border chrome svg d
 surface/node-centred-connector-falloff | E1 D2 W2 F5 $1 | surface mask connector sequence detail | A rule running the length of a step list is equally present ever
 surface/offcanvas-ellipse-horizon | E1 D2 W1 F5 $1 | surface hairline geometry ambient background depth | A curve whose radius exceeds the viewport cannot be drawn inside
 surface/overflow-visible-for-glow-bleed | neutral  $1 | surface effect svg gotcha | SVG clips to its viewBox by default, which decapitates any drop-
+surface/overwide-ellipse-reading-band | E1 D2 W2 F5 $1 | surface mask focus legibility list | Hold one line of a moving stack legible and let its neighbours d
 surface/painted-border-band | E1 D2 W3 F5 $1 | surface border frame texture css-only detail | The border box is a paintable band, not just an outline. Give an
 surface/paired-hard-shadow-sheet | E1 D2 W2 F4 $1 | surface depth border detail editorial | To imply a second sheet under a panel, two zero-blur shadows do 
 surface/panel-free-backdrop-legibility | E1 D2 W2 F5 $2 | backdrop-filter legibility photography contrast surface type | Copy over a photograph usually gets a plate, and the plate break
