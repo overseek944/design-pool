@@ -1,6 +1,6 @@
 # Manifest
 
-643 primitives. Format: `category/id | axes cost | tags | gist`
+647 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -21,6 +21,7 @@ canvas/clip-ejected-vertex-filter | neutral  $2 | shader webgl points culling pe
 canvas/composed-arrival-field | E3 D3 W2 F5 $2 | shader stagger clock uniform reveal perf | Thousands of elements cannot each own a tween. Derive every elem
 canvas/context-loss-rearm | neutral  $2 | canvas correctness lifecycle architecture | A 2D context is lost the same way a WebGL one is — a GPU process
 canvas/curl-of-potential-field | E2 D3 W2 F4 $3 | canvas flow field generative motion | Advecting anything through a hand-made velocity field pools it i
+canvas/curvature-parametrised-sheet-wrap | E3 D3 W2 F5 $4 | canvas geometry projection morph points 3d | A flat sheet and a sphere are one surface at two curvatures, so 
 canvas/delay-binned-source-history | E2 D2 W2 F5 $4 | canvas field pointer motion generative | A field evaluated from the driver's current pose updates everywh
 canvas/density-terminated-raster | E1 D3 W3 F4 $2 | canvas texture image mask edge generative | A generated raster ends at a rectangle unless something is done 
 canvas/derivative-width-edge-aa | neutral  $2 | shader canvas precision correctness detail | A procedural shape in a fragment shader gets no antialiasing for
@@ -49,6 +50,7 @@ canvas/normalised-morph-target-set | E3 D4 W2 F4 $3 | canvas particles morph gen
 canvas/octave-summed-edge-profile | E2 D2 W2 F3 $1 | canvas generative motion noise field cheap | A horizon, a wave crest or a ribbon edge needs an organic profil
 canvas/ordered-dither-threshold-field | E2 D4 W3 F2 $2 | canvas texture pattern raster two-tone generative | Reduce a continuous field to exactly two colours by comparing ea
 canvas/override-material-edge-pass | E2 D3 W2 F5 $5 | webgl shader wireframe render-pass narrative | Render one set of geometry in two visual registers and cross-fad
+canvas/own-path-derived-streak | E4 D3 W2 F5 $2 | canvas motion morph points trail cheap | A field crossing between two states reads as a cut unless the ma
 canvas/packed-generation-state-texture | neutral  $3 | canvas shader simulation texture architecture performance | A discrete simulation — cells, agents, a lattice — wants to step
 canvas/packed-word-pixel-writes | neutral  $2 | canvas performance raster imagedata correctness | Filling ImageData a byte at a time costs four indexed writes and
 canvas/palette-as-uniforms | neutral  $2 | shader color system | Pass the site's palette into the shader as named vec3 uniforms r
@@ -76,6 +78,7 @@ canvas/signed-bow-connector-bundle | E1 D3 W1 F5 $2 | canvas connector diagram g
 canvas/simulation-preroll | neutral  $1 | canvas simulation lifecycle loading generative | A simulation's worst frame is its first: an empty grid, a lone s
 canvas/single-channel-field-storage | neutral  $2 | canvas simulation performance texture shader | Choose the channel count per field rather than reaching for RGBA
 canvas/standard-uniform-set | neutral  $2 | shader architecture reference | A small reusable uniform contract covers most decorative shaders
+canvas/stateless-phase-pair-field | neutral  $3 | canvas architecture morph scrub points field correctness | A scrubbed field of marks usually keeps a live position per mark
 canvas/svg-userspace-pointer-mapping | neutral  $1 | svg pointer correctness interaction geometry | An SVG with a viewBox is drawn in its own coordinate system, and
 canvas/tilted-heightfield-mark-sheet | E2 D3 W1 F4 $3 | canvas 3d projection field depth scenery | Deep scenery on a 2D context needs no renderer: sample a summed-
 canvas/unit-box-asset-framing | neutral  $2 | canvas correctness scale geometry architecture | A loaded 3D asset arrives at whatever scale and origin its expor
@@ -112,6 +115,7 @@ interaction/breakpoint-dual-mode-details | neutral  $2 | disclosure navigation r
 interaction/breakpoint-scoped-overlay-dismiss | neutral  $1 | navigation overlay responsive correctness accessibility | An overlay that exists only below a breakpoint — a mobile nav sh
 interaction/clamped-drag-pose-drift-home | E2 D1 W4 F5 $2 | pointer interaction 3d rotation detail | An object the reader can turn should not map pointer position to
 interaction/coarse-pointer-affordance-promotion | neutral  $1 | accessibility interaction touch correctness media-query | Controls that fade in on :hover — a play button on a thumbnail, 
+interaction/composed-mailto-submit-fallback | neutral  $1 | interaction forms progressive-enhancement fallback correctness accessibility | A form posting to a third-party endpoint fails in ways the reade
 interaction/content-sized-field-bounds | E1 D1 W2 F4 $1 | form input layout detail progressive-enhancement | field-sizing: content lets an input measure its own value, retir
 interaction/coordinated-group-state | E3 D2 W2 F5 $1 | interaction surface hover | Hover the container, animate the parts. A single group parent le
 interaction/copy-safe-sample-text | neutral  $1 | interaction code correctness detail usability | A terminal or code sample is there to be dragged over and pasted

@@ -4,7 +4,7 @@ category: media
 tags: [media,video,performance,intersection-observer,accessibility,bandwidth]
 axes: none
 cost: 2
-seen: 19
+seen: 20
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -179,3 +179,32 @@ same flag in reverse and a missing file degrades to the tile rather than a hole.
 ```
 ⚠ Cheaper than `poster` across a set — one tile component serves every slot and
 restyles with the page, where posters are N more image requests to art-direct.
+
+Whether a slot will ever be seen at this width is a question the stylesheet has
+already answered, and re-answering it in script duplicates every breakpoint. Ask
+the layout: an element the cascade has removed reports a null `offsetParent`, so
+never observe it and it never fetches. Re-run the sweep on a debounced resize —
+a rotation that reveals the hidden column starts it loading then, and one that
+hides it pauses playback and releases the observer.
+```js
+const dead = el.offsetParent === null
+if (dead && watched.has(el)) { io.unobserve(el); pause(el); watched.delete(el) }
+else if (!dead && !watched.has(el)) { io.observe(el); watched.add(el) }
+```
+⚠ `offsetParent` is also null for `position: fixed`, which this reads as hidden.
+Use `checkVisibility()` where a slot may be fixed.
+
+Mobile autoplay policy inspects the `muted` and `playsinline` **attributes**, not
+the properties, so an element built in script with `v.muted = true` alone is
+refused on exactly the platforms the flag exists for. Set both ways, then keep
+one document-level listener for the first touch or click: sweep every element
+that has a source and is still wanted but paused and call `play()` again. One
+gesture anywhere on the page rescues a whole grid.
+```js
+v.muted = true; v.setAttribute('muted', ''); v.setAttribute('playsinline', '')
+const unlock = () => { for (const v of wanted) if (v.paused) v.play().catch(() => {}) }
+addEventListener('touchstart', unlock, { passive: true, once: true })
+addEventListener('click', unlock, { once: true })
+```
+⚠ Sweep only what the visibility gate still wants. Replaying every element
+restarts footage the reader has already scrolled past.

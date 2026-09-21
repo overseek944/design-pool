@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,svg,performance,generative,texture,batching]
 axes: {energy: 2, density: 4, weight: 1, finish: 5}
 cost: 3
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -57,3 +57,18 @@ for (let b = 1; b <= N; b++) { const a = buf[b]; if (!a.length) continue
 ```
 ⚠ Skip a bucket below ~1/255 alpha rather than drawing it — the clear costs
 nothing and the state change costs the same as a visible one.
+
+Where the field carries more than one ink — a highlighted subset, a second class
+of mark — do not switch fill style per mark to say so. Give each tone its own
+ladder and flush tone by tone: a field of any size then costs tones × levels
+state changes, and the tone is one flag on the mark rather than a colour it
+carries. 8–16 levels is enough once marks are a couple of pixels across; the
+ladder only has to out-resolve what the eye can band.
+```js
+for (let l = 1; l < L; l++) for (const [ink, buf] of tones) {
+  const a = buf[l]; if (!a.length) continue
+  ctx.fillStyle = ink(l / (L - 1))
+  for (let m = 0; m < a.length; m += 3) ctx.fillRect(a[m], a[m+1], a[m+2], a[m+2]) }
+```
+⚠ Allocate the tones × levels arrays once and empty them with `length = 0` each
+frame. Rebuilding that many arrays per frame costs more than the batching saves.

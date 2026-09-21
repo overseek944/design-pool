@@ -4,7 +4,7 @@ category: perf
 tags: [perf,payload,data,points,precision]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
