@@ -4,7 +4,7 @@ category: layout
 tags: [layout,chrome,tokens,custom-property,architecture,overlay,correctness]
 axes: none
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -57,3 +57,18 @@ html { scroll-padding-block-start: var(--pin-h) }
 ⚠ A dismissible banner makes the occupying value change without a scroll event —
 rewrite it on dismiss, or every sticky panel below holds a gap under a bar that
 is gone.
+
+Chrome that script mounts and unmounts — a bar armed past a scroll threshold,
+a banner shown once — has to own the reassignment inside the same lifecycle
+that owns the element, and the teardown is the half that gets forgotten. Write
+the reserve when it mounts, clear it when it unmounts, and the page never
+carries a hole under chrome that is not there. Declaring the reserve
+statically instead leaves dead space for the whole session before the bar ever
+appears.
+```js
+useEffect(() => { root.style.setProperty('--dock-h', shown ? H : '0px')
+                  return () => root.style.removeProperty('--dock-h') }, [shown])
+```
+⚠ The reserve is page-end padding, not margin — margin collapses through the
+last child and the bar covers the footer anyway. And it accumulates with
+`env(safe-area-inset-bottom)` rather than maximising against it.

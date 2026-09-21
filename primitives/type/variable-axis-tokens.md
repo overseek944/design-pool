@@ -4,7 +4,7 @@ category: type
 tags: [type,tokens,opentype,variable-font,precision]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 12
+seen: 13
 requires: []
 conflicts: []
 completes: []
@@ -65,3 +65,17 @@ left at 100%.
 ⚠ Past ~115% the tracking the face was drawn with stops holding and words start
 to look spaced rather than wide. Fallback fonts ignore the axis entirely, so the
 metric override has to be measured at the stretched width or the swap shifts.
+
+Registered axes are the short list. A face may also carry foundry-named ones —
+softness at the terminals, a deliberate unbalancing of the forms, a grade — and
+they reach a voice no `wght` step does: the same family becomes editorial or
+mechanical without a second file. They are per-face, so they belong in a token
+named for the *role*, never in a shared base rule that a fallback family will
+inherit and ignore.
+```css
+:root { --display-var: "opsz" 96, "SOFT" 40, "WONK" 1 }
+.display { font-variation-settings: var(--display-var) }
+```
+⚠ A subset request only ships the axes it names. Omit one from the URL and the
+declaration is silently valid and does nothing — the page renders at the axis
+default and the difference is invisible in review, visible in print-out.

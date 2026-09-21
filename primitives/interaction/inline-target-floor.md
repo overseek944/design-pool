@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,interaction,correctness,detail]
 axes: none
 cost: 1
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []
@@ -65,3 +65,15 @@ merely small — not one that is absent.
 ⚠ A touchscreen laptop reports `coarse`, so the pads arm for its mouse too —
 harmless here, and the reason this gate is safe where hiding a control behind
 the same query is not.
+
+The floor is often released at a width breakpoint — full size narrow, the
+designed height above it. That gate is the wrong one: input modality and
+viewport width are independent, so a touch laptop, a tablet in landscape and a
+large phone all take the desktop branch and lose the floor. Gate on the pointer
+instead, and keep width for spacing only.
+```css
+@media (pointer: coarse) { :where(a, button) { min-block-size: 44px } }
+```
+⚠ `pointer: coarse` reports the *primary* input, so a hybrid device with a
+trackpad attached reads fine and still gets touched. Where the page is a
+primary way out, hold the floor unconditionally and spend the pixels.

@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,focus,tokens,correctness]
 axes: none
 cost: 1
-seen: 20
+seen: 21
 requires: []
 conflicts: []
 completes: []
@@ -68,3 +68,18 @@ it and keeps the ring outside the box.
 ```
 ⚠ `z-index` needs the positioning to go with it — on a static grid item it is
 ignored and the ring stays cut.
+
+`outline-offset` leaves the gap transparent, so a ring on a control sitting on
+a gradient, a photograph or a busy panel is read against whatever happens to be
+under it. Paint the gap instead: keep the real `outline`, and fill the offset
+with one zero-blur `box-shadow` ring in the surface's own ground token. The
+outline then always has a flat ground to contrast against. Gap 2–3px, same
+value as the offset.
+```css
+:focus-visible { outline: var(--focus-w) solid var(--focus);
+  outline-offset: var(--gap); box-shadow: 0 0 0 var(--gap) var(--ground) }
+```
+⚠ Unlike a box-shadow *ring*, this degrades safely — a clipping ancestor or
+forced-colors drops only the gap fill and the outline still paints. The cost is
+that `--ground` must track the actual surface: set on the wrong tier it paints
+a visible halo around every focused control in the section.

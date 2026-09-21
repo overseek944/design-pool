@@ -4,7 +4,7 @@ category: surface
 tags: [surface,hairline,geometry,ambient,background,depth]
 axes: {energy: 1, density: 2, weight: 1, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,19 @@ white bloom above the stroke to light it.
 ```
 ⚠ The visible arc follows the box's *aspect*, not its scale — re-proportion per
 breakpoint, wider and flatter when narrow, or a phone gets a straight line.
+
+Two of them sharing one centre past the frame edge stop reading as a horizon
+and start reading as an *orbit*: same centre, radii roughly 1.5–2× apart,
+border alpha stepping down 0.25 → 0.15 on the outer. What flips it is a single
+filled dot placed on the inner circumference — without the satellite the pair
+is decoration, with it the panel carries a diagram it never has to explain.
+Dot 10–16px, in a tint two steps off the ground.
+```css
+.panel { position: relative; overflow: hidden }
+.ring  { position: absolute; inset-block-start: 50%; translate: 0 -50%;
+         border-radius: 50%; border: 1px solid rgb(255 255 255 / .25) }
+.ring--out { inset-inline-end: -120px; inline-size: 420px; aspect-ratio: 1 }
+```
+⚠ Both circles must resolve the same centre or they read as an error rather
+than as concentric — derive each `inset-inline-end` as `radius − offset` from
+one shared offset, never eyeball the two.

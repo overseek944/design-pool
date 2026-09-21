@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,accessibility,required]
 axes: none
 cost: 1
-seen: 62
+seen: 63
 requires: []
 conflicts: []
 completes: []
@@ -179,3 +179,15 @@ the content is simply gone.
 ⚠ The condition is the whole technique: author the settled frame as the
 markup's own style and let the keyframe's `from` hold the hidden state, never
 the reverse.
+
+`reduce` asks for less vestibular motion, not for no feedback. Branch by
+*property* rather than by animation: drop transform, layout and scroll-linked
+movement, keep opacity and colour on their original durations. A state change
+that snaps is harder to follow than one that crossfades, so the blanket still
+state costs comprehension in the one place reduce was meant to protect. Where a
+runtime creates the animations, set this once at the provider — every call
+site, including ones added later, inherits it.
+
+⚠ The property split is not a licence to keep scale. A large element easing
+from .9 to 1 is movement in the peripheral field and triggers exactly what the
+preference is about; only genuinely static properties survive the branch.

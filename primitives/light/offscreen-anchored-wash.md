@@ -4,7 +4,7 @@ category: light
 tags: [gradient,ground,atmosphere,ambient,color,cheap]
 axes: {energy: 1, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: [eased-fade-stop-ramp]
@@ -72,3 +72,14 @@ behind and grounded at once. Inset 10–20% block, 6–12% inline.
 ⚠ Sized to the box rather than to the silhouette, so a subject that does not
 fill its frame shows the disc's edge past its own — pull the inset in until the
 falloff, not the circle, is what clears the outline.
+
+The wide-breakpoint growth above is a range, not a step, and the top of it is
+higher than most systems reach. Content stops at its max measure around
+1200–1400px while the viewport keeps going, so a lamp anchored to a viewport
+corner at a fixed size shrinks in relative terms until it reads as a stray
+mark on a 27" display. Give decoration its own ladder *above* the content's
+last breakpoint — three or four steps between 1440 and 1800px, ~15% a step,
+1.5–2.5× the base size at the top.
+⚠ Tie the steps to the same custom property the lamp's blur or stop positions
+read, or the falloff scales and the softness does not — a doubled lamp with a
+fixed 120px blur reads twice as hard-edged as the one at the base size.

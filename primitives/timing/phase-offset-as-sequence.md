@@ -4,7 +4,7 @@ category: timing
 tags: [motion,sequencing,rhythm,ambient,css]
 axes: {energy: 3, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []

@@ -4,7 +4,7 @@ category: surface
 tags: [surface,depth,border,detail,editorial]
 axes: {energy: 1, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -34,3 +34,17 @@ flat, the soft without the hard is any card on any page.
 ```
 ⚠ Keep the hard layer's offset under the radius or it shows as a crescent at the
 corners. Both layers must survive a colour change — tint toward the ink, not black.
+
+The two-layer form implies one sheet under the panel. Offset on *both* axes and
+repeat it and the object becomes a countable deck — three or four sheets
+cascading down-right, each pair of layers stepping 1.5–2× the last and the
+sheet colour dropping 25% alpha a step, so the stack reads as depth by count
+rather than by elevation. Right where a card stands for a set of records, a
+queue, a batch.
+```css
+.deck { box-shadow: 6px 6px 0 -1px var(--paper), 6px 6px 0 0 rgb(var(--rule)/.75),
+                   14px 14px 0 -1px var(--paper), 14px 14px 0 0 rgb(var(--rule)/.5) }
+```
+⚠ The cascade eats real estate no layout knows about — reserve the deepest
+offset as end margin, or the bottom sheet is clipped by the next section on
+exactly the breakpoint where the grid gets tight.

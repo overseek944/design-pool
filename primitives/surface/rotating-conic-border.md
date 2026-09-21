@@ -4,7 +4,7 @@ category: surface
 tags: [surface,border,motion,svg]
 axes: {energy: 4, density: 3, weight: 3, finish: 4}
 cost: 3
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: [overflow-visible-for-glow-bleed]
@@ -61,3 +61,18 @@ from. Period 4–8s.
 ```
 ⚠ `@property` is the whole trick — without registration the animation silently
 does nothing at all rather than degrading.
+
+Where the content is a photograph rather than a flat fill, the third
+construction needs a second gap or the ring looks glued to the subject: give
+the inner element its own `border` in the *page ground* colour, 3–5px, and the
+conic band reads as detached hardware around the image. Vary `from` per
+instance across a set — 120–200° apart — or a row of framed portraits looks
+stamped from one file, which is exactly what it is.
+```css
+.frame { padding: 8px; border-radius: 50%;
+         background: conic-gradient(from var(--a, 40deg), #3c518e, #7878c7, #f0d0a1, #3c518e) }
+.frame > img { border-radius: 50%; border: 4px solid var(--ground) }
+```
+⚠ The ground-coloured border is a lie the moment the frame sits on anything
+else — a banded section, a gradient, a photo — and then it paints a visible
+disc. Only where the frame's own ground is a known flat token.
