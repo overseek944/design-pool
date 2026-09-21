@@ -4,7 +4,7 @@ category: scale
 tags: [tokens,responsive,breakpoint,architecture,cascade,custom-properties]
 axes: none
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -54,3 +54,17 @@ normal rules where the cascade works.
 ⚠ It holds only while the emitter's property set is stable. The release that
 starts emitting an inline `transform` for an entrance offset silently kills
 every hover written this way, and nothing fails loudly.
+
+The chain runs the other way too. Where the values are per-element and only
+their *amplitude* is responsive, let the inline style consume a
+stylesheet-defined scalar inside `calc()`: each node keeps its own offsets, and
+one breakpoint rule rescales the whole field — or flattens it to nothing —
+without the stylesheet knowing any element's numbers.
+```html
+<div style="transform: translate3d(calc(260px * var(--amp,1)), calc(-180px * var(--amp,1)), 0)">
+```
+```css
+@media (width < 64rem) { .field { --amp: .6 } }
+```
+⚠ Declare the fallback in every `var()`; one missing default invalidates the
+whole `transform` and the element snaps to its origin.

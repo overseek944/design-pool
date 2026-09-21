@@ -4,7 +4,7 @@ category: layout
 tags: [layout,scroll,sticky,depth,css-only,section]
 axes: {energy: 2, density: 1, weight: 3, finish: 4}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: [overflow-clip-over-hidden]
@@ -25,3 +25,15 @@ lip lifting away instead of two blocks meeting. Panel height 150px–60svh.
 ⚠ `overflow: hidden` on the wrapper makes it the sticky scroll container and the
 panel never sticks; `clip` does not. Drop to `position: relative` under
 `prefers-reduced-motion` — the two layers travel at different rates.
+
+Derive the panel's height from what it holds rather than clamping it
+independently. Where it exists to carry one oversized word, make the type size
+the token and compute the height from it — size × line-height plus breathing
+room — and the band fits the mark at every width instead of cropping it on a
+phone and stranding it on a desktop.
+```css
+:root  { --mark: clamp(5rem, 21vw, 19rem); --band: calc(var(--mark) * .78 + 3rem) }
+.under { height: var(--band) }  .mark { font-size: var(--mark); line-height: .78 }
+```
+⚠ The multiplier is the type's line-height, not a guess — change one and the
+other has to follow.

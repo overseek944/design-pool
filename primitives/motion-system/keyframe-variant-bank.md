@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,generative,ambient,tokens,architecture]
 axes: {energy: 3, density: 4, weight: 2, finish: 3}
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -42,3 +42,14 @@ moment it plays.
 ```
 ⚠ `calc()` will happily exceed 1 — clamp with `min()` or the brightest members
 all saturate to the same ceiling and the variation you paid for disappears.
+
+Cheaper than a bank where the members are few: give duration and delay
+*different* moduli over the index, coprime, and a row of eight bars repeats on
+their least common multiple rather than on either one. Two expressions, no
+generated CSS, and nothing lines up inside a group small enough for the eye to
+check.
+```js
+el.style.animation = `wave ${1 + (i % 4) * .16}s ease-in-out ${(i % 5) * .11}s infinite`
+```
+⚠ Coprime or it is worse than no variation — moduli sharing a factor give a
+short visible cycle that reads as a pattern.

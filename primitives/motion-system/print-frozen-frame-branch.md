@@ -4,7 +4,7 @@ category: motion-system
 tags: [print,correctness,motion,fallback,accessibility]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -30,3 +30,15 @@ light-on-dark panels come out as blank rectangles.
 ```
 ⚠ Print has no viewport query, so a layout tuned by breakpoint arrives at
 whatever width the paper implies — check at A4 and Letter, not just in preview.
+
+Print must also *un-hide*. An entrance that sets `opacity: 0` in CSS and clears
+it from an observer leaves everything below the fold hidden on paper — the
+observer never fires for a document the printer lays out at once, so page two
+onward comes out blank. Reset every entrance class in the same branch, and add
+`break-inside: avoid` so a row does not split at the seam.
+```css
+@media print { .reveal, .reveal-clip { opacity: 1 !important; transform: none !important;
+  clip-path: none !important } li, section { break-inside: avoid } }
+```
+⚠ Decorative `aria-hidden` layers cost the most ink and carry the least — drop
+them in the same block rather than one by one.
