@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,edge,composition,bleed]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 54
+seen: 55
 requires: []
 conflicts: []
 completes: []
@@ -191,3 +191,19 @@ not a single token.
 ```
 ⚠ `pointer-events: none` on both, or the fades sit over the track's first and
 last items and swallow the drag that scrolls it.
+
+The composited layers need not be the same *kind*. Intersect one directional
+ramp with one focal radial and the two answer different questions with
+independent controls: the linear layer decides where the pattern is allowed to
+begin — killing the hard line where a ruled ground meets the section edge — and
+the radial decides where it recedes, holding density under the content and
+letting it go at the margins. Per-side stacks can do the first and radials the
+second; neither alone does both, and one of each is cheaper than four.
+```css
+.ground { mask-image: linear-gradient(#0000 0, #0006 40px, #000 130px),
+                      radial-gradient(115% 125% at 72% 52%, #000 0, #0000008c 55%, #0000 88%);
+          mask-composite: intersect }
+```
+⚠ `intersect` takes the darker of the two everywhere, so a radial already at 50%
+halves the linear ramp's plateau as well as its edge. Author the radial's centre
+opaque and put all the falloff in the linear layer, or tune each twice.

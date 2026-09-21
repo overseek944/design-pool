@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,architecture,correctness,accessibility]
 axes: none
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -43,3 +43,20 @@ script, and the desktop nesting stays intact above the breakpoint.
 between the pairs, a `gap` that only applied inside one of them — vanishes with
 their boxes at exactly that breakpoint. Move those declarations onto the
 children or onto the grid before flattening.
+
+The flatten buys alignment, not just placement, and that is the case worth
+reaching for it. Wrap each row of a label/value list in its own element, set
+`display: contents` on the rows, and give the parent two tracks: every label
+lands in one `auto` column sized by the widest of them, so a stack of unrelated
+pairs aligns across rows with no measurement, no magic width and the grouping
+still in the markup. Subgrid does the same with the boxes intact; this needs
+neither support nor a nested grid.
+```css
+.pairs { display: grid; grid-template-columns: auto 1fr; gap: 20px 18px;
+         place-items: center start }
+.pair  { display: contents }
+```
+⚠ Run the flatten the other way at the narrow breakpoint. A shared label column
+is worth nothing once the value wraps to its own line, so restore the row's box
+as a flex line there — `display: flex` on `.pair` — and each pair goes back to
+being self-contained.

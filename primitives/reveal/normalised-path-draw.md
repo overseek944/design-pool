@@ -4,7 +4,7 @@ category: reveal
 tags: [svg,stroke,reveal,draw,geometry,correctness]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 13
+seen: 14
 requires: []
 conflicts: []
 completes: []
@@ -53,3 +53,20 @@ el.animate([{ strokeDashoffset: dash }, { strokeDashoffset: -100 }],
 ⚠ Under `fill: 'none'` the element renders at its *inline* value for one frame
 after finishing — park `strokeDashoffset` at the animation's end value first or
 every pulse ends in a flash.
+
+Normalising the geometry and equalising the *timing* are separate decisions, and
+the first does not force the second. Keep `pathLength` so one stylesheet rule
+covers every path, then carry duration as an inline custom property per element:
+a long connector takes 0.6s and a short stub 0.4s, chosen by eye rather than
+measured, and the unphysical equal-speed reading goes without reintroducing a
+measurement pass or a rule per path. Durations within about 2:1 of each other —
+wider and the fast ones read as a different event.
+```html
+<path class="draw" pathLength="100" style="--dur:.55s" d="…"/>
+```
+```css
+.draw { stroke-dasharray: 100; stroke-dashoffset: 100; animation: draw var(--dur) ease both }
+```
+⚠ Declare a fallback in the `var()`. A path that ships without the inline style
+gets an invalid `animation` shorthand, which drops `both` too — so it holds its
+undrawn frame permanently rather than merely losing its timing.

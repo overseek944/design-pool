@@ -4,7 +4,7 @@ category: interaction
 tags: [carousel,autoplay,accessibility,state]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 18
+seen: 19
 requires: []
 conflicts: []
 completes: []
@@ -102,3 +102,19 @@ const resume = () => { if (!t && live) { at = performance.now(); t = setTimeout(
 ```
 ⚠ Restore `left` to the full dwell inside the beat, not on resume — a beat that
 fires from a resumed remainder otherwise keeps that short remainder forever.
+
+Scope the rotation to the viewport mode in which the content is actually a
+sequence. A four-up grid that collapses to a one-per-screen snap strip on a
+phone only has a "next" below the breakpoint; above it every item is already on
+screen and an interval is motion with nothing to reveal. Build and tear the
+timer down from the breakpoint query's `change` handler rather than reading it
+once, so a rotation cannot survive a resize into the layout that does not need
+it — and pair it with the reduced-motion query, both consulted in the same arm.
+```js
+const wide = matchMedia('(width > 48rem)')
+const arm = () => { clearInterval(id); id = (wide.matches || rm.matches) ? 0 : setInterval(next, 3200) }
+wide.addEventListener('change', arm); rm.addEventListener('change', arm); arm()
+```
+⚠ Deriving the next index from `scrollLeft / clientWidth` reads zero on a strip
+that is `display: none` at the current width and rotates it back to the first
+item — check the measurement before acting on it, not just the query.

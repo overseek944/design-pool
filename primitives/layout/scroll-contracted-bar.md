@@ -4,7 +4,7 @@ category: layout
 tags: [header,scroll,sticky,chrome]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 17
+seen: 18
 requires: []
 conflicts: []
 completes: []
@@ -145,3 +145,18 @@ smooth the write granularity only.
 ⚠ Paint properties do not belong on this channel — background and border colour
 should still cross at one threshold on their own eased clock, or the bar's
 ground fades in gradually and is illegible for the whole middle of the range.
+
+The translucent-plate variant has a second failure that contrast maths does not
+catch: blur radius is not decorative, it is what stops the text passing
+underneath from staying *legible*. A 10–14px blur dissolves body copy and
+dissolves nothing else — a display heading crossing beneath reads straight
+through an 80% plate as ghost glyphs colliding with the bar's own labels, which
+looks like a rendering fault rather than transparency. Size the radius against
+the largest type that can pass under it: roughly its cap height, so 28–40px
+where a 50px headline scrolls through.
+```css
+[data-scrolled] .plate { backdrop-filter: blur(clamp(12px, 0.7 * var(--max-type), 40px)) }
+```
+⚠ A large radius is a large compositor read every frame of the scroll. Where
+that is too expensive, raise the plate to full opacity instead — a solid bar is
+always cheaper than a blur wide enough to be honest.
