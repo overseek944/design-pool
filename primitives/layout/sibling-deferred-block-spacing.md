@@ -4,7 +4,7 @@ category: layout
 tags: [layout,has,spacing,rhythm,css-only,correctness,architecture]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []

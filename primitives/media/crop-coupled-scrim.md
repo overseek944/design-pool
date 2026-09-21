@@ -4,7 +4,7 @@ category: media
 tags: [media,video,legibility,overlay,accessibility,responsive]
 axes: none
 cost: 1
-seen: 13
+seen: 14
 requires: []
 conflicts: []
 completes: []
@@ -70,3 +70,19 @@ clock or it crosses the frame it is being read against.
 ```
 ⚠ Score each polarity against its own frame, not the pair — and the crossfade
 passes through a mix of the two, which is the moment both are weakest.
+
+Invert that radial and it protects the picture rather than the copy: clear
+through the subject, the section's own ground by the rim, so an unframed image
+dissolves into the page on every side at once while the one thing it is a
+picture *of* stays untouched. Centre the ellipse on the subject, not the box,
+and move it with `object-position` — they are the same fact, and a hole tuned at
+one crop drifts off the subject at the next. Clear to 40–50%, ground by 95–100%.
+```css
+.plate { background:
+  radial-gradient(circle at 78% 44%, #0000 0 42%,
+                  rgb(from var(--page) r g b / .34) 82%, var(--page) 100%),
+  linear-gradient(rgb(from var(--page) r g b / .78), #0000 32% 62%, var(--page)) }
+```
+⚠ The hole is where alpha is lowest and detail highest, so any copy reaching
+into it is being read against raw picture. Keep the text on the ramped side and
+re-measure the hole's *position* at each crop, not only its size.

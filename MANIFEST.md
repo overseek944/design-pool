@@ -1,6 +1,6 @@
 # Manifest
 
-732 primitives. Format: `category/id | axes cost | tags | gist`
+734 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -102,6 +102,7 @@ color/midpoint-switched-ink | E2 D1 W2 F5 $2 | theme transition contrast color c
 color/near-black-single-ramp | E2 D2 W4 F4 $1 | color palette dark restraint | Pure #000 ground, off-white #ededed text, and ONE neutral ramp (
 color/overprinted-pigment-group | E1 D2 W4 F3 $1 | color blend texture editorial surface cheap | Overlap flat saturated shapes under mix-blend-mode: multiply and
 color/parallel-alpha-ramp | neutral  $2 | color tokens alpha borders theming | Ship two neutral ramps of equal length: one opaque, one alpha-on
+color/party-keyed-field-tokens | neutral  $1 | color tokens form attribution review correctness | On a form assembled from several parties — an applicant's answer
 color/pattern-encoded-series | E1 D3 W2 F4 $2 | color accessibility pattern data contrast texture | Hue alone cannot carry series identity — it fails in greyscale, 
 color/read-position-hue-drift | E2 D2 W2 F4 $2 | color scroll ambient gradient filter | A long page reads as one undifferentiated field when every secti
 color/root-filter-inversion | E2 D2 W4 F2 $2 | color dark filter invert theme effect | filter: invert(1) hue-rotate(180deg) on the root flips lightness
@@ -443,6 +444,7 @@ motion-system/sub-fusion-tremor | E5 D1 W1 F4 $1 | motion loop drag state micro-
 motion-system/svg-geometry-keyframes | E3 D2 W2 F5 $1 | motion svg diagram precision detail | r, cx, cy, x, y and width are CSS properties on SVG, not just at
 motion-system/transient-class-scoped-transition | neutral  $2 | motion-system view-transition theme correctness reduced-motion | A view transition, or a global colour transition, must animate f
 motion-system/twin-pose-custom-properties | E3 D3 W2 F5 $2 | transform state stagger custom-properties group choreography | A group that rearranges between two arbitrary layouts — stacked 
+motion-system/type-declared-transition-scope | neutral  $2 | motion-system view-transition scoping state correctness routing | Every ::view-transition- rule applies to every transition, so a 
 motion-system/viewport-clamped-slot-travel | E3 D1 W2 F5 $3 | motion travel scroll measurement layout | An element travelling between two positions read from real layou
 perf/analytic-stand-in-until-live | neutral  $2 | data loading architecture visualisation labelling | A visual driven by a live feed has three bad first frames: empty
 perf/attribute-mirrored-engine-state | neutral  $1 | perf debug instrumentation testing architecture state | An engine that fetches, decodes and caches is invisible the mome
