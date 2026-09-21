@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,accessibility,architecture,diagram]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -50,3 +50,18 @@ picture.
 ```
 ⚠ Label and film drift the first time a beat is added — generate it from the
 sequence's own step table, or review both together or neither.
+
+An SVG figure carries the label inside itself — `role="img"` plus
+`aria-labelledby` onto its own `<title>` and `<desc>` — which works while it is
+inlined and is unreachable the moment the same file is referenced through
+`<img>`: the outer element's `alt` is the only string that survives. Write the
+sentence once and serve it in both places rather than letting `alt` degrade to
+the figure's name, because the two placements are usually the same file at
+different breakpoints.
+```html
+<svg role="img" aria-labelledby="t d"><title id="t">…</title><desc id="d">…</desc>
+<img src="figure.svg" alt="…the same sentence, with the numbers in it…">
+```
+⚠ An `alt` repeating a caption that is already visible beside the figure is
+read twice — label the figure with what it *shows*, or `alt=""` and let the
+caption do it.

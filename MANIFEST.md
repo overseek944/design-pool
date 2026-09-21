@@ -1,6 +1,6 @@
 # Manifest
 
-582 primitives. Format: `category/id | axes cost | tags | gist`
+584 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -226,6 +226,7 @@ layout/translate-z-axonometric-stage | E1 D3 W2 F5 $3 | 3d depth diagram transfo
 layout/truncating-head-fixed-trailer | neutral  $1 | layout flex truncation correctness cards responsive | A header row pairing a variable-length label with a status badge
 layout/uncooperative-corner-reserve | neutral  $1 | overlay third-party footer layering spacing occlusion | A vendor's floating launcher — support chat, consent, feedback —
 layout/unfilled-counterpart-panel | E1 D2 W1 F4 $1 | demo composition mock restraint rhetoric | A two-sided demonstration — the reader's product beside yours — 
+layout/unfloored-zero-scale-bars | E1 D3 W2 F5 $1 | chart axis label correctness accessibility restraint | A comparison whose whole point is dominance breaks the moment th
 layout/unit-cell-quantity-field | E1 D4 W2 F4 $2 | layout data grid indicator accessibility density | Show a count as one mark per unit, not a bar. Differences a bar 
 layout/viewport-height-bands | neutral  $1 | layout responsive media-query ornament correctness | Some decisions belong to the short axis. An opening frame, a pin
 layout/viewport-unit-role-split | neutral  $1 | layout viewport mobile responsive correctness | A phone has three viewport heights, and picking one for the whol
@@ -457,6 +458,7 @@ surface/axis-stretched-noise-veil | E1 D3 W2 F4 $3 | surface noise svg-filter gr
 surface/backdrop-blur-tier-system | E1 D3 W3 F4 $3 | surface depth glass | Treat backdrop blur as a depth scale, not a decoration: sm for i
 surface/band-plateaued-scrim | E1 D2 W3 F5 $1 | scrim imagery contrast gradient accessibility | A photograph carrying several bands of copy needs a different sc
 surface/baseline-closed-area-path | E2 D2 W2 F5 $1 | svg chart sparkline data precision | A sparkline's tinted area and its stroke must never disagree by 
+surface/baseline-square-bar-terminal | E1 D2 W2 F5 $1 | chart radius hairline detail correctness | A bar rounded at both ends stops touching its axis: the radius a
 surface/blended-grain-over-gradient | E1 D3 W3 F4 $1 | surface texture grain gradient blend-mode banding | A wide gradient across a saturated panel bands on 8-bit displays
 surface/channel-split-refraction-glass | E1 D3 W3 F5 $4 | glass backdrop-filter svg-filter refraction chromatic depth | A blur says frosted; a displacement says solid and thick. Refere
 surface/clip-carried-fill-traverse | E2 D2 W2 F5 $2 | svg connector motion clip-path diagram gradient | Dash offset gives a stroked connector direction, but a connector
