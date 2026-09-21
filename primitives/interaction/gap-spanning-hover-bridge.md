@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,hover,panel,menu,css-only,accessibility]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,16 @@ reader turns away. Gap 8–20px; bridge the full width.
 ⚠ The bridge is invisible and still takes the pointer — keep it inside the
 trigger's own column or it eats clicks beside the panel. Hover has no keyboard
 path: `:focus-within` must ride in the same selector list.
+
+The corridor can belong to the trigger rather than the panel, which is shorter
+and adds no pseudo-element: give the group symmetric block padding and cancel it
+with equal negative margin. Its hover area now reaches down over the gap while
+its layout box is unchanged, so nothing around it moves. Prefer this where the
+trigger is one of several in a row and the panel is wider than it — the grown
+area is the trigger's own column, not the panel's footprint.
+```css
+.group { padding-block: var(--gap, 14px); margin-block: calc(var(--gap, 14px) * -1) }
+```
+⚠ Vertical padding on a row of inline triggers can overlap the row above or
+below once the gap goes past about 16px — the neighbours then trade hover states
+along an invisible seam. Keep it under the row's own leading.

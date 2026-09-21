@@ -1,6 +1,6 @@
 # Manifest
 
-472 primitives. Format: `category/id | axes cost | tags | gist`
+475 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -18,6 +18,7 @@ canvas/delay-binned-source-history | E2 D2 W2 F5 $4 | canvas field pointer motio
 canvas/derivative-width-edge-aa | neutral  $2 | shader canvas precision correctness detail | A procedural shape in a fragment shader gets no antialiasing for
 canvas/described-canvas-figure | neutral  $1 | canvas accessibility architecture diagram | A canvas carrying the argument — a diagram, a chart, a staged ex
 canvas/direction-sampled-burst | E4 D3 W2 F4 $2 | canvas particles generative distribution depth | Independent per-axis ranges can only ever fill a rectangle, so a
+canvas/document-spanned-viewport-field | neutral  $2 | canvas scroll background generative architecture performance | A decorative field belongs either to the viewport or to the docu
 canvas/dom-labels-in-normalised-canvas-space | neutral  $2 | canvas accessibility architecture correctness label | Text drawn with fillText cannot be selected, found, translated o
 canvas/eased-pointer-influence | E3 D2 W2 F5 $2 | shader interaction feel | Never feed raw pointer state to a shader. Keep a uMouseActive fl
 canvas/facing-weighted-directional-pull | E3 D2 W3 F5 $3 | shader canvas pointer motion generative | Uniform displacement inflates a form; a form reaching toward som
@@ -74,6 +75,7 @@ color/runtime-shade-derivation | neutral  $1 | color tokens theming architecture
 color/self-painting-theme-scope | neutral  $2 | color tokens theming architecture dark | A theme is one class that both defines the semantic colour token
 color/sequence-value-ramp | E1 D2 W3 F4 $1 | color hierarchy surface sequence contrast | Tint a row of peer surfaces along one lightness ramp so sequence
 color/status-triad-tokens | neutral  $1 | color tokens accessibility contrast correctness state | A status is three tokens, not one, because the same hue is asked
+color/utility-scale-token-reclamation | neutral  $2 | color tokens theming architecture correctness | A codebase committed to a utility framework has its palette froz
 interaction/aliased-fragment-target | neutral  $1 | navigation anchor fragment accessibility architecture url | A section can answer to more than one fragment without renaming 
 interaction/anchor-focus-handoff | neutral  $1 | accessibility navigation focus correctness anchor | An in-page link that only scrolls leaves the keyboard where it w
 interaction/anchor-only-nav-collapse | neutral  $1 | navigation responsive accessibility architecture correctness | Where every link in a bar is an in-page anchor, the narrow-viewp
@@ -371,6 +373,7 @@ surface/backdrop-blur-tier-system | E1 D3 W3 F4 $3 | surface depth glass | Treat
 surface/baseline-closed-area-path | E2 D2 W2 F5 $1 | svg chart sparkline data precision | A sparkline's tinted area and its stroke must never disagree by 
 surface/blended-grain-over-gradient | E1 D3 W3 F4 $1 | surface texture grain gradient blend-mode banding | A wide gradient across a saturated panel bands on 8-bit displays
 surface/channel-split-refraction-glass | E1 D3 W3 F5 $4 | glass backdrop-filter svg-filter refraction chromatic depth | A blur says frosted; a displacement says solid and thick. Refere
+surface/clip-carried-fill-traverse | E2 D2 W2 F5 $2 | svg connector motion clip-path diagram gradient | Dash offset gives a stroked connector direction, but a connector
 surface/concave-corner-seam | E1 D2 W2 F5 $2 | surface border detail chrome css-only | A raised element fuses into the sheet below it only where the jo
 surface/control-cleared-decoration-band | E1 D3 W2 F4 $2 | surface decoration contrast accessibility header | Artwork sharing a box with a control — a band behind a header, a
 surface/corner-tick-frame | E1 D2 W1 F5 $1 | surface border frame detail currentcolor precision | Four short L-marks at the corners instead of a closed border: th

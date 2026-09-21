@@ -58,3 +58,30 @@ const cx = el.offsetLeft, cy = el.offsetTop      // immune to the slide-in
 ```
 ⚠ Offsets are relative to `offsetParent`, so the container needs its own
 positioning context — and they round to integers, which shows on hairlines.
+
+A field spanning the whole document has no single copy block to measure, and
+measuring each section's separately makes the keepout breathe as the reader
+scrolls. The constant to exclude is the reading column itself — the same
+`min(max-width, viewport × fraction)` the layout already centres on — held for
+the document's full height. One rectangle, recomputed only on resize, and the
+corridor never moves relative to the text inside it.
+```js
+const half = Math.min(MAXW, W * 0.55) / 2, cx = W / 2
+const inCorridor = x => x > cx - half - M && x < cx + half + M    // M 40–80px
+```
+⚠ A corridor is wider than any one section needs, so the field loses real
+estate on every narrow section. Worth it only where the art is ambient; art
+that carries meaning should be measured per scene.
+
+Where the field is a connected structure, testing only the members leaves the
+links: two kept nodes on opposite sides of the keepout still draw a line
+straight across it, and a line over the copy is worse than a node. Test each
+link at its midpoint against the same rectangle and drop it. The subgraph tears
+cleanly into two halves either side, which is the right reading anyway —
+cheaper than relocating whole components and it cannot push anything off-canvas.
+```js
+if (inCorridor((a.x + b.x) / 2)) continue        // no link spans the column
+```
+⚠ A midpoint test passes a long link that bows across the corridor with both
+ends clear of it. Sample two or three points along anything longer than the
+corridor is wide.

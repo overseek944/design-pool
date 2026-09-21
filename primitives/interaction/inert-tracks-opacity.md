@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,focus,correctness,overlay,pointer-events]
 axes: none
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []

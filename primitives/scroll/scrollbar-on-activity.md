@@ -39,3 +39,17 @@ scroller on the page inheriting a theme.
 ```
 ⚠ Thumb against track wants 2.5–3:1 and the track against the panel about 1.3–2:1
 — a scrollbar tinted down to decoration has stopped reporting position.
+
+The legacy path has no padding property: `::-webkit-scrollbar-thumb` fills the
+track edge to edge, and a thumb touching both walls reads as a fill bar rather
+than a grip. Inset it with a transparent border and `background-clip:
+padding-box` — the border reserves the space, the clip stops the background
+painting into it, and the hit area stays the full width. Border 2–3px against a
+10–12px track.
+```css
+::-webkit-scrollbar-thumb { background: var(--thumb); border-radius: 8px;
+  border: 2px solid transparent; background-clip: padding-box }
+```
+⚠ The rule has to be repeated on `:hover`: changing only `background` there
+drops the clip and the border alongside it, and the thumb jumps to full width
+under the pointer.

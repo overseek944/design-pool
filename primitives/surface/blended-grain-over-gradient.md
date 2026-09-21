@@ -4,7 +4,7 @@ category: surface
 tags: [surface,texture,grain,gradient,blend-mode,banding]
 axes: {energy: 1, density: 3, weight: 3, finish: 4}
 cost: 1
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []

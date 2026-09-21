@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,architecture,accessibility]
 axes: none
 cost: 2
-seen: 15
+seen: 16
 requires: []
 conflicts: []
 completes: []
@@ -53,3 +53,18 @@ const m = Math.min(devicePixelRatio || 1, 2, Math.sqrt(2.5e6 / (w * h)))
 ```
 ⚠ Recompute on every resize, not once — the same element crosses the budget
 when a panel opens beside it. Never on a canvas holding text or a hard edge.
+
+The layer's *intensity* is a theme fact, not an effect fact. A field tuned to
+sit under dark copy is either invisible or filthy on a light ground, and the
+usual answer — a second set of constants inside the renderer — makes the canvas
+learn which theme is active. Publish opacity and blend mode as two root tokens
+instead and read them in CSS only: the same draw code serves both grounds, and
+a new theme costs two declarations. `normal` at 0.5–0.7 on dark, `multiply` at
+0.2–0.35 on light.
+```css
+:root { --field-opacity: .6; --field-blend: normal }
+.field { opacity: var(--field-opacity); mix-blend-mode: var(--field-blend) }
+```
+⚠ `mix-blend-mode` on the underlay makes it composite against whatever is
+painted beneath, so `html` needs the ground colour — set on `body` it blends
+against nothing and the multiply reads as flat grey.

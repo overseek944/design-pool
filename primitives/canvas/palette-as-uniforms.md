@@ -4,7 +4,7 @@ category: canvas
 tags: [shader,color,system]
 axes: none
 cost: 2
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
