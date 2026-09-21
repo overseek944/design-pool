@@ -4,7 +4,7 @@ category: timing
 tags: [motion,ambient,rhythm]
 axes: {energy: 3, density: 3, weight: 2, finish: 4}
 cost: 2
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []
@@ -48,3 +48,17 @@ duration from the same px/s target.
 ```
 ⚠ Scale before translate or the travel is scaled too, and the edge arrives
 early.
+
+Hand-picked coprime periods do not scale to a set whose size is data. Derive the
+ladder from the index instead — a base plus a step per member — and pair it with
+a negative delay off the same index, so an arbitrary number of members are both
+spread through the cycle and drifting apart from the first frame. Step 10–20% of
+the base; below that they beat, above it the slowest member reads as a different
+effect.
+```css
+g { animation: shimmer calc(2.75s + var(--i) * .4s) ease-in-out infinite;
+    animation-delay: calc(var(--i) * -1.05s) }
+```
+⚠ The ladder is only coprime-ish — members whose periods land in a small integer
+ratio still resync visibly. An irrational step, or a step that does not divide
+the base, is what keeps the whole set apart.

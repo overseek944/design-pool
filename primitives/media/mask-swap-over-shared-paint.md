@@ -4,7 +4,7 @@ category: media
 tags: [mask,icon,gradient,media,state]
 axes: {energy: 2, density: 2, weight: 2, finish: 4}
 cost: 2
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -49,3 +49,18 @@ lets that layer add to the shape or subtract from it from the call site.
 `intersect` — subtracting the glyph from nothing erases the icon. Default the
 operator to `add` and let the call site change it only when it also supplies the
 layer.
+
+Where the shared paint is a *stack* rather than one image — several gradients at
+different scales making a material — its `background-size` list is part of the
+paint and has to travel with it. Ship the two as a pair of custom properties and
+every consumer gets the material intact; ship only the images and each layer
+falls back to `auto` and the stack collapses into its last layer, which usually
+reads as a flat fill and looks like nothing is wrong.
+```css
+:root { --metal: radial-gradient(…), radial-gradient(…), linear-gradient(…);
+        --metal-sizes: 34% 210%, 40% 190%, 100% 100% }
+.mark { background-image: var(--metal); background-size: var(--metal-sizes);
+        mask: var(--shape) 50%/contain no-repeat }
+```
+⚠ The two lists are one decision written twice — a layer added to one and not
+the other silently shifts every size onto the wrong layer.

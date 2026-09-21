@@ -4,7 +4,7 @@ category: timing
 tags: [motion,timing,loop,architecture]
 axes: none
 cost: 1
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
@@ -88,3 +88,15 @@ declaration, no script.
 ⚠ Only for monotone channels where the second starts no earlier than the first.
 Otherwise the difference goes negative, clamps, and the element is dark through
 a stretch it should be visible.
+
+Where the envelope drives `opacity` on a promoted layer, floor it just above
+zero rather than letting it reach it. A layer at exactly zero is dropped and
+re-rastered on the way back, which lands as a visible hitch at precisely the
+moment the element should be arriving softly. A floor of 0.001–0.005 is
+invisible and keeps the buffer alive across the whole cycle.
+```js
+el.style.opacity = Math.max(.002, env(t, a, b)).toFixed(3)
+```
+⚠ Only for decorative layers. Anything interactive left at a non-zero opacity is
+still hit-testable and still in the tab order — that case needs `visibility` or
+`inert`, not a floor.

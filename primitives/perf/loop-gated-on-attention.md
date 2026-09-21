@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,intersection-observer,visibility,battery,correctness]
 axes: none
 cost: 2
-seen: 48
+seen: 49
 requires: []
 conflicts: []
 completes: []
@@ -206,3 +206,17 @@ html[data-motion=reduced] .page * { animation: none !important;
 ```
 ⚠ Pausing does not stop a `transition`, only an `animation` — anything eased
 from script keeps arriving after the pause lands.
+
+A threshold arms at the element's own edge, which is exactly where a reader
+oscillates — one nudge either way and the subtree stops and starts. Use
+`rootMargin` for hysteresis instead: inflate the root by a full viewport and the
+gate only closes once the element is genuinely far away, so it is already at
+speed by the time it is scrolled to and a decorative loop never visibly boots.
+Margin 80–150% on the scroll axis, 0 on the cross axis.
+```js
+new IntersectionObserver(([e]) => el.toggleAttribute('data-idle', !e.isIntersecting),
+  { rootMargin: '100% 0px' }).observe(el)
+```
+⚠ The inflated root also means nothing below the fold is ever reported idle on a
+short page — pair it with the visibility and reduced-motion terms, which do not
+depend on geometry.

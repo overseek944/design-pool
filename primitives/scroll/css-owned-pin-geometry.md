@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,pin,architecture,correctness,responsive]
 axes: none
 cost: 2
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: [media-query-parity-listeners]
@@ -36,3 +36,17 @@ in sync with the stage, and the stage stays reachable by pointer underneath.
 ⚠ The margin must equal the stage height in the same unit or the first scene
 opens mid-scroll. `svh`, not `vh` — mobile chrome makes the two differ by the
 height of the toolbar, and the error compounds down a long story.
+
+The same argument reaches the beats inside the runway. A trigger point given to
+the controller in pixels has to be recomputed whenever the spacer changes; given
+as a *fraction* of it, the stylesheet places a zero-size marker and the
+controller only observes that element. Retuning the runway then moves every beat
+with it, and the two numbers that describe the section — how long it holds and
+where it turns over — sit together in one rule.
+```css
+.runway { --len: 2.3; --turn: .46; height: calc(var(--len) * 100vh) }
+.runway .mark { position: absolute; width: 0; height: 0;
+                top: calc((var(--len) * 100vh - 100vh) * var(--turn)) }
+```
+⚠ The marker must be inside the spacer, not the sticky child — a sticky
+ancestor's offsets stop describing document position the moment it sticks.

@@ -1,6 +1,6 @@
 # Manifest
 
-593 primitives. Format: `category/id | axes cost | tags | gist`
+599 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -238,6 +238,7 @@ layout/viewport-unit-role-split | neutral  $1 | layout viewport mobile responsiv
 light/blend-doubled-headline | E2 D2 W4 F5 $3 | type blend legibility contrast compositing | Set the headline twice in one grid cell: an opaque copy under th
 light/broadcast-light-source | E2 D2 W2 F5 $3 | light gradient custom-property ambient architecture | A panel lit at the pointer has one lamp, and only while a pointe
 light/counter-rotated-specular-layer | E2 D2 W3 F5 $2 | light gradient rotation material 3d | An object with its highlight painted into its own background spi
+light/differential-scale-rim-glint | E2 D2 W3 F5 $2 | light rim mask layers ambient metal 3d | A form cut from a single silhouette has no edge for light to cat
 light/emitted-light-not-borders | E2 D1 W3 F5 $2 | color effect depth restraint | Separate surfaces with glow and luminance rather than 1px solid.
 light/glow-spined-pass-bar | E3 D1 W2 F5 $1 | light glow sweep box-shadow loop cheap | A light crossing a panel whose content does not change says the 
 light/gradient-through-text | E3 D2 W4 F3 $2 | color type effect | background-clip: text with a transparent fill turns a headline i
@@ -246,9 +247,11 @@ light/offscreen-anchored-wash | E1 D2 W2 F4 $1 | gradient ground atmosphere ambi
 light/pointer-anchored-surface-light | E2 D2 W2 F5 $2 | light pointer hover gradient custom-properties surface | Let a panel light where the pointer is rather than uniformly. On
 light/relit-state-fill | E2 D2 W3 F4 $1 | light gradient hover control surface | A gradient-filled control usually signals hover by getting brigh
 light/screen-blend-light-layer | E3 D3 W3 F4 $3 | effect blend compositing dark | mix-blend-mode: screen on an overlay makes it add light and drop
+light/self-derived-bloom-understudy | E2 D2 W3 F5 $2 | glow bloom filter svg line-art decoration | A glow authored as its own asset stops matching the artwork the 
 light/shadow-opposed-frame-halo | E1 D2 W3 F5 $1 | glow media surface depth dark-mode | A large dark plate on a dark ground reads as a hole cut in the p
 light/stacked-chromatic-bloom | E3 D2 W4 F4 $3 | effect glow filter svg depth | filter: drop-shadow() chains, and follows the alpha channel — so
 light/stop-built-soft-glow | E1 D2 W2 F4 $1 | gradient glow decoration performance cheap banding | A blurred lamp holds a composited buffer the size of its box plu
+light/target-aimed-travelling-beam | E3 D2 W3 F5 $2 | light beam rotation scroll decoration custom-properties | A directional light that moves — a beam, a shaft, a cone — keeps
 media/activation-deferred-player-facade | neutral  $2 | media embed iframe video performance privacy accessibility loading | A third-party player costs hundreds of kilobytes of script and s
 media/aperture-registered-content-layer | E1 D2 W2 F5 $2 | media mockup responsive layout correctness | Live content shown inside supplied frame artwork registers to an
 media/approach-loaded-video | neutral  $2 | media video performance intersection-observer accessibility bandwidth | Background footage is usually the heaviest thing on a page and u
@@ -395,6 +398,8 @@ perf/will-change-on-split-children | neutral  $1 | motion performance promotion 
 reveal/arc-window-overstroke | E3 D2 W3 F5 $2 | draw-on highlight canvas pulse path | A path being drawn reads as inert when the settled trail and the
 reveal/char-opacity-drift | E3 D4 W2 F5 $4 | type motion reveal ambient | Per-character with opacity + small y, will-change:opacity,transf
 reveal/glyph-scramble-settle | E4 D3 W2 F3 $2 | type reveal motion technical text | Resolve a label out of noise rather than fading it in: hold the 
+reveal/index-thresholded-progress-gate | E2 D2 W2 F5 $1 | reveal scroll custom-properties progress cheap svg | One scalar can sequence a whole set with no tween per member and
+reveal/lit-uncovering-front | E3 D2 W3 F4 $2 | reveal wipe blend light scroll edge | Revealing by retreating an opaque cover, rather than by fading o
 reveal/masked-line-rise | E3 D2 W3 F5 $2 | type motion reveal | Split to lines, wrap each in an overflow-hidden outer with a tra
 reveal/mirrored-sign-pair | E3 D2 W3 F4 $2 | reveal motion rotation symmetry pairing | Two peer blocks on one row share a single progress value and rea
 reveal/normalised-path-draw | E3 D2 W2 F5 $1 | svg stroke reveal draw geometry correctness | A draw-on stroke normally needs the path's measured length, whic
@@ -597,4 +602,5 @@ type/webfont-scoped-to-inline-svg | neutral  $1 | type svg correctness architect
 type/weight-dropped-display-line | E1 D2 W4 F5 $1 | type display headline hierarchy contrast | A display block can carry its own hierarchy with no second size,
 type/width-stable-changing-number | E2 D3 W3 F5 $1 | numerals data motion correctness | A figure that animates or streams needs two guarantees, and tabu
 type/wrap-joined-marker-block | E2 D2 W4 F4 $1 | type emphasis highlight decoration radius detail | A solid block behind a phrase paints one rectangle per line, so 
+type/zero-width-hanging-marginal | E1 D2 W1 F5 $1 | type editorial numbering measure heading responsive | A section number, footnote marker or date beside a heading shoul
 ```

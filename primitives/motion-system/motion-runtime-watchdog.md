@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,correctness,accessibility,progressive-enhancement,reveal]
 axes: none
 cost: 2
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
@@ -94,3 +94,17 @@ guard.
 ⚠ A mid-session flip to `reduce` now un-hides instantly rather than
 transitioning — correct, but any script that cached `matches` at setup will
 disagree with the stylesheet until it re-reads.
+
+Every branch above is still script releasing script. For anything that *blocks*
+— a cover over the first view, a gate held for fonts — put the last failsafe in
+the stylesheet, where it runs whether or not a bundle ever executes: a
+zero-length animation at a long delay, `forwards`, that clears the overlay. The
+JS path stays the real signal and normally wins by seconds; this only decides
+what a dead bundle looks like. Delay 3–6s, well past the timer it backs.
+```css
+.cover { animation: bail 10ms 4s forwards }
+@keyframes bail { to { opacity: 0; visibility: hidden } }
+```
+⚠ Only for a layer whose failure state is *absent*. Content hidden awaiting a
+reveal has no such frame to animate to — there the CSS cannot know the target
+pose and the inline script remains the only release.

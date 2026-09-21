@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,pointer,transform,motion,restraint,custom-property]
 axes: {energy: 2, density: 1, weight: 3, finish: 5}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -43,3 +43,20 @@ s.setProperty('--hover', p.h.toFixed(4))                   // 0…1 envelope
 ⚠ The loop runs whether or not a pointer is present. Stop it once the pose has
 settled after `pointerleave`, or every such surface on the page costs a frame
 forever.
+
+The fix that warning asks for is a residual test, not a `pointerleave` handler:
+compare the smoothed value against its target at the end of every frame and
+stop requesting frames once the difference on every channel falls under an
+epsilon. The next input restarts the loop, so a settled surface costs nothing
+and a moving one is never a frame behind. Epsilon 5e-4 to 2e-3 of the
+normalised range — tighter and the loop never reaches rest against floating
+point.
+```js
+const step = () => { p.x += (t.x - p.x) * .09; publish()
+  raf = Math.abs(t.x - p.x) < 5e-4 && Math.abs(t.y - p.y) < 5e-4
+      ? 0 : requestAnimationFrame(step) }
+const move = e => { read(e); raf ||= requestAnimationFrame(step) }
+```
+⚠ Teardown must remove the custom properties, not just the listener. Left on the
+root at their last value they outlive the feature and the next thing to read
+them inherits a stale pose.
