@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,reveal,accessibility,progressive-enhancement,correctness,scroll]
 axes: {energy: 2, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -48,3 +48,17 @@ now runs to undo it. Every hidden initial state has to live inside the
 `@keyframes` block with `both` fill, so cancelling the animation returns the
 element to authored markup rather than to frame zero. One grep — a bare
 `opacity: 0` outside a keyframe — audits the whole stylesheet.
+
+Where the choreography is already declarative — per-item `animation-delay` off
+an index — the gate can be the animation's own play state rather than a class
+that adds it. Author it `paused` with `both` fill and one attribute on the
+container starts every item at once, delays intact: the from-state is the
+keyframe's own 0% frame, nothing is hidden by a base rule, and the runtime
+surface is a single boolean for a grid of any size.
+```css
+.tile { animation: rise .72s var(--ease) both calc(var(--i) * 80ms);
+        animation-play-state: paused }
+[data-in-view=true] .tile { animation-play-state: running }
+```
+⚠ Paused parks on frame zero, so this variant *does* withhold content — arm it
+only below the fold, or a runtime that never starts leaves an empty grid.

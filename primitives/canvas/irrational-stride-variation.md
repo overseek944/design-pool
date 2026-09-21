@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,generative,field,deterministic,correctness,scatter]
 axes: none
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -51,3 +51,18 @@ const size = base + (h(row + 1, col + 1) - .5) * 2 * spread
 ```
 ⚠ Offset the inputs off zero. At `(0, 0)` the sine is exactly 0 and the first
 cell is not merely predictable, it is the same across every field on the page.
+
+Quantise the value wherever the field is read as data rather than as scatter. A
+continuous jitter on opacity or size makes every mark unique and so unrankable;
+the same hash bucketed into 3–4 tiers — thresholds near 25% and 60% — reads as a
+scale with a legend behind it, and the tiers are tokens a caller can retint. An
+integer hash suits the bucketing better than a fractional stride: one multiply
+by a large odd constant, then a modulus, and adjacent indices land at opposite
+ends of the range instead of walking the scale.
+```js
+const tier = i => { const h = Math.imul(i, 0x9e3779b1) >>> 0
+                    return h % 97 < 26 ? .62 : h % 97 < 62 ? .82 : 1 }
+```
+⚠ A modulus that shares a factor with the stride collapses the tiers onto a
+short cycle — keep it prime, and count the buckets over the real index range
+before trusting the mix.

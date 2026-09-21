@@ -4,7 +4,7 @@ category: layout
 tags: [layout,data,grid,indicator,accessibility,density]
 axes: {energy: 1, density: 4, weight: 2, finish: 4}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []

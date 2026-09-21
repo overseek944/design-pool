@@ -8,7 +8,7 @@ seen: 8
 requires: []
 conflicts: []
 completes: []
-tension: []
+tension: [grid-counted-leading]
 ---
 Leading is a function of role, not of size, and the ladder is steeper than most
 scales admit: display wants less than single, prose wants noticeably more.

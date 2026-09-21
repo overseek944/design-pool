@@ -4,7 +4,7 @@ category: timing
 tags: [motion,rhythm,sequencing]
 axes: {energy: 3, density: 3, weight: 2, finish: 4}
 cost: 1
-seen: 14
+seen: 15
 requires: []
 conflicts: []
 completes: []
@@ -56,3 +56,10 @@ in a heading sit **20–50ms** apart — an order below .06–.08 — because th
 tracks them as a single wave crossing the line, not as items arriving in turn.
 At the sibling band a ten-word heading takes most of a second to finish and
 reads as a queue. Scale by tokens per line, not by the house step.
+
+A dense field has no sibling band at all: hundreds of cells stepped one at a
+time take seconds, and the eye reads them as texture rather than as items.
+Bucket the index by one axis — `floor(i / cols)` — so an N-cell grid arrives in
+a handful of column waves, and drop the step an order below the sibling band,
+8–16ms per wave. Which axis buckets is then a layout decision, not a schedule:
+by column the field fills left to right, by row it fills like text.

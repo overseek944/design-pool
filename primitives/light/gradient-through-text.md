@@ -4,7 +4,7 @@ category: light
 tags: [color,type,effect]
 axes: {energy: 3, density: 2, weight: 4, finish: 3}
 cost: 2
-seen: 17
+seen: 18
 requires: []
 conflicts: []
 completes: []
@@ -104,3 +104,19 @@ against the x-height, not the box.
 ```
 ⚠ No contrast floor is achievable against arbitrary photography — this is
 decoration, and the string must exist as real text somewhere else on the page.
+
+Size the glint in `ch` rather than in percent — `calc(3ch + 40px)` — and one
+class reads the same over a 12px label and a 72px headline, where a percentage
+spread thins to a hairline on the long line. The background then has to be
+`calc(200% + spread * 2)` wide so the sweep still clears both ends, and the
+travel is `background-position` from `100% 0` to `0 0`. Tilt the gradient
+15–25° off vertical and the highlight crosses the letterforms diagonally
+instead of wiping them column by column.
+```css
+.shimmer { --spread: calc(3ch + 40px);
+  background-size: calc(200% + var(--spread) * 2) 100% }
+[dir=rtl] .shimmer { animation-direction: reverse }
+```
+⚠ The sweep travels with the writing direction and reads backwards in RTL —
+reverse it there, which the percentage form hides and the `ch` form makes
+obvious.
