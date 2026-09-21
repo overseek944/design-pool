@@ -4,7 +4,7 @@ category: light
 tags: [color,type,effect]
 axes: {energy: 3, density: 2, weight: 4, finish: 3}
 cost: 2
-seen: 20
+seen: 21
 requires: []
 conflicts: []
 completes: []
@@ -120,3 +120,16 @@ instead of wiping them column by column.
 ⚠ The sweep travels with the writing direction and reads backwards in RTL —
 reverse it there, which the percentage form hides and the `ch` form makes
 obvious.
+
+An image can be the fill as readily as a gradient, and it carries a failure the
+gradient does not: a 404, a blocked request or a slow decode leaves a
+transparent fill over nothing and the word is simply gone. Stack a flat colour
+beneath it in the same `background-image` list — a two-stop gradient of one
+opaque value — and the clip resolves to solid ink whenever the top layer is
+missing. It costs one comma.
+```css
+.mark { background-image: url(fill.avif), linear-gradient(var(--fg), var(--fg));
+  background-size: cover; -webkit-background-clip: text; color: transparent }
+```
+⚠ The fallback is a colour, not the artwork: score it against the ground on its
+own, because on a large fill it is what most first paints actually show.

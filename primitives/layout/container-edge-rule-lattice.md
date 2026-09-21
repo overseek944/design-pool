@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,hairline,precision,responsive,technical]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 2
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -56,3 +56,16 @@ and the texture reads as a section style rather than a boundary.
 ⚠ Copy set over a hatch interferes with its own stem weight — keep the rendered
 pitch above 8px and the line alpha under .10, and check it at 390px, where the
 texture is at its densest relative to the type.
+
+Where the measure is already a real element, the rules are not a lattice to
+compute. `border-inline` on the column itself draws both, tracks it through
+every breakpoint and needs no `max()`. The pseudo-element form earns its
+indirection only when the rules must exist in bands the column does not — a
+full-bleed section, artwork that crosses them — which is also the case that
+makes them read as a sheet rather than a border.
+```css
+.measure { inline-size: min(100% - 2 * var(--gutter), var(--content));
+  margin-inline: auto; border-inline: var(--hair) solid var(--rule) }
+```
+⚠ The border sits inside the box, so the column's inline padding has to absorb
+it or the first character rests on the rule.

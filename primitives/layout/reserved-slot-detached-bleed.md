@@ -4,7 +4,7 @@ category: layout
 tags: [layout,bleed,cls,decorative,responsive]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

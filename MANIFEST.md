@@ -1,6 +1,6 @@
 # Manifest
 
-552 primitives. Format: `category/id | axes cost | tags | gist`
+554 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -178,6 +178,7 @@ layout/float-wrapped-figure | E1 D3 W2 F4 $1 | layout type editorial responsive 
 layout/fractional-grid-with-fluid-rail | E1 D3 W3 F4 $2 | layout grid asymmetry | Asymmetric two-column via minmax() where the rail is viewport-pr
 layout/geometry-scoped-connector-overlay | neutral  $1 | layout diagram connector responsive correctness architecture | An overlay of connectors is a picture of one arrangement, not of
 layout/ghost-sizer-twin | neutral  $1 | layout architecture correctness hover reflow | A box that grows on interaction — scales, lifts on Z, expands a 
+layout/gridline-borne-value-label | E1 D3 W1 F5 $1 | chart axis label mono hairline density | A plot that reserves a left gutter for its value axis spends 40–
 layout/height-budgeted-media-width | neutral  $2 | layout container-query aspect fit cls | When a card must fit one screen exactly — media plus chrome, not
 layout/in-flow-overlay-header | neutral  $1 | layout sticky overlay correctness cls | A header that must float over the first section and still stick 
 layout/intrinsic-floored-auto-track | neutral  $1 | layout grid responsive correctness overflow breakpoints | repeat(auto-fit, minmax(<floor>, 1fr)) reflows a row of cards wi
@@ -504,6 +505,7 @@ timing/phase-offset-as-sequence | E3 D2 W2 F4 $1 | motion sequencing rhythm ambi
 timing/production-timing-vocabulary | E2 D2 W2 F5 $1 | motion easing duration reference system | A coherent set beats a clever one. Durations cluster tightly and
 timing/rate-integrated-phase-clock | neutral  $1 | motion timing correctness loop | A loop whose speed is a variable — tied to scroll position, a ho
 timing/role-offset-cascade | E3 D2 W2 F5 $1 | timing motion sequencing choreography tokens | Split a cascade into two independent halves: the group's entry t
+timing/scheduled-discrete-property-step | E2 D1 W2 F5 $1 | transition stacking scheduling hover precision | A stacking change has no in-between, so naming z-index in a tran
 timing/segment-eased-keyframes | E3 D2 W2 F5 $1 | motion easing keyframes choreography loop | animation-timing-function declared inside a keyframe block sets 
 timing/stagger-band | E3 D3 W2 F4 $1 | motion rhythm sequencing | Sibling stagger lives in a narrow band: .06–.08s reads as one ge
 timing/state-coded-arrival-rate | E3 D3 W2 F4 $1 | timing live-data state stream rhythm | A live stream that changes mode usually recolours its rows and n

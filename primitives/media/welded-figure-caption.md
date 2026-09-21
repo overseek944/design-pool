@@ -4,7 +4,7 @@ category: media
 tags: [media,figure,caption,accessibility,editorial]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -39,3 +39,17 @@ running prose cite a figure instead of gesturing at it. 10–12px, tracking
 ⚠ Numbering is a promise: once one figure is `FIG. 01` every figure on the page
 needs one, in document order, or the scheme reads as decoration. Generate from a
 CSS counter rather than by hand.
+
+Where the figure is a screen out of a system rather than a drawing, the label
+that earns its place is a *location*, not a number: the path to it, set above
+the frame in the smallest mono tier — `Data / Conversations` — with the
+trailing segment stepped from 40–50% ink up to 65–75% so the leaf reads as the
+subject and its ancestors as address. It says which part of the product is on
+screen, which `FIG. 01` cannot.
+```css
+.locus { display: flex; gap: .375rem; margin-block-end: .625rem;
+  font: 11px/1.45 var(--mono); letter-spacing: .02em; color: var(--ink-45) }
+.locus > :last-child { color: var(--ink-70) }
+```
+⚠ Mark the separators `aria-hidden` or each one is announced as "slash", and do
+not repeat the crumb as the image's `alt` — the location is then read twice.
