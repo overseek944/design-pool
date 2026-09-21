@@ -4,7 +4,7 @@ category: surface
 tags: [backdrop-filter,legibility,photography,contrast,surface,type]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -108,3 +108,18 @@ centre a child inside it.
 ```
 ⚠ The seam is invisible against a flat ground and obvious the moment anything
 crosses it — check against the widest element the page can scroll under the bar.
+
+The cheapest answer of all costs no filter and no compositing layer: a radial
+wash on a pseudo-element behind the text run, inset *negative* on both axes so
+the gradient reaches full transparency outside the element's own box. There is
+no edge to see because the fade finishes past where anyone is looking, and the
+ground keeps its texture everywhere else. Opaque to 0–55%, clear by 80–90%;
+bleed 8–12px block, 24–36px inline, wider inline because the rag is there.
+```css
+.copy { isolation: isolate }
+.copy > p::before { content: ""; position: absolute; inset: -9px -28px;
+  z-index: -1; background: radial-gradient(#ffffffeb 0%, #ffffffbd 54%, #fff0 84%) }
+```
+⚠ Flat colour only — it is a fixed tint, so unlike a blur it fails against a
+ground whose luminance changes. Measure against the lightest and darkest the
+field reaches under the text, not against a screenshot.

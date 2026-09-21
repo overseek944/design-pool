@@ -4,7 +4,7 @@ category: perf
 tags: [performance,canvas,correctness,resize,media-query,dpr]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -27,3 +27,16 @@ arm()
 ```
 ⚠ Remove the old listener before re-arming or every zoom step leaves one
 behind. A `ResizeObserver` does not cover this — the CSS box is unchanged.
+
+Pinch zoom is the leg the resolution query cannot see: it leaves
+`devicePixelRatio` alone and changes `visualViewport.scale` instead, so a canvas
+stays at the unzoomed backing size and goes visibly soft exactly when someone is
+trying to look closely. Multiply the buffer by that scale and re-observe on the
+visual viewport's own `resize`, which is the only event the gesture fires.
+```js
+visualViewport?.addEventListener('resize', onChange)
+const buf = Math.round(cssW * devicePixelRatio * (visualViewport?.scale ?? 1))
+```
+⚠ A pinch can push the buffer past any area budget the effect has — clamp after
+multiplying, not before. Cost scales with the square of the gesture, so this is
+for a surface someone reads, not a full-bleed decorative field.

@@ -4,7 +4,7 @@ category: layout
 tags: [layout,responsive,media-query,ornament,correctness]
 axes: none
 cost: 1
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
@@ -54,3 +54,18 @@ second. Gates 600px and 740px. Take labels out with `sr-only`, not
 ⚠ `container-type: size` needs a definite height from above and stops the panel
 being sized by its own contents — a height query on an auto-height box never
 matches.
+
+The band has a continuous form that needs no query at all. Define the token
+twice — once as a width-fluid `clamp()`, once as a height-fluid one whose middle
+term is a line through two (viewport height, spacing) pairs — and take the
+`min()`. Whichever axis is scarcer binds, the other is ignored, and an opening
+section closes its gaps smoothly on a short laptop while a tall phone keeps them
+open. Apply it to the gaps in the stack, never to the type: whitespace is what
+should give up the fold first.
+```css
+--gap: min(clamp(32px, 10vw, 100px), clamp(54px, 25vh - 148px, 130px));
+```
+⚠ Solve the linear term from the two endpoints rather than tuning it by eye, and
+keep the floor above the point where the heading touches what sits under it.
+Mobile chrome resizes the viewport mid-scroll here too, so this belongs behind
+the same pointer-and-keyboard width as the queries above.

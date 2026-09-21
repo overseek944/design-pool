@@ -4,7 +4,7 @@ category: layout
 tags: [layout,layout-shift,responsive,correctness,tabs]
 axes: none
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -53,3 +53,16 @@ their length is not known at authoring time.
 ⚠ Zero-opacity copies stay readable to a screen reader and findable by
 find-in-page. `aria-hidden` the inactive ones and mark the container
 `aria-live="polite"` so the swap is announced once, not four times.
+
+Where the swap is a cut rather than a cross-fade, `visibility: hidden` is the
+better hide than zero opacity and answers that ⚠ for free: it takes the inactive
+copies out of the accessibility tree, out of find-in-page and out of the tab
+order in one declaration, while still contributing height to the shared cell.
+`aria-hidden` and `pointer-events` then become belt and braces rather than the
+fix. It cannot be transitioned across, which is exactly the case where nothing
+is transitioning.
+```css
+.swap > [data-active="false"] { visibility: hidden }
+```
+⚠ Not interchangeable with the opacity form — `visibility` is discrete, so a
+fade written against it snaps. Pick one per component and say which.

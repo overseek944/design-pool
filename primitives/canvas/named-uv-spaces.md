@@ -4,7 +4,7 @@ category: canvas
 tags: [shader,architecture,responsive,correctness,reference]
 axes: none
 cost: 3
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -27,3 +27,18 @@ uniform float u_fit;    // 0 none · 1 contain · 2 cover
 ⚠ Pattern space carries device-pixel magnitudes; at `mediump` the low bits are
 gone and `fract()` bands. Scale it by a constant (×.01–.02) leaving the vertex
 stage and undo that factor in the fragment.
+
+Rather than guess whether `mediump` is enough, ask. `getShaderPrecisionFormat`
+reports the mantissa bits the driver actually gives a medium float; under about
+23 it cannot hold a device-pixel magnitude, and the constant-scaling above is a
+workaround for a machine that may not need it. Rewrite the declaration in the
+source before compiling and the same shader ships one text at full precision
+where that is free and at medium where it is not.
+```js
+const p = gl.getShaderPrecisionFormat(gl.FRAGMENT_SHADER, gl.MEDIUM_FLOAT)
+if (p && p.precision < 23) src = src.replace(/precision\s+(lowp|mediump)\s+float;/g,
+                                             'precision highp float;')
+```
+⚠ `highp` is not guaranteed in a fragment shader on older mobile GPUs — check
+`HIGH_FLOAT` reports non-zero precision before promoting, or the compile fails
+with nothing rendered and no thrown error.

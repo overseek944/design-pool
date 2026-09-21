@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,texture,pattern,raster,two-tone,generative]
 axes: {energy: 2, density: 4, weight: 3, finish: 2}
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -37,3 +37,16 @@ const i = Math.floor((v + (t(x, y) - .5) / P.length) * P.length)   // P = palett
 ctx.fillStyle = P[Math.min(P.length - 1, Math.max(0, i))]
 ```
 ⚠ Clamp after adding the threshold — it pushes both ends of the ramp out of range.
+
+The beat against a fractional display scale has a fix, and it is to stop
+indexing the matrix by device pixels. Quantise the fragment coordinate onto a
+cell grid whose size is the CSS-pixel cell times the ratio, sample both the
+field and the threshold at the cell centre, and one lattice square then covers
+the same physical area at 1×, 2× and 2.75×. The pattern also stops getting finer
+as the panel gets denser, which is what made it read as grain on retina.
+```glsl
+vec2 c = floor((gl_FragCoord.xy - .5 * u_res) / (u_px * u_ratio)) + .5;
+float shade = field(c * u_px * u_ratio / u_res);   // field and threshold share c
+```
+⚠ Cell size is now in CSS pixels, so the 2px floor is a CSS-pixel floor — on a
+3× panel that is six device pixels and the fill rate saved is real.

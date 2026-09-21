@@ -1,6 +1,6 @@
 # Manifest
 
-537 primitives. Format: `category/id | axes cost | tags | gist`
+539 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -68,6 +68,7 @@ canvas/standard-uniform-set | neutral  $2 | shader architecture reference | A sm
 canvas/svg-userspace-pointer-mapping | neutral  $1 | svg pointer correctness interaction geometry | An SVG with a viewBox is drawn in its own coordinate system, and
 canvas/tilted-heightfield-mark-sheet | E2 D3 W1 F4 $3 | canvas 3d projection field depth scenery | Deep scenery on a 2D context needs no renderer: sample a summed-
 canvas/unit-box-asset-framing | neutral  $2 | canvas correctness scale geometry architecture | A loaded 3D asset arrives at whatever scale and origin its expor
+canvas/uv-reconstructed-sphere-normal | E2 D1 W3 F5 $2 | shader canvas light geometry generative | A lit sphere in a fragment shader needs no geometry, no normal b
 canvas/velocity-paired-field-step | E3 D2 W2 F5 $3 | canvas simulation shader texture solver generative | A field stepped by diffusion spreads and dies. One that should t
 canvas/video-textured-mark-field | E2 D3 W2 F5 $3 | canvas video particles texture motion performance | A field of marks needs content as well as motion, and inventing 
 canvas/warm-started-relaxation | neutral  $1 | canvas simulation performance shader solver | An iterative solve re-run every frame — a pressure projection, a
@@ -161,6 +162,7 @@ layout/column-registered-overlay-chrome | neutral  $1 | layout overlay alignment
 layout/container-budgeted-column-drop | neutral  $2 | layout container-query table responsive accessibility correctness | A dense row carries more columns than a narrow container can hol
 layout/container-edge-rule-lattice | E1 D3 W1 F5 $2 | layout grid hairline precision responsive technical | Draw the measurement system, not only the content. Vertical hair
 layout/container-solved-overlap-stride | E1 D4 W2 F5 $2 | layout overlap measurement resize-observer density quantity | Do not pick how far a row of fixed-width cards overlaps — solve 
+layout/content-spanning-note-bracket | E1 D2 W1 F5 $1 | layout annotation editorial rule accessibility | A note set in the margin beside a long block never says which ro
 layout/count-threshold-shape-shift | neutral  $1 | layout has quantity-query chrome css-only density | Let a container change what it is once its contents pass a count
 layout/cropped-stage-mock | E1 D2 W2 F5 $2 | layout responsive overflow media scale detail | Show a framed artifact — a handset, a browser chrome, a console 
 layout/cross-card-band-alignment | E1 D3 W1 F5 $2 | layout grid subgrid cards hairline datasheet alignment | A row of cards aligns at its outer edges and nowhere else: each 

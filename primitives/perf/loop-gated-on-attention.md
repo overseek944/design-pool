@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,intersection-observer,visibility,battery,correctness]
 axes: none
 cost: 2
-seen: 43
+seen: 44
 requires: []
 conflicts: []
 completes: []
@@ -176,3 +176,17 @@ mid-way.
 const io = new IntersectionObserver(([e]) => { if (e.intersectionRatio >= .65)
   el.dataset.animate = 'true' }, { threshold: [0, .65] })
 ```
+
+A halted loop still owes one frame. Every reason to stop requesting frames —
+offscreen, hidden tab, reduced motion — leaves a backing store that a resize
+then reallocates and clears, so the surface goes blank until something happens
+to restart it, which under a standing motion preference is never. Call the
+render function directly from the resize handler whenever the loop is not
+running; it costs one frame per resize and makes "stopped" mean still rather
+than absent.
+```js
+const resize = () => { sizeBuffer(); if (raf === null) draw(performance.now()) }
+```
+⚠ The direct call has to be safe out of sequence — advance the clock from the
+timestamp rather than incrementing it, or a stopped scene creeps forward one
+step per resize.
