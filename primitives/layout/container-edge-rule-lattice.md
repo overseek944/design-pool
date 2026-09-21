@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,hairline,precision,responsive,technical]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 2
-seen: 15
+seen: 16
 requires: []
 conflicts: []
 completes: []
@@ -120,3 +120,21 @@ paper.
 pointer, but it also cannot be excluded from a screenshot or a print sheet the
 way a pseudo-element can. On a fractional device pixel ratio the half-pixel band
 resolves to a grey ramp rather than a hairline; check at 1.25× and 1.5×.
+
+The ceiling is not a count. Two tiers reads as noise at container pitch because
+the rules land near the copy they flank; at a wide even pitch they do not, and a
+lattice of five or six clears without crowding anything. What governs is pitch
+against line value — roughly 200–280px between rules and an alpha low enough
+that a rule is invisible in isolation and only legible as a set (around .04–.08
+against the page ground, a step below what a border would take). Derive the
+coordinates from one division rather than listing them, so re-columning is one
+number and the rules cannot drift off the measure.
+```css
+.sheet { --cols: 5; --pitch: calc((100% - 2 * var(--gutter)) / var(--cols));
+  background-image: repeating-linear-gradient(90deg,
+    var(--rule) 0 1px, #0000 1px var(--pitch));
+  background-position-x: var(--gutter) }
+```
+⚠ A repeating gradient has no closing rule — the pattern ends one pitch short of
+the last coordinate, so the right edge of the measure goes undrawn unless a
+separate stop or a `::after` supplies it.

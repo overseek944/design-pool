@@ -4,7 +4,7 @@ category: timing
 tags: [motion,easing,duration,reference,system]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 30
+seen: 31
 requires: []
 conflicts: []
 completes: []
@@ -55,3 +55,18 @@ simply there, the transform it rides eased over 250–400ms so the travel reads.
 .btn { transition: background .3s, border-color .3s, color .3s, transform .1s }
 .btn:active { transform: scale(.97) }
 ```
+
+The emphasis band stretches past 1.1s only when the curve is front-loaded enough
+that the nominal duration stops describing what the eye sees. A curve reaching
+~70% of travel inside the first third — `cubic-bezier(.12,.23,.17,.99)` and its
+neighbours — reads as arriving in 0.4–0.5s no matter how long the tail is, so a
+1.3–1.7s hero entrance settles rather than drags. Spend it once, on the block
+that opens the page, and keep the rest of the set in the table: the long tail is
+only invisible where nothing else is moving beside it.
+```css
+.hero { transition: opacity 1.5s cubic-bezier(.12,.23,.17,.99) .2s,
+                    translate 1.5s cubic-bezier(.12,.23,.17,.99) .2s }
+```
+⚠ The tail is still live: a reader who scrolls at 0.6s is watching the last 30%
+crawl, and a second element entering during it inherits a stale-looking
+neighbour. Pair a long tail with a one-shot trigger, never with a scrub.
