@@ -4,7 +4,7 @@ category: layout
 tags: [overflow,correctness,accessibility,scroll]
 axes: none
 cost: 1
-seen: 29
+seen: 30
 requires: []
 conflicts: []
 completes: []
@@ -89,3 +89,17 @@ padding restoring the flow, sized to the largest thing that leaves the box.
 ```
 ⚠ The padding is inside the scroll port, so it also pads the track's cross axis
 — set the items' own block margin to zero or the row gains the space twice.
+
+The inline axis needs the same room and one thing more. A snap track bought its
+gutter with a negative inline margin and an equal inline padding now snaps to
+the *padded* edge, so every card rests a gutter short of where the port looks
+like it ends. `scroll-padding-inline` set to the same value moves the snapport's
+edge back onto the visual one, and the three numbers are one token. Gutter
+4–8px for a focus ring, 12–24px where a hover lift or a shadow leaves the box.
+```css
+.track { --gut: 6px; overflow-x: auto; scroll-snap-type: x proximity;
+         margin-inline: calc(-1 * var(--gut)); padding-inline: var(--gut);
+         scroll-padding-inline: var(--gut) }
+```
+⚠ Without the gutter the port clips the ring on the first and last card only —
+which is why it survives review: the middle of the track looks correct.

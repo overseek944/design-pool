@@ -4,7 +4,7 @@ category: type
 tags: [type,emphasis,hierarchy,editorial,colour]
 axes: {energy: 1, density: 2, weight: 3, finish: 5}
 cost: 1
-seen: 13
+seen: 14
 requires: []
 conflicts: []
 completes: []
@@ -71,3 +71,16 @@ the *darkest and lightest* pixel it can cross, which usually means a scrim.
 ```
 ⚠ Three channels at once is the ceiling — add a fourth and the clauses stop
 reading as one sentence.
+
+Made in alpha rather than in a second ink token, the split stops caring which
+ground it lands on. `opacity` around 0.55–0.62 on the receding clause reads the
+same on a pale page and on a dark band, so one rule covers a heading that
+appears on both — no paired token, no inversion branch. It composites against
+whatever is behind, which is the whole point and also the limit: over a
+photograph the receding half tracks the image rather than the scrim.
+```css
+.claim .fade { opacity: .58 }
+```
+⚠ Alpha is not a contrast ratio. Compute the composited colour against the
+actual ground and hold 4.5:1 — 0.58 of a dark ink on white clears it, the same
+0.58 of white on a mid-tone band does not.

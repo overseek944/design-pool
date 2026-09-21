@@ -4,7 +4,7 @@ category: perf
 tags: [architecture,analytics,third-party,privacy,layout,correctness]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -55,3 +55,16 @@ before_send: e => schema[e.event]
 ```
 ⚠ Enumerate field *values*, not only names — a free-text field passed through
 because its name was on the list is how form input reaches a vendor.
+
+Session replay is the same decision made in the DOM. Leave the vendor's default
+masking on — every text node and every input redacted — and unmask by explicit
+attribute on the handful of elements that are provably not reader data:
+navigation, headings, button labels. An allowlist is auditable and fails closed,
+where the usual mask-this-class list fails open the first time a template adds a
+field nobody tagged.
+```js
+tag.init(KEY, { session_recording: { maskAllInputs: true,
+  maskTextSelector: '*', unmaskTextSelector: '[data-replay-safe]' } })
+```
+⚠ Unmasking a container unmasks its subtree. Put the attribute on the leaf that
+holds the words, never on a wrapper that will later grow a form.

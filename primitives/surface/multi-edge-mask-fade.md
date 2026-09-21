@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,edge,composition,bleed]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 57
+seen: 58
 requires: []
 conflicts: []
 completes: []
@@ -222,3 +222,17 @@ near-constant across it — 10–18% of the gradient's axis.
 ```
 ⚠ Two tokens to keep in sync with one gradient — derive all three from the same
 pair, or a retune moves the ground and leaves the bands behind as visible steps.
+
+Four edges do not need four layers. Two crossed gradients — one per axis, each
+opaque between its own pair of stops — intersect to a feathered rectangle, and
+the per-edge falloff is then four numbers inside two declarations instead of
+four layers to keep in order. Asymmetry survives it: the top can open at 14%
+while the left opens at 6%, which is what a photographic plate needs when it
+must blend into the ground on its long edges and stay crisp on its short ones.
+```css
+mask-image: linear-gradient(to bottom, transparent 0, #000 14%, #000 93%, transparent),
+            linear-gradient(to right,  transparent 0, #000 6%,  #000 94%, transparent);
+mask-composite: intersect;
+```
+⚠ Percentages here are of the mask box, so a tall crop and a wide one feather by
+different absolute distances from the same rule.

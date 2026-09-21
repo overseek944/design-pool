@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,lifecycle,correctness]
 axes: none
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -38,3 +38,21 @@ document.addEventListener('astro:before-swap', () => c.abort(), { once: true })
 ```
 ⚠ An init that runs both at module evaluation *and* on every route event binds
 twice on the first page. Guard with a dataset flag on the element it owns.
+
+Two controllers, not one, where the script itself can be re-executed — a
+snapshot restore, a re-injected asset, a hot reload. The outer one owns the
+page-lifecycle listeners and lives as long as the module; the inner one is
+rebuilt on every initialise and owns everything that view binds, so a
+re-initialise aborts only the last generation. Publish `dispose()` on a
+namespaced global and call it at the top of the file, and the second execution
+tears the first down before it builds — a dataset flag can only decline to bind,
+which leaves the earlier instance running.
+```js
+if (window.ns) window.ns.dispose()
+const life = new AbortController()          // outer: page lifecycle
+let listeners = new AbortController()       // inner: rebuilt per init
+window.ns = { dispose: () => { listeners.abort(); life.abort() } }
+```
+⚠ `pagehide` is the teardown, never `unload` — and the restore path needs its
+own `pageshow` branch guarded on `persisted`, or a page returned from bfcache
+comes back torn down and inert.

@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,reveal,ux]
 axes: none
 cost: 1
-seen: 18
+seen: 19
 requires: []
 conflicts: []
 completes: []
@@ -43,3 +43,16 @@ const reset = () => { clearTimeout(h); setPhase('idle'); setTyped('') }
 ```
 ⚠ Threshold high enough that the reset cannot fire while any of it is still
 visible — 0.3–0.5 for a panel-sized demo, or it restarts under the reader.
+
+One element can legitimately carry both, on different properties, if each is
+keyed to a different question. A step in a scrolled sequence reveals its
+artwork once — arriving twice is a glitch — while its marker on the rail tracks
+live, filling as the step passes the reading line and emptying on the way back,
+because that one answers *where am I*, not *has this arrived*. Two class names,
+one add-only and one toggled, keep the policies from being confused later.
+```js
+if (top < innerHeight * .88) step.classList.add('is-revealed')   // latched
+step.classList.toggle('is-reached', top + 32 <= readingLine)     // live
+```
+⚠ The latched class must also be applied outright under reduced motion, or a
+reader with the preference set gets a page of permanently hidden artwork.

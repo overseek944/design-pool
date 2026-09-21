@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,progress,correctness,observer,reading]
 axes: none
 cost: 2
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -92,3 +92,10 @@ the resting rule.
 ⚠ Animating `inline-size` relayouts every frame — drive `transform: scaleX()`
 from a `transform-origin` at the inline start instead once the section holds
 more than a few nodes. It reports nothing a reader needs: `aria-hidden`.
+
+The probe line is a range, not the midpoint. Anywhere from 0.5 to 0.75 of the
+viewport height works, and the lower the line sits the more of the step the
+reader has actually passed before it commits — 0.7–0.75 for a sequence whose
+marks report *read*, nearer 0.5 where they report *arrived*. Below 0.75 the
+last item can never reach the line on a short page, so clamp the fraction and
+let the final step commit at the document end.

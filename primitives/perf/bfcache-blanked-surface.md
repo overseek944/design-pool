@@ -4,7 +4,7 @@ category: perf
 tags: [performance,canvas,lifecycle,correctness,restoration,flicker]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,16 @@ addEventListener('pageshow', e => { if (!e.persisted) return
 ```
 ⚠ Listening on `unload` disqualifies the page from the cache outright. A loop
 gated on `visibilitychange` alone still restores its last painted frame.
+
+Control state written on the way *out* comes back the same way. A submit button
+disabled and relabelled for the duration of a native form post is still disabled
+and still says "Sending…" when the reader presses Back, because the restored
+page is the frozen DOM, not a fresh render — and there is no submit in flight to
+re-enable it. Re-arm at init rather than on `pageshow`, so the same line covers
+a restore, a script re-execution and a router snapshot.
+```js
+submit.disabled = false; submit.removeAttribute('aria-busy')
+label.textContent = IDLE
+```
+⚠ The guard has to run before any listener binds, or the first press on the
+restored page is swallowed by a lock nothing will clear.

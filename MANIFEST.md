@@ -1,6 +1,6 @@
 # Manifest
 
-775 primitives. Format: `category/id | axes cost | tags | gist`
+778 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -181,6 +181,7 @@ interaction/legend-as-series-filter | E2 D2 W2 F5 $2 | legend filter state acces
 interaction/lock-gated-cross-tab-mutation | neutral  $3 | state correctness concurrency architecture async | Some mutations must not run twice at once across a user's open t
 interaction/margin-cancelled-hit-area | neutral  $1 | interaction touch accessibility hit-area layout correctness | A link in a dense bar cannot reach the 44px touch floor by growi
 interaction/micro-interaction-defaults | E2 D2 W2 F5 $1 | interaction polish consistency | One transition duration (200ms) and one property set for every n
+interaction/modality-gated-port-scroll | neutral  $1 | interaction accessibility keyboard focus scroll correctness carousel | Cards in a horizontal scroll port belong in the ordinary tab ord
 interaction/momentum-gated-wheel-step | neutral  $2 | interaction wheel input gesture correctness | A trackpad flick is one gesture and hundreds of events, so a ste
 interaction/mounted-empty-status-slot | neutral  $1 | accessibility correctness form layout state css-only | A live region only announces if it was in the document before th
 interaction/native-disclosure-animation | E2 D2 W2 F5 $2 | motion disclosure accessibility progressive-enhancement height | ::details-content with interpolate-size: allow-keywords animates
@@ -192,6 +193,7 @@ interaction/overdamped-surface-tilt | E2 D1 W3 F5 $1 | interaction pointer trans
 interaction/overflow-traversing-label | E3 D2 W2 F5 $1 | overflow hover focus type css-only detail | A label too long for its row is usually handed a tooltip or left
 interaction/override-released-system-preference | neutral  $1 | theme preference accessibility correctness state | A page that mirrors prefers-color-scheme and also ships a toggle
 interaction/paired-focus-offset-tokens | neutral  $1 | accessibility focus tokens correctness | Ship the focus ring as three tokens — width, an outer offset, an
+interaction/panel-scoped-field-disabling | neutral  $1 | interaction form correctness accessibility tabs progressive-enhancement | A tabset that keeps every panel in the DOM — because the set is 
 interaction/partial-modality-inert-siblings | neutral  $2 | interaction dialog accessibility inert focus correctness | Not every overlay should take the whole page. A panel hung off a
 interaction/platform-narrowed-download-set | neutral  $2 | progressive-enhancement navigation correctness accessibility architecture | An artifact built for five targets should not ship five equal bu
 interaction/pointer-transparent-copy-layer | neutral  $1 | interaction pointer accessibility layout correctness | Copy laid over a background that reacts to the pointer swallows 
@@ -358,6 +360,7 @@ media/cover-scale-as-scalar | neutral  $2 | media correctness geometry overlay r
 media/crop-coupled-scrim | neutral  $1 | media video legibility overlay accessibility responsive | Footage behind a headline crops differently at every width, so a
 media/crop-scaled-source-hint | neutral  $1 | media correctness responsive performance loading | sizes states the width the browser has to fill, and under object
 media/datum-carrying-render-coordinate | neutral  $1 | figure svg authoring correctness data provenance | A figure derived from real values — points on a projection, mark
+media/decode-gated-overlay-crossfade | E2 D1 W2 F5 $2 | media transition image crossfade correctness swap | Two photographs trading places in one slot cannot dissolve by tw
 media/decoded-probe-codec-select | neutral  $3 | video codec transparency feature-detection correctness media | canPlayType answers about the container, not about what survives
 media/device-pixel-snapped-overlay-write | neutral  $1 | canvas overlay precision dpr scrub registration correctness | A DOM layer over a raster — a canvas frame sequence, a cover-fit
 media/dialog-scoped-embed-lifecycle | neutral  $2 | media performance dialog correctness lifecycle | A third-party embed is not yours to pause — you cannot reach int
