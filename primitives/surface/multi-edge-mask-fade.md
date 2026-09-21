@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,edge,composition,bleed]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 58
+seen: 59
 requires: []
 conflicts: []
 completes: []
@@ -236,3 +236,18 @@ mask-composite: intersect;
 ```
 ⚠ Percentages here are of the mask box, so a tall crop and a wide one feather by
 different absolute distances from the same rule.
+
+`add` is the default composite and not only a mistake to avoid. Layers that
+union let a mask be authored as the list of regions an effect is *allowed* into
+rather than as one falloff: a linear gradient opaque at both gutters and clear
+across the measure, plus a radial blob readmitting the texture at a chosen point
+inside it. The keep-out above becomes a keep-out with an exception, and the
+exception is a separate, separately-tunable layer. Gutter stops 15–25% and
+75–85%; the blob opaque to 6–12%, clear by 70–80%.
+```css
+.ground { mask-image:                                   /* composited: add */
+  linear-gradient(90deg, #000, #0000 19% 81%, #000),
+  radial-gradient(at 58% 83%, #000 8%, #0000 76%) }
+```
+⚠ Union only ever adds coverage, so a blob straying over the column puts texture
+straight back under the text the gutter mask was protecting.

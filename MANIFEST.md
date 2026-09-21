@@ -1,6 +1,6 @@
 # Manifest
 
-784 primitives. Format: `category/id | axes cost | tags | gist`
+787 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -84,6 +84,7 @@ canvas/row-span-culled-field | neutral  $2 | perf field raster culling imagedata
 canvas/saturating-density-transfer | E1 D2 W2 F5 $1 | canvas shader color field opacity | An accumulating field has no upper bound but coverage does, so m
 canvas/scene-exempt-label-layer | E1 D2 W1 F5 $2 | canvas label type scene legibility layer | An annotation inside a 3D scene should move and occlude like the
 canvas/screen-composited-understroke | E2 D2 W2 F5 $2 | canvas light stroke effect depth cheap | Canvas 2D has no cheap blur, so a glowing stroke is built from p
+canvas/scroll-advanced-field-clock | E2 D3 W2 F4 $3 | shader field scroll performance ambient battery | A decorative field driven by elapsed time runs forever and then 
 canvas/scroll-driven-frame-atlas | E4 D3 W3 F4 $4 | canvas scroll performance | For scrubbed sequence playback, draw frames from a sprite atlas 
 canvas/shell-reprojected-displacement | E2 D3 W2 F5 $2 | shader canvas generative noise silhouette geometry | Noise added straight to a point on a generated form moves it out
 canvas/sign-triple-reference-cage | E2 D2 W1 F5 $2 | canvas 3d projection diagram geometry data | A rotating point cloud gives a reader positions and no frame — n
@@ -439,6 +440,7 @@ motion-system/independent-transform-channels | neutral  $1 | transform transitio
 motion-system/keyboard-modality-stilled-ui | neutral  $1 | motion accessibility keyboard input correctness transition | A reader tabbing through a page outruns transitions authored for
 motion-system/keyframe-resolved-waypoints | E3 D2 W2 F5 $2 | motion keyframes custom-properties architecture choreography | A @keyframes block is document-global and takes no arguments, so
 motion-system/keyframe-variant-bank | E3 D4 W2 F3 $2 | motion generative ambient tokens architecture | Phase and period offsets only ever translate one curve; they can
+motion-system/lifecycle-cancelled-cross-document-transition | neutral  $2 | view-transition navigation accessibility progressive-enhancement architecture | A cross-document transition is opted in by an at-rule, so the on
 motion-system/marquee-playhead | E3 D3 W2 F5 $3 | marquee motion state observer rhythm | Give a moving track one stationary reading position. A marker si
 motion-system/marquee-still-state | neutral  $1 | motion accessibility marquee correctness overflow | A marquee's reduced-motion state is not a paused marquee. The tr
 motion-system/measured-convergence-vector | E3 D2 W2 F5 $3 | motion measurement responsive choreography diagram | Where elements must travel to or from another element the layout
@@ -741,6 +743,7 @@ type/character-grid-as-texture | E3 D5 W2 F3 $2 | type texture ornament ascii | 
 type/content-ghosted-width-reservation | neutral  $1 | type layout-shift css-only accessibility correctness | Text that animates or swaps in place resizes its own box and rel
 type/delimiter-marked-inline-code | E1 D2 W2 F5 $1 | type code inline prose delimiter technical | Inline code in prose is usually a padded chip, and that padding 
 type/edge-cropped-monument-glyph | E1 D2 W5 F4 $1 | type lettering identity display bleed layout | One glyph of the wordmark, set at architectural scale and allowe
+type/em-locked-inline-media-inset | E1 D3 W4 F4 $2 | typography image display-type inline responsive | A display line that ends short leaves a rectangle of dead measur
 type/em-locked-wordmark-mark | E1 D2 W2 F5 $1 | type logo alignment detail scale | A lock-up whose mark is sized in pixels needs a new value at eve
 type/em-sheared-highlight | E3 D2 W4 F4 $1 | type highlight clip-path emphasis inline scale | A slanted block behind a phrase gives a headline a cut-in, marke
 type/first-line-indent-paragraph-mark | E1 D3 W2 F5 $1 | type prose editorial paragraph rhythm | Paragraphs separated only by a blank line read as interface copy

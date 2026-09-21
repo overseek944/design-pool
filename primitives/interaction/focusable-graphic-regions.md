@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,svg,focus,diagram,correctness]
 axes: none
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -57,3 +57,36 @@ group.hidden = false
 Anything the controls are the *only* route to has to be stated somewhere else
 in the figure, or a reader without script loses the content and not just the
 interaction.
+
+`tabindex="0"` on every region is what makes the tab order follow document
+order, so the warning above is a symptom rather than the problem. Put one stop
+in the tab order — the selected region — give the rest `-1`, and move the
+selection with arrow keys that wrap at both ends. The drawing then costs a
+keyboard reader a single Tab whether it holds six regions or sixty, and the
+sequence is the author's rather than the file's. Announce the change once, in a
+visible `aria-live="polite"` label beside the figure.
+```js
+regions.forEach((r, i) => r.tabIndex = i === sel ? 0 : -1)
+const step = (k, i) => k === 'ArrowRight' ? (i + 1) % n : k === 'ArrowLeft' ? (i + n - 1) % n
+  : k === 'Home' ? 0 : k === 'End' ? n - 1 : null
+```
+⚠ Home and End matter more here than in a list — a wrapping ring has no visible
+start. Keep a plain list of the same choices beside the drawing; it is the only
+route for a reader who cannot see which region is lit.
+
+The drawing need not be inline. An `<object>` keeps a large graphic as its own
+cacheable asset and out of the HTML payload, and a same-origin host can still
+reach `contentDocument` to bind every behaviour above. Guard the read in
+`try`/`catch` — a cross-origin document throws rather than returning null — and
+run the binding on `load` *and* immediately, since the child may already be
+parsed when the script arrives. Flag the container so a second call cannot
+double-bind.
+```js
+const bind = () => { let d; try { d = obj.contentDocument } catch { return }
+  if (!d || host.dataset.bound) return
+  host.dataset.bound = '1'; enhance(d.querySelector('svg')) }
+obj.addEventListener('load', bind); bind()
+```
+⚠ Styles and fonts do not cross the boundary: the graphic carries its own or it
+renders unstyled. Nothing inside it is in the host's tab order until the script
+grants it, which is the lifetime rule above applied across documents.

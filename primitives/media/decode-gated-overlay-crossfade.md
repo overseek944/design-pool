@@ -4,7 +4,7 @@ category: media
 tags: [media,transition,image,crossfade,correctness,swap]
 axes: {energy: 2, density: 1, weight: 2, finish: 5}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]

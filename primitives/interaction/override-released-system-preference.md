@@ -4,7 +4,7 @@ category: interaction
 tags: [theme,preference,accessibility,correctness,state]
 axes: none
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -40,3 +40,19 @@ const resolved = p === 'system' ? (mqDark.matches ? 'dark' : 'light') : p
 ⚠ Two states now resolve to the same appearance, so a control that reflects only
 the *resolved* value cannot show which one is set — the toggle has three
 positions or it is lying about one of them.
+
+Which source is *fresher* is the other reading. Keep the listener attached
+always and let a change to the system setting delete the stored override rather
+than be outranked by it — someone reaching for the OS switch mid-session has
+made the more recent statement, and the page should follow it. Scope the store
+to `sessionStorage` and the override lasts the visit rather than the year, which
+is the right lifetime for a choice made about one page. Re-read on `pageshow`
+when `persisted`: a bfcache restore brings the old in-memory value back with it.
+```js
+mq.addEventListener('change', () => { try { sessionStorage.removeItem(K) } catch {}
+  stored = null; apply() })
+addEventListener('pageshow', e => { if (e.persisted) { read(); apply() } })
+```
+⚠ Only for preferences the system also states. A choice with no OS counterpart
+has nothing to be revoked by, and clearing it on an unrelated change loses it
+for nothing.
