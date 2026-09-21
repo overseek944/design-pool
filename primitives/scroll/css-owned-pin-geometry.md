@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,pin,architecture,correctness,responsive]
 axes: none
 cost: 2
-seen: 12
+seen: 13
 requires: []
 conflicts: []
 completes: [media-query-parity-listeners]
@@ -65,3 +65,17 @@ el.dataset.scrollMode =
 ⚠ Re-run it on resize, on the reduced-motion change event and after fonts load —
 a verdict taken once at mount is wrong for the rest of the session. The static
 branch must still park the timeline finished.
+
+Beats given as fractions of the runway are two decisions held in step by hand:
+lengthening one hold means renormalising every boundary below it. Author
+relative weights instead and let the runway be their sum — the section's length
+and the position of every boundary then fall out of the same numbers, and adding
+a beat renumbers nothing. Weights as multiples of a screen, 0.3–1.5 each.
+```css
+.runway { --intro: 1; --hold: .3; --beats: 4;
+  --total: calc(var(--intro) + var(--hold) + var(--beats));
+  height: calc((1 + var(--total)) * 100svh);
+  --turn: calc(var(--intro) / var(--total)) }
+```
+⚠ The `1 +` is the sticky child's own screen and is not a beat — drop it and
+every boundary lands one viewport early.

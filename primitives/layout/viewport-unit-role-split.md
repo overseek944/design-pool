@@ -4,7 +4,7 @@ category: layout
 tags: [layout,viewport,mobile,responsive,correctness]
 axes: none
 cost: 1
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
@@ -53,3 +53,16 @@ can always win.
 ⚠ The subtrahend is a second copy of the header's height — take it from the
 same token the header is sized from, or a chrome change leaves the first screen
 overflowing by exactly the drift.
+
+That "never `dvh`" has one exception, and it is a question of which failure is
+worse. `100lvh - 100svh` is the chrome's *maximum* height and holds still;
+`100lvh - 100dvh` is its height *now* and tracks the bar as it slides. Anything
+decorative wants the constant. A caption or control that must stay readable
+inside a covering `100lvh` stage wants the live value: the constant floats it a
+bar's height above the edge for the whole session, where the live one keeps it
+just clear of whatever is actually covering the bottom.
+```css
+.dock { margin-block-end: calc(100lvh - 100dvh) }   /* live, not the constant */
+```
+⚠ Never both in one stage — elements on different definitions drift apart as the
+bar slides. Pick per stage, and only for content that already moves with the page.

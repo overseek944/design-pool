@@ -1,6 +1,6 @@
 # Manifest
 
-730 primitives. Format: `category/id | axes cost | tags | gist`
+732 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -233,6 +233,7 @@ layout/document-underlay-window | E2 D1 W3 F4 $2 | layout stacking reveal video 
 layout/em-reserved-swap-height | neutral  $1 | layout layout-shift responsive correctness tabs | Content that swaps in place — a tab's copy, a rotating claim — c
 layout/evicting-stream-window | E3 D4 W2 F4 $2 | stream overflow live-data log dom performance | An append-only stream in a scroll container grows without bound 
 layout/facing-edge-tangent-connector | E1 D3 W1 F5 $2 | layout connector svg diagram geometry | A straight rule between a box and a line of text in the facing c
+layout/fixed-point-measure-solve | neutral  $2 | layout measure resize fonts reflow correctness | A measured value written back into the layout it came from has n
 layout/fixed-stage-pane-scroll | E1 D2 W2 F5 $3 | layout grid scroll shell navigation | A page may decline to scroll. Fix the shell to the viewport as a
 layout/float-wrapped-figure | E1 D3 W2 F4 $1 | layout type editorial responsive detail | Neither grid nor flex wraps running text around a picture — floa
 layout/fraction-sized-bleed-strip | E2 D3 W2 F4 $1 | layout overflow scroll affordance responsive measure | A horizontal strip inside a measured column ends flush at that c
@@ -333,6 +334,7 @@ media/crop-coupled-scrim | neutral  $1 | media video legibility overlay accessib
 media/crop-scaled-source-hint | neutral  $1 | media correctness responsive performance loading | sizes states the width the browser has to fill, and under object
 media/datum-carrying-render-coordinate | neutral  $1 | figure svg authoring correctness data provenance | A figure derived from real values — points on a projection, mark
 media/decoded-probe-codec-select | neutral  $3 | video codec transparency feature-detection correctness media | canPlayType answers about the container, not about what survives
+media/device-pixel-snapped-overlay-write | neutral  $1 | canvas overlay precision dpr scrub registration correctness | A DOM layer over a raster — a canvas frame sequence, a cover-fit
 media/dialog-scoped-embed-lifecycle | neutral  $2 | media performance dialog correctness lifecycle | A third-party embed is not yours to pause — you cannot reach int
 media/dilated-alpha-keyline | E1 D2 W2 F5 $1 | media icon logo filter contrast legibility detail css-only | A raster mark has no stroke to reach for, so a pale logo dropped
 media/frame-announced-readiness | neutral  $2 | media iframe embed loading progressive-enhancement correctness | An iframe's load fires when its document parses, not when the ap

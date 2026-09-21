@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,backdrop-filter,focus,attention,de-emphasis]
 axes: {energy: 2, density: 2, weight: 3, finish: 5}
 cost: 3
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -52,3 +52,20 @@ moving the plate moves legibility with no mask and no filter. Travel 0.35–0.6s
 ```
 ⚠ The regions are the control's states — name them in the button, not only in
 the picture. Hold the artwork's box fixed or plate and drawing desynchronise on resize.
+
+Where the subject scrolls, the lens cannot be a mask over a duplicate — the
+second rendering has to travel too, and in the same frame of reference. Give the
+aperture `overflow: hidden` and its child the whole stage's dimensions offset by
+the negative of the aperture's own inset: the child is then in stage
+coordinates while the parent clips, and one shared translate drives both copies.
+The aperture may move and resize freely; nothing inside it has to know.
+```css
+.window { position: absolute; left: var(--win-x); top: var(--win-y);
+  width: var(--win-w); height: var(--win-h); overflow: hidden }
+.window > .inner { position: absolute; width: var(--stage-w); height: var(--stage-h);
+  left: calc(-1 * var(--win-x)); top: calc(-1 * var(--win-y));
+  transform: translateY(var(--scroll-y)) }
+```
+⚠ Both copies must be driven from one value in one write — split across two
+frame callbacks, the inside lags the outside and the lens reads as sliding on
+the subject.

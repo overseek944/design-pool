@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,pointer,state,correctness,threshold]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,16 @@ locked = (dx / (w * r)) ** 2 + (dy / (h * r)) ** 2 < 1
 ```
 ⚠ Only for state cheap to flip. Never for anything that moves focus or fires
 an event: a widened exit outlives the gesture that caused it.
+
+The ⚠ above constrains the *flip*, not the pattern: an expensive switch can be
+made cheap and then earns hysteresis too. Where crossing swaps a whole asset set
+— a portrait and a landscape frame sequence, two builds of a diagram — keep both
+sides constructed and cached so the crossing only selects one. The separation
+then buys more than a flicker: near a square viewport a window dragged one pixel
+would otherwise refetch the set at every step. Separate the thresholds 8–15%.
+```js
+const mode = w / h <= 1.30 ? 'portrait' : w / h >= 1.45 ? 'landscape' : current
+```
+⚠ Holding both doubles the memory of whatever it holds — a frame sequence at two
+orientations is two full working sets. Budget for the pair, or evict the
+inactive side behind a delay longer than any plausible re-crossing.

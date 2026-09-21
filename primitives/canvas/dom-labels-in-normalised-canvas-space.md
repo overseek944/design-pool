@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,accessibility,architecture,correctness,label]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -37,3 +37,18 @@ with unreadable type.
 ⚠ Only safe while the labels are decorative restatements. If a label carries
 information the canvas does not, hiding it at one width hides it from that
 reader entirely — move it into the caption instead.
+
+Fractions of the box stop being fractions of the *picture* the moment the
+picture is cover-fitted: the overflow is cropped, so a point at 0.5 of the
+source no longer sits at 50% of the container. Where the anchors belong to the
+artwork rather than to the frame, solve the fit once — the scale is the larger
+of the two ratios, the offset half the overflow — and map through it. Anchors
+authored against the source file then survive every aspect ratio.
+```js
+const s = Math.max(boxW / imgW, boxH / imgH)
+const x = (boxW - imgW * s) / 2 + fx * imgW * s
+const y = (boxH - imgH * s) / 2 + fy * imgH * s
+```
+⚠ `min` in place of `max` is `contain`, and the two are indistinguishable at one
+aspect ratio — test at both extremes. What comes out is pixels, not percentages,
+so it has to be rewritten on every resize.
