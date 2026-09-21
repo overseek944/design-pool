@@ -4,7 +4,7 @@ category: perf
 tags: [performance,correctness,lifecycle,loop,architecture]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -27,3 +27,17 @@ setInterval(() => { if (!live()) return
 ⚠ Re-arming a loop that stopped on purpose is worse than the stall. Put the
 same predicate in front of the watchdog that guards the frame request —
 offscreen, hidden, torn down, paused — or it fights every gate you have.
+
+`requestAnimationFrame` cannot silently stop, but it dies just as completely
+from a throw: the re-request usually sits at the end of the callback, so one
+exception — a null node after a re-render, a bad frame of data — skips it and
+the surface freezes for the rest of the session behind a single console line.
+No watchdog is needed here, only structure: request the next frame *before* the
+work, so the loop is unconditional and a bad frame costs one frame.
+```js
+const frame = t => { requestAnimationFrame(frame)    // never inside the try
+  try { render(t) } catch (e) { report(e) } }
+```
+⚠ A frame that throws every time then burns the full rate doing nothing — count
+consecutive failures, and past a handful stop re-arming and fall back to the
+still.

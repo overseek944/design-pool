@@ -4,7 +4,7 @@ category: canvas
 tags: [webgl,label,projection,density,correctness]
 axes: none
 cost: 3
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,19 @@ const cut = dists.sort((a,b) => a-b)[Math.min(N-1, dists.length-1)]
 el.style.opacity = (behind || d > cut) ? 0 : fade(d)
 ```
 ⚠ N between 8 and 14; past that the labels win and the scene disappears.
+
+Depth and viewport are camera tests; neither can tell that an anchor sits on
+the far side of the object it names. Where the subject is a feature on a
+surface, carry its outward normal beside its position and rotate both — a
+negative z means the reader is being pointed at something the geometry is
+hiding. Dim rather than drop: the position is still true, and a label
+vanishing on a slow turn reads as a fault. Propagate the same factor to
+whatever names it outside the scene, so the leader and its row in a list go
+quiet together.
+```js
+const facing = rot(feature.n)[2] > 0.05
+leader.setAttribute('opacity', facing ? .8 : .25)
+row.classList.toggle('dimmed', !facing)              // the DOM label agrees
+```
+⚠ Threshold slightly above zero, never at it — exactly edge-on the sign flips
+every frame and the label strobes.

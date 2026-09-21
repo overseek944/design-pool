@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,wheel,input,gesture,correctness]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []

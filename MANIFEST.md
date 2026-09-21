@@ -1,10 +1,11 @@
 # Manifest
 
-781 primitives. Format: `category/id | axes cost | tags | gist`
+783 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
 canvas/absorbing-field-boundary | neutral  $1 | canvas simulation shader texture solver correctness | A simulation lives on a finite grid and whatever reaches the edg
+canvas/adjacent-normal-edge-register | E1 D4 W1 F5 $3 | svg line-art projection geometry wireframe technical | A wireframe in one uniform stroke reads as a tangle: nothing say
 canvas/age-shaded-traversal-field | E2 D4 W2 F5 $3 | canvas ambient texture generative progress grid | A field that reads as being worked through rather than animating
 canvas/alpha-bucketed-path-batch | E2 D4 W1 F5 $3 | canvas svg performance generative texture batching | Thousands of individually-faded SVG marks means thousands of nod
 canvas/alpha-gated-cell-population | E1 D3 W2 F4 $3 | canvas generative field image mask silhouette grid | A field of marks in the shape of an arbitrary form usually means
@@ -603,6 +604,7 @@ scroll/scroll-coupled-mat-inset | E2 D1 W2 F5 $2 | scroll clip-path radius hero 
 scroll/scrollbar-on-activity | E1 D1 W1 F5 $1 | scroll scrollbar chrome restraint state | A permanent scrollbar rules a line down every panel that owns on
 scroll/scrub-lag-band | E3 D2 W3 F5 $2 | scroll motion feel | scrub as a number adds catch-up lag in seconds and is what separ
 scroll/self-driven-scroll-blackout | neutral  $1 | scroll state observer correctness | Any state derived from scroll position — an active section, a hi
+scroll/settled-fragment-reanchor | neutral  $1 | anchor fragment navigation fonts correctness layout-shift | A page opened directly on a #fragment scrolls once, early, and t
 scroll/smooth-scroll-driving-timeline | E3 D2 W3 F5 $3 | scroll motion architecture | Pair a smooth-scroll library (Lenis) with the animation library'
 scroll/snap-suppressed-scroll-wrap | neutral  $2 | scroll carousel snap loop correctness | A duplicated track makes a scroll container endless only if the 
 scroll/stale-scroll-request-guard | neutral  $2 | scroll correctness accessibility events navigation | A scroll request crossing an async boundary — posted by an embed

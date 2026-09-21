@@ -4,7 +4,7 @@ category: layout
 tags: [layout,connector,svg,diagram,geometry]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

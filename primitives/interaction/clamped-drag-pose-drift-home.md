@@ -4,7 +4,7 @@ category: interaction
 tags: [pointer,interaction,3d,rotation,detail]
 axes: {energy: 2, density: 1, weight: 4, finish: 5}
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]

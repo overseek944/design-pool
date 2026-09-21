@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,canvas,battery,frame-budget,correctness]
 axes: none
 cost: 1
-seen: 21
+seen: 22
 requires: []
 conflicts: []
 completes: []
@@ -174,3 +174,19 @@ if ((vis.current ?? 1) < 0.01) { last = now; return raf = requestAnimationFrame(
 ⚠ Reading a ref, not state — a per-frame gate that re-renders defeats itself.
 The rebase makes wall clock and phase disagree; anything that must stay in step
 with a second timeline needs the clamp above instead.
+
+A loop that skips frames on a compared value silently swallows every change the
+comparison cannot see: text written into a label, a class toggled by a click, a
+container resized. Pair the comparison with one boolean any mutation may raise
+and consume it at the top of the frame — the comparison then handles the
+continuous input and the flag handles everything discrete. Raising it from a
+resize observer and from a media query's `change` event matters most, since
+both fire exactly when the driving value is not moving.
+```js
+const step = t => { requestAnimationFrame(step)
+  if (pose === last && !dirty) return                // idle frame, no writes
+  last = pose; dirty = false; draw(t) }
+new ResizeObserver(() => { dirty = true }).observe(box)
+```
+⚠ Clear the flag before drawing, never after — a mutation raised during the
+frame is otherwise discarded without ever being rendered.

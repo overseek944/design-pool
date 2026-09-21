@@ -4,7 +4,7 @@ category: interaction
 tags: [pointer,drag,interaction,correctness,accessibility]
 axes: none
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -90,3 +90,19 @@ el.addEventListener('click', e => {
 ⚠ Read both marks off event `timeStamp` so they share a clock — a synthesised
 event can carry one nothing in your code set. Past ~600ms the window starts
 swallowing a deliberate second tap on the same target.
+
+Where the surface's children *are* the targets — a picker list turned by
+dragging, whose rows must still answer to a tap — capture is the wrong
+instinct. Take none at all, step on a distance threshold large enough that a
+tap never reaches it, and let the click land on the child by itself with
+nothing to suppress. The gesture then dies when the pointer leaves the element,
+so `pointerleave` has to end it alongside up and cancel. 18–26px, well clear of
+the 4–8px a suppressed click needs.
+```js
+el.onpointerdown = e => { drag = { y: e.clientY } }   // no setPointerCapture
+el.onpointermove = e => { if (drag && Math.abs(e.clientY - drag.y) > 22)
+  (step(Math.sign(drag.y - e.clientY)), drag.y = e.clientY) }
+el.onpointerup = el.onpointercancel = el.onpointerleave = () => drag = null
+```
+⚠ Only safe where the drag is a *stepper*. A continuous scrub strands its value
+wherever the pointer happened to leave the box.

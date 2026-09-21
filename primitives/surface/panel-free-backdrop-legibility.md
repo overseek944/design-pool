@@ -4,7 +4,7 @@ category: surface
 tags: [backdrop-filter,legibility,photography,contrast,surface,type]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
@@ -155,3 +155,18 @@ and the rest of the picture stays sharp. Footage 0.5–0.7, blur 18–30px.
 colour toward grey, so an unsaturated pool reads as a dirty smudge over graded
 footage. An SVG `url()` filter in the same list disables `backdrop-filter`
 outright in Chromium.
+
+Shrink-wrapped plates move the ink. Each pads its text inward, so a stack of
+them — a kicker, a headline, a standfirst, each with the padding its own size
+wants — arrives with three different left edges, and the copy reads as
+misaligned even though every plate is placed correctly. Pull each plate back by
+exactly its own inline padding: the text returns to one optical edge while the
+plates stay ragged, which was the effect wanted. One declaration per plate, and
+it has to be restated whenever the padding is.
+```css
+.kicker { padding-inline: .9rem;  margin-inline-start: -.9rem }
+.title  { padding-inline: 1.1rem; margin-inline-start: -1.1rem }
+```
+⚠ The negative margin pulls the plate outside the container's padding box —
+check it at the narrowest width, where the plate reaches the viewport edge and
+the blur clips.

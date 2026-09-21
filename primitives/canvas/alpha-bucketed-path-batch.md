@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,svg,performance,generative,texture,batching]
 axes: {energy: 2, density: 4, weight: 1, finish: 5}
 cost: 3
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -86,3 +86,19 @@ if (n.style.visibility !== v) n.style.visibility = v
 ⚠ A hidden instance still holds a style entry and a box, so the ceiling is node
 count, not how many are shown — past roughly 5–10k cells coarsen the pitch
 rather than hiding more of them.
+
+Where the buckets are not a quantised scalar but a small authored set — a
+drawing's hidden, visible and silhouette lines — the same batching costs
+nothing to reason about: the count is fixed by the design rather than tuned
+against banding, each path carries its own width, dash and cap, and a subpath
+moving between registers is a state change you meant rather than a pop to hide.
+Write a degenerate `M0 0` when a register comes up empty; an empty `d` is
+invalid and engines disagree about whether the previous path stays on screen.
+```js
+const d = { hid: '', vis: '', sil: '' }
+for (const e of edges) d[register(e)] += seg(e)
+for (const k in d) path[k].setAttribute('d', d[k] || 'M0 0')
+```
+⚠ Concatenation is still the cost — round to one decimal and keep the register
+count in single figures, past which the attribute writes stop being the cheap
+part.

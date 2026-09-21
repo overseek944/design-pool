@@ -4,7 +4,7 @@ category: layout
 tags: [layout,chrome,annotation,measurement,technical]
 axes: {energy: 1, density: 2, weight: 1, finish: 5}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -28,3 +28,19 @@ reads as an instrument rather than a strobe. Inset 0.5–1.5rem, figure
 — so it is a register, not a measurement. `tabular-nums` with a fixed decimal,
 `aria-hidden`, and drop the layer entirely below the width where it crosses
 content.
+
+The same convention on geometry that turns is three more decisions. Offset the
+dimension along the projected edge's 2D normal, flipping the sign so it always
+falls away from the scene's centre rather than across the form. Rotate the
+figure to the line's angle, folded back through 180° so it never reads upside
+down. And drop the whole dimension once the projected length falls under
+roughly 24px — a foreshortened edge collapses its ticks, its line and its
+number into one illegible knot, and a dimension that is wrong is worse than one
+that is absent. Offset 20–40px.
+```js
+let nx = -dy / L, ny = dx / L                        // projected edge normal
+if (nx * (mx - CX) + ny * (my - CY) < 0) { nx = -nx; ny = -ny }
+g.setAttribute('opacity', L < 24 ? 0 : 1)
+```
+⚠ Fade the collapse rather than switching it — an edge sitting at the threshold
+flickers through it on every frame of a slow turn.
