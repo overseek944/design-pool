@@ -4,7 +4,7 @@ category: layout
 tags: [layout,sticky,overlay,correctness,cls]
 axes: none
 cost: 1
-seen: 14
+seen: 15
 requires: []
 conflicts: []
 completes: []
@@ -75,3 +75,18 @@ head.classList.toggle('is-hidden', over)
 ⚠ A hidden header must not be focus-trapped off screen — translate it out and
 let `:focus-within` bring it back, or keyboard users lose the nav for the length
 of the stage.
+
+Not all of a header has to persist. Where only one cluster is wanted while
+reading — the tabs, not the wordmark beside them — anchoring the rest to the
+*page* rather than to the sticky element is what stops it riding along: absolute
+against the padded wrapper, it scrolls away on its own while the sticky sibling
+holds. The row is then two independent decisions instead of one bar that has to
+shrink, and the persistent half can be a capsule rather than a plate.
+```css
+.wrap  { position: relative }
+.brand { position: absolute; top: 21px; left: var(--gutter); z-index: 21 }
+.tabs  { position: sticky; top: 4px; margin-left: auto; z-index: 20 }
+```
+⚠ The two overlap at the narrowest widths — the absolute half is out of flow and
+cannot push. Reserve its box with `padding-inline-start` on the sticky row below
+the width where they collide, or it steals the first tab's tap.

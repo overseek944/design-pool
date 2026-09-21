@@ -4,7 +4,7 @@ category: surface
 tags: [surface,border,motion,svg]
 axes: {energy: 4, density: 3, weight: 3, finish: 4}
 cost: 3
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: [overflow-visible-for-glow-bleed]
@@ -76,3 +76,20 @@ stamped from one file, which is exactly what it is.
 ⚠ The ground-coloured border is a lie the moment the frame sits on anything
 else — a banded section, a gradient, a photo — and then it paints a visible
 disc. Only where the frame's own ground is a known flat token.
+
+A fifth construction keeps the masked ring and rotates the *element* carrying
+the conic rather than the gradient's angle: an oversized square child, centred
+and spun by `transform`, clipped by the ring's own mask. It never repaints — the
+loop lives entirely on the compositor, where an animated `--angle` repaints the
+gradient every frame — and it needs no `@property`, so it degrades to a static
+band instead of to nothing. One narrow bright arc in an otherwise transparent
+conic reads as a light travelling the lip rather than a coloured frame. Sweep
+10–20% of the turn, period 2–4s.
+```css
+.ring::before { position: absolute; inset: -30%; margin: auto; aspect-ratio: 1;
+  background: conic-gradient(#0000 0 68%, #fff 86%, #0000 100%);
+  animation: turn 2.8s linear infinite }
+```
+⚠ The child must be square and wider than the box's diagonal or the arc clips at
+the corners. In ink rather than a hue it reads as specular on the edge; in a
+saturated colour the same element reads as a notification.

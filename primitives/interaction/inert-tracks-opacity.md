@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,focus,correctness,overlay,pointer-events]
 axes: none
 cost: 1
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
@@ -67,3 +67,19 @@ layer.inert = ch <= .5
 ```
 ⚠ One crossing, not two. Thresholds picked separately per property leave a band
 where the surface is visible and nothing on it can be reached.
+
+A native `<dialog>` breaks this silently in the other direction. The UA sheet
+carries `dialog:not([open]) { display: none }`, so any `display` declared to
+centre the dialog — `grid`, `flex` — wins on specificity and the closed dialog
+stays rendered, which is what lets the fade play and what leaves every control
+in it tabbable. Settle `visibility` after the fade *and* set `inert` from the
+closed state, so a consumer that forgets the attribute still reaches a clean
+terminal state.
+```css
+dialog.scrim { display: grid; place-items: center }
+dialog.scrim:not([open]) { visibility: hidden;
+  transition: opacity var(--modal) var(--ease), visibility 0s var(--modal) }
+```
+⚠ `::backdrop` still paints on a closed-but-displayed dialog — set it
+`transparent` and scrim with the element's own background, or a dim sheet
+survives the close.

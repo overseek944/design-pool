@@ -4,7 +4,7 @@ category: media
 tags: [mask,clip-path,illustration,rig,raster,animation]
 axes: {energy: 3, density: 2, weight: 3, finish: 4}
 cost: 3
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -37,3 +37,17 @@ definition. Strips 12–24px; wider and the seams read as steps.
 ```
 ⚠ Overlap each clip rect by half a unit and extend it past the art on the axis
 the strips move along, or a displaced strip opens a gap at its own edge.
+
+`transform-origin` on a rigged part is the one number that cannot be eyeballed —
+a pivot a few percent off swings the part out of its socket, and the error is
+only visible at the extremes of the sweep. Derive it instead: diff the part's
+layer against the base, take the centroid of the pixels where the two overlap,
+and express that as a percentage of the part's own box. The joint then holds
+through the whole range and survives a re-export at another resolution.
+```js
+const o = px.filter(p => inPart(p) && inBase(p))
+el.style.transformOrigin = `${mean(o, 'x') * 100}% ${mean(o, 'y') * 100}%`
+```
+⚠ Bake the part at the *middle* of its travel, not at rest. A pose rendered at
+one extreme has its shading lit for that extreme and reads as wrong through the
+other half of the sweep.

@@ -4,7 +4,7 @@ category: surface
 tags: [surface,depth,glass]
 axes: {energy: 1, density: 3, weight: 3, finish: 4}
 cost: 3
-seen: 35
+seen: 36
 requires: []
 conflicts: []
 completes: []
@@ -70,3 +70,19 @@ dark ground — states that the plate is a layer, not a window.
 ```
 ⚠ Below about 0.7 the backdrop goes uniform and the glass stops reading as
 translucent at all — at that point an opaque panel is cheaper and more honest.
+
+Before picking a tier, ask whether anything moves behind the surface at all. A
+panel sitting in flow on a flat page ground blurs a solid colour: the result is
+arithmetically a flat mix, and it costs a compositing layer resampled every
+scroll frame to arrive at a value `color-mix()` computes for free. Blur earns
+its cost only where real content passes under — overlay chrome, dialogs, a
+sticky bar. Swap in-flow surfaces to the flat equivalent below the breakpoint
+where the layer count bites, and keep the glass on everything that overlays.
+```css
+@media (width <= 54rem) {
+  .panel { backdrop-filter: none;
+           background: color-mix(in srgb, var(--ink) 5%, var(--ground)) }
+}
+```
+⚠ The mix has to be computed from the same two tokens the glass alpha names, or
+the surface changes colour at the breakpoint instead of only changing cost.

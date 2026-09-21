@@ -1,6 +1,6 @@
 # Manifest
 
-651 primitives. Format: `category/id | axes cost | tags | gist`
+653 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -196,6 +196,7 @@ layout/border-clamped-annotation-leader | E1 D3 W1 F5 $2 | layout annotation con
 layout/boxless-wrapper | neutral  $1 | layout grid architecture correctness accessibility | display: contents removes an element's box while keeping its chi
 layout/breakout-grid-named-lines | neutral  $2 | layout grid tokens architecture full-bleed | One grid on the page wrapper with named lines for the bleed gutt
 layout/cardinal-cell-cycle-grid | E1 D3 W2 F5 $2 | layout grid diagram cycle radial responsive | A closed four-stage cycle drawn around a hub usually costs trigo
+layout/class-scoped-responsive-hide | neutral  $1 | layout responsive breakpoint correctness accessibility error | A breakpoint that hides the secondary copy hides whatever else a
 layout/clipped-source-derived-pair | E1 D3 W1 F5 $1 | layout provenance evidence truncation panel mock hierarchy | A system that derives structure from unstructured input proves i
 layout/collision-band-gutter | neutral  $2 | layout container-query annotation responsive correctness | Margin notes need room beside the reading column, but only in a 
 layout/column-aligned-disclosure | E1 D2 W2 F5 $2 | layout grid disclosure alignment native | Let a <details> row sit on the page's column grid: make the <sum
@@ -561,6 +562,7 @@ surface/radius-inset-connector-rail | E1 D3 W1 F5 $1 | diagram hairline precisio
 surface/receding-annulus-mask | E1 D3 W2 F4 $2 | surface mask gradient depth texture | Concentric rings that grow geometrically and fade as they widen 
 surface/receding-bar-plate | E2 D1 W2 F4 $1 | surface chrome scroll opacity accessibility | Invert the usual scroll chrome: a floating bar starts fully opaq
 surface/region-bound-hatch-pattern | E1 D3 W1 F5 $1 | svg pattern texture hatch diagram schematic | CSS gradients hatch boxes; a schematic needs the hatch inside an
+surface/rim-banded-geometry-lens | E1 D3 W3 F5 $4 | glass backdrop-filter svg-filter refraction sdf canvas edge | Glass thick enough to refract bends light at its edge, not acros
 surface/rotating-conic-border | E4 D3 W3 F4 $3 | surface border motion svg | An animated gradient border without a pseudo-element hack: an SV
 surface/scanline-register-overlay | E1 D3 W2 F2 $1 | overlay scanline texture video register decoration | Footage from mismatched sources — an archive still, a head camer
 surface/scrim-terminated-ground | E1 D2 W2 F5 $1 | gradient ground surface section seam cheap | A decorative ground that stops at its section's edge leaves a ho
