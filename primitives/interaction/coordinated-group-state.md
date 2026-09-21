@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,surface,hover]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 15
+seen: 16
 requires: []
 conflicts: []
 completes: []
@@ -82,3 +82,17 @@ code:has(.focused) .line:not(.focused) { filter: blur(2px) }
 ⚠ Blurring text repaints the whole box — cheap on a snippet, not on a long
 document — and it hides nothing from a screen reader or from find-in-page, so
 never carry meaning in the distinction alone.
+
+The parts driven by one parent state should not share one duration. The
+container's own response — a lift, a plate, a border arriving — is feedback and
+has to land inside 120–200ms or the thing feels slow under the pointer, while a
+contained image's zoom is atmosphere and wants 300–500ms. Run both at the fast
+number and the card reads as a single object being scaled; run both at the slow
+one and the pointer gets no answer. Ratio 2–3.5×.
+```css
+.card     { transition: translate .16s ease-out, box-shadow .16s ease-out }
+.card img { transition: scale .45s ease-out }        /* 2–3.5× the container */
+```
+⚠ The slow part must also be the small one — half a second of travel worth more
+than a few percent reads as lag rather than as depth. Scale 1.02–1.05, and the
+image needs a clipping wrapper or the zoom pushes the card's own edge.

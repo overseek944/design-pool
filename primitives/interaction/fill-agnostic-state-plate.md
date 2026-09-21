@@ -4,7 +4,7 @@ category: interaction
 tags: [hover,state,pseudo-element,theme,system,contrast]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -28,3 +28,19 @@ elements need `inset: -1px` or the border stays unlit while its face moves.
 ⚠ The plate sits over the glyphs and tints them too — past ~12% it starts
 eating text contrast. Invisible in forced-colors, so carry the state in a
 border or outline as well.
+
+Inside a segmented track the plate has to travel the other way. The selected
+segment is the darkest thing in the control, so tinting an unselected one
+*toward* it says "already chosen" and the reader stops trusting the selection.
+Send the hover toward the page ground instead — a paper-coloured plate on a
+grey track under a paper page — and the two states separate on direction rather
+than on amount. The track then has to sit clearly off the ground, 3–6% of the
+ink, or hover has nowhere to travel to.
+```css
+.track { background: var(--ground-2) }                /* 3–6% ink over the page */
+.seg[aria-current] { background: var(--ink); color: var(--paper) }
+.seg:not([aria-current]):hover { background: var(--paper) }
+```
+⚠ Direction is not a state for anyone who cannot see it — the chosen segment
+carries `aria-current` or `aria-selected` regardless, and needs a non-colour
+mark under forced colours.

@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,asymmetry]
 axes: {energy: 1, density: 3, weight: 3, finish: 4}
 cost: 2
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []

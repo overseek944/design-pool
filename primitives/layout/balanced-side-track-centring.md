@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,alignment,chrome,correctness]
 axes: none
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -33,3 +33,18 @@ breakpoint and let each side hug its own content.
 ```css
 @media (width <= 680px) { .bar { display: flex; justify-content: space-between } }
 ```
+
+The third track does not need a third child. `fr` sizes from free space rather
+than from content, so two children in a three-track row still leave the middle
+one centred — the empty end track takes its equal share regardless. Drop the
+spacer node and place the children explicitly; an empty `div` kept only to fill
+a slot ships in the accessibility tree unless it is hidden, and it silently
+redirects any `:last-child` rule written against the row.
+```css
+.bar > .brand { grid-column: 1; justify-self: start }
+.bar > .mid   { grid-column: 2 }
+.bar > .end   { grid-column: 3; justify-self: end }   /* optional */
+```
+⚠ Explicit placement removes the safety of source order: a child added later
+with no `grid-column` auto-places into the first free cell, which is now
+whichever end track was left empty.

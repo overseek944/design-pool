@@ -4,7 +4,7 @@ category: layout
 tags: [overflow,correctness,accessibility,scroll]
 axes: none
 cost: 1
-seen: 21
+seen: 22
 requires: []
 conflicts: []
 completes: []
@@ -60,3 +60,19 @@ keep the radius in a property so the two cannot drift.
 ```
 ⚠ `clip-path` opens a containing block for fixed descendants, so a popover
 anchored inside the card is trapped by it.
+
+The page-level case is silent because nobody writes the property that breaks
+it. `overflow` is not per-axis at computed time: declare `overflow-x: hidden`
+alone and `overflow-y` computes from `visible` up to `auto`, so the wrapper
+becomes a scroll container with no second declaration to search for. The sticky
+child still reads `position: sticky` in the inspector and simply never sticks.
+Walk the ancestors and read the computed values, not the stylesheet.
+```js
+for (let n = el.parentElement; n; n = n.parentElement) {
+  const { overflowX: x, overflowY: y } = getComputedStyle(n)
+  if (x !== 'visible' || y !== 'visible') console.warn(n, x, y)
+}
+```
+⚠ `clip` propagates differently — `overflow-x: clip` computes the other axis to
+`clip`, not to `auto` — so the fix has no equivalent trap but also silently
+kills vertical scrolling on a box that needed it. Write both: `overflow: clip auto`.

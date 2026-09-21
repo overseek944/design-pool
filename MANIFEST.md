@@ -1,6 +1,6 @@
 # Manifest
 
-561 primitives. Format: `category/id | axes cost | tags | gist`
+564 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -187,12 +187,14 @@ layout/intrinsic-floored-auto-track | neutral  $1 | layout grid responsive corre
 layout/intrinsic-size-abstaining-child | neutral  $1 | layout correctness type detail | A width: fit-content block is sized by its widest child, which i
 layout/labelled-elastic-rule | E1 D2 W1 F5 $1 | layout type hairline metadata editorial | A section divider carries more than separation when the rule its
 layout/legibility-floor-scroll-port | neutral  $1 | overflow responsive scroll correctness table figure | A table or a diagram has a width below which it stops being read
+layout/line-local-trailing-slot | neutral  $1 | layout flex cards metadata correctness css-only detail | A footer mixing a wrapping run of chips with one trailing metada
 layout/live-dimension-callout | E1 D2 W1 F5 $2 | layout chrome annotation measurement technical | Annotate the frame with its own measurements and a page reads as
 layout/matted-opening-frame | E1 D1 W2 F5 $1 | frame viewport hero media radius safe-area | Inset the opening frame from every viewport edge and the page ba
 layout/measured-copy-keepout | neutral  $2 | layout measurement legibility canvas | Background art told to keep clear of the copy is usually given a
 layout/occupancy-negotiated-label-placement | neutral  $4 | layout label annotation collision diagram correctness | Annotations placed independently overlap the moment two anchors 
 layout/overflow-clip-over-hidden | neutral  $1 | overflow correctness accessibility scroll | overflow: clip crops without creating a scroll container. hidden
 layout/per-edge-clip-polygon | neutral  $1 | overflow clip correctness bleed | overflow only works per axis, so there is no way to crop one edg
+layout/provenance-split-label-row | E1 D3 W1 F5 $1 | layout type label truncation provenance correctness detail | A row of labels usually holds two kinds at once: terms from a co
 layout/rail-preserved-track-collapse | E1 D3 W2 F5 $1 | layout grid responsive rhythm editorial | A three-track row — marker rail, title, supporting column — usua
 layout/ranked-apparatus-column | E1 D3 W1 F5 $1 | layout grid metadata responsive editorial hierarchy | Section apparatus — an ordinal, a two-word gloss, a mark — belon
 layout/ratio-anchored-scene-geometry | neutral  $2 | layout architecture responsive tokens geometry css-only | A layered illustration sized in pixels at one breakpoint and re-
@@ -251,6 +253,7 @@ media/crop-coupled-scrim | neutral  $1 | media video legibility overlay accessib
 media/crop-scaled-source-hint | neutral  $1 | media correctness responsive performance loading | sizes states the width the browser has to fill, and under object
 media/datum-carrying-render-coordinate | neutral  $1 | figure svg authoring correctness data provenance | A figure derived from real values — points on a projection, mark
 media/dialog-scoped-embed-lifecycle | neutral  $2 | media performance dialog correctness lifecycle | A third-party embed is not yours to pause — you cannot reach int
+media/dilated-alpha-keyline | E1 D2 W2 F5 $1 | media icon logo filter contrast legibility detail css-only | A raster mark has no stroke to reach for, so a pale logo dropped
 media/frameless-alpha-artwork | E1 D2 W2 F3 $2 | media illustration assets transparency composition | Artwork exported on transparency with a feathered edge does not 
 media/ink-channel-probed-icon | neutral  $1 | icon svg media correctness currentcolor | An icon pasted from an arbitrary set carries its colour on one o
 media/mask-swap-over-shared-paint | E2 D2 W2 F4 $2 | mask icon gradient media state | When a family of glyphs must share one fill — a gradient, a vide

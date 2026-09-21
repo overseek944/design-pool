@@ -4,7 +4,7 @@ category: surface
 tags: [surface,border,dash,precision,texture]
 axes: {energy: 1, density: 2, weight: 1, finish: 4}
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -42,3 +42,20 @@ exactly one period and the dashes march. Period 6–10px, dash 3–5px of it.
 ⚠ Opposite edges must travel in opposite directions or the loop reads as the
 whole box sliding. Marching is a live-process cue and reads as one — never on
 static chrome, and stopped, not slowed, under reduced motion.
+
+A single dashed edge does not need a border at all. One absolutely-positioned
+hairline child — `inset-inline: 0`, one `repeating-linear-gradient`,
+`pointer-events: none` — leaves the background slot free for a translucent or
+blurred ground and keeps the dash out of the border box, so it cannot inflate
+the pinned height of a sticky bar the way a real border does. Dashes also lay
+down roughly half the ink of a solid rule at the same colour, so the token can
+run 0.18–0.30 alpha and still read quieter than a solid hairline at 0.12.
+```css
+.bar { position: relative }
+.bar::after { content: ""; position: absolute; inset-inline: 0; bottom: 0;
+  block-size: 1px; pointer-events: none;
+  background: repeating-linear-gradient(90deg, var(--c) 0 4px, #0000 4px 8px) }
+```
+⚠ Phase is anchored to the box's own inline-start edge, so a full-bleed rule
+and a contained one never agree on where their dashes land — give both the same
+origin, or accept that they only align by luck.
