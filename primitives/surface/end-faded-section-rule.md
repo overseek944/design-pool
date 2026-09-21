@@ -4,7 +4,7 @@ category: surface
 tags: [hairline,divider,gradient,section,restraint]
 axes: {energy: 1, density: 1, weight: 1, finish: 5}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -58,3 +58,19 @@ low enough that each stop fails a hue-naming test on its own.
 ⚠ Hue at this chroma is the first thing a low-quality panel or a colour-managed
 screenshot loses — never the only difference between two rules that mean
 different things.
+
+A rule can run the full width and still declare the measure, by *breaking* for a
+short gap at each column edge. Paint it as three absolutely-positioned segments
+whose ends are all derived from the same gutter expression the container uses —
+no wrapper, nothing to keep in sync — and drop a mark in each gap. The line then
+reaches the viewport, so the page reads at its true width, while the two
+interruptions state the column exactly where a capped rule would have stopped.
+Gaps 8–14px, marks 2–5px.
+```css
+--g: max(48px, (100% - 1104px) / 2);
+.seam { position: absolute; inset-block-end: 0; block-size: 1px; background: var(--line) }
+.seam--mid  { inset-inline: calc(var(--g) + 10px) }
+.seam--left { inset-inline: 0 calc(100% - var(--g) + 10px) }
+```
+⚠ The gaps are only legible against a quiet ground — over an image or a tint the
+rule reads as three unrelated lines rather than one interrupted one.

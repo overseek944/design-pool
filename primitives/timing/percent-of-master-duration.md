@@ -4,7 +4,7 @@ category: timing
 tags: [timing,choreography,keyframes,css-animation,token,sequence]
 axes: {energy: 2, density: 3, weight: 2, finish: 5}
 cost: 2
-seen: 21
+seen: 22
 requires: []
 conflicts: []
 completes: []
@@ -177,3 +177,17 @@ consecutive steps neither overlap nor leave the list dark.
 ⚠ Positive delays mean nothing runs until the first stage elapses, so the list
 starts blank — offset the whole set negatively, or accept a dead first pass.
 Changing N without changing the keyframe silently desynchronises the wrap.
+
+Where the beats are absolute delays rather than percentages — a generated scene,
+a demo whose cues were tuned by eye — two staged one-shots on one element take
+*different* fill modes, and this is the trap. The first carries `both`; the
+second must carry `forwards` alone. Give the second `both` and its 0% frame is
+applied backwards for the whole of its delay, holding the element at the second
+beat's start pose and silently overriding everything the first animation did.
+A badge that fades in at 0.3s and out at 8s is then invisible for eight seconds.
+```css
+.badge { animation: b-in .48s var(--ease) .25s both,
+                    b-out .4s var(--ease) 8.3s forwards }
+```
+⚠ The bug scales with the gap: at a 200ms delay it reads as a flicker, at 8s as
+a missing element, so it survives review on a short scene and breaks on a long one.

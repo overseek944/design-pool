@@ -4,7 +4,7 @@ category: surface
 tags: [svg,dash,motion,connector,diagram,precision]
 axes: {energy: 2, density: 2, weight: 1, finish: 5}
 cost: 1
-seen: 14
+seen: 15
 requires: []
 conflicts: []
 completes: []
@@ -113,3 +113,19 @@ the geometry turns. 14–24s for a ring.
 ```
 ⚠ SMIL is outside the reduced-motion query — pair it with `svg.pauseAnimations()`
 behind `matchMedia`, or the ring runs for everyone.
+
+A single *packet* travelling the line once is the same lever with the arithmetic
+removed: `pathLength="1"` makes the dash unitless, so one short dash and one
+keyframe run from a start offset to past the end at the same speed on every
+path in a diagram regardless of its length. Give each its own offset in a custom
+property and one block drives the whole network. `animation-fill-mode: backwards`
+plus a `visibility` stop hides each packet through its own delay — without it a
+staggered set all paints a static dash at load. Dash 0.04–0.12 of the path,
+3–6s per run.
+```css
+.packet { stroke-dasharray: .08 1; animation: pk 3.4s linear infinite backwards }
+@keyframes pk { 0% { stroke-dashoffset: var(--pk-from, .08); visibility: hidden }
+                to { stroke-dashoffset: -1px; visibility: visible } }
+```
+⚠ Unitless dashes still need a stroke that survives scaling — `vector-effect:
+non-scaling-stroke` or a packet on a scaled stage thins out with it.

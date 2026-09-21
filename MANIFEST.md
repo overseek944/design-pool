@@ -1,6 +1,6 @@
 # Manifest
 
-760 primitives. Format: `category/id | axes cost | tags | gist`
+762 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -398,6 +398,7 @@ motion-system/anomaly-solved-ellipse-traversal | E3 D1 W2 F5 $2 | motion geometr
 motion-system/antipodal-mark-pass | E3 D1 W2 F5 $1 | motion-system hover icon affordance | Send a mark out of one corner and back in from the opposite one,
 motion-system/argument-registered-function-transition | neutral  $2 | custom-property registered-property transition clip-path interpolation architecture | A CSS function interpolates only between the same shape in compa
 motion-system/attribute-driven-motion-hooks | neutral  $1 | architecture motion maintainability | Target animations off data- attributes, never class names. Styli
+motion-system/backface-carried-turn-exit | E3 D1 W3 F5 $2 | motion transition 3d exit scene | A scene that dissolves on exit ends nowhere. Turn it: rotate the
 motion-system/backstopped-transition-handoff | neutral  $2 | motion transition state sequence correctness event | Sequencing a state machine on transitionend rather than on a tim
 motion-system/below-fold-armed-entrance | neutral  $1 | motion correctness progressive-enhancement observer reveal | An entrance system that hides content in CSS and un-hides it fro
 motion-system/camera-over-static-scene | E3 D2 W3 F5 $2 | motion transform scale focus diagram narrative | To walk a reader through a diagram, move the viewport rather tha
@@ -411,6 +412,7 @@ motion-system/distance-cued-focus-wheel | E2 D2 W2 F5 $2 | list rotation blur de
 motion-system/distance-eased-camera-push | E2 D2 W3 F5 $3 | camera 3d easing scroll narrative | Interpolating a camera's position between two waypoints looks wr
 motion-system/drive-mode-scoped-transition | neutral  $1 | motion scroll scrub custom-properties correctness architecture | A property that eases on arrival and later tracks a continuous i
 motion-system/dual-duty-mark-animation | E3 D1 W2 F5 $2 | motion svg identity loading state reduced-motion | Build a mark from parts that fold about their own seams and one 
+motion-system/duration-zeroed-outcome-state | neutral  $1 | motion architecture correctness scene reduced-motion | A scene built from dozens of delayed one-shots has a still state
 motion-system/edge-clamped-camera-frame | neutral  $1 | camera transform scene correctness architecture | A camera that pans to centre a point of interest frames empty sp
 motion-system/edge-flush-viewport-staging | E3 D1 W2 F5 $1 | motion entrance viewport-units responsive css | An element staged beyond the frame is usually given a hand-picke
 motion-system/fire-on-arrival-propagation | E3 D3 W2 F5 $3 | entrance propagation graph canvas emergent | An entrance authored as a list of delays must be rewritten whene
