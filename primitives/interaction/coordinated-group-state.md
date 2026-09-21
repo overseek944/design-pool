@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,surface,hover]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 20
+seen: 21
 requires: []
 conflicts: []
 completes: []
@@ -111,3 +111,17 @@ where the 2–5% a bare image takes reads as the card lurching.
 ⚠ The text layer must sit above the ground in paint order without its own
 transform — a transform on the copy makes it a containing block and it starts
 scaling with any ancestor that later gains one.
+
+The group class is optional. Where the response belongs to the *mark* rather
+than to a particular card, select the ancestor by what it is — and the
+affordance ships with the icon, arming inside every control on the page with
+nothing added to any wrapper. A data attribute on the mark picks the axis, so
+one rule serves right, left and diagonal. Declaring the block inside
+`no-preference` makes still the default rather than an override to remember.
+```css
+@media (prefers-reduced-motion: no-preference) {
+  :is(a, button:not(:disabled), [role=button]):is(:hover, :focus-visible)
+    .mark[data-dir="right"] { transform: translateX(2px) } }   /* 1–3px */
+```
+⚠ It arms inside *every* matching ancestor, so key it to the mark's own class —
+a bare `svg` selector catches unrelated icons nested in the same link.

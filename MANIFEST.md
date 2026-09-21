@@ -1,6 +1,6 @@
 # Manifest
 
-725 primitives. Format: `category/id | axes cost | tags | gist`
+728 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -124,6 +124,7 @@ interaction/breakpoint-dual-mode-details | neutral  $2 | disclosure navigation r
 interaction/breakpoint-scoped-overlay-dismiss | neutral  $1 | navigation overlay responsive correctness accessibility | An overlay that exists only below a breakpoint — a mobile nav sh
 interaction/clamped-drag-pose-drift-home | E2 D1 W4 F5 $2 | pointer interaction 3d rotation detail | An object the reader can turn should not map pointer position to
 interaction/coarse-pointer-affordance-promotion | neutral  $1 | accessibility interaction touch correctness media-query | Controls that fade in on :hover — a play button on a thumbnail, 
+interaction/coarse-pointer-zoom-floor | neutral  $1 | correctness accessibility pointer forms responsive type detail css-only | Mobile Safari zooms the whole page when a focused control's text
 interaction/composed-mailto-submit-fallback | neutral  $1 | interaction forms progressive-enhancement fallback correctness accessibility | A form posting to a third-party endpoint fails in ways the reade
 interaction/content-sized-field-bounds | E1 D1 W2 F4 $1 | form input layout detail progressive-enhancement | field-sizing: content lets an input measure its own value, retir
 interaction/coordinated-group-state | E3 D2 W2 F5 $1 | interaction surface hover | Hover the container, animate the parts. A single group parent le
@@ -613,6 +614,7 @@ surface/overflow-visible-for-glow-bleed | neutral  $1 | surface effect svg gotch
 surface/painted-border-band | E1 D2 W3 F5 $1 | surface border frame texture css-only detail | The border box is a paintable band, not just an outline. Give an
 surface/paired-hard-shadow-sheet | E1 D2 W2 F4 $1 | surface depth border detail editorial | To imply a second sheet under a panel, two zero-blur shadows do 
 surface/panel-free-backdrop-legibility | E1 D2 W2 F5 $2 | backdrop-filter legibility photography contrast surface type | Copy over a photograph usually gets a plate, and the plate break
+surface/perforation-punched-silhouette | E1 D2 W2 F3 $2 | surface mask border texture detail css-only gradient | A ticket stub is a rectangle with its edge eaten away, and no bo
 surface/phase-matched-gradient-drift | E2 D2 W2 F4 $1 | surface gradient loop ambient background | An oversized gradient translated behind its box gives a ground a
 surface/polarity-crossing-panel-ground | E1 D2 W4 F5 $1 | surface gradient contrast color panel card | One panel can carry both polarities of type. Ramp its own ground
 surface/progress-raised-horizon-band | E2 D1 W3 F5 $2 | surface gradient scroll scrub ground section-transition | A light section handed to a dark one by a fixed gradient is a pr
@@ -670,6 +672,7 @@ timing/scheduled-discrete-property-step | E2 D1 W2 F5 $1 | transition stacking s
 timing/segment-eased-keyframes | E3 D2 W2 F5 $1 | motion easing keyframes choreography loop | animation-timing-function declared inside a keyframe block sets 
 timing/stagger-band | E3 D3 W2 F4 $1 | motion rhythm sequencing | Sibling stagger lives in a narrow band: .06–.08s reads as one ge
 timing/state-coded-arrival-rate | E3 D3 W2 F4 $1 | timing live-data state stream rhythm | A live stream that changes mode usually recolours its rows and n
+timing/state-named-delay-field | E2 D2 W2 F5 $2 | timing loading state stagger motion grid detail accessibility | An indeterminate spinner says work is happening; it cannot say w
 timing/state-scoped-duration | E2 D2 W2 F5 $1 | motion timing transition state asymmetry | Put transition-duration on the state selector rather than the ba
 timing/step-held-cycle-schedule | E2 D2 W2 F3 $1 | motion keyframes loop sequence cycle | step-end on the shorthand turns a keyframe list into a discrete 
 timing/stepped-two-frame-blink | E2 D1 W2 F3 $1 | motion easing indicator status ambient | An indicator that fades reads as decoration; one that snaps betw

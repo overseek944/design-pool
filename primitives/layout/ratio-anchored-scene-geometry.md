@@ -4,7 +4,7 @@ category: layout
 tags: [layout,architecture,responsive,tokens,geometry,css-only]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

@@ -4,7 +4,7 @@ category: timing
 tags: [motion,timing,rhythm,detail]
 axes: {energy: 3, density: 1, weight: 2, finish: 4}
 cost: 1
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
@@ -60,3 +60,15 @@ drift, which a parked tail on a linear curve cannot give you.
 ⚠ Duty cycle is now the overshoot's job, so widening the element shortens the
 visible pass — express the travel in the element's own width, not in a percentage
 of the container it happens to sit in.
+
+The dwell need not be at an end. A sweep whose subject is the middle of the run
+— a highlight crossing a headline, a scanner passing a centred label — earns a
+third station there: pair the stops at the centre too and the pass slows, holds
+where the eye already is, then completes. Three stations at 12–18% of the cycle
+each reads as a deliberate visit rather than a lap.
+```css
+@keyframes glide { 0%, 16% { background-position: -3% }
+  44%, 56% { background-position: 50% }   84%, to { background-position: 103% } }
+```
+⚠ Stations are bought out of travel, not out of period — a three-station cycle
+needs 1.5–2× the duration of the same sweep run straight or every leg darts.
