@@ -4,7 +4,7 @@ category: surface
 tags: [surface,texture,pattern,blueprint,cheap]
 axes: {energy: 1, density: 3, weight: 1, finish: 4}
 cost: 1
-seen: 27
+seen: 28
 requires: []
 conflicts: []
 completes: []
@@ -105,3 +105,19 @@ background-size: 128px 128px, 128px 128px, 32px 32px, 32px 32px, 100% 100%;
 ⚠ A non-integer ratio walks the coarse lines off the fine ones and no two cells
 come out the same size. Both pitches need whole-pixel values or the two layers
 alias differently and the majors look heavier on one axis.
+
+Bound the field to the figure rather than to the page and the lattice stops
+being decoration: a plate floating in whitespace reads as an asset dropped in,
+where the same plate on a ruled patch that ends at its own column reads as an
+artifact set down on a working surface. The patch wants to overhang the plate by
+roughly a gutter on every side so the ruling is legible as ground. Drive the ink
+from `currentColor` and the tint is one inherited property with strength on a
+separate `opacity`, so a theme flips both without the gradient being restated.
+```css
+.stage  { background: radial-gradient(circle, currentColor 1px, #0000 1px) 0 0 / 14px 14px }
+.stage  { color: var(--rule-400); opacity: .4 }
+.dark .stage { color: var(--rule-500); opacity: .25 }
+```
+⚠ `opacity` on the patch fades anything inside it, so the plate has to be a
+sibling over the field, not a child of it. Pitch 12–18px at figure scale —
+coarser and the overhang reads as a second box.

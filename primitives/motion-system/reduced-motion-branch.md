@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,accessibility,required]
 axes: none
 cost: 1
-seen: 70
+seen: 71
 requires: []
 conflicts: []
 completes: []
@@ -235,3 +235,18 @@ new ResizeObserver(fit).observe(c)
 ```
 ⚠ Verify by reading pixels, not by eye — a canvas that never drew and one whose
 marks are faint look identical in a screenshot.
+
+Variant — where the resting pose differs per element and enumerating it is the
+drift risk, redefine the `@keyframes` block itself inside `reduce` rather than
+touching any element. Keyframes are document-global, so one override makes every
+stop identical and every animation resolves to its own base styles, with no
+per-element still state to list and none to forget. `animationstart` and
+`animationend` still fire on schedule, so a sequence chained off them completes
+where `animation: none` would strand it.
+```css
+@keyframes step-in { from { opacity: 0; translate: 0 -4px } }
+@media (prefers-reduced-motion: reduce) {
+  @keyframes step-in { from, to { opacity: 1; translate: none } } }
+```
+⚠ The override must sit after the original in source order — same name, same
+origin, last one wins — so a build that hoists media blocks silently undoes it.

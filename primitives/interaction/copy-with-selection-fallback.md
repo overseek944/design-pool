@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,clipboard,accessibility,correctness,feedback]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []

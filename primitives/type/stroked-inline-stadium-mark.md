@@ -4,7 +4,7 @@ category: type
 tags: [type,emphasis,border,hairline,detail,radius]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []

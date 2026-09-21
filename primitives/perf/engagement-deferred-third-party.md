@@ -4,7 +4,7 @@ category: perf
 tags: [performance,third-party,analytics,loading,idle,correctness]
 axes: none
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []

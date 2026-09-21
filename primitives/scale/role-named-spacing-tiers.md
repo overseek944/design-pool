@@ -4,7 +4,7 @@ category: scale
 tags: [tokens,architecture,rhythm,layout,scale]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -39,3 +39,20 @@ ambiguity, because the name says which seam it is.
 ⚠ Only pays where vertical and horizontal rhythm genuinely diverge. If the
 ladders stay numerically identical at every step they are one ladder with two
 names, and the second set is overhead.
+
+Two seams the role set usually misses are the *first* and the *tight* one. The
+gap above the opening band sits against chrome rather than against content, so
+it wants its own name at 1.2–1.5× the between-section value; giving it the
+ordinary `section` step makes the page start flush and look unfinished. A
+`compact` step at 0.5–0.7× covers the bands that carry a single line. Retune the
+whole ladder at `:root` per breakpoint, in the same block as the type scale —
+rhythm and display size have to tighten together or a narrow page gets small
+headlines in wide seams.
+```css
+:root { --space-section: 64px; --space-section-first: 80px; --space-section-compact: 40px }
+@media (width <= 48rem) { :root { --text-h1: 2.5rem;
+  --space-section: 40px; --space-section-first: 48px; --space-section-compact: 24px } }
+```
+⚠ Redefining at `:root` reaches every subtree that overrode the base unit for
+its own density — scope the breakpoint block to the tokens the page-level rhythm
+owns, or a deliberately compact region silently re-inflates.

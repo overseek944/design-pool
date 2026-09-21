@@ -4,7 +4,7 @@ category: scale
 tags: [tokens,responsive,breakpoint,architecture,cascade,custom-properties]
 axes: none
 cost: 1
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []
@@ -96,3 +96,18 @@ percentages.
 ⚠ The block is flat bytes in the critical stylesheet, so pick the ceiling
 deliberately — and a value past it resolves to nothing at all, which is why
 every `var(--n)` still needs a fallback.
+
+Emitted markup often carries no class to hang the `!important` utility on. Match
+the inline declaration itself — `[style*="aspect-ratio"]` — and the hatch reaches
+exactly the nodes that have the problem and no others, without the emitter
+cooperating and without a blanket rule over the subtree. It is the one selector
+that reads what the style attribute contains. Reserve it for releasing a
+constraint at a breakpoint, never for setting a value.
+```css
+@media (width <= 640px) {
+  .content [style*="aspect-ratio"] { aspect-ratio: auto !important } }
+```
+⚠ Substring matching is textual, so `aspect-ratio` also matches inside a custom
+property name and a shorthand that merely mentions the word. Scope it to a
+container, and re-check after any emitter upgrade — nothing fails loudly when
+the serialisation changes.
