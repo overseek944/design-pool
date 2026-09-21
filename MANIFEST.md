@@ -1,6 +1,6 @@
 # Manifest
 
-702 primitives. Format: `category/id | axes cost | tags | gist`
+704 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -242,6 +242,7 @@ layout/intrinsic-floored-auto-track | neutral  $1 | layout grid responsive corre
 layout/intrinsic-size-abstaining-child | neutral  $1 | layout correctness type detail | A width: fit-content block is sized by its widest child, which i
 layout/labelled-elastic-rule | E1 D2 W1 F5 $1 | layout type hairline metadata editorial | A section divider carries more than separation when the rule its
 layout/legibility-floor-scroll-port | neutral  $1 | overflow responsive scroll correctness table figure | A table or a diagram has a width below which it stops being read
+layout/line-counted-reel-window | neutral  $1 | layout type clipping carousel fluid geometry | A reel showing a few rows at a time has three numbers that must 
 layout/line-local-trailing-slot | neutral  $1 | layout flex cards metadata correctness css-only detail | A footer mixing a wrapping run of chips with one trailing metada
 layout/live-dimension-callout | E1 D2 W1 F5 $2 | layout chrome annotation measurement technical | Annotate the frame with its own measurements and a page reads as
 layout/matted-opening-frame | E1 D1 W2 F5 $1 | frame viewport hero media radius safe-area | Inset the opening frame from every viewport edge and the page ba
@@ -450,6 +451,7 @@ perf/loop-gated-on-attention | neutral  $2 | performance animation intersection-
 perf/markup-declared-instrumentation | neutral  $1 | architecture instrumentation events delegation maintenance | Declare the event name and its payload as data- attributes and l
 perf/media-query-parity-listeners | neutral  $1 | responsive correctness architecture motion breakpoint | Where script and stylesheet must agree on a layout, ask the brow
 perf/media-scoped-preload-tier | neutral  $1 | perf loading images responsive resource-hints critical-path | When script picks among art-directed sources — an orientation cr
+perf/observed-set-gated-listener | neutral  $2 | performance scroll intersection-observer scrub listener correctness | A scrub that needs a value every frame cannot be served by an ob
 perf/off-thread-texture-downscale | neutral  $2 | performance texture webgl loading memory | Textures authored at 4K decode to tens of megabytes before anyth
 perf/offscreen-subtree-deferral | neutral  $1 | performance containment rendering scroll correctness | Below-fold grids of cards, figures or rows cost style, layout an
 perf/opt-in-fallback-branch | neutral  $1 | perf correctness progressive-enhancement feature-detection testing | A capability gate makes its own fallback unreachable on every br

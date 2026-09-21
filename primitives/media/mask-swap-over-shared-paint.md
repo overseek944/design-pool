@@ -4,7 +4,7 @@ category: media
 tags: [mask,icon,gradient,media,state]
 axes: {energy: 2, density: 2, weight: 2, finish: 4}
 cost: 2
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []

@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,accessibility,marquee,correctness,overflow]
 axes: none
 cost: 1
-seen: 17
+seen: 18
 requires: []
 conflicts: []
 completes: []
@@ -82,3 +82,18 @@ three short paragraphs of cards.
 ⚠ The fraction must account for the gap or the last card in each row wraps
 alone. `display: contents` also drops the row's own gap, so the surviving flex
 container owns all spacing.
+
+A vertical reel releases a *height*, not a width, and that is the release the
+reduced-motion block forgets. Its window is clipped to a whole number of rows,
+so stopping the translation leaves exactly those rows showing and crops the
+rest — most of the list simply absent rather than still. Release `block-size`
+alongside the mask and the duplicates.
+```css
+@media (prefers-reduced-motion: reduce) {
+  .reel      { block-size: auto; mask-image: none }
+  .reel ul   { transform: none; transition: none }
+  .reel li:not(.real) { display: none } }
+```
+⚠ A reel worth building is taller than its window, so the release pushes
+everything below it down. Reserve the section against the full list, or the
+still state reflows the page for exactly the readers who asked for less motion.

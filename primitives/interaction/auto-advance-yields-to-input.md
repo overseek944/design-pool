@@ -4,7 +4,7 @@ category: interaction
 tags: [carousel,autoplay,accessibility,state]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 17
+seen: 18
 requires: []
 conflicts: []
 completes: []
@@ -85,3 +85,20 @@ keeps the two durations from being written twice.
 ⚠ Its reduced-motion rest state is *full*, not empty. `animation: none` leaves
 the bar at its 0% frame, and an empty progress bar beside a rotation that is
 deliberately not rotating reads as stalled rather than still.
+
+Suspending is not restarting, and a re-armed `setTimeout` is a restart: a cursor
+crossing at 4.9s of a 5s dwell buys a fresh five. Keep the remainder — stamp the
+arm time, subtract the elapsed on each pause, re-arm on what is left — and let
+the indicator pause with it rather than remount, so one clock drives both.
+Publish the reason as a state on the root and CSS owns the rest.
+```js
+const pause  = () => { clearTimeout(t); left -= performance.now() - at; t = 0 }
+const resume = () => { if (!t && live) { at = performance.now(); t = setTimeout(beat, left) } }
+```
+```css
+[data-auto="running"] .ring { animation: fill var(--dwell) linear forwards }
+[data-auto="paused"]  .ring { animation-play-state: paused }
+[data-auto="stopped"] .ring { animation: none; --fill: 1 }   /* full, not empty */
+```
+⚠ Restore `left` to the full dwell inside the beat, not on resume — a beat that
+fires from a resumed remainder otherwise keeps that short remainder forever.
