@@ -4,7 +4,7 @@ category: timing
 tags: [motion,easing,delight]
 axes: {energy: 4, density: 2, weight: 2, finish: 3}
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -42,3 +42,19 @@ the keyframes stay a plain two-stop move.
 ⚠ The compounded peak is invisible in the stylesheet — it is in neither the
 stops nor the curve. Sample the computed value mid-flight rather than reading
 the numbers.
+
+On a scroll-driven timeline the pair of stops is not needed: progress is the
+reader's scroll position, not a clock, so a *single* overshoot stop can be
+scrubbed to and held, and the arrival survives being crossed slowly. One stop
+past the target at 65–80% of the range, overrunning 8–15% of the travel, then
+rest. The shorthand has to stay `linear` — any easing there re-maps scroll
+progress and the scrub stops tracking the hand.
+```css
+@keyframes land { 0%  { opacity: 0; translate: 0 26px }
+                  72% { opacity: 1; translate: 0 -3px }
+                  to  { opacity: 1; translate: 0 } }
+.part { animation: land linear both; animation-timeline: --stage }
+```
+⚠ Scrubbed backwards the overshoot plays in reverse, so it reads as the element
+being pulled out rather than bouncing — keep the overrun small enough that the
+reverse is not a second event.

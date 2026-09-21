@@ -1,6 +1,6 @@
 # Manifest
 
-678 primitives. Format: `category/id | axes cost | tags | gist`
+680 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -110,6 +110,7 @@ color/transform-bracketing-hue-pair | E1 D2 W2 F5 $1 | color diagram semantics p
 color/utility-scale-token-reclamation | neutral  $2 | color tokens theming architecture correctness | A codebase committed to a utility framework has its palette froz
 color/worst-case-ground-ink | neutral  $1 | color contrast accessibility icon correctness | A mark handed to a surface you do not own — a favicon in the tab
 interaction/activation-claimed-embed | neutral  $2 | embed iframe pointer-events activation accessibility correctness | An embed rendered live on a page most readers only scroll past s
+interaction/agent-registered-page-tools | neutral  $1 | architecture progressive-enhancement interop capability lifecycle feature-detection | A page can publish a few callable tools to an agent driving the 
 interaction/aliased-fragment-target | neutral  $1 | navigation anchor fragment accessibility architecture url | A section can answer to more than one fragment without renaming 
 interaction/anchor-focus-handoff | neutral  $1 | accessibility navigation focus correctness anchor | An in-page link that only scrolls leaves the keyboard where it w
 interaction/anchor-only-nav-collapse | neutral  $1 | navigation responsive accessibility architecture correctness | Where every link in a bar is an in-page anchor, the narrow-viewp
@@ -181,6 +182,7 @@ interaction/resting-default-expanding-row | E2 D2 W2 F5 $2 | interaction state h
 interaction/role-described-slide-group | neutral  $1 | interaction accessibility carousel keyboard correctness | A horizontally paging rail is a div of divs to everything but th
 interaction/row-forwarded-stretched-focus | neutral  $1 | accessibility focus link correctness cards | A link stretched over its whole row or card — a pseudo-element a
 interaction/runtime-assembled-href | neutral  $1 | interaction correctness accessibility link progressive-enhancement | A destination you would rather not serve in the markup can be sp
+interaction/sample-partitioned-hit-columns | E2 D3 W2 F5 $1 | interaction hover hit-area chart data css-only accessibility | Points on a small plot are four-pixel targets with dead space be
 interaction/shadow-scoped-label-patch | neutral  $2 | accessibility third-party shadow-dom correctness observer lifecycle | A vendor launcher — chat, feedback, consent — mounts a bare <but
 interaction/single-panel-tabset | neutral  $1 | tabs aria architecture performance accessibility correctness | The usual tabset ships every panel and hides all but one, so a s
 interaction/snap-scroll-as-dismiss-gesture | E3 D2 W2 F5 $3 | gesture dialog scroll accessibility sheet | Build a drag-to-dismiss sheet out of a scroll container rather t

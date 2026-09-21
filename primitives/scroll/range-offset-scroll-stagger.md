@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,scroll-driven,stagger,sequence,css-only]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -27,3 +27,18 @@ read as a queue being served.
 ⚠ A window ending past `cover 100%` never completes — the last item of a long
 run holds part-drawn forever. Budget the whole sequence inside the timeline and
 shorten the windows, not the step.
+
+Step below about a quarter of the window width and the group stops reading as a
+sequence at all: six parts that each take 24–28% of the timeline, starting 4–5%
+apart, arrive as one object leaning into place rather than as parts being
+assembled. That is what a composed unit wants — a product mock, a card and its
+contents — where a visible order would say the thing is built from pieces.
+Reserve the 40–60% step for sets whose members are genuinely separate.
+```css
+.card  { animation-range: cover 0    cover 24% }
+.panel { animation-range: cover 5%   cover 30% }   /* +5% on a 24% window */
+.body  { animation-range: cover 9%   cover 34% }
+```
+⚠ The whole group then finishes inside a third of the timeline, so the settle
+lands while the section is still arriving — start the last window before the
+element is comfortably in view, not after.

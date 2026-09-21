@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,dialog,accessibility,inert,focus,correctness]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
