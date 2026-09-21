@@ -4,7 +4,7 @@ category: perf
 tags: [perf,loading,images,responsive,resource-hints,critical-path]
 axes: none
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -59,3 +59,19 @@ img.src = url
 until every stylesheet declared above it has arrived, so one written below the
 font links fires after them rather than at parse time. Put it first in the head,
 above anything render-blocking.
+
+Theme is a third axis, and it behaves unlike the other two. Crossing it with
+width and resolution gives a tier per combination — eight is normal — and the
+exclusivity rule has to hold across the whole product, not per axis. The catch
+is that `prefers-color-scheme` describes the *system*, while an in-page theme
+toggle overrides it: the warmed tier is then the one that never paints, and the
+one that does paint starts cold on the critical path. Preload the theme axis
+only where the page has no toggle, or where the choice is resolved server-side
+into the markup before the preloads are written.
+```html
+<link rel=preload as=image href="/art-dark@2x.webp"
+  media="(min-width: 768px) and (prefers-color-scheme: dark) and (min-resolution: 1.01dppx)">
+```
+⚠ Two axes double the tiers, three multiply them — past about six, generate the
+list from the table rather than hand-writing it, because a gap in the coverage
+is silent and a hand-edited predicate is where gaps come from.

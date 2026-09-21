@@ -4,7 +4,7 @@ category: timing
 tags: [timing,choreography,keyframes,css-animation,token,sequence]
 axes: {energy: 2, density: 3, weight: 2, finish: 5}
 cost: 2
-seen: 19
+seen: 20
 requires: []
 conflicts: []
 completes: []
@@ -146,3 +146,17 @@ a loop.
 ⚠ The lists are matched by position and the shorter one *cycles* rather than
 padding — two names against one delay silently gives both the same delay, and
 the whole sequence collapses into one beat.
+
+The same delay list covers the opposite case — one element that arrives once and
+then idles forever — which a single shorthand cannot express. Give slot one the
+entrance with `both` and slot two a perpetual loop, and let only the first slot
+carry the per-item index: the group cascades in, then every member settles onto
+the same steady pulse regardless of when it landed. Hold the loop's delay at or
+past the longest entrance so nothing breathes while it is still arriving.
+```css
+.seg { animation: grow .32s var(--ease-spring) both, breathe 1.8s ease-in-out infinite;
+       animation-delay: calc(var(--i, 0) * 45ms), .6s }   /* stagger 35–60ms */
+```
+⚠ `animation-fill-mode` is a list too, and the loop slot must not inherit
+`both` — a filled infinite animation pins its start state during the delay and
+the element sits at the loop's 0% rather than where the entrance left it.

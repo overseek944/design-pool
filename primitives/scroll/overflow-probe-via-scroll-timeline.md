@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,overflow,progressive-enhancement,correctness]
 axes: none
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: [conditional-token-space-toggle]
@@ -31,7 +31,9 @@ Register two `<number>` properties and animate one 0→1 and the other 1→0 acr
 `scroll(self)`, then multiply each into its own end of the mask stop list: the
 lead fade grows in as the rail leaves its start and the trail fade retracts as
 it reaches the end, so one declaration replaces a scroll listener, a resize
-observer and two threshold classes. Fade 12–24px.
+observer and two threshold classes. Fade 12–24px on a rail, up to 40px on a
+tall block — and cap it against the port with `min(12%, 40px)`, or a short
+panel is most of the way faded at both ends.
 ```css
 @property --lead { syntax: "<number>"; inherits: false; initial-value: 0 }
 .rail { animation: lead linear both, tail linear both;

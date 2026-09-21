@@ -1,6 +1,6 @@
 # Manifest
 
-715 primitives. Format: `category/id | axes cost | tags | gist`
+718 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -161,6 +161,7 @@ interaction/inherited-autocomplete-pass | neutral  $1 | forms autocomplete acces
 interaction/inline-target-floor | neutral  $1 | accessibility interaction correctness detail | A row of small print — legal links, meta, a footer — fails targe
 interaction/instrumented-console-interface | neutral  $1 | instrumentation analytics architecture progressive-enhancement | A page can carry a second interface addressed at nobody who scro
 interaction/legend-as-series-filter | E2 D2 W2 F5 $2 | legend filter state accessibility chart | A key that only names the series is a second thing to read. Make
+interaction/lock-gated-cross-tab-mutation | neutral  $3 | state correctness concurrency architecture async | Some mutations must not run twice at once across a user's open t
 interaction/margin-cancelled-hit-area | neutral  $1 | interaction touch accessibility hit-area layout correctness | A link in a dense bar cannot reach the 44px touch floor by growi
 interaction/micro-interaction-defaults | E2 D2 W2 F5 $1 | interaction polish consistency | One transition duration (200ms) and one property set for every n
 interaction/momentum-gated-wheel-step | neutral  $2 | interaction wheel input gesture correctness | A trackpad flick is one gesture and hundreds of events, so a ste
@@ -658,6 +659,7 @@ timing/press-origin-radial-stagger | E4 D3 W2 F4 $2 | stagger interaction radial
 timing/production-timing-vocabulary | E2 D2 W2 F5 $1 | motion easing duration reference system | A coherent set beats a clever one. Durations cluster tightly and
 timing/rate-integrated-phase-clock | neutral  $1 | motion timing correctness loop | A loop whose speed is a variable — tied to scroll position, a ho
 timing/role-offset-cascade | E3 D2 W2 F5 $1 | timing motion sequencing choreography tokens | Split a cascade into two independent halves: the group's entry t
+timing/sampled-point-spring-easing | E3 D1 W2 F5 $1 | timing easing token css-animation overshoot performance | linear() takes a list of sampled outputs, so a spring solved onc
 timing/scheduled-discrete-property-step | E2 D1 W2 F5 $1 | transition stacking scheduling hover precision | A stacking change has no in-between, so naming z-index in a tran
 timing/segment-eased-keyframes | E3 D2 W2 F5 $1 | motion easing keyframes choreography loop | animation-timing-function declared inside a keyframe block sets 
 timing/stagger-band | E3 D3 W2 F4 $1 | motion rhythm sequencing | Sibling stagger lives in a narrow band: .06–.08s reads as one ge
@@ -695,6 +697,7 @@ type/origin-flipped-wipe-underline | E3 D1 W2 F5 $1 | underline link hover trans
 type/padded-ordinal-counter | E1 D2 W2 F4 $1 | type list counter detail technical | 01 02 … 09 10 numbering without hand-written zeros and without t
 type/parenthesised-negative-column | E1 D3 W2 F5 $1 | numerals data alignment accessibility detail | In a right-aligned column of signed figures a leading minus is t
 type/render-scale-countered-label | E1 D2 W1 F5 $1 | type svg diagram label responsive legibility | Text inside a viewBox scales with the figure, so one diagram pla
+type/resolution-stepped-type-scale | neutral  $1 | type tokens scale accessibility legibility correctness | A size that reads cleanly on a 2x panel is muddy on a 1x one: th
 type/role-leading-ladder | E1 D2 W3 F5 $1 | type tokens scale rhythm precision | Leading is a function of role, not of size, and the ladder is st
 type/rule-ranked-aside-tier | E1 D2 W2 F5 $1 | type hierarchy register annotation cheap | A page that argues carries asides at several ranks, and sizing t
 type/serif-accent-in-technical-context | E1 D2 W3 F5 $1 | type contrast editorial restraint | One high-contrast serif, used sparingly against a geometric sans

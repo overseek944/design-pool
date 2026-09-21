@@ -4,7 +4,7 @@ category: media
 tags: [media, mockup, responsive, layout, correctness]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -87,3 +87,21 @@ transform where `cqw` does not.
 ⚠ The two figures are not interchangeable — a single percentage is read against
 the *width* for both axes, so it re-rounds into an obvious ellipse on anything
 that is not square. Measure both from the artwork.
+
+An aperture cut from one image can only sit *behind* the content, so every
+highlight the hardware throws across the screen's own edge is lost. Export the
+frame as two plates instead — everything behind the opening, and the near lip
+that overlaps it — and sandwich the live layer between them on z-index. The
+bezel's inner specular edge, a rounded corner and any foreground part then paint
+over real DOM with no alpha cut-out to register and no soft matte at the
+boundary. The near plate must be `pointer-events: none` over the interactive
+region.
+```css
+.rig { display: grid; place-items: stretch }
+.rig > * { grid-area: 1/1 }
+.back { z-index: 0 } .screen { z-index: 1 } .near { z-index: 2; pointer-events: none }
+```
+⚠ Both plates must share one intrinsic size and one fit or the seam separates at
+some width — ship them as a single export split in half, never as two crops.
+Dark themes usually want the metal dimmed rather than re-exported: a brightness
+filter on both plates at once keeps them matched.

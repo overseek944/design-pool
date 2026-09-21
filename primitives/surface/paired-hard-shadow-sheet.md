@@ -4,7 +4,7 @@ category: surface
 tags: [surface,depth,border,detail,editorial]
 axes: {energy: 1, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -48,3 +48,18 @@ queue, a batch.
 ⚠ The cascade eats real estate no layout knows about — reserve the deepest
 offset as end margin, or the bottom sheet is clipped by the next section on
 exactly the breakpoint where the grid gets tight.
+
+The same zero blur reads as *thickness* rather than as a second sheet when the
+two offsets oppose each other: a dark one down-right for the side wall, a light
+one up-left for the lit top edge. The element stops looking raised and starts
+looking extruded — a key, a tab, a physical switch — and a press is then one
+transition that shortens the offset and translates the face by the difference,
+so the cap travels down its own wall. Wall 2–3px, light edge 1px.
+```css
+.key { box-shadow: 2px 2.5px 0 -.5px rgb(0 0 0 / .45), -1px -1px 0 rgb(255 255 255 / .25) }
+.key:active { box-shadow: 1px 1px 0 -.5px rgb(0 0 0 / .45); translate: 1px 1.5px }
+```
+⚠ The wall has a direction, so the whole set must agree on one light source —
+one control extruded the other way reads as a hole. Past about 4px it stops
+being a bevel and becomes an isometric solid that the layout has to reserve
+space for.

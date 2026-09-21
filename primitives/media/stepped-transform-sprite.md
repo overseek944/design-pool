@@ -4,7 +4,7 @@ category: media
 tags: [media,sprite,animation,svg,performance]
 axes: {energy: 3, density: 2, weight: 2, finish: 4}
 cost: 2
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
