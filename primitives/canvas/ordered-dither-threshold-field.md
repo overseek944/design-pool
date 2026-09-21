@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,texture,pattern,raster,two-tone,generative]
 axes: {energy: 2, density: 4, weight: 3, finish: 2}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,15 @@ px[i] = density > t(x, y) ? INK : GROUND     // density 0–1
 ⚠ Two tones only — contrast is whatever the pair gives, so text over it needs
 its own ground. The lattice beats against a display scale that is not an
 integer multiple of the cell.
+
+"Two tones only" is a choice, not a limit. Add the same threshold to the value
+*before* flooring it onto a short palette and every band boundary breaks into
+the identical lattice, so a six-step ramp posterises like a printed separation
+instead of banding. A 4×4 matrix at `(m + .5) / 16` is the cheap end of the same
+family — coarser crosshatch, a quarter of the table, and at 5–8px cells the
+difference from 8×8 is not readable.
+```js
+const i = Math.floor((v + (t(x, y) - .5) / P.length) * P.length)   // P = palette
+ctx.fillStyle = P[Math.min(P.length - 1, Math.max(0, i))]
+```
+⚠ Clamp after adding the threshold — it pushes both ends of the ramp out of range.

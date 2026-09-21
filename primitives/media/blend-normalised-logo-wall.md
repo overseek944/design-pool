@@ -4,7 +4,7 @@ category: media
 tags: [media,logos,blend-mode,assets,normalisation]
 axes: none
 cost: 1
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -80,3 +80,14 @@ Brightness 0.3–0.4 on light, 1.2–1.5 on dark.
 ```
 ⚠ Pair the hover reveal with `:focus-within`, and restore on the cell rather than
 the mark so the whole target answers.
+
+On a dark ground the blend has no answer for a set supplied as dark ink on
+transparency: `lighten` keeps every mark black. `grayscale(1) invert(1)` flips
+the whole set to one light tone in a single declaration — no per-asset light
+variant, no re-cutting, and mixed-weight marks arrive at the same value. Drop to
+55–70% opacity so the row sits behind the copy rather than competing with it.
+```css
+.strip img { filter: grayscale(1) invert(1); opacity: .6 }
+```
+⚠ It inverts a mark that was already light into a dark one, so the set has to be
+uniform in polarity before the filter, not after.

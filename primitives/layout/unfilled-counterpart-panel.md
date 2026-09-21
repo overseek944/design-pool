@@ -4,7 +4,7 @@ category: layout
 tags: [demo,composition,mock,restraint,rhetoric]
 axes: {energy: 1, density: 2, weight: 1, finish: 4}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,12 @@ detail stays on your half. The asymmetry is the message.
 element outside so it is still announced. Blocks that drift past roughly 12%
 tint start reading as loading skeletons, which promises content that never
 arrives.
+
+Where the whole figure is the stand-in — an illustrated statement, invoice or
+report rather than one half of a comparison — the rule inverts and becomes
+stronger. Everything is unfilled except the two or three values the argument
+actually turns on, which are set as real text at the size they would really be.
+The reader's eye goes to the only legible thing in the frame, and the figure
+needs no caption to say where to look. Two real values per panel is the ceiling.
+⚠ It is still decoration: `aria-hidden` the rules, and repeat those values in
+the prose beside it — they are the content, not the illustration.

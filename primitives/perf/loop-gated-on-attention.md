@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,intersection-observer,visibility,battery,correctness]
 axes: none
 cost: 2
-seen: 41
+seen: 42
 requires: []
 conflicts: []
 completes: []
@@ -164,3 +164,15 @@ const gate = () => onScreen && !document.hidden ? anim.play() : anim.pause()
 ⚠ A duration derived from a measured distance means every resize builds a new
 animation — cancel the previous one first, or two run superimposed and the
 track jitters at the difference of their rates.
+
+A scene that plays *once* wants a higher arming ratio than a loop. A loop only
+has to avoid running unseen, so a third of the element is enough; a two-second
+composed sequence that never replays is spent if it starts while most of the
+figure is still below the fold. Arm those at 0.6–0.7, and re-arm on the
+preference change by deleting the attribute and re-observing rather than
+flipping it, so the sequence plays from its first beat instead of resuming
+mid-way.
+```js
+const io = new IntersectionObserver(([e]) => { if (e.intersectionRatio >= .65)
+  el.dataset.animate = 'true' }, { threshold: [0, .65] })
+```

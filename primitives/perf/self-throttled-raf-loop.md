@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,canvas,battery,frame-budget,correctness]
 axes: none
 cost: 1
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
@@ -105,3 +105,14 @@ try { handle = v.requestVideoFrameCallback(step) } catch { rvfc = false; step(0)
 ⚠ It stops firing entirely when the element has no frames to present — paused,
 ended, or a decoder the OS suspended — and reports nothing. A loop with no other
 clock needs a stall check over it.
+
+The floor is lower than 24fps for anything that is barely moving. A field whose
+only animation is a slow phase drift — noise, a gradient wash, a settling
+lattice — holds at 10–14fps with nothing visible lost, because there is no edge
+for the eye to track between frames. At 12fps a per-cell pass costs a fifth of
+what it costs at 60, which is what makes a full-bleed generative ground
+affordable at all. Clamp the elapsed term too, or a tab restored after minutes
+advances the phase in one jump.
+```js
+if (t - last >= 80) { phase += 1.8e-5 * Math.min(t - last, 100); last = t; draw() }
+```

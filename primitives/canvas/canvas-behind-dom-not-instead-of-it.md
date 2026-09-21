@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,architecture,accessibility]
 axes: none
 cost: 2
-seen: 18
+seen: 19
 requires: []
 conflicts: []
 completes: []
@@ -68,3 +68,15 @@ a new theme costs two declarations. `normal` at 0.5–0.7 on dark, `multiply` at
 ⚠ `mix-blend-mode` on the underlay makes it composite against whatever is
 painted beneath, so `html` needs the ground colour — set on `body` it blends
 against nothing and the multiply reads as flat grey.
+
+Once the layer's intensity lives in CSS the context no longer needs an alpha
+channel: `getContext('2d', { alpha: false })` lets the browser drop it and
+composite the element once, rather than blending every pixel into the page and
+then fading the result. The fade is a single GPU multiply on a layer that was
+cheap to rasterise.
+```js
+const ctx = c.getContext('2d', { alpha: false })   // element carries the opacity
+```
+⚠ An opaque context has no transparency to clear to — `clearRect` yields black,
+so every frame must paint every pixel. Wrong for any field drawn as sparse marks
+over the page ground.
