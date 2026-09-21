@@ -4,7 +4,7 @@ category: reveal
 tags: [type,scroll,progress,reveal,colour]
 axes: {energy: 2, density: 2, weight: 3, finish: 4}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]

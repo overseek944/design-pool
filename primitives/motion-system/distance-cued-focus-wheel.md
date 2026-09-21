@@ -4,7 +4,7 @@ category: motion-system
 tags: [list,rotation,blur,depth,mask,custom-property]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -39,3 +39,16 @@ items.forEach((el, i) => el.dataset.dist = String(Math.min(Math.abs(i - focus), 
 ```
 ⚠ Discrete steps read as stepping unless the transition is longer than the
 advance interval's gap — or the wheel ticks rather than turns.
+
+The distance can come from the pointer rather than a focus index, and then one
+more channel becomes mandatory: displacement. A member that scales up under the
+cursor overlaps its neighbours unless they step away from it, so derive a signed
+shift as well and the row reads as one elastic object instead of one item
+growing. Fall off geometrically, each step 0.3–0.6 of the last — lift 2–6px,
+scale 1.03–1.10, 0.25–0.40s.
+```css
+.item { transform: translateY(calc(var(--lift) * var(--f,0))) scale(var(--s,1)) }
+```
+⚠ Reduced motion wants the transform gone, not shortened — here the
+displacement *is* the motion. A pointer-only distance strands the keyboard: the
+same scalar has to answer to `:focus-visible`.

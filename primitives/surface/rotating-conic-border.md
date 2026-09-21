@@ -4,7 +4,7 @@ category: surface
 tags: [surface,border,motion,svg]
 axes: {energy: 4, density: 3, weight: 3, finish: 4}
 cost: 3
-seen: 12
+seen: 13
 requires: []
 conflicts: []
 completes: [overflow-visible-for-glow-bleed]
@@ -93,3 +93,17 @@ conic reads as a light travelling the lip rather than a coloured frame. Sweep
 ⚠ The child must be square and wider than the box's diagonal or the arc clips at
 the corners. In ink rather than a hue it reads as specular on the edge; in a
 saturated colour the same element reads as a notification.
+
+Shape the conic's stops and the travelling light reads as a head with a tail
+rather than an even sweep: full strength at 0°, under half of it by 25–30°,
+near nothing by 60°, then transparent across the whole opposite side. One bright
+point chases the perimeter while the rest of the ring stays dark, which is
+legible at the 1–2px where an even gradient is only a shimmer. Period 2–3s
+linear.
+```css
+background: conic-gradient(from var(--a), var(--c) 0deg,
+  color-mix(in srgb, var(--c) 45%, transparent) 26deg,
+  transparent 120deg 300deg, var(--c) 360deg)
+```
+⚠ First and last stop must be the same colour or the head shows a seam once
+per turn.

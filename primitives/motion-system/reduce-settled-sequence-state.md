@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,accessibility,reduced-motion,state,sequence,correctness]
 axes: none
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -53,3 +53,19 @@ offset — so the reduced branch lands a composition rather than a pile.
 ⚠ The pinned poses are a second copy of the loop's geometry. Derive them from
 the same custom properties the keyframes read, or the two drift apart the first
 time the travel distance is retuned.
+
+A *status* loop has no settled frame worth pinning, because its states differ
+only in how they move — a mark waiting, working, blocked, finished. Freeze it
+and four states collapse into one picture. Give the state a second channel that
+is static and always on — fill, count, silhouette — and let the motion be the
+enhancement rather than the encoding.
+```css
+@media (prefers-reduced-motion: reduce) {
+  .mark [data-part] { animation: none; filter: none }
+  .mark[data-state="blocked"] [data-part] { fill: var(--warn) }
+  .mark[data-state="done"]    [data-part] { fill: var(--ok) } }
+```
+⚠ A `role="status"` whose only change is its own `aria-label` is announced
+unreliably — put the state word in a text node inside the region so the update
+is a content change. Colour alone repeats the problem one axis over; pair it
+with a shape or a count.

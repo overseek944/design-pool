@@ -1,6 +1,6 @@
 # Manifest
 
-655 primitives. Format: `category/id | axes cost | tags | gist`
+658 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -93,6 +93,7 @@ color/declared-contrast-escalation | neutral  $1 | accessibility contrast tokens
 color/disposition-token-set | neutral  $1 | color tokens state correctness accessibility | A review queue is not a severity display, and borrowing success/
 color/embedded-replica-palette-split | neutral  $1 | color tokens product mock architecture | A page embedding a working replica of the product needs two toke
 color/gamut-ladder-fallback | neutral  $1 | color tokens progressive-enhancement correctness | Ship every colour token twice: an sRGB hex baseline, then the wi
+color/lightness-preserved-neutral-tint | neutral  $2 | color tokens theming neutral contrast | Greys left literally grey under a coloured theme read as a secon
 color/midpoint-switched-ink | E2 D1 W2 F5 $2 | theme transition contrast color custom-properties legibility | A theme toggle that tweens paper and ink on one curve passes thr
 color/near-black-single-ramp | E2 D2 W4 F4 $1 | color palette dark restraint | Pure #000 ground, off-white #ededed text, and ONE neutral ramp (
 color/parallel-alpha-ramp | neutral  $2 | color tokens alpha borders theming | Ship two neutral ramps of equal length: one opaque, one alpha-on
@@ -212,6 +213,7 @@ layout/document-underlay-window | E2 D1 W3 F4 $2 | layout stacking reveal video 
 layout/em-reserved-swap-height | neutral  $1 | layout layout-shift responsive correctness tabs | Content that swaps in place — a tab's copy, a rotating claim — c
 layout/evicting-stream-window | E3 D4 W2 F4 $2 | stream overflow live-data log dom performance | An append-only stream in a scroll container grows without bound 
 layout/facing-edge-tangent-connector | E1 D3 W1 F5 $2 | layout connector svg diagram geometry | A straight rule between a box and a line of text in the facing c
+layout/fixed-stage-pane-scroll | E1 D2 W2 F5 $3 | layout grid scroll shell navigation | A page may decline to scroll. Fix the shell to the viewport as a
 layout/float-wrapped-figure | E1 D3 W2 F4 $1 | layout type editorial responsive detail | Neither grid nor flex wraps running text around a picture — floa
 layout/fraction-sized-bleed-strip | E2 D3 W2 F4 $1 | layout overflow scroll affordance responsive measure | A horizontal strip inside a measured column ends flush at that c
 layout/fractional-grid-with-fluid-rail | E1 D3 W3 F4 $2 | layout grid asymmetry | Asymmetric two-column via minmax() where the rail is viewport-pr
@@ -284,6 +286,7 @@ light/stacked-chromatic-bloom | E3 D2 W4 F4 $3 | effect glow filter svg depth | 
 light/stop-built-soft-glow | E1 D2 W2 F4 $1 | gradient glow decoration performance cheap banding | A blurred lamp holds a composited buffer the size of its box plu
 light/target-aimed-travelling-beam | E3 D2 W3 F5 $2 | light beam rotation scroll decoration custom-properties | A directional light that moves — a beam, a shaft, a cone — keeps
 media/activation-deferred-player-facade | neutral  $2 | media embed iframe video performance privacy accessibility loading | A third-party player costs hundreds of kilobytes of script and s
+media/alpha-threshold-fuse-filter | E3 D2 W3 F4 $2 | svg filter mark liquid state | Separate shapes read as one substance when a blur is pushed back
 media/aperture-registered-content-layer | E1 D2 W2 F5 $2 | media mockup responsive layout correctness | Live content shown inside supplied frame artwork registers to an
 media/approach-loaded-video | neutral  $2 | media video performance intersection-observer accessibility bandwidth | Background footage is usually the heaviest thing on a page and u
 media/aspect-locked-media | neutral  $1 | layout media cls | Lock every media slot with an explicit aspect-ratio and let widt

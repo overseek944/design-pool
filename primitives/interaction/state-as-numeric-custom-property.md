@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,hover,state,tokens,architecture]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
@@ -67,3 +67,17 @@ color: color-mix(in oklab, var(--ink) calc(100% * var(--on)),
 ⚠ Registered as `<number>` the pair interpolates and the swap tweens;
 unregistered it snaps. Mix in `oklab` — `srgb` dips through a dead grey
 somewhere between two saturated ends.
+
+Derived channels need not move at the scalar's rate. Multiply before clamping
+and a channel finishes early: `clamp(0, 1 - c*2, 1)` has emptied a label by the
+time a rail is half collapsed, so one continuous drag reads as a sequence of
+phases rather than everything dissolving together. Where two whole layouts share
+the box, hand the swap to `visibility` rather than opacity — the retired one
+stops taking hits and leaves the accessibility tree at the same instant it
+stops being seen.
+```css
+--open:  calc(1 - var(--c));
+--label: clamp(0, calc(1 - var(--c) * 2), 1);
+```
+⚠ `visibility` is not `display`: the hidden layout still lays out and still
+costs its paint. Two full copies in one box is the price of the crossfade.

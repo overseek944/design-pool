@@ -4,7 +4,7 @@ category: motion-system
 tags: [transform,state,stagger,custom-properties,group,choreography]
 axes: {energy: 3, density: 3, weight: 2, finish: 5}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
