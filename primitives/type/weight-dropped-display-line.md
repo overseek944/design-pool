@@ -4,7 +4,7 @@ category: type
 tags: [type,display,headline,hierarchy,contrast]
 axes: {energy: 1, density: 2, weight: 4, finish: 5}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -34,3 +34,18 @@ against each other in the same eye span.
 ```css
 h2 b + span { margin-inline-start: .3em; font-weight: 300 }
 ```
+
+The channel that changes at the authored break need not be weight. Set the
+opening line `text-align: end` and the remainder `start` — one measure, one
+size, one cut — and the first line hangs off the right edge while the rest runs
+ragged from the left, so the block steps in without a `text-indent` the next
+wrap would strand. Two blocks rather than one with a `<br>`: the break stays
+editorial and survives translation. Wants the opening fragment 15–40% shorter
+than the measure; at parity the step disappears.
+```css
+.display > :first-child { text-align: end }    /* logical, so RTL inverts it */
+.display > :last-child  { text-align: start }
+```
+⚠ The step is legible only while both blocks share a measure — set the width on
+the wrapper, never on the lines, or each sizes to its own content and the edges
+stop meeting.

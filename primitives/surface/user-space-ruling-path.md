@@ -4,7 +4,7 @@ category: surface
 tags: [surface,svg,texture,blueprint,diagram,cheap]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -40,3 +40,19 @@ one piece of markup. Majors every fourth or fifth tick.
 ⚠ Only the stroke is spared — a glyph, a circle or a round cap in that viewBox
 shears with the stretch. Keep the strip to axis-aligned lines, and out of the
 a11y tree.
+
+The stretch is not only for ruling. A plot has no intrinsic aspect ratio — x is
+time, y is value — so a data polyline is the other thing that belongs in a
+stretched viewBox: author it once in data units and let the section choose the
+box, 3:1 across a band and near-square in a column, with `non-scaling-stroke`
+holding the line at the same token weight through both. What shears is not the
+stroke but the *joins*: a miter at a sharp reversal opens as the box widens.
+`stroke-linejoin: round` leaves the distortion nothing to act on.
+```svg
+<svg viewBox="0 0 1440 671" preserveAspectRatio="none" style="width:100%">
+  <path d="M0 505L65 528L152 668…" fill="none" stroke="currentColor"
+        vector-effect="non-scaling-stroke" stroke-linejoin="round"/></svg>
+```
+⚠ Ticks, value labels and the endpoint dot do not survive the stretch. Put them
+in DOM positioned in percentages over the SVG — a circle inside that viewBox
+arrives as an ellipse.

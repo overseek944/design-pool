@@ -4,7 +4,7 @@ category: layout
 tags: [layout,label,annotation,collision,diagram,correctness]
 axes: none
 cost: 4
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,17 @@ const free = (r) => !taken.some(t => r.x < t.x+t.w && r.x+r.w > t.x &&
 ```
 ⚠ Measure once per label per frame — reading `offsetWidth` after writing a
 transform thrashes layout. Hiding is the correct failure; a stack is not.
+
+One label on one moving anchor needs none of this. Its only collision is the
+frame, so mirror the offset about the frame's midline: the label sits right of
+the marker across the left half and left of it across the right half, and can
+never be carried outside. One comparison per frame instead of a rectangle
+sweep. Give the flip a hysteresis band of 5–10% of the width or a marker
+tracking the midline oscillates.
+```js
+const side = cx > box.x + box.w / 2 ? -1 : 1
+label.style.transform = `translate(-50%,-50%) translateX(${side * offset}px)`
+```
+⚠ The mirror is instantaneous — transition `translateX` or cross-fade the two
+positions, because an unanimated flip on a smoothly travelling marker reads as
+a glitch rather than as a decision.

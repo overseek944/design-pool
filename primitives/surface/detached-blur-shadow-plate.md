@@ -4,7 +4,7 @@ category: surface
 tags: [surface,depth,shadow,blur,mock,hero]
 axes: {energy: 1, density: 2, weight: 4, finish: 4}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

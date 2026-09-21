@@ -1,6 +1,6 @@
 # Manifest
 
-631 primitives. Format: `category/id | axes cost | tags | gist`
+632 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -420,6 +420,7 @@ perf/stylesheet-failure-reload-guard | neutral  $2 | correctness performance pro
 perf/velocity-scaled-preload-margin | neutral  $2 | perf lazy-load scroll images loading | A fixed lazy-load margin is tuned for one scroll speed. Under a 
 perf/will-change-on-split-children | neutral  $1 | motion performance promotion | Split text creates dozens of nodes animated simultaneously; with
 reveal/arc-window-overstroke | E3 D2 W3 F5 $2 | draw-on highlight canvas pulse path | A path being drawn reads as inert when the settled trail and the
+reveal/axis-swept-plot-window | E2 D2 W2 F5 $2 | reveal chart svg clip-path motion data | A line drawn on with stroke-dashoffset is revealed by arc length
 reveal/char-opacity-drift | E3 D4 W2 F5 $4 | type motion reveal ambient | Per-character with opacity + small y, will-change:opacity,transf
 reveal/flow-preserved-step-reveal | E3 D2 W2 F3 $1 | reveal text steps clip-path typing layout-safety | A left-to-right text reveal animated on width leaves normal flow
 reveal/glyph-scramble-settle | E4 D3 W2 F3 $2 | type reveal motion technical text | Resolve a label out of noise rather than fading it in: hold the 
