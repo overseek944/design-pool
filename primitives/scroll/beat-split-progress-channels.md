@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,scrub,choreography,custom-properties,sequence,architecture]
 axes: {energy: 3, density: 3, weight: 2, finish: 5}
 cost: 2
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -82,3 +82,18 @@ w('--mask-inset', 'mi', inset.toFixed(1) + 'px')
 ```
 ⚠ Precision is a decision, not a default. Round a translate to whole pixels and
 a slow scrub steps; round an opacity to two places and it bands.
+
+The channels need not be computed in script at all. Publish the one raw scalar
+and let each consumer derive its own window in the stylesheet — subtract the
+start, divide by the span, `clamp()` — and the schedule lives beside the rule it
+drives instead of in a table the CSS cannot see. A media query can then retime a
+beat for one breakpoint, which a JS channel table cannot do without learning the
+breakpoints twice.
+```css
+.scene      { --p: 0 }                       /* script writes only this */
+.scene .b2  { --on: clamp(0, calc((var(--p) - .55) / .43), 1) }
+@media (max-width: 640px) { .scene .b2 { --on: clamp(0, calc(var(--p) / .7), 1) } }
+```
+⚠ `clamp()` on unitless numbers needs all three arguments unitless — one stray
+`px` and the whole declaration is invalid and the consumer falls back to its
+initial value, silently, with no console error.

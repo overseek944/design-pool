@@ -4,7 +4,7 @@ category: reveal
 tags: [reveal,scroll,custom-properties,progress,cheap,svg]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -42,3 +42,17 @@ article { --on: clamp(0, calc((var(--p) - var(--at)) * 20), 1) }
 ```
 ⚠ The thresholds are layout, so they must be re-measured on resize — a reflow
 that changes one member's height silently desynchronises every member after it.
+
+Gating a *scale* rather than an opacity wants a floor, not zero. A bar chart
+whose columns start at `scaleY(0)` has no chart to arrive into — the reader sees
+an empty axis and the reveal has nothing to read against — so clamp the low end
+to a visible stub instead and the structure is legible before the front reaches
+it. 0.03–0.08 of full: enough to draw the baseline, little enough that the
+growth still registers as the event.
+```css
+.bar { transform-origin: bottom;
+       transform: scaleY(clamp(.04, calc(var(--p) * 1.6 - var(--i) * .1), 1)) }
+```
+⚠ A floor is a claim about data — on a real chart a stub at every empty category
+reads as a small nonzero value. Use it on a decorative or illustrative figure,
+and let a charted zero be zero.

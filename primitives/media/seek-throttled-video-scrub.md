@@ -4,7 +4,7 @@ category: media
 tags: [media,video,scroll,scrub,timeline,performance]
 axes: {energy: 3, density: 2, weight: 3, finish: 5}
 cost: 4
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: [scrub-lag-band, reduce-restored-media-transport]
@@ -36,3 +36,17 @@ v.addEventListener('canplay', drive, { once: true })
 ```
 ⚠ A deep link and a back/forward restore land the same way — both arrive at a
 scroll position without dispatching a scroll event.
+
+A gap threshold in seconds still writes a seek that decodes the same frame the
+element is already showing. Quantise the target to the source's frame grid
+instead — progress to an integer frame index — and write only when the index
+changes, aiming at the frame's *centre* so rounding never lands on the boundary
+between two. The scrub then costs exactly one decode per visible frame, and the
+frame rate is a stated number rather than a tolerance guessed in seconds.
+```js
+const last = Math.round(v.duration * FPS) - 1, i = Math.round(p * last)
+if (i !== Math.floor(v.currentTime * FPS) && !v.seeking)
+  v.currentTime = Math.min((i + .5) / FPS, v.duration - .001)
+```
+⚠ `FPS` must be the encode's real rate. Guess high and every index maps to a
+frame already shown, so the guard never fires and the scrub freezes.

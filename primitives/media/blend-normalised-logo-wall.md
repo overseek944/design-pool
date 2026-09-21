@@ -4,7 +4,7 @@ category: media
 tags: [media,logos,blend-mode,assets,normalisation]
 axes: none
 cost: 1
-seen: 17
+seen: 18
 requires: []
 conflicts: []
 completes: []
@@ -120,3 +120,18 @@ surface it is meant to tint.
 ⚠ Luminosity reads the *backdrop*, so over a neutral ground it returns plain
 greyscale — the tint has to live on the layer underneath, never on the image.
 The same stacking-context traps apply: one ancestor filter and it stops.
+
+Blending is the wrong tool inside a marquee, because the track is animated on a
+transform and a transform is exactly what severs the blend. Where the wall wants
+*uniformity* rather than fidelity — a proof strip, not a partner grid — collapse
+every mark to one ink with `filter: brightness(0)` and set the tier with opacity
+instead: mixed weights, colours and paddings all resolve to the same silhouette,
+inside any stacking context. Opacity 0.25–0.4 at rest, full colour on hover.
+```css
+.mark        { filter: brightness(0); opacity: .32; transition: filter .18s, opacity .18s }
+.mark:hover  { filter: none; opacity: 1 }
+.mark--tonal { filter: grayscale(1); opacity: .62 }   /* per-asset escape */
+```
+⚠ `brightness(0)` destroys a mark whose legibility is carried by a light element
+on a dark plate — it turns solid. Keep the per-asset escape hatch; one class,
+not a rule rewrite.

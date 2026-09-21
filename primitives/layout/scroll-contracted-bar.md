@@ -4,7 +4,7 @@ category: layout
 tags: [header,scroll,sticky,chrome]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 16
+seen: 17
 requires: []
 conflicts: []
 completes: []
@@ -130,3 +130,18 @@ addEventListener('bar:hold', apply)        // menu open and close both dispatch
 ⚠ Releasing the veto must re-run the test, not restore what was there before — a
 menu opened at the top and closed halfway down otherwise leaves the bar expanded
 over content it should already have detached from.
+
+The threshold can be a continuous scalar instead of a flip. Publish one 0–1
+collapse value on the bar and express every geometry it touches as
+`calc(base - delta * var(--c))` — inset, radius, row height, link gap, shadow
+alpha — and the contraction interpolates with the scroll, tracks a reversal
+exactly and can never be caught half-applied across properties that transition
+at different rates. Keep a 0.08–0.15s `linear` transition on the geometry to
+smooth the write granularity only.
+```css
+.plate { width: calc(100% - 32px * var(--c, 0)); border-radius: calc(8px * var(--c, 0));
+         transform: translateY(calc(12px * var(--c, 0))); transition: width .1s linear }
+```
+⚠ Paint properties do not belong on this channel — background and border colour
+should still cross at one threshold on their own eased clock, or the bar's
+ground fades in gradually and is illegible for the whole middle of the range.

@@ -4,7 +4,7 @@ category: reveal
 tags: [type,scroll,progress,reveal,colour]
 axes: {energy: 2, density: 2, weight: 3, finish: 4}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -37,3 +37,17 @@ if (!e.isIntersecting && e.boundingClientRect.top < 0) light(e.target, 1)
 ```
 ⚠ Reload at an anchor below the block to see it — the failure is invisible to
 anyone who scrolls in from the top, which is everyone testing it.
+
+The objection to a gradient is about its scope, not about gradients: confine one
+to a single `inline-block` token and the geometry it fills is that word, so the
+front gains sub-token resolution — a wipe *through* each word rather than a
+switch between two colours. Allocate each window by character count, not by
+index, and long words take proportionally longer, which is what reading does.
+```css
+.tok { --fill: clamp(0%, calc((var(--p) - var(--start)) / var(--len) * 100%), 100%);
+  display: inline-block; background: linear-gradient(90deg, var(--ink) var(--fill),
+  var(--dim) var(--fill)); background-clip: text; color: transparent }
+```
+⚠ `color: transparent` is what the selection highlight and forced-colours mode
+both read, so the text is unreadable in both. Restore a real `color` and drop
+the gradient under `forced-colors: active` and `prefers-reduced-motion`.

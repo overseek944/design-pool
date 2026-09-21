@@ -1,6 +1,6 @@
 # Manifest
 
-718 primitives. Format: `category/id | axes cost | tags | gist`
+721 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -156,6 +156,7 @@ interaction/history-entry-backed-overlay | neutral  $2 | interaction overlay his
 interaction/hover-previewed-disclosure | neutral  $1 | interaction disclosure navigation hover progressive-enhancement correctness | A menu that should fall open under a mouse and still answer a ta
 interaction/hysteretic-lock-zone | neutral  $1 | interaction pointer state correctness threshold | Any boolean derived from a continuous input — pointer inside a z
 interaction/idle-scroll-cue | E2 D1 W2 F4 $1 | scroll affordance feedback motion | A page whose motion is entirely scroll-driven stops when the rea
+interaction/in-stage-sequence-exit | neutral  $2 | accessibility keyboard scroll pin focus correctness | A pinned narrative several viewport-heights long is a corridor w
 interaction/inert-tracks-opacity | neutral  $1 | accessibility focus correctness overlay pointer-events | An element faded to opacity: 0 is still in the tab order, still 
 interaction/inherited-autocomplete-pass | neutral  $1 | forms autocomplete accessibility third-party correctness | A form you did not author — from a page builder, a CMS block, a 
 interaction/inline-target-floor | neutral  $1 | accessibility interaction correctness detail | A row of small print — legal links, meta, a footer — fails targe
@@ -335,6 +336,7 @@ media/frame-announced-readiness | neutral  $2 | media iframe embed loading progr
 media/frameless-alpha-artwork | E1 D2 W2 F3 $2 | media illustration assets transparency composition | Artwork exported on transparency with a feathered edge does not 
 media/ink-channel-probed-icon | neutral  $1 | icon svg media correctness currentcolor | An icon pasted from an arbitrary set carries its colour on one o
 media/integer-scaled-pixel-raster | E1 D2 W3 F2 $1 | media raster pixel-art image-rendering scale | Low-resolution raster art — pixel sprites, 1-bit marks, dithered
+media/luminance-keyed-alpha-matte | E1 D2 W2 F5 $3 | media filter svg alpha image video compositing | Media shot against a flat light ground can be keyed to transpare
 media/mask-swap-over-shared-paint | E2 D2 W2 F4 $2 | mask icon gradient media state | When a family of glyphs must share one fill — a gradient, a vide
 media/mirror-flanked-panorama | E1 D2 W2 F4 $2 | media image panorama mirror responsive full-bleed | Artwork with a fixed aspect either stretches or loses its compos
 media/mirrored-baseline-reflection | E1 D2 W2 F5 $2 | media mask surface depth detail css-only | A cut-out subject on a surface reads as pasted on unless somethi
@@ -689,6 +691,7 @@ type/intra-word-face-interlock | E1 D3 W4 F3 $2 | type display headline letterin
 type/language-conditional-type-tokens | neutral  $2 | type i18n tokens localisation correctness | The type scale is a function of script, not only viewport. Redef
 type/measured-inline-word-swap | E3 D2 W3 F5 $2 | type motion headline correctness | A word cycling inside a running headline relays out the whole li
 type/measured-line-bucket-stagger | neutral  $2 | type stagger reveal measurement font-loading correctness | A cascade down the rendered lines of a heading does not require 
+type/metric-free-weight-transition | E2 D2 W3 F5 $1 | type emphasis weight layout-shift transition text-shadow | Weight is the obvious way to bring a word forward as it is read 
 type/mixed-magnitude-figure-band | E1 D3 W4 F5 $1 | numerals metric alignment layout data | A row of headline figures rarely shares a digit count — four dig
 type/mono-as-ui-texture | E1 D3 W2 F4 $1 | type ui technical register | Run a monospace face for all chrome — nav, labels, captions, cou
 type/name-extending-hidden-suffix | neutral  $1 | accessibility label correctness type navigation | Every card ending in the same two words — Read more, View — hand

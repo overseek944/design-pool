@@ -4,7 +4,7 @@ category: surface
 tags: [shadow,elevation,tokens,hover,card]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -74,3 +74,17 @@ in both members of a twinned pair so the lift still interpolates.
 ⚠ The inset layer paints inside the border box, so it sits *under* a border and
 disappears on any panel with an opaque one. Give those the highlight as the
 border colour instead.
+
+The twin argument is not only for two states. An object on a continuous float
+loop whose shadow holds still reads as a sticker slid up the page — the ground
+says it never left. Put the shadow on its own keyframe track with the same
+period and matched layer counts, growing blur and negative spread as the object
+rises, so the contact softens exactly when the gap opens. Blur +30–50% and
+y +40–60% at the apex; hold both ends on the same keyframe as the transform.
+```css
+@keyframes lift  { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-6px) } }
+@keyframes cast  { 0%,100% { box-shadow: 0 8px 20px -8px #00000014 }
+                   50%     { box-shadow: 0 12px 28px -8px #0000001a } }
+```
+⚠ Two animations on one element is two tracks to keep in phase — same duration,
+same timing function, or the shadow leads the object within a few cycles.
