@@ -4,7 +4,7 @@ category: media
 tags: [media,video,responsive,aspect,backdrop,blur]
 axes: {energy: 1, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

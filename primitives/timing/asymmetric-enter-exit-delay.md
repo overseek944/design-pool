@@ -4,7 +4,7 @@ category: timing
 tags: [motion,sequencing,state,transition]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -72,3 +72,22 @@ curve, leave 0.4–0.6s without.
 ⚠ An overshoot curve past 1 travels outside its own range, so anything clipped
 by an ancestor pops. Give `:focus-visible` the same rule as `:hover` in one
 selector, or keyboard users get the resting transition and no affordance.
+
+The delay is sometimes owed to a *neighbour's* duration rather than to the
+element's own ladder. A divider a control draws only while closed must not
+arrive while the thing it closes off is still visibly collapsing: give it the
+neighbour's full duration as a delay on the closed state and none at all on the
+open one, so it leaves the instant opening begins and returns only once the
+fold has landed. Duration stays `0s` in both — a hairline should land, not fade
+— and the start value is a transparent colour rather than `none`, which is not
+a defined one to interpolate from.
+```css
+[data-fold]             { transition: grid-template-rows .5s cubic-bezier(.4,0,.2,1) }
+[aria-expanded]         { box-shadow: inset 0 -1px 0 transparent; transition: box-shadow 0s }
+[aria-expanded="false"] { box-shadow: inset 0 -1px 0 var(--rule);
+                          transition: box-shadow 0s .5s }  /* = the fold's own duration */
+```
+⚠ Paint the line rather than moving the element to reveal one — a 1px offset
+gives the same picture and a visible jump on every press. The two durations are
+now coupled by hand: carry both on one custom property, or the delay drifts the
+next time the fold is retimed.

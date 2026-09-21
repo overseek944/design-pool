@@ -4,7 +4,7 @@ category: surface
 tags: [surface,clip-path,edge,section,responsive,geometry]
 axes: {energy: 1, density: 2, weight: 3, finish: 4}
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -91,3 +91,21 @@ on a control. Border width sets the notch: 4–14px.
 image, a gradient or a blurred backdrop the wedge shows as a patch. The box's
 own border still turns that corner square underneath the overlay; suppress it on
 the two cut edges or the hairline doubles back on itself.
+
+One length can hold the angle as well as the size. Step the polygon the same
+distance along the bottom as up the side and the cut is 45° on any aspect
+ratio — which a percentage cannot do, since `calc(100% - 25%)` is a quarter of
+the *width* on x and a quarter of the *height* on y, two different amounts on
+anything but a square. Author that step as a single custom property and the
+mirrored corner becomes one override rather than a second polygon; a
+viewport-scaled `clamp()` keeps the bite proportionate across widths. 40–120px.
+```css
+.chop      { --chop: clamp(60px, 6.6vw, 96px);
+             clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--chop)),
+                                calc(100% - var(--chop)) 100%, 0 100%) }
+.chop-left { clip-path: polygon(0 0, 100% 0, 100% 100%,
+                                var(--chop) 100%, 0 calc(100% - var(--chop))) }
+```
+⚠ Whatever is inside has to clear the cut: pad the bitten corner by the step
+plus 8–16px, or a line of copy runs into the diagonal at exactly the width
+where the clamp is largest.

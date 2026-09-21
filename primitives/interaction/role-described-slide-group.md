@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,accessibility,carousel,keyboard,correctness]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

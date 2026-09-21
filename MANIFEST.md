@@ -1,6 +1,6 @@
 # Manifest
 
-751 primitives. Format: `category/id | axes cost | tags | gist`
+754 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -193,6 +193,7 @@ interaction/pre-hydration-nested-link | neutral  $2 | accessibility links hydrat
 interaction/proximity-revealed-target | E2 D1 W2 F5 $2 | interaction pointer accessibility focus custom-properties affordance pointer-events | A control meant to be found rather than advertised can key its o
 interaction/proxy-painted-native-control | neutral  $1 | accessibility focus forms input correctness keyboard | Keep the real <input> and paint a sibling. Clip it to a 1×1 rect
 interaction/reader-parameterised-comparison | E2 D3 W2 F5 $3 | comparison demo state interaction accessibility | A before/after figure quoted from your own example is an asserti
+interaction/region-scoped-global-key | neutral  $2 | keyboard interaction correctness accessibility visibility | A shortcut bound on the document takes its keys from the whole p
 interaction/rejected-file-input-reset | neutral  $1 | correctness form input file detail | Check a chosen file's real type and byte length before any uploa
 interaction/reserved-state-border | neutral  $1 | accessibility focus cls border correctness | A control that gains a border on focus or selection must carry t
 interaction/resting-default-expanding-row | E2 D2 W2 F5 $2 | interaction state hover accessibility layout | A row of panels that expand only on hover says nothing at rest —
@@ -247,6 +248,7 @@ layout/fixed-point-measure-solve | neutral  $2 | layout measure resize fonts ref
 layout/fixed-stage-pane-scroll | E1 D2 W2 F5 $3 | layout grid scroll shell navigation | A page may decline to scroll. Fix the shell to the viewport as a
 layout/float-wrapped-figure | E1 D3 W2 F4 $1 | layout type editorial responsive detail | Neither grid nor flex wraps running text around a picture — floa
 layout/floor-docked-primary-chrome | E2 D1 W2 F5 $2 | layout chrome nav fixed accessibility correctness | Persistent navigation need not sit at the top. Dock it to the bo
+layout/flow-root-float-island | neutral  $1 | layout float flex prose figure correctness | float has no effect on a flex or grid item, so a text column lai
 layout/fraction-sized-bleed-strip | E2 D3 W2 F4 $1 | layout overflow scroll affordance responsive measure | A horizontal strip inside a measured column ends flush at that c
 layout/fractional-grid-with-fluid-rail | E1 D3 W3 F4 $2 | layout grid asymmetry | Asymmetric two-column via minmax() where the rail is viewport-pr
 layout/geometry-scoped-connector-overlay | neutral  $1 | layout diagram connector responsive correctness architecture | An overlay of connectors is a picture of one arrangement, not of
@@ -303,6 +305,7 @@ layout/viewport-height-bands | neutral  $1 | layout responsive media-query ornam
 layout/viewport-unit-role-split | neutral  $1 | layout viewport mobile responsive correctness | A phone has three viewport heights, and picking one for the whol
 layout/weighted-free-space-rows | neutral  $1 | layout grid responsive rhythm measurement | A block sized to the viewport has leftover height; fixed gaps po
 layout/width-budgeted-inline-remainder | neutral  $2 | layout responsive overflow navigation measurement observer correctness | A row of peers that must hold one line — filter chips, tool tabs
+layout/width-resolved-ratio-overlap | E1 D3 W2 F5 $1 | layout overlap aspect-ratio responsive composition | A panel pulled up over a fixed-ratio media block loses its propo
 light/blend-doubled-headline | E2 D2 W4 F5 $3 | type blend legibility contrast compositing | Set the headline twice in one grid cell: an opaque copy under th
 light/broadcast-light-source | E2 D2 W2 F5 $3 | light gradient custom-property ambient architecture | A panel lit at the pointer has one lamp, and only while a pointe
 light/counter-rotated-specular-layer | E2 D2 W3 F5 $2 | light gradient rotation material 3d | An object with its highlight painted into its own background spi

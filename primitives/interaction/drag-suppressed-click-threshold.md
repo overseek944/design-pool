@@ -4,7 +4,7 @@ category: interaction
 tags: [pointer,drag,interaction,correctness,accessibility]
 axes: none
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -71,3 +71,22 @@ belongs in that class too — without it the gesture selects the card's text.
 ⚠ Restore it in a `pointercancel` handler as well as `pointerup` — a gesture
 interrupted by the system leaves the rail unsnappable for the rest of the
 session.
+
+A flag has to be cleared by something, and the click it waits for is the one
+thing that may never arrive: past a few tens of pixels of travel, browsers
+routinely suppress the synthetic click after a drag altogether. The flag then
+eats the *next* click instead — and on a machine carrying both a touchscreen
+and a mouse that next one is a real press on the link, arriving through a
+`pointerdown` a touch-only handler ignored. Mark the gesture's end as a
+timestamp and suppress only inside a 300–600ms window: it expires on its own
+and cannot outlive the gesture that opened it.
+```js
+let swipedAt = -Infinity
+onpointerup = e => { if (committed) swipedAt = e.timeStamp }
+el.addEventListener('click', e => {
+  if (e.timeStamp - swipedAt > 500) return
+  swipedAt = -Infinity; e.preventDefault(); e.stopPropagation() }, true)
+```
+⚠ Read both marks off event `timeStamp` so they share a clock — a synthesised
+event can carry one nothing in your code set. Past ~600ms the window starts
+swallowing a deliberate second tap on the same target.

@@ -4,7 +4,7 @@ category: surface
 tags: [chrome,nav,scroll,contrast,theme,accessibility]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []
@@ -84,3 +84,21 @@ new MutationObserver(() => requestAnimationFrame(check))
 ⚠ A `setTimeout` here is a guess at another component's render. Wait a frame,
 or read on `transitionend`, or the rect measured is the collapsed one and the
 tone lands one interaction behind.
+
+A whole-element swap is wrong while the seam is *inside* the element. A mark
+tall enough to straddle the join flips entire, so half of it is the wrong
+colour for as long as the crossing lasts, and a cross-fade only lengthens that
+half. Stack two copies, one per treatment, and clip them to complementary
+`inset()` slices taken from the overlap measured as a fraction of the mark's
+own box: each part then paints on the ground it is actually over. No transition
+— the clip is already continuous with the scroll.
+```js
+const r = mark.getBoundingClientRect(), d = band.getBoundingClientRect()
+const t = clamp01((d.top - r.top) / r.height)     // seam, in the mark's own units
+const b = clamp01((d.bottom - r.top) / r.height)
+light.style.clipPath = `inset(${t * 100}% 0 ${100 - b * 100}% 0)`  // dark takes the rest
+```
+⚠ Two copies is two of everything: exactly one may carry the accessible name
+and the link, the other is `aria-hidden`. Worth the second node only for a mark
+several times taller than the seam it crosses — below that the swap above is
+cheaper and reads the same.
