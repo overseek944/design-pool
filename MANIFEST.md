@@ -1,6 +1,6 @@
 # Manifest
 
-750 primitives. Format: `category/id | axes cost | tags | gist`
+751 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -246,6 +246,7 @@ layout/figure-borne-edge-key | E1 D3 W1 F5 $2 | diagram figure legend connectors
 layout/fixed-point-measure-solve | neutral  $2 | layout measure resize fonts reflow correctness | A measured value written back into the layout it came from has n
 layout/fixed-stage-pane-scroll | E1 D2 W2 F5 $3 | layout grid scroll shell navigation | A page may decline to scroll. Fix the shell to the viewport as a
 layout/float-wrapped-figure | E1 D3 W2 F4 $1 | layout type editorial responsive detail | Neither grid nor flex wraps running text around a picture — floa
+layout/floor-docked-primary-chrome | E2 D1 W2 F5 $2 | layout chrome nav fixed accessibility correctness | Persistent navigation need not sit at the top. Dock it to the bo
 layout/fraction-sized-bleed-strip | E2 D3 W2 F4 $1 | layout overflow scroll affordance responsive measure | A horizontal strip inside a measured column ends flush at that c
 layout/fractional-grid-with-fluid-rail | E1 D3 W3 F4 $2 | layout grid asymmetry | Asymmetric two-column via minmax() where the rail is viewport-pr
 layout/geometry-scoped-connector-overlay | neutral  $1 | layout diagram connector responsive correctness architecture | An overlay of connectors is a picture of one arrangement, not of

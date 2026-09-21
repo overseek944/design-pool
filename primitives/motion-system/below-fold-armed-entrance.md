@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,correctness,progressive-enhancement,observer,reveal]
 axes: none
 cost: 1
-seen: 19
+seen: 20
 requires: []
 conflicts: []
 completes: []
@@ -66,3 +66,17 @@ a script.
 ⚠ Only sound where the exemption is a real guarantee. A region that falls below
 the fold on a short landscape phone loses its entrance there for nothing, and
 one that grows past the fold later exempts content nobody has looked at.
+
+Where the hide has to live in CSS anyway — an animation engine that owns the
+from-state and cannot be told about it before it loads — gate the hiding rule
+on the engine's own *ready* class rather than on a js-present class. The
+content un-hides the moment the runtime registers, so a bundle that downloads
+and then throws before initialising still settles visible, which a js-present
+gate never does.
+```css
+html.js:not(.fx-ready) [data-enter] { visibility: hidden }
+```
+⚠ Use `visibility`, not `display` — it holds the box, so nothing shifts when
+the class lands and the engine can still measure. Scope the selector to an
+opt-in attribute: applied broadly it is a blank page for the length of the
+bundle.

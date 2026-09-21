@@ -4,7 +4,7 @@ category: motion-system
 tags: [idle,loop,character,randomness,raf,ambient]
 axes: {energy: 3, density: 2, weight: 2, finish: 4}
 cost: 3
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -50,3 +50,18 @@ i = (i + 1 + Math.random() * (n - 1) | 0) % n
 ⚠ At n = 2 it degenerates to strict alternation, which is a visible pattern —
 below three members, vary the *interval* instead, since the value cannot carry
 the variation.
+
+The objection has a floor. Where the moving thing carries no legible landmark —
+a wash blurred past 100px, a gradient the size of the section — there is
+nothing in it to track, no period is audible, and the event machinery buys
+nothing. Two oscillators suffice there, provided x and y take *different*
+periods: equal periods trace a circle, a ratio near but not at 1:1 opens it
+into a figure that only closes on the least common multiple. Periods 25–60s,
+the two offset 15–25%, plus a phase offset per element.
+```js
+x = x0 + Math.sin(t * 0.00018 + px) * ax    // 18 against 23 is the whole trick
+y = y0 + Math.cos(t * 0.00023 + py) * ay    // equal rates would draw a circle
+```
+⚠ Write `translate`, not `left`/`top` — the latter lays out the page every
+frame, and at this blur radius the element is already a viewport-sized
+composited buffer. Gate the loop on visibility and drop it under `reduce`.

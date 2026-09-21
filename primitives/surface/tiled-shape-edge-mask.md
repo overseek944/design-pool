@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,edge,ornament,texture,section]
 axes: {energy: 2, density: 3, weight: 2, finish: 3}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -60,3 +60,17 @@ duplicated from the token it mirrors, and changing a ground silently desyncs its
 divider. Keep the token name in a comment beside each one, and give the arc a
 different control-point pair per boundary: identical curves repeated down a page
 read as a template.
+
+The cheapest shaped seam is a radius. Give every full-bleed tonal plate the
+same `border-radius` on its *trailing* edge only, and whatever paints behind
+fills the two notches — so a stack of sections reads as plates laid on a sheet
+rather than bands ruled across it. One declaration on one class covers a whole
+page and no pair of neighbours has to agree about anything. 32–64px on a
+full-width plate: the corner is judged against the window edge, not against an
+enclosing box, so the ceiling that governs nested cards does not apply here.
+```css
+.plate { border-radius: 0 0 var(--seam, 48px) var(--seam, 48px) }
+```
+⚠ The notch shows the *body*, not the next section — set the body to one of the
+two tones and let the plates carry the other, or every seam cuts to white. A
+plate shorter than about twice the radius stops reading as a plate.

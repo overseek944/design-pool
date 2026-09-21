@@ -4,7 +4,7 @@ category: surface
 tags: [chrome,nav,scroll,contrast,theme,accessibility]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -70,3 +70,17 @@ new MutationObserver(sync).observe(bar, { attributeFilter: ['data-tone'] })
 ⚠ It skips `pointer-events: none` layers and returns whatever is under them,
 which is usually right and occasionally not. It also only sees inside the
 viewport — a probe point below the fold returns null, never a section.
+
+Scroll and resize are not the only things that move the probe. Chrome that
+opens a menu changes its own geometry, and a panel unfolding out of the bar
+can cross a seam the bar itself never reaches — so re-run the test from the
+disclosure's state as well as from the scroll listener. Probe a tall opened
+panel at its centre rather than at the bar's edge, since its two ends can sit
+on different grounds.
+```js
+new MutationObserver(() => requestAnimationFrame(check))
+  .observe(toggle, { attributeFilter: ['aria-expanded'] })
+```
+⚠ A `setTimeout` here is a guess at another component's render. Wait a frame,
+or read on `transitionend`, or the rect measured is the collapsed one and the
+tone lands one interaction behind.

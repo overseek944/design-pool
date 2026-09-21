@@ -4,7 +4,7 @@ category: surface
 tags: [surface,border,motion,svg]
 axes: {energy: 4, density: 3, weight: 3, finish: 4}
 cost: 3
-seen: 15
+seen: 16
 requires: []
 conflicts: []
 completes: [overflow-visible-for-glow-bleed]

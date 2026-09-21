@@ -4,7 +4,7 @@ category: light
 tags: [light,pointer,hover,gradient,custom-properties,surface]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -40,3 +40,13 @@ from a second, identical pseudo-element so the rim appears rather than sweeps.
 ```
 ⚠ At a 1px band the gradient has almost no area to resolve in — keep the radius
 large relative to the card, or the rim reads as a flat colour change.
+
+Do not reset the coordinates on leave. Fading `opacity` out while the centre
+snaps back to the box middle drags the light across the panel as it dims, which
+reads as a second animation nobody asked for; leave the last position written
+and the lamp goes out where the pointer left it. Fade out over 400–700ms
+against 120–200ms in — the asymmetry is what makes the exit read as dimming
+rather than as retreat.
+⚠ The stale position is then live if the pointer returns by teleport — a tab
+switch, a scroll under a still mouse — so re-read the coordinates on
+`pointerenter` before raising the opacity, not after.

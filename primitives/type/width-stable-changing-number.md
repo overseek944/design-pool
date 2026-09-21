@@ -4,7 +4,7 @@ category: type
 tags: [numerals,data,motion,correctness]
 axes: {energy: 2, density: 3, weight: 3, finish: 5}
 cost: 1
-seen: 26
+seen: 27
 requires: []
 conflicts: []
 completes: []
@@ -120,3 +120,13 @@ travels, so the column reads as a drum turning behind an aperture. Give the slot
 ⚠ The mask fades the resting digit's own crown and foot too. Keep the opaque
 plateau wide enough that a stationary figure is unaffected, and check it against
 a lining `1` and a `4`, which reach furthest into the fade.
+
+The round-trip works only because the authored string is the *finished* one,
+which is also the reason to author it that way. An element shipped empty and
+filled from script is blank to a crawler, blank on a dead bundle, and blank for
+a reader who never scrolls that far — the count is decoration over a value the
+markup already states correctly. Take the numeric target from a data attribute
+and leave the rendered text untouched until the first animated frame.
+⚠ Reading the target by parsing the rendered text instead makes every
+formatting decision load-bearing: a thin space, a localised separator or a
+trailing `+` turns into `NaN`, and the figure animates to nothing.
