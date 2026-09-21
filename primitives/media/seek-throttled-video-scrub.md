@@ -4,7 +4,7 @@ category: media
 tags: [media,video,scroll,scrub,timeline,performance]
 axes: {energy: 3, density: 2, weight: 3, finish: 5}
 cost: 4
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: [scrub-lag-band, reduce-restored-media-transport]

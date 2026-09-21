@@ -4,7 +4,7 @@ category: media
 tags: [media,color,filter,normalisation,texture]
 axes: {energy: 1, density: 2, weight: 3, finish: 4}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -57,3 +57,19 @@ invert 20–40%, saturate 600–1200%, hue-rotate the rest of the way.
 ⚠ Only for marks whose meaning is their shape, and only for art with an alpha
 channel — a mark on an opaque plate comes out a solid rectangle. Those want
 `mask-image` over a painted background instead, which also costs no filter.
+
+Where the set must keep its own colour, grade the chain instead of collapsing
+it. Hold hue and step brightness and saturation down by the image's *rank* in
+the argument — subject, supporting, background — so a dark page gains
+atmospheric depth rather than presenting every picture at equal insistence.
+Two terms, three or four rungs, monotonic in both: `brightness` .95 → .70,
+`saturate` .85 → .50. Ship the rungs as tokens or the ladder drifts the first
+time a section is added.
+```css
+.fig--subject { filter: brightness(.95) saturate(.82) }
+.fig--support { filter: brightness(.80) saturate(.70) }
+.fig--ground  { filter: brightness(.72) saturate(.55) }
+```
+⚠ Text burnt into an image is dimmed with it — a caption at rung three can
+drop under 4.5:1 against a ground the unfiltered source cleared. Set captions
+in the DOM, never in the picture.

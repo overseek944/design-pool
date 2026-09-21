@@ -1,6 +1,6 @@
 # Manifest
 
-539 primitives. Format: `category/id | axes cost | tags | gist`
+542 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -48,6 +48,7 @@ canvas/palette-as-uniforms | neutral  $2 | shader color system | Pass the site's
 canvas/parametric-thickness-variation | E3 D3 W2 F4 $3 | shader organic detail | Drive line or ribbon thickness with uThickness + uThickVary nois
 canvas/path-data-construction-overlay | E1 D4 W1 F5 $3 | svg path annotation overlay technical diagram | Artwork on the page already carries its own construction. Walk t
 canvas/pattern-space-from-smooth-twin | neutral  $3 | canvas shader grid noise correctness generative | A ruled overlay drawn in a noisy surface's coordinates inherits 
+canvas/per-state-still-understudy | neutral  $3 | canvas media perf progressive-enhancement 3d fallback accessibility | A heavy renderer deferred behind one poster freezes the figure a
 canvas/periodic-organic-blend-scalar | E2 D3 W2 F4 $2 | shader generative noise parameters surface | Noise alone always reads organic; a periodic function alone alwa
 canvas/prebaked-gradient-sprite | neutral  $2 | canvas performance particles light | createRadialGradient allocates and rasterises on every call, so 
 canvas/precomputed-cell-attenuation-field | E1 D2 W2 F5 $2 | canvas legibility performance ambient contrast generative | A generative field at full strength everywhere either drowns the
@@ -186,6 +187,7 @@ layout/measured-copy-keepout | neutral  $2 | layout measurement legibility canva
 layout/occupancy-negotiated-label-placement | neutral  $4 | layout label annotation collision diagram correctness | Annotations placed independently overlap the moment two anchors 
 layout/overflow-clip-over-hidden | neutral  $1 | overflow correctness accessibility scroll | overflow: clip crops without creating a scroll container. hidden
 layout/per-edge-clip-polygon | neutral  $1 | overflow clip correctness bleed | overflow only works per axis, so there is no way to crop one edg
+layout/rail-preserved-track-collapse | E1 D3 W2 F5 $1 | layout grid responsive rhythm editorial | A three-track row — marker rail, title, supporting column — usua
 layout/ranked-apparatus-column | E1 D3 W1 F5 $1 | layout grid metadata responsive editorial hierarchy | Section apparatus — an ordinal, a two-word gloss, a mark — belon
 layout/ratio-anchored-scene-geometry | neutral  $2 | layout architecture responsive tokens geometry css-only | A layered illustration sized in pixels at one breakpoint and re-
 layout/reserved-gutter-pinned-action | neutral  $1 | layout overflow correctness affordance scrim accessibility | An action pinned over a horizontally scrolling strip — a copy bu
@@ -264,6 +266,7 @@ media/video-as-surface-not-frame | E3 D2 W4 F4 $3 | media surface hero | autopla
 media/welded-figure-caption | E1 D2 W2 F5 $1 | media figure caption accessibility editorial | A caption set as a paragraph under a figure reads as body copy a
 motion-system/additively-gated-reveal | E2 D2 W2 F4 $1 | motion reveal accessibility progressive-enhancement correctness scroll | Most machinery around entrances exists because the from-state is
 motion-system/anchored-log-zoom-camera | E3 D2 W2 F5 $3 | camera zoom canvas interpolation diagram scene | A 2D camera interpolating scale linearly rushes the far half of 
+motion-system/antipodal-mark-pass | E3 D1 W2 F5 $1 | motion-system hover icon affordance | Send a mark out of one corner and back in from the opposite one,
 motion-system/attribute-driven-motion-hooks | neutral  $1 | architecture motion maintainability | Target animations off data- attributes, never class names. Styli
 motion-system/below-fold-armed-entrance | neutral  $1 | motion correctness progressive-enhancement observer reveal | An entrance system that hides content in CSS and un-hides it fro
 motion-system/camera-over-static-scene | E3 D2 W3 F5 $2 | motion transform scale focus diagram narrative | To walk a reader through a diagram, move the viewport rather tha

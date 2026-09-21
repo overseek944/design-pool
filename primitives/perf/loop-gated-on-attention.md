@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,intersection-observer,visibility,battery,correctness]
 axes: none
 cost: 2
-seen: 44
+seen: 45
 requires: []
 conflicts: []
 completes: []
@@ -190,3 +190,19 @@ const resize = () => { sizeBuffer(); if (raf === null) draw(performance.now()) }
 ⚠ The direct call has to be safe out of sequence — advance the clock from the
 timestamp rather than incrementing it, or a stopped scene creeps forward one
 step per resize.
+
+A reader's *pause* and a reader's *reduce* are different requests, and the
+property has to match the verb on the button. `animation: none` returns every
+element to its authored un-animated state, which under `both` fill throws away
+the frame the reader was looking at when they asked for stillness — an
+entrance snaps back, a mid-wipe panel jumps. A control labelled pause wants
+`animation-play-state: paused`, which freezes in place and resumes in phase;
+only the control that mirrors the OS preference should remove the animation
+outright.
+```css
+html[data-motion=paused] .page * { animation-play-state: paused !important }
+html[data-motion=reduced] .page * { animation: none !important;
+                                    transition: none !important }
+```
+⚠ Pausing does not stop a `transition`, only an `animation` — anything eased
+from script keeps arriving after the pause lands.

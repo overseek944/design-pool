@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,reveal,accessibility,progressive-enhancement,correctness,scroll]
 axes: {energy: 2, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -14,7 +14,8 @@ Most machinery around entrances exists because the from-state is invisible:
 arming below the fold, watchdogs, no-JS fallbacks. Invert it. The element's
 authored state *is* the settled one, the entrance lives entirely inside a
 capability-and-preference gate, and its start keyframe is dimmed rather than
-absent — 10–20% opacity, 0.5–1.5rem of offset. Every failure path then lands on
+absent — 10–35% opacity, 0.5–1.75rem of offset; take the upper end for a
+whole section, the lower for a single element. Every failure path then lands on
 readable content by construction, and the reveal still reads as arrival because
 the eye registers the settle, not the first frame.
 
