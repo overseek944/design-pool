@@ -4,7 +4,7 @@ category: surface
 tags: [surface,texture,grain,gradient,blend-mode,banding]
 axes: {energy: 1, density: 3, weight: 3, finish: 4}
 cost: 1
-seen: 18
+seen: 19
 requires: []
 conflicts: []
 completes: []
@@ -129,3 +129,20 @@ body::before { content: ""; position: fixed; inset: 0; pointer-events: none;
 ⚠ Stack it below overlays, not above them. At the top of the stacking register
 it grains modals, focus rings and whatever text a dialog is trying to make
 legible — the one place the veil costs more than it gives.
+
+A grain layer that never moves is a texture; one that slides is a moving
+texture, and neither reads as film. Jog it instead — animate `transform` on the
+grain element with `steps()`, so the tile re-seats in discrete jumps a few
+per cent wide and the noise appears to be re-exposed rather than to travel.
+Oversize the layer past its container on every side or each jump exposes an
+edge. 8–12 steps over 6–10s, offsets 1–3%.
+```css
+.grain::before { position: absolute; inset: -50%;     /* > the largest offset */
+  animation: jog 8s steps(10, end) infinite }
+@keyframes jog { 0%, to { transform: translate(0) } 30% { transform: translate(1%, -1%) }
+                 70% { transform: translate(3%, 1%) } }
+```
+⚠ It animates a compositor layer the size of the container plus 200%, which on
+a full-bleed section is the most expensive form of a cheap effect. Honour
+`prefers-reduced-motion` by dropping to `animation: none`, not by hiding the
+grain — the texture is not the motion.

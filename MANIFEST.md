@@ -1,6 +1,6 @@
 # Manifest
 
-743 primitives. Format: `category/id | axes cost | tags | gist`
+746 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -64,6 +64,7 @@ canvas/peak-table-spectrum-profile | E2 D2 W1 F5 $2 | canvas generative field da
 canvas/per-state-still-understudy | neutral  $3 | canvas media perf progressive-enhancement 3d fallback accessibility | A heavy renderer deferred behind one poster freezes the figure a
 canvas/periodic-organic-blend-scalar | E2 D3 W2 F4 $2 | shader generative noise parameters surface | Noise alone always reads organic; a periodic function alone alwa
 canvas/perspective-divisor-depth-cue | E2 D3 W2 F5 $2 | canvas depth projection wireframe stroke 3d | An armature projected onto a 2D context — a skeleton, a rig, an 
+canvas/plane-mapped-context-matrix | E1 D2 W2 F5 $2 | canvas projection geometry transform 3d precomputed | Foreshortening a plane onto a 2D context is usually written as a
 canvas/prebaked-gradient-sprite | neutral  $2 | canvas performance particles light | createRadialGradient allocates and rasterises on every call, so 
 canvas/precomputed-cell-attenuation-field | E1 D2 W2 F5 $2 | canvas legibility performance ambient contrast generative | A generative field at full strength everywhere either drowns the
 canvas/prerendered-renderer-understudy | neutral  $3 | canvas progressive-enhancement correctness cls state architecture | A canvas that may not run should degrade to a picture, not to an
@@ -91,6 +92,7 @@ canvas/uv-reconstructed-sphere-normal | E2 D1 W3 F5 $2 | shader canvas light geo
 canvas/velocity-paired-field-step | E3 D2 W2 F5 $3 | canvas simulation shader texture solver generative | A field stepped by diffusion spreads and dies. One that should t
 canvas/video-textured-mark-field | E2 D3 W2 F5 $3 | canvas video particles texture motion performance | A field of marks needs content as well as motion, and inventing 
 canvas/warm-started-relaxation | neutral  $1 | canvas simulation performance shader solver | An iterative solve re-run every frame — a pressure projection, a
+canvas/wedge-cloned-symmetric-field | E1 D4 W1 F5 $2 | canvas generative symmetry field particles cheap | A ring of marks placed from one pass of random draws clumps unev
 color/chroma-weighted-peer-rank | E1 D2 W3 F5 $1 | color hierarchy accent icon grid contrast | Two grids of identical cards on one page read as equally importa
 color/declared-contrast-escalation | neutral  $1 | accessibility contrast tokens type color | prefers-contrast: more is not a second theme — it is permission 
 color/disposition-token-set | neutral  $1 | color tokens state correctness accessibility | A review queue is not a severity display, and borrowing success/
@@ -379,6 +381,7 @@ media/welded-figure-caption | E1 D2 W2 F5 $1 | media figure caption accessibilit
 media/zero-box-vector-template-store | neutral  $1 | svg use defs architecture performance accessibility correctness | Vector art that recurs — a mark, a seal, a rule cap — repeats it
 motion-system/additively-gated-reveal | E2 D2 W2 F4 $1 | motion reveal accessibility progressive-enhancement correctness scroll | Most machinery around entrances exists because the from-state is
 motion-system/anchored-log-zoom-camera | E3 D2 W2 F5 $3 | camera zoom canvas interpolation diagram scene | A 2D camera interpolating scale linearly rushes the far half of 
+motion-system/anomaly-solved-ellipse-traversal | E3 D1 W2 F5 $2 | motion geometry solver loop path precision | A mark sent round an ellipse by stepping its angle moves fastest
 motion-system/antipodal-mark-pass | E3 D1 W2 F5 $1 | motion-system hover icon affordance | Send a mark out of one corner and back in from the opposite one,
 motion-system/argument-registered-function-transition | neutral  $2 | custom-property registered-property transition clip-path interpolation architecture | A CSS function interpolates only between the same shape in compa
 motion-system/attribute-driven-motion-hooks | neutral  $1 | architecture motion maintainability | Target animations off data- attributes, never class names. Styli

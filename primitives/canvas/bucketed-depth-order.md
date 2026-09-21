@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,performance,depth,particles,batching,quantise]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -38,3 +38,18 @@ marks.sort((a, b) => a.z - b.z)          // once, in the same pass that spawns t
 ```
 ⚠ Anything that adds marks later must insert in order rather than push, or new
 marks paint over near ones regardless of their depth.
+
+Where the scene has exactly one occluder — a hub, a core, a foreground plate
+everything else passes behind and in front of — neither the sort nor the
+buckets earn their keep. Draw the field with a predicate that admits only marks
+behind the divide, draw the occluder, then draw the field again with the
+predicate negated. Two passes over the same array, no depth key stored, and the
+split is a plane the author names rather than a value the data happens to
+carry.
+```js
+const pass = front => { for (const m of marks) if ((m.y >= SPLIT) === front) draw(m) }
+pass(false); drawCore(); pass(true)
+```
+⚠ Only correct for one occluder: two at different depths need three passes and
+the count keeps climbing. Marks that straddle the divide — a long trail, a wide
+sprite — pick one side per mark and pop as they cross it.

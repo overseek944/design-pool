@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,navigation,correctness,architecture]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: [aria-current-scrollspy-state]
@@ -26,3 +26,19 @@ root.dataset.activeSection = cur?.id ?? ''
 ```
 ⚠ `offsetTop` is stale after a reflow — re-resolve on `resize` and
 `hashchange`, and throttle the handler to one `requestAnimationFrame`.
+
+`offsetTop` per section is one forced layout per section per scroll frame, and
+the staleness is a second problem on top of the cost. Where the sections are
+rendered from a list the author controls, the offsets are already known: put
+each one's top in the same record that supplies its label, read the
+*container's* rect once, and add. One measurement serves every entry, nothing
+goes stale on resize because nothing was measured, and walking the list
+backwards lets the first match break out.
+```js
+const top = rail.current.getBoundingClientRect().top, band = innerHeight / 2
+let i = 0
+for (let k = items.length - 1; k >= 0; k--) if (top + items[k].offset <= band) { i = k; break }
+```
+⚠ The offsets are now a promise the layout has to keep — a section that reflows
+at a breakpoint, or copy that grows, silently desynchronises the rail. Give
+each record a per-breakpoint offset or measure once after fonts settle.

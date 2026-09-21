@@ -4,7 +4,7 @@ category: type
 tags: [type,wordmark,svg,pixel,asset-free]
 axes: {energy: 2, density: 3, weight: 4, finish: 2}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []

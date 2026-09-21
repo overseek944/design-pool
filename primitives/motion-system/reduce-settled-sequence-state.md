@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,accessibility,reduced-motion,state,sequence,correctness]
 axes: none
 cost: 2
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -83,3 +83,17 @@ pose is inline it takes `!important` to reach.
 ```
 ⚠ Nothing fails loudly. The page is correct for everyone who never set the
 preference, and broken only for the readers who did.
+
+An ambient canvas loop has the same shape and one extra trap. The still is one
+call to the *same* draw function — never a second code path that would drift —
+but the argument matters: at `t = 0` every phase is at its start value, which
+for anything built from sines or shared periods is the one frame where the
+scene is degenerate and aligned. Pass a time a second or two in, chosen by
+looking at it, then return before requesting a frame at all.
+```js
+if (matchMedia('(prefers-reduced-motion: reduce)').matches) return draw(ctx, 2.5)
+raf = requestAnimationFrame(step)                       // 1.5–4s into the loop
+```
+⚠ Return before the loop starts rather than cancelling inside it, or the first
+animated frame still paints. A mid-session flip of the query leaves the still
+stale unless the effect re-runs on `change`.

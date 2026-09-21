@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,performance,particles,light]
 axes: none
 cost: 2
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -83,3 +83,20 @@ g.addColorStop(1, `rgba(${c},0)`)
 ```
 ⚠ A tight core is a hard edge — bake at 48–64px square or the aliasing the soft
 disc was hiding comes back with it.
+
+A baked layer is static, which is the whole trade — until two of them are baked
+at different phases of the same cycle and cross-faded on a sine. Every member
+inside then appears to breathe independently, because each was drawn at a
+different point of its own phase in each bake, and the per-frame cost stays two
+`drawImage` calls rather than one loop over hundreds of marks. The two bakes
+must be a quarter cycle apart; half a cycle and the crossfade passes through a
+visibly flat mean.
+```js
+const A = bake(0), B = bake(Math.PI / 2)        // per-mark: 1 + k * sin(phase + q)
+const h = .5 + .5 * Math.sin(2 * Math.PI * t / PERIOD)
+ctx.globalAlpha = .35 + .65 * h;       ctx.drawImage(A, x, y)
+ctx.globalAlpha = .35 + .65 * (1 - h); ctx.drawImage(B, x, y)
+```
+⚠ Additive only if the floor is above zero — at `0 + 1·h` the pair dips to one
+faint layer at the crossover. Two bakes double the texture memory, so this is a
+trade against a third phase, not against the loop.
