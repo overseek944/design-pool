@@ -4,7 +4,7 @@ category: media
 tags: [media,responsive,performance,detail]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -39,3 +39,16 @@ someone or strands them in the frame. Zoom 1–1.4, origin as a percentage pair.
 ⚠ Scaling inside a fixed box crops without changing layout, but the element must
 clip — put `overflow: hidden` on the wrapper or the image spills over its
 neighbours.
+
+The same economy runs across *sections*, not only widths. Give a second
+full-bleed band the same file mirrored — `scaleX(-1)` on the layer, never on
+anything holding type — and it reads as a second photograph, because the eye
+scores a composition and a flipped one is a different composition. Vary one
+more term with it, a wash from the opposite edge or 8–15% of scale, so the two
+differ by more than handedness. One decode, one cache entry, one visual source.
+```css
+.band-b { background: var(--ground-shot) center / cover; transform: scaleX(-1) }
+```
+⚠ Only for non-representational material — grain, bokeh, gradient photography,
+texture. A mirrored face, hand, letterform or known object reads as a mistake
+before it reads as a variation.

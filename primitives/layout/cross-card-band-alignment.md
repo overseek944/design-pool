@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,subgrid,cards,hairline,datasheet,alignment]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -52,3 +52,17 @@ figcaption { padding: 8px 10px; min-height: 50px; min-height: calc(2lh + 16px) }
 `margin-top: auto` — because there a caption wrapping to one more line lifts its
 own figure and breaks the row's shared edge. Top-anchored captions just run longer
 and align fine.
+
+A ruled *list* inverts the release above. When a row of cards stacks there is
+nothing left to align against, but a column of hairline-separated rows is still
+aligning: its rhythm is the run of rules down the page, and entries of unequal
+length make that ragged at every width. The count therefore rises as the column
+narrows rather than going to zero — copy setting two lines at a full measure
+sets four at 390px.
+```css
+.row p { min-height: 2lh }
+@media (width <= 38rem) { .row p { min-height: 4lh } }
+```
+⚠ Take the count from the longest entry at each width, not the average: a floor
+set by the mean leaves the one long row still pushing its own rule down, which
+is the only ragged edge anyone notices.

@@ -4,7 +4,7 @@ category: media
 tags: [media,video,legibility,overlay,accessibility,responsive]
 axes: none
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -40,3 +40,19 @@ section instead of ending on a seam.
 ```
 ⚠ The two layers compound where they meet — measure the corner they share, not
 the average, and against the brightest frame.
+
+Where the copy is centred *on* the picture rather than beside it, the scrim is
+a pool and not a ramp: a radial ellipse of the section's own ground colour,
+solid under the words and gone by 75–85%, so the frame keeps full strength at
+its corners — where it was doing the work — and no plate appears anywhere. The
+ellipse is a layout fact exactly as the angle is. A centred copy block goes
+from wide-and-short to narrow-and-tall as the viewport closes, so restate the
+ellipse where the headline rewraps, not where the picture crops.
+```css
+.wash { background: radial-gradient(ellipse 62% 58% at 50% 52%,
+  var(--page) 0, rgb(from var(--page) r g b / .38) 62%, transparent 80%) }
+@media (width <= 38rem) { .wash { …ellipse 94% 56% at 50% 47%… } }
+```
+⚠ Only over a flat, known ground — against a gradient section the pool's centre
+matches and its shoulder smears. Score the text against the image at the pool's
+*edge*, since that is where alpha is lowest and detail highest.
