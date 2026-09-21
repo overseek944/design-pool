@@ -4,7 +4,7 @@ category: timing
 tags: [timing,state,loop,choreography,architecture,demo]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: [loop-gated-on-attention]
@@ -24,3 +24,16 @@ const step = () => { el.dataset.phase = RING[i].p
 ```
 ⚠ Every phase is held long enough to read, so each must be legible as a frame.
 Keep transitions shorter than the dwell they land in, or phases smear.
+
+Nest a second ring outside the first and one renderer plays several scripts:
+when the phase index wraps, advance a scene index modulo a list of phase tables.
+Nothing is per-scene except data, the seam between scenes is the same state
+change as any other wrap, and a scene is added by appending a row. Carry any
+positional value in the table as a percentage of the frame rather than pixels,
+or the script drifts off its targets at every width it was not authored at.
+```js
+i + 1 < SCENES[s].ring.length ? setPhase(i + 1)
+                              : (setScene((s + 1) % SCENES.length), setPhase(0))
+```
+⚠ Two rings means the outer period is the sum of the inner dwells — audit it,
+or a four-scene loop takes a minute to return and nobody sees scene one twice.

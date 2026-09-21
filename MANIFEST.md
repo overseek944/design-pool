@@ -1,6 +1,6 @@
 # Manifest
 
-489 primitives. Format: `category/id | axes cost | tags | gist`
+493 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -18,6 +18,7 @@ canvas/delay-binned-source-history | E2 D2 W2 F5 $4 | canvas field pointer motio
 canvas/derivative-width-edge-aa | neutral  $2 | shader canvas precision correctness detail | A procedural shape in a fragment shader gets no antialiasing for
 canvas/described-canvas-figure | neutral  $1 | canvas accessibility architecture diagram | A canvas carrying the argument — a diagram, a chart, a staged ex
 canvas/direction-sampled-burst | E4 D3 W2 F4 $2 | canvas particles generative distribution depth | Independent per-axis ranges can only ever fill a rectangle, so a
+canvas/displacement-driven-colour-ramp | E2 D2 W2 F5 $3 | shader gradient surface generative ambient | A displaced surface normally needs a light to be legible — norma
 canvas/document-spanned-viewport-field | neutral  $2 | canvas scroll background generative architecture performance | A decorative field belongs either to the viewport or to the docu
 canvas/dom-labels-in-normalised-canvas-space | neutral  $2 | canvas accessibility architecture correctness label | Text drawn with fillText cannot be selected, found, translated o
 canvas/eased-pointer-influence | E3 D2 W2 F5 $2 | shader interaction feel | Never feed raw pointer state to a shader. Keep a uMouseActive fl
@@ -41,6 +42,7 @@ canvas/packed-word-pixel-writes | neutral  $2 | canvas performance raster imaged
 canvas/palette-as-uniforms | neutral  $2 | shader color system | Pass the site's palette into the shader as named vec3 uniforms r
 canvas/parametric-thickness-variation | E3 D3 W2 F4 $3 | shader organic detail | Drive line or ribbon thickness with uThickness + uThickVary nois
 canvas/path-data-construction-overlay | E1 D4 W1 F5 $3 | svg path annotation overlay technical diagram | Artwork on the page already carries its own construction. Walk t
+canvas/periodic-organic-blend-scalar | E2 D3 W2 F4 $2 | shader generative noise parameters surface | Noise alone always reads organic; a periodic function alone alwa
 canvas/prebaked-gradient-sprite | neutral  $2 | canvas performance particles light | createRadialGradient allocates and rasterises on every call, so 
 canvas/precomputed-cell-attenuation-field | E1 D2 W2 F5 $2 | canvas legibility performance ambient contrast generative | A generative field at full strength everywhere either drowns the
 canvas/prerendered-renderer-understudy | neutral  $3 | canvas progressive-enhancement correctness cls state architecture | A canvas that may not run should degrade to a picture, not to an
@@ -187,6 +189,7 @@ layout/track-centre-spanning-rule | E1 D2 W1 F5 $1 | layout grid connector geome
 layout/translate-z-axonometric-stage | E1 D3 W2 F5 $3 | 3d depth diagram transform stage | A cutaway model — floor, walls, shelving, a mover — is buildable
 layout/truncating-head-fixed-trailer | neutral  $1 | layout flex truncation correctness cards responsive | A header row pairing a variable-length label with a status badge
 layout/uncooperative-corner-reserve | neutral  $1 | overlay third-party footer layering spacing occlusion | A vendor's floating launcher — support chat, consent, feedback —
+layout/unfilled-counterpart-panel | E1 D2 W1 F4 $1 | demo composition mock restraint rhetoric | A two-sided demonstration — the reader's product beside yours — 
 layout/unit-cell-quantity-field | E1 D4 W2 F4 $2 | layout data grid indicator accessibility density | Show a count as one mark per unit, not a bar. Differences a bar 
 layout/viewport-height-bands | neutral  $1 | layout responsive media-query ornament correctness | Some decisions belong to the short axis. An opening frame, a pin
 layout/viewport-unit-role-split | neutral  $1 | layout viewport mobile responsive correctness | A phone has three viewport heights, and picking one for the whol
@@ -279,6 +282,7 @@ motion-system/self-erasing-play-classes | neutral  $1 | architecture progressive
 motion-system/sequenced-root-view-transition | E2 D1 W2 F5 $2 | motion navigation transition accessibility | The default root view transition cross-fades outgoing and incomi
 motion-system/settling-strike-envelope | E4 D2 W3 F3 $2 | flicker envelope keyframe-table shader portable data | Something powering on does not fade — it strikes, drops out, cat
 motion-system/slot-permutation-rotation | E2 D3 W2 F5 $3 | motion grid state responsive | To show more items than a grid has cells, swap one cell at a tim
+motion-system/split-track-puppet-pointer | E2 D2 W2 F5 $2 | demo cursor choreography spring loop | A synthetic pointer demonstrating an interface is two motions, n
 motion-system/stepped-follow-transition | E3 D1 W2 F3 $1 | motion pointer transition steps character | Anything that follows the pointer glides, and glide reads as liq
 motion-system/svg-geometry-keyframes | E3 D2 W2 F5 $1 | motion svg diagram precision detail | r, cx, cy, x, y and width are CSS properties on SVG, not just at
 motion-system/transient-class-scoped-transition | neutral  $2 | motion-system view-transition theme correctness reduced-motion | A view transition, or a global colour transition, must animate f
