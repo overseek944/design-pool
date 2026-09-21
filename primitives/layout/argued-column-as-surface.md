@@ -4,7 +4,7 @@ category: layout
 tags: [layout,table,comparison,surface,contrast,hierarchy]
 axes: {energy: 1, density: 3, weight: 4, finish: 5}
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -81,3 +81,20 @@ Radius one step under the wrapper's; tint 3–6%.
 ```
 ⚠ A recessed spine and an inverted argued column in one table cancel — the eye
 reads two panels and no claim. Pick one.
+
+Where the matrix is built from opaque cells over a rule-coloured ground — the
+grid whose `gap` *is* its hairlines — none of the above is available: a lift, a
+shadow or a scale breaks the seams the construction depends on, and an inverted
+fill closes the gap on both sides of the column. Mark it by receding instead.
+Drop the argued cell to the page ground while its peers hold the surface tint,
+and replace the two seams it shares with an accent rule of the same width the
+gap already reserved. The column changes depth and colour without changing one
+dimension, so the field stays seamless. Rule 2–3px against a 1px gap.
+```css
+.grid   { display:grid; gap:1px; background:var(--rule); overflow:hidden }
+.cell   { background: var(--surface) }
+.argued { background: var(--page); box-shadow: -2px 0 var(--accent), 2px 0 var(--accent) }
+```
+⚠ The rails paint outside the cell box, so the first or last column loses one
+to the wrapper's `overflow`. Keep the argued column interior, or inset the
+wrapper's border by the rail width.

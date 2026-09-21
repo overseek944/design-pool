@@ -4,7 +4,7 @@ category: surface
 tags: [diagram,hairline,precision,detail,schematic]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []

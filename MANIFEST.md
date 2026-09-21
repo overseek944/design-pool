@@ -1,6 +1,6 @@
 # Manifest
 
-464 primitives. Format: `category/id | axes cost | tags | gist`
+467 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -185,6 +185,7 @@ light/broadcast-light-source | E2 D2 W2 F5 $3 | light gradient custom-property a
 light/counter-rotated-specular-layer | E2 D2 W3 F5 $2 | light gradient rotation material 3d | An object with its highlight painted into its own background spi
 light/emitted-light-not-borders | E2 D1 W3 F5 $2 | color effect depth restraint | Separate surfaces with glow and luminance rather than 1px solid.
 light/gradient-through-text | E3 D2 W4 F3 $2 | color type effect | background-clip: text with a transparent fill turns a headline i
+light/offframe-apex-ray-fan | E2 D3 W2 F4 $1 | gradient conic ground atmosphere ambient cheap | A radial wash gives light a direction but no structure. A repeat
 light/offscreen-anchored-wash | E1 D2 W2 F4 $1 | gradient ground atmosphere ambient color cheap | A radial gradient centred inside its box shows its hot core and 
 light/pointer-anchored-surface-light | E2 D2 W2 F5 $2 | light pointer hover gradient custom-properties surface | Let a panel light where the pointer is rather than uniformly. On
 light/relit-state-fill | E2 D2 W3 F4 $1 | light gradient hover control surface | A gradient-filled control usually signals hover by getting brigh
@@ -454,9 +455,11 @@ type/optical-width-text-fit | E1 D2 W4 F5 $3 | type fit measurement display resp
 type/origin-flipped-wipe-underline | E3 D1 W2 F5 $1 | underline link hover transform-origin wipe cheap | A scaleX underline that grows from one end and shrinks back to i
 type/padded-ordinal-counter | E1 D2 W2 F4 $1 | type list counter detail technical | 01 02 … 09 10 numbering without hand-written zeros and without t
 type/role-leading-ladder | E1 D2 W3 F5 $1 | type tokens scale rhythm precision | Leading is a function of role, not of size, and the ladder is st
+type/rule-ranked-aside-tier | E1 D2 W2 F5 $1 | type hierarchy register annotation cheap | A page that argues carries asides at several ranks, and sizing t
 type/serif-accent-in-technical-context | E1 D2 W3 F5 $1 | type contrast editorial restraint | One high-contrast serif, used sparingly against a geometric sans
 type/sourced-display-figure | neutral  $1 | type figures provenance correctness editorial accessibility | A number set at display size stops being prose and becomes a cla
 type/state-dimmed-subordinate-tier | E1 D2 W2 F5 $1 | type hierarchy state accessibility contrast | Where several panels of a stepper are on screen at once and one 
+type/struck-superseded-figure | E1 D2 W3 F5 $1 | type figures comparison hierarchy decoration | A before/after figure pair usually spends a label on each side. 
 type/sub-baseline-marker-band | E2 D2 W3 F3 $1 | type emphasis highlight contrast accessibility | A full accent block behind a phrase has to clear 4.5:1 against t
 type/three-family-stack | E2 D3 W3 F4 $1 | type system | Geometric sans (body/headline) + mono (chrome/code) + display se
 type/tonal-lead-in-clause | E1 D2 W3 F5 $1 | type emphasis hierarchy editorial colour | Carry two levels inside one sentence: the clause holding the cla

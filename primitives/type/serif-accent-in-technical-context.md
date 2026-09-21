@@ -4,7 +4,7 @@ category: type
 tags: [type,contrast,editorial,restraint]
 axes: {energy: 1, density: 2, weight: 3, finish: 5}
 cost: 1
-seen: 20
+seen: 21
 requires: []
 conflicts: []
 completes: []
@@ -81,3 +81,18 @@ has already outgrown the word accent.
 ⚠ With no roman in the set an `<em>` nested inside the accent has nothing to
 toggle to and the engine synthesises an upright — check the nesting cases before
 dropping the second file.
+
+The dose extends cleanly from headings to *figures* and stops there. Set the
+metric values, prices and counts in the display serif while every label and unit
+beside them stays mono, and the page's quantitative claims inherit the editorial
+voice instead of reading as telemetry. It costs nothing the headings did not
+already pay for, because figures — like a display line — never run small: hold
+them at 22px and up. The rule that keeps it from spreading is that the serif
+takes the number and never the label under it.
+```css
+.metric .value { font-family: var(--serif); font-size: clamp(22px, 3vw, 36px) }
+.metric .label { font-family: var(--mono); font-size: 13px }
+```
+⚠ Most display serifs ship proportional oldstyle figures — a column of them
+rags. Request `font-variant-numeric: tabular-nums lining` and verify the face
+carries it, or set figures that must align in the mono after all.
