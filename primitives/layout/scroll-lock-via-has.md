@@ -4,7 +4,7 @@ category: layout
 tags: [overlay,correctness,overflow,dialog,cls]
 axes: none
 cost: 1
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -77,3 +77,18 @@ body.style.cssText = `position:fixed;top:${-y}px;left:0;width:100%`
 ⚠ Clearing the styles without the `scrollTo` drops the reader at the top of the
 page. Anything sampling `scrollY` while the lock is up reads 0, so a scroll-
 driven scene must be frozen for the duration rather than left running.
+
+A lock that is a *design* rule rather than an overlay rule needs an exit in the
+same breath. Pinning a one-screen composition to `100dvh` with `overflow:
+hidden` is correct until the thing inside it grows — a form gaining a step, a
+list gaining a row — and then the last control sits below the fold, clipped and
+unreachable, with nothing on screen to say so. Write the release against the
+same state the growth is keyed to, so the page becomes an ordinary document the
+moment it stops being one screen.
+```css
+html:has(.stage)            { height: 100%; overflow: hidden }
+html:has(.stage.is-flowing) { height: auto;  overflow: visible }
+```
+⚠ Test at the shortest viewport the layout claims to support, not at the
+designer's. A laptop with a browser toolbar open is 100–200px shorter than the
+mock, which is exactly where this fails and where it is never checked.

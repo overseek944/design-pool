@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,accessibility,required]
 axes: none
 cost: 1
-seen: 69
+seen: 70
 requires: []
 conflicts: []
 completes: []
@@ -221,3 +221,17 @@ whose own reduced-motion handling is already correct.
   scroll-behavior: auto !important; transition-duration: .001ms !important;
   animation-duration: .001ms !important; animation-iteration-count: 1 !important } }
 ```
+
+The drawn still frame has a failure the animated path cannot have: nothing
+redraws it. A `ResizeObserver` delivers an initial callback on `observe()`,
+after the one-shot draw, and a handler that resizes the backing store wipes the
+bitmap — reassigning `width` clears it even at the same value. Under rAF the
+next frame repaints and nobody notices; under `reduce` the surface is simply
+blank, and only for the readers who asked for less motion. Redraw from inside
+the resize handler, never resize alone.
+```js
+const fit = () => { c.width = c.clientWidth * dpr; draw() }   // draw, not just size
+new ResizeObserver(fit).observe(c)
+```
+⚠ Verify by reading pixels, not by eye — a canvas that never drew and one whose
+marks are faint look identical in a screenshot.

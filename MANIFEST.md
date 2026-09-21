@@ -1,6 +1,6 @@
 # Manifest
 
-647 primitives. Format: `category/id | axes cost | tags | gist`
+650 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -22,6 +22,7 @@ canvas/composed-arrival-field | E3 D3 W2 F5 $2 | shader stagger clock uniform re
 canvas/context-loss-rearm | neutral  $2 | canvas correctness lifecycle architecture | A 2D context is lost the same way a WebGL one is — a GPU process
 canvas/curl-of-potential-field | E2 D3 W2 F4 $3 | canvas flow field generative motion | Advecting anything through a hand-made velocity field pools it i
 canvas/curvature-parametrised-sheet-wrap | E3 D3 W2 F5 $4 | canvas geometry projection morph points 3d | A flat sheet and a sphere are one surface at two curvatures, so 
+canvas/decay-composited-frame-history | E3 D3 W2 F4 $1 | canvas trail composite motion field | Trails normally cost a stored pose history per mark. Never clear
 canvas/delay-binned-source-history | E2 D2 W2 F5 $4 | canvas field pointer motion generative | A field evaluated from the driver's current pose updates everywh
 canvas/density-terminated-raster | E1 D3 W3 F4 $2 | canvas texture image mask edge generative | A generated raster ends at a rectangle unless something is done 
 canvas/derivative-width-edge-aa | neutral  $2 | shader canvas precision correctness detail | A procedural shape in a fragment shader gets no antialiasing for
@@ -29,6 +30,7 @@ canvas/described-canvas-figure | neutral  $1 | canvas accessibility architecture
 canvas/difference-gated-temporal-blend | neutral  $3 | canvas shader texture performance correctness simulation | Blending each frame into the last kills the per-pixel boil of a 
 canvas/direction-sampled-burst | E4 D3 W2 F4 $2 | canvas particles generative distribution depth | Independent per-axis ranges can only ever fill a rectangle, so a
 canvas/displacement-driven-colour-ramp | E2 D2 W2 F5 $3 | shader gradient surface generative ambient | A displaced surface normally needs a light to be legible — norma
+canvas/distance-phased-driver-ripple | E3 D2 W2 F5 $2 | canvas pointer field wave falloff | A proximity falloff gives a driver one well: a dent following th
 canvas/document-spanned-viewport-field | neutral  $2 | canvas scroll background generative architecture performance | A decorative field belongs either to the viewport or to the docu
 canvas/dom-labels-in-normalised-canvas-space | neutral  $2 | canvas accessibility architecture correctness label | Text drawn with fillText cannot be selected, found, translated o
 canvas/drawn-texture-set | neutral  $2 | canvas texture procedural weight architecture scene | Every map a scene needs — worn floor, printed label, belt tread,
@@ -111,6 +113,7 @@ interaction/anchor-only-nav-collapse | neutral  $1 | navigation responsive acces
 interaction/auto-advance-yields-to-input | E2 D2 W2 F5 $2 | carousel autoplay accessibility state | A self-advancing sequence must stop the instant a reader touches
 interaction/autofill-proofed-honeypot | neutral  $1 | accessibility correctness form detail progressive-enhancement | A decoy field is the alternative to a visible challenge widget a
 interaction/axis-swapped-disclosure | neutral  $2 | disclosure responsive layout-animation breakpoint accessibility | A detail panel opens downward in a stacked column and sideways b
+interaction/background-drawn-control-affordance | neutral  $1 | forms native-control dark-ground affordance select | appearance: none on a <select> deletes its arrow, and it takes n
 interaction/breakpoint-dual-mode-details | neutral  $2 | disclosure navigation responsive accessibility progressive-enhancement | One <details> can be a permanently-open sidebar above a breakpoi
 interaction/breakpoint-scoped-overlay-dismiss | neutral  $1 | navigation overlay responsive correctness accessibility | An overlay that exists only below a breakpoint — a mobile nav sh
 interaction/clamped-drag-pose-drift-home | E2 D1 W4 F5 $2 | pointer interaction 3d rotation detail | An object the reader can turn should not map pointer position to

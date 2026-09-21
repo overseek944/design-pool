@@ -4,7 +4,7 @@ category: timing
 tags: [timing,motion,sequencing,choreography,tokens]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,17 @@ per-item index rides on top for lists.
 ```
 ⚠ The offsets are additive, so the last role sets the group's true length —
 check it against the gap to the next group or two cascades overlap.
+
+A row's separators are not items and should not take the item's offset. Dots,
+slashes and pipes cascaded on the same index arrive *after* the word they
+introduce, so the row lands as words-then-punctuation rather than as one sweep.
+Bias each separator ahead of its follower by a fraction of the step — it reads
+as the line being drawn left to right instead of assembled. Lead 30–50% of the
+step.
+```css
+.item { animation-delay: calc(var(--i) * 55ms) }
+.sep  { animation-delay: calc(var(--i) * 55ms - 25ms) }   /* clamp at 0 */
+```
+⚠ A negative delay is not a lead — it starts the animation already part-played.
+Clamp the first separator's value at zero, or it appears fully formed while
+everything after it is still arriving.

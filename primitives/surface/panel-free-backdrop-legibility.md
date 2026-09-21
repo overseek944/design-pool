@@ -4,7 +4,7 @@ category: surface
 tags: [backdrop-filter,legibility,photography,contrast,surface,type]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []
@@ -137,3 +137,21 @@ second gradient into the same mask to clear a band or a foot as well.
 ⚠ Only for decoration you are free to delete — the same mask over a photograph
 or a chart removes content, not noise. Size the clear zone from the longest line
 the block can wrap to, not from the copy in the design.
+
+The objection to a scrim over footage — an alpha tuned to one frame fails
+against the brightest — is an objection to tuning it at the text. Bound the
+source instead: drop the clip's own `opacity` and lay one fixed full-viewport
+gradient over it, and the ceiling is a number you chose rather than whatever
+the grade reaches. Contrast is then settled for every frame before the copy is
+placed, which frees the blur to do only the job blur is good at — killing
+busyness under the words, feathered by a radial mask so the pool has no edge
+and the rest of the picture stays sharp. Footage 0.5–0.7, blur 18–30px.
+```css
+.clip  { opacity: .6 }
+.plate::before { backdrop-filter: blur(26px) saturate(1.12);
+  mask-image: radial-gradient(56% 50% at 50% 50%, #000 34%, #0008 62%, #0000 82%) }
+```
+⚠ Add `saturate()` alongside the blur — averaging neighbouring pixels pulls
+colour toward grey, so an unsaturated pool reads as a dirty smudge over graded
+footage. An SVG `url()` filter in the same list disables `backdrop-filter`
+outright in Chromium.
