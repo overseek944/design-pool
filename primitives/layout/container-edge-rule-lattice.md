@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,hairline,precision,responsive,technical]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 2
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []
@@ -69,3 +69,17 @@ makes them read as a sheet rather than a border.
 ```
 ⚠ The border sits inside the box, so the column's inline padding has to absorb
 it or the first character rests on the rule.
+
+Horizontal rules that should *subdivide* a box rather than tile it want
+percentage stops in a single non-repeating gradient, not a `background-size`
+pitch. Hard stops a percentage point apart give a hairline; the count is then
+fixed and the spacing proportional, so a band reads as quarters at every height
+instead of gaining a rule each time the section grows. Three interior rules is
+usually the limit before it reads as ruled paper.
+```css
+.band { background-image: linear-gradient(var(--rule) 0 0) }   /* or, for N: */
+  /* linear-gradient(#0000 24%, var(--rule) 25% 25.3%, #0000 26% 49%, …) */
+```
+⚠ A stop width in percent is a fraction of the box, so the rule thickens as the
+section grows. Where the hairline must stay one pixel, the pitch has to come off
+`background-size` and the count stops being fixed.

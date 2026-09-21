@@ -1,6 +1,6 @@
 # Manifest
 
-611 primitives. Format: `category/id | axes cost | tags | gist`
+614 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -409,6 +409,7 @@ perf/velocity-scaled-preload-margin | neutral  $2 | perf lazy-load scroll images
 perf/will-change-on-split-children | neutral  $1 | motion performance promotion | Split text creates dozens of nodes animated simultaneously; with
 reveal/arc-window-overstroke | E3 D2 W3 F5 $2 | draw-on highlight canvas pulse path | A path being drawn reads as inert when the settled trail and the
 reveal/char-opacity-drift | E3 D4 W2 F5 $4 | type motion reveal ambient | Per-character with opacity + small y, will-change:opacity,transf
+reveal/flow-preserved-step-reveal | E3 D2 W2 F3 $1 | reveal text steps clip-path typing layout-safety | A left-to-right text reveal animated on width leaves normal flow
 reveal/glyph-scramble-settle | E4 D3 W2 F3 $2 | type reveal motion technical text | Resolve a label out of noise rather than fading it in: hold the 
 reveal/index-thresholded-progress-gate | E2 D2 W2 F5 $1 | reveal scroll custom-properties progress cheap svg | One scalar can sequence a whole set with no tween per member and
 reveal/lit-uncovering-front | E3 D2 W3 F4 $2 | reveal wipe blend light scroll edge | Revealing by retreating an opaque cover, rather than by fading o
@@ -479,6 +480,7 @@ scroll/sticky-as-cheap-pin | E1 D2 W2 F3 $1 | scroll layout performance | positi
 scroll/tall-target-intersection-clause | neutral  $1 | scroll correctness observer reveal | intersectionRatio is a fraction of the element, so a section tal
 scroll/transform-hosted-scroll-wrapper | neutral  $3 | scroll architecture correctness transform pin | Smoothing the whole page without a library: a spacer takes the m
 scroll/whole-item-rail-page | neutral  $1 | scroll rail pagination control measurement correctness | An arrow that scrolls a horizontal rail by a fixed distance — 30
+surface/addressable-cell-lattice | E1 D3 W1 F4 $2 | lattice grid hairline pointer-events node-budget decoration | A hairline lattice drawn as two gradients costs one node and ans
 surface/arc-length-colour-ramp-stroke | E3 D2 W2 F5 $3 | svg stroke gradient color dash effect | An SVG gradient paints in the element's box, so a stroke that cu
 surface/axis-stretched-noise-veil | E1 D3 W2 F4 $3 | surface noise svg-filter gradient atmosphere blend-mode | Evenly blurred noise reads as grain. Blur turbulence anisotropic
 surface/backdrop-blur-tier-system | E1 D3 W3 F4 $3 | surface depth glass | Treat backdrop blur as a depth scale, not a decoration: sm for i
@@ -556,6 +558,7 @@ timing/overshoot-for-pop-elements | E4 D2 W2 F3 $1 | motion easing delight | bac
 timing/parked-tail-loop-gap | E3 D1 W2 F4 $1 | motion timing rhythm detail | A sweep that should pass, rest, then pass again cannot get its r
 timing/percent-of-master-duration | E2 D3 W2 F5 $2 | timing choreography keyframes css-animation token sequence | For a long multi-beat loop, give every participating element the
 timing/phase-offset-as-sequence | E3 D2 W2 F4 $1 | motion sequencing rhythm ambient css | Same period, different phase. Give every looping indicator in a 
+timing/press-origin-radial-stagger | E4 D3 W2 F4 $2 | stagger interaction radial delay field hypot | A field of cells that answers to being pressed should propagate 
 timing/production-timing-vocabulary | E2 D2 W2 F5 $1 | motion easing duration reference system | A coherent set beats a clever one. Durations cluster tightly and
 timing/rate-integrated-phase-clock | neutral  $1 | motion timing correctness loop | A loop whose speed is a variable — tied to scroll position, a ho
 timing/role-offset-cascade | E3 D2 W2 F5 $1 | timing motion sequencing choreography tokens | Split a cascade into two independent halves: the group's entry t

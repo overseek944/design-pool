@@ -4,7 +4,7 @@ category: timing
 tags: [motion,easing,delight]
 axes: {energy: 4, density: 2, weight: 2, finish: 3}
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -31,3 +31,14 @@ period.
 ```
 ⚠ The pair of equal stops either side of the overrun is what reads as contact —
 a single stop passes through the extreme and the arrival disappears.
+
+The keyframe form and a back-easing shorthand do not stack — they compound. The
+shorthand's timing function is re-applied to *every* segment, so a curve whose
+output passes 1 overshoots each authored stop as well as the target: stops at
+50/70/85% under `cubic-bezier(.34,1.56,.64,1)` reach about 1.5× the declared
+extreme and ring an extra time. Author the bounce in one place. Stops carry it,
+and the shorthand stays `linear` or `ease-out`; or one `back.out` carries it and
+the keyframes stay a plain two-stop move.
+⚠ The compounded peak is invisible in the stylesheet — it is in neither the
+stops nor the curve. Sample the computed value mid-flight rather than reading
+the numbers.
