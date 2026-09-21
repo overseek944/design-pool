@@ -4,7 +4,7 @@ category: media
 tags: [media,video,performance,intersection-observer,accessibility,bandwidth]
 axes: none
 cost: 2
-seen: 16
+seen: 17
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -159,3 +159,10 @@ document.readyState === 'complete' ? go() : addEventListener('load', go, { once:
 ```
 ⚠ Delay ranges 30–80ms and 300–600ms; past that the still reads as a failed
 video. Clear the timer on unmount, or a route change plays a detached element.
+
+The root margin is not one number for the page: it buys time proportional to how
+much the asset weighs and how fast the reader is travelling past it. A decorative
+card loop is fine at the 150–300px above; a heavy below-fold feature clip wants
+400–800px, so the first frame is decoded before the section is framed rather than
+after. Past roughly a viewport it stops being a preload and becomes an eager
+fetch of something most readers never reach.

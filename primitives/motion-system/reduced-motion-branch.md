@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,accessibility,required]
 axes: none
 cost: 1
-seen: 67
+seen: 68
 requires: []
 conflicts: []
 completes: []
@@ -208,3 +208,16 @@ meets a neighbour is worth keeping, a wipe never is.
 ⚠ Removing the mask also removes any softening the layer relied on at its own
 edges — restate a static mask rather than dropping it where the fade is part of
 the design.
+
+A blanket that collapses durations still leaves `scroll-behavior: smooth` in
+force, so every in-page jump and every `scrollIntoView` keeps animating — the one
+motion this preference most reliably needs to stop. It is not a duration to
+shorten and has to be named separately in the same reset, on the scroll
+container as well as the root. Scope the blanket to the subtree you author
+rather than `*`, or it also flattens motion inside an embedded player or map
+whose own reduced-motion handling is already correct.
+```css
+@media (prefers-reduced-motion: reduce) { .app, .app *, .app ::before {
+  scroll-behavior: auto !important; transition-duration: .001ms !important;
+  animation-duration: .001ms !important; animation-iteration-count: 1 !important } }
+```

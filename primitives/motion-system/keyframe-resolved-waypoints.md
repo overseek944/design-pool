@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,keyframes,custom-properties,architecture,choreography]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -29,3 +29,17 @@ a resized stage for free.
 mid-cycle jumps unless it is `@property`-registered. Unregistered, an invalid or
 missing waypoint drops the whole declaration and the element sits at its base
 transform rather than failing visibly.
+
+The same document-global rule is a silent trap in the other direction: an
+`animation` written into a `style` attribute resolves its name against global
+keyframes only, and every build-time scoping layer — CSS Modules, styled-jsx,
+scoped SFC styles — rewrites `@keyframes` names. The reference then matches
+nothing, and there is no error: the element simply sits still. Emit the keyframes
+unscoped beside the component and namespace the name by hand, or move the
+`animation` into the scoped class where the rename reaches both halves.
+```jsx
+<style>{`@keyframes card-in { from { opacity: 0 } }`}</style>
+<li style={{ animation: `card-in ${240 + i * 60}ms ease-out both` }} />
+```
+⚠ Hand-namespaced globals collide across components — prefix by owner, not by
+effect, or the second `fade-in` on the page silently wins.

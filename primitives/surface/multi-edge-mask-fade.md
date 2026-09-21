@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,edge,composition,bleed]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 42
+seen: 43
 requires: []
 conflicts: []
 completes: []
@@ -150,3 +150,15 @@ ancestor that already owns the element's own mask. Strip 32–64px.
 ⚠ `#fff0` and `transparent` are the same premultiplied colour, but a named
 `transparent` against a dark ground still ramps through black in sRGB — always
 write the ground's own hue at zero alpha.
+
+`closest-side` and `farthest-side` retire the explicit-ellipse caveat above: the
+keyword sizes the gradient to the element, so the falloff is written as a
+fraction of the box and holds at any width with no px to retune. It is what makes
+a square image sit *on* a surface rather than on top of one — the corners go
+first, so nothing reads as a cropped rectangle. Opaque to 50–65%, clear by
+92–100%; `farthest-side` where the shape must still reach the corners.
+```css
+img { mask-image: radial-gradient(closest-side, #000 55%, transparent 96%) }
+```
+⚠ Keep the `-webkit-mask-image` twin — an unprefixed-only rule is ignored
+outright in older WebKit and the image ships as a hard square, not a soft one.
