@@ -1,6 +1,6 @@
 # Manifest
 
-721 primitives. Format: `category/id | axes cost | tags | gist`
+725 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -257,6 +257,7 @@ layout/overflow-clip-over-hidden | neutral  $1 | overflow correctness accessibil
 layout/per-edge-clip-polygon | neutral  $1 | overflow clip correctness bleed | overflow only works per axis, so there is no way to crop one edg
 layout/prefix-selected-segment-level | E1 D3 W2 F4 $1 | css-only state accessibility data detail cheap | A discrete level — three of ten segments lit — usually costs a c
 layout/provenance-split-label-row | E1 D3 W1 F5 $1 | layout type label truncation provenance correctness detail | A row of labels usually holds two kinds at once: terms from a co
+layout/published-occupancy-inset | neutral  $2 | layout custom-properties panel viewport architecture correctness | A side panel that pushes the page rather than covering it needs 
 layout/rail-preserved-track-collapse | E1 D3 W2 F5 $1 | layout grid responsive rhythm editorial | A three-track row — marker rail, title, supporting column — usua
 layout/ranked-apparatus-column | E1 D3 W1 F5 $1 | layout grid metadata responsive editorial hierarchy | Section apparatus — an ordinal, a two-word gloss, a mark — belon
 layout/ratio-anchored-scene-geometry | neutral  $2 | layout architecture responsive tokens geometry css-only | A layered illustration sized in pixels at one breakpoint and re-
@@ -349,6 +350,7 @@ media/pseudo-element-pictogram-set | E1 D2 W2 F4 $2 | icon css-only pseudo-eleme
 media/ratio-split-view-pair | E1 D3 W2 F4 $1 | media figure aspect grid editorial | One subject argued from two views — as photographed, and as the 
 media/reduce-restored-media-transport | neutral  $1 | media video accessibility scroll scrub correctness | Where scroll is the only transport for a continuous medium, pref
 media/reduce-swapped-clip-still | neutral  $1 | media video accessibility reduced-motion correctness | An autoplaying loop cannot honour prefers-reduced-motion by paus
+media/render-fault-reserved-slot | neutral  $1 | media correctness third-party layout-shift fallback lifecycle | A vendor visual runtime — vector player, chart, map, viewer — ca
 media/seam-dissolved-video-loop | E2 D1 W3 F5 $3 | media video loop crossfade seam ambient | loop cuts from the last frame to the first, and unless the clip 
 media/seek-throttled-video-scrub | E3 D2 W3 F5 $4 | media video scroll scrub timeline performance | A video can be the scrubbed property: write currentTime from scr
 media/self-masked-cutout-overlay | E1 D2 W3 F4 $2 | media mask color effect detail | A cut-out subject on transparency cannot be graded from CSS — an
@@ -497,6 +499,7 @@ reveal/overhung-skew-fill-sweep | E3 D2 W2 F5 $2 | reveal interaction motion det
 reveal/radius-held-inset-wipe | E3 D2 W2 F5 $2 | reveal clip-path wipe panel motion | A panel widening under clip-path: inset() squares its corners of
 reveal/step-held-band-tear | E4 D2 W3 F2 $2 | motion easing text clip-path reveal glitch | An arrival that should read as a signal resolving rather than fa
 reveal/token-indexed-reading-front | E2 D2 W3 F4 $2 | type scroll progress reveal colour | Text that inks in as it is read cannot be a gradient sweep: a gr
+reveal/torn-wrapper-reveal | E5 D2 W3 F3 $2 | reveal entrance sequence keyframes reward | Something given rather than loaded earns an opening: destroy the
 reveal/trailing-mask-sweep | E3 D3 W2 F4 $2 | reveal mask scan grid sweep technical | Reveal a field — a measurement grid, a texture, a dot matrix — b
 reveal/word-mask-variant | E4 D3 W3 F4 $2 | type motion reveal | Same nested-mask structure at word granularity (inline-block on 
 scale/absence-conditioned-child-default | neutral  $1 | tokens specificity component-api utility cascade correctness | A component wants to size the icons and rules handed to it, then
@@ -612,6 +615,7 @@ surface/paired-hard-shadow-sheet | E1 D2 W2 F4 $1 | surface depth border detail 
 surface/panel-free-backdrop-legibility | E1 D2 W2 F5 $2 | backdrop-filter legibility photography contrast surface type | Copy over a photograph usually gets a plate, and the plate break
 surface/phase-matched-gradient-drift | E2 D2 W2 F4 $1 | surface gradient loop ambient background | An oversized gradient translated behind its box gives a ground a
 surface/polarity-crossing-panel-ground | E1 D2 W4 F5 $1 | surface gradient contrast color panel card | One panel can carry both polarities of type. Ramp its own ground
+surface/progress-raised-horizon-band | E2 D1 W3 F5 $2 | surface gradient scroll scrub ground section-transition | A light section handed to a dark one by a fixed gradient is a pr
 surface/projected-lattice-ground | E2 D3 W1 F4 $2 | surface grid texture ambient depth geometry | A flat hairline lattice reads as a sheet behind the page. Tilt t
 surface/quantised-ground-transition | E1 D2 W2 F3 $1 | surface color gradient tokens detail | Two flat sections meeting edge to edge give a hard seam; a smoot
 surface/radius-inset-connector-rail | E1 D3 W1 F5 $1 | diagram hairline precision detail schematic | Connectors in a node diagram are hairlines on pseudo-elements, n

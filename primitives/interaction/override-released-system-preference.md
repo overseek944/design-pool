@@ -4,7 +4,7 @@ category: interaction
 tags: [theme,preference,accessibility,correctness,state]
 axes: none
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -27,3 +27,16 @@ if (read() === null) {                        // null until the user picks
 ⚠ Storage throws in partitioned and private contexts — treat a failed read as no
 choice and a failed write as did not persist, never as a reason to skip applying
 the value. Offer a way back to the default.
+
+Storing `system` as an explicit third value, rather than deleting the key, is
+what gives the ⚠ above its way back to the default: absent and following are no
+longer the same state, so a three-way control can return the reader to the
+system without the storage layer having to distinguish "never chose" from
+"chose to follow". The listener attaches for exactly one of the three.
+```js
+const p = read() ?? 'system'                 // 'light' | 'dark' | 'system'
+const resolved = p === 'system' ? (mqDark.matches ? 'dark' : 'light') : p
+```
+⚠ Two states now resolve to the same appearance, so a control that reflects only
+the *resolved* value cannot show which one is set — the toggle has three
+positions or it is lying about one of them.

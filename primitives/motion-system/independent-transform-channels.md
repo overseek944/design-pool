@@ -4,7 +4,7 @@ category: motion-system
 tags: [transform,transition,architecture,composition,state]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,18 @@ with their own transitions, so one concern takes a channel and the other keeps
 ```
 ⚠ Order is fixed — translate, rotate, scale, then `transform` — so the channels
 cannot be reordered around each other.
+
+The rival is often not a second declaration but a running `@keyframes`. An
+animation's computed value outranks an inline style, so a per-frame
+`el.style.transform` write against an element carrying an infinite loop is
+silently dropped — no error, no partial effect, the write simply never lands.
+Nest instead of negotiating: the loop keeps the inner element, script drives the
+outer one, and the two compose as ancestor and descendant transforms.
+```html
+<div class="drifts" style="transform: translate3d(0,120px,0)">  <!-- script -->
+  <i class="twinkles"></i>                       <!-- animation: twinkle 3s -->
+</div>
+```
+⚠ Two boxes per mark, so a field of hundreds doubles its node count — the
+alternative is moving the loop onto a channel the script does not use, which
+works until the second concern wants it too.

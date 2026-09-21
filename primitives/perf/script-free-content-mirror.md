@@ -4,7 +4,7 @@ category: perf
 tags: [perf,progressive-enhancement,correctness,content,architecture]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -29,3 +29,17 @@ comment beside it and treat the copy as a release obligation.
 that does execute script sees both. Mirror the argument only — a copy of the
 whole component tree will not be maintained, and a drifted mirror is worse than
 none.
+
+An edge worker can do better than `<noscript>`: inject the real markup *into the
+mount node* for the routes that have something to say, and crawlers that do run
+script see a populated document rather than an empty root. That markup then has
+to be torn down before the deferred bundle renders, or it flashes and is
+replaced. A synchronous script after the root element, keyed off an attribute
+the worker sets, is the whole teardown — and a no-op on every route without it.
+```html
+<div id="root" data-seo-injected>…</div>
+<script>var r = document.querySelector('#root[data-seo-injected]')
+  if (r) { r.innerHTML = ''; r.removeAttribute('data-seo-injected') }</script>
+```
+⚠ It must be a blocking inline script above the module bundle, not `defer`ed —
+ordering is the only thing preventing the flash.

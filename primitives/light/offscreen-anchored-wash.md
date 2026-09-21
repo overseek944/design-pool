@@ -4,7 +4,7 @@ category: light
 tags: [gradient,ground,atmosphere,ambient,color,cheap]
 axes: {energy: 1, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 13
+seen: 14
 requires: []
 conflicts: []
 completes: [eased-fade-stop-ramp]
@@ -148,3 +148,16 @@ Diameter 45–70vmax, offset 20–45vmax.
 ⚠ `vmax` grows with the long axis, so a short wide window scales it off-screen
 while a tall narrow one fills the fold with it — check both orientations, not
 just two widths.
+
+A lamp fixed to the viewport rather than to its section has no way to leave, so
+it goes on lighting every ground the page scrolls to — including the dark one it
+was never mixed against. Retire it on the same scroll it belongs to: opacity
+ramping to zero across the opening view's own height, which costs one composited
+property and keeps the lamp available to a reader who scrolls back. Peak .25–.45,
+gone by 300–500px.
+```js
+lamp.style.opacity = String(PEAK * Math.max(0, 1 - scrollTop / FADE))
+```
+⚠ `position: fixed` on a blurred element is a composited buffer held for the
+whole session, not just the first view — `visibility: hidden` it at zero, or the
+compositor keeps paying for a lamp nobody can see.

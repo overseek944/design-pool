@@ -4,7 +4,7 @@ category: color
 tags: [color,tokens,theming,architecture,dark]
 axes: none
 cost: 2
-seen: 24
+seen: 25
 requires: []
 conflicts: []
 completes: []
@@ -146,3 +146,20 @@ one rule serves every instance, and it follows an in-page toggle, which a
 for art that genuinely cannot be authored theme-neutral. Keep `src` on the
 light export: an engine that ignores `content` on a replaced element then shows
 the wrong ground rather than nothing.
+
+The document-level meta *can* follow a toggle, which is what makes a stored
+preference survive the first paint instead of flashing through the default.
+One inline script in the head, above the stylesheet link, resolves the stored
+choice, then writes all four faces of it: the class, `style.colorScheme`, an
+inline background on the root, and the `theme-color` meta's content. The inline
+background is the load-bearing one — the class does nothing until the stylesheet
+lands.
+```html
+<script>var d = resolve(localStorage.theme)             // 'light'|'dark'|'system'
+  root.classList.toggle('dark', d); root.style.colorScheme = d ? 'dark' : 'light'
+  root.style.backgroundColor = d ? DARK : LIGHT
+  themeMeta.setAttribute('content', d ? DARK : LIGHT)</script>
+```
+⚠ Blocking and uncached — keep it under ~40 lines, wrap the storage read in
+`try`, and duplicate the two ground colours here as literals, since no
+stylesheet has parsed yet to supply them.

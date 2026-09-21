@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,scrollbar,chrome,restraint,state]
 axes: {energy: 1, density: 1, weight: 1, finish: 5}
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -67,3 +67,16 @@ longer and the thumb lands after the pointer has gone looking for it.
 ⚠ Scope it to `@media (hover: hover)`. On touch the scrollbar is already an
 overlay that appears on use, and the rest state there is a pane whose only
 position cue is one that can never be triggered.
+
+Where the page already derives a ramp from scroll — the one that brings a
+transparent header onto its plate — spend it on the thumb as well rather than
+running a second idle timer. Alpha and chrome then arrive as one event: at the
+very top the pane has no bar and no bar's worth of ruling, and both materialise
+together a little way in. One value, written once per frame to the scroller.
+Ramp over 40–160px of travel.
+```css
+.pane::-webkit-scrollbar-thumb { background: rgb(var(--thumb) / var(--chrome, 0)) }
+```
+⚠ This reports *depth*, not activity: a reader who scrolls the pane back to the
+top loses the thumb mid-gesture. Floor it at 0.2–0.3 rather than 0 wherever the
+pane is the page's only scroller.
