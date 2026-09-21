@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,accessibility,control,scrub,native,diagram]
 axes: {energy: 2, density: 1, weight: 1, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []

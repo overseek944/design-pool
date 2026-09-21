@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,generative,ambient,tokens,architecture]
 axes: {energy: 3, density: 4, weight: 2, finish: 3}
 cost: 2
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -53,3 +53,18 @@ el.style.animation = `wave ${1 + (i % 4) * .16}s ease-in-out ${(i % 5) * .11}s i
 ```
 ⚠ Coprime or it is worse than no variation — moduli sharing a factor give a
 short visible cycle that reads as a pattern.
+
+One track is enough when the crowd should read as *sparse* rather than
+unrehearsed. Give the keyframe a short visible window — present from 10% to 58%
+of the cycle, absent either side — and the duty fraction becomes the fraction of
+the pool on screen at any moment: N members at duty d show about N × d. Density
+stops being a count tuned by hand and becomes a number you set, with delays
+scattered across one period doing the rest. Duty .3–.6 reads as activity; under
+.2 the field reads as broken.
+```css
+@keyframes surface { 0%, to { opacity: 0; scale: .82 }
+                     10%, 58% { opacity: 1; scale: 1 } }
+```
+⚠ Spread the delays over the *whole* period. Every member shares one duration,
+so a delay range covering a fraction of it fixes the phase relationship
+permanently — the population bunches into one burst per cycle and never drifts.

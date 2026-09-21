@@ -4,7 +4,7 @@ category: type
 tags: [numerals,data,motion,correctness]
 axes: {energy: 2, density: 3, weight: 3, finish: 5}
 cost: 1
-seen: 16
+seen: 17
 requires: []
 conflicts: []
 completes: []
@@ -53,3 +53,17 @@ around each comma. Digit .55–.7em, separator .3–.4em.
 ```
 ⚠ Under reduced motion remove the outgoing glyph with `display: none` rather
 than pausing its animation — two glyphs held in one cell is unreadable, not calm.
+
+A figure whose target *moves* — a readout driven by a slider rather than by a
+one-shot reveal — must set off from the value currently on screen, not from the
+previous target. Hold the displayed value in a ref, cancel the in-flight frame,
+and start the next leg from there; skip it and every drag snaps back to where
+the last tween was aiming before travelling again. Ease out over 400–800ms.
+Longer and a continuous drag never catches the hand.
+```js
+const from = shown.current, d = target - from   // not from the old target
+cancelAnimationFrame(raf)                       // resume, do not restart
+```
+⚠ Write the exact target on the final frame. An eased approach rounded every
+frame settles a unit short and stays there, and the readout disagrees with the
+control that set it.

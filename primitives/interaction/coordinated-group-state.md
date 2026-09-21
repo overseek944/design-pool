@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,surface,hover]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 14
+seen: 15
 requires: []
 conflicts: []
 completes: []
@@ -68,3 +68,17 @@ is what says the thing is ready.
 ```css
 .group:hover .plate, .group:focus-within .plate { opacity: 1; scale: 1 }
 ```
+
+The container's trigger need not be a state at all. Gate the `:has()` inversion
+on a *content* marker — a class an author puts on the lines, rows or cells that
+matter — and the de-emphasis configures itself per instance with nothing on the
+container: `code:has(.focused) .line:not(.focused)` dims only where something
+was marked, and an unmarked block renders untouched. Blur rather than opacity
+where the peers are text; 1.5–3px keeps shape and colour while making the words
+unreadable, so the region still reads as a full block instead of a hole.
+```css
+code:has(.focused) .line:not(.focused) { filter: blur(2px) }
+```
+⚠ Blurring text repaints the whole box — cheap on a snippet, not on a long
+document — and it hides nothing from a screen reader or from find-in-page, so
+never carry meaning in the distinction alone.

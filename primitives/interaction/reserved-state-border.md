@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,focus,cls,border,correctness]
 axes: none
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -39,3 +39,15 @@ box takes `position: relative`; widths 1–3px.
 ⚠ `border-radius: inherit` matches only at `inset: 0` — pull the overlay out by
 n and every corner needs radius + n. Inherit `corner-shape` as well, or a
 squircle parent gets a circular-arc rule that is visibly wrong at the corners.
+
+A marker on *one* edge — the rail saying which row is selected — needs neither
+reservation nor an overlay. `box-shadow: inset` paints inside the padding box,
+so it costs no layout, no pseudo-element and no `position: relative` on the
+row. It is also the form that survives `border-collapse`, which arbitrates a
+`border-inline-start` against the neighbouring cell's own border and can drop
+it. Rail 2–4px.
+```css
+.row[aria-selected="true"] { box-shadow: inset 2px 0 0 var(--ink) }
+```
+⚠ The rail paints *over* the padding rather than beside it, so give the leading
+cell at least its width of inline-start padding or the text sits on the mark.

@@ -1,6 +1,6 @@
 # Manifest
 
-519 primitives. Format: `category/id | axes cost | tags | gist`
+520 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -240,6 +240,7 @@ media/seek-throttled-video-scrub | E3 D2 W3 F5 $4 | media video scroll scrub tim
 media/self-masked-cutout-overlay | E1 D2 W3 F4 $2 | media mask color effect detail | A cut-out subject on transparency cannot be graded from CSS — an
 media/sheared-ghost-silhouette | E1 D3 W2 F5 $2 | depth line-art silhouette projection stroke | Flat line work reads as volume if the outline is drawn twice. Ke
 media/single-source-focal-crop | neutral  $1 | media responsive performance detail | One photograph can hold a headline at every width without a seco
+media/source-derived-letterbox-fill | E1 D2 W2 F4 $1 | media video responsive aspect backdrop blur | A fixed-ratio slot fed media of another ratio either crops it (c
 media/sparse-sequence-nearest-frame | E3 D2 W3 F5 $4 | scrub scroll images loading canvas progressive perf | A scroll-scrubbed image sequence does not need every frame to ex
 media/stacked-contour-volume | E1 D4 W2 F5 $2 | svg mark depth stroke currentcolor | Describe a solid as a stack of cross-sections instead of as a sh
 media/state-preserving-frame-relocation | neutral  $3 | media iframe embed lifecycle dom correctness | appendChild removes and reinserts: an iframe reloads, a video re
