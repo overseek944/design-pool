@@ -4,7 +4,7 @@ category: perf
 tags: [performance,navigation,prefetch,observer,architecture]
 axes: none
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -56,3 +56,15 @@ onLeave = () => { live = false; clearTimeout(t); hide() }
 ```
 ⚠ Gate the arm on a precise pointer *and* on reduced motion — a preview that
 begins moving on dwell is motion the reader did not request.
+
+Tier by *resource class* as well as by signal. A route's code chunk is shared,
+content-hashed and immutable, so viewport is a safe policy for it; the route's
+data is per-reader, uncacheable and often a database read, so it stays on
+intent. One page then warms the JS for every link a reader can see and fetches
+not one of their payloads.
+```html
+<body data-preload-code="viewport" data-preload-data="tap">
+```
+⚠ This only holds while the code tier is genuinely immutable. A bundle served
+without a content hash is re-fetched per route and viewport prefetch becomes
+worse than none.

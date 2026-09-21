@@ -68,3 +68,16 @@ without the stylesheet knowing any element's numbers.
 ```
 ⚠ Declare the fallback in every `var()`; one missing default invalidates the
 whole `transform` and the element snaps to its origin.
+
+Geometry is the case the hatch cannot rescue. An inline `offset-path: path()`
+or a `left`/`top` pair resolves in absolute CSS pixels, so moving it into a
+custom property relocates the consumer without making the value responsive —
+no breakpoint can scale a path. Either emit the whole path per breakpoint under
+one property name, or accept the figure as a fixed-size stage and give the
+narrow layout a different figure rather than a squeezed one.
+```css
+.stage { --route: path("M 190 138 C 380 138, 420 310, 504 310") }
+@media (width <= 860px) { .stage { --route: path("M 40 60 C 90 60, 100 150, 150 150") } }
+```
+⚠ A stage authored at fixed pixels has no intrinsic behaviour under text zoom —
+its labels grow and its geometry does not. Cap what it has to hold.

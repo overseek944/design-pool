@@ -1,6 +1,6 @@
 # Manifest
 
-496 primitives. Format: `category/id | axes cost | tags | gist`
+499 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -78,6 +78,7 @@ color/runtime-shade-derivation | neutral  $1 | color tokens theming architecture
 color/self-painting-theme-scope | neutral  $2 | color tokens theming architecture dark | A theme is one class that both defines the semantic colour token
 color/sequence-value-ramp | E1 D2 W3 F4 $1 | color hierarchy surface sequence contrast | Tint a row of peer surfaces along one lightness ramp so sequence
 color/status-triad-tokens | neutral  $1 | color tokens accessibility contrast correctness state | A status is three tokens, not one, because the same hue is asked
+color/transform-bracketing-hue-pair | E1 D2 W2 F5 $1 | color diagram semantics pipeline hue accessibility | A pipeline figure whose input and output look alike asks the rea
 color/utility-scale-token-reclamation | neutral  $2 | color tokens theming architecture correctness | A codebase committed to a utility framework has its palette froz
 interaction/aliased-fragment-target | neutral  $1 | navigation anchor fragment accessibility architecture url | A section can answer to more than one fragment without renaming 
 interaction/anchor-focus-handoff | neutral  $1 | accessibility navigation focus correctness anchor | An in-page link that only scrolls leaves the keyboard where it w
@@ -199,6 +200,7 @@ light/blend-doubled-headline | E2 D2 W4 F5 $3 | type blend legibility contrast c
 light/broadcast-light-source | E2 D2 W2 F5 $3 | light gradient custom-property ambient architecture | A panel lit at the pointer has one lamp, and only while a pointe
 light/counter-rotated-specular-layer | E2 D2 W3 F5 $2 | light gradient rotation material 3d | An object with its highlight painted into its own background spi
 light/emitted-light-not-borders | E2 D1 W3 F5 $2 | color effect depth restraint | Separate surfaces with glow and luminance rather than 1px solid.
+light/glow-spined-pass-bar | E3 D1 W2 F5 $1 | light glow sweep box-shadow loop cheap | A light crossing a panel whose content does not change says the 
 light/gradient-through-text | E3 D2 W4 F3 $2 | color type effect | background-clip: text with a transparent fill turns a headline i
 light/offframe-apex-ray-fan | E2 D3 W2 F4 $1 | gradient conic ground atmosphere ambient cheap | A radial wash gives light a direction but no structure. A repeat
 light/offscreen-anchored-wash | E1 D2 W2 F4 $1 | gradient ground atmosphere ambient color cheap | A radial gradient centred inside its box shows its hot core and 
@@ -491,6 +493,7 @@ type/struck-superseded-figure | E1 D2 W3 F5 $1 | type figures comparison hierarc
 type/sub-baseline-marker-band | E2 D2 W3 F3 $1 | type emphasis highlight contrast accessibility | A full accent block behind a phrase has to clear 4.5:1 against t
 type/subordinate-pair-separator | E1 D2 W3 F5 $1 | type figures hierarchy detail unit | One quantity stated twice — two currencies, metric beside imperi
 type/three-family-stack | E2 D3 W3 F4 $1 | type system | Geometric sans (body/headline) + mono (chrome/code) + display se
+type/tint-only-selection-highlight | E1 D1 W2 F5 $1 | type selection highlight contrast accessibility cheap | The UA selection block is opaque and sets its own text colour, s
 type/tonal-lead-in-clause | E1 D2 W3 F5 $1 | type emphasis hierarchy editorial colour | Carry two levels inside one sentence: the clause holding the cla
 type/tracking-as-size-ratio | E1 D2 W3 F5 $1 | type tracking precision fluid tokens | Tracking fixed in px or em is wrong at one end of a fluid range:
 type/tracking-gap-centring | neutral  $1 | type tracking alignment optical correctness | Letter-spacing is added after every glyph including the last, so

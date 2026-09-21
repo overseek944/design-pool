@@ -4,7 +4,7 @@ category: light
 tags: [gradient,ground,atmosphere,ambient,color,cheap]
 axes: {energy: 1, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: [eased-fade-stop-ramp]
@@ -42,3 +42,18 @@ Edge alpha .30–.45, centre .10–.20.
 .ground::after { content: ""; position: absolute; inset: 0;
   background: linear-gradient(90deg, #0006, #00000026, #0000004d) }
 ```
+
+Author the lamp as an *element* rather than as the ground's background and the
+banding above largely stops being a problem: a heavy `filter: blur()` over the
+same low-alpha radial gradient low-passes its own stop transitions, so the ramp
+smooths without hand-placing anything. It also sizes independently of the
+section — a lamp hung past a clipped edge can grow 30–50% at the wide
+breakpoint while the section does not. Blur 60–90px, diameter 1.5–3× the blur.
+```css
+.lamp { position: absolute; inset-block-start: -8rem; inline-size: 24rem;
+  aspect-ratio: 1; border-radius: 50%; filter: blur(72px);
+  pointer-events: none;                                  /* and aria-hidden */
+  background: radial-gradient(circle at 30% 30%, #6366f180, #0000 62%) }
+```
+⚠ Each lamp is a composited buffer the size of its box plus the blur on every
+side. One or two per view — never one per card.
