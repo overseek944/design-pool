@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,reveal,accessibility,progressive-enhancement,correctness,scroll]
 axes: {energy: 2, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -75,3 +75,18 @@ on the first frame. Any value in 0.001–0.01 works.
 ```
 ⚠ It reports LCP at first paint for content nobody can read yet — honest only
 while the reveal is short. Over ~400ms the metric is measuring the wrong moment.
+
+The gate should carry the enhancement's *layout*, not only its opacity. A
+rotator built by stacking its items in one grid cell is a pile the moment the
+animation that separates them in time does not run — so put `grid-area: 1/1`
+inside the preference query beside the keyframes, and the same markup degrades
+to what it already is: a list, in flow, with its gap. Nothing is hidden, nothing
+is restored, and there is no second rule to keep in step.
+```css
+.rotator { display: grid; gap: 1rem }
+@media (prefers-reduced-motion: no-preference) {
+  .rotator > li { grid-area: 1/1; opacity: 0; animation: flip 4.5s infinite } }
+```
+⚠ Only where the flow version is genuinely readable — a six-item stack becomes
+six paragraphs. Past three or four, the still state wants its own layout, not
+the absence of one.

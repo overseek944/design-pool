@@ -4,7 +4,7 @@ category: media
 tags: [media,video,legibility,overlay,accessibility,responsive]
 axes: none
 cost: 1
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -56,3 +56,17 @@ ellipse where the headline rewraps, not where the picture crops.
 ⚠ Only over a flat, known ground — against a gradient section the pool's centre
 matches and its shoulder smears. Score the text against the image at the pool's
 *edge*, since that is where alpha is lowest and detail highest.
+
+On a stage whose picture *changes* under fixed copy, the scrim has no single
+correct polarity: the ramp that rescues white type over a dark frame turns into
+a grey plate over a pale one. Let each frame declare its own ground and switch
+the whole gradient with it, transitioned over 500–800ms so the change lands as
+lighting rather than as a swap. The copy's colour has to travel on the same
+clock or it crosses the frame it is being read against.
+```css
+.veil[data-ground=dark]  { background: linear-gradient(90deg, #0008, transparent 55%) }
+.veil[data-ground=light] { background: linear-gradient(90deg, #f4efe6d1, transparent 55%) }
+.veil { transition: background .7s }
+```
+⚠ Score each polarity against its own frame, not the pair — and the crossfade
+passes through a mix of the two, which is the moment both are weakest.

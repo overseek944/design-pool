@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,focus,forms,input,correctness,keyboard]
 axes: none
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -51,3 +51,17 @@ input[type=file]::file-selector-button { font: inherit; border: 0;
 ⚠ The pseudo-element inherits no typography, so it renders in the platform UI
 face until `font` is set. The filename beside it can be neither styled nor
 relabelled, so a design that needs its own wording still wants the proxy.
+
+Where the proxy *is* the artwork — a drag-to-compare picture, a canvas scrubbed
+by pointer — the native control should not be clipped to 1×1 but hidden in place
+and handed back on focus. `opacity: 0` with `pointer-events: none` keeps it out
+of the pointer's way where the clip trick would put it out of reach of the eye
+too, and `:focus-visible` restores both, so a keyboard reader gets a real slider
+sitting on the thing it drives rather than an invisible one.
+```css
+.range { position: absolute; inset-block-end: .75rem; opacity: 0; pointer-events: none }
+.range:focus-visible { opacity: 1; pointer-events: auto }
+```
+⚠ Only safe with `pointer-events: none` present — that is the pairing the plain
+`opacity: 0` failure above is missing. Both handlers must write one value, or
+arrowing the slider and dragging the surface disagree.

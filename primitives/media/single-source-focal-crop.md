@@ -4,7 +4,7 @@ category: media
 tags: [media,responsive,performance,detail]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -52,3 +52,18 @@ differ by more than handedness. One decode, one cache entry, one visual source.
 ⚠ Only for non-representational material — grain, bokeh, gradient photography,
 texture. A mirrored face, hand, letterform or known object reads as a mistake
 before it reads as a variation.
+
+Key the focal point on `orientation` rather than width where the frame is the
+whole screen. A rotated phone and a short laptop window are the same *shape*
+problem and different width problems, so a `min-width` split holds the subject on
+one and loses it on the other. One property, two declarations, and the fallback
+inside `var()` means an instance that never sets it is still centred rather than
+unset.
+```css
+.cover { object-position: var(--focal-portrait, 50% 50%) }
+@media (orientation: landscape) { .cover { object-position: var(--focal-land, 50% 50%) } }
+```
+⚠ Orientation flips at exactly square, so a resized desktop window can cross it
+with no layout change to explain the jump — pair it with a width clause where
+both matter, and keep the two focal points within ~20% of each other so the
+crossing reads as a settle rather than a cut.

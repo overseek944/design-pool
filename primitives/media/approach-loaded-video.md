@@ -4,7 +4,7 @@ category: media
 tags: [media,video,performance,intersection-observer,accessibility,bandwidth]
 axes: none
 cost: 2
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -103,3 +103,16 @@ if (reduce) { v.pause()
 ```
 ⚠ `load()` resets `currentTime` and rejects any pending `play()` — call it only
 on an element that has not started, or a reader watching it watches it restart.
+
+For decorative footage, a rejected `play()` deserves a teardown rather than a
+catch. Swallowing it leaves a `<video>` parked on a black first frame under
+copy that was composed against moving light; drop the source instead and let the
+still behind it stand, and the refusal costs a layer rather than the section.
+Assert `muted` on the element *and* `defaultMuted` before the call, since the
+attribute is what a re-created element inherits.
+```js
+v.muted = v.defaultMuted = true
+Promise.resolve(v.play()).catch(() => setSrc(null))   // falls back to the poster layer
+```
+⚠ Only where the video is decoration. Do this to footage carrying content and
+the reader loses it with no control to get it back.

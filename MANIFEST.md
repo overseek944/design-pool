@@ -1,6 +1,6 @@
 # Manifest
 
-543 primitives. Format: `category/id | axes cost | tags | gist`
+547 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -149,6 +149,7 @@ interaction/substituted-driver-on-coarse-pointer | neutral  $2 | pointer touch f
 interaction/supplied-cursor-affordance-pair | E2 D2 W3 F3 $1 | interaction pointer detail chrome accessibility | Replacing the arrow is a strong voice, and the failure is replac
 interaction/tilt-exempt-anchor-layer | E2 D2 W3 F5 $2 | interaction pointer transform 3d depth architecture | A surface that tilts under the pointer tilts everything in it, i
 interaction/transparent-stroke-hit-area | neutral  $1 | accessibility svg interaction touch correctness detail | A small mark inside a viewBox — a path node, a scrubber dot — is
+interaction/twin-suppressed-persistent-action | neutral  $2 | interaction sticky state observer accessibility | A persistent action pinned to the viewport is right through the 
 interaction/viewport-clamped-anchored-popover | neutral  $1 | correctness responsive overlay accessibility hover focus | A popover sized against its trigger gets clipped by the window: 
 interaction/visibility-probed-app-escape | neutral  $2 | interaction navigation link mobile correctness fallback | A control that hands off to a native app has no success callback
 interaction/withheld-value-reveal | E2 D2 W3 F4 $1 | interaction disclosure redaction accessibility state | Withholding a figure claims more than printing it, but only if t
@@ -237,6 +238,7 @@ media/build-captured-product-shot | neutral  $2 | media asset build product scre
 media/centre-converged-mark-family | E1 D2 W1 F5 $1 | media svg icon ornament geometry system | A set of section marks reads as a family when its members share 
 media/chained-filter-duotone | E1 D2 W3 F4 $1 | media color filter normalisation texture | Supplied photographs come from different cameras, days and light
 media/child-reported-frame-height | neutral  $2 | media correctness architecture cls responsive | An iframe reporting its own height hands layout control to a cha
+media/clip-bound-layer-caption | E2 D2 W2 F5 $1 | media label clip interaction accessibility | A wipe or drag reveal that names its two states with badges floa
 media/clip-partitioned-image-rig | E3 D2 W3 F4 $3 | mask clip-path illustration rig raster animation | Flat artwork can be rigged without re-exporting it as parts. Pun
 media/counter-scaled-live-embed | neutral  $3 | media iframe embed responsive architecture | An embed's CSS width is a separate decision from the size of the
 media/cover-scale-as-scalar | neutral  $2 | media correctness geometry overlay responsive css-only | object-fit: cover scales inside the element and reports nothing,
@@ -250,6 +252,7 @@ media/mirrored-baseline-reflection | E1 D2 W2 F5 $2 | media mask surface depth d
 media/optical-height-logo-row | neutral  $1 | media logos normalisation scale responsive | Supplied marks are drawn to different conventions — a wordmark f
 media/origin-conditional-sandbox | neutral  $1 | media iframe embed security correctness | A sandboxed iframe that is also allow-same-origin and served fro
 media/reduce-restored-media-transport | neutral  $1 | media video accessibility scroll scrub correctness | Where scroll is the only transport for a continuous medium, pref
+media/reduce-swapped-clip-still | neutral  $1 | media video accessibility reduced-motion correctness | An autoplaying loop cannot honour prefers-reduced-motion by paus
 media/seam-dissolved-video-loop | E2 D1 W3 F5 $3 | media video loop crossfade seam ambient | loop cuts from the last frame to the first, and unless the clip 
 media/seek-throttled-video-scrub | E3 D2 W3 F5 $4 | media video scroll scrub timeline performance | A video can be the scrubbed property: write currentTime from scr
 media/self-masked-cutout-overlay | E1 D2 W3 F4 $2 | media mask color effect detail | A cut-out subject on transparency cannot be graded from CSS — an
@@ -340,6 +343,7 @@ perf/media-query-parity-listeners | neutral  $1 | responsive correctness archite
 perf/media-scoped-preload-tier | neutral  $1 | perf loading images responsive resource-hints critical-path | When script picks among art-directed sources — an orientation cr
 perf/off-thread-texture-downscale | neutral  $2 | performance texture webgl loading memory | Textures authored at 4K decode to tens of megabytes before anyth
 perf/offscreen-subtree-deferral | neutral  $1 | performance containment rendering scroll correctness | Below-fold grids of cards, figures or rows cost style, layout an
+perf/opt-in-fallback-branch | neutral  $1 | perf correctness progressive-enhancement feature-detection testing | A capability gate makes its own fallback unreachable on every br
 perf/paired-probe-engine-window | neutral  $2 | progressive-enhancement feature-detection browser-quirk correctness architecture | Feature queries test parsing, which is the right instrument for 
 perf/pixel-ratio-change-watch | neutral  $1 | performance canvas correctness resize media-query dpr | Device pixel ratio changes when a window is dragged between moni
 perf/post-teardown-asset-disposal | neutral  $2 | performance correctness lifecycle canvas architecture memory | An asynchronous asset load outlives the view that started it. Sc
