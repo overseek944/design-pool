@@ -4,7 +4,7 @@ category: layout
 tags: [layout,type,metadata,responsive,hairline]
 axes: {energy: 1, density: 3, weight: 2, finish: 5}
 cost: 1
-seen: 12
+seen: 13
 requires: []
 conflicts: []
 completes: []
@@ -57,3 +57,18 @@ puts all the slack in one place that carries no content.
 ⚠ Rows must share a grid — or a fixed width on the lead column — for the icons
 to line up. Sized per row, `auto` resolves to each row's own content and the
 column reappears ragged.
+
+A three-part row does not survive wrapping the way a two-part one does. Once the
+value drops to its own line it returns to the row's left edge, under the marker
+rather than under the label, and the list loses the single left edge that made it
+read as a table. Give the wrapped part a start margin of exactly the marker's
+width plus the gap, so it lands on the label's text — the rows stay a column
+even when every one of them is two lines. Marker 6–8px, gap 10–14px.
+```css
+.row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap }
+.row .meta { margin-inline-start: auto }
+@media (width <= 26rem) { .row .meta { flex-basis: 100%; margin-inline-start: 19px } }
+```
+⚠ The indent is the sum of two other declarations — carry it as one custom
+property both the gap and the margin read, or a marker resize silently
+un-aligns every wrapped row.

@@ -4,7 +4,7 @@ category: surface
 tags: [svg,dash,motion,connector,diagram,precision]
 axes: {energy: 2, density: 2, weight: 1, finish: 5}
 cost: 1
-seen: 15
+seen: 16
 requires: []
 conflicts: []
 completes: []

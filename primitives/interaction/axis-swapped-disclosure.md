@@ -4,7 +4,7 @@ category: interaction
 tags: [disclosure,responsive,layout-animation,breakpoint,accessibility]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

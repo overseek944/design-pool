@@ -4,7 +4,7 @@ category: perf
 tags: [performance,media-query,bandwidth,video,progressive-enhancement,accessibility]
 axes: none
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -54,3 +54,18 @@ v.src = light ? v.dataset.srcLight : v.dataset.srcFull
 encode — write the predicate so a missing `connection` is false, never a truthy
 unknown. `downlink` is a rounded recent average and lags a change of network by
 seconds, so never re-pick a source mid-session on it.
+
+One predicate, two consumers. Once the boolean is resolved in script, publish it
+as a flag on the root element rather than keeping it in a closure: CSS can then
+branch on the same fact — killing a decorative keyframe, resting an interlude at
+its visible state — without a second media query that answers a different
+question. The script stays the only place the rule is written, and the
+stylesheet stops having to guess which of the two reasons applied.
+```js
+document.documentElement.classList.toggle('limit-motion', still)
+```
+```css
+.limit-motion .drift { animation: none; opacity: 1; transform: none }
+```
+⚠ Set it before the first paint of anything it governs, or the flagged elements
+animate for a frame and then stop — which is worse than not honouring it.

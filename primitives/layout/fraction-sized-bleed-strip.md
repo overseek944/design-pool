@@ -4,7 +4,7 @@ category: layout
 tags: [layout,overflow,scroll,affordance,responsive,measure]
 axes: {energy: 2, density: 3, weight: 2, finish: 4}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -39,3 +39,17 @@ equivalent of `repeat(n, 1fr)`, which a flex track cannot use.
 ⚠ Tiling exactly removes the only cue that the strip scrolls, so the arrows
 become load-bearing: they have to exist at every width that tiles, and reach the
 keyboard before the track does.
+
+The negative margin creates a second alignment the port does not know about.
+Anything that scrolls the track programmatically — `scrollIntoView`, snap, the
+keyboard correction that follows focus — lands the item flush against the port's
+padding box, which is now under the bleed and off the column the items are
+supposed to start on. Set `scroll-padding-inline` to the same value as the
+padding and every landing registers on the column instead. Restate all three
+together per breakpoint; they are one number.
+```css
+.port { margin-inline: calc(-1 * var(--g)); padding-inline: var(--g);
+        scroll-padding-inline: var(--g) }
+```
+⚠ It governs the snap position too, so a track with `scroll-snap-align: start`
+and no scroll padding snaps items half under the bleed at every stop.

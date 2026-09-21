@@ -4,7 +4,7 @@ category: surface
 tags: [surface,texture,pattern,blueprint,cheap]
 axes: {energy: 1, density: 3, weight: 1, finish: 4}
 cost: 1
-seen: 32
+seen: 33
 requires: []
 conflicts: []
 completes: []

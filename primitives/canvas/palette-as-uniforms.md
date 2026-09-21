@@ -4,7 +4,7 @@ category: canvas
 tags: [shader,color,system]
 axes: none
 cost: 2
-seen: 14
+seen: 15
 requires: []
 conflicts: []
 completes: []
@@ -88,3 +88,24 @@ fragColor = vec4(mix(uGround, uAccent, smoothstep(0.08, 0.3, l)), 1.0);
 ⚠ Two tones is the whole output — anything the field must keep separable needs
 a third stop or its own layer. Neither token is free to be picked for the
 shader: both are the page's, so the field inherits their contrast ratio.
+
+A 2D context has no uniforms to hold the palette between frames: every colour is
+re-assigned on the draw, so the naive port puts `getComputedStyle` inside the
+loop and pays a style resolution per stroke. Resolve the palette to an array
+once, behind the same invalidation the toggle already fires, and let the draw
+read that array — the loop then costs nothing and the swap is still immediate.
+```js
+let pal = null
+const palette = () => pal ??= read(TOKENS)          // cleared by the theme observer
+```
+⚠ Clear the memo *before* the first post-toggle draw, not after it.
+
+A canvas drawn once and left — the reduced-motion branch, a static figure —
+has no loop to pick the new palette up, so it keeps the theme the reader left.
+Publish the draw as a redraw hook and have whatever owns the toggle call it; the
+animated branch gets the same call and simply redraws a frame early.
+```js
+window.redrawFigure = () => draw(performance.now())
+```
+⚠ A hook on `window` is a global contract — a second figure on the page needs a
+registry, not a second name.

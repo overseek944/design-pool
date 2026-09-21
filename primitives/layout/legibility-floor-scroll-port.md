@@ -4,7 +4,7 @@ category: layout
 tags: [overflow,responsive,scroll,correctness,table,figure]
 axes: none
 cost: 1
-seen: 13
+seen: 14
 requires: []
 conflicts: []
 completes: []
@@ -79,3 +79,17 @@ if (parseFloat(getComputedStyle(el).fontSize) < FLOOR) return null   // plain te
 the floor at 1440px keeps the effect when it is dragged narrow. Build the plain
 state as the real one and the effect as an overlay, so returning early needs no
 teardown path.
+
+The tab stop and the visible affordance are one condition, so drive both from
+one query. A port that only overflows below a breakpoint should gain its
+`tabindex` and a short overflow hint at that same width and lose both above it —
+a hint printed at every width is noise where nothing scrolls, and a hint that
+never appears leaves a mouse reader with no cue that the figure continues. Set
+the hint in the figure's small mono tier, directly under the port, not over it.
+```css
+.hint { display: none }
+@media (width <= 45rem) { .hint { display: block } }   /* same query arms tabindex */
+```
+⚠ `tabindex` is markup, so the CSS query cannot set it — match the breakpoint
+from a `matchMedia` listener, or the two halves drift the first time the
+breakpoint moves.

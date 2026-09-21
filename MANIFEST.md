@@ -1,6 +1,6 @@
 # Manifest
 
-790 primitives. Format: `category/id | axes cost | tags | gist`
+793 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -77,6 +77,7 @@ canvas/precomputed-cell-attenuation-field | E1 D2 W2 F5 $2 | canvas legibility p
 canvas/prerendered-renderer-understudy | neutral  $3 | canvas progressive-enhancement correctness cls state architecture | A canvas that may not run should degrade to a picture, not to an
 canvas/projected-label-visibility-budget | neutral  $3 | webgl label projection density correctness | Projecting a 3D point to screen coordinates gives a position for
 canvas/quantised-level-set-gather | E2 D3 W2 F5 $3 | canvas field flow generative texture | Particles advected through a smooth field spread into a haze: ev
+canvas/rate-split-channel-ensemble | E2 D2 W1 F5 $2 | canvas field ambient technical measurement hierarchy | Several line traces in one box read as output from several instr
 canvas/resampled-path-travel | neutral  $2 | canvas performance motion connector architecture | Moving a marker along a curve by solving the curve every frame c
 canvas/reseeded-noise-tile | E2 D3 W2 F3 $2 | canvas texture ambient generative performance | Per-pixel noise across a whole viewport every frame is a fill-ra
 canvas/rotated-screen-halftone | E2 D4 W3 F4 $3 | canvas texture field print raster generative | An axis-aligned dot grid beats against the pixel lattice and rea
@@ -242,6 +243,7 @@ layout/balanced-side-track-centring | neutral  $1 | layout grid alignment chrome
 layout/border-clamped-annotation-leader | E1 D3 W1 F5 $2 | layout annotation connector svg diagram | A leader line drawn from a label's centre to its subject crosses
 layout/boxless-wrapper | neutral  $1 | layout grid architecture correctness accessibility | display: contents removes an element's box while keeping its chi
 layout/breakout-grid-named-lines | neutral  $2 | layout grid tokens architecture full-bleed | One grid on the page wrapper with named lines for the bleed gutt
+layout/breakpoint-released-overlay-copy | neutral  $1 | layout responsive breakpoint overlay media mobile | Copy absolutely positioned over a media panel has nowhere to go 
 layout/cardinal-cell-cycle-grid | E1 D3 W2 F5 $2 | layout grid diagram cycle radial responsive | A closed four-stage cycle drawn around a hub usually costs trigo
 layout/class-scoped-responsive-hide | neutral  $1 | layout responsive breakpoint correctness accessibility error | A breakpoint that hides the secondary copy hides whatever else a
 layout/clipped-source-derived-pair | E1 D3 W1 F5 $1 | layout provenance evidence truncation panel mock hierarchy | A system that derives structure from unstructured input proves i
@@ -376,6 +378,7 @@ media/frame-announced-readiness | neutral  $2 | media iframe embed loading progr
 media/frameless-alpha-artwork | E1 D2 W2 F3 $2 | media illustration assets transparency composition | Artwork exported on transparency with a feathered edge does not 
 media/ink-channel-probed-icon | neutral  $1 | icon svg media correctness currentcolor | An icon pasted from an arbitrary set carries its colour on one o
 media/integer-scaled-pixel-raster | E1 D2 W3 F2 $1 | media raster pixel-art image-rendering scale | Low-resolution raster art — pixel sprites, 1-bit marks, dithered
+media/interval-held-still-interlude | E1 D2 W3 F4 $1 | media video ambient cycle hero css-animation | A short loop is wallpaper by its second pass. Break it on a peri
 media/luminance-keyed-alpha-matte | E1 D2 W2 F5 $3 | media filter svg alpha image video compositing | Media shot against a flat light ground can be keyed to transpare
 media/mask-swap-over-shared-paint | E2 D2 W2 F4 $2 | mask icon gradient media state | When a family of glyphs must share one fill — a gradient, a vide
 media/mirror-flanked-panorama | E1 D2 W2 F4 $2 | media image panorama mirror responsive full-bleed | Artwork with a fixed aspect either stretches or loses its compos
