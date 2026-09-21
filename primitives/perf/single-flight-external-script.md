@@ -4,7 +4,7 @@ category: perf
 tags: [performance,architecture,correctness,lifecycle,embed]
 axes: none
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -51,3 +51,18 @@ window[cb] = mine; const t = setTimeout(() => rej(Error('sdk timeout')), 20_000)
 ```
 ⚠ Remove only the tag you created. Calling `.remove()` on one you adopted from
 the document tears out somebody else's loader mid-flight.
+
+Plenty of vendors publish no ready hook at all: the tag assigns a global some
+time after it loads, and `script.onload` fires before that assignment. There is
+nothing to await, so poll — on the method you are about to call rather than on
+the object existing — with a hard attempt cap so a blocked CDN fails loudly
+instead of hanging every consumer. 40–60ms, 60–120 attempts.
+```js
+const ready = () => typeof window.vendor?.render === 'function'
+;(function wait(n = 100) { ready() ? res(window.vendor)
+  : n ? setTimeout(() => wait(n - 1), 50) : rej(Error('sdk unavailable')) })()
+```
+⚠ The object usually appears a tick before its methods do, so a truthiness check
+resolves early and the first call throws. This is also the case that most wants
+the backoff above — a poller that clears its memo on timeout will re-poll from
+zero on the next caller.

@@ -4,7 +4,7 @@ category: media
 tags: [media,video,performance,intersection-observer,accessibility,bandwidth]
 axes: none
 cost: 2
-seen: 13
+seen: 14
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -116,3 +116,19 @@ Promise.resolve(v.play()).catch(() => setSrc(null))   // falls back to the poste
 ```
 ⚠ Only where the video is decoration. Do this to footage carrying content and
 the reader loses it with no control to get it back.
+
+Proximity says the footage is needed; it does not say the network is free. Fired
+the instant an observer resolves, a multi-megabyte fetch competes with the poster
+that is very often the LCP candidate, and the metric gets worse on behalf of a
+video nobody is watching yet. Gate on the paint instead: `decode()` the poster,
+then yield two animation frames — the first schedules the paint, the second lands
+after it — and only then set `src`. 30–120ms of delay for the whole contention.
+```js
+const p = Object.assign(new Image(), { src: v.poster })
+await (p.decode?.().catch(() => {}) ?? Promise.resolve())
+requestAnimationFrame(() => requestAnimationFrame(() => { v.src = pick(); v.load() }))
+```
+⚠ A poster already in cache decodes in the same task, so it is the two frames
+that separate the fetch from the paint — one is not enough. Where `decode` is
+missing fall back to `onload`/`onerror`, and resolve on both or the chain hangs
+and the video never loads at all.

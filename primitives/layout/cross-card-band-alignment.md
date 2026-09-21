@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,subgrid,cards,hairline,datasheet,alignment]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []

@@ -4,7 +4,7 @@ category: perf
 tags: [perf,loading,images,responsive,resource-hints,critical-path]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -44,3 +44,18 @@ exclusive and exactly one fetch starts.
 ⚠ Resolution boundaries need the same fractional care as widths —
 `2dppx` / `2.01dppx`, never `2` / `2`, or a 2dppx screen matches both and
 preloads two tiers.
+
+A warm started from script — `new Image()` ahead of a loader that will request
+the same file — only helps if both land on one cache entry, and the request's
+CORS mode is part of that key. Warm without `crossOrigin` ahead of a texture or
+font loader that sets it and the file is fetched twice at full size, the second
+time on exactly the critical path the warm existed to clear. Copy the loader's
+value onto the warm, including the empty-string case.
+```js
+const img = new Image(); img.crossOrigin = 'anonymous'   // === loader.crossOrigin
+img.src = url
+```
+⚠ Placement decides whether it is a warm at all: a classic `<script>` cannot run
+until every stylesheet declared above it has arrived, so one written below the
+font links fires after them rather than at parse time. Put it first in the head,
+above anything render-blocking.

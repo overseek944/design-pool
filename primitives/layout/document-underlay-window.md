@@ -4,7 +4,7 @@ category: layout
 tags: [layout,stacking,reveal,video,section,fixed]
 axes: {energy: 2, density: 1, weight: 3, finish: 4}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -45,3 +45,18 @@ legibility is tuned by editing one alpha instead of re-exporting the picture.
 ```
 ⚠ Fixed children of a positioned wrapper still fill the viewport, not the
 wrapper — the layer outlives the section unless the wrapper is the whole route.
+
+Where the page is already a stack of opaque, margined blocks, no `.window` class
+is needed: every gutter between them is an aperture, and the layer reads as a
+rhythm of glimpses rather than one opening. The reveal is then edited in the
+spacing scale — the margin between sections *is* how much of the layer is seen,
+40–60px showing a sliver and 100–160px a passage — and rounded block corners let
+it through at the shoulders, which reads as the layer passing behind rather than
+through.
+```css
+.page > * { position: relative; z-index: 1; margin-block: clamp(40px, 6vw, 96px);
+            border-radius: 32px; background: var(--page) }
+```
+⚠ It holds only while every block is genuinely opaque — one tinted or
+translucent section and the layer runs behind body copy it was never
+contrast-checked against.

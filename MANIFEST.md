@@ -1,6 +1,6 @@
 # Manifest
 
-564 primitives. Format: `category/id | axes cost | tags | gist`
+568 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -13,6 +13,7 @@ canvas/borrowed-scene-constructors | neutral  $2 | canvas 3d architecture intero
 canvas/bucketed-depth-order | neutral  $2 | canvas performance depth particles batching quantise | Painter's order on a 2D context normally means sorting every mar
 canvas/canvas-behind-dom-not-instead-of-it | neutral  $2 | canvas architecture accessibility | Absolutely-positioned inset-0 canvas with pointer-events-none un
 canvas/cell-quantised-arrival-front | E3 D3 W2 F4 $3 | shader reveal grid quantise front texture | A reveal front evaluated per pixel is a soft edge crossing a pic
+canvas/chord-solved-tile-width | neutral  $3 | canvas 3d geometry texture seam correctness | Flat quads tiled along a curve — a ribbon of frames, a spiral of
 canvas/clip-ejected-vertex-filter | neutral  $2 | shader webgl points culling perf | A point cloud whose visible subset changes — a facing hemisphere
 canvas/composed-arrival-field | E3 D3 W2 F5 $2 | shader stagger clock uniform reveal perf | Thousands of elements cannot each own a tween. Derive every elem
 canvas/context-loss-rearm | neutral  $2 | canvas correctness lifecycle architecture | A 2D context is lost the same way a WebGL one is — a GPU process
@@ -149,6 +150,7 @@ interaction/snap-scroll-as-dismiss-gesture | E3 D2 W2 F5 $3 | gesture dialog scr
 interaction/split-fraction-step-rail | E2 D2 W2 F5 $2 | interaction indicator progress stepper scroll | A stepper driven by a continuous value keeps the index and throw
 interaction/state-as-numeric-custom-property | E3 D2 W2 F5 $1 | interaction hover state tokens architecture | Express interaction state as a number, then derive every depende
 interaction/state-seeded-at-listener-attach | neutral  $1 | correctness state events scroll architecture | Events report transitions, not the current value. Any class deri
+interaction/submit-mounted-challenge-gate | neutral  $2 | forms third-party performance privacy accessibility progressive-enhancement | A verification widget mounted on load costs a third-party script
 interaction/substituted-driver-on-coarse-pointer | neutral  $2 | pointer touch fallback ambient correctness architecture | Every pointer-reactive decoration is inert on a touchscreen: the
 interaction/supplied-cursor-affordance-pair | E2 D2 W3 F3 $1 | interaction pointer detail chrome accessibility | Replacing the arrow is a strong voice, and the failure is replac
 interaction/tilt-exempt-anchor-layer | E2 D2 W3 F5 $2 | interaction pointer transform 3d depth architecture | A surface that tilts under the pointer tilts everything in it, i
@@ -359,6 +361,7 @@ perf/paired-probe-engine-window | neutral  $2 | progressive-enhancement feature-
 perf/pixel-ratio-change-watch | neutral  $1 | performance canvas correctness resize media-query dpr | Device pixel ratio changes when a window is dragged between moni
 perf/post-teardown-asset-disposal | neutral  $2 | performance correctness lifecycle canvas architecture memory | An asynchronous asset load outlives the view that started it. Sc
 perf/prefetch-on-intent-band | neutral  $2 | performance navigation prefetch observer architecture | Prefetching is two policies, not one. Intent arms on mouseenter,
+perf/preflight-free-cross-origin-post | neutral  $1 | performance forms architecture correctness security | A cross-origin POST sent as application/json is not a simple req
 perf/prerender-gated-first-view | neutral  $1 | performance correctness analytics navigation prerender | A page can be fully loaded, scripted and laid out with nobody ha
 perf/revert-split-on-resize | neutral  $1 | type motion correctness | Split text hard-codes line breaks at split time. On resize or we
 perf/scrim-over-filtered-bleed | neutral  $1 | performance media mobile compositing correctness | A filter, clip-path and transform stacked on one full-bleed imag
@@ -568,4 +571,5 @@ type/wavy-annotation-underline | E2 D2 W2 F2 $1 | type underline link detail inf
 type/webfont-scoped-to-inline-svg | neutral  $1 | type svg correctness architecture progressive-enhancement | An SVG setting live text in a brand face renders in that face on
 type/weight-dropped-display-line | E1 D2 W4 F5 $1 | type display headline hierarchy contrast | A display block can carry its own hierarchy with no second size,
 type/width-stable-changing-number | E2 D3 W3 F5 $1 | numerals data motion correctness | A figure that animates or streams needs two guarantees, and tabu
+type/wrap-joined-marker-block | E2 D2 W4 F4 $1 | type emphasis highlight decoration radius detail | A solid block behind a phrase paints one rectangle per line, so 
 ```

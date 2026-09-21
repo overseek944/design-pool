@@ -4,7 +4,7 @@ category: perf
 tags: [performance,media-query,bandwidth,video,progressive-enhancement,accessibility]
 axes: none
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -37,3 +37,20 @@ const still = matchMedia('(prefers-reduced-motion: reduce)').matches ||
 ```
 ⚠ Chromium-only and absent behind privacy settings, so it may only add
 restraint — never gate content or a control on it being false.
+
+`saveData` is one bit and a connection has more than two states. `effectiveType`
+and `downlink` separate a metered connection from a merely slow one, and slow
+wants a different answer — not the content removed but a lighter encode of it,
+a second file at 25–40% of the bytes, chosen at the moment of the fetch rather
+than declared in markup. Treat 3g-or-worse, or downlink at or under 1.5–2 Mbps,
+as the light tier.
+```js
+const c = navigator.connection
+const light = !!c && (c.saveData || ['slow-2g','2g','3g'].includes(c.effectiveType)
+  || c.downlink <= 1.6)
+v.src = light ? v.dataset.srcLight : v.dataset.srcFull
+```
+⚠ The API is absent on most engines, so the *default* branch has to be the full
+encode — write the predicate so a missing `connection` is false, never a truthy
+unknown. `downlink` is a rounded recent average and lags a change of network by
+seconds, so never re-pick a source mid-session on it.

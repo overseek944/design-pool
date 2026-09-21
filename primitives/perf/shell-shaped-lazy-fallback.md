@@ -4,7 +4,7 @@ category: perf
 tags: [cls,loading,accessibility,architecture,correctness,code-splitting]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -27,3 +27,19 @@ wait under `role="status"`; the empty rows are `aria-hidden`.
 ⚠ Keep the reservation in the shared class, never as inline heights in the
 fallback: restated numbers drift the first time the real box changes. Under
 ~200ms it is a flash — delay the message, not the box.
+
+The same argument in a scene: geometry gated on `Promise.all` shows nothing
+until the slowest asset lands, and across dozens of maps that is one timeout from
+showing nothing at all. Build the meshes immediately with flat placeholder
+materials tinted to the page ground, then assign each map on its own arrival —
+the composition is right on the first frame and fills in, instead of arriving
+whole and late. Retire the indicator on the *first* asset, and on the error path
+too.
+```js
+const mats = urls.map(() => new Material({ color: PAGE }))
+urls.forEach((u, i) => load(u, t => { mats[i].map = t; mats[i].color.set(0xffffff)
+  mats[i].needsUpdate = true; hideLoader() }, null, hideLoader))
+```
+⚠ The placeholder colour is a design decision, not a default — anything but the
+ground reads as a broken-asset state. Clear the tint when the map lands or every
+texture is multiplied by it.

@@ -4,7 +4,7 @@ category: perf
 tags: [performance,texture,webgl,loading,memory]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,19 @@ t.image.close?.(); t.dispose()
 ⚠ Colour space and flip must carry across or the model washes out or renders
 inverted. Keep a `drawImage` fallback — some browsers reject resize options, and
 the promise rejects rather than throwing.
+
+Downscaling fixes the decode; it does not fix the sampling. A map shown 2–5×
+minified and swinging toward edge-on — a plane following a curve, a billboard
+turning — aliases along every hard edge in the source, and a baked border shreds
+into a ragged line. It needs both halves: a mip chain to kill the shimmer under
+minification, anisotropy to restore the detail mips throw away at grazing
+angles. Clamp anisotropy to 4–8 against the device maximum.
+```js
+tex.generateMipmaps = true
+tex.minFilter = LinearMipmapLinearFilter; tex.magFilter = LinearFilter
+tex.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy())
+```
+⚠ Mips cost a third of the texture's memory again — part of what the downscale
+above just recovered — and are silently skipped for a non-power-of-two source
+unless wrapping is clamped to edge. Anisotropy past 8 is rarely visible and
+never free.
