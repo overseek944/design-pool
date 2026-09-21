@@ -4,7 +4,7 @@ category: media
 tags: [media,color,filter,normalisation,texture]
 axes: {energy: 1, density: 2, weight: 3, finish: 4}
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -73,3 +73,18 @@ time a section is added.
 ⚠ Text burnt into an image is dimmed with it — a caption at rung three can
 drop under 4.5:1 against a ground the unfiltered source cleared. Set captions
 in the DOM, never in the picture.
+
+A set mixing monochrome archival material with modern colour does not want the
+chain at all. Collapsing everything onto one hue throws away the only colour in
+the set that is carrying anything, and leaving it raw lets one saturated frame
+outrank six greys. `grayscale()` under about 0.2 is the whole treatment: enough
+to pull the outlier toward the page's neutral so the row reads as one register,
+not enough for the photograph to stop being in colour. Amount 0.08–0.18 —
+past a quarter it starts reading as a deliberate wash rather than as seating,
+and the set looks faded instead of composed.
+```css
+.plate img { filter: grayscale(.14) }
+```
+⚠ Judge it against the monochrome frames, not against the original — the amount
+that seats a photograph beside a grey one is far below the amount that looks
+like anything on its own, so it will read as no change at all in isolation.

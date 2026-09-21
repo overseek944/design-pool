@@ -4,7 +4,7 @@ category: light
 tags: [effect,blend,compositing,dark]
 axes: {energy: 3, density: 3, weight: 3, finish: 4}
 cost: 3
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -61,3 +61,20 @@ of a 300% background width; sweep 0.4–0.6s.
 ```
 ⚠ Difference against a mid-grey returns mid-grey — it does nothing on a mark
 that is not high-contrast, and it inverts any colour in one.
+
+Dropping blacks is relative to the backdrop, not absolute, which is what makes
+`screen` the cheap way to land a raster mark carrying a baked black matte on a
+dark page — and the reason it fails in exactly the place a mark usually sits.
+The matte vanishes only where the backdrop is at or below its own value, so a
+header at 90–95% opacity over near-black composites *above* the matte and the
+box reappears as a faint square. Anything establishing a stacking context does
+it too, `backdrop-filter` included: the mark then blends against the chrome's
+own fill rather than the page. Test the mark on the chrome it will sit on, not
+on the section ground.
+```css
+.bar  { background: rgb(from var(--bg) r g b / .92); backdrop-filter: blur(8px) }
+.mark { mix-blend-mode: screen }   /* blends against .bar, not the page */
+```
+⚠ There is no partial fix — either the chrome goes fully opaque at the page
+colour, or the mark needs a real alpha channel. A matte that is merely close is
+worse than a visible one, because it only shows at some scroll positions.

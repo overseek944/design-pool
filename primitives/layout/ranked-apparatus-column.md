@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,metadata,responsive,editorial,hierarchy]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -27,3 +27,20 @@ track instead costs a fact the copy does not restate.
 leave the ordinal and gloss in the flow. A track narrower than ~11% wraps a
 two-word gloss to three lines and starts reading as a failure rather than as
 apparatus.
+
+Re-placing the track's children is one answer; authoring the apparatus twice is
+the other, and it is the right one where the two positions are not the same
+element in two places but two different treatments — a bare ordinal hanging in a
+gutter, a labelled ordinal sitting above the heading with its own spacing. No
+`grid-column` to restate, no auto-placement to fall foul of, and each copy is
+styled for the width it serves. The cost is a fact written in two files' worth
+of markup: they drift, and the page then disagrees with itself about what
+section this is. Worth it for a glyph, never for a gloss.
+```css
+.ord--gutter { display: none }
+@media (width >= 48rem) { .ord--inline { display: none }
+                          .ord--gutter { display: block; grid-column: 1 } }
+```
+⚠ Both copies exist at every width — only `display: none` keeps the hidden one
+out of the accessibility tree and out of the text a reader copies. Generate the
+pair from one value rather than typing the number twice.

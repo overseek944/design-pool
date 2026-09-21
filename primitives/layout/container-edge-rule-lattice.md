@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,hairline,precision,responsive,technical]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 2
-seen: 13
+seen: 14
 requires: []
 conflicts: []
 completes: []
@@ -99,3 +99,24 @@ sheet at a measured position rather than merely placed. Let the section's
 ⚠ Without a clipping ancestor the lines run the length of the document and
 collect every section they cross. The negative `top` also grows the scroll
 height on an `overflow: visible` parent.
+
+Pseudo-elements cap the sheet at two rules, and a wrapper that already spends
+both has nowhere to put a third. Stacked `linear-gradient`s on the page wrapper
+have no such ceiling: one gradient per rule, each transparent except for a band
+straddling the coordinate, all on a single node that also runs the full document
+height without a rule per section. The straddle is the part that is not
+optional — a hard stop at one position paints nothing, so the band has to span
+`calc(x - .5px)` to `calc(x + .5px)` or the line lands a whole pixel to one side
+of the measure it is supposed to mark. Three rules before it reads as ruled
+paper.
+```css
+.sheet { background-image:
+  linear-gradient(90deg, #0000 calc(var(--rail) - .5px), var(--rule) var(--rail),
+                         #0000 calc(var(--rail) + .5px)),
+  linear-gradient(90deg, #0000 calc(var(--rail-2) - .5px), var(--rule) var(--rail-2),
+                         #0000 calc(var(--rail-2) + .5px)) }
+```
+⚠ A background cannot be `pointer-events: none` on its own — it never takes the
+pointer, but it also cannot be excluded from a screenshot or a print sheet the
+way a pseudo-element can. On a fractional device pixel ratio the half-pixel band
+resolves to a grey ramp rather than a hairline; check at 1.25× and 1.5×.

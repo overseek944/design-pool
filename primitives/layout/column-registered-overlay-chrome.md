@@ -4,7 +4,7 @@ category: layout
 tags: [layout,overlay,alignment,correctness,chrome]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -58,3 +58,22 @@ Publish it once and let every corner control read it.
 ```
 ⚠ Two controls sharing the corner must offset from the same token, not from each
 other — chaining one off the other's width breaks the moment either resizes.
+
+Registering to a rail's *edge* places a box beside the column; registering to a
+track's *centre* places a mark inside a track it is not a child of — a logomark
+centred in the apparatus gutter while living in a fixed header that has no such
+grid. Publish the track width as a token and derive both coordinates from it, so
+the painted guide, the `grid-template-columns` value and the escaped element all
+resolve from one number. Written as a literal it appears once per grid and twice
+per `calc()`, and the mark drifts off the gutter the first time any of them is
+retuned. Gutter track 56–96px.
+```css
+:root { --rail: max(var(--gutter), calc(50vw - var(--content) / 2)); --track: 78px }
+.grid { grid-template-columns: var(--track) minmax(0, 1fr) }
+.mark { position: absolute; left: calc(var(--rail) + var(--track) / 2);
+        translate: -50% -50% }
+```
+⚠ The escaped element is out of flow, so nothing reserves its width — the track
+holds the gap only while the grid is what sets it. Below the breakpoint where
+the gutter track collapses, clear the offset rather than letting it resolve
+against a rail that is now the page margin.
