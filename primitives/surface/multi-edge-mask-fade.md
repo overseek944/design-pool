@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,edge,composition,bleed]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 24
+seen: 25
 requires: []
 conflicts: []
 completes: []
@@ -107,3 +107,16 @@ the measure.
 ⚠ `100%` is the rail's own width — correct only where the rail is genuinely
 full-bleed. Nested inside a padded container it resolves to the wrong basis and
 the fade lands short of the gutter.
+
+An edge fade on a scroller is a claim that there is more, so retract it at the
+widths where the strip fits. A tab row that overflows on a phone and sits whole
+on a desktop wants `mask-image: none` above that breakpoint; left on, it dims
+real content and promises a swipe that does nothing. Fade the overflowing edge
+only, in px rather than percent — the affordance is a fixed optical size, not a
+fraction of a container that just changed width. 16–32px.
+```css
+.strip { mask-image: linear-gradient(90deg, #000 calc(100% - 24px), transparent) }
+@media (width >= 64rem) { .strip { mask-image: none } }
+```
+⚠ A breakpoint only guesses at overflow; where content count is dynamic, key it
+off a scroll probe instead so the fade tracks the real condition.

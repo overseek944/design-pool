@@ -4,7 +4,7 @@ category: surface
 tags: [svg,dash,motion,connector,diagram,precision]
 axes: {energy: 2, density: 2, weight: 1, finish: 5}
 cost: 1
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -40,3 +40,17 @@ fade tracks the geometry through any edit — which neither a mask nor a CSS
 ⚠ A bounding box has no direction — a route that doubles back fades mid-line.
 Straight-ish runs only, else `gradientUnits="userSpaceOnUse"` and place the
 stops in viewBox coordinates.
+
+Off SVG the same flow is a `repeating-linear-gradient` on a pseudo-element, and
+the arithmetic reappears as one number: animate `background-position` by exactly
+one dash period and the tile lands back on itself, so the loop is seamless with
+no measured length and no `<path>`. A 2px-tall rule then joins DOM nodes that
+were never in a drawing. Period 8–14px, cycle 0.6–0.9s.
+```css
+.link { background-image: repeating-linear-gradient(to right,
+          var(--rule) 0 4px, transparent 4px 9px); height: 2px;
+        animation: march .7s linear infinite }
+@keyframes march { to { background-position: 9px 0 } }
+```
+⚠ The period lives in two places — the gradient stops and the keyframe — and
+nothing catches them drifting apart. Hold both in one custom property.

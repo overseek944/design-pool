@@ -4,7 +4,7 @@ category: media
 tags: [media,logos,blend-mode,assets,normalisation]
 axes: none
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -54,9 +54,13 @@ artwork — colour, gradients, a photographic lock-up — to solid black in one
 pass, and `invert(1)` after it makes that white for a dark ground. It is the
 blunt end of the same problem the blend modes solve, and the right tool where
 the row is a texture rather than a set of brands: nothing is eaten for being
-the wrong hue because nothing keeps a hue at all.
+the wrong hue because nothing keeps a hue at all. This is also the reason
+`grayscale(1)` above does not settle an uneven row on its own — grayscale keeps
+luminance, so a yellow mark stays pale beside a navy one and the weights still
+scatter. Crushed flat, one `opacity` sets the weight for the whole set:
+0.4–0.6 behind copy, 0.7–0.9 where the names carry the argument.
 ```css
-.wall img { filter: brightness(0) invert(1) }   /* drop invert on light */
+.wall img { filter: brightness(0) invert(1); opacity: .5 }  /* drop invert on light */
 ```
 ⚠ Alpha survives and luminance does not, so any mark carrying meaning in its
 colour — a status dot, a two-tone lock-up — becomes one silhouette. Check that

@@ -4,7 +4,7 @@ category: reveal
 tags: [reveal,clip-path,wipe,panel,motion]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -76,3 +76,16 @@ border.
 ```
 ⚠ Under `prefers-reduced-motion` drop the bar entirely rather than shortening
 it — a lit line parked at the edge of a static panel is worse than no reveal.
+
+Release one axis per stage and the same inset traces a *path* rather than a
+panel. Three keyframes — `inset(0 100% 100% 0)`, then the right side open, then
+open — draw an elbow connector along X and around the corner down Y, in the
+order a reader would follow it. No SVG, no `pathLength`, and the shape is
+whatever box the element already occupies. Give the turn slightly more than half
+the duration; the second leg is shorter and wants the same apparent speed.
+```css
+@keyframes elbow { 0% { clip-path: inset(0 100% 100% 0) }
+                   55% { clip-path: inset(0 0 100%) } to { clip-path: inset(0) } }
+```
+⚠ Only orthogonal runs — a diagonal or a curve reveals as a growing rectangle,
+not as a line being drawn.

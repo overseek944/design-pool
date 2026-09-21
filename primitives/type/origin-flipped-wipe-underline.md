@@ -4,7 +4,7 @@ category: type
 tags: [underline,link,hover,transform-origin,wipe,cheap]
 axes: {energy: 3, density: 1, weight: 2, finish: 5}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -57,3 +57,18 @@ spends its speed early, 0.5–0.9s.
 ⚠ At full height the accent is behind the glyphs and owes them 4.5:1 on its own
 — a tint that passes as a hairline routinely fails as a block. Rest it at
 `100% 100%` under `prefers-reduced-motion`, or the emphasis never arrives.
+
+`box-decoration-break: clone` is what makes that gradient claim true. By default
+a wrapped inline is one continuous background box, so `background-size: 60%` is
+60% of both lines together — the second fragment stays bare until the first is
+finished. Cloned, each fragment gets its own box and its own 0→100%, and the
+draw runs on every line at once. Move `background-position` to 55–65% and the
+same rule is a strike-through rather than an underline, which a `:checked`
+sibling can drive with no script at all.
+```css
+.strike { box-decoration-break: clone; background-position: 0 60%;
+  background-size: 0 1.5px; transition: background-size .4s, color .4s }
+:checked + * .strike { background-size: 100% 1.5px; color: var(--muted) }
+```
+⚠ A strike that only greys the text carries no meaning to a screen reader —
+wrap the run in `<s>` or `<del>`, or state the status in words.
