@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,loop,ambient,diagram,css-only]
 axes: {energy: 3, density: 3, weight: 1, finish: 4}
 cost: 2
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -56,3 +56,19 @@ crossing the seam at a different moment. Periods 25–60s to read as drift.
 ```
 ⚠ The reduced-motion branch must pin each element to its own `var(--start)`.
 `animation: none` alone collapses the whole constellation onto one point.
+
+`offset-path: path()` is authored in absolute user units, so a route eyeballed
+against a 1440px hero is wrong at every other width and the travellers drift off
+the artwork they were drawn on. Where the route must rescale with its box, drop
+`offset-path` and animate `top`/`left` as *percentages* of the positioned
+parent, two or three waypoints held as per-instance custom properties. The route
+is then relative by construction — at the cost of laying out each traveller
+every frame, which is fine for a handful of 4–6px marks and never for a field.
+```css
+.mote { top: var(--y0); left: var(--x0); animation: travel var(--dur) infinite }
+@keyframes travel { 0%, to { top: var(--y0); left: var(--x0); opacity: 0 }
+  25% { top: var(--y1); left: var(--x1); opacity: 1 } }
+```
+⚠ `top` is a percentage of the parent's height and `left` of its width, so a
+parent whose aspect ratio changes shears the route. Lock the ratio, or the
+waypoints only hold at the shape they were picked at.

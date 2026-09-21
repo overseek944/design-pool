@@ -1,6 +1,6 @@
 # Manifest
 
-674 primitives. Format: `category/id | axes cost | tags | gist`
+676 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -406,6 +406,7 @@ motion-system/settling-strike-envelope | E4 D2 W3 F3 $2 | flicker envelope keyfr
 motion-system/slot-permutation-rotation | E2 D3 W2 F5 $3 | motion grid state responsive | To show more items than a grid has cells, swap one cell at a tim
 motion-system/split-track-puppet-pointer | E2 D2 W2 F5 $2 | demo cursor choreography spring loop | A synthetic pointer demonstrating an interface is two motions, n
 motion-system/state-keyed-descendant-transition | neutral  $1 | motion reveal transition correctness reduced-motion architecture | One observer entry can drive more than one animation. Let the se
+motion-system/state-scoped-entry-animation | neutral  $1 | tabs entrance state css-only replay | A tabset that ships every panel has no handle on its entrance: r
 motion-system/stepped-follow-transition | E3 D1 W2 F3 $1 | motion pointer transition steps character | Anything that follows the pointer glides, and glide reads as liq
 motion-system/sub-fusion-tremor | E5 D1 W1 F4 $1 | motion loop drag state micro-interaction | Below roughly 100ms a period stops reading as motion and starts 
 motion-system/svg-geometry-keyframes | E3 D2 W2 F5 $1 | motion svg diagram precision detail | r, cx, cy, x, y and width are CSS properties on SVG, not just at
@@ -544,6 +545,7 @@ surface/clip-carried-fill-traverse | E2 D2 W2 F5 $2 | svg connector motion clip-
 surface/clock-bucketed-scene-state | E1 D2 W2 F4 $2 | surface ground state root-attribute progressive-enhancement ambient | Resolve the reader's hour into three to five named buckets, set 
 surface/concave-corner-seam | E1 D2 W2 F5 $2 | surface border detail chrome css-only | A raised element fuses into the sheet below it only where the jo
 surface/control-cleared-decoration-band | E1 D3 W2 F4 $2 | surface decoration contrast accessibility header | Artwork sharing a box with a control — a band behind a header, a
+surface/coprime-modulus-cell-dither | E1 D4 W2 F4 $1 | pattern texture grid nth-child dots | A grid of real elements reads as machine-made when every variati
 surface/corner-tick-frame | E1 D2 W1 F5 $1 | surface border frame detail currentcolor precision | Four short L-marks at the corners instead of a closed border: th
 surface/dash-phase-flow | E2 D2 W1 F5 $1 | svg dash motion connector diagram precision | Animating stroke-dashoffset on a dashed connector makes a static
 surface/detached-blur-shadow-plate | E1 D2 W4 F4 $2 | surface depth shadow blur mock hero | Past roughly 40px of blur box-shadow stops reading as shadow, an

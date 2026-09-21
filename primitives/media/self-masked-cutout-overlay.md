@@ -4,7 +4,7 @@ category: media
 tags: [media,mask,color,effect,detail]
 axes: {energy: 1, density: 2, weight: 3, finish: 4}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,18 @@ printed rather than lit.
 ⚠ Mask and image must share a box exactly — `object-fit` moves the photo inside
 its frame and not the mask, and the grade slides off the subject. Ship the
 `-webkit-mask-*` pair.
+
+The mask need not be the subject's own alpha, and what it confines need not be
+static. Hand-paint a second raster tracing one *structure* inside the artwork —
+a vein, a seam, a run of filigree — and mask a sibling layer of
+absolutely-positioned moving children with it. Their routes can then be
+eyeballed off a screenshot: anything straying off the structure is never
+painted, so imprecise motion data still reads as locked to the drawing. The mask
+supplies the precision the animation lacks.
+```css
+.motes { position: absolute; inset: 0; mask-image: url(structure-mask.png);
+         mask-size: 100% 100%; mask-repeat: no-repeat; pointer-events: none }
+```
+⚠ A child clipped to nothing still animates and still composites. Under
+`prefers-reduced-motion` take the layer out with `display: none` rather than
+freezing children the mask may be hiding anyway.

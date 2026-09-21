@@ -4,7 +4,7 @@ category: layout
 tags: [layout,diagram,connector,responsive,correctness,architecture]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
