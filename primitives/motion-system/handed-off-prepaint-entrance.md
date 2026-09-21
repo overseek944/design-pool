@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,entrance,hydration,correctness,progressive-enhancement]
 axes: none
 cost: 3
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []

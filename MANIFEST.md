@@ -1,6 +1,6 @@
 # Manifest
 
-580 primitives. Format: `category/id | axes cost | tags | gist`
+582 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -482,6 +482,7 @@ surface/intersected-raster-mask | E1 D4 W2 F4 $2 | surface mask texture print ha
 surface/inverted-bevel-state-pair | E2 D2 W2 F3 $1 | surface depth detail affordance state border | One inset hairline decides whether a box is raised or recessed, 
 surface/inverted-field-ground | E1 D2 W3 F4 $1 | surface form contrast figure-ground accessibility | Invert the form figure-ground: tint the panel below the page val
 surface/join-straddling-blur-band | E1 D2 W2 F5 $2 | surface mask texture detail section css-only | Two full-bleed plates meeting on a line show the join — a resolu
+surface/mask-channel-scrim-regions | E1 D2 W3 F5 $1 | scrim imagery mask contrast accessibility | A scrim written as stacked background gradients compounds wherev
 surface/masked-edge-highlight | E1 D2 W2 F5 $2 | surface border light mask detail | A hairline that is bright at one point and fades to nothing arou
 surface/multi-edge-mask-fade | E1 D2 W2 F5 $2 | surface mask edge composition bleed | Let an oversized panel run past the layout and dissolve instead 
 surface/nine-slice-control-chrome | E1 D2 W3 F5 $2 | surface border chrome svg detail | A control whose shape is not a rounded rectangle — a tapered edg
@@ -513,6 +514,7 @@ surface/tiled-shape-edge-mask | E2 D3 W2 F3 $2 | surface mask edge ornament text
 surface/twinned-elevation-tokens | E1 D2 W2 F5 $1 | shadow elevation tokens hover card | box-shadow interpolates only when both lists carry the same numb
 surface/user-space-ruling-path | E1 D3 W1 F5 $1 | surface svg texture blueprint diagram cheap | Rule a drawing inside its own viewBox, not behind it. A single <
 timing/asymmetric-enter-exit-delay | E3 D2 W2 F5 $1 | motion sequencing state transition | A staggered group should cascade in and collapse out together. C
+timing/bounce-parametrised-spring | E3 D2 W2 F5 $1 | motion spring rhythm sequencing | Stiffness, mass and damping are three coupled dials, none of whi
 timing/capped-total-stagger | neutral  $1 | motion sequencing scale | For unknown-length collections use stagger:{amount} not stagger:
 timing/cue-list-on-looping-clock | neutral  $2 | motion timing loop architecture correctness | A multi-beat scripted sequence built from chained timers cannot 
 timing/cumulative-gap-schedule | E3 D2 W2 F4 $1 | motion sequencing choreography entrance | A hand-authored entrance is a list of pauses, not absolute delay

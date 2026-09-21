@@ -4,7 +4,7 @@ category: perf
 tags: [motion,performance,promotion]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -30,3 +30,19 @@ the residual `transform` and `filter` with it so nothing holds the layer open.
 ```
 ⚠ A `filter`, a 3D transform or `backface-visibility: hidden` each hold the
 layer on their own — removing `will-change` alone changes nothing.
+
+Clearing by hand only works where a script owns the end of the animation. For
+promotion authored in a stylesheet, invert the default: every element declares
+the hint through a custom property left undefined, and the root defines it as
+`none`. Nothing is promoted at rest, and a subtree is promoted by re-declaring
+the property on an ancestor for as long as its motion runs — so the cleanup
+that is normally forgotten is simply the resting state. One declaration also
+turns the page's entire compositing budget off, which is what print, a
+low-memory tier and a screenshot pass each want.
+```css
+:root  { --wc: none }              /* re-declare as `transform` while animating */
+.panel { will-change: var(--wc, transform) }
+```
+⚠ The hint is now inherited-by-scope, not per-element — an ancestor holding it
+open promotes every declaring descendant under it, which on a long section is
+worse than the per-node version it replaced.
