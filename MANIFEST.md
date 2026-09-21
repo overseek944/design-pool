@@ -1,6 +1,6 @@
 # Manifest
 
-669 primitives. Format: `category/id | axes cost | tags | gist`
+672 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -166,10 +166,12 @@ interaction/overdamped-surface-tilt | E2 D1 W3 F5 $1 | interaction pointer trans
 interaction/override-released-system-preference | neutral  $1 | theme preference accessibility correctness state | A page that mirrors prefers-color-scheme and also ships a toggle
 interaction/paired-focus-offset-tokens | neutral  $1 | accessibility focus tokens correctness | Ship the focus ring as three tokens — width, an outer offset, an
 interaction/partial-modality-inert-siblings | neutral  $2 | interaction dialog accessibility inert focus correctness | Not every overlay should take the whole page. A panel hung off a
+interaction/platform-narrowed-download-set | neutral  $2 | progressive-enhancement navigation correctness accessibility architecture | An artifact built for five targets should not ship five equal bu
 interaction/pointer-transparent-copy-layer | neutral  $1 | interaction pointer accessibility layout correctness | Copy laid over a background that reacts to the pointer swallows 
 interaction/pre-hydration-nested-link | neutral  $2 | accessibility links hydration progressive-enhancement correctness | A card that navigates but contains its own link cannot be an anc
 interaction/proximity-revealed-target | E2 D1 W2 F5 $2 | interaction pointer accessibility focus custom-properties affordance pointer-events | A control meant to be found rather than advertised can key its o
 interaction/proxy-painted-native-control | neutral  $1 | accessibility focus forms input correctness keyboard | Keep the real <input> and paint a sibling. Clip it to a 1×1 rect
+interaction/reader-parameterised-comparison | E2 D3 W2 F5 $3 | comparison demo state interaction accessibility | A before/after figure quoted from your own example is an asserti
 interaction/rejected-file-input-reset | neutral  $1 | correctness form input file detail | Check a chosen file's real type and byte length before any uploa
 interaction/reserved-state-border | neutral  $1 | accessibility focus cls border correctness | A control that gains a border on focus or selection must carry t
 interaction/resting-default-expanding-row | E2 D2 W2 F5 $2 | interaction state hover accessibility layout | A row of panels that expand only on hover says nothing at rest —
@@ -496,6 +498,7 @@ scroll/dual-driven-progress-property | neutral  $2 | scroll progress custom-prop
 scroll/edge-chained-frame-scroll | neutral  $2 | scroll iframe embed correctness interaction | A same-origin embed that scrolls internally traps the gesture at
 scroll/element-scoped-read-progress | neutral  $2 | scroll progress correctness observer reading | Reading progress belongs to the article, not the document. Measu
 scroll/embed-claims-wheel-on-hover | neutral  $1 | scroll embed iframe overflow pointer correctness | An interactive embed inside a scrolling page — a map, a 3D scene
+scroll/end-clamped-section-spy | neutral  $1 | scroll navigation correctness architecture | A scroll spy that takes the last section whose top has crossed a
 scroll/fixed-attachment-band | E2 D1 W3 F3 $1 | scroll parallax media surface progressive-enhancement performance | A full-bleed decorative band whose image is pinned to the viewpo
 scroll/fully-entered-recede | E2 D1 W2 F5 $2 | scroll scroll-driven view-timeline scale transition | A tall artifact parked between two sections reads as a wall to b
 scroll/height-aware-sticky-offset | neutral  $2 | scroll sticky layout correctness viewport | top: 0 is only right while the sticky element fits the viewport.

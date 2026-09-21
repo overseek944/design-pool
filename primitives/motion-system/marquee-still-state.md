@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,accessibility,marquee,correctness,overflow]
 axes: none
 cost: 1
-seen: 15
+seen: 16
 requires: []
 conflicts: []
 completes: []
@@ -65,3 +65,20 @@ block that releases the width.
 @media (prefers-reduced-motion: reduce) {
   .marquee::before, .marquee::after { display: none } }
 ```
+
+Several lanes make the still state one step longer. Each row is its own
+overflow context, so releasing the width inside them leaves N stacked wrapped
+blocks with the old row rhythm between them. Dissolve the row wrappers as well
+— `display: contents` retires them without touching the markup — and give the
+cards a fraction width so the whole set reflows as one field rather than as
+three short paragraphs of cards.
+```css
+@media (prefers-reduced-motion: reduce) {
+  .row { display: contents }
+  .track { flex-wrap: wrap; animation: none }
+  .card { width: calc(50% - var(--g) / 2) }   /* 2–3 up */
+}
+```
+⚠ The fraction must account for the gap or the last card in each row wraps
+alone. `display: contents` also drops the row's own gap, so the surviving flex
+container owns all spacing.

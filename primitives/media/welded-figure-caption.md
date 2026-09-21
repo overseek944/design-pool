@@ -4,7 +4,7 @@ category: media
 tags: [media,figure,caption,accessibility,editorial]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -68,3 +68,17 @@ itself, so it stays ordinary text at ordinary contrast.
 ⚠ The plate is decoration, so `aria-hidden` and `pointer-events: none`. Keep it
 within 3–6% of the section ground or it becomes a panel the caption is trapped
 in.
+
+A third dose folds the label into the sentence: no strip, no bracket, just the
+numeral opening the caption itself — `Figure 2. What the two curves measure.`
+— set one ink step darker than the text that follows and nothing
+else. The caption stays one line of prose and still gives running copy
+something to cite. Keep the numeral in its own element so the step is a rule
+rather than a hand-applied span, and do not also change its size: at caption
+scale a second variable makes it a heading.
+```css
+.figcap    { color: var(--ink-45) }
+.figcap__n { color: var(--ink-65); font-weight: 500 }
+```
+⚠ The period after the number belongs inside the element, or the darker run
+ends on a lighter full stop at every figure on the page.

@@ -4,7 +4,7 @@ category: scroll
 tags: [accessibility,navigation,scroll,state,architecture]
 axes: none
 cost: 1
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
@@ -57,3 +57,16 @@ links.forEach(a => a.setAttribute('aria-current', a.hash === `#${id}` ? 'step' :
 ```
 ⚠ `step` implies the set is ordered and the reader is progressing through it.
 On a table of contents it overclaims — that is `location`.
+
+Where the contents list is one component shared across pages, its entries
+outlive the sections they name. Resolve every `href` at boot and hide the item
+whose target is absent rather than leaving a link that scrolls nowhere — a dead
+entry in a contents list is read as a section the reader failed to find. Hide
+the whole item, not the anchor, or its ordinal and rule survive as a gap in the
+numbering.
+```js
+const t = document.getElementById(decodeURIComponent(a.hash.slice(1)))
+if (!t) (a.closest('[data-toc-item]') ?? a).hidden = true
+```
+⚠ Only safe against markup already in the document — pruned before a lazy
+section mounts, the entry is gone for the rest of the session.

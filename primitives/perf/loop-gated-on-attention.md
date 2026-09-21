@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,intersection-observer,visibility,battery,correctness]
 axes: none
 cost: 2
-seen: 51
+seen: 52
 requires: []
 conflicts: []
 completes: []
@@ -236,3 +236,12 @@ const live = () => !destroyed && shown() && onScreen && !document.hidden
 ⚠ It is a forced style resolution — once per frame at the top of the callback,
 never per element in a loop over many. The `?? true` matters: where the method
 is missing the gate must fall open, not closed.
+
+The one-shot form of this gate is a different thing wearing the same parts: an
+observer that writes a flag on first intersection and disconnects. It buys a
+first frame that never plays offscreen and then leaves the loop compositing for
+the rest of the session — the cost this exists to avoid. Disconnect only where
+the flag is a *reveal*; a gate that must keep paying has to keep observing.
+⚠ Declaring the paused state in the stylesheet and releasing it from script
+inverts the failure: a script that never runs leaves a duplicated track frozen
+mid-loop, showing its own repeat. Default to running and let the gate pause.

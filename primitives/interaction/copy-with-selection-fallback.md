@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,clipboard,accessibility,correctness,feedback]
 axes: none
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -38,3 +38,16 @@ write(src.innerText)                    /* rendered, not authored */
 ⚠ `innerText` forces layout on the source and returns an empty string for a
 `display: none` block — a copy button beside a collapsed panel silently yields
 nothing.
+
+Whichever fallback is chosen, publish the *outcome* as a state on the control
+rather than as a swapped label — success and failure both, cleared on a timer
+that is reset on every press. The stylesheet then owns the feedback, a failed
+copy is a visible state instead of a dropped promise, and the button has one
+attribute to test.
+```js
+btn.dataset.copied = String(ok); clearTimeout(t)
+t = setTimeout(() => delete btn.dataset.copied, 1500)     // 1.2–2s
+```
+⚠ `data-copied="false"` must look different from no attribute at all, not just
+from `"true"` — styled on presence alone it congratulates the reader for a copy
+that did not happen.

@@ -4,7 +4,7 @@ category: surface
 tags: [surface,border,motion,svg]
 axes: {energy: 4, density: 3, weight: 3, finish: 4}
 cost: 3
-seen: 13
+seen: 14
 requires: []
 conflicts: []
 completes: [overflow-visible-for-glow-bleed]
@@ -107,3 +107,18 @@ background: conic-gradient(from var(--a), var(--c) 0deg,
 ```
 ⚠ First and last stop must be the same colour or the head shows a seam once
 per turn.
+
+`animation: none` is not the reduced-motion state — it freezes the sweep at the
+angle the keyframe happened to start from, which is the one frame nobody
+art-directed, and on a narrow arc that usually parks the highlight in a corner.
+Re-aim it: write a literal `from` that puts the bright stop on an edge, and
+drop its alpha by 20–40% at the same time, since a highlight that no longer
+moves reads harder than the same value in motion.
+```css
+@media (prefers-reduced-motion: reduce) {
+  .ring::after { animation: none;
+    background: conic-gradient(from 320deg, #0000 0 300deg, var(--c-quiet) 340deg, #0000 360deg) }
+}
+```
+⚠ The frozen angle and the animated one are two values to keep in step — park
+it where the sweep spends most of its time, not at an arbitrary number.

@@ -4,7 +4,7 @@ category: layout
 tags: [layout,has,quantity-query,chrome,css-only,density]
 axes: none
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -42,3 +42,18 @@ html:has(.doc-page) { scroll-padding-top: 5.5rem; zoom: 1 }
 ```
 ⚠ Only if the marker is in the served HTML. Mounted by script after hydration,
 the root property flips a frame late and the whole document jumps.
+
+A shell conceding to a child that changes its *layout mode* — an optional rail
+turning one centred column into two asymmetric tracks — has to reach further
+than the grid declaration. Alignment committed elsewhere survives the switch:
+centred hero text and `margin-inline: auto` blocks stay centred inside the
+narrower track and read as misaligned against the rail. Reverse them under the
+same `:has()`, and hide the full-bleed decorations that assumed the symmetric
+mode.
+```css
+.page:has(> .rail)          { grid-template-columns: var(--rail-w) minmax(0, 1fr) }
+.page:has(> .rail) .body    :is(.is-centred, [class*="mx-auto"]) { text-align: left; margin-left: 0 }
+main:has(.page > .rail) > .backdrop { display: none }
+```
+⚠ Every rule is a second definition of the same component. Scope them to one
+block next to the grid declaration, or the two modes drift apart silently.

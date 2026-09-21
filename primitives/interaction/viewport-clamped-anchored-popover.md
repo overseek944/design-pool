@@ -4,7 +4,7 @@ category: interaction
 tags: [correctness,responsive,overlay,accessibility,hover,focus]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -51,3 +51,17 @@ tip.style.left = `${l + (track.left - tip.offsetParent.getBoundingClientRect().l
 ⚠ Measuring the label in the same frame its text is written is a forced reflow
 per pointer move. Write, measure once, and hold the width while the text is
 unchanged.
+
+Below a breakpoint the better answer is to stop anchoring. Drop the trigger's
+own `position: relative` and the panel has no containing block to be clamped
+against — pin it as a fixed sheet inset from both edges under the chrome, where
+it gets the full measure instead of a clamped fraction of a chip's width. One
+property on the trigger switches the whole model.
+```css
+@media (width <= 45rem) {
+  .trigger { position: static }
+  .panel   { position: fixed; inset: 4rem 1rem auto; max-inline-size: none; width: auto }
+}
+```
+⚠ A fixed panel no longer moves with its trigger — it must close on scroll, or
+it hangs over the page pointing at a word that has left the viewport.
