@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,correctness,accessibility,focus,keyboard,scroll,chrome,navigation]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -22,3 +22,17 @@ const hide = !held && y > FLOOR && (Math.abs(y - last) >= 5 ? y > last : hidden)
 ```
 ⚠ Restore the bar when the behaviour is torn down at a breakpoint — a retracted
 bar whose listener is removed on resize never comes back.
+
+One delta for both directions is the wrong shape: hiding should be easy and
+showing should be asked for. Give the two tests different thresholds — 4–6px of
+downward movement retracts, 10–16px of upward movement restores — and a drifting
+trackpad stops flashing the bar back at every wobble while a deliberate flick up
+still lands instantly. The floor below which it never hides can be content
+rather than a constant: derive it from the bottom edge of whatever section the
+bar must stay legible over, so the bar is pinned through an opening scene and
+free below it without a magic number.
+```js
+const floor = Math.max(TOP, sectionBottom + scrollY - bar.offsetHeight)
+```
+⚠ Re-derive the floor on resize and after fonts load — measured once at
+`DOMContentLoaded` it is wrong by however much the section reflowed.

@@ -4,7 +4,7 @@ category: layout
 tags: [layout,chrome,tokens,custom-property,architecture,overlay,correctness]
 axes: none
 cost: 2
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -85,3 +85,17 @@ body:has([data-sticky-cta]) [data-consent] {
 ⚠ The selector hard-codes the other overlay's height, so the two drift the first
 time one is restyled. Fine for a pair; past that the published value is the only
 thing that scales.
+
+The occupying value is not always a boolean. A banner that sits in normal flow
+above pinned chrome is consumed continuously as the page moves — publish
+`max(0, bannerHeight − scrollY)` from the same passive scroll handler and the
+bar's `top` rides the banner out instead of snapping to zero at a threshold
+somebody picked. The reserved number stays the pinned bar's own height
+throughout, so anchors and `scroll-padding` never see the banner at all.
+```js
+root.style.setProperty('--banner-occupied',
+  Math.max(0, banner.offsetHeight - scrollY) + 'px')
+```
+⚠ It is a layout read per scroll frame — cache `offsetHeight` and refresh it on
+resize and on dismiss, not inside the handler. Write `0px` the moment the
+banner is dismissed or the bar holds a gap under nothing.

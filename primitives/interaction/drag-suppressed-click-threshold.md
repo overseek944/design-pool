@@ -4,7 +4,7 @@ category: interaction
 tags: [pointer,drag,interaction,correctness,accessibility]
 axes: none
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -57,3 +57,17 @@ new ResizeObserver(() => { layout(); if (dragging) rect = el.getBoundingClientRe
 ```
 ⚠ Store the grab offset at `pointerdown` too — recentring on the pointer instead
 teleports the object by half its size on the first move of every drag.
+
+A snap container cannot be dragged by writing its scroll offset: every frame of
+the gesture the engine pulls back toward the nearest snap position, and the
+surface stutters against the hand. Drop `scroll-snap-type` for the duration of
+the drag from the same class that carries the grabbing cursor, and let it come
+back on release so the rail still settles on an item. `user-select: none`
+belongs in that class too — without it the gesture selects the card's text.
+```css
+.rail            { scroll-snap-type: x mandatory; cursor: grab }
+.rail.is-dragging { scroll-snap-type: none; cursor: grabbing; user-select: none }
+```
+⚠ Restore it in a `pointercancel` handler as well as `pointerup` — a gesture
+interrupted by the system leaves the rail unsnappable for the rest of the
+session.

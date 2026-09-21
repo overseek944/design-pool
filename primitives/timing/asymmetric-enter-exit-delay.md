@@ -4,7 +4,7 @@ category: timing
 tags: [motion,sequencing,state,transition]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -35,3 +35,23 @@ property it reads.
 ```
 ⚠ Collapse rather than cancel — `transition: none` fires no `transitionend`, and
 anything sequenced off the last item's completion never runs.
+
+Zeroing the exit is right when the group is being replaced and wrong when it is
+being *closed*: a set that collapses together reads as a switch, one that
+unwinds along the ladder it arrived on reads as a mechanism. Keep a delay on
+both states and reverse the ramp instead — author the resting ladder on the
+members, override `transition-delay` in the state rule with the ramp inverted,
+and entering and leaving sweep in opposite directions for one extra declaration
+per member, no script and no second keyframe set. Take this where the set is a
+field the reader is watching; take the zeroed exit where something else is
+arriving behind it.
+```css
+.cell:nth-child(1)        { transition: fill .5s steps(5, end) .45s }
+.cell:nth-child(9)        { transition-delay: 0s }
+.is-on .cell:nth-child(1) { transition-delay: 0s }        /* inverted ramp */
+.is-on .cell:nth-child(9) { transition-delay: .45s }
+```
+⚠ Only the delay may differ between the two rules — change the duration or the
+timing function as well and the two directions stop being the same move, which
+reads as a glitch rather than as a reversal. The total still has to clear the
+cap above, now in both directions.

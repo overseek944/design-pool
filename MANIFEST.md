@@ -1,6 +1,6 @@
 # Manifest
 
-666 primitives. Format: `category/id | axes cost | tags | gist`
+669 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -407,6 +407,7 @@ motion-system/sub-fusion-tremor | E5 D1 W1 F4 $1 | motion loop drag state micro-
 motion-system/svg-geometry-keyframes | E3 D2 W2 F5 $1 | motion svg diagram precision detail | r, cx, cy, x, y and width are CSS properties on SVG, not just at
 motion-system/transient-class-scoped-transition | neutral  $2 | motion-system view-transition theme correctness reduced-motion | A view transition, or a global colour transition, must animate f
 motion-system/twin-pose-custom-properties | E3 D3 W2 F5 $2 | transform state stagger custom-properties group choreography | A group that rearranges between two arbitrary layouts — stacked 
+motion-system/viewport-clamped-slot-travel | E3 D1 W2 F5 $3 | motion travel scroll measurement layout | An element travelling between two positions read from real layou
 perf/analytic-stand-in-until-live | neutral  $2 | data loading architecture visualisation labelling | A visual driven by a live feed has three bad first frames: empty
 perf/bfcache-blanked-surface | neutral  $1 | performance canvas lifecycle correctness restoration flicker | A page restored from the back/forward cache repaints whatever a 
 perf/boot-drained-call-queue | neutral  $1 | architecture third-party progressive-enhancement events correctness | A deferred script cannot be called while the page is still parsi
@@ -518,6 +519,7 @@ scroll/scrollbar-on-activity | E1 D1 W1 F5 $1 | scroll scrollbar chrome restrain
 scroll/scrub-lag-band | E3 D2 W3 F5 $2 | scroll motion feel | scrub as a number adds catch-up lag in seconds and is what separ
 scroll/self-driven-scroll-blackout | neutral  $1 | scroll state observer correctness | Any state derived from scroll position — an active section, a hi
 scroll/smooth-scroll-driving-timeline | E3 D2 W3 F5 $3 | scroll motion architecture | Pair a smooth-scroll library (Lenis) with the animation library'
+scroll/snap-suppressed-scroll-wrap | neutral  $2 | scroll carousel snap loop correctness | A duplicated track makes a scroll container endless only if the 
 scroll/stale-scroll-request-guard | neutral  $2 | scroll correctness accessibility events navigation | A scroll request crossing an async boundary — posted by an embed
 scroll/sticky-as-cheap-pin | E1 D2 W2 F3 $1 | scroll layout performance | position: sticky for anything that only needs to hold position —
 scroll/tall-target-intersection-clause | neutral  $1 | scroll correctness observer reveal | intersectionRatio is a fraction of the element, so a section tal
@@ -601,6 +603,7 @@ timing/cycle-seam-reshuffle | E2 D3 W2 F5 $2 | timing loop motion svg variation 
 timing/decaying-loop-restart-gap | E2 D1 W2 F5 $1 | loop timing sequence restraint demo attention | A self-restarting demonstration does not want one restart gap. A
 timing/dwelling-phase-ring | neutral  $2 | timing state loop choreography architecture demo | A looping demonstration written as a schedule of effects has to 
 timing/expanding-shadow-beacon | E2 D1 W2 F4 $1 | motion indicator status ambient glow | A mark that blinks reports a state; one that throws a ring outwa
+timing/half-wave-endpoint-deviation | E3 D1 W2 F5 $1 | motion easing interpolation character | To add a bulge to a scrubbed interpolation — an arc over a strai
 timing/inert-keyframe-lifetime | neutral  $1 | timing lifecycle css-animation cleanup accessibility | A transient overlay — a burst, a ripple, a one-shot badge — usua
 timing/lead-in-separated-arrival | E2 D2 W2 F5 $1 | timing motion sequence stream demo mock cadence delay | A mock of anything that arrives over a network — streamed tokens
 timing/non-linear-loop-periods | E3 D3 W2 F4 $2 | motion ambient rhythm | Give concurrent ambient loops coprime-ish periods (4s / 5s / 7s)
