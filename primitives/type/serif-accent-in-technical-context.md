@@ -4,7 +4,7 @@ category: type
 tags: [type,contrast,editorial,restraint]
 axes: {energy: 1, density: 2, weight: 3, finish: 5}
 cost: 1
-seen: 21
+seen: 22
 requires: []
 conflicts: []
 completes: []
@@ -96,3 +96,14 @@ takes the number and never the label under it.
 ⚠ Most display serifs ship proportional oldstyle figures — a column of them
 rags. Request `font-variant-numeric: tabular-nums lining` and verify the face
 carries it, or set figures that must align in the mono after all.
+
+Tracking is one of the two corrections the accent needs; the other is at its
+boundaries. Letter-spacing is added after every glyph, so it never puts air
+*before* the first one, and an italic serif dropped mid-sentence collides with
+the upright sans on either side of it. Give the run a small side margin instead,
+marginally more on the entry side — the slope carries the italic's lower-left
+back toward the word behind it, where a sans has its stem. 0.03–0.06em leading,
+0.02–0.04em trailing, and neither where the accent opens the line.
+```css
+h1 em { margin-inline: .04em .035em }
+```

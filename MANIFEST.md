@@ -1,6 +1,6 @@
 # Manifest
 
-470 primitives. Format: `category/id | axes cost | tags | gist`
+472 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -78,6 +78,7 @@ interaction/aliased-fragment-target | neutral  $1 | navigation anchor fragment a
 interaction/anchor-focus-handoff | neutral  $1 | accessibility navigation focus correctness anchor | An in-page link that only scrolls leaves the keyboard where it w
 interaction/anchor-only-nav-collapse | neutral  $1 | navigation responsive accessibility architecture correctness | Where every link in a bar is an in-page anchor, the narrow-viewp
 interaction/auto-advance-yields-to-input | E2 D2 W2 F5 $2 | carousel autoplay accessibility state | A self-advancing sequence must stop the instant a reader touches
+interaction/autofill-proofed-honeypot | neutral  $1 | accessibility correctness form detail progressive-enhancement | A decoy field is the alternative to a visible challenge widget a
 interaction/axis-swapped-disclosure | neutral  $2 | disclosure responsive layout-animation breakpoint accessibility | A detail panel opens downward in a stacked column and sideways b
 interaction/breakpoint-dual-mode-details | neutral  $2 | disclosure navigation responsive accessibility progressive-enhancement | One <details> can be a permanently-open sidebar above a breakpoi
 interaction/breakpoint-scoped-overlay-dismiss | neutral  $1 | navigation overlay responsive correctness accessibility | An overlay that exists only below a breakpoint — a mobile nav sh
@@ -104,6 +105,7 @@ interaction/inert-tracks-opacity | neutral  $1 | accessibility focus correctness
 interaction/inherited-autocomplete-pass | neutral  $1 | forms autocomplete accessibility third-party correctness | A form you did not author — from a page builder, a CMS block, a 
 interaction/inline-target-floor | neutral  $1 | accessibility interaction correctness detail | A row of small print — legal links, meta, a footer — fails targe
 interaction/micro-interaction-defaults | E2 D2 W2 F5 $1 | interaction polish consistency | One transition duration (200ms) and one property set for every n
+interaction/mounted-empty-status-slot | neutral  $1 | accessibility correctness form layout state css-only | A live region only announces if it was in the document before th
 interaction/native-disclosure-animation | E2 D2 W2 F5 $2 | motion disclosure accessibility progressive-enhancement height | ::details-content with interpolate-size: allow-keywords animates
 interaction/offset-shadow-press | E3 D2 W4 F2 $1 | interaction state depth detail border | A hard offset shadow reads as a solid object sitting above the p
 interaction/one-sided-hover-delay | E2 D2 W2 F5 $1 | interaction hover delay css-only restraint pointer | A hover-revealed panel wants patience on the way in and none on 

@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,focus,tokens,correctness]
 axes: none
 cost: 1
-seen: 15
+seen: 16
 requires: []
 conflicts: []
 completes: []
@@ -55,3 +55,16 @@ overrides, so the exceptions stay countable.
 `overflow: hidden` clips it away, and the `outline: none` that has to come with
 it erases the ring completely in forced-colors mode, where box-shadow is not
 painted at all.
+
+There is a third way an outer ring disappears and it is not clipping. Grid and
+flex items paint as atomic units in document order, so a later sibling's
+background covers an earlier one's outline: a ring on a cell in a row of
+abutting cells survives on the outer edges and is cut along every shared one.
+Ordinary in-flow blocks do not do this, which is why it only appears once a
+strip becomes a grid. The inner offset hides the symptom; lifting the cell fixes
+it and keeps the ring outside the box.
+```css
+.cell:focus-within { position: relative; z-index: 1 }
+```
+⚠ `z-index` needs the positioning to go with it — on a static grid item it is
+ignored and the ring stays cut.

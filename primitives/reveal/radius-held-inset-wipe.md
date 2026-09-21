@@ -4,7 +4,7 @@ category: reveal
 tags: [reveal,clip-path,wipe,panel,motion]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -89,3 +89,17 @@ the duration; the second leg is shorter and wants the same apparent speed.
 ```
 ⚠ Only orthogonal runs — a diagonal or a curve reveals as a growing rectangle,
 not as a line being drawn.
+
+The travelling axis takes a bleed too, on one condition: the closed state must
+be a full `100%`. At 100% the box is entirely clipped, so a negative value at
+the far end reveals nothing early — and it stops the settled frame shaving the
+descenders the wipe just uncovered. Size it in `em` for a reveal on type; a `px`
+bleed that covers a descender at 18px crops one at display size. Bottom wants
+more than top, since descenders hang further than ascenders rise. 0.2–0.5em
+bottom, 0.15–0.3em top.
+```css
+@keyframes rise { from { clip-path: inset(0 0 100%) }
+                  to   { clip-path: inset(-.25em -.1em -.4em) } }
+```
+⚠ Only from a 100% closed state. Off any partial inset the same end value shows
+a sliver of the element before the wipe has started.
