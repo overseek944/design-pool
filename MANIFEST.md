@@ -1,6 +1,6 @@
 # Manifest
 
-475 primitives. Format: `category/id | axes cost | tags | gist`
+476 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -90,6 +90,7 @@ interaction/coordinated-group-state | E3 D2 W2 F5 $1 | interaction surface hover
 interaction/copy-safe-sample-text | neutral  $1 | interaction code correctness detail usability | A terminal or code sample is there to be dragged over and pasted
 interaction/copy-with-selection-fallback | neutral  $1 | interaction clipboard accessibility correctness feedback | navigator.clipboard.writeText rejects on an insecure origin, a d
 interaction/coreference-trace-highlight | E2 D3 W2 F5 $2 | interaction annotation cross-reference highlight accessibility diagram | Where one value recurs across panels — a figure in a table, the 
+interaction/count-indexed-sheet-stack | E2 D3 W2 F5 $3 | sheet overlay stack gesture depth transform | A stack of sheets needs one number, not a state machine: how man
 interaction/dimension-coded-position-dot | E2 D2 W2 F5 $1 | interaction state indicator accessibility carousel | Let the active item in a position indicator change size, not onl
 interaction/drag-suppressed-click-threshold | neutral  $2 | pointer drag interaction correctness accessibility | A surface that answers to drag and also holds links fires a clic
 interaction/edge-hotzone-sibling-reveal | E2 D2 W2 F5 $2 | interaction hover panel chrome css-only accessibility | Reclaim the width a hidden rail costs without a toggle: park an 

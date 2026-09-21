@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,loop,ambient,diagram,css-only]
 axes: {energy: 3, density: 3, weight: 1, finish: 4}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -41,3 +41,18 @@ el.style.offsetDistance = d * 100 + '%'
 ```
 ⚠ Shape the parameter in one place only. A power curve on top of a non-linear
 easing compounds into a near-stop at the origin that reads as a stalled element.
+
+On a *closed* path the phase cannot come from `animation-delay`: a delayed
+traveller parks at its origin until the delay elapses, so a ring of a dozen
+spends its opening seconds as a clump at one point. Put the phase in the
+distance instead — animate from `var(--start)` to `calc(var(--start) + 100%)` —
+and every element is already distributed around the loop on frame one, each
+crossing the seam at a different moment. Periods 25–60s to read as drift.
+```css
+.orbiter { offset-path: ellipse(var(--rx) var(--ry) at 50% 50%); offset-rotate: 0deg;
+           animation: orbit var(--dur, 40s) linear infinite }
+@keyframes orbit { from { offset-distance: var(--start, 0%) }
+                   to   { offset-distance: calc(var(--start, 0%) + 100%) } }
+```
+⚠ The reduced-motion branch must pin each element to its own `var(--start)`.
+`animation: none` alone collapses the whole constellation onto one point.

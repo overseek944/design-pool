@@ -4,7 +4,7 @@ category: light
 tags: [color,type,effect]
 axes: {energy: 3, density: 2, weight: 4, finish: 3}
 cost: 2
-seen: 13
+seen: 14
 requires: []
 conflicts: []
 completes: []
@@ -72,3 +72,20 @@ does not move.
   padding: max(0em, calc((1.3em - var(--lh)) / 2));
   margin:  min(0em, calc((1.3em - var(--lh)) / -2)) }
 ```
+
+Paint the sweep on a duplicate instead of clipping the real text. A pseudo-
+element stacked over the element carries `content: attr(data-text)`, the
+gradient and the transparent fill, while the base keeps an ordinary opaque
+colour — so every failure of the clip degrades to legible text rather than to
+nothing: unsupported engine, forced colours, a dropped background, a
+reduced-motion branch that only stops the animation. Selection and find-in-page
+still hit the real node, and `drop-shadow` on the duplicate blooms from the
+glyph outline, which no fill can do.
+```css
+.shine { position: relative; color: var(--fg) }
+.shine::before { content: attr(data-text); position: absolute; inset: 0;
+  background: var(--sweep); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; filter: drop-shadow(0 0 5px #ffffff73) }
+```
+⚠ Mark the duplicate `aria-hidden` and pointer-transparent, and accept that the
+string now lives in two places — it will drift the first time one is edited.

@@ -4,7 +4,7 @@ category: type
 tags: [type,wordmark,svg,pixel,asset-free]
 axes: {energy: 2, density: 3, weight: 4, finish: 2}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -28,3 +28,18 @@ tone reads as edge bleed and stops the letterforms looking machine-clean;
 ```
 ⚠ It is a picture, not text — carry the name in `aria-label` and it will not be
 found by in-page search. Below ~3px per cell the grid stops resolving.
+
+Ship the grid as a font instead and the trade inverts: real selectable,
+findable, translatable text that wraps and reflows, against a webfont request
+and fallback metrics that will not match. The mark then becomes a face-level
+choice rather than path data — square, circle, triangle, line or an open grid —
+so one headline reads as a bitmap, a stipple or a scatter of plotted points with
+no change to the markup. Pick the mark against whatever sits behind it.
+```css
+@font-face { font-family: Dots; src: url(dots.woff2) format("woff2");
+             font-display: swap; size-adjust: 106% }
+h1 { font-family: Dots, ui-monospace, monospace; letter-spacing: .02em }
+```
+⚠ Pixel faces carry almost no hinting, so the marks alias into uneven rows under
+fractional scaling — set them at whole pixel sizes, or above ~32px where the
+error stops resolving. `font-display: swap` will flash a proportional fallback.
