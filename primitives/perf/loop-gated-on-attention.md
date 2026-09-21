@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,intersection-observer,visibility,battery,correctness]
 axes: none
 cost: 2
-seen: 54
+seen: 55
 requires: []
 conflicts: []
 completes: []
@@ -245,3 +245,18 @@ the flag is a *reveal*; a gate that must keep paying has to keep observing.
 ⚠ Declaring the paused state in the stylesheet and releasing it from script
 inverts the failure: a script that never runs leaves a duplicated track frozen
 mid-loop, showing its own repeat. Default to running and let the gate pause.
+
+`t = 0` is rarely the frame worth holding. A noise field, a plasma or a flow at
+the clock's origin is its least developed state — flat, unmixed, often nearly
+empty — so the reduced-motion still lands on the one composition nobody
+designed. Freeze at a *chosen* constant instead: scrub the effect, pick the
+second that looks like the thing, and pass that. Pin the input-driven uniforms
+to fixed mid-range values in the same branch, or the still keeps answering to a
+pointer that is no longer animating anything.
+```js
+const STILL = .8                    // hand-picked, 0.5–3s into the loop
+render(rm ? STILL : clock(), rm ? .58 : .68 + .12 * Math.abs(pose.x))
+```
+⚠ The constant is a magic number that silently stops matching the moment the
+noise scale or seed is retuned — re-pick it whenever the effect is re-tuned, and
+keep it beside the seed, not beside the branch.

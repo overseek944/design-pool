@@ -4,7 +4,7 @@ category: layout
 tags: [layout,overflow,scroll,affordance,responsive,measure]
 axes: {energy: 2, density: 3, weight: 2, finish: 4}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

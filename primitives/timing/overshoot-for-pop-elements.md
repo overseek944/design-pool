@@ -4,7 +4,7 @@ category: timing
 tags: [motion,easing,delight]
 axes: {energy: 4, density: 2, weight: 2, finish: 3}
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -58,3 +58,18 @@ progress and the scrub stops tracking the hand.
 ⚠ Scrubbed backwards the overshoot plays in reverse, so it reads as the element
 being pulled out rather than bouncing — keep the overrun small enough that the
 reverse is not a second event.
+
+In a compound transition the overshoot is scoped to the geometric properties and
+nothing else. `box-shadow`, `background-color` and `border-color` travelling
+past their endpoints either clamp — so the curve's whole point is invisible —
+or read as a flash at the extreme, and a shadow that rings alongside the element
+detaches from it. Give those a monotone ease at roughly half the transform's
+duration: the colour lands while the geometry is still arriving, which reads as
+an instant response followed by a move.
+```css
+.control { transition: transform .46s cubic-bezier(.18,1.38,.32,1),
+                       box-shadow .26s ease, background-color .26s ease }
+```
+⚠ Ratio, not absolutes — take the non-geometric channel to 0.5–0.65 of the
+transform's duration. Matched durations put the settle and the colour's arrival
+on the same frame and the whole thing reads as one flat move again.

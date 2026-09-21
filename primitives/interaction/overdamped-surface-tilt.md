@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,pointer,transform,motion,restraint,custom-property]
 axes: {energy: 2, density: 1, weight: 3, finish: 5}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -60,3 +60,17 @@ const move = e => { read(e); raf ||= requestAnimationFrame(step) }
 ⚠ Teardown must remove the custom properties, not just the listener. Left on the
 root at their last value they outlive the feature and the next thing to read
 them inherits a stale pose.
+
+Publish the pose on a stage and stacked children can each read it at their own
+signed multiplier, which is where depth comes from: the near layer takes the
+pointer at 1, the layer meant to sit behind takes −0.3 to −0.5, so it drifts
+*against* the cursor. Counter-motion is the cue — a layer moving the same way
+more slowly reads as a slow sibling, not as distance. Share the rotations
+unscaled across every layer, or the stack shears instead of turning.
+```css
+.stage  { --card-x: 0px; --card-y: 0px; perspective: 1200px }
+.near   { translate: var(--card-x) var(--card-y) }
+.behind { translate: calc(var(--card-x) * -.45) calc(var(--card-y) * -.45) }
+```
+⚠ Depth needs the parallax and the scale ordering to agree. A back layer drawn
+larger than the front one inverts the read no matter what the multipliers do.

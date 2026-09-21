@@ -4,7 +4,7 @@ category: canvas
 tags: [shader,interaction,feel]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -36,3 +36,20 @@ window.addEventListener('mouseout', e => { if (!e.relatedTarget) active = false 
 ⚠ `document.visibilitychange` fires on the way back too — test `document.hidden`
 rather than clearing unconditionally, or returning to the tab with the pointer
 still over the canvas leaves the effect dead until the next move.
+
+The active flag does not have to be an event at all. Listen for `pointermove` on
+the window and derive the flag from a bounds test against the cached rect on
+every sample: it is recomputed from position each time, so there is no state to
+get stuck, a pointer that exits diagonally at speed is correctly outside on its
+next sample, and an overlay or a child capturing the pointer no longer reads as
+a departure the way element `pointerleave` does. The target simply goes to zero
+and the smoothing carries it home.
+```js
+const r = rect   // cached, refreshed on scroll/resize
+const on = e.clientX >= r.left && e.clientX <= r.right
+        && e.clientY >= r.top  && e.clientY <= r.bottom
+target.set(on ? nx(e) : 0, on ? ny(e) : 0)
+```
+⚠ This replaces `pointerleave`, not the blur/visibility clear above — a tab
+switch stops producing events entirely, so the last sample stands and a surface
+left mid-pose stays there.

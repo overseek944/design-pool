@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,progressive-enhancement,correctness,cls,state,architecture]
 axes: none
 cost: 3
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -38,3 +38,17 @@ fetch(url).then(r => r.arrayBuffer()).then(b => { frames = decode(b); redraw() }
 ```
 ⚠ Inline bytes are uncacheable and sit in the entry chunk — one frame, never a
 handful. Elect it by looking at it; frame zero is usually the empty one.
+
+Where the twin is cheap enough to be gradients, put it on the host's own
+pseudo-element rather than in a sibling. One box, one stacking position, one
+thing for layout to place — the twin cannot drift out of registration with the
+canvas because it *is* the canvas's box, there is no second node to mark
+`aria-hidden`, and the state is still one attribute write.
+```css
+.stage[data-fallback=true]::before { content: ""; position: absolute; inset: 0;
+  background: repeating-linear-gradient(84deg, #0000 0 22px, #ffffff12 23px),
+              radial-gradient(ellipse at 58% 75%, var(--hot), transparent 70%) }
+```
+⚠ Only for a twin with no interior structure. Anything needing more than the
+pseudo's single box — labels, several layers, a transition between them — wants
+the sibling form back.
