@@ -4,7 +4,7 @@ category: perf
 tags: [performance,loading,progress,fetch,overlay,correctness]
 axes: none
 cost: 3
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: [layout-release-broadcast]
@@ -38,3 +38,16 @@ await Promise.race([ready, new Promise(r => setTimeout(r, CEILING))])   // 4–8
 ⚠ `decode()` rejects on a broken image — catch per image or one 404 holds the
 page to the ceiling. Remove the overlay node and clear `aria-busy`; a
 `role="status"` element left in the tree keeps announcing.
+
+An entry gate is an argument for the brand on the first view and pure latency on
+the second. Record a flag when it first runs and take a short path afterwards —
+the same end state, reached in a fraction of the time — so a reader crossing
+four pages pays the choreography once. `sessionStorage`, not `localStorage`: a
+return a week later is a first impression again. Short path 0.4–1s against a
+full run of 3–7s.
+```js
+if (sessionStorage.getItem('gate')) return short()
+sessionStorage.setItem('gate', '1')
+```
+⚠ Both paths must finish in the same state, scroll lock included — an early
+return that skips the release strands a reader on a page that cannot scroll.

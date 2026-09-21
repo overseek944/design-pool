@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,measurement,responsive,choreography,diagram]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 3
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: [reduced-motion-branch, dead-banded-resize-rebuild]
@@ -42,3 +42,16 @@ torn down mid-flight.
 ⚠ Re-measure at progress 0, and off untransformed geometry — `offsetLeft`, not a
 rect read while the transform is live, or the delta collapses toward zero on
 every resize.
+
+`offsetLeft` is measured against the offset parent, which is the wrong basis the
+moment the reference is the viewport — a pointer position, fixed chrome, a
+target in another subtree. Zero the transform, read the rect and restore it in
+one synchronous block instead: nothing paints in between, and the box comes back
+in viewport coordinates with the live transform excluded.
+```js
+const x = gsap.getProperty(el, 'x'), y = gsap.getProperty(el, 'y')
+gsap.set(el, { x: 0, y: 0 })
+const r = el.getBoundingClientRect(); gsap.set(el, { x, y })
+```
+⚠ Only synchronous work may sit between the two writes — an `await` or a frame
+boundary lets the untransformed pose reach the screen as a jump.

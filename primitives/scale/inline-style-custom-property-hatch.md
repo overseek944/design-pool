@@ -4,7 +4,7 @@ category: scale
 tags: [tokens,responsive,breakpoint,architecture,cascade,custom-properties]
 axes: none
 cost: 1
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -81,3 +81,18 @@ narrow layout a different figure rather than a squeezed one.
 ```
 ⚠ A stage authored at fixed pixels has no intrinsic behaviour under text zoom —
 its labels grow and its geometry does not. Cap what it has to hold.
+
+Enumerate the *number* rather than the styled value and the closed set stops
+being one ladder per decision. A generated block mapping `[data-n="K"]` to
+`--n: K` across a fixed range is written once and then serves span counts,
+stagger indices, alpha percentages and delays alike, because every consumer does
+its own arithmetic. It is also the only route left where a `style-src` policy
+blocks the attribute outright. Ranges of 0–12 for structure, 0–100 for
+percentages.
+```css
+[data-n="0"]{--n:0} [data-n="1"]{--n:1}   /* … generated to the ceiling */
+.bar { inline-size: calc(var(--n) * 1%) }
+```
+⚠ The block is flat bytes in the critical stylesheet, so pick the ceiling
+deliberately — and a value past it resolves to nothing at all, which is why
+every `var(--n)` still needs a fallback.

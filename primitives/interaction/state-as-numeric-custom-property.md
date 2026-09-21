@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,hover,state,tokens,architecture]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -54,3 +54,16 @@ belongs in the media query; the index is not.
 ```
 ⚠ Size the indicator from the same count the tracks come from — a hard-coded
 `33.333%` and a `repeat(3, 1fr)` are one decision written twice.
+
+`calc()` cannot blend colours, so the flag stops at numbers and lengths unless it
+is spent as a *weight* instead. `color-mix()` takes both states in one
+declaration, and a whole control re-themes off one variable rather than a second
+rule per property. Carry the complement as its own token rather than
+`1 - var(--on)` — the pair reads in the mix and survives a flag left undefined.
+```css
+color: color-mix(in oklab, var(--ink) calc(100% * var(--on)),
+                           var(--ink-hover) calc(100% * var(--off)))
+```
+⚠ Registered as `<number>` the pair interpolates and the swap tweens;
+unregistered it snaps. Mix in `oklab` — `srgb` dips through a dead grey
+somewhere between two saturated ends.

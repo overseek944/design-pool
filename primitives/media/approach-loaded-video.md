@@ -4,7 +4,7 @@ category: media
 tags: [media,video,performance,intersection-observer,accessibility,bandwidth]
 axes: none
 cost: 2
-seen: 14
+seen: 15
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -132,3 +132,16 @@ requestAnimationFrame(() => requestAnimationFrame(() => { v.src = pick(); v.load
 that separate the fetch from the paint — one is not enough. Where `decode` is
 missing fall back to `onload`/`onerror`, and resolve on both or the chain hangs
 and the video never loads at all.
+
+Where the deferred URL sits on a `<source>` child rather than the element's own
+`src`, assigning it does nothing: the element resolved its media at parse time
+and only an explicit `load()` makes it look again. Deferring on the child is
+what keeps the markup valid carrying no `src` at all, so a crawler and a no-JS
+reader meet the poster rather than a broken element.
+```js
+const s = v.querySelector('source[data-src]')
+if (s && !s.src) { s.src = s.dataset.src; v.load() }
+```
+⚠ `load()` resets `currentTime` and discards the buffer, so gate it on the first
+approach only — running it again on re-entry restarts footage a reader was
+already watching.

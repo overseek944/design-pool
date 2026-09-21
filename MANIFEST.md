@@ -1,6 +1,6 @@
 # Manifest
 
-578 primitives. Format: `category/id | axes cost | tags | gist`
+580 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -153,6 +153,7 @@ interaction/split-fraction-step-rail | E2 D2 W2 F5 $2 | interaction indicator pr
 interaction/state-as-numeric-custom-property | E3 D2 W2 F5 $1 | interaction hover state tokens architecture | Express interaction state as a number, then derive every depende
 interaction/state-seeded-at-listener-attach | neutral  $1 | correctness state events scroll architecture | Events report transitions, not the current value. Any class deri
 interaction/submit-mounted-challenge-gate | neutral  $2 | forms third-party performance privacy accessibility progressive-enhancement | A verification widget mounted on load costs a third-party script
+interaction/subscribed-state-flag-layer | neutral  $1 | state accessibility correctness tokens css-only has focus hover | Raise the state flag from the attribute that already carries the
 interaction/substituted-driver-on-coarse-pointer | neutral  $2 | pointer touch fallback ambient correctness architecture | Every pointer-reactive decoration is inert on a touchscreen: the
 interaction/supplied-cursor-affordance-pair | E2 D2 W3 F3 $1 | interaction pointer detail chrome accessibility | Replacing the arrow is a strong voice, and the failure is replac
 interaction/tilt-exempt-anchor-layer | E2 D2 W3 F5 $2 | interaction pointer transform 3d depth architecture | A surface that tilts under the pointer tilts everything in it, i
@@ -395,6 +396,7 @@ reveal/trailing-mask-sweep | E3 D3 W2 F4 $2 | reveal mask scan grid sweep techni
 reveal/word-mask-variant | E4 D3 W3 F4 $2 | type motion reveal | Same nested-mask structure at word granularity (inline-block on 
 scale/absence-conditioned-child-default | neutral  $1 | tokens specificity component-api utility cascade correctness | A component wants to size the icons and rules handed to it, then
 scale/breakpoint-fallback-chain | neutral  $2 | tokens responsive architecture components css | Let a caller pass per-breakpoint values as custom properties and
+scale/breakpoint-published-as-tokens | neutral  $2 | responsive breakpoint tokens container-query custom-properties architecture css-only | A breakpoint is usually a place rules are written, so every comp
 scale/concentric-radius-ladder | neutral  $1 | tokens radius architecture correctness surface | Radius belongs to a surface's role, not to an author's taste: na
 scale/conditional-token-space-toggle | neutral  $2 | tokens architecture css correctness | A custom property whose value is an empty token stream is a CSS 
 scale/endpoint-named-fluid-tokens | neutral  $1 | tokens fluid naming architecture responsive | Name a fluid token after the two pixel values it interpolates be
