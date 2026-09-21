@@ -4,7 +4,7 @@ category: media
 tags: [media,logos,blend-mode,assets,normalisation]
 axes: none
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -65,3 +65,18 @@ scatter. Crushed flat, one `opacity` sets the weight for the whole set:
 ⚠ Alpha survives and luminance does not, so any mark carrying meaning in its
 colour — a status dot, a two-tone lock-up — becomes one silhouette. Check that
 counter-shapes are real holes in the asset and not light fill.
+
+`brightness(0)` is one tone; `contrast(0)` is any of them. Contrast collapses
+every channel toward mid-grey regardless of the source luminance, which leaves
+`brightness()` free to dial the whole set to an arbitrary ink — the muted grey
+body copy already uses, not the pure black or white the crush-and-invert pair
+forces. The row then sits at the page's own secondary weight instead of
+outshouting it, and the dark theme is the same chain with one number changed.
+Brightness 0.3–0.4 on light, 1.2–1.5 on dark.
+```css
+.mark      { filter: grayscale(1) contrast(0) brightness(.35); opacity: .62 }
+.dark .mark{ filter: grayscale(1) contrast(0) brightness(1.35); opacity: .5 }
+.cell:hover .mark { filter: none; opacity: 1 }
+```
+⚠ Pair the hover reveal with `:focus-within`, and restore on the cell rather than
+the mark so the whole target answers.

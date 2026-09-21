@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,light,stroke,effect,depth,cheap]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,18 @@ ctx.globalCompositeOperation = 'source-over'
 ⚠ Both modes brighten what is already there, so the glow vanishes on a light
 ground — dark stages only. Restore `source-over` in the same block: a left-set
 mode silently recolours every later draw.
+
+Branch the operator on the ground rather than ruling the light theme out. Read
+the theme once and pick operator, ink *and* alpha together: the additive branch
+wants a low per-mark alpha so overlap is what brightens, while the same value
+under `source-over` reads far heavier because marks occlude instead of
+accumulating. One canvas then serves both themes with no second code path.
+Additive .2–.4, opaque .5–.8.
+```js
+const dark = root.classList.contains('dark')
+ctx.globalCompositeOperation = dark ? 'lighter' : 'source-over'
+ctx.globalAlpha = dark ? .3 : .6
+ctx.fillStyle   = dark ? '#eeebe6' : '#5c544a'
+```
+⚠ Porting only the operator and keeping the additive alpha gives a light theme
+that looks under-inked and a dark one that looks muddy — the pair is the setting.

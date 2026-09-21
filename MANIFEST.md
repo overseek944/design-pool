@@ -1,6 +1,6 @@
 # Manifest
 
-453 primitives. Format: `category/id | axes cost | tags | gist`
+458 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -11,6 +11,7 @@ canvas/borrowed-scene-constructors | neutral  $2 | canvas 3d architecture intero
 canvas/bucketed-depth-order | neutral  $2 | canvas performance depth particles batching quantise | Painter's order on a 2D context normally means sorting every mar
 canvas/canvas-behind-dom-not-instead-of-it | neutral  $2 | canvas architecture accessibility | Absolutely-positioned inset-0 canvas with pointer-events-none un
 canvas/cell-quantised-arrival-front | E3 D3 W2 F4 $3 | shader reveal grid quantise front texture | A reveal front evaluated per pixel is a soft edge crossing a pic
+canvas/clip-ejected-vertex-filter | neutral  $2 | shader webgl points culling perf | A point cloud whose visible subset changes — a facing hemisphere
 canvas/composed-arrival-field | E3 D3 W2 F5 $2 | shader stagger clock uniform reveal perf | Thousands of elements cannot each own a tween. Derive every elem
 canvas/curl-of-potential-field | E2 D3 W2 F4 $3 | canvas flow field generative motion | Advecting anything through a hand-made velocity field pools it i
 canvas/delay-binned-source-history | E2 D2 W2 F5 $4 | canvas field pointer motion generative | A field evaluated from the driver's current pose updates everywh
@@ -30,6 +31,7 @@ canvas/home-sprung-particle-medium | E2 D3 W2 F5 $3 | canvas field pointer motio
 canvas/irrational-stride-variation | neutral  $1 | canvas generative field deterministic correctness scatter | Math.random() for per-index variation costs a stored array, a di
 canvas/liveness-floor-reseed | neutral  $2 | canvas generative simulation ambient lifecycle correctness | Most interesting generative rules are also mortal. A lattice, a 
 canvas/named-uv-spaces | neutral  $3 | shader architecture responsive correctness reference | One vertex shader can emit several named coordinate spaces so ea
+canvas/normalised-morph-target-set | E3 D4 W2 F4 $3 | canvas particles morph generative shape | One field of marks can be several forms. Write each form as a pu
 canvas/octave-summed-edge-profile | E2 D2 W2 F3 $1 | canvas generative motion noise field cheap | A horizon, a wave crest or a ribbon edge needs an organic profil
 canvas/ordered-dither-threshold-field | E2 D4 W3 F2 $2 | canvas texture pattern raster two-tone generative | Reduce a continuous field to exactly two colours by comparing ea
 canvas/override-material-edge-pass | E2 D3 W2 F5 $5 | webgl shader wireframe render-pass narrative | Render one set of geometry in two visual registers and cross-fad
@@ -83,6 +85,7 @@ interaction/coarse-pointer-affordance-promotion | neutral  $1 | accessibility in
 interaction/content-sized-field-bounds | E1 D1 W2 F4 $1 | form input layout detail progressive-enhancement | field-sizing: content lets an input measure its own value, retir
 interaction/coordinated-group-state | E3 D2 W2 F5 $1 | interaction surface hover | Hover the container, animate the parts. A single group parent le
 interaction/copy-safe-sample-text | neutral  $1 | interaction code correctness detail usability | A terminal or code sample is there to be dragged over and pasted
+interaction/copy-with-selection-fallback | neutral  $1 | interaction clipboard accessibility correctness feedback | navigator.clipboard.writeText rejects on an insecure origin, a d
 interaction/coreference-trace-highlight | E2 D3 W2 F5 $2 | interaction annotation cross-reference highlight accessibility diagram | Where one value recurs across panels — a figure in a table, the 
 interaction/dimension-coded-position-dot | E2 D2 W2 F5 $1 | interaction state indicator accessibility carousel | Let the active item in a position indicator change size, not onl
 interaction/drag-suppressed-click-threshold | neutral  $2 | pointer drag interaction correctness accessibility | A surface that answers to drag and also holds links fires a clic
@@ -269,6 +272,7 @@ perf/derived-epsilon-write-guard | neutral  $1 | performance frame-budget animat
 perf/device-hint-quality-tier | neutral  $2 | performance webgl capability progressive-enhancement correctness | Resolve one integer tier at startup and let every expensive deci
 perf/dual-epsilon-settle-halt | neutral  $1 | performance animation spring frame-budget correctness | Integrated motion approaches its target asymptotically and never
 perf/engagement-deferred-third-party | neutral  $2 | performance third-party analytics loading idle correctness | A tag that only observes engaged sessions should not compete wit
+perf/fixed-point-coordinate-payload | neutral  $2 | perf payload data points precision | A large coordinate set shipped as JSON floats spends most of its
 perf/font-display-per-role | neutral  $1 | type font-loading cls performance correctness | font-display is a decision per face, not per project. Body and U
 perf/layer-order-preamble | neutral  $1 | architecture cascade css correctness code-splitting | Cascade layers are ordered by first mention, so with code-split 
 perf/loop-gated-on-attention | neutral  $2 | performance animation intersection-observer visibility battery correctness | An infinite decorative animation never stops — it keeps composit
@@ -325,6 +329,7 @@ scroll/aria-current-scrollspy-state | neutral  $1 | accessibility navigation scr
 scroll/collapsed-observer-band | neutral  $1 | scroll observer navigation architecture correctness | Squeeze an observer's root to a single horizontal line and "whic
 scroll/css-owned-pin-geometry | neutral  $2 | scroll pin architecture correctness responsive | Let the stylesheet decide whether a section pins and for how lon
 scroll/docked-travelling-mark | E3 D1 W2 F5 $3 | scroll anchor continuity measurement architecture | One mark crossing the whole page ties unrelated sections into a 
+scroll/dual-driven-progress-property | neutral  $2 | scroll progress custom-property progressive-enhancement architecture | Register one <number> property, let it be the only thing scroll 
 scroll/edge-chained-frame-scroll | neutral  $2 | scroll iframe embed correctness interaction | A same-origin embed that scrolls internally traps the gesture at
 scroll/element-scoped-read-progress | neutral  $2 | scroll progress correctness observer reading | Reading progress belongs to the article, not the document. Measu
 scroll/embed-claims-wheel-on-hover | neutral  $1 | scroll embed iframe overflow pointer correctness | An interactive embed inside a scrolling page — a map, a 3D scene

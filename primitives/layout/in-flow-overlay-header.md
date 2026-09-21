@@ -4,7 +4,7 @@ category: layout
 tags: [layout,sticky,overlay,correctness,cls]
 axes: none
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -60,3 +60,18 @@ nav { position: sticky; top: 14px; padding: 14px 14px 0; margin-top: -14px }
 ⚠ The negative margin pulls the *next* element up too if the bar is not the
 first child — and `scroll-padding-top` must now clear the capsule plus the
 padding, not the capsule alone.
+
+Hiding the bar can be a question about *where* rather than about scroll
+direction. Over one designated region — a full-bleed stage, a dark immersive
+card — persistent chrome is the only thing breaking the frame, and a
+direction-sensing header flickers back on every small upward scroll. Gate on the
+region's own rect instead: hidden while it still covers the top of the viewport,
+back the moment it has passed, with a small scroll floor so the bar is present
+at rest.
+```js
+const over = zone.getBoundingClientRect().bottom > 0 && scrollY > 80
+head.classList.toggle('is-hidden', over)
+```
+⚠ A hidden header must not be focus-trapped off screen — translate it out and
+let `:focus-within` bring it back, or keyboard users lose the nav for the length
+of the stage.

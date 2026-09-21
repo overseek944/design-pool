@@ -4,7 +4,7 @@ category: motion-system
 tags: [list,rotation,blur,depth,mask,custom-property]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,19 @@ the short way round: no seam.
 ```
 ⚠ Blur is no hierarchy a screen reader sees — keep source order, no live region.
 Mask the band's ends or the wheel stops on hard edges.
+
+Publish the distance as a quantised attribute rather than a continuous variable
+and the falloff becomes authorable. Script writes one clamped integer per item;
+CSS owns the ramp as a short list of steps, so the curve is tuned in the
+stylesheet, the values are inspectable in devtools, and a transition on opacity
+alone carries every change. Clamp at 3–5 steps — past that the difference stops
+being visible and the tail can share one value.
+```js
+items.forEach((el, i) => el.dataset.dist = String(Math.min(Math.abs(i - focus), 4)))
+```
+```css
+.item              { opacity: .06; transition: opacity .55s }
+.item[data-dist="0"]{ opacity: 1 }    /* 1: .55  2: .28  3: .12 */
+```
+⚠ Discrete steps read as stepping unless the transition is longer than the
+advance interval's gap — or the wheel ticks rather than turns.

@@ -4,7 +4,7 @@ category: media
 tags: [media,responsive,performance,detail]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,19 @@ decode, one cache entry, no `<picture>` fork.
 @media (min-width: 40rem) { .shot { object-position: center; transform: none } }
 ```
 ⚠ Whatever the alt text names must survive the tightest frame.
+
+Across a *set* — portraits in a row, cards in a grid — the crop is one rule and
+the focal point is per item, so publish the two numbers as custom properties on
+each instance and let the stylesheet stay single. Faces sit at different heights
+in different photographs, and a shared `object-position` centre either decapitates
+someone or strands them in the frame. Zoom 1–1.4, origin as a percentage pair.
+```css
+.avatar { object-fit: cover; width:100%; height:100%;
+          transform: scale(var(--pz, 1)); transform-origin: var(--pf, 50% 50%) }
+```
+```html
+<img class="avatar" style="--pz:1.25;--pf:58% 32%" alt="…">
+```
+⚠ Scaling inside a fixed box crops without changing layout, but the element must
+clip — put `overflow: hidden` on the wrapper or the image spills over its
+neighbours.

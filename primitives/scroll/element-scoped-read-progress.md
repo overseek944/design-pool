@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,progress,correctness,observer,reading]
 axes: none
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []

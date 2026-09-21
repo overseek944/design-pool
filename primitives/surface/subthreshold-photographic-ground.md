@@ -4,7 +4,7 @@ category: surface
 tags: [surface,texture,ground,section,photography,cheap]
 axes: {energy: 1, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,19 @@ only tone survives, so 8–20KB of WebP is enough.
 ⚠ Nothing in the picture can carry meaning at this alpha, and a background has
 no alt text. Still a download for decoration — drop it under
 `prefers-reduced-data: reduce`.
+
+Filter the photograph instead of washing over it and the ground survives a theme
+flip. In its own `::before` layer, `saturate()` takes the source down to a hint
+of its palette, a half-pixel `blur()` kills the detail that would read as
+content, and `opacity` sets how far under threshold it sits — so switching theme
+changes two numbers rather than a baked gradient's stops. Saturate .3–.5,
+brightness 1.0–1.15 on light and .5–.55 on dark, opacity .3–.5.
+```css
+.panel::before { content:""; position:absolute; inset:0; z-index:0;
+  background: url(ground.webp) 50%/cover; opacity:.42;
+  filter: saturate(.5) contrast(.9) brightness(1.14) blur(.5px) }
+.dark .panel::before { opacity:.34; filter: saturate(.45) contrast(.9) brightness(.55) blur(.5px) }
+```
+⚠ The blur reaches for pixels outside the box and reveals the panel's ground at
+the edges — scale the layer slightly, or crop it with `overflow: hidden` and
+`isolation: isolate` on the panel.
