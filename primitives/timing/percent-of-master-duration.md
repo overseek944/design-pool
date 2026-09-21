@@ -4,7 +4,7 @@ category: timing
 tags: [timing,choreography,keyframes,css-animation,token,sequence]
 axes: {energy: 2, density: 3, weight: 2, finish: 5}
 cost: 2
-seen: 14
+seen: 15
 requires: []
 conflicts: []
 completes: []
@@ -116,3 +116,17 @@ period, which script can read with `getCurrentTime()` and stop in full with
 ⚠ `keyTimes` must start at 0, end at 1 and match `values` in length, or the
 animation is dropped with no error. No media query reaches any of this — the
 reduced-motion branch has to be the script call.
+
+The same clock runs a *one-shot* entrance, where the payoff is different: with
+`forwards` and one shared duration and delay on every participant, nothing can
+finish after the entrance is over, and the order is edited as percentages rather
+than re-derived as a column of delays. A participant that must wait holds its
+start state as a pair of equal stops instead of taking a delay of its own.
+Total 1.8–3.2s; past 4s the reader has already tried to scroll.
+```css
+.copy { animation: copy-in var(--intro) var(--ease) var(--intro-delay) forwards }
+@keyframes copy-in { 0%,78% { opacity: 0; translate: 0 1.25rem } 96%,to { opacity: 1; translate: 0 } }
+```
+⚠ Zero-opacity text is not painted content, so the stop at which copy arrives is
+the floor for Largest Contentful Paint — a long entrance fails the metric on its
+own, however cheap each animation is.

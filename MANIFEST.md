@@ -1,6 +1,6 @@
 # Manifest
 
-574 primitives. Format: `category/id | axes cost | tags | gist`
+576 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -251,6 +251,7 @@ media/chained-filter-duotone | E1 D2 W3 F4 $1 | media color filter normalisation
 media/child-reported-frame-height | neutral  $2 | media correctness architecture cls responsive | An iframe reporting its own height hands layout control to a cha
 media/clip-bound-layer-caption | E2 D2 W2 F5 $1 | media label clip interaction accessibility | A wipe or drag reveal that names its two states with badges floa
 media/clip-partitioned-image-rig | E3 D2 W3 F4 $3 | mask clip-path illustration rig raster animation | Flat artwork can be rigged without re-exporting it as parts. Pun
+media/coincident-mark-layer-stack | neutral  $1 | svg animation units architecture correctness | A CSS length on an SVG child is read as user units and then scal
 media/counter-scaled-live-embed | neutral  $3 | media iframe embed responsive architecture | An embed's CSS width is a separate decision from the size of the
 media/cover-scale-as-scalar | neutral  $2 | media correctness geometry overlay responsive css-only | object-fit: cover scales inside the element and reports nothing,
 media/crop-coupled-scrim | neutral  $1 | media video legibility overlay accessibility responsive | Footage behind a headline crops differently at every width, so a
@@ -295,6 +296,7 @@ motion-system/distance-cued-focus-wheel | E2 D2 W2 F5 $2 | list rotation blur de
 motion-system/distance-eased-camera-push | E2 D2 W3 F5 $3 | camera 3d easing scroll narrative | Interpolating a camera's position between two waypoints looks wr
 motion-system/drive-mode-scoped-transition | neutral  $1 | motion scroll scrub custom-properties correctness architecture | A property that eases on arrival and later tracks a continuous i
 motion-system/edge-clamped-camera-frame | neutral  $1 | camera transform scene correctness architecture | A camera that pans to centre a point of interest frames empty sp
+motion-system/edge-flush-viewport-staging | E3 D1 W2 F5 $1 | motion entrance viewport-units responsive css | An element staged beyond the frame is usually given a hand-picke
 motion-system/fire-on-arrival-propagation | E3 D3 W2 F5 $3 | entrance propagation graph canvas emergent | An entrance authored as a list of delays must be rewritten whene
 motion-system/first-paint-entry-style | neutral  $1 | motion transition css-only progressive-enhancement state | An element that did not exist a frame ago has no previous value 
 motion-system/flush-separated-transition-arming | neutral  $1 | motion correctness transition observer reveal | A one-shot reveal whose transitions are generated in script — de

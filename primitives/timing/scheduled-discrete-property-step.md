@@ -4,7 +4,7 @@ category: timing
 tags: [transition,stacking,scheduling,hover,precision]
 axes: {energy: 2, density: 1, weight: 2, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -27,3 +27,19 @@ schedule, and `display` under `transition-behavior: allow-discrete`.
 ⚠ Hit-testing follows the real value, not the scheduled one: until the delay
 fires the pointer lands on whatever is nominally on top. Never delay a stacking
 swap under a control about to be clicked.
+
+In a keyframe animation the pairing is unnecessary: a discrete property flips
+exactly at the stop that names it, holding its previous value across the whole
+preceding segment rather than switching halfway through. `visibility: hidden` on
+the final stop of a `forwards` animation therefore keeps an element live for
+every frame of its exit and retires it from hit-testing, focus and the
+accessibility tree on the frame it lands — an overlay that clears itself with no
+script, no timer and no `allow-discrete`.
+```css
+.veil { animation: lift 2.4s cubic-bezier(.62,.05,.84,.35) forwards }
+@keyframes lift { 0%,74% { translate: 0 } to { visibility: hidden; translate: 0 -102% } }
+```
+⚠ Only `forwards` or `both` holds it; with no fill mode the element is `visible`
+again the instant the animation ends. Under `prefers-reduced-motion` the
+animation is usually cancelled, which puts the overlay back — remove it in that
+branch rather than trusting the last stop.

@@ -4,7 +4,7 @@ category: color
 tags: [color,tokens,theming,architecture,dark]
 axes: none
 cost: 2
-seen: 17
+seen: 18
 requires: []
 conflicts: []
 completes: []
@@ -87,3 +87,18 @@ rather than a parallel set kept in step.
 ⚠ Derived alphas are not contrast-checked by anything — a tint that reads on
 the light ground can vanish on the dark one, because the mix follows the ink and
 the ground does not. Verify the two extremes, not the token.
+
+Declared in CSS, `color-scheme` cannot reach the first paint — it arrives with
+the stylesheet, and a dark page opens on the UA's white canvas until then. The
+document-level form is a meta tag, applied as the head is parsed and without
+waiting on any stylesheet to download, so the canvas, the scrollbar and the
+native controls are dark from the first frame and stay dark if the CSS fails
+outright. Pair it with `theme-color` so the mobile browser's own chrome matches
+the page instead of framing it in white.
+```html
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#060708">
+```
+⚠ It is a statement about the *document*, so it cannot follow a subtree theme
+class or a user toggle. Ship the meta for the default the page loads in and keep
+the class form for everything that changes after load.

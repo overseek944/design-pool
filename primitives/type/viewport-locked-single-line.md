@@ -4,7 +4,7 @@ category: type
 tags: [type,responsive,display,unit,correctness]
 axes: {energy: 1, density: 2, weight: 4, finish: 4}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -36,3 +36,17 @@ rule.
   font-size: clamp(1.4rem, 6vw, 1.75rem) } }
 ```
 ⚠ `anywhere` will break mid-word — acceptable for a figure, never for prose.
+
+The coefficient belongs to the string, so a long one takes the type scale down
+with it: forty characters held on one row want roughly 2–3vw rather than 4–6,
+which at 390px lands the display line within a point or two of body copy. That
+is a decision rather than a failure, but hierarchy has to move somewhere else —
+weight, and full-strength ink against a softened paragraph — and the floor is
+then chosen for legibility, not for prominence.
+```css
+h1 { white-space: nowrap; font-weight: 500; color: var(--ink);
+     font-size: clamp(.9rem, 2.2vw, 2rem) }      /* long string: 2–3vw */
+p  { color: color-mix(in srgb, var(--ink) 62%, transparent) }
+```
+⚠ A line this locked is decided at the narrow end, not the wide one. Check 390px
+first and cut words until the floor is a size worth reading.
