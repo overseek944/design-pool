@@ -4,7 +4,7 @@ category: layout
 tags: [overflow,responsive,scroll,correctness,table,figure]
 axes: none
 cost: 1
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
@@ -63,3 +63,19 @@ cannot show; ranking is what it can.
 ```
 ⚠ Two renderings of one dataset drift. Generate both from one source, and label
 the graphic's parts from the same strings the list prints.
+
+The same floor governs a decorative transform, and there the right move below it
+is to do nothing. An effect that rebuilds type as a lattice, a halftone or a
+filmstrip has a size under which it stops being the word and becomes texture:
+measure the rendered size when the effect builds and return early, leaving the
+plain element that was already in the markup. This is not a quality tier — a
+coarser version of an illegible effect is still illegible, and the undecorated
+element is the design at that width. Floor 48–60px for a cell lattice; measure
+it, never infer it from a breakpoint.
+```js
+if (parseFloat(getComputedStyle(el).fontSize) < FLOOR) return null   // plain text stands
+```
+⚠ Re-measure on resize and on `document.fonts.ready`, or a headline that cleared
+the floor at 1440px keeps the effect when it is dragged narrow. Build the plain
+state as the real one and the effect as an overlay, so returning early needs no
+teardown path.

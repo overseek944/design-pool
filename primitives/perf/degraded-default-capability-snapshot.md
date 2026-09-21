@@ -4,7 +4,7 @@ category: perf
 tags: [perf,progressive-enhancement,hydration,cls,reduced-motion,architecture]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []

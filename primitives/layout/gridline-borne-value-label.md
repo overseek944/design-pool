@@ -4,7 +4,7 @@ category: layout
 tags: [chart,axis,label,mono,hairline,density]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -46,3 +46,19 @@ marks without a stacking context.
 write the stops from the scale in the template rather than by hand, and check
 that the gradient box still matches the plot after any padding change — nothing
 errors when it drifts, the lines just stop meaning anything.
+
+A plot can carry no axis at all. Set the range's endpoints only, each in the
+corner it belongs to — highest top-left, lowest bottom-left, the horizontal
+extremes on the bottom two — in the smallest mono tier inside the plot's own
+frame. The scale arrives in four short strings and every pixel of the box stays
+data. It reads as an instrument readout rather than a chart, and it is the one
+arrangement that survives a plot narrower than its own axis labels. Inset 6–10px
+from the frame.
+```css
+.plot { position: relative; border: 1px solid var(--line) }
+.plot > b { position: absolute; font: 10px/1 var(--mono); color: var(--ink-45) }
+.plot > .hi { top: 8px; left: 8px }  .plot > .lo { bottom: 8px; left: 8px }
+```
+⚠ Four numbers state a range, not a scale: honest where the reader compares
+positions, wrong where they might read a value off a point. Name the quantities
+somewhere — two bare percentages in the corners say nothing alone.

@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,svg,performance,generative,texture,batching]
 axes: {energy: 2, density: 4, weight: 1, finish: 5}
 cost: 3
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -72,3 +72,17 @@ for (let l = 1; l < L; l++) for (const [ink, buf] of tones) {
 ```
 ⚠ Allocate the tones × levels arrays once and empty them with `length = 0` each
 frame. Rebuilding that many arrays per frame costs more than the batching saves.
+
+Where the marks are *identical* rather than individually faded, the browser has
+its own instancing: one shape in `<defs>` and a `<use>` per cell carrying only a
+transform. There is no `d` to rebuild, so a field that changes membership rather
+than shape animates by toggling `visibility` — a binary write that skips layout
+entirely — and only on the cells that actually changed. Read the current value
+before writing; an unconditional assignment to every instance costs more than
+the toggles it saves.
+```js
+if (n.style.visibility !== v) n.style.visibility = v
+```
+⚠ A hidden instance still holds a style entry and a box, so the ceiling is node
+count, not how many are shown — past roughly 5–10k cells coarsen the pitch
+rather than hiding more of them.

@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,generative,field,deterministic,correctness,scatter]
 axes: none
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -66,3 +66,16 @@ const tier = i => { const h = Math.imul(i, 0x9e3779b1) >>> 0
 ⚠ A modulus that shares a factor with the stride collapses the tiers onto a
 short cycle — keep it prime, and count the buckets over the real index range
 before trusting the mix.
+
+Low discrepancy is the wrong target where the field should read as organic.
+Even scatter looks printed; scatter that clumps looks placed by hand. Draw one
+anchor, spend it on a run of 4–9 marks jittered a few mark-widths around it,
+then draw the next — the field gains voids and knots for one counter, and run
+length is the only knob. Jitter 1.5–3× the mark size; runs past ten read as a
+blob rather than a cluster.
+```js
+if (--left <= 0) { ax = rnd() * w; ay = rnd() * h; left = 4 + (rnd() * 6 | 0) }
+p.x = ax + (rnd() - .5) * 2 * J; p.y = ay + (rnd() - .5) * 2 * J
+```
+⚠ A cluster anchored near an edge loses half its marks to the clamp and that
+side reads as thinner — inset the anchor range by the jitter, not the marks.

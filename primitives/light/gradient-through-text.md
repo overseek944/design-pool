@@ -4,7 +4,7 @@ category: light
 tags: [color,type,effect]
 axes: {energy: 3, density: 2, weight: 4, finish: 3}
 cost: 2
-seen: 28
+seen: 29
 requires: []
 conflicts: []
 completes: []
@@ -164,3 +164,19 @@ somewhere.
 ```
 ⚠ `-webkit-text-stroke` centres on the outline and eats into thin strokes — at
 display weights below about 600 it closes counters before it clears the edge.
+
+One registered coordinate can drive more than one layer. Write it into
+`mask-image` on stacked siblings instead of into a single background — one
+masked *out* ahead of the position, one banded around it, one masked *in*
+behind — and a single tween moves a surface, a texture and a second ink along
+the same travelling edge. Nothing can drift, because there is no second value to
+keep in step. Band half-width 8–14%, shoulder 6–8% outside it.
+```css
+.plate { mask-image: linear-gradient(90deg, #000 calc(var(--s) - 11%), #0000 calc(var(--s) + 11%)) }
+.band  { mask-image: linear-gradient(90deg, #0000 calc(var(--s) - 18%), #000 calc(var(--s) - 11%),
+                                            #000 calc(var(--s) + 11%), #0000 calc(var(--s) + 18%)) }
+.after { mask-image: linear-gradient(90deg, #0000 calc(var(--s) + 11%), #000 calc(var(--s) + 18%)) }
+```
+⚠ Run the coordinate past both ends — −20% to 120% against an 18% shoulder — or
+the band is half-born at the start and clipped at the finish. It is one
+composited layer per stop of the effect: size it for a control, not a plate.

@@ -1,6 +1,6 @@
 # Manifest
 
-737 primitives. Format: `category/id | axes cost | tags | gist`
+739 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -46,6 +46,7 @@ canvas/hash-tuned-effect-constants | neutral  $1 | canvas generative authoring d
 canvas/home-sprung-particle-medium | E2 D3 W2 F5 $3 | canvas field pointer motion generative | A field of marks positioned from the pointer each frame travels 
 canvas/import-time-material-reauthor | neutral  $2 | canvas material import architecture correctness scene | An imported model arrives wearing whatever its exporter wrote — 
 canvas/irrational-stride-variation | neutral  $1 | canvas generative field deterministic correctness scatter | Math.random() for per-index variation costs a stored array, a di
+canvas/lattice-quantised-mark-draw | E2 D3 W2 F4 $2 | canvas particles grid lattice generative texture | A particle field drawn at its simulated position floats over the
 canvas/liveness-floor-reseed | neutral  $2 | canvas generative simulation ambient lifecycle correctness | Most interesting generative rules are also mortal. A lattice, a 
 canvas/named-uv-spaces | neutral  $3 | shader architecture responsive correctness reference | One vertex shader can emit several named coordinate spaces so ea
 canvas/normalised-morph-target-set | E3 D4 W2 F4 $3 | canvas particles morph generative shape | One field of marks can be several forms. Write each form as a pu
@@ -384,6 +385,7 @@ motion-system/camera-over-static-scene | E3 D2 W3 F5 $2 | motion transform scale
 motion-system/cardinality-locked-variant-set | E3 D3 W2 F5 $3 | motion svg morph state diagram architecture | A set of marks that switches state — a diagram's shapes, a chart
 motion-system/context-scoped-cleanup | neutral  $1 | motion lifecycle correctness | Create every animation inside a scoped context and revert it on 
 motion-system/counter-scaled-camera-overlay | neutral  $1 | camera transform overlay cursor correctness | Anything drawn for the reader over a zooming scene — a synthetic
+motion-system/coverage-field-threshold-wave | E3 D4 W2 F4 $2 | field grid threshold cells shimmer generative | A field of cells carrying a coverage value — how much of some fo
 motion-system/deadline-bounded-animated-close | neutral  $1 | motion correctness state architecture | A state change that waits on an animation never happens when the
 motion-system/decaying-change-mark | E3 D1 W2 F4 $1 | motion-system feedback live-data emphasis | Marking a value that just changed with styling it keeps turns an
 motion-system/distance-cued-focus-wheel | E2 D2 W2 F5 $2 | list rotation blur depth mask custom-property | A rotating list that only fades its neighbours reads flat. Stack

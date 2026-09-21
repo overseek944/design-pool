@@ -4,7 +4,7 @@ category: layout
 tags: [header,scroll,sticky,chrome]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 18
+seen: 19
 requires: []
 conflicts: []
 completes: []
@@ -160,3 +160,15 @@ where a 50px headline scrolls through.
 ⚠ A large radius is a large compositor read every frame of the scroll. Where
 that is too expensive, raise the plate to full opacity instead — a solid bar is
 always cheaper than a blur wide enough to be honest.
+
+The complement of shedding content is gaining it. Let each block publish its own
+title and a one-line gloss while it is the one crossing the bar's baseline, and
+the chrome grows a second row carrying them: the reader always has the name of
+what they are reading, and the page needs no separate breadcrumb. Animate the
+inner plate's height so the sticky box never reflows. Have blocks register and
+unregister themselves rather than having the bar hunt for them — overlapping
+claims then resolve to the most recent, which a spy scanning a list cannot do
+without a tie-break. Row 40–56px, on the plate's own curve.
+⚠ Every word in the row duplicates a heading already on screen — mark it
+`aria-hidden` or the section title is met twice. Drop the row entirely below the
+width where the gloss wraps; two lines of chrome is worse than none.

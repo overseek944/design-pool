@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,hairline,precision,responsive,technical]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 2
-seen: 16
+seen: 17
 requires: []
 conflicts: []
 completes: []
@@ -138,3 +138,18 @@ number and the rules cannot drift off the measure.
 ⚠ A repeating gradient has no closing rule — the pattern ends one pitch short of
 the last coordinate, so the right edge of the measure goes undrawn unless a
 separate stop or a `::after` supplies it.
+
+Where a band's own edge crosses the column rules, marking the crossing is what
+makes the sheet read as surveyed rather than merely ruled: a small disc in the
+page ground, hairline stroke, centred on the intersection. It says the two lines
+are one construction and not two backgrounds that happen to meet. Four per
+band — the corners — is the whole device. Disc 8–12px, stroke at the hairline
+weight and about a third of its alpha.
+```css
+.band::before { content: ""; position: absolute; top: 0; left: 0; width: 10px;
+  aspect-ratio: 1; translate: -50% -50%; border-radius: 50%; background: var(--paper);
+  border: 1px solid color-mix(in oklab, var(--ink) 32%, transparent) }
+```
+⚠ Drop the discs below the width where the rules clamp to the gutter — they then
+mark a crossing that no longer falls on the measure. Over a tinted section the
+page-ground fill reads as a punched hole; take `background: inherit` there.

@@ -4,7 +4,7 @@ category: perf
 tags: [performance,canvas,correctness,resize,media-query,dpr]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -40,3 +40,19 @@ const buf = Math.round(cssW * devicePixelRatio * (visualViewport?.scale ?? 1))
 ⚠ A pinch can push the buffer past any area budget the effect has — clamp after
 multiplying, not before. Cost scales with the square of the gesture, so this is
 for a surface someone reads, not a full-bleed decorative field.
+
+The arithmetic above reconstructs something the platform will state outright. A
+`ResizeObserver` entry carries `devicePixelContentBoxSize` — the box in real
+device pixels, already carrying the ratio, the zoom and whatever sub-pixel
+rounding the compositor applied — so the backing store can be set from it and is
+exact rather than within a pixel. Keep the multiply as the fallback branch; the
+field is absent on older engines.
+```js
+ro = new ResizeObserver(([e]) => {
+  const d = e.devicePixelContentBoxSize?.[0]
+  canvas.width = d ? d.inlineSize : Math.round(e.contentRect.width * dpr * scale) })
+ro.observe(el, { box: 'device-pixel-content-box' })
+```
+⚠ Observing with that box throws where it is unsupported — wrap the call and
+re-observe with the default box on the catch, or one unsupported engine loses
+resize handling altogether rather than losing precision.

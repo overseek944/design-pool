@@ -4,7 +4,7 @@ category: type
 tags: [type,layout-shift,css-only,accessibility,correctness]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

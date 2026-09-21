@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,architecture,accessibility]
 axes: none
 cost: 2
-seen: 24
+seen: 25
 requires: []
 conflicts: []
 completes: []
@@ -80,3 +80,19 @@ const ctx = c.getContext('2d', { alpha: false })   // element carries the opacit
 ⚠ An opaque context has no transparency to clear to — `clearRect` yields black,
 so every frame must paint every pixel. Wrong for any field drawn as sparse marks
 over the page ground.
+
+The layer need not be a sibling inside a positioned wrapper. Prepend the canvas
+as the element's own first child at `z-index: -1` with `border-radius: inherit`
+and `contain: strict`, and any existing rounded box — a card, a control, a
+band — becomes the host with no wrapper, no clip and no duplicated radius token.
+`isolation: isolate` on the host is what stops the negative index dropping the
+canvas behind the host's own background. Ship the rule in its own cascade layer
+so a utility framework cannot outrank it.
+```css
+.host { isolation: isolate; position: relative }
+.host > canvas { position: absolute; inset: 0; z-index: -1; contain: strict;
+  width: 100%; height: 100%; border-radius: inherit; corner-shape: inherit }
+```
+⚠ `contain: strict` implies size containment, so the canvas contributes nothing
+to the host's height and the host must have its own — a host sized only by this
+child collapses to zero and the field never appears.

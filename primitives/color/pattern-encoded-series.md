@@ -4,7 +4,7 @@ category: color
 tags: [color,accessibility,pattern,data,contrast,texture]
 axes: {energy: 1, density: 3, weight: 2, finish: 4}
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -50,3 +50,16 @@ square.
 ```
 ⚠ A wide chip stops being a swatch and starts reading as a sample of the bar —
 which is the point, but it needs the mark's border too, or the hatch floats.
+
+Absence is not a low value, and giving it the pale end of the ramp says
+*measured and small*. Take it off the scale: hatch the cell in the ink at 4–8%
+over the page ground, fine enough — 1px line, 4–5px period — to read as texture
+rather than as a series of its own. The ramp then spans only real data and its
+lightest step still means what it says. Carry the fact in text too, since
+neither the ramp nor the hatch reaches everyone.
+```html
+<button aria-label="Model A, Norwegian: not measured"
+  style="background-image:repeating-linear-gradient(45deg,#0e151212 0 1px,transparent 1px 4px)">
+```
+⚠ Hold the hatch lighter than the ramp's first step, or an empty cell out-weighs
+a real low one. Judge both against the page ground, not against each other.

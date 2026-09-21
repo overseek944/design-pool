@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,generative,field,image,mask,silhouette,grid]
 axes: {energy: 1, density: 3, weight: 2, finish: 4}
 cost: 3
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,20 @@ cells = lattice.filter(c => a[(c.y | 0) * w + (c.x | 0)] / 255 >= threshold)
 ⚠ A cross-origin source taints the canvas and `getImageData` throws — set
 `crossOrigin` and keep the ungated lattice as the catch branch, or the field
 vanishes rather than degrading.
+
+The picture can be the page's own type. Draw the element's text into an
+offscreen 2D context using its *computed* font, weight and letter-spacing, then
+box-average the alpha over each cell rather than sampling a point: every cell
+carries a coverage of 0–1 instead of a boolean, which is what lets a threshold
+move later. Re-run on `document.fonts.ready` and on resize, coalesced through
+one rAF flag, or the lattice is cut from the fallback face. Cell 3–8px, about
+5% of the font size.
+```js
+const c = getComputedStyle(el)
+ctx.font = `${c.fontStyle} ${c.fontWeight} ${c.fontSize} ${c.fontFamily}`
+ctx.letterSpacing = c.letterSpacing === 'normal' ? '0px' : c.letterSpacing
+```
+⚠ `letterSpacing` on a 2D context silently does nothing on older engines, so the
+raster comes out narrower than the element. Compare the measured width against
+the element's own box and leave the text undecorated on a mismatch, rather than
+laying a lattice of the wrong length over it.

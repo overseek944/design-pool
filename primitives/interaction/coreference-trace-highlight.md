@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,annotation,cross-reference,highlight,accessibility,diagram]
 axes: {energy: 2, density: 3, weight: 2, finish: 5}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
