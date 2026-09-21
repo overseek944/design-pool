@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,canvas,battery,frame-budget,correctness]
 axes: none
 cost: 1
-seen: 13
+seen: 14
 requires: []
 conflicts: []
 completes: []
@@ -116,3 +116,18 @@ advances the phase in one jump.
 ```js
 if (t - last >= 80) { phase += 1.8e-5 * Math.min(t - last, 100); last = t; draw() }
 ```
+
+Returning early from every frame is the wrong shape below ~15fps: the callback
+still runs at the display rate, and on a hidden tab rAF is not called at all,
+so a loop that must keep ticking while backgrounded silently stops. Nest the
+two instead — `setTimeout` owns the interval, rAF owns the paint — and give the
+hidden branch its own longer timer rather than a suspended frame request. The
+display rate then costs nothing between ticks, and the loop is still alive to
+notice it should stop.
+```js
+const tick = () => { if (document.hidden) return void setTimeout(tick, 500)
+  requestAnimationFrame(() => { draw(t += SPIN / FPS); setTimeout(tick, 1000 / FPS) }) }
+```
+⚠ Two handles now, and both must be cleared on teardown or the timer resurrects
+a cancelled frame. Never chain the next `setTimeout` outside the rAF callback —
+the interval then races the paint and the effective rate drifts.

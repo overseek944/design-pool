@@ -88,3 +88,22 @@ setActive(n); setShown(lines.slice(0, n + 1))
 ```
 ⚠ Monotone in position, not in time — scrolling back up must retract the panel
 too, or the accumulation becomes a one-way animation that cannot be replayed.
+
+The short-section hole is structural — a zero-height band cannot see an element
+that never overlaps it — and closing it means asking a different question. Keep
+the sightline, drop the observer: on a rAF-coalesced scroll, walk the targets in
+document order and take the *last* one whose top is above the line. Every
+section is then answerable whatever its height, ties resolve by order rather
+than by whichever entry arrived last, and the same pass can gate other chrome on
+the same geometry. Sightline 20–35% of the viewport, as before.
+```js
+let queued = false
+const at = y => targets.filter(t => t.getBoundingClientRect().top <= y).pop()
+addEventListener('scroll', () => { if (queued) return; queued = true
+  requestAnimationFrame(() => { queued = false; setActive(at(innerHeight * .28)) }) },
+  { passive: true })
+```
+⚠ This is `getBoundingClientRect()` per target per frame — fine for the dozen
+entries of a page map, a forced reflow at a hundred. The observer band stays
+correct for long uniform sections; take this one where the list is short and
+the sections are not.

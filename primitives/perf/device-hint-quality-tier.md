@@ -4,7 +4,7 @@ category: perf
 tags: [performance,webgl,capability,progressive-enhancement,correctness]
 axes: none
 cost: 2
-seen: 12
+seen: 13
 requires: []
 conflicts: []
 completes: []
@@ -104,3 +104,21 @@ if (tier === 0 && (p95 > 12 || fps < 16)) { tier = 1; times.length = 0 }  // 8�
 ⚠ Discard the window after anything that legitimately stalls a frame — a resize,
 a tab returning to the foreground, a context restore — or the next gate demotes
 on a cost that was never the renderer's.
+
+Demote-only is a safe default and a permanent tax: one slow stretch during page
+load — a font swap, a hydration burst, a competing tab — pins the reader on the
+low tier for the session. Let it climb, but make the two directions
+deliberately asymmetric. Start one rung below the cap so load never pays for
+the top tier, drop after a handful of consecutive over-budget frames, and
+promote only after hundreds of clean ones. The ladder then settles in seconds
+and cannot oscillate, because the cost of a wrong promotion is bounded by how
+long the next demotion takes.
+```js
+ms = ms ? ms * .9 + cost * .1 : cost                      // EWMA, 0.85–0.95
+if (ms > HIGH && ++slow >= 6)    { step(-1); slow = 0; ms = 0 }   // ~6 frames
+if (ms < LOW  && ++fast >= 180)  { step(+1); fast = 0; ms = 0 }   // ~3s
+```
+⚠ The two thresholds must not touch — leave a dead band of at least 2× between
+`LOW` and `HIGH`, or a tier whose own cost sits between them promotes and
+demotes forever. Reset the average on every step; it was measured at a
+resolution that no longer exists.

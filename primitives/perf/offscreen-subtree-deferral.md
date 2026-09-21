@@ -4,7 +4,7 @@ category: perf
 tags: [performance,containment,rendering,scroll,correctness]
 axes: none
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []

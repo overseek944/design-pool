@@ -1,6 +1,6 @@
 # Manifest
 
-586 primitives. Format: `category/id | axes cost | tags | gist`
+590 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -59,6 +59,7 @@ canvas/projected-label-visibility-budget | neutral  $3 | webgl label projection 
 canvas/quantised-level-set-gather | E2 D3 W2 F5 $3 | canvas field flow generative texture | Particles advected through a smooth field spread into a haze: ev
 canvas/resampled-path-travel | neutral  $2 | canvas performance motion connector architecture | Moving a marker along a curve by solving the curve every frame c
 canvas/reseeded-noise-tile | E2 D3 W2 F3 $2 | canvas texture ambient generative performance | Per-pixel noise across a whole viewport every frame is a fill-ra
+canvas/rotated-screen-halftone | E2 D4 W3 F4 $3 | canvas texture field print raster generative | An axis-aligned dot grid beats against the pixel lattice and rea
 canvas/row-span-culled-field | neutral  $2 | perf field raster culling imagedata architecture | A field summed from a handful of radial sources costs width × he
 canvas/saturating-density-transfer | E1 D2 W2 F5 $1 | canvas shader color field opacity | An accumulating field has no upper bound but coverage does, so m
 canvas/screen-composited-understroke | E2 D2 W2 F5 $2 | canvas light stroke effect depth cheap | Canvas 2D has no cheap blur, so a glowing stroke is built from p
@@ -92,6 +93,7 @@ color/sequence-value-ramp | E1 D2 W3 F4 $1 | color hierarchy surface sequence co
 color/status-triad-tokens | neutral  $1 | color tokens accessibility contrast correctness state | A status is three tokens, not one, because the same hue is asked
 color/transform-bracketing-hue-pair | E1 D2 W2 F5 $1 | color diagram semantics pipeline hue accessibility | A pipeline figure whose input and output look alike asks the rea
 color/utility-scale-token-reclamation | neutral  $2 | color tokens theming architecture correctness | A codebase committed to a utility framework has its palette froz
+color/worst-case-ground-ink | neutral  $1 | color contrast accessibility icon correctness | A mark handed to a surface you do not own — a favicon in the tab
 interaction/aliased-fragment-target | neutral  $1 | navigation anchor fragment accessibility architecture url | A section can answer to more than one fragment without renaming 
 interaction/anchor-focus-handoff | neutral  $1 | accessibility navigation focus correctness anchor | An in-page link that only scrolls leaves the keyboard where it w
 interaction/anchor-only-nav-collapse | neutral  $1 | navigation responsive accessibility architecture correctness | Where every link in a bar is an in-page anchor, the narrow-viewp
@@ -114,6 +116,7 @@ interaction/dismissal-escalated-reprompt | neutral  $2 | interaction prompt cade
 interaction/drag-suppressed-click-threshold | neutral  $2 | pointer drag interaction correctness accessibility | A surface that answers to drag and also holds links fires a clic
 interaction/edge-hotzone-sibling-reveal | E2 D2 W2 F5 $2 | interaction hover panel chrome css-only accessibility | Reclaim the width a hidden rail costs without a toggle: park an 
 interaction/edge-traversing-knob | E3 D2 W2 F5 $1 | interaction state affordance motion detail | A control states its direction by sending its own mark the whole
+interaction/fail-open-css-state-toggle | neutral  $1 | interaction css-only progressive-enhancement disclosure correctness accessibility | A visually hidden checkbox plus :has() gives expand, filter and 
 interaction/fill-agnostic-state-plate | E2 D2 W2 F5 $1 | hover state pseudo-element theme system contrast | A hover token per fill does not scale: a control faced with an i
 interaction/find-reachable-collapse | neutral  $1 | accessibility correctness disclosure search architecture | Collapsed content the browser's own find cannot reach is content
 interaction/focus-handoff-on-self-removal | neutral  $1 | accessibility focus correctness form state | A control that removes itself when used — a form replaced by its
@@ -251,6 +254,7 @@ media/approach-loaded-video | neutral  $2 | media video performance intersection
 media/aspect-locked-media | neutral  $1 | layout media cls | Lock every media slot with an explicit aspect-ratio and let widt
 media/blend-normalised-logo-wall | neutral  $1 | media logos blend-mode assets normalisation | Supplied logo files arrive as opaque rectangles — baked-in white
 media/build-captured-product-shot | neutral  $2 | media asset build product screenshot architecture correctness | A page showing the product either carries a hand-kept screenshot
+media/canvas-driven-favicon | E3 D2 W2 F4 $2 | media icon canvas motion browser detail | The tab strip is a surface a page can paint. Render the mark int
 media/centre-converged-mark-family | E1 D2 W1 F5 $1 | media svg icon ornament geometry system | A set of section marks reads as a family when its members share 
 media/chained-filter-duotone | E1 D2 W3 F4 $1 | media color filter normalisation texture | Supplied photographs come from different cameras, days and light
 media/child-reported-frame-height | neutral  $2 | media correctness architecture cls responsive | An iframe reporting its own height hands layout control to a cha

@@ -4,7 +4,7 @@ category: type
 tags: [type,accessibility,responsive,navigation,correctness]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -30,3 +30,24 @@ comes from them. Gate 560–760px.
 a runtime translation layer — keep the full word in the DOM, never only the
 abbreviation. Where the swap happens inside a row that must not re-flow, reserve
 the wider variant's width on the slot.
+
+Neither string exists when the label is derived at runtime from content the
+page does not author — a section map built from the rendered DOM, a filter list
+from an API. Truncating the text node there is the lossy version of the same
+mistake: find-in-page and translation layers see only the stub. Let CSS do it —
+`max-width` with `text-overflow: ellipsis` — so the full string stays in the DOM
+and no accessible name has to be restated. Where a *semantic* cut beats a
+measured one, prefer the label's own punctuation: everything before the first
+colon, falling back to the last word boundary inside the budget.
+```js
+const short = t => { const c = t.indexOf(':')
+  if (c > 0 && c <= MAX) return t.slice(0, c)                      // MAX 28–44
+  return t.length <= MAX ? t : t.slice(0, t.lastIndexOf(' ', MAX)) + '…' }
+```
+```css
+.map a { display: block; max-width: 14rem; overflow: hidden;
+         text-overflow: ellipsis; white-space: nowrap }
+```
+⚠ The semantic cut and the CSS clip must not both fire on the same label or it
+is shortened twice. Pick one per list: punctuation where the source has a
+reliable convention, the clip where it does not.

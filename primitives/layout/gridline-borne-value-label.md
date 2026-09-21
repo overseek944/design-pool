@@ -4,7 +4,7 @@ category: layout
 tags: [chart,axis,label,mono,hairline,density]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -27,3 +27,22 @@ of the plot box keep the scale out of CSS.
 ⚠ Labels now sit over the data: reserve 10–16px of head room in the scale so
 the top one never lands on a stroke, and set tabular figures or the column
 shivers as values change.
+
+Where the rules carry no labels at all they need no elements either. One
+hard-stop `linear-gradient` on the plot box paints the whole set — two stops a
+percent apart per line, transparent between — and `background-size` plus
+`background-position` inset it to the data area rather than the padded
+container, which is the part a repeating gradient cannot express. Zero nodes,
+so the lines cost nothing in a chart that re-renders, and they sit under the
+marks without a stacking context.
+```css
+.plot { background-image: linear-gradient(to top,
+          transparent 24%, var(--line) 25%, transparent 26%,
+          transparent 49%, var(--line) 50%, transparent 51%);
+        background-size: 100% calc(100% - var(--chrome)); background-repeat: no-repeat;
+        background-position: 0 var(--head) }
+```
+⚠ A 1% band is sub-pixel on a short plot and 3px on a tall one. Past ~4 lines
+write the stops from the scale in the template rather than by hand, and check
+that the gradient box still matches the plot after any padding change — nothing
+errors when it drifts, the lines just stop meaning anything.
