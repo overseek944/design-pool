@@ -4,7 +4,7 @@ category: layout
 tags: [layout,measurement,legibility,canvas]
 axes: none
 cost: 2
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -116,3 +116,18 @@ place(free[Math.floor(seed * free.length)])
 ⚠ Re-run on `document.fonts.ready` as well as on resize. The fallback face and
 the real one give different copy rects, and a position chosen against the
 fallback can end up sitting on the headline once the webfont lands.
+
+Nothing has to move. Where the decoration is a CSS layer rather than a renderer
+— a rule lattice, a grid, a hatch — publish the band on the shared ancestor as
+two custom properties, top offset and height taken from the content block's rect
+minus the ancestor's, and let the layer subtract itself over exactly that span
+with a mask. The decoration never learns the layout and the content never learns
+it is being avoided; a `ResizeObserver` on both is the whole coupling.
+```css
+.layer { mask-image: linear-gradient(to bottom, #000 0 var(--cover-top),
+  transparent var(--cover-top),
+  transparent calc(var(--cover-top) + var(--cover-height)), #000 0) }
+```
+⚠ A hard stop pair cuts the lattice on a visible line. Feather 8–24px either
+side, or align the stops to a band the content already has — a section edge, the
+hero's own fade — so the cut has a reason to be there.

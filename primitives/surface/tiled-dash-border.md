@@ -4,7 +4,7 @@ category: surface
 tags: [surface,border,dash,precision,texture]
 axes: {energy: 1, density: 2, weight: 1, finish: 4}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -59,3 +59,17 @@ run 0.18–0.30 alpha and still read quieter than a solid hairline at 0.12.
 ⚠ Phase is anchored to the box's own inline-start edge, so a full-bleed rule
 and a contained one never agree on where their dashes land — give both the same
 origin, or accept that they only align by luck.
+
+A `repeating-linear-gradient` passed straight to `border-image-source` with a
+slice of `1` is the one-declaration form, and the only one that suits a *single*
+edge: the gradient is the image, the colour is authorable inline, and the rule
+still lives in the border box so a hairline top rule sits where `border-top`
+would. Dash 3–5px on a 6–10px period.
+```css
+.rule { border-top: 1px solid transparent;
+  border-image: repeating-linear-gradient(to right,
+    var(--c) 0 4px, transparent 4px 8px) 1 }
+```
+⚠ Slice `1` cannot take `round`, so the phase is never corrected and the last
+dash clips at whatever width the element lands on — fine for a long rule, wrong
+for a short one where the cut is visible against a neighbour.

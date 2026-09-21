@@ -4,7 +4,7 @@ category: surface
 tags: [chrome,nav,scroll,contrast,theme,accessibility]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -38,3 +38,18 @@ const dark = marked.some(n => { const r = n.getBoundingClientRect()
 ```
 ⚠ This is a layout read per marked section per scroll frame. Cache the node list
 and re-query only on route change, and keep the set under 10–20.
+
+Decoration that crosses the same grounds needs none of this. A full-height
+overlay of rules or marks, drawn once in white at 10–20% alpha under
+`mix-blend-mode: difference`, inverts itself against whatever passes beneath —
+dark on the light sections, light on the dark band — with no observer, no tone
+attribute and no second treatment to keep in sync. Wrap it in `isolation:
+isolate` so it stops at the page, and keep it `pointer-events: none`.
+```css
+.rules { position: absolute; inset: 0; pointer-events: none;
+         mix-blend-mode: difference }
+```
+⚠ Only for decoration. The resulting contrast is a function of the ground and
+cannot be stated, so nothing carrying text, an icon a reader must identify or a
+focus ring may use it — those still owe a ratio on each ground separately. Mid
+greys difference toward mid grey and the layer disappears.

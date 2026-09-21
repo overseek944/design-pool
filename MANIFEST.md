@@ -1,6 +1,6 @@
 # Manifest
 
-653 primitives. Format: `category/id | axes cost | tags | gist`
+655 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -264,6 +264,7 @@ layout/unfloored-zero-scale-bars | E1 D3 W2 F5 $1 | chart axis label correctness
 layout/unit-cell-quantity-field | E1 D4 W2 F4 $2 | layout data grid indicator accessibility density | Show a count as one mark per unit, not a bar. Differences a bar 
 layout/viewport-height-bands | neutral  $1 | layout responsive media-query ornament correctness | Some decisions belong to the short axis. An opening frame, a pin
 layout/viewport-unit-role-split | neutral  $1 | layout viewport mobile responsive correctness | A phone has three viewport heights, and picking one for the whol
+layout/width-budgeted-inline-remainder | neutral  $2 | layout responsive overflow navigation measurement observer correctness | A row of peers that must hold one line — filter chips, tool tabs
 light/blend-doubled-headline | E2 D2 W4 F5 $3 | type blend legibility contrast compositing | Set the headline twice in one grid cell: an opaque copy under th
 light/broadcast-light-source | E2 D2 W2 F5 $3 | light gradient custom-property ambient architecture | A panel lit at the pointer has one lamp, and only while a pointe
 light/counter-rotated-specular-layer | E2 D2 W3 F5 $2 | light gradient rotation material 3d | An object with its highlight painted into its own background spi
@@ -623,6 +624,7 @@ type/fused-run-highlight | E1 D2 W2 F5 $2 | type annotation editorial diff state
 type/glyph-joined-sequence-rail | E1 D3 W1 F4 $1 | type list sequence metadata mono accessibility technical | A four-step process does not always deserve a diagram. Set it as
 type/grid-counted-leading | neutral  $2 | type tokens scale rhythm leading architecture | Set leading as a whole count of one shared unit instead of a rat
 type/hyphenated-justified-measure | E1 D3 W2 F5 $1 | type prose editorial measure correctness | Justified body copy sets a page as a printed specification rathe
+type/ink-state-lettering-runs | E1 D2 W4 F5 $2 | type svg stroke detail editorial hairline | One word at display scale can carry two states of ink. Set it as
 type/language-conditional-type-tokens | neutral  $2 | type i18n tokens localisation correctness | The type scale is a function of script, not only viewport. Redef
 type/measured-inline-word-swap | E3 D2 W3 F5 $2 | type motion headline correctness | A word cycling inside a running headline relays out the whole li
 type/measured-line-bucket-stagger | neutral  $2 | type stagger reveal measurement font-loading correctness | A cascade down the rendered lines of a heading does not require 

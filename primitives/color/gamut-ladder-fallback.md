@@ -4,7 +4,7 @@ category: color
 tags: [color,tokens,progressive-enhancement,correctness]
 axes: none
 cost: 1
-seen: 15
+seen: 16
 requires: []
 conflicts: []
 completes: []
@@ -53,3 +53,17 @@ under-10% mix failure above cannot occur.
 ⚠ Twin tokens double the surface that can drift. Generate the sRGB side from
 the wide one at build time; two hand-maintained palettes diverge within a
 release.
+
+The ladder is not limited to two rungs. Stack the probes cheapest-to-richest —
+hex, then the perceptual space, then the explicit wide-gamut primary — each
+re-declaring the same token in source order, and a browser stops at whichever
+rung it can parse. The middle rung is the one that earns the third block: many
+engines take `oklch` and refuse `color(display-p3 …)`, and without it they fall
+all the way back to the clamped hex.
+```css
+:root { --brand: #fff }
+@supports (color: oklch(0% 0 0))          { :root { --brand: oklch(100% 0 0) } }
+@supports (color: color(display-p3 1 1 1)){ :root { --brand: color(display-p3 1 1 1) } }
+```
+⚠ Order is the whole mechanism — the blocks have equal specificity, so a richer
+rung written above a poorer one is silently overwritten by it.

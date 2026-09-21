@@ -4,7 +4,7 @@ category: layout
 tags: [overflow,correctness,accessibility,scroll]
 axes: none
 cost: 1
-seen: 26
+seen: 27
 requires: []
 conflicts: []
 completes: []
@@ -76,3 +76,16 @@ for (let n = el.parentElement; n; n = n.parentElement) {
 ⚠ `clip` propagates differently — `overflow-x: clip` computes the other axis to
 `clip`, not to `auto` — so the fix has no equivalent trap but also silently
 kills vertical scrolling on a box that needed it. Write both: `overflow: clip auto`.
+
+The same propagation has a visual cost nobody writes either. A rail declared
+`overflow-x: auto` computes the block axis to `auto` as well, so a card's hover
+lift, its focus ring and the outer 6–10px of its shadow are cropped flush with
+the port — reliably blamed on the shadow. There is no per-axis release; buy the
+room instead, with a negative block margin on the port and an equal block
+padding restoring the flow, sized to the largest thing that leaves the box.
+```css
+.port { overflow-x: auto; margin-block: calc(-1 * var(--lift, 1.5rem));
+        padding-block: var(--lift, 1.5rem) }
+```
+⚠ The padding is inside the scroll port, so it also pads the track's cross axis
+— set the items' own block margin to zero or the row gains the space twice.

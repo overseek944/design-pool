@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,rail,pagination,control,measurement,correctness]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,18 @@ port.scrollBy({ left: dir * Math.max(1, Math.floor(port.clientWidth / pitch)) * 
 ```
 ⚠ Items of unequal width make the pitch a lie — measure the child being scrolled
 past, or only page rails of one card size.
+
+Read the pitch backwards to answer which item is current. Dividing `scrollLeft`
+by the pitch is wrong at the end: the last items share the final scroll position,
+so the rounded index sticks two short and the last dots never light. Compare each
+item's rect against the port's content origin — its left edge plus the track's
+computed `padding-inline-start` — and take the nearest, then clamp: at
+`scrollLeft ≤ ~5` the answer is the first, and within ~5px of the maximum it is
+the last, whatever the geometry says.
+```js
+const origin = port.getBoundingClientRect().left + padStart
+const i = items.reduce((b, el, n, a) => Math.abs(el.getBoundingClientRect().left
+  - origin) < Math.abs(a[b].getBoundingClientRect().left - origin) ? n : b, 0)
+```
+⚠ One rect read per item per scroll event. Debounce it, or drive it from an
+`IntersectionObserver` and keep the rect pass for the two clamped ends.
