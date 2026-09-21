@@ -1,6 +1,6 @@
 # Manifest
 
-559 primitives. Format: `category/id | axes cost | tags | gist`
+561 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -114,6 +114,7 @@ interaction/edge-traversing-knob | E3 D2 W2 F5 $1 | interaction state affordance
 interaction/fill-agnostic-state-plate | E2 D2 W2 F5 $1 | hover state pseudo-element theme system contrast | A hover token per fill does not scale: a control faced with an i
 interaction/find-reachable-collapse | neutral  $1 | accessibility correctness disclosure search architecture | Collapsed content the browser's own find cannot reach is content
 interaction/focus-handoff-on-self-removal | neutral  $1 | accessibility focus correctness form state | A control that removes itself when used — a form replaced by its
+interaction/focus-released-occlusion | neutral  $1 | interaction accessibility focus sticky correctness css-only | Any arrangement that deliberately covers one element with anothe
 interaction/focusable-graphic-regions | neutral  $2 | accessibility svg focus diagram correctness | A drawing whose parts answer to the pointer — a map, a schematic
 interaction/gap-spanning-hover-bridge | E2 D2 W2 F5 $1 | interaction hover panel menu css-only accessibility | A panel held off its trigger by a visual gap is unreachable by h
 interaction/gesture-affordance-label | E1 D2 W2 F4 $1 | affordance interaction accessibility detail ux | A surface whose only affordance is a gesture — drag to orbit, sc
@@ -408,6 +409,7 @@ scroll/edge-chained-frame-scroll | neutral  $2 | scroll iframe embed correctness
 scroll/element-scoped-read-progress | neutral  $2 | scroll progress correctness observer reading | Reading progress belongs to the article, not the document. Measu
 scroll/embed-claims-wheel-on-hover | neutral  $1 | scroll embed iframe overflow pointer correctness | An interactive embed inside a scrolling page — a map, a 3D scene
 scroll/fixed-attachment-band | E2 D1 W3 F3 $1 | scroll parallax media surface progressive-enhancement performance | A full-bleed decorative band whose image is pinned to the viewpo
+scroll/height-aware-sticky-offset | neutral  $2 | scroll sticky layout correctness viewport | top: 0 is only right while the sticky element fits the viewport.
 scroll/hoisted-scroll-timeline | neutral  $2 | scroll motion architecture progressive-enhancement | A named scroll-timeline is visible only to descendants of the sc
 scroll/layout-release-broadcast | neutral  $1 | scroll measurement correctness overlay architecture events | Anything holding the document at a size it will not keep — an en
 scroll/occluded-sibling-fold-progress | E2 D2 W2 F5 $3 | scroll sticky depth progress responsive | A card in a sticky stack should recede by how much of it is cove

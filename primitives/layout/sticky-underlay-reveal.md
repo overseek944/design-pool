@@ -37,3 +37,17 @@ phone and stranding it on a desktop.
 ```
 ⚠ The multiplier is the type's line-height, not a guess — change one and the
 other has to follow.
+
+Run the same seam forward — stage first and pinned, the next section rising over
+it — and the shadow has to be cast *upward*, which `box-shadow` will only do if
+the spread is pulled negative past the blur so the offset clears the box on one
+side alone. Round the riser's top corners only and overlap it by a pixel;
+without that the two grounds leave a hairline of the stage showing at fractional
+zoom. Offset 32–56px, blur 2–2.5× it, spread just under the blur.
+```css
+.rise { position: relative; z-index: 2; margin-top: -1px;
+        border-radius: var(--lip) var(--lip) 0 0;
+        box-shadow: 0 -42px 96px -44px rgb(0 0 0 / .88) }
+```
+⚠ A spread less negative than the blur leaks the shadow out of the other three
+sides, where it has nothing to fall on and reads as a smudge.

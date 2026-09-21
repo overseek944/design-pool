@@ -57,3 +57,18 @@ breakpoint while the section does not. Blur 60–90px, diameter 1.5–3× the bl
 ```
 ⚠ Each lamp is a composited buffer the size of its box plus the blur on every
 side. One or two per view — never one per card.
+
+Inset the same element lamp *inside a subject's own box* and it stops being room
+light and becomes backlight: a blurred disc sized to sit behind an alpha cutout,
+not behind the section. Percentage insets, so it tracks the subject through
+every breakpoint instead of needing a second set of numbers, and it pairs with a
+long `drop-shadow` on the silhouette in front — the cutout is then lit from
+behind and grounded at once. Inset 10–20% block, 6–12% inline.
+```css
+.subject { position: relative }
+.subject > .lamp { position: absolute; inset: 17% 8%; border-radius: 50%;
+  filter: blur(64px); background: radial-gradient(circle, rgb(var(--accent)/.3), #0000 65%) }
+```
+⚠ Sized to the box rather than to the silhouette, so a subject that does not
+fill its frame shows the disc's edge past its own — pull the inset in until the
+falloff, not the circle, is what clears the outline.

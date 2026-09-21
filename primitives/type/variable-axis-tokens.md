@@ -51,3 +51,17 @@ h2 { font-size: 40px; font-variation-settings: "opsz" var(--opsz-head), "wght" 5
 ⚠ Pinning below the rendered size thickens strokes and opens spacing, so the
 optical tracking the face would have applied is now yours to set — expect to
 take 0.01–0.02em back out by hand.
+
+Width is the axis nobody spends. A face carrying `wdth` will hold a display line
+at 106–112% where the same design would otherwise reach for another weight step
+— presence without the stroke thickening, and the counters stay open. Declare
+the range in `@font-face` so the engine instances rather than synthesises, then
+step the value by role, not by breakpoint: wider as the type gets larger, body
+left at 100%.
+```css
+@font-face { font-family: Display; font-stretch: 62% 125%; src: url(…) }
+.h1 { font-stretch: 112% }  .h2 { font-stretch: 108% }  .h3 { font-stretch: 106% }
+```
+⚠ Past ~115% the tracking the face was drawn with stops holding and words start
+to look spaced rather than wide. Fallback fonts ignore the axis entirely, so the
+metric override has to be measured at the stretched width or the swap shifts.
