@@ -1,6 +1,6 @@
 # Manifest
 
-637 primitives. Format: `category/id | axes cost | tags | gist`
+639 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -414,6 +414,7 @@ perf/prefetch-on-intent-band | neutral  $2 | performance navigation prefetch obs
 perf/preflight-free-cross-origin-post | neutral  $1 | performance forms architecture correctness security | A cross-origin POST sent as application/json is not a simple req
 perf/prerender-gated-first-view | neutral  $1 | performance correctness analytics navigation prerender | A page can be fully loaded, scripted and laid out with nobody ha
 perf/revert-split-on-resize | neutral  $1 | type motion correctness | Split text hard-codes line breaks at split time. On resize or we
+perf/route-scoped-design-system-sheet | neutral  $2 | performance critical-path architecture tokens bundle css | A marketing route sharing a build with the product inherits the 
 perf/scrim-over-filtered-bleed | neutral  $1 | performance media mobile compositing correctness | A filter, clip-path and transform stacked on one full-bleed imag
 perf/self-throttled-raf-loop | neutral  $1 | performance animation canvas battery frame-budget correctness | requestAnimationFrame offers the display's rate; it is not a con
 perf/shell-shaped-lazy-fallback | neutral  $2 | cls loading accessibility architecture correctness code-splitting | A lazy fallback is usually a spinner in a box that is not the co
@@ -465,6 +466,7 @@ scroll/append-stream-anchor-release | neutral  $1 | scroll correctness stream lo
 scroll/aria-current-scrollspy-state | neutral  $1 | accessibility navigation scroll state architecture | A table of contents entry is a location, and the platform has a 
 scroll/beat-split-progress-channels | E3 D3 W2 F5 $2 | scroll scrub choreography custom-properties sequence architecture | A scrubbed multi-beat scene needs no state machine and no per-el
 scroll/collapsed-observer-band | neutral  $1 | scroll observer navigation architecture correctness | Squeeze an observer's root to a single horizontal line and "whic
+scroll/crop-panned-backdrop-scrub | E2 D1 W3 F4 $2 | scroll parallax media scrub surface performance | Scrub a backdrop's background-position instead of translating it
 scroll/css-owned-pin-geometry | neutral  $2 | scroll pin architecture correctness responsive | Let the stylesheet decide whether a section pins and for how lon
 scroll/docked-travelling-mark | E3 D1 W2 F5 $3 | scroll anchor continuity measurement architecture | One mark crossing the whole page ties unrelated sections into a 
 scroll/dual-driven-progress-property | neutral  $2 | scroll progress custom-property progressive-enhancement architecture | Register one <number> property, let it be the only thing scroll 

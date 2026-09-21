@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,pointer,detail,chrome,accessibility]
 axes: {energy: 2, density: 2, weight: 3, finish: 3}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []

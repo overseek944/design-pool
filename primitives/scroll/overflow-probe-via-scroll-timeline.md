@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,overflow,progressive-enhancement,correctness]
 axes: none
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: [conditional-token-space-toggle]
@@ -59,3 +59,17 @@ the affordance is constant while there is more and resolves once, on arrival.
 overflow, so `@supports not (animation-timeline: scroll())` must pin the
 distance at full size — left at the registered `0`, an unsupported engine gets a
 port with no edge cue at all.
+
+The scripted fallback wants one declaration, not four. Let the state attributes
+write the whole *argument list* of the gradient into a single custom property —
+angle and stop positions together — and `mask-image:
+linear-gradient(var(--fade))` never changes. Each of the four states (neither
+end, top only, bottom only, both) is then one line, and the element that carries
+the mask has no idea which rule won.
+```css
+[data-scroll-top]    { --fade: 0deg,   #000 calc(100% - var(--size)), #0000 }
+[data-scroll-bottom] { --fade: 180deg, #000 calc(100% - var(--size)), #0000 }
+```
+⚠ A custom property holding an incomplete value list is only invalid where it is
+*used*, so a typo blanks the mask and hides the whole panel rather than failing
+at the declaration. Ship a complete opaque default.

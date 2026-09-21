@@ -4,7 +4,7 @@ category: light
 tags: [color,type,effect]
 axes: {energy: 3, density: 2, weight: 4, finish: 3}
 cost: 2
-seen: 24
+seen: 25
 requires: []
 conflicts: []
 completes: []
@@ -147,3 +147,20 @@ pixel term so short strings still get a readable band. Size the background to
 ⚠ `ch` resolves against the *fallback* face until the webfont lands, so the band
 jumps width on swap — acceptable on a loop, visible on a one-shot sweep fired at
 load.
+
+Where the fill is the *same* picture already behind the type, the word stops
+being a plate and becomes an aperture — but only if it is graded apart from its
+surround. Register the clipped background independently (a different
+`background-position`, not the parent's) and lift it with a filter on the
+clipped node alone: `saturate(.6) brightness(1.2–1.5)` reads as light coming
+through. A `-webkit-text-stroke` hairline at 1px and 30–45% alpha is what
+answers the contrast problem above — it re-establishes the letterform edge
+wherever the fill and the surround agree in luminance, which on a photograph is
+somewhere.
+```css
+.aperture { background: url(scene.jpg) 50% 75% / cover; color: transparent;
+  -webkit-background-clip: text; -webkit-text-stroke: 1px #ffffff61;
+  filter: saturate(.6) brightness(1.28) }
+```
+⚠ `-webkit-text-stroke` centres on the outline and eats into thin strokes — at
+display weights below about 600 it closes counters before it clears the edge.

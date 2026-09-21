@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,hover,panel,menu,css-only,accessibility]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -38,3 +38,17 @@ area is the trigger's own column, not the panel's footprint.
 ⚠ Vertical padding on a row of inline triggers can overlap the row above or
 below once the gap goes past about 16px — the neighbours then trade hover states
 along an invisible seam. Keep it under the row's own leading.
+
+`:focus-within` has no way to close what it opened when the trigger is itself a
+link or a button: activating it navigates, focus stays on the trigger, and the
+panel is still open over the page it just went to. Blur the trigger on
+activation and hold a suppression flag that outranks the selector until the
+pointer leaves the group — the flag is what stops the panel reopening as focus
+settles back.
+```css
+.group:not(.is-suppressed):focus-within .panel { opacity: 1 }
+```
+⚠ A click handler fires for keyboard `Enter` too, so an unconditional blur
+throws keyboard users to the top of the document. Gate the blur on
+`event.detail > 0` or on a pointer-origin check, and leave the keyboard path to
+`Escape`.

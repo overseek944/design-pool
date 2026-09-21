@@ -4,7 +4,7 @@ category: layout
 tags: [frame,viewport,hero,media,radius,safe-area]
 axes: {energy: 1, density: 1, weight: 2, finish: 5}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -39,3 +39,17 @@ ground rewritten.
 ⚠ It is a backdrop, not a container — content is above it and will run into the
 gutter unless the layout's own padding matches the inset. Two numbers to keep in
 step; publish the inset as one custom property both read.
+
+`svh` is unbounded at both ends, and the mat is where that shows: on a landscape
+handset the frame collapses to a letterbox with no room for the copy inside it,
+on a tall desktop display it grows past any composition it was drawn for. Clamp
+it — `min-height` at the tallest arrangement the content can hold, `max-height`
+where the frame stops reading as one view. 620–720px and 820–900px suit a
+headline plus a short deck; the pair is content's, not the device's.
+```css
+.card { block-size: calc(100svh - 2 * var(--inset));
+        min-block-size: 680px; max-block-size: 860px }
+```
+⚠ Once `min-height` wins, the frame is taller than the viewport and the bottom
+gutter is below the fold — either accept it as a scroll cue or drop the mat
+entirely under that height, never let it half-show.
