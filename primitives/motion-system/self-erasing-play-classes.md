@@ -4,7 +4,7 @@ category: motion-system
 tags: [architecture,progressive-enhancement,svg,accessibility,correctness,entrance]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -41,3 +41,15 @@ const rewind = () => { stage.innerHTML = settled; delete stage.dataset.phase }
 ⚠ Listeners, observers and running animations inside the subtree die with it —
 delegate from the container or re-bind after each rewind. Never over a subtree
 holding an iframe, a media element or the focused node.
+
+A ladder that is purely declarative — a dozen `nth-child` delays off one class —
+has no handle at all: re-adding the class restarts nothing without a forced
+reflow, and pausing parks it on its last frame. Replace the subtree's node
+identity instead and every animation under it restarts together, from one state
+change and no per-element bookkeeping. In a component framework that is a key
+bump on a wrapper; in plain DOM, `replaceWith(cloneNode(true))`. Cycle 6–10s,
+long enough that the settled card is what is on screen most of it.
+```jsx
+<Fragment key={runId}>{…}</Fragment>   /* runId++ on an interval */
+```
+⚠ It is a remount: focus, scroll position and listeners inside die with it.

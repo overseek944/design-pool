@@ -1,6 +1,6 @@
 # Manifest
 
-483 primitives. Format: `category/id | axes cost | tags | gist`
+486 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -205,6 +205,7 @@ media/aperture-registered-content-layer | E1 D2 W2 F5 $2 | media mockup responsi
 media/approach-loaded-video | neutral  $2 | media video performance intersection-observer accessibility bandwidth | Background footage is usually the heaviest thing on a page and u
 media/aspect-locked-media | neutral  $1 | layout media cls | Lock every media slot with an explicit aspect-ratio and let widt
 media/blend-normalised-logo-wall | neutral  $1 | media logos blend-mode assets normalisation | Supplied logo files arrive as opaque rectangles — baked-in white
+media/build-captured-product-shot | neutral  $2 | media asset build product screenshot architecture correctness | A page showing the product either carries a hand-kept screenshot
 media/centre-converged-mark-family | E1 D2 W1 F5 $1 | media svg icon ornament geometry system | A set of section marks reads as a family when its members share 
 media/chained-filter-duotone | E1 D2 W3 F4 $1 | media color filter normalisation texture | Supplied photographs come from different cameras, days and light
 media/child-reported-frame-height | neutral  $2 | media correctness architecture cls responsive | An iframe reporting its own height hands layout control to a cha
@@ -218,6 +219,7 @@ media/mask-swap-over-shared-paint | E2 D2 W2 F4 $2 | mask icon gradient media st
 media/optical-height-logo-row | neutral  $1 | media logos normalisation scale responsive | Supplied marks are drawn to different conventions — a wordmark f
 media/origin-conditional-sandbox | neutral  $1 | media iframe embed security correctness | A sandboxed iframe that is also allow-same-origin and served fro
 media/reduce-restored-media-transport | neutral  $1 | media video accessibility scroll scrub correctness | Where scroll is the only transport for a continuous medium, pref
+media/seam-dissolved-video-loop | E2 D1 W3 F5 $3 | media video loop crossfade seam ambient | loop cuts from the last frame to the first, and unless the clip 
 media/seek-throttled-video-scrub | E3 D2 W3 F5 $4 | media video scroll scrub timeline performance | A video can be the scrubbed property: write currentTime from scr
 media/self-masked-cutout-overlay | E1 D2 W3 F4 $2 | media mask color effect detail | A cut-out subject on transparency cannot be graded from CSS — an
 media/sheared-ghost-silhouette | E1 D3 W2 F5 $2 | depth line-art silhouette projection stroke | Flat line work reads as volume if the outline is drawn twice. Ke
@@ -259,6 +261,7 @@ motion-system/named-completed-motion-state | neutral  $1 | motion state correctn
 motion-system/namespaced-hook-families | neutral  $1 | architecture motion scale | Prefix hooks by section (data-why-card, data-why-canvas, data-wh
 motion-system/non-converging-decorative-meter | E2 D2 W2 F4 $1 | motion mock meter progress accessibility | A meter animated inside a product mock gets read as data. Fill i
 motion-system/normalised-viewport-pointer-route | E3 D2 W2 F5 $3 | motion pointer demonstration scroll narrative | A drawn pointer walking a product is authored once if its route 
+motion-system/opacity-held-glass-entrance | neutral  $1 | motion-system reveal glass backdrop-filter entrance correctness | An entrance that fades a container in silently breaks any backdr
 motion-system/origin-signed-entrance | E3 D2 W2 F5 $1 | motion tabs state custom-properties transition | A tab set whose panels all enter from the same side throws away 
 motion-system/parameterised-path-travel | E3 D3 W1 F4 $2 | motion loop ambient diagram css-only | One keyframe animating offset-distance from 0% to 100% drives an
 motion-system/path-scrubbed-entrance | E3 D2 W2 F5 $3 | motion scroll motion-path choreography scrub | Give each element its own curve instead of a shared translate. A

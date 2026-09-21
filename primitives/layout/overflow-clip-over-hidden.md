@@ -4,7 +4,7 @@ category: layout
 tags: [overflow,correctness,accessibility,scroll]
 axes: none
 cost: 1
-seen: 16
+seen: 17
 requires: []
 conflicts: []
 completes: []
@@ -48,3 +48,15 @@ One declaration per element, and the browser split is stated once.
 ```
 ⚠ Worth the indirection above roughly a dozen call sites; below that the plain
 `@supports` block is the more readable of the two.
+
+Neither value clips a `<video>`, a `<canvas>` or anything else the compositor
+has promoted to its own layer: the ancestor's `border-radius` is a paint-time
+crop the layer never sees, so square corners poke through a rounded card. Restate
+the same rounding as a `clip-path` on the container — that one does apply — and
+keep the radius in a property so the two cannot drift.
+```css
+.card { --r: 14px; border-radius: var(--r); overflow: clip;
+        clip-path: inset(0 round var(--r)) }
+```
+⚠ `clip-path` opens a containing block for fixed descendants, so a popover
+anchored inside the card is trapped by it.

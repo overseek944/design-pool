@@ -4,7 +4,7 @@ category: media
 tags: [media,video,performance,intersection-observer,accessibility,bandwidth]
 axes: none
 cost: 2
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]

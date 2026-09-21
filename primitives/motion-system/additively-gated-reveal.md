@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,reveal,accessibility,progressive-enhancement,correctness,scroll]
 axes: {energy: 2, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -40,3 +40,11 @@ new IntersectionObserver(([e], o) => e.isIntersecting &&
 ⚠ Applied to something already on screen this un-paints settled content and
 re-paints it — a visible blink, worst above the fold. Measure first and skip
 the class entirely for anything already inside the viewport.
+
+Where the gate is a blanket `* { animation: none !important }` under reduced
+motion, this stops being a preference and becomes the contract: a from-state
+written into a base rule is what the reader is left staring at, because nothing
+now runs to undo it. Every hidden initial state has to live inside the
+`@keyframes` block with `both` fill, so cancelling the animation returns the
+element to authored markup rather than to frame zero. One grep — a bare
+`opacity: 0` outside a keyframe — audits the whole stylesheet.

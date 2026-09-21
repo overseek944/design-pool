@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,alignment,chrome,correctness]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,12 @@ same construction does title-between-arrows and label–rule–label.
 ⚠ True only while both sides fit their share — once one outgrows it the centre
 drifts, and nothing reports it. Somewhere in 600–800px give the middle child its
 own row instead.
+
+The other failure is the middle child being *removed* rather than outgrowing its
+share. An empty `auto` track collapses, but the two flexible sides keep splitting
+the row evenly, so a wide brand on the left now wraps or runs under the cluster
+on the right while half the row sits empty beside it. Drop to flex at that
+breakpoint and let each side hug its own content.
+```css
+@media (width <= 680px) { .bar { display: flex; justify-content: space-between } }
+```
