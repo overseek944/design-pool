@@ -1,6 +1,6 @@
 # Manifest
 
-547 primitives. Format: `category/id | axes cost | tags | gist`
+549 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -123,6 +123,7 @@ interaction/idle-scroll-cue | E2 D1 W2 F4 $1 | scroll affordance feedback motion
 interaction/inert-tracks-opacity | neutral  $1 | accessibility focus correctness overlay pointer-events | An element faded to opacity: 0 is still in the tab order, still 
 interaction/inherited-autocomplete-pass | neutral  $1 | forms autocomplete accessibility third-party correctness | A form you did not author — from a page builder, a CMS block, a 
 interaction/inline-target-floor | neutral  $1 | accessibility interaction correctness detail | A row of small print — legal links, meta, a footer — fails targe
+interaction/instrumented-console-interface | neutral  $1 | instrumentation analytics architecture progressive-enhancement | A page can carry a second interface addressed at nobody who scro
 interaction/micro-interaction-defaults | E2 D2 W2 F5 $1 | interaction polish consistency | One transition duration (200ms) and one property set for every n
 interaction/mounted-empty-status-slot | neutral  $1 | accessibility correctness form layout state css-only | A live region only announces if it was in the document before th
 interaction/native-disclosure-animation | E2 D2 W2 F5 $2 | motion disclosure accessibility progressive-enhancement height | ::details-content with interpolate-size: allow-keywords animates
@@ -525,6 +526,7 @@ type/hyphenated-justified-measure | E1 D3 W2 F5 $1 | type prose editorial measur
 type/language-conditional-type-tokens | neutral  $2 | type i18n tokens localisation correctness | The type scale is a function of script, not only viewport. Redef
 type/measured-inline-word-swap | E3 D2 W3 F5 $2 | type motion headline correctness | A word cycling inside a running headline relays out the whole li
 type/measured-line-bucket-stagger | neutral  $2 | type stagger reveal measurement font-loading correctness | A cascade down the rendered lines of a heading does not require 
+type/mixed-magnitude-figure-band | E1 D3 W4 F5 $1 | numerals metric alignment layout data | A row of headline figures rarely shares a digit count — four dig
 type/mono-as-ui-texture | E1 D3 W2 F4 $1 | type ui technical register | Run a monospace face for all chrome — nav, labels, captions, cou
 type/optical-width-text-fit | E1 D2 W4 F5 $3 | type fit measurement display responsive | A headline that must fill a fixed box cannot be sized by charact
 type/origin-flipped-wipe-underline | E3 D1 W2 F5 $1 | underline link hover transform-origin wipe cheap | A scaleX underline that grows from one end and shrinks back to i

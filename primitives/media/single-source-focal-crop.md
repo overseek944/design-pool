@@ -4,7 +4,7 @@ category: media
 tags: [media,responsive,performance,detail]
 axes: none
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -67,3 +67,28 @@ unset.
 with no layout change to explain the jump — pair it with a width clause where
 both matter, and keep the two focal points within ~20% of each other so the
 crossing reads as a settle rather than a cut.
+
+Below the width where the subject stops being legible, stop fitting the frame at
+all. Let the element exceed its column and hang off both edges — width
+`100% + 2n`, inline start `-n` — so the centre of the composition holds its
+apparent size and the periphery is what gets sacrificed. Overshoot 15–40% at a
+phone width, released entirely above the breakpoint.
+```css
+@media (width <= 620px) { .wide { width: 128%; max-width: none; margin-inline-start: -14% } }
+```
+⚠ The two numbers are one number; any drift and the composition sits off-centre.
+Unlike `transform: scale()` this changes the element's box, so an ancestor must
+carry `overflow-x: clip` or the page gains a horizontal scrollbar.
+
+The same clip-and-scale trims an asset rather than reframing one. A supplied mark
+whose file bakes in its own padding renders optically small beside type set to
+the same height, and re-exporting it is often not yours to do: give the slot the
+size the *ink* should be, clip it, and scale the image by the padding ratio.
+Scale 1.05–1.25 covers most exported marks.
+```css
+.brand     { inline-size: 106px; block-size: 52px; overflow: clip }
+.brand img { inline-size: 100%; block-size: auto; transform: scale(1.16) }
+```
+⚠ Symmetric padding only — an off-centre viewBox needs a `translate` beside the
+scale. Keep the honest intrinsic `width`/`height` on the `<img>` so the slot
+still reserves its space before decode.

@@ -4,7 +4,7 @@ category: perf
 tags: [performance,navigation,prefetch,observer,architecture]
 axes: none
 cost: 2
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -68,3 +68,18 @@ not one of their payloads.
 ⚠ This only holds while the code tier is genuinely immutable. A bundle served
 without a content hash is re-fetched per route and viewport prefetch becomes
 worse than none.
+
+Attach the intent listeners once on the document rather than once per link.
+`mouseenter` and `focus` do not bubble, so delegation forces `pointerover` and
+`focusin` — the pair that does — with `closest('a[href]')` resolving the target
+and an origin check keeping speculation first-party. Anchors rendered after load
+are covered with no re-scan, and the page holds two listeners instead of one per
+link.
+```js
+const on = e => { const a = e.target.closest?.('a[href]')
+  if (a && a.origin === location.origin) warm(a.href) }
+addEventListener('pointerover', on, { passive: true }); addEventListener('focusin', on)
+```
+⚠ `pointerover` re-fires on every descendant crossed inside the same link, so the
+fetched set is load-bearing here rather than an optimisation — without it one
+pass over a card with an icon and a label arms three times.

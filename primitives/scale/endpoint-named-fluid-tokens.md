@@ -4,7 +4,7 @@ category: scale
 tags: [tokens,fluid,naming,architecture,responsive]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,14 @@ nobody can hold in their head.
 ⚠ Generate the middle term from the endpoints and a fixed viewport band —
 360–1600px is a usable default. Hand-written slopes drift and then the name
 lies, which is worse than no name at all.
+
+A ramp that runs negative — a fluid overlap pulling a block up under the one
+above — reverses which endpoint is which. `clamp()` reads minimum, preferred,
+maximum in that order, so the *deeper* pull goes first and the shallower one
+last. Get the order backwards and it is not an error: clamp silently returns the
+first argument at every width, and the overlap is frozen.
+```css
+.visual { margin-block-start: clamp(-80px, -5vw, -48px) }   /* -80 is the min */
+```
+⚠ Carry the signs into the name for the same reason the positive ramps carry
+their endpoints — otherwise the next reader repairs the order the wrong way round.

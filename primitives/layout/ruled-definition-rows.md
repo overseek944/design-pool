@@ -4,7 +4,7 @@ category: layout
 tags: [layout,type,metadata,responsive,hairline]
 axes: {energy: 1, density: 3, weight: 2, finish: 5}
 cost: 1
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []

@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,correctness,progressive-enhancement,observer,reveal]
 axes: none
 cost: 1
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -41,3 +41,14 @@ eager ? <div className="reveal-eager" style={{ animationDelay: `${d}s` }}>…</d
 ⚠ The CSS path must carry its own `reduce` branch — it is not reached by the
 runtime's check. Collapse its duration rather than cancelling the animation, or
 `both` fill leaves the element at its 0% frame.
+
+Order decides it when the gate is a single class on the root rather than a class
+per element. Mark the eager set settled *first*, then add the flag that arms the
+transition rules: the stylesheet cannot hide anything until everything already on
+screen is holding its finished state, so no paint catches an above-fold element
+mid-transition even if the two writes land in different frames.
+```js
+eager.forEach(el => el.classList.add('is-visible'))
+document.documentElement.classList.add('reveal-ready')   // arms the rules
+```
+⚠ Reversing the two lines reviews identically and flashes in the field.

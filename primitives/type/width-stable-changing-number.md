@@ -4,7 +4,7 @@ category: type
 tags: [numerals,data,motion,correctness]
 axes: {energy: 2, density: 3, weight: 3, finish: 5}
 cost: 1
-seen: 18
+seen: 19
 requires: []
 conflicts: []
 completes: []
@@ -67,3 +67,14 @@ cancelAnimationFrame(raf)                       // resume, do not restart
 ⚠ Write the exact target on the final frame. An eased approach rounded every
 frame settles a unit short and stays there, and the readout disagrees with the
 control that set it.
+
+`aria-live="off"` silences the ticking but still leaves whatever intermediate
+value the node happens to hold as the thing a reader lands on. Decouple the two
+instead — the settled, formatted value in `aria-label` on the wrapper, the
+animating node `aria-hidden`. The count becomes purely visual and assistive tech
+reads a figure that is true at every moment.
+```html
+<dd aria-label="30,478,112,902 tokens"><span aria-hidden="true" data-count>0</span></dd>
+```
+⚠ The label is now a second copy of the number — derive both from one source, or
+an edit ships a row whose label and digits disagree and only one of them is read.

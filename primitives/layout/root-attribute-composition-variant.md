@@ -4,7 +4,7 @@ category: layout
 tags: [layout,variant,experiment,css-only,architecture]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,15 @@ drift apart by the third edit.
 sensible in every arm or one of them ships a broken tab order — and anything
 the arms cannot share, different copy or an extra control, is a render branch
 rather than a rule.
+
+The degenerate arm is `display: none`, and it is the cheapest retirement switch a
+navigation can have. Tag every entry pointing at a destination that may not ship
+and let one server-written root attribute withdraw all of them at once: header,
+mobile sheet and footer stay one markup, the link returns by flipping an
+attribute, and nothing flashes because nothing was ever painted.
+```css
+html[data-feature-x="off"] [data-feature="x"] { display: none !important }
+```
+⚠ It hides the link from the reader, not from the document — the href still
+ships, is still crawled and still reads in view-source. A destination that must
+not be discovered is a render branch, not a rule.

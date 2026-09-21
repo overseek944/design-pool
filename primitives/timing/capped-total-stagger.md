@@ -4,7 +4,7 @@ category: timing
 tags: [motion,sequencing,scale]
 axes: none
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -48,3 +48,17 @@ const n = Math.min(visible, rows.length)          // stagger n, snap the rest
 ```
 ⚠ Read the row height from a token or one measured row, never a constant — it
 moves with the type scale and the miscount is silent.
+
+The same ladder in `transition-delay` needs no keyframes and no `backwards` fill:
+the from-state is an authored rule, the to-state is one class on the *container*,
+and a single write plays the group. It is the cheapest form wherever one observer
+already watches the group rather than its members.
+```css
+.group > *                { opacity: 0; translate: 0 22px; transition: .6s var(--ease) }
+.group.in > *             { opacity: 1; translate: none }
+.group.in > :nth-child(2) { transition-delay: 70ms }   /* … ladder … */
+```
+⚠ Transition delays are symmetric — if the class ever comes off, the last child
+is also the last to leave, so zero them in the off-state. An unclosed ladder
+costs more here than under `animation`: the sibling past the final rule takes no
+delay at all and arrives with the first.
