@@ -1,10 +1,10 @@
 ---
 id: mirrored-sign-pair
 category: reveal
-tags: [reveal,motion,rotation,symmetry,pairing]
+tags: [reveal,motion,rotation,symmetry,pairing,scroll,parallax]
 axes: {energy: 3, density: 2, weight: 3, finish: 4}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,15 @@ of many. Only worth it at exactly two — three or more reads as wobble.
 ⚠ Rest angle 3–7deg and travel 40–120px; past that the corners of a wide card
 sweep outside the viewport and the page gains a horizontal scrollbar. Rotated
 text is resampled mid-flight — land on exactly 0deg or it stays soft.
+
+The shared scalar need not resolve. Feed the same opposed sign from raw scroll
+offset to two decorative layers flanking the measure and they never land: one
+rises as the other sinks for the whole document, so the column reads as held
+open rather than arrived at. Unbounded means a ratio, 0.05–0.15, where an
+entrance uses a fixed travel — and the art must cover its own excursion at both
+ends.
+```css
+.flank { translate: 0 calc(var(--s) * var(--scroll-y) * .1) }
+```
+⚠ Ambient motion with no end state is what reduced-motion is for: pin both to 0
+there. Decorative layers only — a sign pair carrying content still owes a rest.

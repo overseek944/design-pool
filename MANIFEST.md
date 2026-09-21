@@ -1,6 +1,6 @@
 # Manifest
 
-634 primitives. Format: `category/id | axes cost | tags | gist`
+637 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -176,6 +176,7 @@ interaction/subscribed-state-flag-layer | neutral  $1 | state accessibility corr
 interaction/substituted-driver-on-coarse-pointer | neutral  $2 | pointer touch fallback ambient correctness architecture | Every pointer-reactive decoration is inert on a touchscreen: the
 interaction/supplied-cursor-affordance-pair | E2 D2 W3 F3 $1 | interaction pointer detail chrome accessibility | Replacing the arrow is a strong voice, and the failure is replac
 interaction/tilt-exempt-anchor-layer | E2 D2 W3 F5 $2 | interaction pointer transform 3d depth architecture | A surface that tilts under the pointer tilts everything in it, i
+interaction/timestamp-guarded-double-activation | neutral  $1 | events click pointer correctness architecture accessibility | A component that synthesises its own tap alongside the native cl
 interaction/transparent-stroke-hit-area | neutral  $1 | accessibility svg interaction touch correctness detail | A small mark inside a viewBox — a path node, a scrubber dot — is
 interaction/twin-suppressed-persistent-action | neutral  $2 | interaction sticky state observer accessibility | A persistent action pinned to the viewport is right through the 
 interaction/viewport-clamped-anchored-popover | neutral  $1 | correctness responsive overlay accessibility hover focus | A popover sized against its trigger gets clipped by the window: 
@@ -319,6 +320,7 @@ media/underpainted-inline-lqip | neutral  $2 | media loading performance correct
 media/unowned-frame-message-guard | neutral  $1 | media iframe embed security correctness events | A widget script injects its own iframe, so the page holds no con
 media/video-as-surface-not-frame | E3 D2 W4 F4 $3 | media surface hero | autoplay muted loop playsinline preload="auto" with object-conta
 media/welded-figure-caption | E1 D2 W2 F5 $1 | media figure caption accessibility editorial | A caption set as a paragraph under a figure reads as body copy a
+media/zero-box-vector-template-store | neutral  $1 | svg use defs architecture performance accessibility correctness | Vector art that recurs — a mark, a seal, a rule cap — repeats it
 motion-system/additively-gated-reveal | E2 D2 W2 F4 $1 | motion reveal accessibility progressive-enhancement correctness scroll | Most machinery around entrances exists because the from-state is
 motion-system/anchored-log-zoom-camera | E3 D2 W2 F5 $3 | camera zoom canvas interpolation diagram scene | A 2D camera interpolating scale linearly rushes the far half of 
 motion-system/antipodal-mark-pass | E3 D1 W2 F5 $1 | motion-system hover icon affordance | Send a mark out of one corner and back in from the opposite one,
@@ -429,7 +431,7 @@ reveal/glyph-scramble-settle | E4 D3 W2 F3 $2 | type reveal motion technical tex
 reveal/index-thresholded-progress-gate | E2 D2 W2 F5 $1 | reveal scroll custom-properties progress cheap svg | One scalar can sequence a whole set with no tween per member and
 reveal/lit-uncovering-front | E3 D2 W3 F4 $2 | reveal wipe blend light scroll edge | Revealing by retreating an opaque cover, rather than by fading o
 reveal/masked-line-rise | E3 D2 W3 F5 $2 | type motion reveal | Split to lines, wrap each in an overflow-hidden outer with a tra
-reveal/mirrored-sign-pair | E3 D2 W3 F4 $2 | reveal motion rotation symmetry pairing | Two peer blocks on one row share a single progress value and rea
+reveal/mirrored-sign-pair | E3 D2 W3 F4 $2 | reveal motion rotation symmetry pairing scroll parallax | Two peer blocks on one row share a single progress value and rea
 reveal/normalised-path-draw | E3 D2 W2 F5 $1 | svg stroke reveal draw geometry correctness | A draw-on stroke normally needs the path's measured length, whic
 reveal/overhung-skew-fill-sweep | E3 D2 W2 F5 $2 | reveal interaction motion detail effect | Fill a control on hover behind a slanted edge, not a straight on
 reveal/radius-held-inset-wipe | E3 D2 W2 F5 $2 | reveal clip-path wipe panel motion | A panel widening under clip-path: inset() squares its corners of
@@ -551,6 +553,7 @@ surface/scanline-register-overlay | E1 D3 W2 F2 $1 | overlay scanline texture vi
 surface/scrim-terminated-ground | E1 D2 W2 F5 $1 | gradient ground surface section seam cheap | A decorative ground that stops at its section's edge leaves a ho
 surface/single-hue-lit-bead | E2 D2 W3 F5 $1 | surface gradient identity marker presence contrast | At 8–24px a flat disc is a dot; three stops make it a bead. Take
 surface/slope-held-diagonal-edge | E1 D2 W3 F4 $2 | surface clip-path edge section responsive geometry | A clip-path: polygon() with percentage vertices does not keep it
+surface/smil-driven-filter-parameter | E2 D2 W2 F4 $3 | svg-filter feturbulence displacement ambient motion texture accessibility | A surface that should read as alive rather than animated wants i
 surface/stacked-blur-radius-ramp | E1 D2 W3 F5 $3 | surface blur glass scrim depth legibility | Masking one backdrop-filter plate fades the result, not the radi
 surface/stacked-gradient-star-field | E2 D3 W1 F4 $1 | surface texture ambient depth performance | A regular lattice reads as ruled ground; an irregular point fiel
 surface/stepped-pixel-corner | E2 D3 W2 F2 $1 | surface ornament detail texture cheap | Erode a corner into discrete cells rather than rounding or slici
