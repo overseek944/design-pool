@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,depth,projection,wireframe,stroke,3d]
 axes: {energy: 2, density: 3, weight: 2, finish: 5}
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -34,7 +34,9 @@ the scene's own extent rather than a fixed range, then drive radius and alpha
 from that scalar exactly as the perspective form drives width. Nothing recedes,
 which is the point: a scatter read for *position* must not have its far half
 made smaller by the projection, only dimmer. Radius `r × (1 + 0.6–1.2 × d)`,
-alpha `0.3–0.4 + 0.5–0.6 × d`.
+alpha `0.25–0.4 + 0.5–0.6 × d` — take the floor to the bottom of that range only
+where the marks overlap densely enough to accumulate into a wash, since isolated
+points at it read as dirt rather than as distance.
 ```js
 const d = Math.min(1, Math.max(0, (p.depth + half) / (2 * half)))
 ctx.globalAlpha = .35 + .55 * d

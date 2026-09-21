@@ -4,7 +4,7 @@ category: type
 tags: [type,system]
 axes: {energy: 2, density: 3, weight: 3, finish: 4}
 cost: 1
-seen: 34
+seen: 35
 requires: []
 conflicts: []
 completes: []
@@ -54,3 +54,16 @@ this warm needs the mono tier doing more work than usual, since it is now the
 page's only technical signal.
 ⚠ Two serifs is where the fourth-face allowance above disappears — a display
 wordmark beside a display heading face reads as a mismatch, not as a mark.
+
+The floor is one, and it costs the separator every other assignment leans on:
+with a single text face carrying prose, headings, tables and captions, nothing
+can be marked as apparatus by changing family. Slope has to take that job.
+Labels, dates, subheads and read-times go italic and one step down in ink, the
+roman is reserved for content, and the page reads as a document rather than as
+a product. Needs a real italic rather than a synthesised slant, and a weight
+range wide enough to set a heading — 400–600 is usually enough.
+```css
+.meta-label, .post-meta, article h3 { font-style: italic; color: var(--ink-45) }
+```
+⚠ Slope is then structural, so `em` inside body copy collides with the
+apparatus tier — buy emphasis with weight at 600 and leave the italic alone.

@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,generative,field,data,precision,technical]
 axes: {energy: 2, density: 2, weight: 1, finish: 5}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,17 @@ for (const p of peaks) { const u = (x - p.c) / p.w
 ⚠ That early-out is the cost control — `exp` per peak per sample is the inner
 loop, and past four widths the term is under 1e-7. Peaks nearer than three
 widths merge into one hump instead of resolving.
+
+The same table read over two axes is terrain you can *place*, where noise is
+terrain you can only reseed. Give each source a sign alongside its centre, width
+and amplitude and a swell or a hollow sits exactly where it was authored; the
+sum stays smooth to every derivative, so contours drawn through it never kink.
+5–9 sources, width 0.10–0.18 of the domain — closer than two widths and a pair
+merges into one hump instead of resolving as two.
+```js
+const field = (u, v) => S.reduce((h, s) => h + s.sign * s.amp *
+  Math.exp(-((u - s.u) ** 2 + (v - s.v) ** 2) / (2 * s.g * s.g)), 0)
+```
+⚠ State widths in domain units, never pixels, or the terrain deforms as the box
+resizes. Signed sources cancel where they overlap — scale to the box from the
+summed field's measured extent, not from the tallest amplitude.
