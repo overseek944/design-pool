@@ -4,7 +4,7 @@ category: interaction
 tags: [pointer,touch,fallback,ambient,correctness,architecture]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,19 @@ pose = { x: cx + Math.sin(t) * rx * .9 + Math.sin(t * 2.3 + 1.1) * rx * .25,
 ```
 ⚠ This is motion nobody asked for: gate it on `prefers-reduced-motion` and on
 whatever already stops the loop offscreen, or it composites forever on a battery.
+
+The substitution is right for decoration and wrong where the interaction *is*
+the content — a scatter of marks each holding something to read. A synthetic
+pointer then puppets a choice the reader did not make, and the layer costs
+layout and images on the device least able to afford them. Drop the scatter
+below the width and pointer it needs, promote what it was carrying into an
+ordinary flow element, and give that one a rotation on a 5–8s dwell. Two
+drivers, one displayed value, chosen by capability rather than suspended by
+input.
+```js
+const fine = matchMedia('(hover: hover) and (min-width: 62rem)')
+const shown = fine.matches ? hovered : items[tick]     // interval only when !fine
+```
+⚠ The rotation must stop off-screen and under `prefers-reduced-motion`, and
+every item still has to be reachable without the pointer — a fine-pointer path
+that is the only path is the same failure in the other direction.

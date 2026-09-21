@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,sticky,layout,correctness,viewport]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,17 @@ new ResizeObserver(([e]) => stack.style
 ⚠ `svh`, not `vh` — the difference on a phone is the toolbar, and it moves the
 pin by that much. Subtract fixed chrome from the same expression or a tall stage
 parks its head under the bar.
+
+The short case wants the opposite decision. An element that fits the viewport
+pinned at the top sits under the chrome with the page's weight below it, when
+what it is doing — a figure held beside a stepping column — asks to be read at
+eye level. Centre it optically instead: half the viewport less half its own
+height, clamped at the bottom of the fixed chrome and again well above the fold
+so a tall window does not strand it in the middle of nothing. Upper bound
+240–320px.
+```css
+.figure { position: sticky;
+  top: clamp(var(--chrome), calc(50svh - var(--fig-h) / 2), 300px) }
+```
+⚠ Optical centre is not geometric centre — a panel with a footer reads low, so
+bias the expression a few percent up rather than retuning the clamp ends.

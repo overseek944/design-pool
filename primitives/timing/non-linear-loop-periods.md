@@ -4,7 +4,7 @@ category: timing
 tags: [motion,ambient,rhythm]
 axes: {energy: 3, density: 3, weight: 2, finish: 4}
 cost: 2
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
@@ -62,3 +62,17 @@ g { animation: shimmer calc(2.75s + var(--i) * .4s) ease-in-out infinite;
 ⚠ The ladder is only coprime-ish — members whose periods land in a small integer
 ratio still resync visibly. An irrational step, or a step that does not divide
 the base, is what keeps the whole set apart.
+
+`reverse` runs the same path backwards in time, which two adjacent members read
+as one thing rewinding. To split a drift into two populations, mirror it in
+*space* instead: put a ±1 token inside the keyframe on every signed term, and
+alternate it by index. One keyframe, two mirrored paths, both travelling
+forward, and the pair no longer looks copied. Worth it on any signed axis —
+translation, rotation, skew.
+```css
+.drift { animation: float var(--dur) ease-in-out infinite }
+@keyframes float { 50% { translate: calc(var(--turn, 1) * 3px) -8px;
+                         rotate: calc(var(--turn, 1) * .9deg) } }
+```
+⚠ Mirror the signed terms only. Flipping a vertical rise as well gives half the
+set a path that sinks, and a field where some members fall reads as a fault.

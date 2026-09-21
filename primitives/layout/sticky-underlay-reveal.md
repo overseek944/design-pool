@@ -4,7 +4,7 @@ category: layout
 tags: [layout,scroll,sticky,depth,css-only,section]
 axes: {energy: 2, density: 1, weight: 3, finish: 4}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: [overflow-clip-over-hidden]

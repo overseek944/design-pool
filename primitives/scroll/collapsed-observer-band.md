@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,observer,navigation,architecture,correctness]
 axes: none
 cost: 1
-seen: 12
+seen: 13
 requires: []
 conflicts: []
 completes: []
@@ -107,3 +107,19 @@ addEventListener('scroll', () => { if (queued) return; queued = true
 entries of a page map, a forced reflow at a hundred. The observer band stays
 correct for long uniform sections; take this one where the list is short and
 the sections are not.
+
+Where items can miss the band the question has to be answered by distance
+rather than by intersection. Take the minimum of `|centre − midline|` across the
+set on a rAF-coalesced `scroll` listener: exactly one item always wins, short
+items and gaps between them stop mattering, and the first and last go active at
+the ends where no band is ever crossed. Write the index only when it changes —
+the comparison is the whole cost, the state update is not.
+```js
+const pick = () => set(i => { let best = i, d = Infinity
+  els.forEach((el, n) => { const b = el.getBoundingClientRect()
+    const x = Math.abs(b.top + b.height / 2 - innerHeight / 2)
+    if (x < d) { d = x; best = n } })
+  return best })
+```
+⚠ It measures every item on every frame it runs, so it does not scale past a
+few dozen — and it reads layout, so nothing in the same handler may write it.
