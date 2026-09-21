@@ -4,7 +4,7 @@ category: surface
 tags: [surface,svg,texture,blueprint,diagram,cheap]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,19 @@ short side.
 ⚠ Opacity .04–.10 — above it the ruling competes with the drawing's own
 hairlines, below it vanishes on a tinted plate. The stroke scales with the
 viewBox, so a plate rendered small loses its grid before it loses its subject.
+
+Invert the constraint deliberately where the *spacing* should be fluid and the
+weight should not. `preserveAspectRatio="none"` lets the viewBox stretch to any
+width, so the tick interval becomes a share of the container;
+`vector-effect: non-scaling-stroke` holds every tick at the hairline the rest of
+the page already uses. A short scale of alternating tick lengths laid on a
+section's top edge then reads as a measured boundary at 390px and at 2560px from
+one piece of markup. Majors every fourth or fifth tick.
+```svg
+<svg viewBox="0 0 200 12" preserveAspectRatio="none" style="width:100%;height:12px">
+  <g stroke="currentColor" stroke-width=".35" vector-effect="non-scaling-stroke">
+    <line x1="0" x2="0" y1="0" y2="12"/><line x1="5" x2="5" y1="0" y2="6"/></g></svg>
+```
+⚠ Only the stroke is spared — a glyph, a circle or a round cap in that viewBox
+shears with the stretch. Keep the strip to axis-aligned lines, and out of the
+a11y tree.

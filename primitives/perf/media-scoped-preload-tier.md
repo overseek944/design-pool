@@ -4,7 +4,7 @@ category: perf
 tags: [perf,loading,images,responsive,resource-hints,critical-path]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -27,3 +27,20 @@ breakpoint moves.
 ⚠ Write the boundary as `1024` / `1023.98`, never `1024` / `1023` — a
 fractional viewport matches neither and preloads nothing. A tier preloaded and
 not used is pure waste, and the console says so.
+
+Width is only one axis the predicate can split on. `min-resolution` picks the
+retina tier of the same crop and `max-aspect-ratio` separates a tall phone from
+a short landscape window — conditions no `srcset` descriptor can express, since
+`srcset` chooses a *size*, not a different picture. Give the default tier the
+negation of every narrow predicate and hand it `imagesrcset`/`imagesizes`, so
+the wide case still gets width-based selection. The tiers are then provably
+exclusive and exactly one fetch starts.
+```html
+<link rel=preload as=image fetchpriority=high href="/lo/sky.webp"
+  media="(max-width: 480px) and (max-aspect-ratio: 3/5) and (max-resolution: 2dppx)">
+<link rel=preload as=image imagesrcset="/half/sky.webp 800w, /sky.webp 1600w"
+  imagesizes="100vw" media="not all and (max-width: 480px) and (max-aspect-ratio: 3/5)">
+```
+⚠ Resolution boundaries need the same fractional care as widths —
+`2dppx` / `2.01dppx`, never `2` / `2`, or a 2dppx screen matches both and
+preloads two tiers.

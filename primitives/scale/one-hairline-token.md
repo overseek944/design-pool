@@ -4,7 +4,7 @@ category: scale
 tags: [unit,tokens,border,precision,coherence]
 axes: {energy: 1, density: 2, weight: 1, finish: 5}
 cost: 1
-seen: 15
+seen: 16
 requires: []
 conflicts: []
 completes: []
@@ -63,3 +63,19 @@ loses both, so pick one role for dashed and keep it across the product.
 ⚠ Below .0625rem dashes render as a grey wash rather than a line — drop to a
 solid rule at a lower tint instead. `border-style: dashed` gives no control over
 period or phase; where the corner has to land cleanly, tile the pattern.
+
+A line that must stay legible over content it does not control carries its own
+contrast: flank the hairline with one of the ground colour on each side, drawn
+as two pseudo-elements a hairline out. Over a dark region the pale flanks read
+as the separation; over a pale one the core does. Three hairlines of total
+width, no blend mode, no second rule — it survives a photograph, an inverted
+panel and a comparison split dragged across both.
+```css
+.split { position: absolute; inset-block: 0; width: var(--hair); background: var(--ink) }
+.split::before, .split::after { content: ""; position: absolute; inset-block: 0;
+  width: var(--hair); background: var(--canvas) }
+.split::before { left: calc(-1 * var(--hair)) }
+.split::after  { right: calc(-1 * var(--hair)) }
+```
+⚠ Three hairlines is a visible 3px band on a non-retina display. Spend it only
+on a line that genuinely crosses unknown content, never on ordinary rules.

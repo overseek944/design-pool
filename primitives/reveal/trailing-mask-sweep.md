@@ -4,7 +4,7 @@ category: reveal
 tags: [reveal,mask,scan,grid,sweep,technical]
 axes: {energy: 3, density: 3, weight: 2, finish: 4}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -64,3 +64,21 @@ tune. Three to six steps; fewer reads as a slideshow.
 ```
 ⚠ Polygons interpolate only vertex-for-vertex — every stop needs the same
 point count in the same order, or the step snaps instead of growing.
+
+The same mechanism runs endlessly rather than once if the mask repeats and the
+travel is exactly one tile: a `repeating-linear-gradient` at
+`mask-size: 100% <tile>`, animated from `0 0` to `0 <tile>` on `linear`. The
+last frame is pixel-identical to the first, so there is no cut to hide and no
+duplicated layer. One number sets the band's share of the tile, another the
+period; over a texture at `mix-blend-mode: screen` it reads as light moving on a
+surface rather than as a reveal. Tile 30–50% of the element, 8–20s.
+```css
+.glint { mix-blend-mode: screen; --tile: 44%; --band: .55;
+  mask-image: repeating-linear-gradient(to bottom, transparent 0,
+              #000 calc(var(--band) * 50%), transparent 100%);
+  mask-size: 100% var(--tile); animation: drift 14s linear infinite }
+@keyframes drift { to { mask-position: 0 var(--tile) } }
+```
+⚠ It never stops, so it is the first thing to withdraw under
+`prefers-reduced-motion` — and by `display: none` on the layer, not
+`animation: none`, which leaves a static banded mask painted over the texture.

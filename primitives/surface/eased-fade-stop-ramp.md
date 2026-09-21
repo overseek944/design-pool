@@ -4,7 +4,7 @@ category: surface
 tags: [surface,gradient,fade,mask,precision]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -41,3 +41,16 @@ the picture intact. The ramp along the scroll axis is dense at *both* ends: the
 top seats a transparent header, the bottom hands off to the next section.
 Weight them the same and the whole frame greys, which is the flat overlay this
 was meant to replace.
+
+Generate the stops rather than place them, once the ramp is reused. Sample a
+power curve at evenly spaced positions — `α = t^γ` at 0, ⅙, ⅓ … 1 — and γ alone
+controls the shoulder: γ ≈ 3 holds the transparent end nearly flat and spends
+the whole change in the last third, which is what a fade *into* a solid ground
+wants. Then spend the identical curve twice: as the alpha mask on a blur layer,
+and as the colour ramp on the tint beneath it. Blur and tint then retire
+together instead of one outliving the other.
+```css
+--ramp: 0, .0046 16.67%, .037 33.33%, .125 50%, .296 66.67%, .579 83.33%, 1;
+```
+⚠ γ above ~4 crushes the change into a band short enough to read as the hard
+edge the curve was meant to remove. 2.5–3.5 is the useful range.

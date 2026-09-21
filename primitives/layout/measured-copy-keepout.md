@@ -4,7 +4,7 @@ category: layout
 tags: [layout,measurement,legibility,canvas]
 axes: none
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -85,3 +85,19 @@ if (inCorridor((a.x + b.x) / 2)) continue        // no link spans the column
 ⚠ A midpoint test passes a long link that bows across the corridor with both
 ends clear of it. Sample two or three points along anything longer than the
 corridor is wide.
+
+Where the art's extent is itself authored as a formula rather than measured, the
+keepout needs no script at all: publish the art's height as the same token that
+sizes it, and start the copy at `calc(var(--art-h) + var(--gap))`. The clearance
+is correct on the first frame — before script, before fonts — and survives a
+rotation with no listener and no cache to invalidate. It holds only for art
+whose box is declared: a cloud bank, a band, a fixed-ratio plate. A field placed
+at runtime still has to be measured.
+```css
+.art  { height: var(--art-h) }
+.copy { top: calc(var(--art-h) + var(--gap)) }
+/* --art-h: min(.46 * var(--stage), max(.245 * 100vw, .2 * var(--stage))) */
+```
+⚠ It clears the art's *box*, not its ink — artwork with transparent margin
+reserves space it does not use and the gap reads as double. Crop the asset to
+its subject before trusting the number.
