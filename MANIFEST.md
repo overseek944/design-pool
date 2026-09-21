@@ -1,6 +1,6 @@
 # Manifest
 
-793 primitives. Format: `category/id | axes cost | tags | gist`
+794 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -524,6 +524,7 @@ perf/post-teardown-asset-disposal | neutral  $2 | performance correctness lifecy
 perf/prefetch-on-intent-band | neutral  $2 | performance navigation prefetch observer architecture | Prefetching is two policies, not one. Intent arms on mouseenter,
 perf/preflight-free-cross-origin-post | neutral  $1 | performance forms architecture correctness security | A cross-origin POST sent as application/json is not a simple req
 perf/prerender-gated-first-view | neutral  $1 | performance correctness analytics navigation prerender | A page can be fully loaded, scripted and laid out with nobody ha
+perf/readiness-chained-successor-warmup | neutral  $2 | performance media video bandwidth sequence architecture | A sequence of heavy sources — a clip per step of a tabset — warm
 perf/revert-split-on-resize | neutral  $1 | type motion correctness | Split text hard-codes line breaks at split time. On resize or we
 perf/route-scoped-design-system-sheet | neutral  $2 | performance critical-path architecture tokens bundle css | A marketing route sharing a build with the product inherits the 
 perf/scrim-over-filtered-bleed | neutral  $1 | performance media mobile compositing correctness | A filter, clip-path and transform stacked on one full-bleed imag

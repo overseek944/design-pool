@@ -4,7 +4,7 @@ category: interaction
 tags: [carousel,autoplay,accessibility,state]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 22
+seen: 23
 requires: []
 conflicts: []
 completes: []
@@ -118,3 +118,19 @@ wide.addEventListener('change', arm); rm.addEventListener('change', arm); arm()
 ⚠ Deriving the next index from `scrollLeft / clientWidth` reads zero on a strip
 that is `display: none` at the current width and rotates it back to the first
 item — check the measurement before acting on it, not just the query.
+
+Where each step carries timed media, delete the clock entirely: the clip's own
+`ended` is the advance and `currentTime / duration` is the indicator. No timer
+to drift against playback, no dwell to guess per step, and a step that buffers
+simply takes longer instead of advancing over a frozen frame. Read the fraction
+on `requestAnimationFrame` rather than `timeupdate` — the latter fires at
+4–15Hz and a bar stepping at that rate reads as stalled.
+```js
+const tick = () => { if (!v.duration) return raf = requestAnimationFrame(tick)
+  bar.style.width = `${100 * Math.min(1, v.currentTime / v.duration)}%`
+  if (v.currentTime < v.duration) raf = requestAnimationFrame(tick) }
+v.addEventListener('ended', next, { once: true })
+```
+⚠ `duration` is `NaN` until metadata lands, so the loop must re-request rather
+than divide. Cancel the frame *and* detach the `ended` handler when the step
+changes, or an abandoned clip advances the sequence from behind.

@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,intersection-observer,visibility,battery,correctness]
 axes: none
 cost: 2
-seen: 67
+seen: 68
 requires: []
 conflicts: []
 completes: []
@@ -260,3 +260,19 @@ render(rm ? STILL : clock(), rm ? .58 : .68 + .12 * Math.abs(pose.x))
 ⚠ The constant is a magic number that silently stops matching the moment the
 noise scale or seed is retuned — re-pick it whenever the effect is re-tuned, and
 keep it beside the seed, not beside the branch.
+
+A renderer whose time advance is a settable rate needs neither branch: set the
+rate to zero. The loop is suspended and its clock stops with it, so resuming is
+one assignment with no elapsed time to reconcile and no first frame that jumps
+by however long the tab was buried. The held frame is the last one drawn rather
+than a poster, so nothing swaps under the reader. Feed it from the same
+predicate — intersecting, visible, not `reduce`.
+```js
+const apply = () => scene.setSpeed(onScreen && !document.hidden ? RATE : 0)
+new IntersectionObserver(([e]) => { onScreen = e.isIntersecting; apply() },
+  { threshold: 0 }).observe(host)
+document.addEventListener('visibilitychange', apply)
+```
+⚠ Rate zero is not always frame zero — a renderer that keeps requesting frames
+to draw an unchanged image costs the same as running. Confirm it idles, or fall
+back to cancelling the loop and stamping the clock on resume.

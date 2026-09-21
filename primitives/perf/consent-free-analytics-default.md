@@ -4,7 +4,7 @@ category: perf
 tags: [architecture,analytics,third-party,privacy,layout,correctness]
 axes: none
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -68,3 +68,21 @@ tag.init(KEY, { session_recording: { maskAllInputs: true,
 ```
 ⚠ Unmasking a container unmasks its subtree. Put the attribute on the leaf that
 holds the words, never on a wrapper that will later grow a form.
+
+Where storage is genuinely required, the next lever is the banner's *audience*
+rather than its contents. The region that obliges it is known at the edge, so
+read the CDN's own trace endpoint, decide once, and cache the verdict — readers
+outside the regime never see an interruption, and the ones inside see it on
+every visit until they answer. Fail to *showing* it: a timeout, a fetch error
+and an unknown country all take the strict branch, so a blocked request is never
+what turns the obligation off. Timeout 0.8–1.5s.
+```js
+const t = setTimeout(show, 1200)                      // strict on no answer
+fetch('/cdn-cgi/trace').then(r => r.text()).then(s => { clearTimeout(t)
+  const loc = s.match(/^loc=(.+)$/m)?.[1].trim()
+  if (!loc || REGIME.has(loc)) show() })
+  .catch(() => {})                                    // timer already armed
+```
+⚠ The verdict is a cached guess about a jurisdiction, not a legal position —
+cache it under its own key so clearing consent does not re-run the lookup, and
+never let a stale cache suppress the banner for a reader who has travelled.

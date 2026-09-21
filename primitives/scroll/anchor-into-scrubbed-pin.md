@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,navigation,anchor,correctness,pin]
 axes: none
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -54,3 +54,14 @@ scrollTo({ top: wrap.offsetTop + (i / (n - 1)) * span,
 ⚠ A jump is a scripted scroll that fires the same handler the wheel does, so the
 index it lands on must be derived, never assigned alongside it — assigning both
 leaves the state disagreeing with the position the moment the user interrupts.
+
+Smooth is the wrong default when the control lives beside the states it selects
+— a step rail on screen throughout. A smooth scroll sweeps every intermediate
+position, so the rail flashes through each step on the way to the one just
+picked, which reads as the page choosing rather than the reader. Jump with
+`behavior: 'instant'` from a control inside the pin, and keep the smooth branch
+for links arriving from elsewhere on the page, where the travel is the thing
+being shown.
+⚠ An instant jump still fires the handler, so the state lands in the same frame
+and needs no suppression window — which is what makes it worth preferring over
+blacking the spy out for the duration of a tween.
