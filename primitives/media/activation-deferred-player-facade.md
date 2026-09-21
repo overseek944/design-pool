@@ -4,10 +4,10 @@ category: media
 tags: [media,embed,iframe,video,performance,privacy,accessibility,loading]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
-completes: []
+completes: [focus-handoff-on-self-removal]
 tension: []
 ---
 A third-party player costs hundreds of kilobytes of script and sets its cookies

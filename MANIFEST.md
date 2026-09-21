@@ -1,6 +1,6 @@
 # Manifest
 
-534 primitives. Format: `category/id | axes cost | tags | gist`
+537 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -222,6 +222,7 @@ light/offscreen-anchored-wash | E1 D2 W2 F4 $1 | gradient ground atmosphere ambi
 light/pointer-anchored-surface-light | E2 D2 W2 F5 $2 | light pointer hover gradient custom-properties surface | Let a panel light where the pointer is rather than uniformly. On
 light/relit-state-fill | E2 D2 W3 F4 $1 | light gradient hover control surface | A gradient-filled control usually signals hover by getting brigh
 light/screen-blend-light-layer | E3 D3 W3 F4 $3 | effect blend compositing dark | mix-blend-mode: screen on an overlay makes it add light and drop
+light/shadow-opposed-frame-halo | E1 D2 W3 F5 $1 | glow media surface depth dark-mode | A large dark plate on a dark ground reads as a hole cut in the p
 light/stacked-chromatic-bloom | E3 D2 W4 F4 $3 | effect glow filter svg depth | filter: drop-shadow() chains, and follows the alpha channel — so
 media/activation-deferred-player-facade | neutral  $2 | media embed iframe video performance privacy accessibility loading | A third-party player costs hundreds of kilobytes of script and s
 media/aperture-registered-content-layer | E1 D2 W2 F5 $2 | media mockup responsive layout correctness | Live content shown inside supplied frame artwork registers to an
@@ -289,6 +290,7 @@ motion-system/named-completed-motion-state | neutral  $1 | motion state correctn
 motion-system/namespaced-hook-families | neutral  $1 | architecture motion scale | Prefix hooks by section (data-why-card, data-why-canvas, data-wh
 motion-system/non-converging-decorative-meter | E2 D2 W2 F4 $1 | motion mock meter progress accessibility | A meter animated inside a product mock gets read as data. Fill i
 motion-system/normalised-viewport-pointer-route | E3 D2 W2 F5 $3 | motion pointer demonstration scroll narrative | A drawn pointer walking a product is authored once if its route 
+motion-system/observer-liveness-probe | neutral  $1 | intersection-observer reveal fallback correctness progressive-enhancement | A watchdog on whether the script loaded misses the case where it
 motion-system/opacity-held-glass-entrance | neutral  $1 | motion-system reveal glass backdrop-filter entrance correctness | An entrance that fades a container in silently breaks any backdr
 motion-system/origin-signed-entrance | E3 D2 W2 F5 $1 | motion tabs state custom-properties transition | A tab set whose panels all enter from the same side throws away 
 motion-system/parameterised-path-travel | E3 D3 W1 F4 $2 | motion loop ambient diagram css-only | One keyframe animating offset-distance from 0% to 100% drives an
@@ -479,6 +481,7 @@ timing/cue-list-on-looping-clock | neutral  $2 | motion timing loop architecture
 timing/cumulative-gap-schedule | E3 D2 W2 F4 $1 | motion sequencing choreography entrance | A hand-authored entrance is a list of pauses, not absolute delay
 timing/decaying-loop-restart-gap | E2 D1 W2 F5 $1 | loop timing sequence restraint demo attention | A self-restarting demonstration does not want one restart gap. A
 timing/dwelling-phase-ring | neutral  $2 | timing state loop choreography architecture demo | A looping demonstration written as a schedule of effects has to 
+timing/expanding-shadow-beacon | E2 D1 W2 F4 $1 | motion indicator status ambient glow | A mark that blinks reports a state; one that throws a ring outwa
 timing/non-linear-loop-periods | E3 D3 W2 F4 $2 | motion ambient rhythm | Give concurrent ambient loops coprime-ish periods (4s / 5s / 7s)
 timing/opacity-masked-loop-cut | E3 D2 W2 F4 $2 | timing keyframes loop opacity conveyor | A track that reads as endless usually means duplicated DOM. One 
 timing/overshoot-for-pop-elements | E4 D2 W2 F3 $1 | motion easing delight | back.out(n) on small elements that should feel physical — badges

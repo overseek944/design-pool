@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,correctness,accessibility,progressive-enhancement,reveal]
 axes: none
 cost: 2
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -79,3 +79,18 @@ crawler and text extractor — is served the settled page.
 ```
 ⚠ Covers script absent, not script broken. Where the bundle can fail after
 parsing, this is the floor under the timer above, not a replacement for it.
+
+Positive-scope the hidden state rather than undoing it. Put the pre-hide rule
+*inside* `@media (prefers-reduced-motion: no-preference)` instead of writing an
+override inside `reduce`: there is then no second rule, no specificity contest
+and no source-order dependency — the state does not exist at all for a reader
+who asked for stillness. Stack it with the `js` gate and the pre-state needs two
+positive conditions before it can appear, which is the strongest form of this
+guard.
+```css
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-reveal] { opacity: 0; transform: translateY(14px) } }
+```
+⚠ A mid-session flip to `reduce` now un-hides instantly rather than
+transitioning — correct, but any script that cached `matches` at setup will
+disagree with the stylesheet until it re-reads.

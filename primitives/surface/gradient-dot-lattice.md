@@ -4,7 +4,7 @@ category: surface
 tags: [surface,texture,pattern,blueprint,cheap]
 axes: {energy: 1, density: 3, weight: 1, finish: 4}
 cost: 1
-seen: 21
+seen: 22
 requires: []
 conflicts: []
 completes: []
@@ -75,3 +75,16 @@ background-size: 11px 13px, 17px 19px
 ```
 ⚠ Sub-pixel stops resolve against the device ratio — the field thins to nothing
 at 1x and doubles at 3x. Check both, and raise the alpha rather than the radius.
+
+Where a framed figure sits on a ruled page, tie the two rulings by integer ratio
+rather than choosing each pitch on its own merits: the plate's grid at exactly a
+half or a third of the page's, same generator, same token. The frame then reads
+as a magnified detail of the sheet it lies on instead of an object carrying its
+own drawing convention, and the boundary needs no extra emphasis to be
+understood. Page 40–60px, plate 1/2 or 1/3 of it.
+```css
+body   { background-size: 44px 44px }
+.plate { background-size: 22px 22px }   /* the same two gradients, half pitch */
+```
+⚠ A non-integer ratio beats against the outer grid along the frame's edge. Two
+tiers is the ceiling — a third nested ruling reads as moiré, not as structure.
