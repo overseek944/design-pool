@@ -4,7 +4,7 @@ category: scale
 tags: [scale,layout,proportion,transform,responsive]
 axes: {energy: 1, density: 2, weight: 3, finish: 4}
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -87,3 +87,18 @@ miniature without knowing.
 ```
 ⚠ Text sized this way carries the same WCAG 1.4.4 risk as the transform does,
 so the miniature must never be the only copy of anything that has to be read.
+
+Let the design width live in CSS rather than in the script that divides by it.
+Publish it as a property on the shell, have the observer read it back, and one
+generic scaler serves every stage on the page — a hero mock at 540, a diagram at
+1100 — with the number sitting beside the `aspect-ratio` it has to agree with
+instead of in a module nobody edits when the mock is redrawn.
+```css
+.shell { --dw: 540; aspect-ratio: 540 / 300 }
+```
+```js
+const dw = parseFloat(getComputedStyle(el).getPropertyValue('--dw')) || 1
+new ResizeObserver(([e]) => el.style.setProperty('--f', e.contentRect.width / dw)).observe(el)
+```
+⚠ The ratio and the width are still two statements of one decision — derive the
+`aspect-ratio` from the same pair of properties or a redraw desynchronises them.

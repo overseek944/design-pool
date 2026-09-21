@@ -4,7 +4,7 @@ category: type
 tags: [underline,link,hover,transform-origin,wipe,cheap]
 axes: {energy: 3, density: 1, weight: 2, finish: 5}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -40,3 +40,20 @@ em { background: linear-gradient(var(--line), var(--line)) no-repeat 0 100%;
 ```
 ⚠ `background-size` is not compositable — it repaints the inline each frame.
 Fine for a handful of words, not for a whole paragraph.
+
+Grown to the full line box that same background becomes a highlighter stroke,
+and the tell that separates a pen from a wipe is its ends. Tilt the gradient a
+few degrees off horizontal and make the first and last 1–3% transparent: the
+stroke then starts and stops on a soft diagonal, the way a marker lifts, instead
+of on a machined vertical edge. Angle 100–110deg; the sweep wants an ease that
+spends its speed early, 0.5–0.9s.
+```css
+.wt { background-image: linear-gradient(104deg, transparent 1%, var(--accent) 2.5%,
+        var(--accent) 97%, transparent 99%);
+      background-repeat: no-repeat; background-size: 0 100%;
+      transition: background-size .7s cubic-bezier(.6,0,.2,1) }
+.wt[data-in] { background-size: 100% 100% }
+```
+⚠ At full height the accent is behind the glyphs and owes them 4.5:1 on its own
+— a tint that passes as a hairline routinely fails as a block. Rest it at
+`100% 100%` under `prefers-reduced-motion`, or the emphasis never arrives.

@@ -4,7 +4,7 @@ category: surface
 tags: [surface,depth,detail,affordance,state,border]
 axes: {energy: 2, density: 2, weight: 2, finish: 3}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -34,3 +34,18 @@ No drop shadow is needed; the fill's own tinted ramp does that job.
 ```css
 .btn { box-shadow: inset 0 1px 0 #ffffff3d, inset 0 -1px 0 #ffffff1f }
 ```
+
+A single hairline gives a soft plate; a stack of zero-blur insets at increasing
+spread gives a *chamfer* — a machined, pre-antialiasing edge that reads as
+tooled metal rather than lit paper. Four rings on a flat mid-grey, light source
+still up-left: 1px bright, 1px dark on the opposite pair, then a 2px pair one
+step closer to the fill. No blur anywhere and no radius, or the steps smear into
+a gradient and the whole effect goes. Depth 2–4px; past that it reads as a frame.
+```css
+.chrome { background: #c0c0c0;
+  box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #808080,
+              inset 2px 2px 0 #dfdfdf, inset -2px -2px 0 #c0c0c0 }
+```
+⚠ The construction encodes one hard-coded light direction and one fill
+luminance — it does not survive a theme flip, so scope it to a deliberately
+period surface rather than to the control system.

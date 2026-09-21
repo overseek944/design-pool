@@ -4,7 +4,7 @@ category: layout
 tags: [layout,sticky,overlay,correctness,cls]
 axes: none
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -47,3 +47,16 @@ both. Collapse both to a single track at the same breakpoint.
 ```
 ⚠ The two rules are one decision written twice — carry the track list in a
 custom property or they drift apart at the next breakpoint.
+
+Where the stuck bar is a floating capsule, the gap around it belongs to the
+sticky element's *padding*, not to its `top` offset — the inset is then inside
+the sticky box, so the capsule can never reach the viewport edge however the
+plate is sized, and `top` and the visual gutter stop being two numbers to keep
+equal. Cancel the padding's cost in the flow with an equal negative margin and
+the bar still occupies only the capsule's own height.
+```css
+nav { position: sticky; top: 14px; padding: 14px 14px 0; margin-top: -14px }
+```
+⚠ The negative margin pulls the *next* element up too if the bar is not the
+first child — and `scroll-padding-top` must now clear the capsule plus the
+padding, not the capsule alone.

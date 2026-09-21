@@ -4,7 +4,7 @@ category: type
 tags: [type,emphasis,highlight,contrast,accessibility]
 axes: {energy: 2, density: 2, weight: 3, finish: 3}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
