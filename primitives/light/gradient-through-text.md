@@ -4,7 +4,7 @@ category: light
 tags: [color,type,effect]
 axes: {energy: 3, density: 2, weight: 4, finish: 3}
 cost: 2
-seen: 22
+seen: 23
 requires: []
 conflicts: []
 completes: []
@@ -133,3 +133,17 @@ missing. It costs one comma.
 ```
 ⚠ The fallback is a colour, not the artwork: score it against the ground on its
 own, because on a large fill it is what most first paints actually show.
+
+Percentage stops tie the highlight's width to the element, so the same class
+gives a thin glint on a headline and a wash across a caption. Set the band in
+`ch` instead — one advance width of the face at its own size — and it stays the
+same optical fraction of the word at every step of the type scale, with a small
+pixel term so short strings still get a readable band. Size the background to
+`calc(200% + 2 × band)` so the sweep clears both ends. Band 2–5ch plus 20–50px.
+```css
+.sweep { --band: calc(3ch + 40px);
+  background-size: calc(200% + var(--band) * 2) 100% }
+```
+⚠ `ch` resolves against the *fallback* face until the webfont lands, so the band
+jumps width on swap — acceptable on a loop, visible on a one-shot sweep fired at
+load.

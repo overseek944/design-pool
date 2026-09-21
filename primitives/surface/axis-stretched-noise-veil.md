@@ -4,7 +4,7 @@ category: surface
 tags: [surface,noise,svg-filter,gradient,atmosphere,blend-mode]
 axes: {energy: 1, density: 3, weight: 2, finish: 4}
 cost: 3
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -28,3 +28,17 @@ beneath.
 a side inside a clipping parent or the veils fade before the edge.
 Full-viewport filter rasterisation is the page's most expensive paint — one
 layer, never per card.
+
+Push the frequency ratio far past the veil range and drop the blur entirely and
+the same anisotropy hardens into machined grain: at 10:1–15:1 with the fine axis
+around 0.3–0.5, `fractalNoise` becomes the drawn streak of brushed metal or
+anodised stock rather than light. Desaturate through `feColorMatrix` and
+composite `soft-light` at 40–55% over a gradient so the streaks pick up its
+ramp; unlike the blurred form this one is cheap enough to run per card.
+```html
+<filter id="b"><feTurbulence type="fractalNoise" baseFrequency=".035 .42"
+  numOctaves="3-4" seed="17"/><feColorMatrix type="saturate" values="0"/></filter>
+```
+⚠ The streaks run perpendicular to the high-frequency axis, so a layout that
+rotates the card rotates the material's grain direction with it — set the pair
+from the card's own orientation, not once globally.

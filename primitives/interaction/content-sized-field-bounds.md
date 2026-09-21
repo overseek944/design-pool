@@ -4,7 +4,7 @@ category: interaction
 tags: [form,input,layout,detail,progressive-enhancement]
 axes: {energy: 1, density: 1, weight: 2, finish: 4}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

@@ -4,7 +4,7 @@ category: surface
 tags: [surface,hover,currentcolor,theming,accessibility]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,15 @@ competes with the text it sits under.
 ```
 ⚠ The plate is under the glyphs and tinted with them, so it cannot lift
 contrast — check the pair still clears 4.5:1 at full opacity.
+
+Alpha is the only handle raw `currentColor` gives, and it can only ever reveal
+the ground beneath. Relative colour syntax decomposes the inherited value
+instead, so the derived tint can hold hue and chroma while moving lightness on
+its own — a highlight that is genuinely *lighter than the text* on a dark panel,
+which no opacity can produce. Scaling the source's own `alpha` keeps a derived
+layer honest under text that is already faded. Shift `l` by 0.2–0.4.
+```css
+--lift: oklch(from currentColor calc(l + .3) c h / calc(alpha * .8))
+```
+⚠ Unsupported browsers drop the whole declaration, not just the function — put
+the plain `currentColor` form first and let this one override it.

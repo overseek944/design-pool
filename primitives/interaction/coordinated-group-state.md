@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,surface,hover]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 17
+seen: 18
 requires: []
 conflicts: []
 completes: []
@@ -96,3 +96,18 @@ one and the pointer gets no answer. Ratio 2–3.5×.
 ⚠ The slow part must also be the small one — half a second of travel worth more
 than a few percent reads as lag rather than as depth. Scale 1.02–1.05, and the
 image needs a clipping wrapper or the zoom pushes the card's own edge.
+
+Where the moving part sits *under* text rather than beside it, the transform
+cannot go on the card and cannot go on the image either if the image is the
+card's ground — scaling either resamples the type laid over it and drifts the
+reader's line under the pointer. Give the ground its own inset sibling inside
+the clip, with the copy a separate child, and only that layer scales. The travel
+also has to come down: against held text, 1–2% reads as the surface breathing
+where the 2–5% a bare image takes reads as the card lurching.
+```css
+.card > .back    { position: absolute; inset: 0; transition: scale .5s ease-out }
+.card:hover>.back{ scale: 1.015 }
+```
+⚠ The text layer must sit above the ground in paint order without its own
+transform — a transform on the copy makes it a containing block and it starts
+scaling with any ancestor that later gains one.
