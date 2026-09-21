@@ -4,7 +4,7 @@ category: type
 tags: [type,texture,ornament,ascii]
 axes: {energy: 3, density: 5, weight: 2, finish: 3}
 cost: 2
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -59,3 +59,18 @@ scale: a fractional font-size breaks the grid.
 ```
 ⚠ `aria-hidden` and `overflow: hidden` both — one stray long line reflows the
 whole card.
+
+A fixed character grid does not have to be stepped by breakpoint. Because every
+cell is one advance wide and one line tall, the size that exactly fills a box is
+solvable: make the slot a *size* container and take the smaller of the two axis
+solutions, dividing by the mono face's advance ratio and by the line-height. The
+drawing then fills any box at any width with nothing clipped and nothing
+reflowed, and the rows and columns arrive as data beside the art.
+```css
+.stage  { container-type: size; overflow: hidden }
+.figure { white-space: pre; line-height: 1.08; font-variant-ligatures: none;
+  font-size: min(100cqw / var(--cols) / .62, 100cqh / var(--rows) / 1.1) }
+```
+⚠ The `.6` advance ratio is per face — measure it, do not assume. `container-type:
+size` needs a definite height from above, so the slot wants an explicit
+`clamp()`; without one the container has no height and the type collapses to zero.

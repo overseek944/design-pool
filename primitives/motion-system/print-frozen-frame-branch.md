@@ -4,7 +4,7 @@ category: motion-system
 tags: [print,correctness,motion,fallback,accessibility]
 axes: none
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -60,3 +60,20 @@ rather than as the state it happened to be left in.
 ⚠ Forcing every panel open can multiply the page count several times — right for
 a spec, wrong for an invoice, so decide per component rather than by selector
 sweep. Never force open a panel holding something the screen never showed.
+
+Forcing an opaque ground is only half of it, because the engine's default is to
+*drop* backgrounds and shadows entirely — a tinted callout, a filled highlight,
+a coloured status pill all come out as unmarked white and the document loses the
+distinctions it was making. `print-color-adjust: exact` on the root turns that
+off wholesale, which is the right default for anything whose meaning is carried
+in fill. Name the sheet in the same block: `@page` is the only place the paper
+size and its margins can be set, and leaving it to the dialog means the layout
+is tuned against whatever the reader's printer defaults to.
+```css
+@media print {
+  @page { size: A4; margin: 14mm }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact }
+}
+```
+⚠ Exact colour prints every decorative wash at full ink. Pair it with dropping
+the decorative layers, or a two-page summary costs a cartridge.

@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,canvas,battery,frame-budget,correctness]
 axes: none
 cost: 1
-seen: 18
+seen: 19
 requires: []
 conflicts: []
 completes: []
@@ -144,3 +144,19 @@ last = t; p = Math.min(1, p + d / DURATION_FRAMES)
 ```
 ⚠ The clamp makes wall-clock time and integrated progress disagree after a
 stall — never drive a media element's `currentTime` from a clamped accumulator.
+
+A *discrete* sequence cannot be driven from the timestamp the way a continuous
+one can — there is no value to interpolate, only an index to step. Keep the
+wall clock anyway: on each frame divide the elapsed time by the interval, add
+that many whole steps at once, and carry the remainder back into the reference
+instead of resetting it to now. A loop that misses six frames then jumps six
+frames and stays on schedule, where `last = t` would silently slow the sequence
+by however long the stall lasted.
+```js
+const e = t - last
+if (e >= interval) { i = (i + Math.floor(e / interval)) % period
+                     last = t - (e % interval); paint(i) }
+```
+⚠ Catching up is wrong for anything a reader is watching land — a counter
+ticking, a card dealing. Clamp the jump to one step there and accept the drift;
+only ambient loops want the clock honoured over the frames.

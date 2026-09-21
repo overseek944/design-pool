@@ -1,6 +1,6 @@
 # Manifest
 
-741 primitives. Format: `category/id | axes cost | tags | gist`
+743 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -382,6 +382,7 @@ motion-system/anchored-log-zoom-camera | E3 D2 W2 F5 $3 | camera zoom canvas int
 motion-system/antipodal-mark-pass | E3 D1 W2 F5 $1 | motion-system hover icon affordance | Send a mark out of one corner and back in from the opposite one,
 motion-system/argument-registered-function-transition | neutral  $2 | custom-property registered-property transition clip-path interpolation architecture | A CSS function interpolates only between the same shape in compa
 motion-system/attribute-driven-motion-hooks | neutral  $1 | architecture motion maintainability | Target animations off data- attributes, never class names. Styli
+motion-system/backstopped-transition-handoff | neutral  $2 | motion transition state sequence correctness event | Sequencing a state machine on transitionend rather than on a tim
 motion-system/below-fold-armed-entrance | neutral  $1 | motion correctness progressive-enhancement observer reveal | An entrance system that hides content in CSS and un-hides it fro
 motion-system/camera-over-static-scene | E3 D2 W3 F5 $2 | motion transform scale focus diagram narrative | To walk a reader through a diagram, move the viewport rather tha
 motion-system/cardinality-locked-variant-set | E3 D3 W2 F5 $3 | motion svg morph state diagram architecture | A set of marks that switches state — a diagram's shapes, a chart
@@ -419,6 +420,7 @@ motion-system/non-converging-decorative-meter | E2 D2 W2 F4 $1 | motion mock met
 motion-system/normalised-viewport-pointer-route | E3 D2 W2 F5 $3 | motion pointer demonstration scroll narrative | A drawn pointer walking a product is authored once if its route 
 motion-system/observer-liveness-probe | neutral  $1 | intersection-observer reveal fallback correctness progressive-enhancement | A watchdog on whether the script loaded misses the case where it
 motion-system/opacity-held-glass-entrance | neutral  $1 | motion-system reveal glass backdrop-filter entrance correctness | An entrance that fades a container in silently breaks any backdr
+motion-system/opaque-navigation-cover | E2 D1 W2 F5 $2 | motion navigation transition overlay accessibility correctness | Where View Transitions are unavailable or too coarse, cross a sc
 motion-system/origin-signed-entrance | E3 D2 W2 F5 $1 | motion tabs state custom-properties transition | A tab set whose panels all enter from the same side throws away 
 motion-system/parameterised-path-travel | E3 D3 W1 F4 $2 | motion loop ambient diagram css-only | One keyframe animating offset-distance from 0% to 100% drives an
 motion-system/path-scrubbed-entrance | E3 D2 W2 F5 $3 | motion scroll motion-path choreography scrub | Give each element its own curve instead of a shared translate. A

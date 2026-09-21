@@ -4,7 +4,7 @@ category: timing
 tags: [timing,choreography,keyframes,css-animation,token,sequence]
 axes: {energy: 2, density: 3, weight: 2, finish: 5}
 cost: 2
-seen: 20
+seen: 21
 requires: []
 conflicts: []
 completes: []
@@ -160,3 +160,20 @@ past the longest entrance so nothing breathes while it is still arriving.
 ⚠ `animation-fill-mode` is a list too, and the loop slot must not inherit
 `both` — a filled infinite animation pins its start state during the delay and
 the element sits at the loop's 0% rather than where the entrance left it.
+
+Invert the whole construction where every beat is the *same* beat — a highlight
+marching down a step list, a pointer walking a row of cells. Author one keyframe
+holding a single narrow on-window, give every participant that same animation,
+and let `animation-delay: calc(var(--i) * var(--stage))` be the only thing that
+differs. The cycle is then `N × stage` by arithmetic, the on-window is
+`stage / cycle` of the period, and adding a step is one inline custom property
+rather than a re-cut keyframe block. Stage 1–2s; the lit window 40–60% of it, so
+consecutive steps neither overlap nor leave the list dark.
+```css
+.step { --stage: 1.5s; animation: lit calc(4 * var(--stage)) ease-in-out infinite;
+        animation-delay: calc(var(--i) * var(--stage)) }
+@keyframes lit { 1%, 12.5% { opacity: 1 } 16%, to { opacity: 0 } }
+```
+⚠ Positive delays mean nothing runs until the first stage elapses, so the list
+starts blank — offset the whole set negatively, or accept a dead first pass.
+Changing N without changing the keyframe silently desynchronises the wrap.

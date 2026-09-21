@@ -4,7 +4,7 @@ category: media
 tags: [media,sprite,animation,svg,performance]
 axes: {energy: 3, density: 2, weight: 2, finish: 4}
 cost: 2
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []
@@ -78,3 +78,17 @@ custom-property mechanism and the group drifts apart for free.
 ⚠ The origin is read in user units, so a `px` suffix here is the viewBox's
 pixel, not the screen's. A value copied off a rendered measurement lands
 somewhere the artwork never specified.
+
+A script-driven strip has no `animation-direction: alternate` to reach for, and
+a boomerang written with a direction flag needs a branch at both ends and a
+reset on every restart. Fold the index space instead: run the counter over a
+period of `2n − 2` and mirror the back half. One modulo and one comparison give
+a sequence that walks out and back forever with no state beyond the counter —
+and `2n − 2`, not `2n`, is what stops the two endpoints being held for two
+frames each, which reads as a stutter at the turn.
+```js
+const period = pingpong ? 2 * n - 2 : n
+const frame  = i < n ? i : period - i        // i = counter % period
+```
+⚠ Degenerate below three frames: at `n = 2` the period is 2 and the fold is a
+plain loop, at `n = 1` it is zero and the modulo throws.
