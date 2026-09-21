@@ -4,7 +4,7 @@ category: layout
 tags: [layout,custom-properties,panel,viewport,architecture,correctness]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

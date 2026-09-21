@@ -1,6 +1,6 @@
 # Manifest
 
-734 primitives. Format: `category/id | axes cost | tags | gist`
+735 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -310,6 +310,7 @@ light/shadow-opposed-frame-halo | E1 D2 W3 F5 $1 | glow media surface depth dark
 light/single-caster-shadow-budget | neutral  $2 | light shadow performance scene budget tier | Shadow cost is per casting light, not per scene: four lamps with
 light/stacked-chromatic-bloom | E3 D2 W4 F4 $3 | effect glow filter svg depth | filter: drop-shadow() chains, and follows the alpha channel — so
 light/stop-built-soft-glow | E1 D2 W2 F4 $1 | gradient glow decoration performance cheap banding | A blurred lamp holds a composited buffer the size of its box plu
+light/superposed-lamp-falloff | E1 D2 W2 F4 $1 | light gradient glow wash layering cheap | Alpha composites as 1−(1−a)(1−b), so two low-alpha radial fills 
 light/target-aimed-travelling-beam | E3 D2 W3 F5 $2 | light beam rotation scroll decoration custom-properties | A directional light that moves — a beam, a shaft, a cone — keeps
 media/activation-deferred-player-facade | neutral  $2 | media embed iframe video performance privacy accessibility loading | A third-party player costs hundreds of kilobytes of script and s
 media/alpha-threshold-fuse-filter | E3 D2 W3 F4 $2 | svg filter mark liquid state | Separate shapes read as one substance when a blur is pushed back

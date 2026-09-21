@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,scroll,shell,navigation]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 3
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,18 @@ before it stacks.
 ⚠ Without `min-height: 0` a child grows instead of scrolling. This gives up the
 mobile URL-bar collapse and page-wide find; a pane holding nothing focusable
 needs `tabindex="0"` to scroll from the keyboard.
+
+The shell is usually a wide-viewport arrangement, and collapsing it at a
+breakpoint changes *which element scrolls* — the pane above, the document
+below. Every viewport assumption in the page then has two answers: `sticky`
+resolves against the pane, an IntersectionObserver needs `root` set to it,
+`scroll(root)` must become `scroll(nearest)`, and `scrollTo` on `window` moves
+nothing. Resolve the scroller once and pass it down rather than letting each
+consumer guess.
+```js
+const port = matchMedia('(min-width: 48rem)').matches ? pane : null   // null = document
+new IntersectionObserver(cb, { root: port })
+```
+⚠ `scroll-behavior` and `scroll-margin-top` belong to whichever element
+scrolls. Left on the document they stop working at the wide breakpoint with no
+error, and in-page links land under the sticky header.
