@@ -4,7 +4,7 @@ category: perf
 tags: [performance,webgl,capability,progressive-enhancement,correctness]
 axes: none
 cost: 2
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
@@ -89,3 +89,18 @@ rt.setSize(Math.ceil(w * SS), Math.ceil(h * SS))   // SS 1.15–1.5
 ```
 ⚠ Fragment cost is the square of the factor, so 1.5 is 2.25× the shading —
 budget it on the top tier only, and fall to 1.0 rather than below it.
+
+Hints predict; the frame clock knows. Time the render itself, push each duration
+into a rolling window of 20–30 frames, and demote the tier when the window's
+95th percentile crosses the budget — or when achieved rate falls under ~16fps,
+which catches a machine that is fast per frame and starved of them. A high
+percentile, never the mean: one 40ms frame in thirty is the stutter a reader
+sees and the mean hides it. Demote one way only and clear the window at each
+step, or the tier oscillates across the threshold all session.
+```js
+const p95 = [...times].sort((a,b) => a-b)[Math.ceil(times.length * .95) - 1]
+if (tier === 0 && (p95 > 12 || fps < 16)) { tier = 1; times.length = 0 }  // 8–16ms
+```
+⚠ Discard the window after anything that legitimately stalls a frame — a resize,
+a tab returning to the foreground, a context restore — or the next gate demotes
+on a cost that was never the renderer's.

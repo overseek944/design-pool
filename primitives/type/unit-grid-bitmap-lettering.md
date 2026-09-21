@@ -4,7 +4,7 @@ category: type
 tags: [type,wordmark,svg,pixel,asset-free]
 axes: {energy: 2, density: 3, weight: 4, finish: 2}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -43,3 +43,19 @@ h1 { font-family: Dots, ui-monospace, monospace; letter-spacing: .02em }
 ⚠ Pixel faces carry almost no hinting, so the marks alias into uneven rows under
 fractional scaling — set them at whole pixel sizes, or above ~32px where the
 error stops resolving. `font-display: swap` will flash a proportional fallback.
+
+Ship the same grid as DOM cells rather than SVG paths and the trade changes
+again: one element per cell over `repeat(var(--cols), minmax(0, 1fr))`, each
+glyph row authored as a string of `0`/`1`. It costs a node per cell — a short
+word is 200–400 — but every cell is then addressable, so the lettering can phase
+in per pixel, resolve a letter at a time, or carry *content* in the ink: fill the
+on-cells with digits, ticks or a sampled value and the word is made of the data
+instead of sitting beside it. Transition 60–120ms per cell.
+```css
+.plate { display: grid; grid-template-columns: repeat(var(--cols), minmax(0,1fr)) }
+.cell  { text-align: center; opacity: .4; transition: opacity 80ms linear, color 80ms }
+.cell--on { opacity: 1; color: var(--accent) }
+```
+⚠ It is a picture made of characters, so a reader hears the ink spelled out cell
+by cell — `aria-hidden` the whole plate and carry the real word in a
+visually-hidden node beside it.

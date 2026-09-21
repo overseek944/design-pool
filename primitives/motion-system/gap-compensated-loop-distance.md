@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,marquee,correctness,loop,overflow]
 axes: none
 cost: 1
-seen: 14
+seen: 15
 requires: []
 conflicts: []
 completes: []
@@ -64,3 +64,21 @@ const n = content > 0 ? Math.max(3, Math.ceil(container / content) + 2) : 1
 ⚠ Only the first copy is real content; mark the rest `aria-hidden`. The count
 rises as the content shortens, so a one-word track on a wide viewport clones far
 more than a full sentence does — cap it if each copy is expensive.
+
+The count above assumes the track should run at all. Measure first: sum the
+children's widths plus `columnGap` × (n − 1) read from the computed style and
+compare against the port's `clientWidth` with 1–2px of tolerance. Where it fits,
+ship no loop — centre the row, drop the `aria-hidden` copy, release the
+single-line width and remove the edge mask, which is otherwise promising motion
+that never arrives. One class carries all four. Re-measure on the
+`ResizeObserver` already running, on every image `load` and `error`, and on
+`document.fonts.ready`.
+```js
+const ws = [...track.children].map(c => c.getBoundingClientRect().width)
+if (ws.some(x => x === 0)) return            // nothing has loaded — do not decide yet
+const gap = parseFloat(getComputedStyle(track).columnGap) || 0
+run(ws.reduce((a, b) => a + b, 0) + gap * (ws.length - 1) > port.clientWidth + 1)
+```
+⚠ The zero-width bail is the whole guard: an image with no intrinsic size
+measures 0, the sum lands under the container, and the track is decided *static*
+at precisely the moment it has no content to measure.

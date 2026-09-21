@@ -4,7 +4,7 @@ category: media
 tags: [media,video,performance,intersection-observer,accessibility,bandwidth]
 axes: none
 cost: 2
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -90,3 +90,16 @@ src.src = src.dataset.src; v.preload = 'auto'; v.load()
 ⚠ Every reader on the closed branch — and every reader without script — then
 sees the poster and nothing else, so the poster has to carry the content and the
 section has to survive being only that.
+
+A video paused at mount — the reduced-motion branch, or an observer that has
+never seen it intersect — holds no decoded frame, and once the poster has been
+dismissed the box is simply empty. Ask `readyState` and call `load()` below
+`HAVE_CURRENT_DATA`: it fetches enough to present frame one without ever
+playing. It is the cheap half of the seek warm-up above, and it belongs on every
+branch that pauses before the element has run.
+```js
+if (reduce) { v.pause()
+  if (v.readyState < HTMLMediaElement.HAVE_CURRENT_DATA) v.load() }
+```
+⚠ `load()` resets `currentTime` and rejects any pending `play()` — call it only
+on an element that has not started, or a reader watching it watches it restart.

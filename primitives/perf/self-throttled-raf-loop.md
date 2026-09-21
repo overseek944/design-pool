@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,canvas,battery,frame-budget,correctness]
 axes: none
 cost: 1
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []
@@ -90,3 +90,18 @@ raf = requestAnimationFrame(step)
 ```
 ⚠ This forfeits interpolation between samples — right for a field or a counter,
 wrong for anything whose motion the eye tracks across the frame.
+
+For a `<video>` the browser states the source rate itself:
+`requestVideoFrameCallback` fires once per *presented* frame, so a 24fps clip on
+a 120Hz panel needs no rate to be guessed and no index to be derived. Keep the
+rAF path — it is not universal — and treat a throw from either the request or
+the cancel as a permanent downgrade rather than retrying it every frame. The
+callback does not chain itself; re-request inside it exactly as with rAF.
+```js
+const step = t => { draw(t)
+  handle = rvfc ? v.requestVideoFrameCallback(step) : requestAnimationFrame(step) }
+try { handle = v.requestVideoFrameCallback(step) } catch { rvfc = false; step(0) }
+```
+⚠ It stops firing entirely when the element has no frames to present — paused,
+ended, or a decoder the OS suspended — and reports nothing. A loop with no other
+clock needs a stall check over it.

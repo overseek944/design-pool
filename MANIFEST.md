@@ -1,6 +1,6 @@
 # Manifest
 
-511 primitives. Format: `category/id | axes cost | tags | gist`
+514 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -15,6 +15,7 @@ canvas/canvas-behind-dom-not-instead-of-it | neutral  $2 | canvas architecture a
 canvas/cell-quantised-arrival-front | E3 D3 W2 F4 $3 | shader reveal grid quantise front texture | A reveal front evaluated per pixel is a soft edge crossing a pic
 canvas/clip-ejected-vertex-filter | neutral  $2 | shader webgl points culling perf | A point cloud whose visible subset changes — a facing hemisphere
 canvas/composed-arrival-field | E3 D3 W2 F5 $2 | shader stagger clock uniform reveal perf | Thousands of elements cannot each own a tween. Derive every elem
+canvas/context-loss-rearm | neutral  $2 | canvas correctness lifecycle architecture | A 2D context is lost the same way a WebGL one is — a GPU process
 canvas/curl-of-potential-field | E2 D3 W2 F4 $3 | canvas flow field generative motion | Advecting anything through a hand-made velocity field pools it i
 canvas/delay-binned-source-history | E2 D2 W2 F5 $4 | canvas field pointer motion generative | A field evaluated from the driver's current pose updates everywh
 canvas/derivative-width-edge-aa | neutral  $2 | shader canvas precision correctness detail | A procedural shape in a fragment shader gets no antialiasing for
@@ -326,6 +327,7 @@ perf/scrim-over-filtered-bleed | neutral  $1 | performance media mobile composit
 perf/self-throttled-raf-loop | neutral  $1 | performance animation canvas battery frame-budget correctness | requestAnimationFrame offers the display's rate; it is not a con
 perf/shell-shaped-lazy-fallback | neutral  $2 | cls loading accessibility architecture correctness code-splitting | A lazy fallback is usually a spinner in a box that is not the co
 perf/single-flight-external-script | neutral  $2 | performance architecture correctness lifecycle embed | Several components on a page may each need the same third-party 
+perf/stall-detected-loop-rearm | neutral  $1 | performance correctness lifecycle loop architecture | A render loop driven by anything other than requestAnimationFram
 perf/stride-pruned-decorative-field | neutral  $1 | perf responsive decoration correctness | A decorative field — dots, marks, ticks, labels — that costs too
 perf/stylesheet-failure-reload-guard | neutral  $2 | correctness performance progressive-enhancement architecture cls | A hashed stylesheet that 404s after a deploy paints the whole do
 perf/velocity-scaled-preload-margin | neutral  $2 | perf lazy-load scroll images loading | A fixed lazy-load margin is tuned for one scroll speed. Under a 
@@ -476,6 +478,7 @@ timing/stepped-two-frame-blink | E2 D1 W2 F3 $1 | motion easing indicator status
 timing/trapezoidal-visibility-envelope | neutral  $1 | motion timing loop architecture | Elements that appear, hold and leave on one shared timeline do n
 timing/unit-aware-token-read | neutral  $1 | tokens correctness motion build | Script reading duration tokens out of computed style must parse 
 type/balanced-headline-wrap | neutral  $1 | type polish | text-wrap: balance on every headline so line lengths even out in
+type/breakpoint-abbreviated-label | neutral  $1 | type accessibility responsive navigation correctness | A nav item or a column head that shortens at a narrow width — Re
 type/breakpoint-swapped-family-roles | E1 D2 W3 F5 $1 | type responsive breakpoint tokens pairing serif | Which of two faces can carry display size is a function of rende
 type/cap-height-trim | neutral  $1 | type spacing precision alignment | Every text block ships with invisible half-leading above and bel
 type/char-count-stepped-reveal | E3 D1 W2 F4 $1 | type motion css-only custom-properties keyframes | A per-character reveal is one number. Publish the character coun

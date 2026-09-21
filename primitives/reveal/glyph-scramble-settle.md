@@ -4,7 +4,7 @@ category: reveal
 tags: [type,reveal,motion,technical,text]
 axes: {energy: 4, density: 3, weight: 2, finish: 3}
 cost: 2
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
