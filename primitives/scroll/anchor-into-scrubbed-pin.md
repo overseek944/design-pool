@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,navigation,anchor,correctness,pin]
 axes: none
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -14,7 +14,8 @@ An in-page link into a scrubbed pin lands at the top of the pin — progress 0,
 the timeline's first frame, where everything is still invisible. The reader
 arrives on an empty screen. Give each scrubbed section the timeline position
 where its entrance has finished and resolve the anchor to the matching scroll
-offset: 8–20% into the pin for a typical entrance.
+offset: 6–20% into the pin for a typical entrance, the low end where the target
+is one beat of a multi-chapter timeline rather than the pin itself.
 ```js
 const y = wrap.getBoundingClientRect().top + scrollY
         + (enterAt / total) * spacer.offsetHeight

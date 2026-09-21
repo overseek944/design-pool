@@ -4,7 +4,7 @@ category: media
 tags: [media,video,accessibility,scroll,scrub,correctness]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -27,3 +27,17 @@ the reader picks.
 if (mq.matches) { el.dataset.still = 'true'; video.controls = true }
 ```
 ⚠ Take the progress readout out with it — a rail nothing advances reads as broken.
+
+Where the medium is not a media element there are no native `controls` to hand
+back. Promote the progress indicator instead: the chapter rail that was a
+readout becomes the transport, its fills going binary — passed or not — rather
+than fractional, and each item scrolls to its own position. Swap the invitation
+in the same branch, since "scroll through" now describes nothing the reader can
+do.
+```jsx
+<button aria-current={i === active ? 'step' : undefined} onClick={() => go(i)}>
+<span style={{ transform: `scaleX(${still ? +(i <= active) : frac(i)})` }} />
+```
+⚠ The rail was decoration and is now a control: it needs a real `<button>`, a
+name, and a focus ring — a `<div>` with a click handler strands the readers this
+branch exists for.

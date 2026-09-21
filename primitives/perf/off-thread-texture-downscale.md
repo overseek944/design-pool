@@ -4,7 +4,7 @@ category: perf
 tags: [performance,texture,webgl,loading,memory]
 axes: none
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -41,3 +41,17 @@ tex.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy())
 above just recovered — and are silently skipped for a non-power-of-two source
 unless wrapping is clamped to edge. Anisotropy past 8 is rarely visible and
 never free.
+
+The DOM path has the same problem and no resize option. An `<img>` decoded for a
+2D context costs `naturalWidth × naturalHeight × 4` however small it is drawn,
+so a cache of them is sized by the source, not the display. Draw each one once
+into an offscreen canvas at the width it will actually occupy, then clear the
+source's `src` to release the decode; entries then cost what they show. Quantise
+that width to 48–96px steps or a dragged window re-requests the set every frame.
+```js
+const w = Math.min(CAP, 64 * Math.ceil(box * Math.min(devicePixelRatio, 1.5) / 64))
+c.width = w; c.height = Math.round(img.naturalHeight * w / img.naturalWidth)
+c.getContext('2d', { alpha: false }).drawImage(img, 0, 0, c.width, c.height); img.src = ''
+```
+⚠ Cap the backing store by the source as well as by DPR — allocating past what
+the source can fill buys nothing and costs the difference.

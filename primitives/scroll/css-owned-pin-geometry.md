@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,pin,architecture,correctness,responsive]
 axes: none
 cost: 2
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: [media-query-parity-listeners]
@@ -50,3 +50,18 @@ where it turns over — sit together in one rule.
 ```
 ⚠ The marker must be inside the spacer, not the sticky child — a sticky
 ancestor's offsets stop describing document position the moment it sticks.
+
+A height query guesses at the content; the content can be measured. Where the
+stage holds copy that reflows — a column whose length no breakpoint predicts —
+test the fit at runtime instead: pin only if the stage's own height plus a
+margin clears the space under the fixed chrome, and publish the verdict as one
+attribute so the stylesheet still owns everything downstream of the decision.
+Margin 32–64px.
+```js
+el.dataset.scrollMode =
+  !reduced && innerWidth >= 1000 && stage.getBoundingClientRect().height + 48 <= room
+    ? 'pinned' : 'static'
+```
+⚠ Re-run it on resize, on the reduced-motion change event and after fonts load —
+a verdict taken once at mount is wrong for the rest of the session. The static
+branch must still park the timeline finished.

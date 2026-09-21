@@ -1,6 +1,6 @@
 # Manifest
 
-680 primitives. Format: `category/id | axes cost | tags | gist`
+683 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -418,14 +418,17 @@ motion-system/transient-class-scoped-transition | neutral  $2 | motion-system vi
 motion-system/twin-pose-custom-properties | E3 D3 W2 F5 $2 | transform state stagger custom-properties group choreography | A group that rearranges between two arbitrary layouts — stacked 
 motion-system/viewport-clamped-slot-travel | E3 D1 W2 F5 $3 | motion travel scroll measurement layout | An element travelling between two positions read from real layou
 perf/analytic-stand-in-until-live | neutral  $2 | data loading architecture visualisation labelling | A visual driven by a live feed has three bad first frames: empty
+perf/attribute-mirrored-engine-state | neutral  $1 | perf debug instrumentation testing architecture state | An engine that fetches, decodes and caches is invisible the mome
 perf/bfcache-blanked-surface | neutral  $1 | performance canvas lifecycle correctness restoration flicker | A page restored from the back/forward cache repaints whatever a 
 perf/boot-drained-call-queue | neutral  $1 | architecture third-party progressive-enhancement events correctness | A deferred script cannot be called while the page is still parsi
 perf/byte-measured-entry-gate | neutral  $3 | performance loading progress fetch overlay correctness | An overlay held while an asset loads is usually a timer pretendi
 perf/consent-free-analytics-default | neutral  $1 | architecture analytics third-party privacy layout correctness | The consent banner is a decision made in the analytics config, n
 perf/data-saver-media-branch | neutral  $1 | performance media-query bandwidth video progressive-enhancement accessibility | prefers-reduced-data: reduce is a reader saying their connection
 perf/dead-banded-resize-rebuild | neutral  $1 | resize canvas mobile correctness | A generative scene that re-seeds on resize restarts every time a
+perf/degraded-default-capability-snapshot | neutral  $1 | perf progressive-enhancement hydration cls reduced-motion architecture | A capability query has no answer before the first paint — no win
 perf/derived-epsilon-write-guard | neutral  $1 | performance frame-budget animation correctness architecture | A scrubbed frame writes dozens of values, nearly all unchanged —
 perf/device-hint-quality-tier | neutral  $2 | performance webgl capability progressive-enhancement correctness | Resolve one integer tier at startup and let every expensive deci
+perf/direction-weighted-byte-window | neutral  $3 | perf memory prefetch scrub sequence loading budget | A scrubbed sequence's working set is a window, not a list. Budge
 perf/dual-epsilon-settle-halt | neutral  $1 | performance animation spring frame-budget correctness | Integrated motion approaches its target asymptotically and never
 perf/engagement-deferred-third-party | neutral  $2 | performance third-party analytics loading idle correctness | A tag that only observes engaged sessions should not compete wit
 perf/fixed-point-coordinate-payload | neutral  $2 | perf payload data points precision | A large coordinate set shipped as JSON floats spends most of its

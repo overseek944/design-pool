@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,scrub,choreography,custom-properties,sequence,architecture]
 axes: {energy: 3, density: 3, weight: 2, finish: 5}
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -53,3 +53,17 @@ if (band !== el.dataset.phase) el.dataset.phase = band
 ⚠ Write the attribute only on change — one per frame is a style invalidation
 per frame. Never transition the `calc()`-driven properties themselves or the
 scrub lags its own input.
+
+Where the channels are pure windows on the driver, the stylesheet can compute
+them and script writes exactly one property per frame. `clamp(0, calc((var(--p)
+- start) / span), 1)` is the same expression the controller was running, and it
+puts each beat's schedule in the rule that consumes it rather than in a table
+the controller owns. Retuning a beat stops being a code change.
+```css
+.stage    { --trunk: clamp(0, calc((var(--p) - .20) / .14), 1);
+            --out:   clamp(0, calc((var(--p) - .34) / .62), 1) }
+.stage .t { opacity: var(--trunk) }
+```
+⚠ Unregistered, these are tokens: readable in `calc()` but never interpolable,
+so the whole chain is only as smooth as the driver written to it. Nothing may
+`transition` on them.

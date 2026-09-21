@@ -4,7 +4,7 @@ category: perf
 tags: [performance,correctness,lifecycle,canvas,architecture,memory]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

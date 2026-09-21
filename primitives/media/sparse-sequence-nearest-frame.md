@@ -4,7 +4,7 @@ category: media
 tags: [scrub,scroll,images,loading,canvas,progressive,perf]
 axes: {energy: 3, density: 2, weight: 3, finish: 5}
 cost: 4
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []

@@ -4,7 +4,7 @@ category: perf
 tags: [resize,canvas,mobile,correctness]
 axes: none
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -82,3 +82,17 @@ rAF(() => rAF(() => { measure()
 ⚠ Suspend the driver across the two frames or it reads the old offsets against
 the new viewport and writes a visible wrong pose first. One frame is not enough
 — the remeasure must happen after layout, not after style.
+
+Two frames is a guess, and where the relayout is asynchronous — a late font, an
+image settling, the sticky child remeasuring — the corrective jump lands against
+geometry that then moves again. Converge instead of counting: re-derive the
+target offset every frame and release only once it has repeated within half a
+pixel two or three times, with a hard bailout at 20–40 frames so a page that
+never settles does not hold the reader. Arm the abandon first — one passive
+`wheel` or `touchstart` drops the restore outright.
+```js
+if (Math.abs(top - last) < .5 && ++stable >= 3) return release()
+last = top; if (Math.abs(scrollY - top) > .5) scrollTo({ top, behavior: 'instant' })
+```
+⚠ The scripted scroll fires the same handler the wheel does, so the abandon
+listener must test something the correction itself cannot trip.

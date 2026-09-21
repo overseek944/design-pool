@@ -4,7 +4,7 @@ category: media
 tags: [media,video,performance,intersection-observer,accessibility,bandwidth]
 axes: none
 cost: 2
-seen: 20
+seen: 21
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -208,3 +208,16 @@ addEventListener('click', unlock, { once: true })
 ```
 ⚠ Sweep only what the visibility gate still wants. Replaying every element
 restarts footage the reader has already scrolled past.
+
+Unmounting the element does not release what it buffered. A framework that drops
+a `<video>` from its tree leaves the resource alive until collection gets to it,
+so a page mounting several clips holds every one of them at once. Tear it down
+explicitly: pause, remove the `src`, then call `load()` — the call on a
+source-less element is what actually re-runs resource selection and frees the
+buffer.
+```js
+return () => { v.pause(); v.removeAttribute('src'); v.load() }
+```
+⚠ Remove the attribute rather than assigning `''` — an empty string resolves
+against the document URL and the element fetches the page itself. Clear any
+`<source>` children too, or selection finds them and reloads.
