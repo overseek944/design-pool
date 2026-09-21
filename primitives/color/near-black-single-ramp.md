@@ -4,7 +4,7 @@ category: color
 tags: [color,palette,dark,restraint]
 axes: {energy: 2, density: 2, weight: 4, finish: 4}
 cost: 1
-seen: 14
+seen: 15
 requires: []
 conflicts: []
 completes: []
@@ -72,3 +72,11 @@ habit. Two tokens, not one: the band inverts both ground and ink.
 ```
 ⚠ Measure the faint rung on the dark ground specifically — it is the rung that
 was already marginal on paper, and the flip is where it stops being legible.
+
+Range — the inverted ramp holds at four rungs, not three, provided the fourth
+is spent only where the structure already says what the text is. Column heads,
+unit suffixes and repeated field names in a dense panel are read by position
+before they are read as words, so a rung at roughly 2.5–3:1 against warm paper
+is legible enough for them and quiet enough that the panel's hairlines, not its
+labels, carry the grid. Nothing that appears once may sit on it. Four warm greys
+around 10%, 30%, 48% and 62% lightness against a 93–95% ground.

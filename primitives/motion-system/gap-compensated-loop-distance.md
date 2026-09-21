@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,marquee,correctness,loop,overflow]
 axes: none
 cost: 1
-seen: 18
+seen: 19
 requires: []
 conflicts: []
 completes: []

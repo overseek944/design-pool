@@ -4,7 +4,7 @@ category: color
 tags: [color,tokens,product,mock,architecture]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -37,3 +37,18 @@ palette is.
 ```
 ⚠ `:focus-visible` is the one that goes missing. A region that restyles links
 and buttons but not every focusable control ships a frame with no visible focus.
+
+The boundary also has to re-own what the UA paints, which is normally written
+once on `body` and therefore belongs to the host. `::selection`, `::placeholder`
+and `color-scheme` on date and search fields all inherit across the frame and
+land the page's colours inside a region drawn in a different one — a selection
+block tinted to the site accent over the replica's own ink is the tell. Scope
+each to the boundary selector rather than adding a second global rule.
+```css
+.replica ::selection { background: var(--product-select); color: var(--product-ink) }
+.replica ::placeholder { color: var(--product-ink-faint) }
+.replica input[type=date] { color-scheme: light }   /* whatever the region is */
+```
+⚠ The region's reduced-motion branch is the same problem: a replica animating
+its own loading and arrival states needs the blanket collapse scoped to it, not
+inherited from a root rule that may not exist in the host at all.

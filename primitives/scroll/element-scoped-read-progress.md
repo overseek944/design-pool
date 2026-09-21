@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,progress,correctness,observer,reading]
 axes: none
 cost: 2
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -76,3 +76,19 @@ const t = Math.min(1, Math.max(0, (.4 * vh - el.getBoundingClientRect().top) / (
 ```
 ⚠ This never reaches 0 or 1 by arithmetic alone — clamp both ends or a shader
 uniform receives values outside its range on a fast flick.
+
+The rail does not have to be a separate gauge. Where sections are already
+divided by a full-bleed hairline, draw the progress as that same hairline in the
+next rule tier up, pinned to the section's own top edge and grown by width: the
+page gains no new furniture, and a reader parses it as the section filling in
+rather than as an indicator to consult. It costs the section a positioning
+context and nothing else. Hairline 1px, the progress tier one step darker than
+the resting rule.
+```css
+.section { position: relative }
+.section > .fill { position: absolute; inset-block-start: 0; inset-inline-start: 0;
+  block-size: 1px; background: var(--rule-strong); inline-size: calc(var(--p) * 100%) }
+```
+⚠ Animating `inline-size` relayouts every frame — drive `transform: scaleX()`
+from a `transform-origin` at the inline start instead once the section holds
+more than a few nodes. It reports nothing a reader needs: `aria-hidden`.

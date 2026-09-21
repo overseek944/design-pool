@@ -4,7 +4,7 @@ category: type
 tags: [type,annotation,editorial,diff,state]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -40,3 +40,18 @@ ten times does not accumulate ten highlights.
 ```
 ⚠ Colour alone announces nothing. Pair it with a live region or a persistent
 marker for anyone who was not looking at that row when it fired.
+
+The hold is longer when the change was not the reader's. A value the reader
+just edited needs only the short hold above; one a background process rewrote
+has to survive a glance away, so the hold runs to half the cycle or past it and
+the fade becomes a tail rather than the event. Hold 25–60% of the cycle, total
+1.2–3s, and let the longer holds take the longer periods.
+```css
+@keyframes flash { 0%, 60% { opacity: 1 } to { opacity: 0 } }
+.agent-touched::after { animation: flash 2.4s ease-out forwards }
+```
+⚠ Under `prefers-reduced-motion` cancel this one outright rather than collapsing
+its duration — the whole content of the mark is its decay, and a 1ms version is
+a colour that appears and vanishes between two frames, which is worse than the
+untouched row. Whatever announces the change to assistive tech has to keep
+working with the animation gone.

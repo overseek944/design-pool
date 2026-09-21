@@ -4,7 +4,7 @@ category: surface
 tags: [frame,chrome,media,mock,product,decoration]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -71,3 +71,16 @@ strip the same height as the rail's first row so the two corners agree.
 ```
 ⚠ Breadcrumb depth is a claim about navigation. Two levels read as a location;
 four imply a hierarchy the reader will look for and not find.
+
+The caption above reads better as a pair than as a line. The uppercase label
+names what was captured; a second line under it, sentence case and one tier
+down, states the *operation* rather than the noun — what went in and what came
+out, or the states the thing moves through. The panel then makes its claim
+without a paragraph beside it, which is what lets several of them run down a
+page as evidence instead of as decoration under repeated prose. Gloss 4–9 words,
+no terminal full stop.
+```css
+.record > .gloss { font-size: .92em; color: var(--ink-2); margin-block-start: 4px }
+```
+⚠ Two lines of apparatus is the ceiling — a third turns the panel's header into
+a section header and the evidence starts reading as a subsection.
