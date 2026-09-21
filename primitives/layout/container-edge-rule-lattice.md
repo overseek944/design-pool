@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,hairline,precision,responsive,technical]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 2
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
@@ -83,3 +83,19 @@ usually the limit before it reads as ruled paper.
 ⚠ A stop width in percent is a fraction of the box, so the rule thickens as the
 section grows. Where the hairline must stay one pixel, the pitch has to come off
 `background-size` and the count stops being fixed.
+
+The same rules can trace *an element's own* edges rather than the container's,
+and project them into the whitespace above it — a zero-width pseudo-element at
+`bottom: 100%` with a negative `top` draws a dashed line rising out of the
+block's corner through the gap before it, so a figure reads as dropped onto the
+sheet at a measured position rather than merely placed. Let the section's
+`overflow: hidden` clip the reach instead of tuning a length. Reach 60–120vh.
+```css
+.guides { position: relative }
+.guides::before, .guides::after { content: ""; position: absolute;
+  top: -100vh; bottom: 100%; width: 0; border-left: 1px dashed var(--rule) }
+.guides::before { left: -1px } .guides::after { right: -1px }
+```
+⚠ Without a clipping ancestor the lines run the length of the document and
+collect every section they cross. The negative `top` also grows the scroll
+height on an `overflow: visible` parent.

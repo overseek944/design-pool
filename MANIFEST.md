@@ -1,6 +1,6 @@
 # Manifest
 
-627 primitives. Format: `category/id | axes cost | tags | gist`
+630 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -128,6 +128,7 @@ interaction/fail-open-css-state-toggle | neutral  $1 | interaction css-only prog
 interaction/fill-agnostic-state-plate | E2 D2 W2 F5 $1 | hover state pseudo-element theme system contrast | A hover token per fill does not scale: a control faced with an i
 interaction/find-reachable-collapse | neutral  $1 | accessibility correctness disclosure search architecture | Collapsed content the browser's own find cannot reach is content
 interaction/focus-handoff-on-self-removal | neutral  $1 | accessibility focus correctness form state | A control that removes itself when used — a form replaced by its
+interaction/focus-held-chrome-retraction | neutral  $1 | interaction correctness accessibility focus keyboard scroll chrome navigation | A bar that retracts on downward scroll must ask more than which 
 interaction/focus-released-occlusion | neutral  $1 | interaction accessibility focus sticky correctness css-only | Any arrangement that deliberately covers one element with anothe
 interaction/focusable-graphic-regions | neutral  $2 | accessibility svg focus diagram correctness | A drawing whose parts answer to the pointer — a map, a schematic
 interaction/gap-spanning-hover-bridge | E2 D2 W2 F5 $1 | interaction hover panel menu css-only accessibility | A panel held off its trigger by a visual gap is unreachable by h
@@ -441,6 +442,7 @@ scale/endpoint-named-fluid-tokens | neutral  $1 | tokens fluid naming architectu
 scale/fixed-canvas-root-scale | E1 D2 W3 F4 $2 | scale layout proportion transform responsive | Author the page once at one pixel width and scale the whole canv
 scale/host-overridable-widget-tokens | neutral  $2 | tokens embed widget theming specificity correctness | An embedded widget lands in a stylesheet you do not control and 
 scale/inline-style-custom-property-hatch | neutral  $1 | tokens responsive breakpoint architecture cascade custom-properties | Markup that carries its layout in style attributes — server-rend
+scale/module-quantised-figure | E1 D3 W2 F5 $2 | layout scale tokens grid precision custom-properties figure responsive | A composed figure — a lattice of cells, a keyboard, a frame stri
 scale/one-hairline-token | E1 D2 W1 F5 $1 | unit tokens border precision coherence | Every thin line in a system should be the same line. Declare one
 scale/percentage-root-with-divided-type | neutral  $2 | scale tokens accessibility unit architecture | Spacing and type share the rem and usually cannot be tuned apart
 scale/proportional-effect-radii | neutral  $1 | unit effect polish coherence | Express blur, glow and shadow radii in vh/vw rather than px, so 
@@ -565,6 +567,7 @@ timing/cycle-seam-reshuffle | E2 D3 W2 F5 $2 | timing loop motion svg variation 
 timing/decaying-loop-restart-gap | E2 D1 W2 F5 $1 | loop timing sequence restraint demo attention | A self-restarting demonstration does not want one restart gap. A
 timing/dwelling-phase-ring | neutral  $2 | timing state loop choreography architecture demo | A looping demonstration written as a schedule of effects has to 
 timing/expanding-shadow-beacon | E2 D1 W2 F4 $1 | motion indicator status ambient glow | A mark that blinks reports a state; one that throws a ring outwa
+timing/lead-in-separated-arrival | E2 D2 W2 F5 $1 | timing motion sequence stream demo mock cadence delay | A mock of anything that arrives over a network — streamed tokens
 timing/non-linear-loop-periods | E3 D3 W2 F4 $2 | motion ambient rhythm | Give concurrent ambient loops coprime-ish periods (4s / 5s / 7s)
 timing/opacity-masked-loop-cut | E3 D2 W2 F4 $2 | timing keyframes loop opacity conveyor | A track that reads as endless usually means duplicated DOM. One 
 timing/overshoot-for-pop-elements | E4 D2 W2 F3 $1 | motion easing delight | back.out(n) on small elements that should feel physical — badges

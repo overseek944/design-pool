@@ -4,7 +4,7 @@ category: color
 tags: [color,tokens,theming,architecture,dark]
 axes: none
 cost: 2
-seen: 20
+seen: 21
 requires: []
 conflicts: []
 completes: []
@@ -117,3 +117,17 @@ instead of inverting with it.
 ⚠ Two bodies is two contrast audits, and the accent is what breaks: a token
 clearing 4.5:1 against the band's light body rarely clears it against the dark
 one at the same value.
+
+Colour is not all that a theme block owns. Any effect whose *amplitude* is read
+against the ground — grain opacity, a tint variance, a shadow's spread, a
+scrim's alpha — belongs in the same block, because one value cannot be right on
+both: grain that reads as film at 0.6 over a dark ground reads as dirt at the
+same value over a light one. Ship the amplitude as a token beside the inks and
+let the effect declare nothing but `var()`.
+```css
+.theme-light { --grain: .38; --tile-var: .12 }
+.theme-dark  { --grain: .60; --tile-var: .22 }
+.grain { opacity: var(--grain); mix-blend-mode: soft-light }
+```
+⚠ Amplitudes do not survive a palette swap the way inks do — a third theme
+needs them re-tuned by eye, not interpolated between the two.

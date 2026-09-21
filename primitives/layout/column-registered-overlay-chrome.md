@@ -4,7 +4,7 @@ category: layout
 tags: [layout,overlay,alignment,correctness,chrome]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -44,3 +44,17 @@ el.style.right = `${innerWidth - (a.getBoundingClientRect().right
 the correction is a visible twitch on every load. At the breakpoints where the
 closed form is already the answer, clear the inline value rather than
 recomputing it.
+
+A floating *control* in a corner wants three constraints in one `max()`, not
+one: a design floor, the device inset, and the column edge — and the column
+term has to be reduced by the control's own footprint, or it parks on the
+reading column instead of beside it. Below the cap the third term goes
+negative and the floor takes over, which is the behaviour wanted anyway.
+Publish it once and let every corner control read it.
+```css
+:root { --rail-x: max(calc((100% - var(--content)) / 2), 8px) }
+.corner { right: max(20px, env(safe-area-inset-right), calc(var(--rail-x) - 65px));
+          bottom: max(20px, env(safe-area-inset-bottom)) }
+```
+⚠ Two controls sharing the corner must offset from the same token, not from each
+other — chaining one off the other's width breaks the moment either resizes.

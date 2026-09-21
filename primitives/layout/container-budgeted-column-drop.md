@@ -4,7 +4,7 @@ category: layout
 tags: [layout,container-query,table,responsive,accessibility,correctness]
 axes: none
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -57,3 +57,20 @@ type carries a five-column row to 390px.
 ⚠ Every cell needs `min-width: 0` and the tail needs `overflow: hidden`. One
 unbreakable path in the last column otherwise widens the whole grid past its
 container instead of clipping inside it.
+
+Fold rather than drop where every cell is wanted and the row has a natural
+primary/secondary pairing. Keep the grid, take the template to two columns and
+two rows, and place each cell explicitly: identity and headline value on line
+one, qualifier and secondary value on line two, right edges still aligned. No
+cell is lost, so nothing has to be restated — but the header row now labels
+only two of four, and a dropped column's unit has to travel with its value.
+```css
+@media (width <= 35rem) {
+  .row { grid-template-columns: minmax(0,1fr) auto; grid-template-rows: auto auto }
+  .row > .route { grid-column: 1; grid-row: 2 }
+  .row > .count { grid-column: 2; grid-row: 2 }
+  .row > .count::after { content: " tokens" }
+}
+```
+⚠ Generated content is not findable, not translatable and unevenly announced —
+fine for a unit the number already implies, wrong for the value itself.
