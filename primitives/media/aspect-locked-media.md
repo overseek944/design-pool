@@ -4,7 +4,7 @@ category: media
 tags: [layout,media,cls]
 axes: none
 cost: 1
-seen: 41
+seen: 42
 requires: []
 conflicts: []
 completes: []
@@ -115,3 +115,18 @@ p.onloadedmetadata = () => set(r => ({ ...r, [src]: p.videoWidth / p.videoHeight
 ⚠ One metadata request per source — worth it for a handful, never for a grid.
 The fallback has to be within ~10% of the real ratio or the correction is
 itself the shift this primitive exists to prevent.
+
+Where the real extent is only known at runtime and is usually *smaller* than the
+slot — a transcript, a log, a recorded session that has printed six of its forty
+rows — the ratio is a floor rather than a lock. Reserve it, then measure the
+last line carrying anything and write a height clamped between the reserved box
+and the full extent, so the panel occupies what it is actually showing and still
+never shifts the page below it. Write the height only when the measured value
+changes, or the loop costs a style recalc every frame.
+```js
+const want = Math.max(slot.clientHeight, Math.min(full, tail.bottom - top + tail.height))
+if (want !== prev) { prev = want; stage.style.height = want + 'px' }
+```
+⚠ This grows the page under a reader who is already on it — right for a panel
+below the fold or one they started, wrong above it. Grow only, never shrink, or
+content clearing re-collapses the panel with the pointer still inside it.

@@ -4,7 +4,7 @@ category: surface
 tags: [surface,clip-path,edge,section,responsive,geometry]
 axes: {energy: 1, density: 2, weight: 3, finish: 4}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -70,3 +70,24 @@ the label clears the slope.
 ⚠ This paints a border and still clips the focus ring. Where the shape belongs
 to a control, skew a pseudo-element behind an unclipped box instead — the ring
 then follows the real border box, which is square and therefore honest.
+
+A chamfer that must not clip is painted rather than cut. Stack two
+pseudo-elements on the same corner, each a zero-content box with four
+transparent borders: the lower takes the rule colour on two adjacent sides, the
+upper takes the page ground on the opposite two. The upper triangle is the cut,
+the sliver of the lower one showing past it is its edge — inset the upper by
+1–2px for a stroked diagonal, or leave the pair the same size and the lower
+colour reads as a bevel face instead. Nothing is clipped, so a focus ring, a
+shadow and a sticky child all survive, which is what makes this the cut to use
+on a control. Border width sets the notch: 4–14px.
+```css
+.cut::before, .cut::after { content: ""; position: absolute; top: 0; left: 0;
+                            border: var(--cut, 6px) solid transparent }
+.cut::before { border-bottom-color: var(--rule); border-right-color: var(--rule) }
+.cut::after  { border: calc(var(--cut) - 1px) solid transparent;
+               border-top-color: var(--ground); border-left-color: var(--ground) }
+```
+⚠ It paints the ground, so it only holds over a known flat colour — over an
+image, a gradient or a blurred backdrop the wedge shows as a patch. The box's
+own border still turns that corner square underneath the overlay; suppress it on
+the two cut edges or the hairline doubles back on itself.

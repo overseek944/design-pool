@@ -4,7 +4,7 @@ category: type
 tags: [type,annotation,editorial,diff,state]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -55,3 +55,18 @@ its duration — the whole content of the mark is its decay, and a 1ms version i
 a colour that appears and vanishes between two frames, which is worse than the
 untouched row. Whatever announces the change to assistive tech has to keep
 working with the animation gone.
+
+A line mark inside a scrolling code block stops where its text stops, so the
+band ends ragged and, once the reader scrolls right, leaves the viewport
+entirely. The lines are inline boxes in a `<pre>`; make the `<code>` a grid and
+each becomes a row stretched to the widest of them, so the mark spans the full
+scroll width whatever that line holds. Hold the rows at `max-content` or the
+band still clips at the container edge, and bleed the mark into the block's own
+padding with a matched negative margin.
+```css
+pre > code { display: grid; min-width: max-content }
+pre > code [data-line] { padding-inline: var(--pad); margin-inline: calc(-1 * var(--pad)) }
+```
+⚠ Grid rows are block boxes, so a copied selection gains a newline per line —
+correct for code, wrong the moment the same treatment is reached for in running
+prose, where it breaks a paragraph into one line per visual row.

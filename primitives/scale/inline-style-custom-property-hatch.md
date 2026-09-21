@@ -4,7 +4,7 @@ category: scale
 tags: [tokens,responsive,breakpoint,architecture,cascade,custom-properties]
 axes: none
 cost: 1
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
@@ -111,3 +111,19 @@ constraint at a breakpoint, never for setting a value.
 property name and a shorthand that merely mentions the word. Scope it to a
 container, and re-check after any emitter upgrade — nothing fails loudly when
 the serialisation changes.
+
+Emit the *index*, not the position. A renderer that knows a cell's row and
+column writes them as bare numbers and leaves the geometry to the stylesheet:
+`calc(100% * var(--row) / var(--rows))` places every cell as a fraction of its
+container, so the whole matrix rescales when the container or the font-size
+changes and nothing is remeasured. The markup then carries data and the
+stylesheet carries layout, which is also what lets one emitted DOM serve two
+sizes — a fluid `font-size` on the host is the only knob the grid needs.
+```css
+.cell { position: absolute; top:  calc(100% * var(--row) / var(--rows));
+                            left: calc(100% * var(--col) / var(--cols)) }
+```
+⚠ Fractions of a percentage land on subpixels, so a dense grid shows uneven
+seams between rows. Fine where the content is drawn on the same fraction — a
+character grid, a waveform — wrong where neighbouring cells must share a hard
+edge.

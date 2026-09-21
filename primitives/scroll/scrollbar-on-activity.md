@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,scrollbar,chrome,restraint,state]
 axes: {energy: 1, density: 1, weight: 1, finish: 5}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []

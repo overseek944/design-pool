@@ -4,7 +4,7 @@ category: motion-system
 tags: [tabs, entrance, state, css-only, replay]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []

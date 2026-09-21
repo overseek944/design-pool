@@ -4,7 +4,7 @@ category: motion-system
 tags: [print,correctness,motion,fallback,accessibility]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -42,3 +42,21 @@ onward comes out blank. Reset every entrance class in the same branch, and add
 ```
 ⚠ Decorative `aria-hidden` layers cost the most ink and carry the least — drop
 them in the same block rather than one by one.
+
+Un-hiding is not only about entrances. Paper has no interaction, so every panel
+a reader would have opened — an inactive tab, a collapsed disclosure, a block
+behind a *show more* — is simply absent, and the print carries a heading with
+nothing under it. Force the set open in the same branch and drop the controls
+that would have opened them, so the page prints as the document it stands for
+rather than as the state it happened to be left in.
+```css
+@media print {
+  [role=tabpanel][data-state=inactive] { display: block !important }
+  details:not([open]) > :not(summary)  { display: block !important }
+  .clamped { -webkit-line-clamp: none; max-height: none }
+  [role=tab], .disclosure-toggle { display: none !important }
+}
+```
+⚠ Forcing every panel open can multiply the page count several times — right for
+a spec, wrong for an invoice, so decide per component rather than by selector
+sweep. Never force open a panel holding something the screen never showed.

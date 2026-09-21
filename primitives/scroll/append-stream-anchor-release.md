@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,correctness,stream,log,architecture]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,21 @@ position outright: follow the tail only while the reader is already within
 ⚠ Release it only where something replaces it. On ordinary prose that
 lazy-loads images above the fold, anchoring is the thing keeping the reader's
 place, and turning it off is a regression with no visible cause.
+
+Proximity infers the reader's intent from where they are; the gesture states it.
+Latch the follow off on the first upward wheel or drag whatever the distance,
+and release it only when a downward gesture brings the scroller back inside the
+tail band — a reader who nudged up by one notch then stays where they put
+themselves, which the proximity test alone will not give them on a fast stream.
+Do the release check inside a rAF so a burst of wheel events costs one layout
+read. Band 30–80px.
+```js
+el.addEventListener('wheel', e => {
+  if (e.deltaY < 0) return void (held = true)
+  cancelAnimationFrame(r); r = requestAnimationFrame(() => {
+    if (el.scrollHeight - el.scrollTop - el.clientHeight < 50) held = false })
+}, { passive: true })      // each frame: if (!held) el.scrollTop = el.scrollHeight
+```
+⚠ Wheel and drag are not the whole input set — a keyboard PageUp, a find-in-page
+jump or a scripted `scrollIntoView` moves the reader with no gesture to latch
+on. Keep the proximity test underneath this one as the floor, not instead of it.

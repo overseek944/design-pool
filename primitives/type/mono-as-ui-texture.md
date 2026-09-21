@@ -4,7 +4,7 @@ category: type
 tags: [type,ui,technical,register]
 axes: {energy: 1, density: 3, weight: 2, finish: 4}
 cost: 1
-seen: 43
+seen: 44
 requires: []
 conflicts: []
 completes: []
@@ -56,3 +56,13 @@ whole-pixel sizes.
 ⚠ It is a display cut doing apparatus work — never let it run a sentence, and
 check the digits, since many pixel faces draw `1`, `l` and `7` almost alike at
 label size.
+
+The full dose need not give up a size-driven hierarchy; it moves it to the other
+face. Set body, chrome and code in the mono at one size and let the *display*
+tier be the proportional face — a 40–56px heading over a 15px mono page reads as
+rank because family changes with size, and the flatness underneath is exactly
+what makes the heading land. This is the inverse of the split above and wants
+the same discipline: two tiers, and no proportional face anywhere in the body.
+⚠ The two faces need different leading and tracking to read as one system. The
+display tier wants it tight — 1.0–1.1 leading, −0.02em tracking — against the
+mono body's open 1.5–1.6, or the heading reads as the same texture set larger.

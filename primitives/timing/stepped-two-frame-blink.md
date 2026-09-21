@@ -4,7 +4,7 @@ category: timing
 tags: [motion,easing,indicator,status,ambient]
 axes: {energy: 2, density: 1, weight: 2, finish: 3}
 cost: 1
-seen: 17
+seen: 18
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -50,3 +50,17 @@ it; a `linear` clock keeps the hand-off between neighbours even.
 ⚠ This encodes sequence position in motion alone. It stops existing under
 `reduce` and for anyone not watching — the real position still has to live in
 an `<ol>` or `aria-current`.
+
+`visibility` gives the square wave for free. It does not interpolate, so a
+single `to { visibility: hidden }` under `steps(2, start)` is an exact 50% duty
+cycle with no second stop to keep in sync, and the mark holds its box
+throughout, so nothing around it reflows as it goes. 1.0–1.2s reads as a text
+caret; the same trick at 2–4s reads as a status lamp.
+```css
+.caret { animation: blink 1.05s steps(2, start) infinite }
+@keyframes blink { to { visibility: hidden } }
+```
+⚠ `visibility: hidden` also drops the element from the accessibility tree and
+from hit-testing, so this belongs on decorative marks only — a blinking node
+that carries a name or a target flickers both fifty times a minute. The moment
+the mark means something, blink opacity instead.

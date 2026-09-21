@@ -1,6 +1,6 @@
 # Manifest
 
-701 primitives. Format: `category/id | axes cost | tags | gist`
+702 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -662,6 +662,7 @@ type/cap-height-trim | neutral  $1 | type spacing precision alignment | Every te
 type/char-count-stepped-reveal | E3 D1 W2 F4 $1 | type motion css-only custom-properties keyframes | A per-character reveal is one number. Publish the character coun
 type/character-grid-as-texture | E3 D5 W2 F3 $2 | type texture ornament ascii | A field of monospace glyphs (+ x X 8 0 @ # % $) on a grid, used 
 type/content-ghosted-width-reservation | neutral  $1 | type layout-shift css-only accessibility correctness | Text that animates or swaps in place resizes its own box and rel
+type/delimiter-marked-inline-code | E1 D2 W2 F5 $1 | type code inline prose delimiter technical | Inline code in prose is usually a padded chip, and that padding 
 type/em-locked-wordmark-mark | E1 D2 W2 F5 $1 | type logo alignment detail scale | A lock-up whose mark is sized in pixels needs a new value at eve
 type/em-sheared-highlight | E3 D2 W4 F4 $1 | type highlight clip-path emphasis inline scale | A slanted block behind a phrase gives a headline a cut-in, marke
 type/frame-cycled-glyph-indicator | E3 D1 W2 F3 $1 | indicator mono glyph loading state motion | An indeterminate wait does not need a drawn shape. Step one text
