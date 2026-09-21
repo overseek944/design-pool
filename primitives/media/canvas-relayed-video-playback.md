@@ -4,7 +4,7 @@ category: media
 tags: [media,video,canvas,chrome,performance]
 axes: none
 cost: 3
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,16 @@ v.requestVideoFrameCallback ? v.requestVideoFrameCallback(tick) : requestAnimati
 ```
 ⚠ Decorative footage only — a canvas has no captions, no transport, nothing to
 save. Paint the poster until the first frame decodes; stop the loop with the clip.
+
+Relaying is the answer when the frames must be graded or masked. When the only
+chrome in the way is the large start-playback button a mobile engine paints over
+an inline autoplay loop, the shadow pseudo-element takes it directly and the
+video stays a video — one rule against a decode, a canvas and a frame loop.
+`controls` omitted does not cover it; the button is injected regardless.
+```css
+video::-webkit-media-controls-start-playback-button {
+  display: none !important; -webkit-appearance: none }
+```
+⚠ Vendor-prefixed and unstandardised, so it is a progressive enhancement, not a
+guarantee — the loop still needs `muted` and `playsinline` or it will not start
+at all, and nothing here suppresses a long-press save menu.

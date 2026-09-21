@@ -4,7 +4,7 @@ category: color
 tags: [color,tokens,alpha,borders,theming]
 axes: none
 cost: 2
-seen: 13
+seen: 14
 requires: []
 conflicts: []
 completes: []
@@ -47,3 +47,18 @@ the arithmetic.
 ```
 ⚠ This is the one place a `color-mix` against the foreground token is wrong: it
 inverts the hue correctly and the *strength* not at all.
+
+The accent needs the same pair as the neutrals, and usually does not get one.
+Washes behind a selected row, focus rings and chip fills are authored by mixing
+the brand colour toward the page ground, which is a different colour in the
+other theme and a photograph inside a card — so the wash that read as a tint
+arrives as a smear. One alpha companion beside the solid token fixes every such
+use, and it is a single value, not a ladder: 8–15% is the whole useful range for
+a wash, 20–30% for a ring.
+```css
+--accent:      #3d5afe;
+--accent-soft: #3d5afe1a;   /* 10% — washes, rings, chip fills */
+```
+⚠ The solid token stays the only one allowed to carry text or an icon. An accent
+at 10% over an unknown backdrop has no contrast ratio to quote, which is the
+point of it and also its limit.

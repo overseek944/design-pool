@@ -1,6 +1,6 @@
 # Manifest
 
-711 primitives. Format: `category/id | axes cost | tags | gist`
+713 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -415,6 +415,7 @@ motion-system/reduced-motion-branch | neutral  $1 | motion accessibility require
 motion-system/remeasure-exempt-transition | neutral  $1 | indicator transition resize measurement correctness | A measured indicator — the underline under the active tab, the p
 motion-system/reset-frame-slot-recycle | E3 D1 W2 F4 $1 | motion transition state swap cycle correctness | One node that leaves upward and returns from below has to cross 
 motion-system/residual-length-trail-lock | E2 D2 W1 F5 $2 | motion svg stroke path diagram | A trail and the mover drawing it are two animations; time alone 
+motion-system/ring-down-impact-entrance | E4 D1 W4 F3 $1 | motion entrance keyframes impact choreography | An arrival that eases to rest says the element was placed. One t
 motion-system/scheduled-event-aliveness | E3 D2 W2 F4 $3 | idle loop character randomness raf ambient | Anything idling on sines reads as a mechanism — the period is au
 motion-system/scroll-energy-accumulator | E3 D2 W2 F4 $1 | scroll motion shader effect canvas | Scroll position says where something is; scroll effort should sa
 motion-system/scrubbable-waapi-timeline | E3 D2 W3 F5 $3 | motion scroll scrub architecture performance | A scroll-scrubbed timeline needs no animation library. Build eve
@@ -660,6 +661,7 @@ timing/segment-eased-keyframes | E3 D2 W2 F5 $1 | motion easing keyframes choreo
 timing/stagger-band | E3 D3 W2 F4 $1 | motion rhythm sequencing | Sibling stagger lives in a narrow band: .06–.08s reads as one ge
 timing/state-coded-arrival-rate | E3 D3 W2 F4 $1 | timing live-data state stream rhythm | A live stream that changes mode usually recolours its rows and n
 timing/state-scoped-duration | E2 D2 W2 F5 $1 | motion timing transition state asymmetry | Put transition-duration on the state selector rather than the ba
+timing/step-held-cycle-schedule | E2 D2 W2 F3 $1 | motion keyframes loop sequence cycle | step-end on the shorthand turns a keyframe list into a discrete 
 timing/stepped-two-frame-blink | E2 D1 W2 F3 $1 | motion easing indicator status ambient | An indicator that fades reads as decoration; one that snaps betw
 timing/trapezoidal-visibility-envelope | neutral  $1 | motion timing loop architecture | Elements that appear, hold and leave on one shared timeline do n
 timing/unit-aware-token-read | neutral  $1 | tokens correctness motion build | Script reading duration tokens out of computed style must parse 
