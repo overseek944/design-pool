@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,reveal,accessibility,progressive-enhancement,correctness,scroll]
 axes: {energy: 2, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -62,3 +62,15 @@ surface is a single boolean for a grid of any size.
 ```
 ⚠ Paused parks on frame zero, so this variant *does* withhold content — arm it
 only below the fold, or a runtime that never starts leaves an empty grid.
+
+Where a hero does take that true `0`, take 0.001 instead. It is visually
+identical, and it keeps the element a painted thing: a fully transparent element
+is not a largest-contentful-paint candidate at all, so a from-state of exactly
+zero moves the page's LCP to wherever the reveal happens to finish. Near-zero
+also holds the composited layer rather than letting it be discarded and rebuilt
+on the first frame. Any value in 0.001–0.01 works.
+```css
+@keyframes rise { from { opacity: .001; translate: 0 1rem } }
+```
+⚠ It reports LCP at first paint for content nobody can read yet — honest only
+while the reveal is short. Over ~400ms the metric is measuring the wrong moment.

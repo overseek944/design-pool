@@ -1,6 +1,6 @@
 # Manifest
 
-528 primitives. Format: `category/id | axes cost | tags | gist`
+531 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -145,6 +145,7 @@ interaction/supplied-cursor-affordance-pair | E2 D2 W3 F3 $1 | interaction point
 interaction/tilt-exempt-anchor-layer | E2 D2 W3 F5 $2 | interaction pointer transform 3d depth architecture | A surface that tilts under the pointer tilts everything in it, i
 interaction/transparent-stroke-hit-area | neutral  $1 | accessibility svg interaction touch correctness detail | A small mark inside a viewBox — a path node, a scrubber dot — is
 interaction/viewport-clamped-anchored-popover | neutral  $1 | correctness responsive overlay accessibility hover focus | A popover sized against its trigger gets clipped by the window: 
+interaction/visibility-probed-app-escape | neutral  $2 | interaction navigation link mobile correctness fallback | A control that hands off to a native app has no success callback
 interaction/withheld-value-reveal | E2 D2 W3 F4 $1 | interaction disclosure redaction accessibility state | Withholding a figure claims more than printing it, but only if t
 layout/argued-column-as-surface | E1 D3 W4 F5 $1 | layout table comparison surface contrast hierarchy | In a comparison matrix the column you are arguing for should be 
 layout/balanced-side-track-centring | neutral  $1 | layout grid alignment chrome correctness | space-between centres nothing: the middle child lands wherever t
@@ -235,6 +236,7 @@ media/crop-coupled-scrim | neutral  $1 | media video legibility overlay accessib
 media/crop-scaled-source-hint | neutral  $1 | media correctness responsive performance loading | sizes states the width the browser has to fill, and under object
 media/dialog-scoped-embed-lifecycle | neutral  $2 | media performance dialog correctness lifecycle | A third-party embed is not yours to pause — you cannot reach int
 media/frameless-alpha-artwork | E1 D2 W2 F3 $2 | media illustration assets transparency composition | Artwork exported on transparency with a feathered edge does not 
+media/ink-channel-probed-icon | neutral  $1 | icon svg media correctness currentcolor | An icon pasted from an arbitrary set carries its colour on one o
 media/mask-swap-over-shared-paint | E2 D2 W2 F4 $2 | mask icon gradient media state | When a family of glyphs must share one fill — a gradient, a vide
 media/mirrored-baseline-reflection | E1 D2 W2 F5 $2 | media mask surface depth detail css-only | A cut-out subject on a surface reads as pasted on unless somethi
 media/optical-height-logo-row | neutral  $1 | media logos normalisation scale responsive | Supplied marks are drawn to different conventions — a wordmark f
@@ -271,6 +273,7 @@ motion-system/fire-on-arrival-propagation | E3 D3 W2 F5 $3 | entrance propagatio
 motion-system/first-paint-entry-style | neutral  $1 | motion transition css-only progressive-enhancement state | An element that did not exist a frame ago has no previous value 
 motion-system/gap-compensated-loop-distance | neutral  $1 | motion marquee correctness loop overflow | A duplicated track loops seamlessly only when it travels exactly
 motion-system/generation-guarded-sequence | neutral  $2 | animation architecture correctness cancellation sequence | A choreography written as a chain of awaits has no cancel. A rep
+motion-system/handed-off-prepaint-entrance | neutral  $3 | motion entrance hydration correctness progressive-enhancement | An entrance owned by a framework cannot begin until that framewo
 motion-system/independent-transform-channels | neutral  $1 | transform transition architecture composition state | Two concerns wanting the same element — an entrance offset and a
 motion-system/keyframe-resolved-waypoints | E3 D2 W2 F5 $2 | motion keyframes custom-properties architecture choreography | A @keyframes block is document-global and takes no arguments, so
 motion-system/keyframe-variant-bank | E3 D4 W2 F3 $2 | motion generative ambient tokens architecture | Phase and period offsets only ever translate one curve; they can
