@@ -4,7 +4,7 @@ category: surface
 tags: [backdrop-filter,legibility,photography,contrast,surface,type]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -80,3 +80,18 @@ under the glass it reads as smudge. Offset 0–1px, blur 5–8px, 40–60% black
 ```
 ⚠ A shadow is not contrast. Measure the links against the brightest frame the
 footage reaches, and darken the frame itself if they fail.
+
+A scrim bar is a decision about one picture, so it cannot be left on for a whole
+document. Over a page that alternates dark and light sections the top-down wash
+that lit the opening frame becomes a dark smear across white, and the
+light-on-dark links inside it vanish the moment the wash has faded out. Bind the
+treatment to whatever is under the bar — a one-pixel probe band at the top of the
+viewport writing the section's own ground onto it — so the scrim has an off state
+as well as an on one.
+```js
+new IntersectionObserver(([e]) => e.isIntersecting &&
+  (bar.dataset.ground = e.target.dataset.ground),
+  { rootMargin: '0px 0px -99% 0px' }).observe(section)
+```
+⚠ One permanent treatment is only safe where every section the bar can reach
+shares a ground. Measure the links against the lightest one, not the first.

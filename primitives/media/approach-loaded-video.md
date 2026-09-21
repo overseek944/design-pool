@@ -4,7 +4,7 @@ category: media
 tags: [media,video,performance,intersection-observer,accessibility,bandwidth]
 axes: none
 cost: 2
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -75,3 +75,18 @@ v.addEventListener('pause', () => setPlaying(false))
 ```
 ⚠ The visible text and the `aria-label` must be derived from the same state, or
 the two describe different actions to different readers.
+
+Proximity is not the only gate, and where the other one is *device class* the
+source attribute is the place to enforce it. An effect a coarse pointer or a
+narrow viewport will never run should not fetch its asset there at all: park the
+URL in `data-src` on the `<source>` and let the branch that decides the effect is
+viable be the thing that assigns it and calls `load()`. `preload="none"` is a
+hint several engines still resolve to metadata; an element with no resolved
+source has nothing to fetch under any policy.
+```js
+if (!viable) return                       // no src ever assigned
+src.src = src.dataset.src; v.preload = 'auto'; v.load()
+```
+⚠ Every reader on the closed branch — and every reader without script — then
+sees the poster and nothing else, so the poster has to carry the content and the
+section has to survive being only that.
