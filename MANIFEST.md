@@ -1,10 +1,11 @@
 # Manifest
 
-572 primitives. Format: `category/id | axes cost | tags | gist`
+574 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
 canvas/absorbing-field-boundary | neutral  $1 | canvas simulation shader texture solver correctness | A simulation lives on a finite grid and whatever reaches the edg
+canvas/age-shaded-traversal-field | E2 D4 W2 F5 $3 | canvas ambient texture generative progress grid | A field that reads as being worked through rather than animating
 canvas/alpha-bucketed-path-batch | E2 D4 W1 F5 $3 | canvas svg performance generative texture batching | Thousands of individually-faded SVG marks means thousands of nod
 canvas/alpha-gated-cell-population | E1 D3 W2 F4 $3 | canvas generative field image mask silhouette grid | A field of marks in the shape of an arbitrary form usually means
 canvas/baked-cell-frame-stream | neutral  $4 | canvas animation precomputed payload performance field | An ambient field whose motion is authored rather than simulated 
@@ -552,6 +553,7 @@ type/mono-as-ui-texture | E1 D3 W2 F4 $1 | type ui technical register | Run a mo
 type/optical-width-text-fit | E1 D2 W4 F5 $3 | type fit measurement display responsive | A headline that must fill a fixed box cannot be sized by charact
 type/origin-flipped-wipe-underline | E3 D1 W2 F5 $1 | underline link hover transform-origin wipe cheap | A scaleX underline that grows from one end and shrinks back to i
 type/padded-ordinal-counter | E1 D2 W2 F4 $1 | type list counter detail technical | 01 02 … 09 10 numbering without hand-written zeros and without t
+type/parenthesised-negative-column | E1 D3 W2 F5 $1 | numerals data alignment accessibility detail | In a right-aligned column of signed figures a leading minus is t
 type/render-scale-countered-label | E1 D2 W1 F5 $1 | type svg diagram label responsive legibility | Text inside a viewBox scales with the figure, so one diagram pla
 type/role-leading-ladder | E1 D2 W3 F5 $1 | type tokens scale rhythm precision | Leading is a function of role, not of size, and the ladder is st
 type/rule-ranked-aside-tier | E1 D2 W2 F5 $1 | type hierarchy register annotation cheap | A page that argues carries asides at several ranks, and sizing t

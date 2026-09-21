@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,state,hover,accessibility,layout]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,17 @@ across 0.8–1.2s so the row redistributes rather than switches.
 ```
 ⚠ The handover rule must stay inside `hover: hover`, or a touch tap leaves the
 default collapsed with nothing open. Below the breakpoint, stack and open all.
+
+Where the open panel is *chosen* rather than hovered, the track list is the
+better state-holder: publish the whole `grid-template-columns` value as one
+custom property and let the row transition that property. One write moves every
+column, the ratios stay readable as a set, and touch gets the same path as the
+pointer because nothing depends on `:hover`. Expanded 2.4–3fr against 0.5–0.7.
+```css
+.row { display: grid; grid-template-columns: var(--cols);
+  transition: grid-template-columns .55s cubic-bezier(.32,.72,.25,1) }
+```
+⚠ Either mechanism reflows its children every frame of the change. Whatever is
+inside a collapsing column must be laid out at a width that does not depend on
+the column — `overflow: clip` plus `nowrap` or a truncating line — or the text
+rewraps on every frame, which is both the cost and the visible jitter.

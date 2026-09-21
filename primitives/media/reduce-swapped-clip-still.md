@@ -4,7 +4,7 @@ category: media
 tags: [media,video,accessibility,reduced-motion,correctness]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -41,3 +41,17 @@ reduce.addEventListener('change', e => e.matches ? v.pause() : maybePlay())
 ```
 ⚠ Clearing the gate on press must not clear it for the page — it is consent for
 this element, and a new clip further down starts gated again.
+
+An animated `GIF` is the case with no second element to hide: the same `<img>`
+holds the motion and the only still, it exposes no pause, no `poster` and no
+`currentTime`, and `prefers-reduced-motion` cannot reach inside it. The branch
+has to happen at source selection, which `<picture>` can do without script —
+`media` on a `<source>` takes any media query, so the reduced reader is served
+a flat frame and never downloads the animation.
+```html
+<picture><source media="(prefers-reduced-motion: reduce)" srcset="step.avif">
+<img src="step.gif" alt="" loading="lazy" decoding="async"></picture>
+```
+⚠ Every frame of a GIF is a full uncompressed bitmap in memory once decoded, so
+a panel of them costs far more than the transfer suggests, and `loading="lazy"`
+defers that bill rather than reducing it. Three or more in a view is a video.

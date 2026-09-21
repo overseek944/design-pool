@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,legibility,performance,ambient,contrast,generative]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -58,3 +58,18 @@ float keep = 1.0 - 0.93 * (1.0 - smoothstep(0.55, 1.0, length(q)));
 ⚠ Measure on resize and after webfonts land, then cache. Reading
 `getBoundingClientRect` inside the render call forces layout every frame, which
 costs more than the buffer this was meant to replace.
+
+The envelope need not be inside the renderer at all. A `mask-image` on the
+canvas's wrapper — a radial gradient transparent at the copy and opaque past it
+— hands the whole problem to the compositor: no buffer, no per-cell multiply,
+no resize bookkeeping, because percentage stops follow the box. It is the only
+form that is renderer-agnostic, so the same declaration covers a 2D field, a
+WebGL pass and a video layer, and it is the right first reach when the well is
+roughly elliptical. Clear out to 30–40% of the box, fully opaque by 70–80%.
+```css
+.field { -webkit-mask-image: var(--hole); mask-image: var(--hole);
+  --hole: radial-gradient(ellipse 56% 62% at 50% 42%,
+          transparent 34%, #000 74%) }
+```
+⚠ The mask crops what it fades, so anything the field is meant to bleed past —
+a glow, a rule running to the edge — has to live outside the masked element.

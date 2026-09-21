@@ -4,7 +4,7 @@ category: interaction
 tags: [carousel,autoplay,accessibility,state]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 12
+seen: 13
 requires: []
 conflicts: []
 completes: []
@@ -71,3 +71,17 @@ mq.addEventListener('change', arm); arm()
 ⚠ A rotation that stops is only acceptable where every item stays reachable by
 hand — real buttons beside it, not dots — and where the item it parks on is the
 one worth landing on.
+
+A dwell bar beside the rotation is a second clock, and a CSS animation restarts
+on element *insertion*, not on a class or a state change — so a shared node
+drifts further out of step with the timer on every cycle and a manual pick
+leaves it mid-travel. Give the indicator an identity that includes the step and
+let it be destroyed and remade with each beat; its animation then starts from
+zero at exactly the moment the timer is re-armed, and one shared custom property
+keeps the two durations from being written twice.
+```jsx
+<span className="dwell" key={`${group}-${index}`} />   /* remount is the restart */
+```
+⚠ Its reduced-motion rest state is *full*, not empty. `animation: none` leaves
+the bar at its 0% frame, and an empty progress bar beside a rotation that is
+deliberately not rotating reads as stalled rather than still.
