@@ -4,7 +4,7 @@ category: surface
 tags: [surface,border,motion,svg]
 axes: {energy: 4, density: 3, weight: 3, finish: 4}
 cost: 3
-seen: 14
+seen: 15
 requires: []
 conflicts: []
 completes: [overflow-visible-for-glow-bleed]
@@ -122,3 +122,15 @@ moves reads harder than the same value in motion.
 ```
 ⚠ The frozen angle and the animated one are two values to keep in step — park
 it where the sweep spends most of its time, not at an arbitrary number.
+
+Blur the bloom copy far past the ring — 25–40px rather than 6–10 — and it stops
+being a halo on the edge and becomes light the control is sitting in, spilling
+onto the ground around it. At that radius the negative inset buys nothing: hold
+it at `inset: 0` and let the blur do the spreading, 70–90% opacity.
+```css
+.bloom { position: absolute; inset: 0; border-radius: inherit; opacity: .83;
+  background: conic-gradient(from var(--a), …); filter: blur(31px) }
+```
+⚠ The buffer is the size of the blur, not of the ring, and it repaints every
+frame the angle moves. One primary call to action, never a row of them — and
+`aria-hidden`, since the bloom is a second copy of nothing.

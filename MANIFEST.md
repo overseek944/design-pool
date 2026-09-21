@@ -1,6 +1,6 @@
 # Manifest
 
-713 primitives. Format: `category/id | axes cost | tags | gist`
+715 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -340,6 +340,7 @@ media/mirrored-baseline-reflection | E1 D2 W2 F5 $2 | media mask surface depth d
 media/optical-height-logo-row | neutral  $1 | media logos normalisation scale responsive | Supplied marks are drawn to different conventions — a wordmark f
 media/origin-conditional-sandbox | neutral  $1 | media iframe embed security correctness | A sandboxed iframe that is also allow-same-origin and served fro
 media/overscan-relaxed-plate | E2 D1 W3 F5 $2 | media image reveal scale motion observer | A plate that scales up on arrival rests at a non-integer factor 
+media/plane-sorted-defocus-field | E1 D3 W2 F5 $2 | depth blur defocus scatter composition decoration | A field of images scattered at different sizes still reads flat 
 media/predicate-tiered-video-encode | neutral  $2 | media video responsive performance bandwidth correctness | A <video> has no srcset and no sizes, so nothing picks an encode
 media/pseudo-element-pictogram-set | E1 D2 W2 F4 $2 | icon css-only pseudo-element tokens diagram | A set of small technical pictograms — a frame, a scatter, a cyli
 media/ratio-split-view-pair | E1 D3 W2 F4 $1 | media figure aspect grid editorial | One subject argued from two views — as photographed, and as the 
@@ -582,6 +583,7 @@ surface/eased-fade-stop-ramp | E1 D2 W2 F5 $2 | surface gradient fade mask preci
 surface/end-faded-section-rule | E1 D1 W1 F5 $1 | hairline divider gradient section restraint | A full-bleed rule declares a measure it does not have: run it ed
 surface/fill-derived-shadow-ramp | E1 D2 W3 F5 $1 | surface depth shadow color-mix tokens control | A saturated control's shadow should be made of its own colour, n
 surface/geometry-mirrored-effect-proxy | neutral  $3 | svg filter measurement architecture correctness chrome | Some effects exist only for SVG — a fusing filter, one stroke ar
+surface/gradient-composited-displacement-map | E1 D2 W3 F5 $3 | svg-filter displacement-map glass refraction backdrop-filter declarative | A displacement map is normally a canvas rebuilt per element on e
 surface/gradient-dot-lattice | E1 D3 W1 F4 $1 | surface texture pattern blueprint cheap | One radial-gradient plus a background-size gives a dot lattice a
 surface/gradient-over-opaque-glass | E1 D3 W3 F5 $1 | surface glass gradient depth cheap performance | Glass without a backdrop filter: stack a vertical alpha gradient
 surface/grid-intersection-crosshair | E1 D3 W1 F5 $2 | surface grid detail blueprint ornament | Mark a grid intersection with a small plus centred exactly on th

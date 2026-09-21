@@ -4,7 +4,7 @@ category: surface
 tags: [surface,border,light,mask,detail]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -38,3 +38,19 @@ mistake is tuning one and repeating it.
 ```
 ⚠ Step past the panel's own edges and the highlight leaves the box entirely —
 cap the spread so the extreme origins still land inside 0–100%.
+
+Where the panel is meant to read as a solid object rather than a lit card, one
+highlight is wrong — glass catches the source at one corner and the ground's
+bounce at the opposite one. Skip the radial mask and put a diagonal gradient in
+the ring's own fill: opaque at 0% and 100%, clear across the middle 30–70%. Both
+corners light, the perpendicular pair stays dark, and the ring is one
+declaration with no centre to re-aim. Angle 300–330° for a light above-left.
+```css
+.ring { border: 1px solid transparent; border-radius: inherit;
+  background: linear-gradient(315deg, #787878e3 0%, #78787800 30% 70%, #787878e3 100%) border-box;
+  mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude }
+```
+⚠ `mask-composite: exclude` needs the `-webkit-` pair, and without it the fill
+floods the whole panel rather than leaving a ring. Grey rather than white keeps
+the bright corners from clipping against a light backdrop showing through.

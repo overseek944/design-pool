@@ -4,7 +4,7 @@ category: surface
 tags: [glass,backdrop-filter,svg-filter,refraction,chromatic,depth]
 axes: {energy: 1, density: 3, weight: 3, finish: 5}
 cost: 4
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -39,3 +39,15 @@ one sits in the same rule.
 ⚠ Both declarations must read the same variable. Split across two properties, a
 branch moves only one of them and the panel refracts in one engine while it
 blurs in the other — the exact failure the prefix pair exists to prevent.
+
+On a small element the stated 40–60 turns the backdrop to mush: displacement is
+in user units, not a proportion of the box, so a 40px-tall pill bends the
+backdrop further than its own height. Scale it to the geometry instead —
+roughly 0.15–0.25 of the short side, which lands at 15–25 on a chip and only
+reaches 40–60 once the pane is 200px or wider.
+```html
+<feDisplacementMap scale="19" xChannelSelector="R" yChannelSelector="B"/>
+```
+⚠ Equal scales on all three channels is a setting, not a mistake — it drops the
+dispersion and leaves pure refraction, which is what thick colourless glass
+does. Reach for the split only when the object is meant to read as a prism.

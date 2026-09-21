@@ -4,7 +4,7 @@ category: type
 tags: [numerals,data,motion,correctness]
 axes: {energy: 2, density: 3, weight: 3, finish: 5}
 cost: 1
-seen: 25
+seen: 26
 requires: []
 conflicts: []
 completes: []
@@ -107,3 +107,16 @@ value.split(/(\d+(?:\.\d+)?)/).map(p => /^\d/.test(p) ? fix(p, +p * t) : p)
 ⚠ Each run's decimal count comes from its own source text, not from the animated
 float — `2.5` carried through `t` prints `2.3000000000000003` on some frame
 without it.
+
+`overflow: clip` guillotines the outgoing glyph on a hard line, which reads as a
+wipe rather than a roll. Mask the slot vertically instead — opaque across the
+middle 60–70%, transparent at both ends — and a digit leaving dissolves as it
+travels, so the column reads as a drum turning behind an aperture. Give the slot
+1.1–1.3× the font size in height or the fade has nowhere to happen.
+```css
+.slot { height: 1.2em; overflow: hidden;
+  mask-image: linear-gradient(to bottom, #0000 0, #000 18%, #000 82%, #0000 100%) }
+```
+⚠ The mask fades the resting digit's own crown and foot too. Keep the opaque
+plateau wide enough that a stationary figure is unaffected, and check it against
+a lining `1` and a `4`, which reach furthest into the fade.

@@ -4,7 +4,7 @@ category: light
 tags: [effect,blend,compositing,dark]
 axes: {energy: 3, density: 3, weight: 3, finish: 4}
 cost: 3
-seen: 12
+seen: 13
 requires: []
 conflicts: []
 completes: []
@@ -89,3 +89,20 @@ darkens a dark one from a single declaration. Opacity 0.5–0.8; below that it
 stops registering, since soft-light's response near mid-grey is very flat.
 ⚠ Nothing in the layer can carry meaning — over a mid-tone ground it drops to
 almost nothing, and `forced-colors` discards the blend entirely.
+
+Variant — `exclusion` where a wash must tint a near-black ground without ever
+veiling the copy on top of it. It inverts toward the layer's colour in
+proportion to what is already under it, so true black is untouched, the ground's
+own faint values drift warm, and white text is pushed *away* from the wash
+rather than clouded by it — the failure mode `screen` has at any opacity high
+enough to see. Run one such element the length of the document instead of one
+per section, bleeding past both sides: 150–250px of blur at 30–50% opacity, and
+the tint crosses section boundaries continuously rather than restarting at each.
+```css
+.wash { position: absolute; inset-block: 0; inset-inline: -1500px; z-index: 1;
+  mix-blend-mode: exclusion; opacity: .46; filter: blur(220px); pointer-events: none }
+```
+⚠ A document-length blurred element is one compositor buffer taller than the
+page. Cap the blur radius rather than the element, keep it off the scroll
+container's own transform, and drop it entirely under
+`prefers-reduced-transparency`.
