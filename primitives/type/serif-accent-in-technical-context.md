@@ -4,7 +4,7 @@ category: type
 tags: [type,contrast,editorial,restraint]
 axes: {energy: 1, density: 2, weight: 3, finish: 5}
 cost: 1
-seen: 29
+seen: 30
 requires: []
 conflicts: []
 completes: []
@@ -121,3 +121,18 @@ body     { font-feature-settings: "kern", "liga", "onum" }
 ⚠ `font-variant-numeric` and `font-feature-settings` are separate cascades and
 the low-level property wins where both set the same feature — set the body in
 one of them and every override in the same one.
+
+Where the accent is not a phrase but the whole *continuation clause* of a
+display line — sans on the first line, the serif italic carrying the second —
+the correction it needs is size, not tracking. At the sans's own value the
+italic lands visibly smaller, because a display sans is drawn to a tall cap and
+a short leading, and the two lines stop reading as one mass. Take the clause to
+1.02–1.12× with its own tighter leading, and match cap-heights by eye rather
+than trusting the nominal value.
+```css
+h1 .clause { font-family: var(--serif); font-style: italic;
+             font-size: 1.06em; line-height: .96 }
+```
+⚠ This is a clause, not an ornament — it is still the sentence and still owes
+4.5:1, which the pale ink such a line usually carries is exactly what fails on a
+light ground. Score the tint at the size it actually ships.

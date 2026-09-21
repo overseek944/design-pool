@@ -4,7 +4,7 @@ category: perf
 tags: [perf,progressive-enhancement,correctness,content,architecture]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -43,3 +43,19 @@ the worker sets, is the whole teardown — and a no-op on every route without it
 ```
 ⚠ It must be a blocking inline script above the module bundle, not `defer`ed —
 ordering is the only thing preventing the flash.
+
+`<noscript>` is invisible to precisely the consumers that matter most now —
+anything that *does* execute script sees the empty root and never the fallback.
+Ship the mirror as ordinary markup instead, clipped to a 1px box and marked
+`aria-hidden`, so it is in the document for every consumer and painted for none.
+The cost is that it is real content: duplicated headings and links now sit in
+the same document the app renders, and `aria-hidden` is the only thing keeping
+the copy out of the accessibility tree.
+```html
+<div aria-hidden="true" style="position:absolute;clip:rect(0 0 0 0);
+     width:1px;height:1px;overflow:hidden;border:0">…</div>
+```
+⚠ Not the visually-hidden recipe used for screen-reader-only text — that one is
+deliberately *in* the tree. Keep the mirror's wording identical to the visible
+copy rather than a paraphrase: in-page find still matches clipped text in some
+engines, and a reader jumped to an invisible match has nothing to look at.

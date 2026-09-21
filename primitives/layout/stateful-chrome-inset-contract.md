@@ -4,7 +4,7 @@ category: layout
 tags: [layout,chrome,tokens,custom-property,architecture,overlay,correctness]
 axes: none
 cost: 2
-seen: 12
+seen: 13
 requires: []
 conflicts: []
 completes: []
@@ -99,3 +99,19 @@ root.style.setProperty('--banner-occupied',
 ⚠ It is a layout read per scroll frame — cache `offsetHeight` and refresh it on
 resize and on dismiss, not inside the handler. Write `0px` the moment the
 banner is dismissed or the bar holds a gap under nothing.
+
+Padding is only half the contract wherever anything is measured in viewport
+units. A banner that pushes the document down does not shorten `100dvh`, so
+every full-height section, snap stop and pinned stage overflows by exactly the
+published height and the last snap point lands below the fold. Consumers that
+*fill* the viewport subtract the reserve; consumers that follow the flow add it.
+Both read one variable, and the state class is what arms the subtraction — a
+page without the chrome then carries no `calc` at all.
+```css
+html.has-banner #root          { padding-block-start: var(--banner-h) }
+html.has-banner .snap-viewport { height: calc(100dvh - var(--banner-h)) }
+html.has-banner .snap-stop     { min-height: calc(100dvh - var(--banner-h)) }
+```
+⚠ The snap container and its stops must subtract the *same* term. Shorten only
+the container and every stop overshoots by the reserve, which reads as snapping
+being broken rather than as a sizing bug.

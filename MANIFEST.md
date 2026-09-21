@@ -1,6 +1,6 @@
 # Manifest
 
-739 primitives. Format: `category/id | axes cost | tags | gist`
+740 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -235,6 +235,7 @@ layout/document-underlay-window | E2 D1 W3 F4 $2 | layout stacking reveal video 
 layout/em-reserved-swap-height | neutral  $1 | layout layout-shift responsive correctness tabs | Content that swaps in place — a tab's copy, a rotating claim — c
 layout/evicting-stream-window | E3 D4 W2 F4 $2 | stream overflow live-data log dom performance | An append-only stream in a scroll container grows without bound 
 layout/facing-edge-tangent-connector | E1 D3 W1 F5 $2 | layout connector svg diagram geometry | A straight rule between a box and a line of text in the facing c
+layout/figure-borne-edge-key | E1 D3 W1 F5 $2 | diagram figure legend connectors encoding hairline schematic | A schematic whose connectors carry more than one kind of relatio
 layout/fixed-point-measure-solve | neutral  $2 | layout measure resize fonts reflow correctness | A measured value written back into the layout it came from has n
 layout/fixed-stage-pane-scroll | E1 D2 W2 F5 $3 | layout grid scroll shell navigation | A page may decline to scroll. Fix the shell to the viewport as a
 layout/float-wrapped-figure | E1 D3 W2 F4 $1 | layout type editorial responsive detail | Neither grid nor flex wraps running text around a picture — floa

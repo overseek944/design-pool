@@ -4,7 +4,7 @@ category: surface
 tags: [surface,texture,grain,gradient,blend-mode,banding]
 axes: {energy: 1, density: 3, weight: 3, finish: 4}
 cost: 1
-seen: 17
+seen: 18
 requires: []
 conflicts: []
 completes: []
@@ -115,3 +115,17 @@ reads as dirt over the type.
 ⚠ Overlay drives both ends away from mid-grey, so copy burnt into the picture
 loses contrast exactly where the grain bites hardest. Measure the caption
 against the graded, grained frame — never against the source file.
+
+Dropping the blend turns the same tile into a *document* treatment rather than a
+panel one. A fixed, full-viewport pseudo-element at plain low opacity needs no
+layer beneath it, so it crosses every section and both polarities with one rule
+and no per-panel wiring. It also lies over type, which sets the ceiling: 2–4% on
+a dark ground, and less on a light one, where the film lands on body copy that
+has no contrast to spare.
+```css
+body::before { content: ""; position: fixed; inset: 0; pointer-events: none;
+               opacity: var(--grain-a); background-image: var(--texture) }
+```
+⚠ Stack it below overlays, not above them. At the top of the stacking register
+it grains modals, focus rings and whatever text a dialog is trying to make
+legible — the one place the veil costs more than it gives.

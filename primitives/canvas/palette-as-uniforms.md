@@ -4,7 +4,7 @@ category: canvas
 tags: [shader,color,system]
 axes: none
 cost: 2
-seen: 12
+seen: 13
 requires: []
 conflicts: []
 completes: []
@@ -59,3 +59,17 @@ opacity transition.
 ⚠ Draw into the *inactive* index and flip only once the draw returns — flipping
 first reintroduces the blank frame this exists to prevent. Two backing stores at
 device resolution is double the memory: for a figure, not a full-bleed field.
+
+The read can also be too *early*. Where the tokens themselves carry a
+transition, computed style in the same task as the attribute write still
+resolves the outgoing values, and one frame later resolves an intermediate — so
+a single sync on the toggle leaves the canvas holding a colour belonging to
+neither theme. Read again on the next frame and once more after the swap's own
+duration, taking the last answer. Two extra layout reads per toggle is nothing;
+per frame it would be the cost this exists to avoid.
+```js
+sync(); requestAnimationFrame(sync); const id = setTimeout(sync, SWAP + 20)
+```
+⚠ Cancel the pending timeout on teardown and on a second toggle, or a fast
+double-switch lands the stale read after the new one and the canvas keeps the
+theme the reader just left.
