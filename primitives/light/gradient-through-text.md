@@ -4,7 +4,7 @@ category: light
 tags: [color,type,effect]
 axes: {energy: 3, density: 2, weight: 4, finish: 3}
 cost: 2
-seen: 30
+seen: 31
 requires: []
 conflicts: []
 completes: []
@@ -180,3 +180,20 @@ keep in step. Band half-width 8–14%, shoulder 6–8% outside it.
 ⚠ Run the coordinate past both ends — −20% to 120% against an 18% shoulder — or
 the band is half-born at the start and clipped at the finish. It is one
 composited layer per stop of the effect: size it for a control, not a plate.
+
+Ramp one colour to its own transparent rather than between two, and the clip
+stops colouring the word and starts dissolving it: a display numeral or a
+section watermark fades out along its own height, so it can be set very large
+and still sit behind the copy it labels instead of competing with it. `opacity`
+cannot do this — it fades the glyph evenly — and this is the cheapest per-glyph
+falloff short of a mask layer. Fade from 40–65% of the ink at the reading end to
+zero, on the axis the eye leaves by.
+```css
+.ordinal { font-size: clamp(2rem, 6vw, 5rem); color: transparent;
+  background-image: linear-gradient(var(--ink-45) 0%, transparent 100%);
+  -webkit-background-clip: text; background-clip: text }
+```
+⚠ The faded end sits below any contrast floor by construction, so nothing the
+reader must actually read can live there. Where the string is pure ornament mark
+it `aria-hidden`; where it carries the step number, that number has to exist as
+ordinary text somewhere in the card as well.

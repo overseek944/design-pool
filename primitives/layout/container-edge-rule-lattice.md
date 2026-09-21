@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,hairline,precision,responsive,technical]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 2
-seen: 18
+seen: 19
 requires: []
 conflicts: []
 completes: []
@@ -153,3 +153,24 @@ weight and about a third of its alpha.
 ⚠ Drop the discs below the width where the rules clamp to the gutter — they then
 mark a crossing that no longer falls on the measure. Over a tinted section the
 page-ground fill reads as a punched hole; take `background: inherit` there.
+
+Where the rules must run the whole document and then withdraw under particular
+sections, neither pseudo-elements nor a wrapper background will do it: one
+absolutely positioned layer at `inset: 0` on the page wrapper draws them once at
+full document height, and any section that has to sit on top raises its own
+stacking context above that layer and paints an opaque ground. The rules then
+need no knowledge of the sections and the sections none of the rules — a
+full-bleed band, a credential strip, a dark coda opts out in two declarations
+rather than by suppressing a border it inherited. Layer at z-index 1–3, the
+opting-out section one step above.
+```css
+.sheet { position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  display: flex; justify-content: center; padding-inline: var(--gutter) }
+.sheet > i { inline-size: 100%; max-inline-size: var(--content);
+  block-size: 100%; border-inline: var(--hair) solid var(--rule) }
+.bleed { position: relative; z-index: 3; background: var(--paper) }
+```
+⚠ The layer is sized by its wrapper, so an ancestor with `overflow: hidden` or a
+transformed section truncates it short of the document. A section that opts out
+must also paint a ground — `z-index` alone raises a transparent box and the
+rules show straight through it.

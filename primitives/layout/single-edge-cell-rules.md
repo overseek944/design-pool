@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,hairline,rules,precision]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 1
-seen: 31
+seen: 32
 requires: []
 conflicts: []
 completes: []
@@ -73,3 +73,23 @@ forgotten always is.
 property — it is a label for the breakpoint, and the selectors still have to be
 written twice. Where the field is a real grid, `grid-column: <last>` or `:has()`
 on the row is the version that genuinely tracks the count.
+
+Open the gap past a hairline — 8–16px — and the same inversion stops being a
+rule system and becomes mortar: the field's fill is seen only through its own
+negative space, so a gradient laid on the container arrives as a frame plus a
+set of gutters whose colour drifts across the field, with no border drawn
+anywhere. The container's padding has to equal the gap exactly or the frame is a
+different width from the interior and the whole thing reads as a mistake. One
+cell left transparent then becomes a window onto the fill rather than a hole in
+the field — the cheapest way to let a grid of otherwise plain cards carry
+colour.
+```css
+.field { display: grid; gap: var(--mortar); padding: var(--mortar);
+  background: linear-gradient(240deg, var(--a), var(--b)); border-radius: 1rem }
+.field > * { background: var(--cell);
+  border-radius: calc(1rem - var(--mortar)) }
+```
+⚠ At mortar width the fill is judged entirely by what shows in a 12px band, so a
+gradient whose stops are close in value reads as a flat frame and the effect is
+paid for and not seen. Cells take the outer radius less the mortar or the
+corners disagree.
