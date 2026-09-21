@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,accessibility,control,scrub,native,diagram]
 axes: {energy: 2, density: 1, weight: 1, finish: 5}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,18 @@ playhead.
 ```
 ⚠ Thumb pseudo-elements cannot share a selector list — one comma and both
 engines drop the rule. The 24px box is the target, not the hairline.
+
+The thumb is not restricted to rectangles. `transform` applies to both engines'
+thumb pseudo-elements, so a square rotated 45° gives a diamond marker with no
+background image, no mask and no clipping — and it stays crisp at any zoom
+where a bitmap would not. Size it by the diagonal rather than the side: a 15px
+square reads about 21px wide once turned, which is the number that has to clear
+the track. Keep the rotation off the track itself, which must stay axis-aligned
+to measure.
+```css
+.scrub::-webkit-slider-thumb { appearance: none; width: 15px; height: 15px;
+  border: 0; background: var(--accent); transform: rotate(45deg) }
+```
+⚠ A rotated thumb's hit area is still the unrotated box, so the corners of the
+diamond are outside it. Non-rectangular thumbs want the track box taller —
+24–32px — rather than a bigger mark.

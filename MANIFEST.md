@@ -1,6 +1,6 @@
 # Manifest
 
-686 primitives. Format: `category/id | axes cost | tags | gist`
+690 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -77,6 +77,7 @@ canvas/scene-exempt-label-layer | E1 D2 W1 F5 $2 | canvas label type scene legib
 canvas/screen-composited-understroke | E2 D2 W2 F5 $2 | canvas light stroke effect depth cheap | Canvas 2D has no cheap blur, so a glowing stroke is built from p
 canvas/scroll-driven-frame-atlas | E4 D3 W3 F4 $4 | canvas scroll performance | For scrubbed sequence playback, draw frames from a sprite atlas 
 canvas/shell-reprojected-displacement | E2 D3 W2 F5 $2 | shader canvas generative noise silhouette geometry | Noise added straight to a point on a generated form moves it out
+canvas/sign-triple-reference-cage | E2 D2 W1 F5 $2 | canvas 3d projection diagram geometry data | A rotating point cloud gives a reader positions and no frame — n
 canvas/signed-bow-connector-bundle | E1 D3 W1 F5 $2 | canvas connector diagram geometry svg | Connectors terminating at one hub, drawn straight, collapse into
 canvas/simulation-preroll | neutral  $1 | canvas simulation lifecycle loading generative | A simulation's worst frame is its first: an empty grid, a lone s
 canvas/single-channel-field-storage | neutral  $2 | canvas simulation performance texture shader | Choose the channel count per field rather than reaching for RGBA
@@ -300,6 +301,7 @@ media/alpha-threshold-fuse-filter | E3 D2 W3 F4 $2 | svg filter mark liquid stat
 media/aperture-registered-content-layer | E1 D2 W2 F5 $2 | media mockup responsive layout correctness | Live content shown inside supplied frame artwork registers to an
 media/approach-loaded-video | neutral  $2 | media video performance intersection-observer accessibility bandwidth | Background footage is usually the heaviest thing on a page and u
 media/aspect-locked-media | neutral  $1 | layout media cls | Lock every media slot with an explicit aspect-ratio and let widt
+media/background-format-negotiation | neutral  $1 | media images formats correctness progressive-enhancement | An image that must composite with its own scrim in one paint can
 media/barrier-synced-media-layers | neutral  $2 | video media correctness layering loading | Two clips composited as layers — a base pass and a treated one c
 media/blend-normalised-logo-wall | neutral  $1 | media logos blend-mode assets normalisation | Supplied logo files arrive as opaque rectangles — baked-in white
 media/build-captured-product-shot | neutral  $2 | media asset build product screenshot architecture correctness | A page showing the product either carries a hand-kept screenshot
@@ -453,6 +455,7 @@ perf/prerender-gated-first-view | neutral  $1 | performance correctness analytic
 perf/revert-split-on-resize | neutral  $1 | type motion correctness | Split text hard-codes line breaks at split time. On resize or we
 perf/route-scoped-design-system-sheet | neutral  $2 | performance critical-path architecture tokens bundle css | A marketing route sharing a build with the product inherits the 
 perf/scrim-over-filtered-bleed | neutral  $1 | performance media mobile compositing correctness | A filter, clip-path and transform stacked on one full-bleed imag
+perf/script-free-content-mirror | neutral  $2 | perf progressive-enhancement correctness content architecture | A client-rendered document serves an empty root, so every consum
 perf/self-throttled-raf-loop | neutral  $1 | performance animation canvas battery frame-budget correctness | requestAnimationFrame offers the display's rate; it is not a con
 perf/shell-shaped-lazy-fallback | neutral  $2 | cls loading accessibility architecture correctness code-splitting | A lazy fallback is usually a spinner in a box that is not the co
 perf/single-flight-external-script | neutral  $2 | performance architecture correctness lifecycle embed | Several components on a page may each need the same third-party 
@@ -656,6 +659,7 @@ type/glyph-joined-sequence-rail | E1 D3 W1 F4 $1 | type list sequence metadata m
 type/grid-counted-leading | neutral  $2 | type tokens scale rhythm leading architecture | Set leading as a whole count of one shared unit instead of a rat
 type/hyphenated-justified-measure | E1 D3 W2 F5 $1 | type prose editorial measure correctness | Justified body copy sets a page as a printed specification rathe
 type/ink-state-lettering-runs | E1 D2 W4 F5 $2 | type svg stroke detail editorial hairline | One word at display scale can carry two states of ink. Set it as
+type/intra-word-face-interlock | E1 D3 W4 F3 $2 | type display headline lettering fallback detail | Two faces can meet inside a single word rather than between bloc
 type/language-conditional-type-tokens | neutral  $2 | type i18n tokens localisation correctness | The type scale is a function of script, not only viewport. Redef
 type/measured-inline-word-swap | E3 D2 W3 F5 $2 | type motion headline correctness | A word cycling inside a running headline relays out the whole li
 type/measured-line-bucket-stagger | neutral  $2 | type stagger reveal measurement font-loading correctness | A cascade down the rendered lines of a heading does not require 

@@ -4,7 +4,7 @@ category: interaction
 tags: [affordance,interaction,accessibility,detail,ux]
 axes: {energy: 1, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []

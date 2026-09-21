@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,connector,sequence,detail]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -27,3 +27,16 @@ alpha, never 0 — the path has to stay traceable.
 ```
 ⚠ Decorative only — position in the sequence must also live in an `<ol>` or an
 `aria-current`, or the cue is invisible to anyone not looking at the rail.
+
+Whatever the rail does, the node sitting on it needs a gap or the line runs
+visibly under the mark. Two zero-blur `box-shadow` rings do it without a mask,
+a `z-index` or an opaque background on the node: the inner ring in the page's
+own ground punches the clearance, the outer one in a low tint reads as a halo
+that separates the node from the rule. Clearance 2–4px, halo 1px. The node can
+then be any shape and stay transparent.
+```css
+.node { box-shadow: 0 0 0 3px var(--page), 0 0 0 4px rgb(35 48 28 / .35) }
+```
+⚠ `--page` has to be the ground actually behind the rail — set from a section
+token, not hardcoded, or the clearance paints a visible patch the first time the
+list lands on a tinted band.

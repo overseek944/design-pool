@@ -4,7 +4,7 @@ category: type
 tags: [type,ui,technical,register]
 axes: {energy: 1, density: 3, weight: 2, finish: 4}
 cost: 1
-seen: 41
+seen: 42
 requires: []
 conflicts: []
 completes: []
@@ -41,3 +41,18 @@ proportional face at the same size, so drop the measure to 60–68 characters.
 ⚠ Below 15px a mono body measurably slows reading. This dose suits pages that
 are scanned rather than read at length, and every line-height wants 1.4–1.6 to
 stay open.
+
+The chrome tier's job is to read as machine-set, and a monospace is not the only
+face that does it. A bitmap or pixel cut fills the same slot — labels, counters,
+stage numbers, figures inside a metric strip — and lands a different register:
+built rather than typed. It also solves the one thing mono is bad at here, since
+a pixel face at 11–14px has no thick-thin to lose and stays hard where a mono
+goes grey. Keep the proportional face for prose, and keep the pixel tier at
+whole-pixel sizes.
+```css
+.label { font: 12px/14px var(--font-pixel); letter-spacing: .06em;
+         text-transform: uppercase }
+```
+⚠ It is a display cut doing apparatus work — never let it run a sentence, and
+check the digits, since many pixel faces draw `1`, `l` and `7` almost alike at
+label size.

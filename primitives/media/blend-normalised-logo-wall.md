@@ -4,7 +4,7 @@ category: media
 tags: [media,logos,blend-mode,assets,normalisation]
 axes: none
 cost: 1
-seen: 15
+seen: 16
 requires: []
 conflicts: []
 completes: []
@@ -91,3 +91,18 @@ variant, no re-cutting, and mixed-weight marks arrive at the same value. Drop to
 ```
 ⚠ It inverts a mark that was already light into a dark one, so the set has to be
 uniform in polarity before the filter, not after.
+
+A single mark over *photography* rather than a flat ground needs two more terms
+in the same chain. `grayscale(1) invert(1)` lands a dark mark at whatever
+mid-tone its luminance inverts to, which is exactly the range a bright sky
+occupies, so follow it with `brightness(1.3–1.8)` to push it to near-white.
+Then append `drop-shadow()` — in the filter chain rather than as a `box-shadow`
+— because it follows the mark's alpha and traces the letterforms, where a box
+shadow would draw a rectangle around a transparent PNG.
+```css
+.mark { filter: grayscale(1) invert(1) brightness(1.6)
+                drop-shadow(0 1px 6px rgb(0 0 0 / .55)) }
+```
+⚠ Order is the technique: brightness before the invert lightens the original
+and darkens the result. Check the mark against the photograph's brightest
+region, not its average.

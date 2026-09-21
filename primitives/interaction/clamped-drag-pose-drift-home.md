@@ -4,7 +4,7 @@ category: interaction
 tags: [pointer,interaction,3d,rotation,detail]
 axes: {energy: 2, density: 1, weight: 4, finish: 5}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -41,3 +41,17 @@ pitch = Math.max(-1.2, Math.min(1.3, pitch + dy * 0.006))   // yaw accumulates f
 ```
 ⚠ Without drift-home the surface has no idle state to advertise itself with.
 Pair it with a slow auto-rotation that the first grab abandons for good.
+
+A third case sits between the two: a surface where the idle rotation is not
+advertising but *legibility*. An orthographic point cloud or a wireframe form
+held still is genuinely ambiguous — depth reads only from parallax — so the
+spin has to resume on release rather than being abandoned or drifting home. Keep
+the pose the reader left, add a constant per frame while no pointer is down, and
+the surface returns to explaining itself without undoing their inspection.
+0.002–0.005 rad/frame; faster and the reader cannot track a point across the
+turn.
+```js
+if (!dragging) yaw += 0.0035      // resumes from wherever they let go
+```
+⚠ It is continuous ambient motion, so it needs the reduced-motion branch that a
+drift-home does not — still, with the drag still rendering.

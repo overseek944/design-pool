@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,accessibility,required]
 axes: none
 cost: 1
-seen: 74
+seen: 75
 requires: []
 conflicts: []
 completes: []
@@ -250,3 +250,19 @@ where `animation: none` would strand it.
 ```
 ⚠ The override must sit after the original in source order — same name, same
 origin, last one wins — so a build that hoists media blocks silently undoes it.
+
+The drawn-once still has a second failure beyond resize, and it is the reader's
+own input. A surface that is *interactive* as well as animated — a cloud that
+orbits under drag, a figure that answers a slider — loses the loop that was
+picking those changes up, so the pose updates in state and nothing repaints.
+Under `reduce` the input handler has to become the clock: call the same draw
+from inside it, in exactly the branch where no frame was requested. The bug
+only exists for the readers who asked for less motion, which is why it ships.
+```js
+onPointerMove = e => { if (!dragging) return
+  yaw += e.movementX * .01; if (reduced) draw() }    // rAF path redraws anyway
+```
+⚠ Guard the call rather than throttling it — a pointer stream can outrun a
+draw. Where the render is expensive, coalesce to one `requestAnimationFrame`
+per event burst; that is a frame the preference does not object to, because it
+is the reader's own movement.
