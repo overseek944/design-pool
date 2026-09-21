@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,sticky,state,observer,accessibility]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []

@@ -1,6 +1,6 @@
 # Manifest
 
-662 primitives. Format: `category/id | axes cost | tags | gist`
+665 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -127,6 +127,7 @@ interaction/copy-with-selection-fallback | neutral  $1 | interaction clipboard a
 interaction/coreference-trace-highlight | E2 D3 W2 F5 $2 | interaction annotation cross-reference highlight accessibility diagram | Where one value recurs across panels — a figure in a table, the 
 interaction/count-indexed-sheet-stack | E2 D3 W2 F5 $3 | sheet overlay stack gesture depth transform | A stack of sheets needs one number, not a state machine: how man
 interaction/cross-context-preference-sync | neutral  $1 | theme preferences storage correctness accessibility | A stored preference is a fact about the reader, not about one ta
+interaction/cross-device-action-handoff | neutral  $2 | interaction cta progressive-enhancement accessibility responsive | Where the thing on offer can only be used on a device class the 
 interaction/cursor-tracked-vanishing-point | E3 D3 W2 F5 $3 | interaction pointer 3d depth field transform hover | Tiles pushed toward the reader on Z all shear toward the contain
 interaction/dimension-coded-position-dot | E2 D2 W2 F5 $1 | interaction state indicator accessibility carousel | Let the active item in a position indicator change size, not onl
 interaction/dismissal-escalated-reprompt | neutral  $2 | interaction prompt cadence persistence restraint correctness | A recurring prompt — install, subscribe, upgrade — needs a caden
@@ -311,6 +312,7 @@ media/dilated-alpha-keyline | E1 D2 W2 F5 $1 | media icon logo filter contrast l
 media/frame-announced-readiness | neutral  $2 | media iframe embed loading progressive-enhancement correctness | An iframe's load fires when its document parses, not when the ap
 media/frameless-alpha-artwork | E1 D2 W2 F3 $2 | media illustration assets transparency composition | Artwork exported on transparency with a feathered edge does not 
 media/ink-channel-probed-icon | neutral  $1 | icon svg media correctness currentcolor | An icon pasted from an arbitrary set carries its colour on one o
+media/integer-scaled-pixel-raster | E1 D2 W3 F2 $1 | media raster pixel-art image-rendering scale | Low-resolution raster art — pixel sprites, 1-bit marks, dithered
 media/mask-swap-over-shared-paint | E2 D2 W2 F4 $2 | mask icon gradient media state | When a family of glyphs must share one fill — a gradient, a vide
 media/mirror-flanked-panorama | E1 D2 W2 F4 $2 | media image panorama mirror responsive full-bleed | Artwork with a fixed aspect either stretches or loses its compos
 media/mirrored-baseline-reflection | E1 D2 W2 F5 $2 | media mask surface depth detail css-only | A cut-out subject on a surface reads as pasted on unless somethi
@@ -493,6 +495,7 @@ scroll/edge-chained-frame-scroll | neutral  $2 | scroll iframe embed correctness
 scroll/element-scoped-read-progress | neutral  $2 | scroll progress correctness observer reading | Reading progress belongs to the article, not the document. Measu
 scroll/embed-claims-wheel-on-hover | neutral  $1 | scroll embed iframe overflow pointer correctness | An interactive embed inside a scrolling page — a map, a 3D scene
 scroll/fixed-attachment-band | E2 D1 W3 F3 $1 | scroll parallax media surface progressive-enhancement performance | A full-bleed decorative band whose image is pinned to the viewpo
+scroll/fully-entered-recede | E2 D1 W2 F5 $2 | scroll scroll-driven view-timeline scale transition | A tall artifact parked between two sections reads as a wall to b
 scroll/height-aware-sticky-offset | neutral  $2 | scroll sticky layout correctness viewport | top: 0 is only right while the sticky element fits the viewport.
 scroll/hoisted-scroll-timeline | neutral  $2 | scroll motion architecture progressive-enhancement | A named scroll-timeline is visible only to descendants of the sc
 scroll/layout-release-broadcast | neutral  $1 | scroll measurement correctness overlay architecture events | Anything holding the document at a size it will not keep — an en

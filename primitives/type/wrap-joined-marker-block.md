@@ -4,7 +4,7 @@ category: type
 tags: [type,emphasis,highlight,decoration,radius,detail]
 axes: {energy: 2, density: 2, weight: 4, finish: 4}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -41,3 +41,16 @@ height is stated in `em` of the text and stays put whatever the leading does.
 ⚠ A band shorter than the glyphs cuts ascenders and descenders on the *outside*
 rather than framing them — check the face's tallest and deepest characters, not
 an x-height sample.
+
+Once the band is a gradient its *ends* are free, and a hard vertical edge is
+what makes an emphasis mark read as a UI chip rather than ink. Ramp the fill to
+transparent over the outer 6–12% of the run and tilt the gradient a few degrees
+off square, and the mark terminates the way a wet marker does — no edge to
+align, and the first and last glyphs sit on a tint rather than against a wall.
+Alpha 20–35% keeps the run off the contrast budget entirely.
+```css
+.mark { background: linear-gradient(100deg, #0000 0%, var(--accent-a) 8% 92%, #0000 100%);
+        border-radius: .18em; padding-inline: .3em }
+```
+⚠ The feathered ends are inside the padding, so a run that wraps fades at each
+line break as well — read as intentional at two lines, as a fault at four.
