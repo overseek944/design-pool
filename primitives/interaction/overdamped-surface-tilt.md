@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,pointer,transform,motion,restraint,custom-property]
 axes: {energy: 2, density: 1, weight: 3, finish: 5}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

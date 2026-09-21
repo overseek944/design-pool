@@ -1,6 +1,6 @@
 # Manifest
 
-556 primitives. Format: `category/id | axes cost | tags | gist`
+559 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -98,6 +98,7 @@ interaction/autofill-proofed-honeypot | neutral  $1 | accessibility correctness 
 interaction/axis-swapped-disclosure | neutral  $2 | disclosure responsive layout-animation breakpoint accessibility | A detail panel opens downward in a stacked column and sideways b
 interaction/breakpoint-dual-mode-details | neutral  $2 | disclosure navigation responsive accessibility progressive-enhancement | One <details> can be a permanently-open sidebar above a breakpoi
 interaction/breakpoint-scoped-overlay-dismiss | neutral  $1 | navigation overlay responsive correctness accessibility | An overlay that exists only below a breakpoint — a mobile nav sh
+interaction/clamped-drag-pose-drift-home | E2 D1 W4 F5 $2 | pointer interaction 3d rotation detail | An object the reader can turn should not map pointer position to
 interaction/coarse-pointer-affordance-promotion | neutral  $1 | accessibility interaction touch correctness media-query | Controls that fade in on :hover — a play button on a thumbnail, 
 interaction/content-sized-field-bounds | E1 D1 W2 F4 $1 | form input layout detail progressive-enhancement | field-sizing: content lets an input measure its own value, retir
 interaction/coordinated-group-state | E3 D2 W2 F5 $1 | interaction surface hover | Hover the container, animate the parts. A single group parent le
@@ -287,6 +288,7 @@ motion-system/drive-mode-scoped-transition | neutral  $1 | motion scroll scrub c
 motion-system/edge-clamped-camera-frame | neutral  $1 | camera transform scene correctness architecture | A camera that pans to centre a point of interest frames empty sp
 motion-system/fire-on-arrival-propagation | E3 D3 W2 F5 $3 | entrance propagation graph canvas emergent | An entrance authored as a list of delays must be rewritten whene
 motion-system/first-paint-entry-style | neutral  $1 | motion transition css-only progressive-enhancement state | An element that did not exist a frame ago has no previous value 
+motion-system/flush-separated-transition-arming | neutral  $1 | motion correctness transition observer reveal | A one-shot reveal whose transitions are generated in script — de
 motion-system/gap-compensated-loop-distance | neutral  $1 | motion marquee correctness loop overflow | A duplicated track loops seamlessly only when it travels exactly
 motion-system/generation-guarded-sequence | neutral  $2 | animation architecture correctness cancellation sequence | A choreography written as a chain of awaits has no cancel. A rep
 motion-system/handed-off-prepaint-entrance | neutral  $3 | motion entrance hydration correctness progressive-enhancement | An entrance owned by a framework cannot begin until that framewo
@@ -429,6 +431,7 @@ scroll/smooth-scroll-driving-timeline | E3 D2 W3 F5 $3 | scroll motion architect
 scroll/stale-scroll-request-guard | neutral  $2 | scroll correctness accessibility events navigation | A scroll request crossing an async boundary — posted by an embed
 scroll/sticky-as-cheap-pin | E1 D2 W2 F3 $1 | scroll layout performance | position: sticky for anything that only needs to hold position —
 scroll/tall-target-intersection-clause | neutral  $1 | scroll correctness observer reveal | intersectionRatio is a fraction of the element, so a section tal
+scroll/transform-hosted-scroll-wrapper | neutral  $3 | scroll architecture correctness transform pin | Smoothing the whole page without a library: a spacer takes the m
 scroll/whole-item-rail-page | neutral  $1 | scroll rail pagination control measurement correctness | An arrow that scrolls a horizontal rail by a fixed distance — 30
 surface/arc-length-colour-ramp-stroke | E3 D2 W2 F5 $3 | svg stroke gradient color dash effect | An SVG gradient paints in the element's box, so a stroke that cu
 surface/axis-stretched-noise-veil | E1 D3 W2 F4 $3 | surface noise svg-filter gradient atmosphere blend-mode | Evenly blurred noise reads as grain. Blur turbulence anisotropic

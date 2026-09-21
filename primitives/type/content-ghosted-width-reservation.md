@@ -4,7 +4,7 @@ category: type
 tags: [type,layout-shift,css-only,accessibility,correctness]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,15 @@ on the layout thread, and it holds for a proportional face.
 ```
 ⚠ Generated `content` is announced by some screen readers, so the string can
 arrive twice — keep the live text as a real child and check with one.
+
+The block axis needs no twin. A line that types in from empty — or arrives a
+word at a time — has a zero-height line box until its first glyph lands, and
+everything below it lifts by a line and drops back. `min-height: 1lh` holds the
+slot from first paint through an empty string; `1.1–1.3em` where `lh` is not
+available, matched to the line-height it is set at.
+```css
+.typed { display: block; min-height: 1lh }
+```
+⚠ Reserves one line only. Reserve against the longest *rendered* case — a
+string that fits on one line at 1440px and wraps to two at 390px still moves
+the page there, which is the width the reservation was bought for.

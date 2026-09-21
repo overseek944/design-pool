@@ -4,7 +4,7 @@ category: layout
 tags: [overlay,correctness,overflow,dialog,cls]
 axes: none
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -63,3 +63,17 @@ body:has(.overlay) { overflow: hidden; overscroll-behavior: none }
 ⚠ Only one of the two propagates: if `body` already carries a non-`visible`
 `overflow` the propagation stops and the root keeps scrolling. Check the reset
 before relying on this.
+
+iOS Safari keeps scrolling the page after a touch gesture has begun regardless
+of the root's `overflow`, so a lock that must hold on a phone takes `body` out
+of flow instead: store `scrollY`, set `position: fixed` with `top` at its
+negation, and restore both on release. Nothing can move because nothing is in
+flow — the cost is that the offset must be handed back explicitly.
+```js
+const y = scrollY
+body.style.cssText = `position:fixed;top:${-y}px;left:0;width:100%`
+// release: body.style.cssText = ''; scrollTo(0, y)
+```
+⚠ Clearing the styles without the `scrollTo` drops the reader at the top of the
+page. Anything sampling `scrollY` while the lock is up reads 0, so a scroll-
+driven scene must be frozen for the duration rather than left running.

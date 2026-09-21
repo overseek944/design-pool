@@ -4,7 +4,7 @@ category: type
 tags: [numerals,data,motion,correctness]
 axes: {energy: 2, density: 3, weight: 3, finish: 5}
 cost: 1
-seen: 19
+seen: 20
 requires: []
 conflicts: []
 completes: []
@@ -78,3 +78,14 @@ reads a figure that is true at every moment.
 ```
 ⚠ The label is now a second copy of the number — derive both from one source, or
 an edit ships a row whose label and digits disagree and only one of them is read.
+
+Where the settled string is already in the DOM — a server-rendered figure a
+count-up is about to zero — read its rendered width and pin that as a
+`min-width` rather than computing a `ch` reservation. One measurement, no digit
+count, exact in the face that actually rendered. Keep `text-align: end` or the
+digits shift inside the reserved box as they climb.
+```js
+span.style.minWidth = span.getBoundingClientRect().width + 'px'   // then zero it
+```
+⚠ Measure every cell, then write every cell. Interleaving the two is a forced
+layout per figure, and a table of them stalls the frame the reveal starts on.
