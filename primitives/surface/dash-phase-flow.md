@@ -4,7 +4,7 @@ category: surface
 tags: [svg,dash,motion,connector,diagram,precision]
 axes: {energy: 2, density: 2, weight: 1, finish: 5}
 cost: 1
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -54,3 +54,18 @@ were never in a drawing. Period 8–14px, cycle 0.6–0.9s.
 ```
 ⚠ The period lives in two places — the gradient stops and the keyframe — and
 nothing catches them drifting apart. Hold both in one custom property.
+
+A bundle of connectors sharing one period beats in unison and reads as a
+mechanism rather than as traffic. Give each run its own duration — 1.2–2.8s,
+picked to be mutually non-integer — and add a second, slower `opacity` cycle at
+a period unrelated to either, so a line is never in the same state twice running.
+The arithmetic constraint is per line and unaffected: each still travels a whole
+number of its own dash periods.
+```css
+.link:nth-child(3n)   { animation-duration: 1.4s }
+.link:nth-child(3n+1) { animation-duration: 2.6s }
+.link { animation: flow var(--d) linear infinite, breathe 2.2s ease-in-out infinite }
+```
+⚠ Two infinite animations on one element is two compositor tickets — keep both
+on `opacity` and `stroke-dashoffset` only, and kill both in the reduced-motion
+branch rather than just the travel.

@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,edge,composition,bleed]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 26
+seen: 27
 requires: []
 conflicts: []
 completes: []
@@ -120,3 +120,19 @@ fraction of a container that just changed width. 16–32px.
 ```
 ⚠ A breakpoint only guesses at overflow; where content count is dynamic, key it
 off a scroll probe instead so the fade tracks the real condition.
+
+Register each edge's inset as a property and the fade becomes a value rather
+than a fixed rule: `@property --fade-t { syntax: "<length-percentage>" }` is
+interpolable, so an edge can transition open when a rail gains overflow, or be
+driven from scroll. Compose the four into one `syntax: "*"` property and every
+consumer applies a single declaration while the utility owns the stop list —
+`inherits: false` on all of them so a nested panel does not pick up its parent's
+fades.
+```css
+@property --fade-t { syntax: "<length-percentage>"; inherits: false; initial-value: 0 }
+.rail { --fade-mask: linear-gradient(#0000, #000 var(--fade-t)); mask-image: var(--fade-mask);
+        transition: --fade-t .3s }
+```
+⚠ Unregistered, the same declaration silently does not animate — no error, the
+edge just snaps. Name the four in logical pairs (`-s`/`-e` beside `-t`/`-b`) or
+the mask flips wrong in RTL.

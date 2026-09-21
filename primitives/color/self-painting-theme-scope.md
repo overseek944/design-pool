@@ -4,7 +4,7 @@ category: color
 tags: [color,tokens,theming,architecture,dark]
 axes: none
 cost: 2
-seen: 14
+seen: 15
 requires: []
 conflicts: []
 completes: []
@@ -71,3 +71,19 @@ against the page ground disappears on a saturated panel.
 .tone-warm { --fg: #120a0f; --muted: #4a2838; --line: var(--fg); --ring: var(--fg);
   background-image: linear-gradient(112deg, var(--a), var(--mid) 48%, var(--b)) }
 ```
+
+Below the full role/palette split sits a scope small enough to write inline on
+the element that owns a passage — three or four names, no class, no stylesheet
+entry. Ship only the opaque inks and derive every tint, border and wash at the
+use site with `color-mix` against `transparent`: one token then yields a whole
+alpha ramp, and a section that recolours mid-scroll needs one value changed
+rather than a parallel set kept in step.
+```html
+<section style="--ink:#343434; --card:#fff">
+```
+```css
+.hair { border-color: color-mix(in srgb, var(--ink) 15%, transparent) }
+```
+⚠ Derived alphas are not contrast-checked by anything — a tint that reads on
+the light ground can vanish on the dark one, because the mix follows the ink and
+the ground does not. Verify the two extremes, not the token.

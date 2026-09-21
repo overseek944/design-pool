@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,connector,diagram,geometry,svg]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []

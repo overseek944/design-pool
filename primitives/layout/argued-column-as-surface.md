@@ -4,7 +4,7 @@ category: layout
 tags: [layout,table,comparison,surface,contrast,hierarchy]
 axes: {energy: 1, density: 3, weight: 4, finish: 5}
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -68,3 +68,16 @@ for a rule separating them.
 ```
 ⚠ Inversion is not a state a screen reader can hear, and the row is usually the
 one carrying the number the page is selling — say it in the text.
+
+The same treatment on the *label* column makes a different argument: recess the
+row headers — their own inset rounded surface, a half-step tint, inside the
+table's clip — and the matrix gains a spine rather than a winner. Every data
+column then sits on the page ground as an equal, which is the right structure
+where the comparison is genuinely open or where one product is not being sold.
+Radius one step under the wrapper's; tint 3–6%.
+```css
+.matrix th[scope="row"] { background: var(--inset); }
+.matrix tr:first-child th[scope="row"] { border-start-start-radius: var(--radius-inner) }
+```
+⚠ A recessed spine and an inverted argued column in one table cancel — the eye
+reads two panels and no claim. Pick one.

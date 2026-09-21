@@ -4,7 +4,7 @@ category: layout
 tags: [header,scroll,sticky,chrome]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -54,3 +54,17 @@ aligned at every breakpoint and nothing reads as a bar laid over a document.
 ⚠ A scrim is not a contrast guarantee — its lower half is nearly transparent, so
 the bar's own links must hold their ratio against the darkest thing that can pass
 under them. Keep it `pointer-events: none`; it is larger than the controls.
+
+Contract the *label*, not the bar. Animate `max-inline-size` from its measured
+width to `0` on the wordmark beside the mark, with `overflow: clip` and
+`white-space: nowrap`, and the capsule shrinks around a symbol that never moves
+— the mark is the anchor, so nothing in the bar slides and no width has to be
+guessed. Fade opacity on the same clock or the last glyphs shear off mid-letter.
+```css
+.word { max-inline-size: 7.5rem; overflow: clip; white-space: nowrap;
+        transition: max-inline-size .5s ease-out, opacity .3s }
+[data-scrolled] .word { max-inline-size: 0; opacity: 0 }
+```
+⚠ A `max-inline-size: 0` label is still in the accessibility tree and still
+found by the browser's find — fine for a wordmark the mark already names, wrong
+for anything carrying information.

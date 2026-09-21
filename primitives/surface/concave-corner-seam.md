@@ -4,7 +4,7 @@ category: surface
 tags: [surface,border,detail,chrome,css-only]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,17 @@ sheet by the same amount. Radius 8–20px.
 ⚠ The half-pixel band between the stops is load-bearing — one hard stop aliases
 into a staircase. Where the run ends, drop that fillet and shrink the sheet's
 own corner to near zero instead, or it paints a curve over nothing.
+
+Run the fillet on all four corners and the element stops being a tab on a sheet
+and becomes a shape *carved out of* it: the panel appears to wrap the card on
+every side, which no radius and no clip path produces. Each corner is its own
+box painted with a disc centred on the far corner — `0% 0%`, `100% 0%`,
+`0% 100%`, `100% 100%` — all four reading the same radius and the same fill.
+Stops at 1–2rem; below 0.75rem the sweep is not legible as a curve.
+```css
+.carve::before { background: radial-gradient(circle at 0 0, #0000 var(--r), var(--card) var(--r)) }
+```
+⚠ Four boxes painted with the card's colour is four places to update — bind the
+fill and the radius to the same two properties the card uses, or a theme change
+leaves the fillets on the old ground. Where the card sits over a gradient rather
+than a flat panel, this cannot work: the fillet paints a flat colour.

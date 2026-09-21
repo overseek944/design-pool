@@ -1,6 +1,6 @@
 # Manifest
 
-450 primitives. Format: `category/id | axes cost | tags | gist`
+453 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -87,6 +87,7 @@ interaction/coreference-trace-highlight | E2 D3 W2 F5 $2 | interaction annotatio
 interaction/dimension-coded-position-dot | E2 D2 W2 F5 $1 | interaction state indicator accessibility carousel | Let the active item in a position indicator change size, not onl
 interaction/drag-suppressed-click-threshold | neutral  $2 | pointer drag interaction correctness accessibility | A surface that answers to drag and also holds links fires a clic
 interaction/edge-hotzone-sibling-reveal | E2 D2 W2 F5 $2 | interaction hover panel chrome css-only accessibility | Reclaim the width a hidden rail costs without a toggle: park an 
+interaction/edge-traversing-knob | E3 D2 W2 F5 $1 | interaction state affordance motion detail | A control states its direction by sending its own mark the whole
 interaction/find-reachable-collapse | neutral  $1 | accessibility correctness disclosure search architecture | Collapsed content the browser's own find cannot reach is content
 interaction/focus-handoff-on-self-removal | neutral  $1 | accessibility focus correctness form state | A control that removes itself when used — a form replaced by its
 interaction/focusable-graphic-regions | neutral  $2 | accessibility svg focus diagram correctness | A drawing whose parts answer to the pointer — a map, a schematic
@@ -138,6 +139,7 @@ layout/document-underlay-window | E2 D1 W3 F4 $2 | layout stacking reveal video 
 layout/em-reserved-swap-height | neutral  $1 | layout layout-shift responsive correctness tabs | Content that swaps in place — a tab's copy, a rotating claim — c
 layout/float-wrapped-figure | E1 D3 W2 F4 $1 | layout type editorial responsive detail | Neither grid nor flex wraps running text around a picture — floa
 layout/fractional-grid-with-fluid-rail | E1 D3 W3 F4 $2 | layout grid asymmetry | Asymmetric two-column via minmax() where the rail is viewport-pr
+layout/geometry-scoped-connector-overlay | neutral  $1 | layout diagram connector responsive correctness architecture | An overlay of connectors is a picture of one arrangement, not of
 layout/ghost-sizer-twin | neutral  $1 | layout architecture correctness hover reflow | A box that grows on interaction — scales, lifts on Z, expands a 
 layout/height-budgeted-media-width | neutral  $2 | layout container-query aspect fit cls | When a card must fit one screen exactly — media plus chrome, not
 layout/in-flow-overlay-header | neutral  $1 | layout sticky overlay correctness cls | A header that must float over the first section and still stick 
@@ -162,6 +164,7 @@ layout/scroll-lock-via-has | neutral  $1 | overlay correctness overflow dialog c
 layout/self-drawing-grid-debug | neutral  $2 | layout grid tooling debug architecture | A layout system worth having can show its own work. One class re
 layout/shared-percent-coordinate-space | E1 D3 W1 F5 $2 | diagram svg schematic accessibility responsive | A node diagram wants SVG lines and real DOM nodes: strokes that 
 layout/single-edge-cell-rules | E1 D3 W1 F5 $1 | layout grid hairline rules precision | In a ruled grid every interior line is drawn by both neighbours 
+layout/slot-attribute-child-contract | neutral  $1 | layout architecture composition naming css-only | Let the arrangement own its children's boxes. A part publishes o
 layout/stacking-register | neutral  $1 | architecture z-index tokens correctness overlay | One file owns every stacking value in the product as named token
 layout/stateful-chrome-inset-contract | neutral  $2 | layout chrome tokens custom-property architecture overlay correctness | Fixed chrome should publish the space it takes as root custom pr
 layout/sticky-underlay-reveal | E2 D1 W3 F4 $1 | layout scroll sticky depth css-only section | Invert the usual arrival: a panel placed after the content and s
