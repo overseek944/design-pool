@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,hairline,precision,responsive,technical]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 2
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -42,3 +42,17 @@ optical value; a contrast step reads as two sections side by side.
 ```
 ⚠ Two tiling grounds meeting at a line show every rounding error — pin the seam
 to the same `max()` expression the rules use, not to a separate padding.
+
+The margin ground is also how a section says it is outside the argument. Run
+that texture across the full bleed for one terminal block — a closing call, a
+colophon — with no inner plate, and the content column stops being laid on the
+sheet and becomes margin: the page's own material marks the end, with no rule,
+no colour change and no new component. Once per page; a second full-bleed block
+and the texture reads as a section style rather than a boundary.
+```css
+.coda         { background: var(--hatch) }            /* no inner plate */
+.coda > .inner { background: none; inline-size: min(100% - 2 * var(--gutter), var(--content)) }
+```
+⚠ Copy set over a hatch interferes with its own stem weight — keep the rendered
+pitch above 8px and the line alpha under .10, and check it at 390px, where the
+texture is at its densest relative to the type.

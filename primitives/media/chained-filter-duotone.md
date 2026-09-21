@@ -4,7 +4,7 @@ category: media
 tags: [media,color,filter,normalisation,texture]
 axes: {energy: 1, density: 2, weight: 3, finish: 4}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -41,3 +41,19 @@ tint is now the token itself rather than a `hue-rotate` angle found by trial, an
 ⚠ Pair every `:hover` with `:focus-within` or the true photograph is mouse-only.
 The blend needs `isolation: isolate` on the frame, or on some stacking contexts it
 reaches past the image to the page behind it.
+
+Flattening a *set of marks* onto one ink opens the chain differently.
+`grayscale(1)` preserves luminance, so a pale wordmark and a dense roundel in
+the same row stay light and dark after tinting and the row still reads as a
+scatter. Open with `brightness(0)` instead: every source collapses to one
+silhouette and the tail of the chain steers that single black to the palette.
+Identity of ink is the point — a logo row is a list, not a set of pictures.
+Find the tail once against a target swatch and reuse it across the set;
+invert 20–40%, saturate 600–1200%, hue-rotate the rest of the way.
+```css
+.mark { filter: brightness(0) invert(28%) sepia(15%) saturate(950%)
+                hue-rotate(78deg) brightness(92%) contrast(88%) }
+```
+⚠ Only for marks whose meaning is their shape, and only for art with an alpha
+channel — a mark on an opaque plate comes out a solid rectangle. Those want
+`mask-image` over a painted background instead, which also costs no filter.

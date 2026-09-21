@@ -4,7 +4,7 @@ category: scale
 tags: [unit,tokens,border,precision,coherence]
 axes: {energy: 1, density: 2, weight: 1, finish: 5}
 cost: 1
-seen: 18
+seen: 19
 requires: []
 conflicts: []
 completes: []
@@ -79,3 +79,19 @@ panel and a comparison split dragged across both.
 ```
 ⚠ Three hairlines is a visible 3px band on a non-retina display. Spend it only
 on a line that genuinely crosses unknown content, never on ordinary rules.
+
+Spend the token on `outline` rather than `border` wherever the line must not
+cost layout. An outline is drawn outside the box model, so adding or removing
+one — a selected cell, a hover edge, a rule inside a grid that already sizes its
+children — shifts nothing and has no `box-sizing` interaction to reason about.
+Pull it back onto the box edge with a negative `outline-offset` of half the
+width, so it lands where a border would and aligns with real borders in the same
+lattice.
+```css
+.cell { outline: var(--hair) solid var(--rule);
+        outline-offset: calc(var(--hair) / -2) }
+```
+⚠ Outlines paint over the neighbour rather than between, and never collapse — a
+tiled field doubles at every interior join. For decoration and for state; a
+focus ring keeps its own offset and its own colour, and must not be the rule
+this one overwrites.

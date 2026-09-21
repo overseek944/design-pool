@@ -4,7 +4,7 @@ category: interaction
 tags: [carousel,autoplay,accessibility,state]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -56,3 +56,18 @@ BEATS.forEach(([at, fn]) => t.push(setTimeout(() => { if (!driven) fn() }, at)))
 ⚠ Those handlers must be idempotent: a beat already queued when the reader acts
 still fires, and applying the same change twice has to be a no-op rather than a
 second increment.
+
+`reduce` is a harder gate than any of the above, and a shorter transition does
+not answer it: the objection is content being replaced while somebody is still
+reading it, not the movement between states. Do not advance at all. Build the
+interval *inside* the `matchMedia` handler rather than guarding the callback,
+and bind `change` so a reader reaching for the OS switch mid-session stops the
+rotation without a reload.
+```js
+const mq = matchMedia('(prefers-reduced-motion: reduce)')
+const arm = () => { clearInterval(id); id = mq.matches ? 0 : setInterval(next, DWELL) }
+mq.addEventListener('change', arm); arm()
+```
+⚠ A rotation that stops is only acceptable where every item stays reachable by
+hand — real buttons beside it, not dots — and where the item it parks on is the
+one worth landing on.

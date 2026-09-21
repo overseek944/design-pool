@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,overflow,progressive-enhancement,correctness]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: [conditional-token-space-toggle]
@@ -42,3 +42,20 @@ observer and two threshold classes. Fade 12–24px.
 ⚠ An inactive timeline falls back to the registered initial values, so both must
 be `0` — set them to `1` for the scrolling case and a rail that fits, or an
 engine without support, is permanently dimmed at both ends.
+
+A fade that tracks the whole scroll is a gradient of information nobody reads.
+Register the mask distance itself as a `<length-percentage>` and give the
+keyframe an `animation-range` covering only the last stretch of travel: the edge
+stays fully faded for the entire scroll and retracts in the final 60–120px, so
+the affordance is constant while there is more and resolves once, on arrival.
+```css
+@property --fade-b { syntax: "<length-percentage>"; inherits: false; initial-value: 0 }
+@keyframes unfade { from { --fade-b: var(--size) } to { --fade-b: 0px } }
+.port { mask-image: linear-gradient(#000 0, #000 calc(100% - var(--fade-b)), #0000);
+  animation: unfade 1ms linear both; animation-timeline: scroll(self y);
+  animation-range: calc(100% - var(--reveal, 96px)) 100% }
+```
+⚠ The fallback polarity inverts from the probe above. Here the port is known to
+overflow, so `@supports not (animation-timeline: scroll())` must pin the
+distance at full size — left at the registered `0`, an unsupported engine gets a
+port with no edge cue at all.

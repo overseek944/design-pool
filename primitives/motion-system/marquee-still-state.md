@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,accessibility,marquee,correctness,overflow]
 axes: none
 cost: 1
-seen: 13
+seen: 14
 requires: []
 conflicts: []
 completes: []
@@ -54,3 +54,14 @@ The duplicate goes in the scroller variant too. A native horizontal scroller
 over a doubled track spends half its distance on a repeat the reader has just
 passed, which reads as a bug rather than as a loop — drop the `aria-hidden`
 copy and let the real content set the scroll width.
+
+Where the edge fade is *painted* rather than masked — a gradient pseudo-element
+to the surface colour, the form that spares a scrollbar and a focus ring — the
+still state has to drop it for a different reason. A surviving mask fades real
+content; a surviving painted band covers it, and over wrapped rows it is an
+opaque stripe down each side rather than a soft edge. Remove it in the same
+block that releases the width.
+```css
+@media (prefers-reduced-motion: reduce) {
+  .marquee::before, .marquee::after { display: none } }
+```
