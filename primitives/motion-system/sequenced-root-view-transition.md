@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,navigation,transition,accessibility]
 axes: {energy: 2, density: 1, weight: 2, finish: 5}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -41,3 +41,22 @@ as custom properties on the root. 0.35–0.5s.
 cross-fade and tints the clipped layer. A percentage radius is measured off the
 box diagonal, not off the origin — from a corner control, 150% still lands
 short, so use `calc()` over the real distance or overshoot to 200%.
+
+Neither half has to fade at all. A stack navigation wants *direction*: put the
+axis on the root as an attribute set just before `startViewTransition`, and one
+attribute value selects a pair of keyframes. The page being left does not leave
+— it holds at a fraction of the travel and dims, which is the depth cue that
+separates a stack from a slide, and on the way back it is the outgoing page that
+rides above. Travel 100%, the held layer 15–30% and `brightness(.82–.9)`.
+Durations 100–250ms; a stack push slower than that stops reading as instant.
+```css
+[data-nav=push]::view-transition-new(root) { animation: .18s both slide-in }
+[data-nav=push]::view-transition-old(root) { animation: .18s both sink }
+[data-nav=pop] ::view-transition-old(root) { z-index: 1; animation: .18s both slide-out }
+@keyframes slide-in { from { translate: 100% } }
+@keyframes sink     { to { translate: -24%; filter: brightness(.86) } }
+```
+⚠ The attribute has to be cleared when the transition finishes or the next
+navigation inherits the last direction. Without the `z-index` on the pop the
+incoming page paints over the one supposedly sliding off it, and the gesture
+reverses.

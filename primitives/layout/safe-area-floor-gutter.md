@@ -4,7 +4,7 @@ category: layout
 tags: [layout,tokens,safe-area,responsive,correctness]
 axes: none
 cost: 1
-seen: 14
+seen: 15
 requires: []
 conflicts: []
 completes: []
@@ -51,3 +51,17 @@ scroll floor under fixed chrome.
 ⚠ Always supply the `0px` fallback. `env()` with no second argument makes the
 whole declaration invalid where the variable is unknown, taking the design value
 down with it.
+
+Inside a native shell the platform value is simply wrong: a web view is not the
+screen, so `env()` reports zero on exactly the devices with the largest insets.
+Make the chain three deep — a custom property the host injects, the platform
+`env()` behind it, zero last — and the same stylesheet is correct in a tab and
+under a native status bar with no build flag and no detection. The host writes
+its values on the root at startup and on every rotation.
+```css
+:root { --inset-t: var(--host-inset-top, env(safe-area-inset-top, 0px)) }
+.bar  { padding-block-start: calc(.75rem + var(--inset-t)) }
+```
+⚠ The host property must be unset rather than `0px` when there is no inset, or
+it wins over a perfectly good `env()` in the browser. Rotation does not always
+fire `resize` in a web view — have the host push on orientation change too.

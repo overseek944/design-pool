@@ -4,7 +4,7 @@ category: color
 tags: [color,tokens,theming,architecture,correctness]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -28,3 +28,19 @@ distinctions.
 those pairs before shipping. Any utility whose contrast assumption inverts needs
 re-pinning too: a label that was white on a dark accent is unreadable the moment
 the accent turns light.
+
+Geometry reclaims the same way, and scoping it beats `!important`. Wrap the
+framework's generated scale in `:where()` under a skin class: the selector keeps
+the specificity of the class alone, so the utilities lose without being fought,
+and two skins can hold different geometry on one page — which the global
+`!important` form cannot do. One ancestor class then turns a whole region from
+soft to hard-edged with no markup touched. Flatten to 0–3px, or to a single
+smaller step.
+```css
+.skin-crisp :where(.rounded-sm, .rounded-md, .rounded-lg, .rounded-xl, .rounded-2xl),
+.skin-crisp :where(input, textarea, select, button) { border-radius: 2px }
+```
+⚠ Include the bare elements as well as the utilities — form controls carry a UA
+radius no utility class was ever applied to, and they are what gives a flattened
+region away. An arbitrary-value utility written inline still wins; those have to
+be found by hand.

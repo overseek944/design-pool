@@ -1,6 +1,6 @@
 # Manifest
 
-658 primitives. Format: `category/id | axes cost | tags | gist`
+661 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -359,6 +359,7 @@ motion-system/flush-separated-transition-arming | neutral  $1 | motion correctne
 motion-system/gap-compensated-loop-distance | neutral  $1 | motion marquee correctness loop overflow | A duplicated track loops seamlessly only when it travels exactly
 motion-system/generation-guarded-sequence | neutral  $2 | animation architecture correctness cancellation sequence | A choreography written as a chain of awaits has no cancel. A rep
 motion-system/handed-off-prepaint-entrance | neutral  $3 | motion entrance hydration correctness progressive-enhancement | An entrance owned by a framework cannot begin until that framewo
+motion-system/hinged-leaf-value-swap | E3 D2 W3 F4 $2 | motion counter transition 3d accessibility | A value that changes by folding reads as mechanical rather than 
 motion-system/independent-transform-channels | neutral  $1 | transform transition architecture composition state | Two concerns wanting the same element — an entrance offset and a
 motion-system/keyframe-resolved-waypoints | E3 D2 W2 F5 $2 | motion keyframes custom-properties architecture choreography | A @keyframes block is document-global and takes no arguments, so
 motion-system/keyframe-variant-bank | E3 D4 W2 F3 $2 | motion generative ambient tokens architecture | Phase and period offsets only ever translate one curve; they can
@@ -367,6 +368,7 @@ motion-system/marquee-still-state | neutral  $1 | motion accessibility marquee c
 motion-system/measured-convergence-vector | E3 D2 W2 F5 $3 | motion measurement responsive choreography diagram | Where elements must travel to or from another element the layout
 motion-system/motion-runtime-watchdog | neutral  $2 | motion correctness accessibility progressive-enhancement reveal | A reveal system that hides content in CSS and un-hides it from J
 motion-system/mpath-bound-traveller | E3 D1 W1 F5 $1 | motion svg path marker loop diagram | A marker crossing a drawn route drifts off it the moment the dra
+motion-system/name-pinned-transition-chrome | E2 D1 W2 F5 $2 | motion navigation transition chrome accessibility | A root view transition snapshots the whole page, so a tab bar pr
 motion-system/named-completed-motion-state | neutral  $1 | motion state correctness accessibility reveal progressive-enhancement | Give a choreographed scene three named states — waiting, playing
 motion-system/namespaced-hook-families | neutral  $1 | architecture motion scale | Prefix hooks by section (data-why-card, data-why-canvas, data-wh
 motion-system/non-converging-decorative-meter | E2 D2 W2 F4 $1 | motion mock meter progress accessibility | A meter animated inside a product mock gets read as data. Fill i
@@ -594,6 +596,7 @@ timing/cycle-seam-reshuffle | E2 D3 W2 F5 $2 | timing loop motion svg variation 
 timing/decaying-loop-restart-gap | E2 D1 W2 F5 $1 | loop timing sequence restraint demo attention | A self-restarting demonstration does not want one restart gap. A
 timing/dwelling-phase-ring | neutral  $2 | timing state loop choreography architecture demo | A looping demonstration written as a schedule of effects has to 
 timing/expanding-shadow-beacon | E2 D1 W2 F4 $1 | motion indicator status ambient glow | A mark that blinks reports a state; one that throws a ring outwa
+timing/inert-keyframe-lifetime | neutral  $1 | timing lifecycle css-animation cleanup accessibility | A transient overlay — a burst, a ripple, a one-shot badge — usua
 timing/lead-in-separated-arrival | E2 D2 W2 F5 $1 | timing motion sequence stream demo mock cadence delay | A mock of anything that arrives over a network — streamed tokens
 timing/non-linear-loop-periods | E3 D3 W2 F4 $2 | motion ambient rhythm | Give concurrent ambient loops coprime-ish periods (4s / 5s / 7s)
 timing/opacity-masked-loop-cut | E3 D2 W2 F4 $2 | timing keyframes loop opacity conveyor | A track that reads as endless usually means duplicated DOM. One 
