@@ -4,7 +4,7 @@ category: surface
 tags: [diagram,hairline,precision,detail,schematic]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -59,3 +59,20 @@ gaps of 4–6em; fade 2–3em.
 ```
 ⚠ Reach under half the gap leaves a visible break; far over it doubles the ink
 in the overlap unless the fade covers the join.
+
+Between cells of a *grid* the marker cannot be centred on its cell: peers whose
+copy runs to different line counts have different heights, so `top: 50%` walks
+the arrow up and down the row. Pin it to the one band every cell shares — the
+figure, the rule, the label baseline — as a fixed offset from the top, and set
+it over the divider rather than beside it, so the glyph straddles the line it
+is crossing instead of floating in the gutter. Offset it half its own width
+past the border and raise it above the cells' backgrounds.
+```css
+.step:not(:last-child)::after { content: "→"; position: absolute; z-index: 3;
+  top: 84px; right: -8px; color: var(--accent) }
+@media (width <= 45rem) { .step:not(:last-child)::after { display: none } }
+```
+⚠ The `:not(:last-child)` set is wrong the moment the grid wraps — the item
+ending each row still matches and points across a line break at nothing. Drop
+the marker at the breakpoint where the row stops being one row; re-aiming it
+downward only works while the grid is a single column.

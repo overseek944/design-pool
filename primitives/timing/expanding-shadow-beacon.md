@@ -4,7 +4,7 @@ category: timing
 tags: [motion,indicator,status,ambient,glow]
 axes: {energy: 2, density: 1, weight: 2, finish: 4}
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -53,3 +53,18 @@ indicator reads as broken rather than alive.
 ⚠ With the trough at 50% the ring gets no parked tail, so hold the period at the
 top of the status range — 2–3s — or the rings overlap and the dip is all that
 reads.
+
+Where the page carries more than one or two of these, the repaint the spread
+costs is the whole argument against it, and the compositor form is a different
+reading rather than the same one made cheap: scale the disc itself and fade it,
+and the mark *breathes* instead of emitting — the source is what grows, so
+there is no ring leaving it. `transform` and `opacity` both composite, so a
+column of them is free. Peak 1.6–2×, trough alpha .35–.5, period 2–3s.
+```css
+.dot { animation: breathe 2.4s infinite }
+@keyframes breathe { 0%, 100% { transform: scale(1); opacity: 1 }
+                     50% { transform: scale(1.8); opacity: .45 } }
+```
+⚠ The disc is the animation, so at the trough there is no solid core left and
+the indicator can read as failing rather than live. Where the mark must stay
+legible throughout, put the breath on a pseudo-element and leave the dot still.

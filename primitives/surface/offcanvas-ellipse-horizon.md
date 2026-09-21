@@ -4,7 +4,7 @@ category: surface
 tags: [surface,hairline,geometry,ambient,background,depth]
 axes: {energy: 1, density: 2, weight: 1, finish: 5}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -40,3 +40,20 @@ Dot 10–16px, in a tint two steps off the ground.
 ⚠ Both circles must resolve the same centre or they read as an error rather
 than as concentric — derive each `inset-inline-end` as `radius − offset` from
 one shared offset, never eyeball the two.
+
+The concentric pair need not be two elements at all: zero-blur `box-shadow`
+spread stacked on the single circle throws every further ring from the same
+centre by construction, so the shared origin stops being arithmetic that can
+drift and becomes structural. Each layer's spread is its own gap, which the
+two-element form cannot vary independently, and the rings are outside the box
+— no layout, no reflow, nothing to re-derive per breakpoint. Spread stepping
+1.8–2.2× a layer, alpha halving each step from 2–4%; three rings is the ceiling
+before the panel reads as a target.
+```css
+.ring { inline-size: 260px; aspect-ratio: 1; border-radius: 50%;
+  border: 1px solid rgb(20 21 18 / .08);
+  box-shadow: 0 0 0 45px rgb(20 21 18 / .025), 0 0 0 90px rgb(20 21 18 / .015) }
+```
+⚠ Spread bands are painted, not composited, and they are sized by the widest
+ring — a 260px circle with a 90px band repaints a 440px square on any change.
+Keep them on a static decoration layer, never on anything that animates.

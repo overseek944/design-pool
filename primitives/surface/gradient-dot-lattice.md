@@ -4,7 +4,7 @@ category: surface
 tags: [surface,texture,pattern,blueprint,cheap]
 axes: {energy: 1, density: 3, weight: 1, finish: 4}
 cost: 1
-seen: 29
+seen: 30
 requires: []
 conflicts: []
 completes: []
@@ -139,3 +139,19 @@ background-size: 162px 162px; transform: rotate(6deg)
 ⚠ Rotation empties the corners — inset the layer by 10–15% to refill them. A
 diagonal period that is not the cell diagonal beats against the grid and the
 brace drifts cell by cell across the field.
+
+Pitch is a ratio to the *field*, not an absolute. The 40–80px rule grid reads
+as page ground because a viewport holds twenty-odd cells of it; drop the same
+generator into a small framed figure — a 160–220px diagram box — and it has to
+come down to 16–24px to show that many, at which scale it stops being a
+backdrop and reads as drafting paper the figure is laid out on. Size the pitch
+so the field holds 8–14 cells on its short axis at every width, then let the
+alpha follow: 4–6% inside a figure against 2–4% behind a page.
+```css
+.figure { background-image: linear-gradient(rgb(20 21 18 / .05) 1px, transparent 0),
+            linear-gradient(90deg, rgb(20 21 18 / .05) 1px, transparent 0);
+          background-size: 18px 18px }
+```
+⚠ A fixed px pitch inside a fluid figure changes the cell count at every width
+— the grid that read as paper at 1440px reads as hatching at 390px. Derive it
+from the figure's own height, or hold the figure at a fixed size.

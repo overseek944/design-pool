@@ -4,7 +4,7 @@ category: media
 tags: [icon,css-only,pseudo-element,tokens,diagram]
 axes: {energy: 1, density: 2, weight: 2, finish: 4}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -27,3 +27,18 @@ as a family.
 ⚠ `forced-colors` drops backgrounds and shadows but keeps borders, so the set
 loses members unevenly. These are decoration — `aria-hidden`, beside a text
 label that carries the meaning.
+
+The shadow list repeats the dot at measured offsets; its fourth value resizes
+each copy, which is what turns a repeat into a *cluster*. Negative spread
+shrinks a clone, positive grows it, so one node can carry a large part and its
+two smaller neighbours — a component and its passives, a parent and its
+children — in one declaration that retints from a single colour. Spread between
+−40% and +25% of the base size; past that the copies stop reading as the same
+family of mark.
+```css
+.part::after { width: 48px; height: 35px; background: var(--ink);
+  box-shadow: 60px 18px 0 -8px var(--ink-2), -25px 20px 0 -10px var(--ink-2) }
+```
+⚠ Clones share the element's `border-radius` and every filter on it, so a set
+that needs two shapes still needs two nodes. Spread grows the paint area
+without growing the box — the layout knows nothing about the outermost copy.
