@@ -4,7 +4,7 @@ category: perf
 tags: [architecture,analytics,third-party,privacy,layout,correctness]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,19 @@ tag.init(KEY, { persistence: 'memory', autocapture: false,
 ⚠ Identity now lasts one pageload: returning readers count as new and
 cross-session funnels stop working. Take this where the page is one surface
 with one conversion, not where retention is the question being asked.
+
+The one-pageload limit is a default, not a ceiling. Keep memory persistence as
+the pre-consent state and *graduate* the same instance when consent arrives —
+re-configure persistence and opt back in rather than initialising a second
+time, so no event is lost across the switch and readers who never answer the
+banner still cost nothing. Point `api_host` at a same-origin path while doing
+it: one fewer cross-origin handshake on the critical path, and the tag stops
+being the thing a content blocker recognises.
+```js
+tag.init(KEY, { persistence: 'memory', api_host: '/m', autocapture: false })
+onConsent(ok => ok ? (tag.opt_in_capturing(),
+  tag.set_config({ persistence: 'localStorage+cookie' })) : tag.opt_out_capturing())
+```
+⚠ The proxy path must not be a guessable vendor name, or the blocklists catch
+up with it; and re-configuring persistence writes storage immediately, so the
+call has to sit behind the granted branch, never beside it.

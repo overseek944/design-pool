@@ -4,7 +4,7 @@ category: type
 tags: [type,motion,headline,correctness]
 axes: {energy: 3, density: 2, weight: 3, finish: 5}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

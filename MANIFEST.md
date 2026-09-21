@@ -1,6 +1,6 @@
 # Manifest
 
-505 primitives. Format: `category/id | axes cost | tags | gist`
+506 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -282,6 +282,7 @@ motion-system/paused-as-authored-rest | neutral  $1 | motion architecture correc
 motion-system/pivot-segmented-route | E3 D2 W2 F5 $2 | motion path diagram keyframes | Interpolating position and heading together makes a marker cut d
 motion-system/print-frozen-frame-branch | neutral  $1 | print correctness motion fallback accessibility | Anything a reader will print or save as PDF — a report, an invoi
 motion-system/reduced-motion-branch | neutral  $1 | motion accessibility required | Branch at setup, not per-animation: if the user prefers reduced 
+motion-system/reset-frame-slot-recycle | E3 D1 W2 F4 $1 | motion transition state swap cycle correctness | One node that leaves upward and returns from below has to cross 
 motion-system/residual-length-trail-lock | E2 D2 W1 F5 $2 | motion svg stroke path diagram | A trail and the mover drawing it are two animations; time alone 
 motion-system/scheduled-event-aliveness | E3 D2 W2 F4 $3 | idle loop character randomness raf ambient | Anything idling on sines reads as a mechanism — the period is au
 motion-system/scroll-energy-accumulator | E3 D2 W2 F4 $1 | scroll motion shader effect canvas | Scroll position says where something is; scroll effort should sa

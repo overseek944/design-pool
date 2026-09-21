@@ -4,7 +4,7 @@ category: light
 tags: [color,type,effect]
 axes: {energy: 3, density: 2, weight: 4, finish: 3}
 cost: 2
-seen: 16
+seen: 17
 requires: []
 conflicts: []
 completes: []
@@ -89,3 +89,18 @@ glyph outline, which no fill can do.
 ```
 ⚠ Mark the duplicate `aria-hidden` and pointer-transparent, and accept that the
 string now lives in two places — it will drift the first time one is edited.
+
+The fill can be a photograph rather than a gradient, and then the size is the
+whole argument: below roughly 12–15% of the viewport width the picture inside
+each counter is unreadable grain and the word just looks dirty. Set it at
+25–40vw with the wrapper clipping the overflow, tighten tracking to −0.02 to
+−0.04em so the letterforms read as one aperture onto one scene rather than
+several, and place the focal band of the image with `background-position`
+against the x-height, not the box.
+```css
+.plate { font-size: 34vw; line-height: 1.2; letter-spacing: -.03em;
+  background: url(scene.jpg) center 58% / cover; color: transparent;
+  -webkit-background-clip: text; background-clip: text }
+```
+⚠ No contrast floor is achievable against arbitrary photography — this is
+decoration, and the string must exist as real text somewhere else on the page.

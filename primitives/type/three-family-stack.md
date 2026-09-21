@@ -4,7 +4,7 @@ category: type
 tags: [type,system]
 axes: {energy: 2, density: 3, weight: 3, finish: 4}
 cost: 1
-seen: 25
+seen: 26
 requires: []
 conflicts: []
 completes: []
@@ -43,3 +43,14 @@ main[data-voice="reading"] { font-family: var(--reading) }
 ⚠ This holds only while components inherit — one `font-family` hardcoded in a
 shared component pins it to a single voice, and the mistake is invisible until
 the second route ships.
+
+Both text faces can be serifs — a high-contrast display cut for headings, a
+screen text serif for prose, mono for chrome. Nothing about the *category*
+separates the two voices any more, so the separation has to be bought in
+contrast class and optical size: put real distance between thick-to-thin
+ratios, and never let the display cut run below about 28px or the text cut
+above about 24px, where they start to look like one face set badly. A stack
+this warm needs the mono tier doing more work than usual, since it is now the
+page's only technical signal.
+⚠ Two serifs is where the fourth-face allowance above disappears — a display
+wordmark beside a display heading face reads as a mismatch, not as a mark.

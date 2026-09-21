@@ -4,7 +4,7 @@ category: color
 tags: [color,palette,dark,restraint]
 axes: {energy: 2, density: 2, weight: 4, finish: 4}
 cost: 1
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
@@ -59,3 +59,16 @@ any lighter.
 ⚠ Every rung is still near-black, so body contrast is owed against the lightest
 surface the text may sit on, not against the page ground — check the type on the
 raised panel, not on the field behind it.
+
+A light page that turns over for one band needs a second set of rungs, not the
+same ones inverted. Contrast is not symmetric across the flip: the ink ramp's
+quiet rung, which passes comfortably against paper, lands near 1.5–2:1 on the
+dark ground and the band's supporting copy silently fails. Derive three fresh
+rungs against the dark — full, softened, faint — from the same hue, and name
+them as their own tokens so no component can reach for the light ones by
+habit. Two tokens, not one: the band inverts both ground and ink.
+```css
+.band { --ground: #22302b; --fg: #dfe6e1; --fg-soft: #b7c3bb; --fg-faint: #a9bcb0 }
+```
+⚠ Measure the faint rung on the dark ground specifically — it is the rung that
+was already marginal on paper, and the flip is where it stops being legible.

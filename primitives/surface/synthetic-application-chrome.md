@@ -4,7 +4,7 @@ category: surface
 tags: [frame,chrome,media,mock,product,decoration]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -44,3 +44,18 @@ non-controls to hide from assistive tech. Label 10–12px, tracking .08–.14em,
 ```
 ⚠ The label is content, not decoration — it must not be `aria-hidden`, and a
 sample meant to be copied should sit outside the element the reader drags over.
+
+At phone width the mock's own chrome should be *deleted*, not reflowed. Sort
+its regions once into evidence — the figures, the rows, the states the section
+is actually claiming — and apparatus: a sidebar of invented nav labels, a
+breadcrumb, a toolbar. Apparatus reflowed into a stacked column reads as a
+badly-built application and costs a third of the viewport to say nothing;
+dropped, the evidence pane runs full width and the mock stays an illustration.
+Evidence still reflows, and its internal rules have to be re-cut for the new
+column count or the seams double.
+```css
+@media (width <= 45rem) { .mock-nav { display: none }
+  .mock-stats { grid-template-columns: 1fr 1fr } }
+```
+⚠ Only where the apparatus is invented. Chrome a reader is meant to learn —
+a real product tour — has to survive, because hiding it changes the claim.

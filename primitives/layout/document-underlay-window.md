@@ -4,7 +4,7 @@ category: layout
 tags: [layout,stacking,reveal,video,section,fixed]
 axes: {energy: 2, density: 1, weight: 3, finish: 4}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -27,3 +27,21 @@ whole page.
 ⚠ `z-index: -1` only reaches behind the page while no ancestor opens a stacking
 context and `html`/`body` carry no background — one `transform` above it and the
 layer disappears.
+
+Scope the layer to a route wrapper at `z-index: 0` and lift its children to 1,
+rather than putting it at −1 behind the document. The ⚠ above then cannot
+fire: the wrapper is the stacking context, so a transform anywhere outside it
+is irrelevant and `body` may carry whatever background it likes. It also buys
+per-route underlays with no global state. Carry the wash as a second fixed
+pseudo-element over the first — one flat 35–55% tint of the page ground — so
+legibility is tuned by editing one alpha instead of re-exporting the picture.
+```css
+.route          { position: relative }
+.route::before  { content:""; position: fixed; inset: 0; z-index: 0;
+  pointer-events: none; background: url(x.jpg) center / cover }
+.route::after   { content:""; position: fixed; inset: 0; z-index: 0;
+  pointer-events: none; background: rgb(from var(--page) r g b / .44) }
+.route > *      { position: relative; z-index: 1 }
+```
+⚠ Fixed children of a positioned wrapper still fill the viewport, not the
+wrapper — the layer outlives the section unless the wrapper is the whole route.
