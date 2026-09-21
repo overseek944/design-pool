@@ -4,7 +4,7 @@ category: layout
 tags: [header,scroll,sticky,chrome]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
@@ -84,3 +84,17 @@ edge.style.transform  = `translateX(${(full - target) / 2 + pad}px)`  // pad 8�
 ⚠ `scaleX` distorts the plate's `border-radius` into an ellipse — keep it small
 (12–20px) or counter-scale a child, and never put text on the plate. Cancel the
 edge transforms outright under `prefers-reduced-motion`.
+
+A capsule that animates its own radius has to clip, and clipping is exactly what
+a dropdown anchored inside it cannot survive. The clip is only needed where the
+morph is visible, so scope it to the widths where it is not needed by the menu:
+`overflow: clip` at narrow widths, where navigation is a full sheet rather than
+a hung panel, released to `visible` at the breakpoint where the dropdowns
+appear.
+```css
+.plate { overflow: clip }
+@media (width >= 64rem) { .plate { overflow: visible } }
+```
+⚠ Visible overflow gives the corner radius nothing to cut, so any child that
+paints to the plate's edge — a grain layer, a gradient — needs `border-radius:
+inherit` of its own from that breakpoint up.

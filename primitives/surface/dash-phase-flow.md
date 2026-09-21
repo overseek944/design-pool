@@ -4,7 +4,7 @@ category: surface
 tags: [svg,dash,motion,connector,diagram,precision]
 axes: {energy: 2, density: 2, weight: 1, finish: 5}
 cost: 1
-seen: 12
+seen: 13
 requires: []
 conflicts: []
 completes: []
@@ -98,3 +98,18 @@ a reader watching one line at a time cannot see the contrast.
 .beam--inbound { animation-direction: reverse }
 @keyframes march { to { stroke-dashoffset: -13 } }   /* one period */
 ```
+
+On a closed circular path the arithmetic stops being a constraint: rotate the
+element instead of offsetting the dashes. A full turn returns to identity
+whatever the dash period, so the pattern need not divide the circumference and
+there is no snap to tune out — the seam rotates with the dashes and is never
+resolved into view. It also buys what `stroke-dashoffset` cannot: the travelling
+marks can be stroked with a `linearGradient`, since the paint stays put while
+the geometry turns. 14–24s for a ring.
+```html
+<circle r="180" stroke="url(#ramp)" stroke-dasharray="7 264" stroke-linecap="round">
+  <animateTransform attributeName="transform" type="rotate"
+    from="0 200 200" to="360 200 200" dur="18s" repeatCount="indefinite"/></circle>
+```
+⚠ SMIL is outside the reduced-motion query — pair it with `svg.pauseAnimations()`
+behind `matchMedia`, or the ring runs for everyone.

@@ -4,7 +4,7 @@ category: surface
 tags: [surface,depth,glass]
 axes: {energy: 1, density: 3, weight: 3, finish: 4}
 cost: 3
-seen: 28
+seen: 29
 requires: []
 conflicts: []
 completes: []
@@ -58,3 +58,15 @@ overshoot and fade distance the same value, 0.75–1.5rem.
 ```
 ⚠ The bar needs `isolation: isolate`, or `z-index: -1` drops the plate behind
 the page background instead of behind the bar's own content.
+
+On a light ground the correction inverts: add `contrast(.75–.9)` before the
+brightness pass. Blur over pale content preserves too much structure and the
+text behind ghosts through the plate; dropping contrast collapses the backdrop
+toward its own mid-tone, and the brightness lift then returns it to paper rather
+than to grey. The pair does on paper what saturate-plus-brightness does on a
+dark ground — states that the plate is a layer, not a window.
+```css
+.plate { backdrop-filter: blur(20px) saturate(1.85) contrast(.82) brightness(1.13) }
+```
+⚠ Below about 0.7 the backdrop goes uniform and the glass stops reading as
+translucent at all — at that point an opaque panel is cheaper and more honest.

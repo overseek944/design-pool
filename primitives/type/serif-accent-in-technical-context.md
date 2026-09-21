@@ -4,7 +4,7 @@ category: type
 tags: [type,contrast,editorial,restraint]
 axes: {energy: 1, density: 2, weight: 3, finish: 5}
 cost: 1
-seen: 25
+seen: 26
 requires: []
 conflicts: []
 completes: []
@@ -107,3 +107,17 @@ back toward the word behind it, where a sans has its stem. 0.03–0.06em leading
 ```css
 h1 em { margin-inline: .04em .035em }
 ```
+
+The full inversion has one consequence that only shows on the labels. A text
+serif set for running prose usually wants oldstyle figures on the body, and
+`font-feature-settings` inherits everywhere — so every letterspaced uppercase
+label, ordinal and eyebrow inherits descending digits amid flat-topped caps,
+which reads as a broken font rather than as a choice. Reset the caps contexts
+explicitly; it is one declaration on the label class, not a per-instance fix.
+```css
+body     { font-feature-settings: "kern", "liga", "onum" }
+.eyebrow { text-transform: uppercase; font-variant-numeric: lining-nums }
+```
+⚠ `font-variant-numeric` and `font-feature-settings` are separate cascades and
+the low-level property wins where both set the same feature — set the body in
+one of them and every override in the same one.

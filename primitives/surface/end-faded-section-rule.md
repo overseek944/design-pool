@@ -4,7 +4,7 @@ category: surface
 tags: [hairline,divider,gradient,section,restraint]
 axes: {energy: 1, density: 1, weight: 1, finish: 5}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -44,3 +44,17 @@ in the line token; larger and they read as controls.
 ⚠ Honest only where the caps land on a real boundary — the measure, a column
 edge. Capping a rule that ends at an arbitrary padding value announces a
 structure that is not there.
+
+The faded rule can carry hue as well as alpha. Pass it through three or four
+stops of different hue at very low chroma — held near the ground's own lightness
+— and it reads as light refracted through an edge rather than as a coloured
+line, which a single tint at any alpha never does. It stays a hairline and it
+stays neutral at a glance; the hue is only findable by looking for it. Chroma
+low enough that each stop fails a hue-naming test on its own.
+```css
+.iris { height: 1px; border: 0; background: linear-gradient(90deg, transparent,
+  #171b1424 12%, #b48ea866 34%, #8fa8b466 46%, #a8b48e66 58%, #171b1424 88%, transparent) }
+```
+⚠ Hue at this chroma is the first thing a low-quality panel or a colour-managed
+screenshot loses — never the only difference between two rules that mean
+different things.

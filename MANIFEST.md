@@ -1,6 +1,6 @@
 # Manifest
 
-576 primitives. Format: `category/id | axes cost | tags | gist`
+578 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -166,6 +166,7 @@ layout/balanced-side-track-centring | neutral  $1 | layout grid alignment chrome
 layout/border-clamped-annotation-leader | E1 D3 W1 F5 $2 | layout annotation connector svg diagram | A leader line drawn from a label's centre to its subject crosses
 layout/boxless-wrapper | neutral  $1 | layout grid architecture correctness accessibility | display: contents removes an element's box while keeping its chi
 layout/breakout-grid-named-lines | neutral  $2 | layout grid tokens architecture full-bleed | One grid on the page wrapper with named lines for the bleed gutt
+layout/cardinal-cell-cycle-grid | E1 D3 W2 F5 $2 | layout grid diagram cycle radial responsive | A closed four-stage cycle drawn around a hub usually costs trigo
 layout/collision-band-gutter | neutral  $2 | layout container-query annotation responsive correctness | Margin notes need room beside the reading column, but only in a 
 layout/column-aligned-disclosure | E1 D2 W2 F5 $2 | layout grid disclosure alignment native | Let a <details> row sit on the page's column grid: make the <sum
 layout/column-registered-overlay-chrome | neutral  $1 | layout overlay alignment correctness chrome | Chrome floating over a full-bleed stage — a stat strip, a scrub 
@@ -263,6 +264,7 @@ media/frame-announced-readiness | neutral  $2 | media iframe embed loading progr
 media/frameless-alpha-artwork | E1 D2 W2 F3 $2 | media illustration assets transparency composition | Artwork exported on transparency with a feathered edge does not 
 media/ink-channel-probed-icon | neutral  $1 | icon svg media correctness currentcolor | An icon pasted from an arbitrary set carries its colour on one o
 media/mask-swap-over-shared-paint | E2 D2 W2 F4 $2 | mask icon gradient media state | When a family of glyphs must share one fill — a gradient, a vide
+media/mirror-flanked-panorama | E1 D2 W2 F4 $2 | media image panorama mirror responsive full-bleed | Artwork with a fixed aspect either stretches or loses its compos
 media/mirrored-baseline-reflection | E1 D2 W2 F5 $2 | media mask surface depth detail css-only | A cut-out subject on a surface reads as pasted on unless somethi
 media/optical-height-logo-row | neutral  $1 | media logos normalisation scale responsive | Supplied marks are drawn to different conventions — a wordmark f
 media/origin-conditional-sandbox | neutral  $1 | media iframe embed security correctness | A sandboxed iframe that is also allow-same-origin and served fro

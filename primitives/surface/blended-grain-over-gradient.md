@@ -4,7 +4,7 @@ category: surface
 tags: [surface,texture,grain,gradient,blend-mode,banding]
 axes: {energy: 1, density: 3, weight: 3, finish: 4}
 cost: 1
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []
@@ -71,3 +71,19 @@ register. `multiply` at 2–4% on light stock, `soft-light` at 3–6% on dark.
 a logo, a chart's series colours, a photograph — has to sit above it, and
 `aria-hidden` is mandatory. Mask the plane in below the fold if a full-bleed
 hero should stay clean.
+
+Opacity is the wrong control for how hard the grain bites. Raising it lifts the
+whole layer's mean and greys the surface; `filter: contrast(140–180%)` on the
+grain element instead pushes turbulence mid-greys out toward both ends, leaving
+the mean alone and raising only the variance — so the tooth sharpens without the
+stock going flat. Expose the blend and the strength as a pair of custom
+properties on the component and one tile serves every surface at its own
+setting.
+```css
+.surface { --grain-blend: soft-light; --grain-strength: .5 }
+.surface::before { mix-blend-mode: var(--grain-blend); opacity: var(--grain-strength);
+  filter: contrast(165%); background: var(--tile) 0 0/84px }
+```
+⚠ `filter` on the pseudo-element rasterises it as its own layer, which is the
+one thing the background-layer form avoided — keep it off anything that repeats
+per card.
