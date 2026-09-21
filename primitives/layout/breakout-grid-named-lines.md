@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,tokens,architecture,full-bleed]
 axes: none
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []

@@ -4,7 +4,7 @@ category: media
 tags: [media, mockup, responsive, layout, correctness]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -59,3 +59,17 @@ with nothing to recompute.
 ⚠ `slice` matches `cover` and `meet` matches `contain` — base and overlay must
 name the same one, and the SVG's alignment keyword has to match `object-position`
 too, or the registration is off by the whole crop offset.
+
+An SVG overlay needs no unit at all: give it a `viewBox` equal to the raster's
+intrinsic pixel dimensions and stretch both to the same box. Every annotation is
+then authored in the source image's own coordinates — the numbers that come out
+of whatever drew it — and there is no percentage, no published unit and no
+conversion step to redo when the art is re-exported at another size. The two
+layers scale together because they share one user space.
+```html
+<img src="plate.svg" width="900" height="900">
+<svg viewBox="0 0 900 900" style="position:absolute; inset:0"> … </svg>
+```
+⚠ Both layers must use the same fit. A raster with `object-fit: cover` and an
+overlay with the default `preserveAspectRatio` drift apart the moment the box
+stops matching the intrinsic ratio.

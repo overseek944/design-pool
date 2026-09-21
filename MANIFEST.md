@@ -1,6 +1,6 @@
 # Manifest
 
-554 primitives. Format: `category/id | axes cost | tags | gist`
+556 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -247,6 +247,7 @@ media/counter-scaled-live-embed | neutral  $3 | media iframe embed responsive ar
 media/cover-scale-as-scalar | neutral  $2 | media correctness geometry overlay responsive css-only | object-fit: cover scales inside the element and reports nothing,
 media/crop-coupled-scrim | neutral  $1 | media video legibility overlay accessibility responsive | Footage behind a headline crops differently at every width, so a
 media/crop-scaled-source-hint | neutral  $1 | media correctness responsive performance loading | sizes states the width the browser has to fill, and under object
+media/datum-carrying-render-coordinate | neutral  $1 | figure svg authoring correctness data provenance | A figure derived from real values — points on a projection, mark
 media/dialog-scoped-embed-lifecycle | neutral  $2 | media performance dialog correctness lifecycle | A third-party embed is not yours to pause — you cannot reach int
 media/frameless-alpha-artwork | E1 D2 W2 F3 $2 | media illustration assets transparency composition | Artwork exported on transparency with a feathered edge does not 
 media/ink-channel-probed-icon | neutral  $1 | icon svg media correctness currentcolor | An icon pasted from an arbitrary set carries its colour on one o
@@ -308,6 +309,7 @@ motion-system/parameterised-path-travel | E3 D3 W1 F4 $2 | motion loop ambient d
 motion-system/path-scrubbed-entrance | E3 D2 W2 F5 $3 | motion scroll motion-path choreography scrub | Give each element its own curve instead of a shared translate. A
 motion-system/paused-as-authored-rest | neutral  $1 | motion architecture correctness scene performance | A decorative scene whose resting state is running has already pl
 motion-system/pivot-segmented-route | E3 D2 W2 F5 $2 | motion path diagram keyframes | Interpolating position and heading together makes a marker cut d
+motion-system/pivot-signed-explode | E2 D3 W2 F5 $2 | explode assembly stack progress figure scrub | A stack opening to show what it is made of must separate about s
 motion-system/print-frozen-frame-branch | neutral  $1 | print correctness motion fallback accessibility | Anything a reader will print or save as PDF — a report, an invoi
 motion-system/reduced-motion-branch | neutral  $1 | motion accessibility required | Branch at setup, not per-animation: if the user prefers reduced 
 motion-system/remeasure-exempt-transition | neutral  $1 | indicator transition resize measurement correctness | A measured indicator — the underline under the active tab, the p

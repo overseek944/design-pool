@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,correctness,progressive-enhancement,observer,reveal]
 axes: none
 cost: 1
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []
@@ -52,3 +52,17 @@ eager.forEach(el => el.classList.add('is-visible'))
 document.documentElement.classList.add('reveal-ready')   // arms the rules
 ```
 ⚠ Reversing the two lines reviews identically and flashes in the field.
+
+Cheapest of all where one region is above the fold at every viewport: name it in
+the stylesheet and neutralise the entrance inside it. No measurement pass, no
+arming, no second markup path — authors keep putting the same class on
+everything and the opening screen simply never carries a pre-state, so it paints
+settled on the first frame and the largest element on the page is never gated on
+a script.
+```css
+.reveal      { opacity: 0; transform: translateY(12px) }
+.hero .reveal{ opacity: 1; transform: none }
+```
+⚠ Only sound where the exemption is a real guarantee. A region that falls below
+the fold on a short landscape phone loses its entrance there for nothing, and
+one that grows past the fold later exempts content nobody has looked at.

@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,svg,focus,diagram,correctness]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -42,3 +42,18 @@ signal.addEventListener('abort', () =>
 ```
 ⚠ `-1` on teardown, not removal — an element focused at that moment must keep a
 valid target or focus drops to `<body>`.
+
+The same lifetime rule covers real controls, not only regions of a drawing. A
+button row that only means something once its handler is bound should ship
+`hidden` on the group and `disabled` on each control, and the script that binds
+them clears both as its last act. A dead bundle then yields a figure with no
+controls — legible, honest — rather than buttons that swallow clicks, and no
+`noscript` duplicate of the markup exists to drift.
+```js
+choices.forEach(b => { b.disabled = false; bind(b) })
+group.hidden = false
+```
+⚠ Reserve the row's height or clearing `hidden` shifts everything below it.
+Anything the controls are the *only* route to has to be stated somewhere else
+in the figure, or a reader without script loses the content and not just the
+interaction.
