@@ -4,7 +4,7 @@ category: perf
 tags: [resize,canvas,mobile,correctness]
 axes: none
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -50,3 +50,17 @@ ctx.setTransform(dpr, 0, 0, dpr, 0, 0)        // the transform is cleared too
 ```
 ⚠ Re-apply the transform after any assignment that did land — it resets with
 the buffer, and a scene that skips it draws at device pixels for one frame.
+
+A dead band is measured against the last accepted value, so a slow drag
+accumulates: every step falls inside the band and the parameter drifts without
+one rebuild. Where the resize feeds a derived 0–1 parameter rather than a pixel
+size, quantise it onto an absolute ladder instead. Work over any sweep is then
+bounded by the rung count, and returning to a width gives back exactly the value
+it had before — which a relative band cannot promise. 32–128 rungs.
+```js
+const t = Math.min(1, Math.max(0, (WIDE - w) / SPAN))
+const q = Math.round(t * RUNGS) / RUNGS      // identical q ⇒ no work downstream
+```
+⚠ The two compose rather than compete: dead-band the raw size to absorb browser
+chrome, quantise the derived parameter to bound the work. Quantising a *length*
+instead is visible — the layout steps.

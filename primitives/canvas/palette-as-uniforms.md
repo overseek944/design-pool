@@ -4,7 +4,7 @@ category: canvas
 tags: [shader,color,system]
 axes: none
 cost: 2
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -44,3 +44,18 @@ new MutationObserver(ms => ms.some(m => m.attributeName === 'class') && sync())
 ```
 ⚠ Fires on every unrelated root class write, and `sync` reads computed style —
 filter on the attribute name, and disconnect in teardown.
+
+Where the re-render on theme change is expensive — a resampled image field, not
+a uniform write — the canvas is stale or blank for as long as it takes, and
+clearing it first turns the swap into a flash. Stack two canvases, draw the new
+palette into the hidden one, and flip an attribute the stylesheet cross-fades
+on. The old state holds until the new one is complete and the swap costs one
+opacity transition.
+```css
+.stage canvas { opacity: 0; transition: opacity var(--swap) }
+.stage[data-layer="0"] canvas:first-of-type,
+.stage[data-layer="1"] canvas:last-of-type { opacity: 1 }
+```
+⚠ Draw into the *inactive* index and flip only once the draw returns — flipping
+first reintroduces the blank frame this exists to prevent. Two backing stores at
+device resolution is double the memory: for a figure, not a full-bleed field.

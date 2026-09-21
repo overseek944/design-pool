@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,type,texture,image,ambient,generative]
 axes: {energy: 2, density: 4, weight: 2, finish: 3}
 cost: 4
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: [canvas-behind-dom-not-instead-of-it]
@@ -56,3 +56,19 @@ sctx.drawImage(video, (vw-sw)/2, (vh-sh)/2, sw, sh, 0, 0, cols, rows)
 ```
 ⚠ Measure the ratio from the face actually shipped — 1.45–1.55 covers most
 monos, and a different one moves it enough to see.
+
+Swap the glyph for a filled circle and the ramp becomes continuous — radius
+carries luminance directly, so tone is smooth rather than quantised to however
+many characters the ramp holds. It also collapses the call count warned about
+above: every dot shares one `fillStyle`, so the field is one path and a handful
+of `fill()`s instead of 10k+ `fillText`s. Cells 3–10px, radius ceiling 0.5–0.7
+of the cell so the darkest areas still close to solid.
+```js
+ctx.fillStyle = ink; ctx.beginPath()
+for (const d of dots) { ctx.moveTo(d.x + d.r, d.y); ctx.arc(d.x, d.y, d.r, 0, 6.283)
+  if (++n >= 5e4) { ctx.fill(); ctx.beginPath(); n = 0 } }
+ctx.fill()
+```
+⚠ `moveTo` before every `arc` or each dot is joined to the last by a chord
+straight across the image. Raise luminance to a power of 0.8–1.8 here too — dot
+*area* grows as the square of the radius, so a linear map reads far too dark.

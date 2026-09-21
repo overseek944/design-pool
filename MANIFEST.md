@@ -1,6 +1,6 @@
 # Manifest
 
-531 primitives. Format: `category/id | axes cost | tags | gist`
+534 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -18,6 +18,7 @@ canvas/composed-arrival-field | E3 D3 W2 F5 $2 | shader stagger clock uniform re
 canvas/context-loss-rearm | neutral  $2 | canvas correctness lifecycle architecture | A 2D context is lost the same way a WebGL one is — a GPU process
 canvas/curl-of-potential-field | E2 D3 W2 F4 $3 | canvas flow field generative motion | Advecting anything through a hand-made velocity field pools it i
 canvas/delay-binned-source-history | E2 D2 W2 F5 $4 | canvas field pointer motion generative | A field evaluated from the driver's current pose updates everywh
+canvas/density-terminated-raster | E1 D3 W3 F4 $2 | canvas texture image mask edge generative | A generated raster ends at a rectangle unless something is done 
 canvas/derivative-width-edge-aa | neutral  $2 | shader canvas precision correctness detail | A procedural shape in a fragment shader gets no antialiasing for
 canvas/described-canvas-figure | neutral  $1 | canvas accessibility architecture diagram | A canvas carrying the argument — a diagram, a chart, a staged ex
 canvas/difference-gated-temporal-blend | neutral  $3 | canvas shader texture performance correctness simulation | Blending each frame into the last kills the per-pixel boil of a 
@@ -75,6 +76,7 @@ color/declared-contrast-escalation | neutral  $1 | accessibility contrast tokens
 color/disposition-token-set | neutral  $1 | color tokens state correctness accessibility | A review queue is not a severity display, and borrowing success/
 color/embedded-replica-palette-split | neutral  $1 | color tokens product mock architecture | A page embedding a working replica of the product needs two toke
 color/gamut-ladder-fallback | neutral  $1 | color tokens progressive-enhancement correctness | Ship every colour token twice: an sRGB hex baseline, then the wi
+color/midpoint-switched-ink | E2 D1 W2 F5 $2 | theme transition contrast color custom-properties legibility | A theme toggle that tweens paper and ink on one curve passes thr
 color/near-black-single-ramp | E2 D2 W4 F4 $1 | color palette dark restraint | Pure #000 ground, off-white #ededed text, and ONE neutral ramp (
 color/parallel-alpha-ramp | neutral  $2 | color tokens alpha borders theming | Ship two neutral ramps of equal length: one opaque, one alpha-on
 color/pattern-encoded-series | E1 D3 W2 F4 $2 | color accessibility pattern data contrast texture | Hue alone cannot carry series identity — it fails in greyscale, 
@@ -126,6 +128,7 @@ interaction/offset-shadow-press | E3 D2 W4 F2 $1 | interaction state depth detai
 interaction/one-sided-hover-delay | E2 D2 W2 F5 $1 | interaction hover delay css-only restraint pointer | A hover-revealed panel wants patience on the way in and none on 
 interaction/outward-corner-target | E3 D2 W1 F5 $2 | interaction state focus border precision detail | Four L-brackets absent at rest, then flying outward past the ele
 interaction/overdamped-surface-tilt | E2 D1 W3 F5 $1 | interaction pointer transform motion restraint custom-property | Most pointer-reactive surfaces try to keep up, and keeping up re
+interaction/override-released-system-preference | neutral  $1 | theme preference accessibility correctness state | A page that mirrors prefers-color-scheme and also ships a toggle
 interaction/paired-focus-offset-tokens | neutral  $1 | accessibility focus tokens correctness | Ship the focus ring as three tokens — width, an outer offset, an
 interaction/partial-modality-inert-siblings | neutral  $2 | interaction dialog accessibility inert focus correctness | Not every overlay should take the whole page. A panel hung off a
 interaction/pointer-transparent-copy-layer | neutral  $1 | interaction pointer accessibility layout correctness | Copy laid over a background that reacts to the pointer swallows 

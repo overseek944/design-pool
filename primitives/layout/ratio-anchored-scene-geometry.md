@@ -4,7 +4,7 @@ category: layout
 tags: [layout,architecture,responsive,tokens,geometry,css-only]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -28,3 +28,17 @@ recomposes at any aspect instead of cropping, with nothing measured.
 ⚠ Every layer depends on one number, so a wrong `--anchor` breaks the scene
 everywhere at once. Keep it in one declaration; overriding it per
 breakpoint is what the fractions exist to avoid.
+
+`calc()` only reaches parameters that are lengths. Where the scene's shape is
+carried by things it cannot express — a focal point, an angle, a zoom, an
+exponent — name two presets, wide and narrow, and interpolate the whole object
+by that same single number. One value still owns the recomposition, the artwork
+re-frames continuously instead of jumping at a breakpoint, and a new parameter
+costs one key in two objects rather than a rule per breakpoint.
+```js
+const mix = (a, b) => a + (b - a) * t
+const p = Object.fromEntries(Object.keys(WIDE).map(k => [k, mix(WIDE[k], NARROW[k])]))
+```
+⚠ Only for parameters that are genuinely continuous — interpolating a count, an
+index or an enum yields values neither preset intends. Those stay on a
+threshold.
