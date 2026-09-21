@@ -4,7 +4,7 @@ category: media
 tags: [media,iframe,embed,responsive,architecture]
 axes: none
 cost: 3
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

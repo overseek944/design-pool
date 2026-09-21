@@ -4,7 +4,7 @@ category: perf
 tags: [performance,webgl,capability,progressive-enhancement,correctness]
 axes: none
 cost: 2
-seen: 14
+seen: 15
 requires: []
 conflicts: []
 completes: []
@@ -122,3 +122,19 @@ if (ms < LOW  && ++fast >= 180)  { step(+1); fast = 0; ms = 0 }   // ~3s
 `LOW` and `HIGH`, or a tier whose own cost sits between them promotes and
 demotes forever. Reset the average on every step; it was measured at a
 resolution that no longer exists.
+
+Network class is a third ladder and does not belong in the same expression as
+the others. Resolve viewport, memory and connection separately, then take the
+*floor*: a fast machine on a throttled link must not keep the tier its memory
+earned, and a phone on fibre must not keep the tier its bandwidth earned.
+`effectiveType` alone over-promotes — pair it with `downlink`, since a nominal
+4g under 4–6Mbit/s is a medium rung, not the top one.
+```js
+const c = navigator.connection
+const net = c?.effectiveType === '4g' && (c.downlink ?? 0) > 5 ? 2
+          : /4g|3g/.test(c?.effectiveType ?? '') ? 1 : 2      // absent → optimistic
+tier = Math.min(viewTier, memTier, net)
+```
+⚠ Absent must resolve to the *top* rung, not zero — the API is Chromium-only, so
+a falsy default tiers down every other engine. Read it once: re-reading
+mid-session downgrades assets already fetched at the higher tier.

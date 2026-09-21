@@ -4,7 +4,7 @@ category: layout
 tags: [layout,chrome,tokens,custom-property,architecture,overlay,correctness]
 axes: none
 cost: 2
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -72,3 +72,16 @@ useEffect(() => { root.style.setProperty('--dock-h', shown ? H : '0px')
 ⚠ The reserve is page-end padding, not margin — margin collapses through the
 last child and the bar covers the footer anyway. And it accumulates with
 `env(safe-area-inset-bottom)` rather than maximising against it.
+
+The contract needs both sides, and some chrome will never hold up its end — a
+consent bar, a vendor pill, anything mounted by a branch that never sees the
+root. Test for its *presence* from a common ancestor and let the offset fall out
+of the selector: nothing to publish, no lifecycle to own, no teardown to forget,
+and it is correct the frame the element appears.
+```css
+body:has([data-sticky-cta]) [data-consent] {
+  inset-block-end: calc(4.5rem + env(safe-area-inset-bottom)) }   /* bar 3.5–5.5rem */
+```
+⚠ The selector hard-codes the other overlay's height, so the two drift the first
+time one is restyled. Fine for a pair; past that the published value is the only
+thing that scales.

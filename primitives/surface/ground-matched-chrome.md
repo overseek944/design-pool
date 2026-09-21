@@ -4,7 +4,7 @@ category: surface
 tags: [chrome,nav,scroll,contrast,theme,accessibility]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,17 @@ collapses the viewport to the bar's band reports which is beneath. Cross-fade
 ⚠ Each treatment owes the full ratio on its own ground, focus ring included, or
 keyboard focus vanishes across half the page. A section shorter than the bar is
 never reported — fall back to the last tone, never to none.
+
+An observer cannot report a section shorter than the bar, so measure instead of
+subscribe. Read the bar's *live* bottom edge from its own rect — it moves when a
+banner above is dismissed or the bar contracts — and test each opted-in section
+for overlap with the band above it. Sections declare themselves with an
+attribute rather than the bar knowing their selectors, so a new dark section is
+correct without touching the chrome.
+```js
+const b = bar.getBoundingClientRect().bottom
+const dark = marked.some(n => { const r = n.getBoundingClientRect()
+                                return r.top < b && r.bottom > 0 })
+```
+⚠ This is a layout read per marked section per scroll frame. Cache the node list
+and re-query only on route change, and keep the set under 10–20.

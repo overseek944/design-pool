@@ -4,7 +4,7 @@ category: type
 tags: [type,display,headline,hierarchy,contrast]
 axes: {energy: 1, density: 2, weight: 4, finish: 5}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -49,3 +49,16 @@ than the measure; at parity the step disappears.
 ⚠ The step is legible only while both blocks share a measure — set the width on
 the wrapper, never on the lines, or each sizes to its own content and the edges
 stop meeting.
+
+The dropped channel can be tint — same face, same weight, same size, the
+continuation clause taken to a pale value of the ground's own hue family. It
+needs no light cut to exist, survives translation, and holds below the size
+where a weight drop stops reading. Mix 35–55% of the ink into the paper; past
+that the clause reads as disabled rather than subordinate.
+```css
+h1 span { color: color-mix(in oklab, var(--ink) 42%, var(--paper)) }
+```
+⚠ Unlike a weight drop this is not free — the clause is still the sentence and
+owes 4.5:1. A light ground is where it fails: a tint picked to look soft against
+cream lands near 1.7:1, and the same mix on a dark ground passes easily and
+hides the bug. Score both.
