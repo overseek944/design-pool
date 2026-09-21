@@ -1,6 +1,6 @@
 # Manifest
 
-778 primitives. Format: `category/id | axes cost | tags | gist`
+781 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -53,6 +53,7 @@ canvas/lattice-quantised-mark-draw | E2 D3 W2 F4 $2 | canvas particles grid latt
 canvas/lifetime-enveloped-mark-respawn | E2 D3 W1 F5 $1 | canvas field particles motion generative recycling | A fixed pool of marks recycled on exhaustion makes birth and dea
 canvas/liveness-floor-reseed | neutral  $2 | canvas generative simulation ambient lifecycle correctness | Most interesting generative rules are also mortal. A lattice, a 
 canvas/named-uv-spaces | neutral  $3 | shader architecture responsive correctness reference | One vertex shader can emit several named coordinate spaces so ea
+canvas/normalised-index-profile-windows | E1 D2 W2 F5 $1 | generative field envelope responsive precision authoring | Organic variation gives a generated run texture but no large-sca
 canvas/normalised-morph-target-set | E3 D4 W2 F4 $3 | canvas particles morph generative shape | One field of marks can be several forms. Write each form as a pu
 canvas/octave-summed-edge-profile | E2 D2 W2 F3 $1 | canvas generative motion noise field cheap | A horizon, a wave crest or a ribbon edge needs an organic profil
 canvas/ordered-dither-threshold-field | E2 D4 W3 F2 $2 | canvas texture pattern raster two-tone generative | Reduce a continuous field to exactly two colours by comparing ea
@@ -98,6 +99,7 @@ canvas/velocity-paired-field-step | E3 D2 W2 F5 $3 | canvas simulation shader te
 canvas/video-textured-mark-field | E2 D3 W2 F5 $3 | canvas video particles texture motion performance | A field of marks needs content as well as motion, and inventing 
 canvas/warm-started-relaxation | neutral  $1 | canvas simulation performance shader solver | An iterative solve re-run every frame — a pressure projection, a
 canvas/wedge-cloned-symmetric-field | E1 D4 W1 F5 $2 | canvas generative symmetry field particles cheap | A ring of marks placed from one pass of random draws clumps unev
+color/blend-window-channel-strip | E1 D3 W2 F5 $2 | color data series encoding interpolation two-tone | One strip can carry which of two sources owns each point along i
 color/chroma-weighted-peer-rank | E1 D2 W3 F5 $1 | color hierarchy accent icon grid contrast | Two grids of identical cards on one page read as equally importa
 color/declared-contrast-escalation | neutral  $1 | accessibility contrast tokens type color | prefers-contrast: more is not a second theme — it is permission 
 color/disposition-token-set | neutral  $1 | color tokens state correctness accessibility | A review queue is not a severity display, and borrowing success/
@@ -130,6 +132,7 @@ interaction/anchor-focus-handoff | neutral  $1 | accessibility navigation focus 
 interaction/anchor-only-nav-collapse | neutral  $1 | navigation responsive accessibility architecture correctness | Where every link in a bar is an in-page anchor, the narrow-viewp
 interaction/auto-advance-yields-to-input | E2 D2 W2 F5 $2 | carousel autoplay accessibility state | A self-advancing sequence must stop the instant a reader touches
 interaction/autofill-proofed-honeypot | neutral  $1 | accessibility correctness form detail progressive-enhancement | A decoy field is the alternative to a visible challenge widget a
+interaction/axis-bell-pointer-gain | E3 D2 W2 F5 $2 | interaction pointer falloff data hover detail | A row of elements already carrying values can answer the pointer
 interaction/axis-swapped-disclosure | neutral  $2 | disclosure responsive layout-animation breakpoint accessibility | A detail panel opens downward in a stacked column and sideways b
 interaction/background-drawn-control-affordance | neutral  $1 | forms native-control dark-ground affordance select | appearance: none on a <select> deletes its arrow, and it takes n
 interaction/breakpoint-dual-mode-details | neutral  $2 | disclosure navigation responsive accessibility progressive-enhancement | One <details> can be a permanently-open sidebar above a breakpoi

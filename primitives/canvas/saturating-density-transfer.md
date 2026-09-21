@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,shader,color,field,opacity]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -40,3 +40,17 @@ sum += uColors[i] * w; cover = max(cover, w);
 ⚠ Emit `cover` as alpha rather than compositing against a guessed ground: the
 layer then sits on whatever the page actually is, and a palette or theme change
 cannot leave a rectangle behind it.
+
+The same transfer belongs on *geometry* wherever a value is drawn into a box
+that cannot grow. Scaling a bar linearly against an expected maximum means one
+loud sample clips flat against the ceiling and every neighbour past it clips
+with it, so the top of the range carries no shape at all. Divide by the bar's
+own available height before the curve and multiply back after — `h·tanh(v/h)` —
+and the mapping self-normalises per bar: full scale lands near 76%, nothing can
+overflow, and peaks stay ordered instead of merging into a plateau.
+```js
+const h = Math.max(MIN, avail[i])          // per-element budget, not one global
+bar[i].style.transform = `scaleY(${Math.tanh(v[i] / h)})`
+```
+⚠ The knee is the whole point and it is fixed — to make the compression gentler
+or harder, scale `v` going in rather than reaching for a different curve.

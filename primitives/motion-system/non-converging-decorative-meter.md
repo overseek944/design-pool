@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,mock,meter,progress,accessibility]
 axes: {energy: 2, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []

@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,generative,motion,noise,field,cheap]
 axes: {energy: 2, density: 2, weight: 2, finish: 3}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
