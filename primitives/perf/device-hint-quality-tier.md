@@ -4,7 +4,7 @@ category: perf
 tags: [performance,webgl,capability,progressive-enhancement,correctness]
 axes: none
 cost: 2
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []
@@ -77,3 +77,15 @@ the constraint that actually bites, and input class is its own ladder. Leave
 core count out unless work is genuinely being sharded across workers.
 ⚠ Where it is used at all the threshold is not 4 — a machine reporting 2 is a
 real signal, 4 is noise.
+
+Render scale is not capped at 1 in the other direction either. The case that
+variant excludes — hairlines, glyphs, hard silhouettes, anything procedural
+with an edge — is the one that wants scale *above* 1: render into a target
+1.15–1.5× the display box and let the compositor downsample. It is cheaper
+than MSAA on a fullscreen pass, works where the fragment stage cannot ask for
+a derivative, and stacks with the pixel-ratio clamp rather than fighting it.
+```js
+rt.setSize(Math.ceil(w * SS), Math.ceil(h * SS))   // SS 1.15–1.5
+```
+⚠ Fragment cost is the square of the factor, so 1.5 is 2.25× the shading —
+budget it on the top tier only, and fall to 1.0 rather than below it.

@@ -4,7 +4,7 @@ category: canvas
 tags: [shader,canvas,precision,correctness,detail]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -38,3 +38,16 @@ if (mask <= 0.001) discard;
 ```
 ⚠ Holds only while the size is genuinely constant — the moment size varies with
 depth or zoom the band is back to being mush at one end.
+
+The derivative is also wrong whenever the coordinate being shaded is not the
+fragment's own — a pattern re-solved onto a second surface, a value fetched
+through an indirection. `fwidth` then measures the wrong quantity and the band
+pulses as the camera moves. Compute the footprint from the geometry instead:
+distance to the camera over focal length times the smaller resolution axis,
+divided by `|N·V|` with a floor so grazing angles stay bounded.
+```glsl
+float pw = length(pos - camPos) / (FOCAL * min(uRes.x, uRes.y));
+pw /= max(abs(dot(n, rd)), 0.3);
+```
+⚠ The resolution term is whatever target is being written, not the canvas —
+supersampling into a larger buffer halves the footprint and nothing warns.

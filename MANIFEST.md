@@ -1,12 +1,14 @@
 # Manifest
 
-499 primitives. Format: `category/id | axes cost | tags | gist`
+504 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
+canvas/absorbing-field-boundary | neutral  $1 | canvas simulation shader texture solver correctness | A simulation lives on a finite grid and whatever reaches the edg
 canvas/alpha-bucketed-path-batch | E2 D4 W1 F5 $3 | canvas svg performance generative texture batching | Thousands of individually-faded SVG marks means thousands of nod
 canvas/alpha-gated-cell-population | E1 D3 W2 F4 $3 | canvas generative field image mask silhouette grid | A field of marks in the shape of an arbitrary form usually means
 canvas/baked-cell-frame-stream | neutral  $4 | canvas animation precomputed payload performance field | An ambient field whose motion is authored rather than simulated 
+canvas/bisected-heightfield-march | neutral  $4 | canvas shader generative performance projection | A heightfield is not a distance field, so sphere tracing has not
 canvas/borrowed-scene-constructors | neutral  $2 | canvas 3d architecture interop bundle | A wrapper that owns the renderer — a globe, a model viewer, a 3D
 canvas/bucketed-depth-order | neutral  $2 | canvas performance depth particles batching quantise | Painter's order on a 2D context normally means sorting every mar
 canvas/canvas-behind-dom-not-instead-of-it | neutral  $2 | canvas architecture accessibility | Absolutely-positioned inset-0 canvas with pointer-events-none un
@@ -17,6 +19,7 @@ canvas/curl-of-potential-field | E2 D3 W2 F4 $3 | canvas flow field generative m
 canvas/delay-binned-source-history | E2 D2 W2 F5 $4 | canvas field pointer motion generative | A field evaluated from the driver's current pose updates everywh
 canvas/derivative-width-edge-aa | neutral  $2 | shader canvas precision correctness detail | A procedural shape in a fragment shader gets no antialiasing for
 canvas/described-canvas-figure | neutral  $1 | canvas accessibility architecture diagram | A canvas carrying the argument — a diagram, a chart, a staged ex
+canvas/difference-gated-temporal-blend | neutral  $3 | canvas shader texture performance correctness simulation | Blending each frame into the last kills the per-pixel boil of a 
 canvas/direction-sampled-burst | E4 D3 W2 F4 $2 | canvas particles generative distribution depth | Independent per-axis ranges can only ever fill a rectangle, so a
 canvas/displacement-driven-colour-ramp | E2 D2 W2 F5 $3 | shader gradient surface generative ambient | A displaced surface normally needs a light to be legible — norma
 canvas/document-spanned-viewport-field | neutral  $2 | canvas scroll background generative architecture performance | A decorative field belongs either to the viewport or to the docu
@@ -42,6 +45,7 @@ canvas/packed-word-pixel-writes | neutral  $2 | canvas performance raster imaged
 canvas/palette-as-uniforms | neutral  $2 | shader color system | Pass the site's palette into the shader as named vec3 uniforms r
 canvas/parametric-thickness-variation | E3 D3 W2 F4 $3 | shader organic detail | Drive line or ribbon thickness with uThickness + uThickVary nois
 canvas/path-data-construction-overlay | E1 D4 W1 F5 $3 | svg path annotation overlay technical diagram | Artwork on the page already carries its own construction. Walk t
+canvas/pattern-space-from-smooth-twin | neutral  $3 | canvas shader grid noise correctness generative | A ruled overlay drawn in a noisy surface's coordinates inherits 
 canvas/periodic-organic-blend-scalar | E2 D3 W2 F4 $2 | shader generative noise parameters surface | Noise alone always reads organic; a periodic function alone alwa
 canvas/prebaked-gradient-sprite | neutral  $2 | canvas performance particles light | createRadialGradient allocates and rasterises on every call, so 
 canvas/precomputed-cell-attenuation-field | E1 D2 W2 F5 $2 | canvas legibility performance ambient contrast generative | A generative field at full strength everywhere either drowns the
@@ -62,6 +66,7 @@ canvas/standard-uniform-set | neutral  $2 | shader architecture reference | A sm
 canvas/svg-userspace-pointer-mapping | neutral  $1 | svg pointer correctness interaction geometry | An SVG with a viewBox is drawn in its own coordinate system, and
 canvas/tilted-heightfield-mark-sheet | E2 D3 W1 F4 $3 | canvas 3d projection field depth scenery | Deep scenery on a 2D context needs no renderer: sample a summed-
 canvas/unit-box-asset-framing | neutral  $2 | canvas correctness scale geometry architecture | A loaded 3D asset arrives at whatever scale and origin its expor
+canvas/velocity-paired-field-step | E3 D2 W2 F5 $3 | canvas simulation shader texture solver generative | A field stepped by diffusion spreads and dies. One that should t
 canvas/video-textured-mark-field | E2 D3 W2 F5 $3 | canvas video particles texture motion performance | A field of marks needs content as well as motion, and inventing 
 canvas/warm-started-relaxation | neutral  $1 | canvas simulation performance shader solver | An iterative solve re-run every frame — a pressure projection, a
 color/chroma-weighted-peer-rank | E1 D2 W3 F5 $1 | color hierarchy accent icon grid contrast | Two grids of identical cards on one page read as equally importa

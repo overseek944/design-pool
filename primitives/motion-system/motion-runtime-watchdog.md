@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,correctness,accessibility,progressive-enhancement,reveal]
 axes: none
 cost: 2
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -65,3 +65,17 @@ clean up, and the guarantee is the stylesheet's rather than every code path's.
 ⚠ Specificity must match or exceed the hide rule — `!important` on both, or the
 media block after it in source order. It fires on a mid-session flip too, which
 the script's own setup-time branch does not.
+
+The cheapest form of the same gate is one class, not a timer: an inline script
+in the head adds `js` to the root element, and every hidden rule is scoped
+under it. Nothing is duplicated into a `<noscript>` block, there is no window
+where both branches apply, and a reader with script off — which includes every
+crawler and text extractor — is served the settled page.
+```html
+<script>document.documentElement.classList.add('js')</script>
+```
+```css
+.js [data-reveal] { opacity: 0; transform: translateY(12px) }
+```
+⚠ Covers script absent, not script broken. Where the bundle can fail after
+parsing, this is the floor under the timer above, not a replacement for it.

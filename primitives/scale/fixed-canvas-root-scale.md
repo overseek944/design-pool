@@ -4,7 +4,7 @@ category: scale
 tags: [scale,layout,proportion,transform,responsive]
 axes: {energy: 1, density: 2, weight: 3, finish: 4}
 cost: 2
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -102,3 +102,15 @@ new ResizeObserver(([e]) => el.style.setProperty('--f', e.contentRect.width / dw
 ```
 ⚠ The ratio and the width are still two statements of one decision — derive the
 `aspect-ratio` from the same pair of properties or a redraw desynchronises them.
+
+The stepped per-breakpoint factor above answers width; a stage that must fit
+between fixed chrome and the fold is bound on *height* instead, and no width
+query sees the problem. Step the same factor off `max-height` — a short laptop
+and a phone in landscape are the readers who lose the bottom of a diagram.
+Three steps over 750–1000px of height, 0.6–0.85, is enough.
+```css
+@media (max-height: 1000px) { .stage { transform: scale(.8) } }
+@media (max-height: 750px)  { .stage { transform: scale(.62) } }
+```
+⚠ The reserved box has to shrink with it or the scaled stage leaves a growing
+band of dead space under itself at every step.

@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,navigation,focus,correctness,anchor]
 axes: none
 cost: 1
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
@@ -85,3 +85,16 @@ scrollBy({ top: gap, behavior: reduced ? 'auto' : 'smooth' })
 ⚠ Fixing the cause is the better half of this: intrinsic `width`/`height` on every
 image below the fold removes most of the drift, and the correction then only covers
 what cannot be reserved.
+
+None of this reaches a page that scrolls inside an element rather than the
+document. Fragment navigation moves the document, which has nowhere to go, so
+the landing is silently wrong on every direct hit of a hash URL. Resolve it by
+hand once on mount — target rect minus scroller rect plus its `scrollTop` —
+and focus the scroller itself with `preventScroll`, or Page Down and the arrow
+keys do nothing until something inside is clicked.
+```js
+c.scrollTo({ top: t.getBoundingClientRect().top - c.getBoundingClientRect().top
+             + c.scrollTop, behavior: 'instant' })
+c.focus({ preventScroll: true })            // plus tabindex="-1" and a name
+```
+⚠ Run it after layout settles; a scroller measured mid-hydration lands short.
