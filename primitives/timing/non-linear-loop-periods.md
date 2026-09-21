@@ -4,7 +4,7 @@ category: timing
 tags: [motion,ambient,rhythm]
 axes: {energy: 3, density: 3, weight: 2, finish: 4}
 cost: 2
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -33,3 +33,18 @@ locked. One such part, not two; a second turns the discipline back into noise.
 .scene > * { animation-duration: 10s }   /* locked */
 .beam      { animation: sweep 2.4s ease-in-out infinite }
 ```
+
+A period expressed as a percentage does not survive a breakpoint. A slow pan
+across a cover-fitted image translating 30% of its own width covers a different
+number of device pixels at every viewport, so one duration reads as drift on a
+desktop and as a swipe on a phone — and the travel is also bounded by the crop
+headroom, which a narrow box may not have. Author the narrow branch as its own
+keyframe: scale up first to buy overflow, then spend less of it, and set the
+duration from the same px/s target.
+```css
+.pan { animation: wide 45s linear infinite }            /* 30% travel */
+@media (max-width: 640px) { .pan { animation: narrow 15s linear infinite } }
+@keyframes narrow { to { transform: scale(1.2) translateX(15%) } }
+```
+⚠ Scale before translate or the travel is scaled too, and the edge arrives
+early.

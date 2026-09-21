@@ -4,7 +4,7 @@ category: perf
 tags: [cls,loading,accessibility,architecture,correctness,code-splitting]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []

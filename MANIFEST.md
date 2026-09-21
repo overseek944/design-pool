@@ -1,6 +1,6 @@
 # Manifest
 
-480 primitives. Format: `category/id | axes cost | tags | gist`
+483 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -92,6 +92,7 @@ interaction/copy-with-selection-fallback | neutral  $1 | interaction clipboard a
 interaction/coreference-trace-highlight | E2 D3 W2 F5 $2 | interaction annotation cross-reference highlight accessibility diagram | Where one value recurs across panels — a figure in a table, the 
 interaction/count-indexed-sheet-stack | E2 D3 W2 F5 $3 | sheet overlay stack gesture depth transform | A stack of sheets needs one number, not a state machine: how man
 interaction/dimension-coded-position-dot | E2 D2 W2 F5 $1 | interaction state indicator accessibility carousel | Let the active item in a position indicator change size, not onl
+interaction/dismissal-escalated-reprompt | neutral  $2 | interaction prompt cadence persistence restraint correctness | A recurring prompt — install, subscribe, upgrade — needs a caden
 interaction/drag-suppressed-click-threshold | neutral  $2 | pointer drag interaction correctness accessibility | A surface that answers to drag and also holds links fires a clic
 interaction/edge-hotzone-sibling-reveal | E2 D2 W2 F5 $2 | interaction hover panel chrome css-only accessibility | Reclaim the width a hidden rail costs without a toggle: park an 
 interaction/edge-traversing-knob | E3 D2 W2 F5 $1 | interaction state affordance motion detail | A control states its direction by sending its own mark the whole
@@ -102,6 +103,7 @@ interaction/focusable-graphic-regions | neutral  $2 | accessibility svg focus di
 interaction/gap-spanning-hover-bridge | E2 D2 W2 F5 $1 | interaction hover panel menu css-only accessibility | A panel held off its trigger by a visual gap is unreachable by h
 interaction/gesture-affordance-label | E1 D2 W2 F4 $1 | affordance interaction accessibility detail ux | A surface whose only affordance is a gesture — drag to orbit, sc
 interaction/hairline-native-scrubber | E2 D1 W1 F5 $1 | interaction accessibility control scrub native diagram | A diagram that scrubs deserves a real <input type=range>, not a 
+interaction/history-entry-backed-overlay | neutral  $2 | interaction overlay history dismiss mobile correctness | An overlay opened from a button owns no history entry, so the ba
 interaction/hysteretic-lock-zone | neutral  $1 | interaction pointer state correctness threshold | Any boolean derived from a continuous input — pointer inside a z
 interaction/idle-scroll-cue | E2 D1 W2 F4 $1 | scroll affordance feedback motion | A page whose motion is entirely scroll-driven stops when the rea
 interaction/inert-tracks-opacity | neutral  $1 | accessibility focus correctness overlay pointer-events | An element faded to opacity: 0 is still in the tab order, still 
@@ -370,6 +372,7 @@ scroll/smooth-scroll-driving-timeline | E3 D2 W3 F5 $3 | scroll motion architect
 scroll/stale-scroll-request-guard | neutral  $2 | scroll correctness accessibility events navigation | A scroll request crossing an async boundary — posted by an embed
 scroll/sticky-as-cheap-pin | E1 D2 W2 F3 $1 | scroll layout performance | position: sticky for anything that only needs to hold position —
 scroll/tall-target-intersection-clause | neutral  $1 | scroll correctness observer reveal | intersectionRatio is a fraction of the element, so a section tal
+scroll/whole-item-rail-page | neutral  $1 | scroll rail pagination control measurement correctness | An arrow that scrolls a horizontal rail by a fixed distance — 30
 surface/arc-length-colour-ramp-stroke | E3 D2 W2 F5 $3 | svg stroke gradient color dash effect | An SVG gradient paints in the element's box, so a stroke that cu
 surface/backdrop-blur-tier-system | E1 D3 W3 F4 $3 | surface depth glass | Treat backdrop blur as a depth scale, not a decoration: sm for i
 surface/baseline-closed-area-path | E2 D2 W2 F5 $1 | svg chart sparkline data precision | A sparkline's tinted area and its stroke must never disagree by 

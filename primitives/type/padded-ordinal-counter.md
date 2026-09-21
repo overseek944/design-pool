@@ -4,7 +4,7 @@ category: type
 tags: [type,list,counter,detail,technical]
 axes: {energy: 1, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -37,3 +37,17 @@ to it — `"FIG." counter(fig) " // "` — or that sits in a caption rather than
 marker box. The built-in style pads to two digits only and then grows, so it
 holds a run under a hundred and quietly breaks the column past it; above that,
 back to a `@counter-style` with an explicit `pad`.
+
+Scenery reads as a layer rather than as a label once the item *occludes* it.
+Set the figure in the same cell as the card, behind it and offset so the card
+covers a third to a half of the glyph, and let the row's first numeral run off
+the container edge — a mark that is clipped and overlapped is plainly not
+content, so it can be tinted much closer to the text colour than a free-standing
+one and still not compete. Figure 1.4–2.2× the card's height.
+```css
+.rank { display: grid } .rank > * { grid-area: 1/1 }
+.rank .n { font-size: clamp(6rem, 12vw, 11rem); color: var(--ash); z-index: 0 }
+.rank .card { z-index: 1; justify-self: end; inline-size: 72% }
+```
+⚠ The clipped first numeral must still be the *same* size as the rest — shrink
+it to fit and the row reads as a mistake.

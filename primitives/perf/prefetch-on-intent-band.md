@@ -4,7 +4,7 @@ category: perf
 tags: [performance,navigation,prefetch,observer,architecture]
 axes: none
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -42,3 +42,17 @@ if (l.dataset.warm !== origin) (l.href = origin, l.dataset.warm = origin)
 Gate the whole ladder on connection quality, not just `saveData`:
 `effectiveType` of `2g` or `slow-2g` means speculative bytes compete with the
 ones actually asked for.
+
+Widen the band when the payoff is *visible* rather than hidden. A dwell that
+swaps a still for a moving preview is a change the reader will see land, so a
+100ms arm strobes the whole grid on the way past — 300–500ms, and the response
+must be discarded if the pointer has already left, because the request outlives
+the intent that started it. Keep a live flag beside the timer and check it after
+the await; clearing the timer alone does not cancel a fetch in flight.
+```js
+onEnter = () => { live = true; t = setTimeout(async () => {
+  const r = await load(id); if (live) show(r) }, 400) }        // 300–500ms
+onLeave = () => { live = false; clearTimeout(t); hide() }
+```
+⚠ Gate the arm on a precise pointer *and* on reduced motion — a preview that
+begins moving on dwell is motion the reader did not request.

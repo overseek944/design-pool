@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,observer,navigation,architecture,correctness]
 axes: none
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -60,3 +60,16 @@ new IntersectionObserver(([e]) => bar.toggleAttribute('data-raised', !e.isInters
 ```
 ⚠ The sentinel must not be the sticky element's own child — it scrolls with the
 bar and never leaves the root.
+
+The sentinel need not be zero-height, and making it the sticky bar's *previous
+sibling* is the tidier form: give it a real height and cancel that height with
+an equal negative bottom margin, so it costs nothing in flow while the distance
+scrolled before the state flips is the sentinel's own height. `rootMargin` goes
+back to `0` and the chrome height stops being restated in script — the band is
+tuned by editing one class, and a `w-px` keeps it from widening anything.
+```html
+<div aria-hidden="true" class="-mb-6 h-6 w-px"></div>   <!-- 16–48px band -->
+<header class="sticky top-0">…</header>
+```
+⚠ Sized in `rem`, the band moves with the root scale; sized in `px` it does
+not. Pick whichever matches what the threshold is meant to track.
