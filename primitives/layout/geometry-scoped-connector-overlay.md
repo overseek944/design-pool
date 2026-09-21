@@ -4,7 +4,7 @@ category: layout
 tags: [layout,diagram,connector,responsive,correctness,architecture]
 axes: none
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -43,3 +43,20 @@ demo.querySelector('.active-line').setAttribute('d', routes[name])
 ⚠ Author every route from the same endpoints so the active stroke lands exactly
 on the ghost it replaces — a half-pixel apart and the overlap reads as a
 doubled line rather than as a highlight.
+
+The other answer is to keep the layer and re-solve it. Where the stacked
+arrangement still has a spine to hang off — a rail down the margin, a numbered
+column — the same measured endpoints describe a different topology: an elbow
+rising into each card's top edge at the wide width becomes a straight stub into
+its left edge at the narrow one. Branch inside the solver on the same
+`matchMedia` query the columns use, and subscribe to its `change` event as well
+as resize — a breakpoint crossing is not always a container resize.
+```js
+const stack = matchMedia('(max-width: 44rem)')
+path.setAttribute('d', stack.matches ? `M 0 ${mid} H ${left}`
+  : `M 0 ${t} H ${cx - 14} Q ${cx} ${t} ${cx} ${t + 14} V ${top}`)
+stack.addEventListener('change', solve)
+```
+⚠ Worth it only where the narrow topology is legible on its own — a stub per
+row reads as a list marker, which is honest; a squeezed fan does not. A second
+path nobody looks at is worse than deleting the layer.

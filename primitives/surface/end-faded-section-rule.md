@@ -4,7 +4,7 @@ category: surface
 tags: [hairline,divider,gradient,section,restraint]
 axes: {energy: 1, density: 1, weight: 1, finish: 5}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -74,3 +74,17 @@ Gaps 8–14px, marks 2–5px.
 ```
 ⚠ The gaps are only legible against a quiet ground — over an image or a tint the
 rule reads as three unrelated lines rather than one interrupted one.
+
+A rule that is *revealed* rather than static wants its fade tied to the reveal
+instead of to its ends. Derive the transparent stop from the same variable that
+drives the clip, and the growing tip carries a soft head of fixed length at
+every position — the line reads as being drawn rather than as a solid bar being
+uncovered, and it never shows the hard edge a clip alone leaves. Head 80–200px;
+shorter and it is a clipped end again.
+```css
+--end: min(100%, max(0px, var(--reveal)));
+background: linear-gradient(to bottom, var(--line) 0,
+  var(--line) max(0px, calc(var(--end) - 140px)), transparent var(--end));
+```
+⚠ Every write repaints the gradient over the element's whole box where the clip
+alone would not — keep it a 1–2px sliver, and put no `filter` or shadow on it.

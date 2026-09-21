@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,tokens,architecture,full-bleed]
 axes: none
 cost: 2
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -47,3 +47,18 @@ width. Cache it once as a token and every breakout reads the same number.
 ```
 ⚠ Only valid measured on an element whose containing block is the root and that
 is not itself scrolling — anywhere else the two quantities are unrelated.
+
+A decorative rail that must align with a *different* template's content edge has
+two candidate positions and belongs on the inboard one: this page's own centring
+margin, and the line where the narrower container starts. `min()` of the two
+puts it on whichever constraint binds at that width, so it collapses toward the
+screen gutter as the window narrows instead of crossing the text. Then inset the
+content from the rail rather than from the container, and the gap between them
+is one number whichever branch won.
+```css
+--rail: min(var(--margin), calc(max(0px, (100cqw - 1240px) / 2) + var(--gutter)));
+--gap:  calc(var(--margin) + clamp(1.25rem, 4vw, 4rem) - var(--rail));
+.section { padding-inline: calc(var(--rail) + var(--gap)) var(--margin) }
+```
+⚠ The rail then sits where no grid line describes it — anything that has to meet
+it reads `--rail`, never a repeated literal, or the two drift at one breakpoint.

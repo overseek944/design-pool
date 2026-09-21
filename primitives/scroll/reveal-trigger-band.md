@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,reveal,thresholds]
 axes: {energy: 2, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 18
+seen: 19
 requires: []
 conflicts: []
 completes: []
@@ -48,3 +48,16 @@ the same fraction everywhere and needs no breakpoint.
 ```js
 new IntersectionObserver(cb, { rootMargin: "0px 0px -8% 0px", threshold: .12 })
 ```
+
+The same argument governs a scrub *distance*, with one extra move: clamp it. A
+draw-on that consumes a fixed 200px of scroll is a flick on a tall monitor and a
+drag on a laptop, so take a fraction of the viewport — but a bare fraction
+degenerates at both ends, snapping shut on a short window and outstaying itself
+on a very tall one. 20–28% of viewport height, floored near 120px and capped
+near 260px.
+```js
+const run = Math.min(260, Math.max(120, innerHeight * .24))
+const p = Math.min(1, Math.max(0, (innerHeight - box.top - offset) / run))
+```
+⚠ Recompute `run` on resize rather than once at setup — a rotated phone moves it
+by more than the whole width of the clamp.

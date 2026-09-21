@@ -1,6 +1,6 @@
 # Manifest
 
-762 primitives. Format: `category/id | axes cost | tags | gist`
+764 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -451,6 +451,7 @@ motion-system/reduced-motion-branch | neutral  $1 | motion accessibility require
 motion-system/remeasure-exempt-transition | neutral  $1 | indicator transition resize measurement correctness | A measured indicator — the underline under the active tab, the p
 motion-system/reset-frame-slot-recycle | E3 D1 W2 F4 $1 | motion transition state swap cycle correctness | One node that leaves upward and returns from below has to cross 
 motion-system/residual-length-trail-lock | E2 D2 W1 F5 $2 | motion svg stroke path diagram | A trail and the mover drawing it are two animations; time alone 
+motion-system/rest-declared-destination-entrance | neutral  $1 | motion entrance correctness architecture css-only state | An entrance whose end state is live — a scroll-written length, a
 motion-system/ring-down-impact-entrance | E4 D1 W4 F3 $1 | motion entrance keyframes impact choreography | An arrival that eases to rest says the element was placed. One t
 motion-system/scheduled-event-aliveness | E3 D2 W2 F4 $3 | idle loop character randomness raf ambient | Anything idling on sines reads as a mechanism — the period is au
 motion-system/scroll-energy-accumulator | E3 D2 W2 F4 $1 | scroll motion shader effect canvas | Scroll position says where something is; scroll effort should sa
@@ -519,6 +520,7 @@ reveal/arc-window-overstroke | E3 D2 W3 F5 $2 | draw-on highlight canvas pulse p
 reveal/axis-swept-plot-window | E2 D2 W2 F5 $2 | reveal chart svg clip-path motion data | A line drawn on with stroke-dashoffset is revealed by arc length
 reveal/char-opacity-drift | E3 D4 W2 F5 $4 | type motion reveal ambient | Per-character with opacity + small y, will-change:opacity,transf
 reveal/flow-preserved-step-reveal | E3 D2 W2 F3 $1 | reveal text steps clip-path typing layout-safety | A left-to-right text reveal animated on width leaves normal flow
+reveal/front-clipped-mixed-figure | E2 D2 W2 F5 $2 | reveal svg clip-path diagram motion detail | A figure that is not all strokes — connectors carrying node disc
 reveal/glyph-scramble-settle | E4 D3 W2 F3 $2 | type reveal motion technical text | Resolve a label out of noise rather than fading it in: hold the 
 reveal/index-thresholded-progress-gate | E2 D2 W2 F5 $1 | reveal scroll custom-properties progress cheap svg | One scalar can sequence a whole set with no tween per member and
 reveal/leading-collapsed-settle | E2 D2 W3 F5 $2 | reveal type entrance heading scroll leading | A display block can arrive by closing up rather than by moving. 
