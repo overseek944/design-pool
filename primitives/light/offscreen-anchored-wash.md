@@ -4,7 +4,7 @@ category: light
 tags: [gradient,ground,atmosphere,ambient,color,cheap]
 axes: {energy: 1, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: [eased-fade-stop-ramp]
@@ -83,3 +83,24 @@ last breakpoint — three or four steps between 1440 and 1800px, ~15% a step,
 ⚠ Tie the steps to the same custom property the lamp's blur or stop positions
 read, or the falloff scales and the softness does not — a doubled lamp with a
 fixed 120px blur reads twice as hard-edged as the one at the base size.
+
+Below roughly 8% peak alpha the rule above stops applying: there is no visible
+hot core to hide, so the centre can sit *inside* the box and the ellipse can be
+smaller than it — 40–60% of the width — and the result still reads as ground
+that happens to be unevenly lit rather than as a lamp aimed at anything. Two of
+them at opposed interior corners is the cheapest way to stop a flat near-black
+field reading as a void. Peak alpha .03–.08, ellipse 40–70%.
+```css
+.hero::before { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(ellipse 60% 45% at 18% 20%, rgb(var(--accent)/.07), transparent 65%),
+              radial-gradient(ellipse 45% 40% at 85% 75%, #ffffff08, transparent 60%) }
+```
+⚠ At this alpha the wash is invisible on a mid-grey or light ground and on any
+panel the reader has dimmed — it is a dark-ground device only, and nothing may
+depend on seeing it.
+
+The gradient form, unlike the blurred-element lamp above, is cheap enough to put
+on *every* card as a hover state: a pseudo-element carrying one ellipse centred
+past the bottom edge, transitioning `opacity` alone, so the card lights from
+beneath instead of tinting. Nothing animates but a composited opacity, so a
+twelve-card grid costs what one card costs. Centre 110–130% down, fade 0.4–0.6s.

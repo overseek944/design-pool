@@ -4,7 +4,7 @@ category: timing
 tags: [motion,indicator,status,ambient,glow]
 axes: {energy: 2, density: 1, weight: 2, finish: 4}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -38,3 +38,18 @@ Period 1.6–2.2s here rather than the status range; faster reads as an error.
 ⚠ It fires once per mount, so a cue for something the reader must actually do
 needs a persisted flag to re-arm it — otherwise it nags on every visit and
 teaches them to ignore it.
+
+The two readings above are not exclusive. Dip the disc's own `opacity` on the
+same keyframes as the ring and the mark reads as *spending* light to emit it
+rather than as two effects sharing a node — the source dims as the ring leaves
+and recovers as it dies. Opacity composites, so the dip is free where the spread
+is not, and it is what keeps the dot legible when the ring is too faint to see
+on a busy ground. Trough 0.35–0.5; below that the dot disappears and the
+indicator reads as broken rather than alive.
+```css
+@keyframes beacon { 0%, 100% { opacity: 1; box-shadow: 0 0 0 0 var(--beam) }
+  50% { opacity: .4; box-shadow: 0 0 0 6px transparent } }
+```
+⚠ With the trough at 50% the ring gets no parked tail, so hold the period at the
+top of the status range — 2–3s — or the rings overlap and the dip is all that
+reads.

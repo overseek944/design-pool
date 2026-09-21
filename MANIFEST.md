@@ -1,6 +1,6 @@
 # Manifest
 
-591 primitives. Format: `category/id | axes cost | tags | gist`
+592 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -277,6 +277,7 @@ media/mirror-flanked-panorama | E1 D2 W2 F4 $2 | media image panorama mirror res
 media/mirrored-baseline-reflection | E1 D2 W2 F5 $2 | media mask surface depth detail css-only | A cut-out subject on a surface reads as pasted on unless somethi
 media/optical-height-logo-row | neutral  $1 | media logos normalisation scale responsive | Supplied marks are drawn to different conventions — a wordmark f
 media/origin-conditional-sandbox | neutral  $1 | media iframe embed security correctness | A sandboxed iframe that is also allow-same-origin and served fro
+media/overscan-relaxed-plate | E2 D1 W3 F5 $2 | media image reveal scale motion observer | A plate that scales up on arrival rests at a non-integer factor 
 media/reduce-restored-media-transport | neutral  $1 | media video accessibility scroll scrub correctness | Where scroll is the only transport for a continuous medium, pref
 media/reduce-swapped-clip-still | neutral  $1 | media video accessibility reduced-motion correctness | An autoplaying loop cannot honour prefers-reduced-motion by paus
 media/seam-dissolved-video-loop | E2 D1 W3 F5 $3 | media video loop crossfade seam ambient | loop cuts from the last frame to the first, and unless the clip 
