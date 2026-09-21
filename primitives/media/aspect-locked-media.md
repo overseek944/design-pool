@@ -4,7 +4,7 @@ category: media
 tags: [layout,media,cls]
 axes: none
 cost: 1
-seen: 34
+seen: 35
 requires: []
 conflicts: []
 completes: []
@@ -89,3 +89,16 @@ screen at every width.
 ⚠ Under `object-fit: cover` a restated ratio is a re-crop: pair each with an
 `object-position` that keeps the subject inside the narrower band, or widening
 silently cuts the top of the frame.
+
+Where the ratio is not known until the asset arrives — a player handed an
+arbitrary recording — the lock has to come from the source. Read
+`videoWidth/videoHeight` on `loadedmetadata` and write `aspect-ratio` on the
+frame, holding a declared default until then so the space is still reserved.
+The frame matches the recording instead of letterboxing it; pick the default
+from whatever most of the library is in, 16/9 or 4/3.
+```js
+v.addEventListener('loadedmetadata', () => { if (v.videoWidth)
+  frame.style.aspectRatio = `${v.videoWidth} / ${v.videoHeight}` })
+```
+⚠ Guard on a non-zero width — the event also fires after an error recovery and
+on a source swap, and `0 / 0` collapses the frame to nothing.

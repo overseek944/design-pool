@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,state,indicator,accessibility,carousel]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -72,3 +72,16 @@ second. Never eased — an ease on a repeating small delta reads as hesitation.
 ```css
 .fill { transition: block-size 80ms linear }   /* scroll-driven */
 ```
+
+On a rail where position *is* the value — a span on a time track, a mark on a
+scale — the size channel is only free across the axis. Grow the mark
+perpendicular to it, 1.25–1.5×, and never along it: a hover that widens a 0.6s
+span makes it read as a second longer, so the emphasis has falsified the datum
+it was meant to point at. Take the second channel from a 1px ring instead of
+from length.
+```css
+.span:hover, .span.is-current { transform: scaleY(1.4);
+  box-shadow: 0 0 0 1px var(--ground) }
+```
+⚠ The grown mark clips against the track's own overflow on the outer lanes —
+reserve the extra height in the lane's box rather than in the mark's.

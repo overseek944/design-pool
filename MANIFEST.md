@@ -1,6 +1,6 @@
 # Manifest
 
-599 primitives. Format: `category/id | axes cost | tags | gist`
+603 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -132,6 +132,7 @@ interaction/inert-tracks-opacity | neutral  $1 | accessibility focus correctness
 interaction/inherited-autocomplete-pass | neutral  $1 | forms autocomplete accessibility third-party correctness | A form you did not author — from a page builder, a CMS block, a 
 interaction/inline-target-floor | neutral  $1 | accessibility interaction correctness detail | A row of small print — legal links, meta, a footer — fails targe
 interaction/instrumented-console-interface | neutral  $1 | instrumentation analytics architecture progressive-enhancement | A page can carry a second interface addressed at nobody who scro
+interaction/legend-as-series-filter | E2 D2 W2 F5 $2 | legend filter state accessibility chart | A key that only names the series is a second thing to read. Make
 interaction/micro-interaction-defaults | E2 D2 W2 F5 $1 | interaction polish consistency | One transition duration (200ms) and one property set for every n
 interaction/mounted-empty-status-slot | neutral  $1 | accessibility correctness form layout state css-only | A live region only announces if it was in the document before th
 interaction/native-disclosure-animation | E2 D2 W2 F5 $2 | motion disclosure accessibility progressive-enhancement height | ::details-content with interpolate-size: allow-keywords animates
@@ -192,6 +193,7 @@ layout/geometry-scoped-connector-overlay | neutral  $1 | layout diagram connecto
 layout/ghost-sizer-twin | neutral  $1 | layout architecture correctness hover reflow | A box that grows on interaction — scales, lifts on Z, expands a 
 layout/gridline-borne-value-label | E1 D3 W1 F5 $1 | chart axis label mono hairline density | A plot that reserves a left gutter for its value axis spends 40–
 layout/height-budgeted-media-width | neutral  $2 | layout container-query aspect fit cls | When a card must fit one screen exactly — media plus chrome, not
+layout/implication-subtracted-spans | neutral  $2 | intervals annotation data correctness architecture | Independent detectors flag overlapping ranges, and drawn as they
 layout/in-flow-overlay-header | neutral  $1 | layout sticky overlay correctness cls | A header that must float over the first section and still stick 
 layout/intrinsic-floored-auto-track | neutral  $1 | layout grid responsive correctness overflow breakpoints | repeat(auto-fit, minmax(<floor>, 1fr)) reflows a row of cards wi
 layout/intrinsic-size-abstaining-child | neutral  $1 | layout correctness type detail | A width: fit-content block is sized by its widest child, which i
@@ -281,6 +283,7 @@ media/mirrored-baseline-reflection | E1 D2 W2 F5 $2 | media mask surface depth d
 media/optical-height-logo-row | neutral  $1 | media logos normalisation scale responsive | Supplied marks are drawn to different conventions — a wordmark f
 media/origin-conditional-sandbox | neutral  $1 | media iframe embed security correctness | A sandboxed iframe that is also allow-same-origin and served fro
 media/overscan-relaxed-plate | E2 D1 W3 F5 $2 | media image reveal scale motion observer | A plate that scales up on arrival rests at a non-integer factor 
+media/pseudo-element-pictogram-set | E1 D2 W2 F4 $2 | icon css-only pseudo-element tokens diagram | A set of small technical pictograms — a frame, a scatter, a cyli
 media/reduce-restored-media-transport | neutral  $1 | media video accessibility scroll scrub correctness | Where scroll is the only transport for a continuous medium, pref
 media/reduce-swapped-clip-still | neutral  $1 | media video accessibility reduced-motion correctness | An autoplaying loop cannot honour prefers-reduced-motion by paus
 media/seam-dissolved-video-loop | E2 D1 W3 F5 $3 | media video loop crossfade seam ambient | loop cuts from the last frame to the first, and unless the clip 
@@ -293,6 +296,7 @@ media/sparse-sequence-nearest-frame | E3 D2 W3 F5 $4 | scrub scroll images loadi
 media/stacked-contour-volume | E1 D4 W2 F5 $2 | svg mark depth stroke currentcolor | Describe a solid as a stack of cross-sections instead of as a sh
 media/state-preserving-frame-relocation | neutral  $3 | media iframe embed lifecycle dom correctness | appendChild removes and reinserts: an iframe reloads, a video re
 media/stepped-transform-sprite | E3 D2 W2 F4 $2 | media sprite animation svg performance | Play a short looping illustration as a filmstrip: frames in one 
+media/time-mapped-annotation-track | E2 D3 W2 F5 $3 | media video timeline annotation seek evidence | Findings about a recording belong on the recording's own axis. P
 media/underpainted-inline-lqip | neutral  $2 | media loading performance correctness cls | The photograph carrying an opening frame arrives after layout, a
 media/unowned-frame-message-guard | neutral  $1 | media iframe embed security correctness events | A widget script injects its own iframe, so the page holds no con
 media/video-as-surface-not-frame | E3 D2 W4 F4 $3 | media surface hero | autoplay muted loop playsinline preload="auto" with object-conta

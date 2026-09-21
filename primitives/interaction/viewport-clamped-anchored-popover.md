@@ -4,7 +4,7 @@ category: interaction
 tags: [correctness,responsive,overlay,accessibility,hover,focus]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -37,3 +37,17 @@ y = py < 32    ? py + 24  : py - 12        // drops below near the top
 ⚠ Flipping on the pointer's position rather than the label's measured box only
 holds while the text has a known maximum length. A formatted coordinate pair
 does; a translated string does not.
+
+Clamping against a *track* rather than the window is where the coordinate
+spaces bite. Measure the anchor and the track, clamp the label to
+`[0, trackWidth − labelWidth]` — then add the offset between the track and the
+box the label is actually positioned against, because `position: absolute`
+resolves to the nearest positioned ancestor and that is rarely the element that
+was measured.
+```js
+const l = Math.min(Math.max(0, cx - w / 2), Math.max(0, track.width - w))
+tip.style.left = `${l + (track.left - tip.offsetParent.getBoundingClientRect().left)}px`
+```
+⚠ Measuring the label in the same frame its text is written is a forced reflow
+per pointer move. Write, measure once, and hold the width while the text is
+unchanged.

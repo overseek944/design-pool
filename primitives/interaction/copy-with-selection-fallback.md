@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,clipboard,accessibility,correctness,feedback]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,16 @@ catch { const r = document.createRange(); r.selectNodeContents(textEl)
 ```
 ⚠ Announce through a live region, not a colour or icon change alone, and clear
 the previous timeout on every press or a fast second click reverts the first.
+
+The button and the value drift apart the moment the payload is a string in an
+attribute. Point the control at the element that *displays* it and read the
+text at click: `textContent` returns the authored source, whitespace and hidden
+nodes included, while `innerText` returns what is rendered — which is what the
+reader believes they are copying.
+```js
+const src = document.getElementById(btn.dataset.copyTarget)
+write(src.innerText)                    /* rendered, not authored */
+```
+⚠ `innerText` forces layout on the source and returns an empty string for a
+`display: none` block — a copy button beside a collapsed panel silently yields
+nothing.
