@@ -4,7 +4,7 @@ category: canvas
 tags: [shader,canvas,precision,correctness,detail]
 axes: none
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []

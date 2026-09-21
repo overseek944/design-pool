@@ -1,6 +1,6 @@
 # Manifest
 
-614 primitives. Format: `category/id | axes cost | tags | gist`
+618 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -15,6 +15,7 @@ canvas/borrowed-scene-constructors | neutral  $2 | canvas 3d architecture intero
 canvas/bucketed-depth-order | neutral  $2 | canvas performance depth particles batching quantise | Painter's order on a 2D context normally means sorting every mar
 canvas/canvas-behind-dom-not-instead-of-it | neutral  $2 | canvas architecture accessibility | Absolutely-positioned inset-0 canvas with pointer-events-none un
 canvas/cell-quantised-arrival-front | E3 D3 W2 F4 $3 | shader reveal grid quantise front texture | A reveal front evaluated per pixel is a soft edge crossing a pic
+canvas/cell-resolved-screen-pass | E2 D4 W2 F4 $4 | shader webgl halftone texture render-pass generative | Screening a render into dots need not change whatever drew it. A
 canvas/chord-solved-tile-width | neutral  $3 | canvas 3d geometry texture seam correctness | Flat quads tiled along a curve — a ribbon of frames, a spiral of
 canvas/clip-ejected-vertex-filter | neutral  $2 | shader webgl points culling perf | A point cloud whose visible subset changes — a facing hemisphere
 canvas/composed-arrival-field | E3 D3 W2 F5 $2 | shader stagger clock uniform reveal perf | Thousands of elements cannot each own a tween. Derive every elem
@@ -315,6 +316,7 @@ motion-system/antipodal-mark-pass | E3 D1 W2 F5 $1 | motion-system hover icon af
 motion-system/attribute-driven-motion-hooks | neutral  $1 | architecture motion maintainability | Target animations off data- attributes, never class names. Styli
 motion-system/below-fold-armed-entrance | neutral  $1 | motion correctness progressive-enhancement observer reveal | An entrance system that hides content in CSS and un-hides it fro
 motion-system/camera-over-static-scene | E3 D2 W3 F5 $2 | motion transform scale focus diagram narrative | To walk a reader through a diagram, move the viewport rather tha
+motion-system/cardinality-locked-variant-set | E3 D3 W2 F5 $3 | motion svg morph state diagram architecture | A set of marks that switches state — a diagram's shapes, a chart
 motion-system/context-scoped-cleanup | neutral  $1 | motion lifecycle correctness | Create every animation inside a scoped context and revert it on 
 motion-system/counter-scaled-camera-overlay | neutral  $1 | camera transform overlay cursor correctness | Anything drawn for the reader over a zooming scene — a synthetic
 motion-system/deadline-bounded-animated-close | neutral  $1 | motion correctness state architecture | A state change that waits on an animation never happens when the
@@ -322,6 +324,7 @@ motion-system/decaying-change-mark | E3 D1 W2 F4 $1 | motion-system feedback liv
 motion-system/distance-cued-focus-wheel | E2 D2 W2 F5 $2 | list rotation blur depth mask custom-property | A rotating list that only fades its neighbours reads flat. Stack
 motion-system/distance-eased-camera-push | E2 D2 W3 F5 $3 | camera 3d easing scroll narrative | Interpolating a camera's position between two waypoints looks wr
 motion-system/drive-mode-scoped-transition | neutral  $1 | motion scroll scrub custom-properties correctness architecture | A property that eases on arrival and later tracks a continuous i
+motion-system/dual-duty-mark-animation | E3 D1 W2 F5 $2 | motion svg identity loading state reduced-motion | Build a mark from parts that fold about their own seams and one 
 motion-system/edge-clamped-camera-frame | neutral  $1 | camera transform scene correctness architecture | A camera that pans to centre a point of interest frames empty sp
 motion-system/edge-flush-viewport-staging | E3 D1 W2 F5 $1 | motion entrance viewport-units responsive css | An element staged beyond the frame is usually given a hand-picke
 motion-system/fire-on-arrival-propagation | E3 D3 W2 F5 $3 | entrance propagation graph canvas emergent | An entrance authored as a list of delays must be rewritten whene
@@ -536,6 +539,7 @@ surface/slope-held-diagonal-edge | E1 D2 W3 F4 $2 | surface clip-path edge secti
 surface/stacked-blur-radius-ramp | E1 D2 W3 F5 $3 | surface blur glass scrim depth legibility | Masking one backdrop-filter plate fades the result, not the radi
 surface/stacked-gradient-star-field | E2 D3 W1 F4 $1 | surface texture ambient depth performance | A regular lattice reads as ruled ground; an irregular point fiel
 surface/stepped-pixel-corner | E2 D3 W2 F2 $1 | surface ornament detail texture cheap | Erode a corner into discrete cells rather than rounding or slici
+surface/structure-borne-dwell-meter | E2 D2 W1 F5 $1 | surface hairline indicator progress divider restraint | A list already ruled between its items needs no separate dwell i
 surface/subthreshold-photographic-ground | E1 D2 W2 F4 $1 | surface texture ground section photography cheap | A section ground that should not be flat and should not be a pic
 surface/synthetic-application-chrome | E1 D2 W2 F5 $1 | frame chrome media mock product decoration | A screenshot dropped into a page is an image; the same screensho
 surface/tangent-oriented-mark-field | E2 D4 W2 F5 $3 | surface texture generative ambient detail svg | A field of round dots reads as spray. Give each mark a long axis

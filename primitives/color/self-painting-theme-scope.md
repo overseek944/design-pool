@@ -4,7 +4,7 @@ category: color
 tags: [color,tokens,theming,architecture,dark]
 axes: none
 cost: 2
-seen: 18
+seen: 19
 requires: []
 conflicts: []
 completes: []
@@ -102,3 +102,18 @@ the page instead of framing it in white.
 ⚠ It is a statement about the *document*, so it cannot follow a subtree theme
 class or a user toggle. Ship the meta for the default the page loads in and keep
 the class form for everything that changes after load.
+
+A scope meaning *lighter than whatever it sits in* is not one block. Under a
+light root it declares a light band; under a dark root the same class has to
+mean something else entirely, so it needs a second body keyed on the root — and
+both belong in `:where()`, so a scope that exists only to set relationships
+never outranks a component's own override. One class, two bodies, and the
+section keeps its intended relationship to the page across a theme toggle
+instead of inverting with it.
+```css
+.band                           { --fg:#15201a; --surface:#fff; --line:#12281c24 }
+:where(:root:not(.light)) .band { --fg:#e9ede9; --surface:#1a1f1c; --line:#ffffff1f }
+```
+⚠ Two bodies is two contrast audits, and the accent is what breaks: a token
+clearing 4.5:1 against the band's light body rarely clears it against the dark
+one at the same value.

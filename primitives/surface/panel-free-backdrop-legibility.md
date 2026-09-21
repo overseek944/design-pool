@@ -4,7 +4,7 @@ category: surface
 tags: [backdrop-filter,legibility,photography,contrast,surface,type]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -123,3 +123,17 @@ bleed 8–12px block, 24–36px inline, wider inline because the rag is there.
 ⚠ Flat colour only — it is a fixed tint, so unlike a blur it fails against a
 ground whose luminance changes. Measure against the lightest and darkest the
 field reaches under the text, not against a screenshot.
+
+Every answer above puts something over the ground. Where the ground is a
+decoration you own — a dot field, a ruled grid, a generated texture — the
+cheaper move is to take it away: mask the *texture layer* with a radial of
+inverted polarity, transparent at the centre and opaque by the edge, so the
+field is simply absent under the copy. Nothing to composite, no plate, no edge
+anywhere, and the text sits on the page's own ground at full contrast. Stack a
+second gradient into the same mask to clear a band or a foot as well.
+```css
+.field { mask-image: radial-gradient(70% 78% at 50% 50%, transparent 34%, #000 88%) }
+```
+⚠ Only for decoration you are free to delete — the same mask over a photograph
+or a chart removes content, not noise. Size the clear zone from the longest line
+the block can wrap to, not from the copy in the design.

@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,canvas,battery,frame-budget,correctness]
 axes: none
 cost: 1
-seen: 15
+seen: 16
 requires: []
 conflicts: []
 completes: []

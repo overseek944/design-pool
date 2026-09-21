@@ -4,7 +4,7 @@ category: surface
 tags: [surface,glass,gradient,depth,cheap,performance]
 axes: {energy: 1, density: 3, weight: 3, finish: 5}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -38,3 +38,20 @@ fading in from the bitmap's own boundary; blur 8–16px.
 ```
 ⚠ It is a second decode of an image nobody can read — reuse the section's own
 photograph rather than requesting one, and keep it out of the accessibility tree.
+
+A theme swap can retire the filter rather than retune it. Glass earns a
+`backdrop-filter` against a dark ground, where the blur is what separates a
+panel from a busy field; against a light one the same filter buys almost
+nothing and still costs a compositing layer per panel. Keep one class and let
+the light scope set `backdrop-filter: none` with a flat opaque background and a
+hairline border. Components read the same name, and the expensive path exists
+only in the theme that needs it.
+```css
+.glass             { background: var(--tint), color-mix(in oklab, var(--surface) 32%, transparent);
+                     backdrop-filter: blur(24px) saturate(150%) }
+:root.light .glass { background: #fff; backdrop-filter: none;
+                     border: var(--hair) solid var(--line) }
+```
+⚠ The opaque variant has no transparency left to imply an edge, so the border
+stops being optional — without it the panel and a light page ground are the
+same colour and the shape disappears.

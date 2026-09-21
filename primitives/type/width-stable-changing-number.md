@@ -4,7 +4,7 @@ category: type
 tags: [numerals,data,motion,correctness]
 axes: {energy: 2, density: 3, weight: 3, finish: 5}
 cost: 1
-seen: 20
+seen: 21
 requires: []
 conflicts: []
 completes: []
@@ -89,3 +89,21 @@ span.style.minWidth = span.getBoundingClientRect().width + 'px'   // then zero i
 ```
 ⚠ Measure every cell, then write every cell. Interleaving the two is a forced
 layout per figure, and a table of them stalls the frame the reveal starts on.
+
+A headline figure is rarely one number. `2.5x`, `100B+` and `10–20%` are display
+strings holding one, one and *two* numeric runs, and a component that parses a
+value plus a unit cannot render the third at all. Split the string on its digit
+runs instead, animate every run against the same eased progress and re-emit the
+literal pieces between them untouched — one path then covers a multiplier, a
+suffix and a range. Start the progress at its *finished* value and zero it only
+after the reduced-motion check inside the effect, so a server render, a client
+with no script and a reader who asked for stillness all paint the real figure
+and never a zero.
+```js
+const [t, setT] = useState(1)                        // finished, not 0
+useEffect(() => { if (mq.matches) return; setT(0); ramp(setT) }, [])
+value.split(/(\d+(?:\.\d+)?)/).map(p => /^\d/.test(p) ? fix(p, +p * t) : p)
+```
+⚠ Each run's decimal count comes from its own source text, not from the animated
+float — `2.5` carried through `t` prints `2.3000000000000003` on some frame
+without it.

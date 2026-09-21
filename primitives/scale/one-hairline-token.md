@@ -4,7 +4,7 @@ category: scale
 tags: [unit,tokens,border,precision,coherence]
 axes: {energy: 1, density: 2, weight: 1, finish: 5}
 cost: 1
-seen: 19
+seen: 20
 requires: []
 conflicts: []
 completes: []
@@ -95,3 +95,17 @@ lattice.
 tiled field doubles at every interior join. For decoration and for state; a
 focus ring keeps its own offset and its own colour, and must not be the rule
 this one overwrites.
+
+Sub-pixel is a setting of the token, not a mistake in it. At about `.92px` a 2×
+display draws a genuine two-device-pixel line while a 1× display antialiases the
+same declaration to something lighter than a full pixel — one value yielding a
+crisp hairline where the density exists and a softer one where it does not, with
+no second colour and no media query. It inverts the first warning above on
+purpose: the line is *meant* to weaken where the pixels are missing rather than
+be defended from it.
+```css
+:root { --hair: .92px }        /* not 1px, and not rounded up anywhere */
+```
+⚠ Below roughly .85px the 1× rendering fades far enough that a bounding box
+loses its edge entirely. Choose the value against the ground it is drawn on and
+check it at 1×, which is the only place the difference exists.

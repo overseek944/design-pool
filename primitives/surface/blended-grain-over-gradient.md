@@ -4,7 +4,7 @@ category: surface
 tags: [surface,texture,grain,gradient,blend-mode,banding]
 axes: {energy: 1, density: 3, weight: 3, finish: 4}
 cost: 1
-seen: 12
+seen: 13
 requires: []
 conflicts: []
 completes: []
@@ -87,3 +87,16 @@ setting.
 ⚠ `filter` on the pseudo-element rasterises it as its own layer, which is the
 one thing the background-layer form avoided — keep it off anything that repeats
 per card.
+
+The blend mode is a property of the ground, not of the grain. `overlay` and
+`soft-light` lift a dark field, which is what makes the texture read at all; the
+same layer over a light ground lightens it further and shows as a grey film.
+Flip to `multiply` in the light theme and cut the opacity to roughly half — a
+pale ground reveals far more of the same noise — and one grain layer serves both
+themes from one asset.
+```css
+.grain             { mix-blend-mode: overlay;  opacity: .035 }
+:root.light .grain { mix-blend-mode: multiply; opacity: .02 }
+```
+⚠ Tune it against the palest surface in the theme rather than the page ground —
+a white card sitting under a full-bleed grain is where the film shows first.
