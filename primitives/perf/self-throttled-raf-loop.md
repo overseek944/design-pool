@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,canvas,battery,frame-budget,correctness]
 axes: none
 cost: 1
-seen: 16
+seen: 17
 requires: []
 conflicts: []
 completes: []
@@ -131,3 +131,16 @@ const tick = () => { if (document.hidden) return void setTimeout(tick, 500)
 ⚠ Two handles now, and both must be cleared on teardown or the timer resurrects
 a cancelled frame. Never chain the next `setTimeout` outside the rAF callback —
 the interval then races the paint and the effective rate drifts.
+
+Where the loop *advances* something rather than redrawing it, the delta needs a
+ceiling as well as a source. A GC pause, a layout storm or a background tab
+throttled to one frame a second hands the next callback a delta of hundreds of
+milliseconds, and a one-shot timeline integrating it skips its whole middle in
+a single step. Divide by a nominal frame and clamp to 2–4 of them: the duration
+stays authorable in frames while the rate stays honest.
+```js
+const d = last ? Math.min((t - last) / 16.67, 3) : 1    // nominal frames, capped
+last = t; p = Math.min(1, p + d / DURATION_FRAMES)
+```
+⚠ The clamp makes wall-clock time and integrated progress disagree after a
+stall — never drive a media element's `currentTime` from a clamped accumulator.

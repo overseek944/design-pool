@@ -1,6 +1,6 @@
 # Manifest
 
-624 primitives. Format: `category/id | axes cost | tags | gist`
+627 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -56,6 +56,7 @@ canvas/path-data-construction-overlay | E1 D4 W1 F5 $3 | svg path annotation ove
 canvas/pattern-space-from-smooth-twin | neutral  $3 | canvas shader grid noise correctness generative | A ruled overlay drawn in a noisy surface's coordinates inherits 
 canvas/per-state-still-understudy | neutral  $3 | canvas media perf progressive-enhancement 3d fallback accessibility | A heavy renderer deferred behind one poster freezes the figure a
 canvas/periodic-organic-blend-scalar | E2 D3 W2 F4 $2 | shader generative noise parameters surface | Noise alone always reads organic; a periodic function alone alwa
+canvas/perspective-divisor-depth-cue | E2 D3 W2 F5 $2 | canvas depth projection wireframe stroke 3d | An armature projected onto a 2D context — a skeleton, a rig, an 
 canvas/prebaked-gradient-sprite | neutral  $2 | canvas performance particles light | createRadialGradient allocates and rasterises on every call, so 
 canvas/precomputed-cell-attenuation-field | E1 D2 W2 F5 $2 | canvas legibility performance ambient contrast generative | A generative field at full strength everywhere either drowns the
 canvas/prerendered-renderer-understudy | neutral  $3 | canvas progressive-enhancement correctness cls state architecture | A canvas that may not run should degrade to a picture, not to an
@@ -488,6 +489,7 @@ scroll/stale-scroll-request-guard | neutral  $2 | scroll correctness accessibili
 scroll/sticky-as-cheap-pin | E1 D2 W2 F3 $1 | scroll layout performance | position: sticky for anything that only needs to hold position —
 scroll/tall-target-intersection-clause | neutral  $1 | scroll correctness observer reveal | intersectionRatio is a fraction of the element, so a section tal
 scroll/transform-hosted-scroll-wrapper | neutral  $3 | scroll architecture correctness transform pin | Smoothing the whole page without a library: a spacer takes the m
+scroll/wheel-owned-scrub-stage | E3 D2 W3 F5 $3 | scrub wheel stage progress transport pointer pin | A timeline whose length has nothing to do with viewport heights 
 scroll/whole-item-rail-page | neutral  $1 | scroll rail pagination control measurement correctness | An arrow that scrolls a horizontal rail by a fixed distance — 30
 surface/addressable-cell-lattice | E1 D3 W1 F4 $2 | lattice grid hairline pointer-events node-budget decoration | A hairline lattice drawn as two gradients costs one node and ans
 surface/arc-length-colour-ramp-stroke | E3 D2 W2 F5 $3 | svg stroke gradient color dash effect | An SVG gradient paints in the element's box, so a stroke that cu
@@ -539,6 +541,7 @@ surface/receding-annulus-mask | E1 D3 W2 F4 $2 | surface mask gradient depth tex
 surface/receding-bar-plate | E2 D1 W2 F4 $1 | surface chrome scroll opacity accessibility | Invert the usual scroll chrome: a floating bar starts fully opaq
 surface/region-bound-hatch-pattern | E1 D3 W1 F5 $1 | svg pattern texture hatch diagram schematic | CSS gradients hatch boxes; a schematic needs the hatch inside an
 surface/rotating-conic-border | E4 D3 W3 F4 $3 | surface border motion svg | An animated gradient border without a pseudo-element hack: an SV
+surface/scanline-register-overlay | E1 D3 W2 F2 $1 | overlay scanline texture video register decoration | Footage from mismatched sources — an archive still, a head camer
 surface/scrim-terminated-ground | E1 D2 W2 F5 $1 | gradient ground surface section seam cheap | A decorative ground that stops at its section's edge leaves a ho
 surface/single-hue-lit-bead | E2 D2 W3 F5 $1 | surface gradient identity marker presence contrast | At 8–24px a flat disc is a dot; three stops make it a bead. Take
 surface/slope-held-diagonal-edge | E1 D2 W3 F4 $2 | surface clip-path edge section responsive geometry | A clip-path: polygon() with percentage vertices does not keep it

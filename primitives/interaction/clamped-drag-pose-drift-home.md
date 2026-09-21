@@ -4,7 +4,7 @@ category: interaction
 tags: [pointer,interaction,3d,rotation,detail]
 axes: {energy: 2, density: 1, weight: 4, finish: 5}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -28,3 +28,16 @@ rX += (tRX - rX) * 0.045; rY += (tRY - rY) * 0.045     // render lags target
 ⚠ Release capture on `pointercancel` as well as `pointerup`, or a gesture the
 browser reclaims leaves the object stuck mid-turn. `touch-action` must still
 permit the page's scroll axis.
+
+An object being *read* rather than presented wants the opposite settings.
+There is no authored rest to return to — the angle the reader turned it to is
+the answer to a question they asked — so drop the decay entirely and hold the
+pose until they move it again. The clamp then has a different job: not keeping
+a silhouette legible but keeping the ground plane from flipping through
+edge-on. Hold pitch inside roughly ±70° and leave yaw unbounded, so the form
+can be turned right around.
+```js
+pitch = Math.max(-1.2, Math.min(1.3, pitch + dy * 0.006))   // yaw accumulates free
+```
+⚠ Without drift-home the surface has no idle state to advertise itself with.
+Pair it with a slow auto-rotation that the first grab abandons for good.

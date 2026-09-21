@@ -4,7 +4,7 @@ category: interaction
 tags: [affordance,interaction,accessibility,detail,ux]
 axes: {energy: 1, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -22,3 +22,16 @@ at 0.7–0.8rem on a 60–75% plate; inset 8–16px from the edge it sits agains
 ```
 ⚠ A permanent label is clutter and still leaves keyboard users with nothing —
 the surface needs real key handling and its own description either way.
+
+Where the gesture is the surface's *transport* rather than an extra, retiring
+the label leaves a corner with nothing to say and a reader at the end with no
+way back. Give the slot a second occupant: the hint fades on the first
+successful gesture, and the control that returns the surface to its start fades
+into the same position once the sequence completes. One place to look, and a
+demonstration that ends is never a dead end.
+```css
+.slot > .hint  { opacity: 1 }  [data-used] .slot > .hint  { opacity: 0 }
+.slot > .reset { opacity: 0 }  [data-done] .slot > .reset { opacity: .8 }
+```
+⚠ The reset has to be a real `<button>`, not the hint restyled — where the
+transport is a gesture it is the only keyboard-reachable control on the surface.

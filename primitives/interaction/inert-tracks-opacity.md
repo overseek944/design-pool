@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,focus,correctness,overlay,pointer-events]
 axes: none
 cost: 1
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []
@@ -53,3 +53,17 @@ reads as one. Fade 50–65% of the collapse period, delayed by the remainder.
 ```
 ⚠ `max-height` must be near the row's real height. The ease runs from the
 declared ceiling, so a generous guess spends its first frames closing empty air.
+
+Where the fade is a continuous channel rather than a state, the threshold is
+the whole decision. Two crossfading beats are both partly present for the
+entire overlap, so a test for exactly zero leaves the outgoing one live over
+the incoming one and the layer underneath loses the hit test it should win.
+Hand interactivity over at one crossing — 0.5 of the channel, or wherever the
+arriving layer becomes the legible one — rather than at either end.
+```js
+layer.style.opacity = ch
+layer.style.pointerEvents = ch > .5 ? 'auto' : 'none'
+layer.inert = ch <= .5
+```
+⚠ One crossing, not two. Thresholds picked separately per property leave a band
+where the surface is visible and nothing on it can be reached.

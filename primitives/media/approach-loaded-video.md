@@ -4,7 +4,7 @@ category: media
 tags: [media,video,performance,intersection-observer,accessibility,bandwidth]
 axes: none
 cost: 2
-seen: 17
+seen: 18
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -166,3 +166,16 @@ card loop is fine at the 150–300px above; a heavy below-fold feature clip want
 400–800px, so the first frame is decoded before the section is framed rather than
 after. Past roughly a viewport it stops being a preload and becomes an eager
 fetch of something most readers never reach.
+
+A `<video>` with nothing behind it is a black rectangle for as long as the
+first frame takes, and a 404 makes that permanent. Put a designed tile in the
+same box — the ruling, the corner label, the ground the composition already
+uses — and hold the video at `opacity: 0` over it until it can actually paint,
+swapping on readiness rather than on `play()` resolving. Bind `error` to the
+same flag in reverse and a missing file degrades to the tile rather than a hole.
+```jsx
+<video style={{ opacity: +ready }} onError={() => setReady(false)} … />
+{!ready && <Tile label={label} />}
+```
+⚠ Cheaper than `poster` across a set — one tile component serves every slot and
+restyles with the page, where posters are N more image requests to art-direct.
