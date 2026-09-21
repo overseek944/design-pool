@@ -1,6 +1,6 @@
 # Manifest
 
-694 primitives. Format: `category/id | axes cost | tags | gist`
+696 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -162,6 +162,7 @@ interaction/instrumented-console-interface | neutral  $1 | instrumentation analy
 interaction/legend-as-series-filter | E2 D2 W2 F5 $2 | legend filter state accessibility chart | A key that only names the series is a second thing to read. Make
 interaction/margin-cancelled-hit-area | neutral  $1 | interaction touch accessibility hit-area layout correctness | A link in a dense bar cannot reach the 44px touch floor by growi
 interaction/micro-interaction-defaults | E2 D2 W2 F5 $1 | interaction polish consistency | One transition duration (200ms) and one property set for every n
+interaction/momentum-gated-wheel-step | neutral  $2 | interaction wheel input gesture correctness | A trackpad flick is one gesture and hundreds of events, so a ste
 interaction/mounted-empty-status-slot | neutral  $1 | accessibility correctness form layout state css-only | A live region only announces if it was in the document before th
 interaction/native-disclosure-animation | E2 D2 W2 F5 $2 | motion disclosure accessibility progressive-enhancement height | ::details-content with interpolate-size: allow-keywords animates
 interaction/nearest-sample-path-pick | neutral  $2 | interaction svg pointer diagram correctness | Dozens of hairline curves crossing in one figure cannot be hit-t
@@ -309,6 +310,7 @@ media/barrier-synced-media-layers | neutral  $2 | video media correctness layeri
 media/blend-normalised-logo-wall | neutral  $1 | media logos blend-mode assets normalisation | Supplied logo files arrive as opaque rectangles — baked-in white
 media/build-captured-product-shot | neutral  $2 | media asset build product screenshot architecture correctness | A page showing the product either carries a hand-kept screenshot
 media/canvas-driven-favicon | E3 D2 W2 F4 $2 | media icon canvas motion browser detail | The tab strip is a surface a page can paint. Render the mark int
+media/canvas-relayed-video-playback | neutral  $3 | media video canvas chrome performance | A <video> carries chrome no attribute removes — a long-press sav
 media/capture-substituted-scene-loop | neutral  $2 | media video 3d performance budget architecture | An ambient 3D scene nobody touches does not need a renderer. If 
 media/centre-converged-mark-family | E1 D2 W1 F5 $1 | media svg icon ornament geometry system | A set of section marks reads as a family when its members share 
 media/chained-filter-duotone | E1 D2 W3 F4 $1 | media color filter normalisation texture | Supplied photographs come from different cameras, days and light

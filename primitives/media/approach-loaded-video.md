@@ -4,7 +4,7 @@ category: media
 tags: [media,video,performance,intersection-observer,accessibility,bandwidth]
 axes: none
 cost: 2
-seen: 22
+seen: 23
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -221,3 +221,16 @@ return () => { v.pause(); v.removeAttribute('src'); v.load() }
 ⚠ Remove the attribute rather than assigning `''` — an empty string resolves
 against the document URL and the element fetches the page itself. Clear any
 `<source>` children too, or selection finds them and reloads.
+
+A switcher holding several clips warms exactly one: while the current plays,
+fetch the *next* source into a detached element kept in a map keyed by URL, so
+returning to a clip costs nothing and no more than one spare decoder is ever
+alive. The approach margin is a function of weight, not a constant — a stage
+clip that must already be running when it arrives wants most of a screen,
+500–800px, where a small card is still right at 150–300.
+```js
+if (!warm.has(next)) { const p = document.createElement('video')
+  p.preload = 'auto'; p.src = next; warm.set(next, p) }    // dispose on unmount
+```
+⚠ Key the map by URL, never by index: a reordered or filtered set re-fetches
+everything it already holds.

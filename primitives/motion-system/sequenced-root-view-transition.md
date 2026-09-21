@@ -60,3 +60,17 @@ Durations 100–250ms; a stack push slower than that stops reading as instant.
 navigation inherits the last direction. Without the `z-index` on the pop the
 incoming page paints over the one supposedly sliding off it, and the gesture
 reverses.
+
+Across documents the feature is declarative and so is its off switch.
+`@view-transition { navigation: auto }` opts a multi-page site in with no script
+at all, and the same rule set to `none` inside a reduced-motion query withdraws
+it outright — which is the right call for anything richer than a cross-fade,
+since a cross-document transition has no `startViewTransition` call to branch
+on.
+```css
+@view-transition { navigation: auto }
+@media (prefers-reduced-motion: reduce) { @view-transition { navigation: none } }
+```
+⚠ It withdraws the transition, not the navigation — pages still change, they
+cut. The rule says nothing about same-document transitions: those still need
+their own branch in script.

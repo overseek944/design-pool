@@ -4,7 +4,7 @@ category: media
 tags: [layout,media,cls]
 axes: none
 cost: 1
-seen: 39
+seen: 40
 requires: []
 conflicts: []
 completes: []
@@ -102,3 +102,16 @@ v.addEventListener('loadedmetadata', () => { if (v.videoWidth)
 ```
 ⚠ Guard on a non-zero width — the event also fires after an error recovery and
 on a source swap, and `0 / 0` collapses the frame to nothing.
+
+Where one slot is fed a set whose ratios differ — several clips behind one stage
+— measure rather than declare. Mount a throwaway element per source at
+`preload="metadata"`, read `videoWidth / videoHeight` on `loadedmetadata`, write
+the ratio per source, then dispose the probe. Keep a declared fallback for first
+paint so the box is reserved before any probe lands.
+```js
+const p = document.createElement('video'); p.preload = 'metadata'; p.src = src
+p.onloadedmetadata = () => set(r => ({ ...r, [src]: p.videoWidth / p.videoHeight }))
+```
+⚠ One metadata request per source — worth it for a handful, never for a grid.
+The fallback has to be within ~10% of the real ratio or the correction is
+itself the shift this primitive exists to prevent.

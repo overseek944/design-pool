@@ -4,7 +4,7 @@ category: motion-system
 tags: [list,rotation,blur,depth,mask,custom-property]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -52,3 +52,17 @@ scale 1.03–1.10, 0.25–0.40s.
 ⚠ Reduced motion wants the transform gone, not shortened — here the
 displacement *is* the motion. A pointer-only distance strands the keyboard: the
 same scalar has to answer to `:focus-visible`.
+
+The recession can be real rather than derived. Give the band a `perspective` and
+rotate each step out of the plane on X: the far items shrink, converge and
+foreshorten from one declaration instead of three, and the falloff belongs to
+the projection rather than to a table you tuned. Perspective 600–1200px, ±45–60°
+at the band's edge, `backface-visibility: hidden` so the far face never flashes
+through.
+```css
+.band { perspective: 700px; transform-style: preserve-3d }
+.item[data-dist="1"] { transform: rotateX(58deg) scale(.92); filter: blur(.35px) }
+```
+⚠ Rotated glyphs are resampled — past about 60° text goes soft and its hit area
+shears away from what is drawn. Keep the focused item at 0°, unrotated and
+unblurred, and hold the band's height so the rotation cannot reflow the page.

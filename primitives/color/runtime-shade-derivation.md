@@ -4,7 +4,7 @@ category: color
 tags: [color,tokens,theming,architecture]
 axes: none
 cost: 1
-seen: 13
+seen: 14
 requires: []
 conflicts: []
 completes: []
@@ -90,3 +90,18 @@ derives a neighbour shade reads the same token.
 ⚠ Near either end of the lightness range the step runs out of room and clamps,
 so the border vanishes on a near-white or near-black fill — the two faces most
 likely to need one.
+
+Ground-ward mixing gives *surfaces* as well as states. One ink and the page's
+ground, mixed at an even ladder, yield the whole set a component needs — border,
+divider, muted fill, inactive mark — from a single seed, and a theme flip is one
+redefinition of the two ends. Four or five steps between 30% and 85% of the ink,
+evenly spaced. Declare each step's plain fallback first: `color-mix` in `oklch`
+is not everywhere.
+```css
+--ink-s5: var(--ink);                                    /* fallback first */
+@supports (color: color-mix(in lab, red, red)) {
+  :root { --ink-s5: color-mix(in oklch, var(--ink) 30%, var(--ground)) } }
+```
+⚠ Name the steps by distance from the *ground*, not by lightness — light and
+dark themes run the ladder in opposite directions, and a name meaning "paler"
+inverts with the theme while one meaning "one step off the ground" does not.
