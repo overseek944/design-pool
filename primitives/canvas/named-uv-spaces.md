@@ -42,3 +42,19 @@ if (p && p.precision < 23) src = src.replace(/precision\s+(lowp|mediump)\s+float
 ⚠ `highp` is not guaranteed in a fragment shader on older mobile GPUs — check
 `HIGH_FLOAT` reports non-zero precision before promoting, or the compile fails
 with nothing rendered and no thrown error.
+
+Pattern space built from the drawing buffer is in *device* pixels, so the same
+page shows half-size grain on a retina display — fixed density against the
+canvas is not fixed density against the eye. Divide by the pixel ratio once, on
+the way out, and the feature size is constant in CSS pixels everywhere. Scale
+about the centre, not the origin, or growing the box slides the pattern instead
+of revealing more of it. Density 0.0005–0.007 per pixel.
+```glsl
+uv -= .5;
+uv *= u_density * u_resolution;   // resolution = drawing buffer, device px
+uv /= u_pixelRatio;               // → CSS px: same grain on every display
+uv += .5;
+```
+⚠ The ratio has to be the one the buffer was actually sized with, not
+`devicePixelRatio` read at draw time — a clamped or tiered backing store makes
+those two different numbers and the grain jumps on the frame they diverge.

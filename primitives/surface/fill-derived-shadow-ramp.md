@@ -43,3 +43,19 @@ single primary action the brightest object on a dark page. Offset 6–12px, blur
 ⚠ Spend it once per view. A dark page with three glowing controls has no primary
 action, and at these alphas the pool is invisible the moment the section behind
 it is anything but near-black.
+
+Ramping alpha is one of two ways to build the falloff, and the harder one to
+keep smooth by hand. Hold a single alpha across every layer and space the
+layers geometrically instead — offset and blur multiplying by 3–4 each rung —
+while spread steps down linearly so each wider layer is pulled back inside the
+one before it. Area grows geometrically at fixed alpha, so the falloff comes
+out of the spacing and the only number left to tune is the shared alpha. Three
+or four rungs, alpha 8–16%.
+```css
+box-shadow: rgb(255 255 255 / .13) .06px  .36px .37px -.83px,
+            rgb(255 255 255 / .13) .23px 1.37px 1.4px -1.67px,
+            rgb(255 255 255 / .13) 1px      6px 6.1px -2.5px;
+```
+⚠ Offsetting x as well as y gives the stack a light direction, which every
+other shadow on the page then has to share — a page mixing directional and
+straight-down ramps reads as two light sources and neither looks intentional.

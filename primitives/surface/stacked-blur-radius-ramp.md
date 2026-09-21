@@ -38,3 +38,14 @@ radii roughly 1 : 2 : 3.5 : 5.5 : 9.
 ⚠ Overlapping plates blur an already-blurred readback, so the effective radius
 at the anchored edge is far past the largest number in the list — tune the top
 of the ladder by eye, never by summing it.
+
+The ladder is not only page chrome. Its top rung is set by the height being
+faded, so a 32–48px pill wants a top radius near 6–8px and the whole ramp
+scales down with it — the construction is the same, the numbers are an order
+smaller, and a glass label can sit directly on busy imagery without the flat
+scrim that would otherwise be a bar across the picture. Eight plates, top rung
+roughly a fifth of the element's height.
+⚠ Stop the ladder where the radius stops being visible. Plates under about
+0.5px are indistinguishable from no blur and each one still costs a full
+backdrop readback every frame — the bottom half of a doubling ladder can be
+pure expense, so start it where the eye can first tell two rungs apart.
