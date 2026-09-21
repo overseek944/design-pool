@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,pointer,transform,motion,restraint,custom-property]
 axes: {energy: 2, density: 1, weight: 3, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,20 @@ same transform without either handler knowing about the other.
 ⚠ Gate the writes on `(hover: hover) and (pointer: fine)`. A touch device fires
 one `pointermove` and no `pointerleave`, leaving the surface stuck off-axis with
 nothing to reset it.
+
+Where the pose has to be legible to the children — a glare position, a per-child
+depth, a dimming — a CSS transition cannot carry it: each child would need its
+own. Run one rAF that lerps a stored pose toward the target and publishes the
+result as normalised channels on the element; every response downstream is then
+a `calc()` in the stylesheet. Give the hover *envelope* a slower rate than the
+position and the whole effect fades in and out independently of how the pointer
+tracks.
+```js
+p.x += (t.x - p.x) * .10; p.h += (t.h - p.h) * .08   // .06–.14 / .04–.10
+s.setProperty('--px', p.x.toFixed(4))                      // −1…1
+s.setProperty('--mx', `${(50 + 50 * p.x).toFixed(2)}%`)    // glare origin
+s.setProperty('--hover', p.h.toFixed(4))                   // 0…1 envelope
+```
+⚠ The loop runs whether or not a pointer is present. Stop it once the pose has
+settled after `pointerleave`, or every such surface on the page costs a frame
+forever.

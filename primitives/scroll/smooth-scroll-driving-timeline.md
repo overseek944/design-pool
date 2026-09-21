@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,motion,architecture]
 axes: {energy: 3, density: 2, weight: 3, finish: 5}
 cost: 3
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: [context-scoped-cleanup]
@@ -34,3 +34,16 @@ behind the lock.
 ⚠ A nested scroller must also opt out of the parent's wheel capture *and*
 contain its own overscroll, or reaching its end hands the gesture back to a
 page that is not listening.
+
+Smoothing is a property of the marketing surface, not of the product behind it.
+Mounted once at the app root it also takes the wheel on dashboards, editors and
+anything with a virtualised list, where an eased scroll position is latency the
+reader did not ask for. Gate the mount on a path-prefix list beside the
+reduced-motion check and one component serves both halves of the origin.
+```js
+const off = ['/app', '/dashboard', '/editor'].some(p => path.startsWith(p))
+if (off || matchMedia('(prefers-reduced-motion: reduce)').matches) return
+```
+⚠ Tear the instance down on the route change rather than only skipping
+construction — a client-side navigation into a gated route otherwise leaves the
+previous instance running and still owning the wheel.
