@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,state,correctness,accessibility,reveal,progressive-enhancement]
 axes: none
 cost: 1
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -36,3 +36,18 @@ el.dataset.frames = ++n; el.dataset.progress = p.toFixed(3)
 ```
 ⚠ An attribute write per frame is a style invalidation per frame; keep it on
 the container only, and behind a flag if anything selects on it.
+
+The latch can outlive the session. Where `complete` records something the reader
+*did* — a form finished, a tour taken, a figure solved — persist the flag and
+resolve the state before the first paint, so a return visit opens on the outcome
+instead of replaying the pitch at someone who already answered it. One key, one
+boolean, read inside the same initialiser that picks the state; anything reading
+it a tick later has already rendered `waiting`.
+```js
+const done = store.get(KEY) === '1'                 // before first paint
+el.dataset.motion = done || !canAnimate ? 'complete' : 'playing'
+```
+⚠ Storage throws in private modes and partitioned frames, and a throw has to
+mean *not done* — replaying a scene is a far smaller failure than hiding an
+action from a reader who never took it. Leave a route back into the flow: a
+persisted terminal state that cannot be exited is a dead end.

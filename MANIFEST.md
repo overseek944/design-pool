@@ -1,6 +1,6 @@
 # Manifest
 
-764 primitives. Format: `category/id | axes cost | tags | gist`
+767 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -265,6 +265,7 @@ layout/in-flow-overlay-header | neutral  $1 | layout sticky overlay correctness 
 layout/interior-line-anchored-bleed | neutral  $1 | layout full-bleed aspect-ratio composition responsive | A bleeding backdrop positioned by its top edge drifts: widen the
 layout/intrinsic-floored-auto-track | neutral  $1 | layout grid responsive correctness overflow breakpoints | repeat(auto-fit, minmax(<floor>, 1fr)) reflows a row of cards wi
 layout/intrinsic-size-abstaining-child | neutral  $1 | layout correctness type detail | A width: fit-content block is sized by its widest child, which i
+layout/keyboard-resized-single-screen | neutral  $1 | layout mobile keyboard viewport responsive correctness | A one-screen layout holding a text field breaks the moment the o
 layout/labelled-elastic-rule | E1 D2 W1 F5 $1 | layout type hairline metadata editorial | A section divider carries more than separation when the rule its
 layout/legibility-floor-scroll-port | neutral  $1 | overflow responsive scroll correctness table figure | A table or a diagram has a width below which it stops being read
 layout/line-counted-reel-window | neutral  $1 | layout type clipping carousel fluid geometry | A reel showing a few rows at a time has three numbers that must 
@@ -696,6 +697,7 @@ timing/lead-in-separated-arrival | E2 D2 W2 F5 $1 | timing motion sequence strea
 timing/non-linear-loop-periods | E3 D3 W2 F4 $2 | motion ambient rhythm | Give concurrent ambient loops coprime-ish periods (4s / 5s / 7s)
 timing/opacity-masked-loop-cut | E3 D2 W2 F4 $2 | timing keyframes loop opacity conveyor | A track that reads as endless usually means duplicated DOM. One 
 timing/overshoot-for-pop-elements | E4 D2 W2 F3 $1 | motion easing delight | back.out(n) on small elements that should feel physical — badges
+timing/parked-optimistic-fill | E2 D1 W2 F5 $1 | timing feedback progress state forms | A request of unknown length can still be reported as a fill rath
 timing/parked-tail-loop-gap | E3 D1 W2 F4 $1 | motion timing rhythm detail | A sweep that should pass, rest, then pass again cannot get its r
 timing/percent-of-master-duration | E2 D3 W2 F5 $2 | timing choreography keyframes css-animation token sequence | For a long multi-beat loop, give every participating element the
 timing/phase-offset-as-sequence | E3 D2 W2 F4 $1 | motion sequencing rhythm ambient css | Same period, different phase. Give every looping indicator in a 
@@ -722,6 +724,7 @@ type/char-count-stepped-reveal | E3 D1 W2 F4 $1 | type motion css-only custom-pr
 type/character-grid-as-texture | E3 D5 W2 F3 $2 | type texture ornament ascii | A field of monospace glyphs (+ x X 8 0 @ # % $) on a grid, used 
 type/content-ghosted-width-reservation | neutral  $1 | type layout-shift css-only accessibility correctness | Text that animates or swaps in place resizes its own box and rel
 type/delimiter-marked-inline-code | E1 D2 W2 F5 $1 | type code inline prose delimiter technical | Inline code in prose is usually a padded chip, and that padding 
+type/edge-cropped-monument-glyph | E1 D2 W5 F4 $1 | type lettering identity display bleed layout | One glyph of the wordmark, set at architectural scale and allowe
 type/em-locked-wordmark-mark | E1 D2 W2 F5 $1 | type logo alignment detail scale | A lock-up whose mark is sized in pixels needs a new value at eve
 type/em-sheared-highlight | E3 D2 W4 F4 $1 | type highlight clip-path emphasis inline scale | A slanted block behind a phrase gives a headline a cut-in, marke
 type/frame-cycled-glyph-indicator | E3 D1 W2 F3 $1 | indicator mono glyph loading state motion | An indeterminate wait does not need a drawn shape. Step one text

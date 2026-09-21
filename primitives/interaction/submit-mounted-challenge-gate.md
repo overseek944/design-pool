@@ -4,7 +4,7 @@ category: interaction
 tags: [forms,third-party,performance,privacy,accessibility,progressive-enhancement]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: [mounted-empty-status-slot]

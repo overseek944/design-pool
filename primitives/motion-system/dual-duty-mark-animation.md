@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,svg,identity,loading,state,reduced-motion]
 axes: {energy: 3, density: 1, weight: 2, finish: 5}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -43,3 +43,18 @@ line so bars grow both ways. Extremes 0.4–0.6 to 1.0–1.1, period 0.8–1.6s.
 ⚠ `fill-box` resolves against the element's own bounding box, so a bar drawn as
 a zero-width line has nothing to scale about. Give it a real stroke box or use
 a rect.
+
+A third duty is acknowledgement. When something completes elsewhere on the page
+— a form accepted, a value copied, a setting saved — one short beat on the mark
+confirms it with no toast, no new node and no layer: the identity is the one
+element guaranteed to be on screen at every scroll position, and the reader
+already knows where it is. Keep it a single beat returning exactly to rest so it
+cannot be confused with the wait loop it shares an element with. 1.1–1.25×,
+400–700ms.
+```js
+if (!reduce) mark.animate([{ transform: 'scale(1)' },
+  { transform: 'scale(1.18)' }, { transform: 'scale(1)' }], { duration: 600 })
+```
+⚠ It announces nothing — the outcome still needs a live region and a focus move,
+and the beat sits on top of those. Never fire it on failure: the same gesture
+read as celebration is worse than staying still.

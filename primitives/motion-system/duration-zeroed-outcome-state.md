@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,architecture,correctness,scene,reduced-motion]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []

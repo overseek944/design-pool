@@ -4,7 +4,7 @@ category: layout
 tags: [layout,container-query,aspect,fit,cls]
 axes: none
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -50,3 +50,19 @@ that the media survives a landscape phone.
 ⚠ The rem term is a hand-tallied sum of everything sharing the fold — it does
 not track a heading that wraps to a third line at some width. Audit at the
 narrow end, where the wrapping happens and the clamp is already at its floor.
+
+The derived quantity need not be a length the box takes; it can be the type
+inside it. Publish the copy that must share the fold as a height budget,
+subtract it from the space available, and divide by the face's height-to-size
+ratio to get a `font-size` — then `min()` that against an ordinary width-fluid
+clamp so whichever axis is scarcer binds. The display line gives up the fold
+before the copy does, which is the right order once the whitespace in the stack
+has already surrendered. Ratio 1.6–2.0 for a two-line block; measure it once.
+```css
+--copy: 11.25rem;                          /* what must survive below it */
+--word: min(clamp(2.75rem, 10vw, 12rem), calc((var(--stage) - var(--copy)) / 1.9));
+```
+⚠ The ratio belongs to that face at that leading and line count — a wrap to a
+third line overruns the budget with no warning. Floor the clamp above the point
+where the display size drops under the body size, or the hierarchy inverts on a
+landscape phone.
