@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,hairline,precision,responsive,technical]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 2
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -27,3 +27,18 @@ on purpose; filled edge to edge it collapses into an ordinary bordered layout.
 ```
 ⚠ Two container tiers is the ceiling — a third pair of rules reads as noise.
 Rules are decoration: keep them `pointer-events: none` and out of the a11y tree.
+
+Leaving the outer cells empty is one answer; giving them a different *ground* is
+a stronger one. Run one texture inside the container's width and another beyond
+it — a dot lattice against a fine vertical hatch — and the boundary is drawn by
+the change of material, so the hairline becomes optional rather than load-
+bearing. The content column then reads as a plate laid on the sheet instead of a
+region fenced off on it. Keep both textures within a few percent of the same
+optical value; a contrast step reads as two sections side by side.
+```css
+.band { background: var(--hatch) }               /* the margin, full bleed */
+.band > .inner { inline-size: min(100% - 2 * var(--gutter), var(--content));
+                 margin-inline: auto; background: var(--dots) }
+```
+⚠ Two tiling grounds meeting at a line show every rounding error — pin the seam
+to the same `max()` expression the rules use, not to a separate padding.

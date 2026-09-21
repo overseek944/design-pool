@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,generative,field,deterministic,correctness,scatter]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -37,3 +37,17 @@ const rnd = () => ((s = 16807 * s % 2147483647) - 1) / 2147483646
 ```
 ⚠ Order-dependent — inserting one draw reshuffles everything after it, so a
 generator under revision changes layout on edits that look unrelated.
+
+Both forms key on a linear index, which a *lattice* does not have: change the
+column count on resize and every cell takes a new value, so a field reshuffles
+at each breakpoint rather than reflowing. Key on the cell's own coordinates
+instead — one hash of `(row, col)` — and a cell keeps its variation no matter
+how many neighbours it gains or loses. The GLSL sine hash ports directly and
+needs no table.
+```js
+const h = (r, c) => { const v = Math.sin(r * 12.9898 + c * 78.233) * 43758.5453
+                      return v - Math.floor(v) }                    // 0…1
+const size = base + (h(row + 1, col + 1) - .5) * 2 * spread
+```
+⚠ Offset the inputs off zero. At `(0, 0)` the sine is exactly 0 and the first
+cell is not merely predictable, it is the same across every field on the page.

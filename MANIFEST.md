@@ -1,10 +1,11 @@
 # Manifest
 
-446 primitives. Format: `category/id | axes cost | tags | gist`
+450 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
 canvas/alpha-bucketed-path-batch | E2 D4 W1 F5 $3 | canvas svg performance generative texture batching | Thousands of individually-faded SVG marks means thousands of nod
+canvas/alpha-gated-cell-population | E1 D3 W2 F4 $3 | canvas generative field image mask silhouette grid | A field of marks in the shape of an arbitrary form usually means
 canvas/baked-cell-frame-stream | neutral  $4 | canvas animation precomputed payload performance field | An ambient field whose motion is authored rather than simulated 
 canvas/borrowed-scene-constructors | neutral  $2 | canvas 3d architecture interop bundle | A wrapper that owns the renderer — a globe, a model viewer, a 3D
 canvas/bucketed-depth-order | neutral  $2 | canvas performance depth particles batching quantise | Painter's order on a 2D context normally means sorting every mar
@@ -20,6 +21,7 @@ canvas/dom-labels-in-normalised-canvas-space | neutral  $2 | canvas accessibilit
 canvas/eased-pointer-influence | E3 D2 W2 F5 $2 | shader interaction feel | Never feed raw pointer state to a shader. Keep a uMouseActive fl
 canvas/facing-weighted-directional-pull | E3 D2 W3 F5 $3 | shader canvas pointer motion generative | Uniform displacement inflates a form; a form reaching toward som
 canvas/feature-scaled-sim-grid | neutral  $2 | canvas simulation performance resolution texture | Size a field simulation's grid by the smallest feature worth see
+canvas/frame-gap-driver-trail | E3 D2 W2 F5 $2 | canvas pointer field influence sampling continuity | A field tested against the driver's position once per frame is s
 canvas/glyph-ramp-image-field | E2 D4 W2 F3 $4 | canvas type texture image ambient generative | Encode a photograph as a field of characters: draw it into an of
 canvas/half-pixel-hairline-grid | E1 D2 W1 F5 $1 | canvas hairline correctness diagram pixel-ratio performance | A one-pixel canvas line drawn on an integer coordinate straddles
 canvas/hash-dither-before-quantise | E1 D3 W2 F4 $2 | canvas color ramp noise grain banding generative | Snapping a continuous value onto a short palette — eight to twel
@@ -113,6 +115,7 @@ interaction/snap-scroll-as-dismiss-gesture | E3 D2 W2 F5 $3 | gesture dialog scr
 interaction/split-fraction-step-rail | E2 D2 W2 F5 $2 | interaction indicator progress stepper scroll | A stepper driven by a continuous value keeps the index and throw
 interaction/state-as-numeric-custom-property | E3 D2 W2 F5 $1 | interaction hover state tokens architecture | Express interaction state as a number, then derive every depende
 interaction/state-seeded-at-listener-attach | neutral  $1 | correctness state events scroll architecture | Events report transitions, not the current value. Any class deri
+interaction/substituted-driver-on-coarse-pointer | neutral  $2 | pointer touch fallback ambient correctness architecture | Every pointer-reactive decoration is inert on a touchscreen: the
 interaction/supplied-cursor-affordance-pair | E2 D2 W3 F3 $1 | interaction pointer detail chrome accessibility | Replacing the arrow is a strong voice, and the failure is replac
 interaction/transparent-stroke-hit-area | neutral  $1 | accessibility svg interaction touch correctness detail | A small mark inside a viewBox — a path node, a scrubber dot — is
 interaction/viewport-clamped-anchored-popover | neutral  $1 | correctness responsive overlay accessibility hover focus | A popover sized against its trigger gets clipped by the window: 
@@ -271,6 +274,7 @@ perf/media-query-parity-listeners | neutral  $1 | responsive correctness archite
 perf/media-scoped-preload-tier | neutral  $1 | perf loading images responsive resource-hints critical-path | When script picks among art-directed sources — an orientation cr
 perf/off-thread-texture-downscale | neutral  $2 | performance texture webgl loading memory | Textures authored at 4K decode to tens of megabytes before anyth
 perf/offscreen-subtree-deferral | neutral  $1 | performance containment rendering scroll correctness | Below-fold grids of cards, figures or rows cost style, layout an
+perf/paired-probe-engine-window | neutral  $2 | progressive-enhancement feature-detection browser-quirk correctness architecture | Feature queries test parsing, which is the right instrument for 
 perf/pixel-ratio-change-watch | neutral  $1 | performance canvas correctness resize media-query dpr | Device pixel ratio changes when a window is dragged between moni
 perf/post-teardown-asset-disposal | neutral  $2 | performance correctness lifecycle canvas architecture memory | An asynchronous asset load outlives the view that started it. Sc
 perf/prefetch-on-intent-band | neutral  $2 | performance navigation prefetch observer architecture | Prefetching is two policies, not one. Intent arms on mouseenter,

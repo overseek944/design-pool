@@ -4,7 +4,7 @@ category: type
 tags: [type,tokens,opentype,variable-font,precision]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -37,3 +37,17 @@ italic carries meaning.
 on `:root` reaches every family below, where the same tag selects an unrelated
 alternate or nothing. Reset to `normal` wherever the family changes — the mono
 tier especially — or scope the tokens per family.
+
+`opsz: auto` is the right default and the wrong one for a system whose headings
+are UI, not display type. Auto binds the axis to the rendered size, so a 40px
+heading gets the refined, tightly-spaced cut a poster wants; pin the axis to the
+*role's* voice instead — coarsely bucketed, deliberately below the pixel size —
+and a large heading keeps the sturdier letterforms of the interface it belongs
+to. Three buckets is enough: body, heading, display.
+```css
+:root { --opsz-body: 14; --opsz-head: 20; --opsz-display: 24 }
+h2 { font-size: 40px; font-variation-settings: "opsz" var(--opsz-head), "wght" 520 }
+```
+⚠ Pinning below the rendered size thickens strokes and opens spacing, so the
+optical tracking the face would have applied is now yours to set — expect to
+take 0.01–0.02em back out by hand.
