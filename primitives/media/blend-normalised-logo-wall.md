@@ -4,7 +4,7 @@ category: media
 tags: [media,logos,blend-mode,assets,normalisation]
 axes: none
 cost: 1
-seen: 16
+seen: 17
 requires: []
 conflicts: []
 completes: []
@@ -106,3 +106,17 @@ shadow would draw a rectangle around a transparent PNG.
 ⚠ Order is the technique: brightness before the invert lightens the original
 and darkens the result. Check the mark against the photograph's brightest
 region, not its average.
+
+The opposite need — an asset that should *take* the palette rather than keep
+its own colour — is the same mechanism one mode over. `mix-blend-mode:
+luminosity` discards the image's hue entirely and keeps only its lightness, so
+a photographic texture, an engraving or a screenshot laid over a tinted ground
+comes back in that ground's colour with no duotone, no recolouring and no
+second file. Hold it at 25–50% opacity, or its lightness range fights the
+surface it is meant to tint.
+```css
+.texture { mix-blend-mode: luminosity; opacity: .4 }
+```
+⚠ Luminosity reads the *backdrop*, so over a neutral ground it returns plain
+greyscale — the tint has to live on the layer underneath, never on the image.
+The same stacking-context traps apply: one ancestor filter and it stops.

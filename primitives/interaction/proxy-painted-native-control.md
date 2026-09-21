@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,focus,forms,input,correctness,keyboard]
 axes: none
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -65,3 +65,19 @@ sitting on the thing it drives rather than an invisible one.
 ⚠ Only safe with `pointer-events: none` present — that is the pairing the plain
 `opacity: 0` failure above is missing. Both handlers must write one value, or
 arrowing the slider and dragging the surface disagree.
+
+Where the paint *is* the control rather than artwork the control sits on,
+invert the layering. Keep the native input on top at `opacity: 0`, stretched
+over the whole control, and make every painted piece `pointer-events: none`.
+One element then owns drag, touch and keyboard, so there is no second handler
+to keep in agreement — which is the disagreement the arrangement above avoids
+by giving the pointer away entirely.
+```css
+.range { position: absolute; inset: 0; opacity: 0;
+         touch-action: none; cursor: grab }
+.range:active { cursor: grabbing }
+.paint  { pointer-events: none }
+```
+⚠ `touch-action: none` is load-bearing: without it a vertical drag scrolls the
+page instead. The focus ring lands on an invisible box, so draw it on the
+painted part — nothing else here is focusable.

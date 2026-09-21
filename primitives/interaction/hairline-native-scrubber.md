@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,accessibility,control,scrub,native,diagram]
 axes: {energy: 2, density: 1, weight: 1, finish: 5}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -39,3 +39,18 @@ to measure.
 ⚠ A rotated thumb's hit area is still the unrotated box, so the corners of the
 diamond are outside it. Non-rectangular thumbs want the track box taller —
 24–32px — rather than a bigger mark.
+
+Painted parts beside the input must use the thumb's geometry, not the raw
+percentage. A thumb of width `w` travels only `track − w`, so its centre at
+fraction `p` sits at `calc(p*100% + (.5 − p) * w)` — a fill drawn straight to
+`p%` drifts up to `w/2` away from it, and the error is worst at the two ends
+where it is most visible. Clamp any length built from that expression: leaving
+air around the thumb takes it negative near zero.
+```css
+--at: calc(var(--p) * 100% + (.5 - var(--p)) * var(--thumb));
+.fill { inline-size: max(0px, calc(var(--at) - var(--gap))) }
+.mark { inset-inline-start: calc(var(--at) - var(--thumb) / 2) }
+```
+⚠ Transition the fill's size and the marker's offset together, over one
+duration and one curve. Either alone lags the other by the whole duration and
+the two visibly separate mid-drag.

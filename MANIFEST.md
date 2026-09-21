@@ -1,6 +1,6 @@
 # Manifest
 
-705 primitives. Format: `category/id | axes cost | tags | gist`
+707 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -184,6 +184,7 @@ interaction/reserved-state-border | neutral  $1 | accessibility focus cls border
 interaction/resting-default-expanding-row | E2 D2 W2 F5 $2 | interaction state hover accessibility layout | A row of panels that expand only on hover says nothing at rest —
 interaction/role-described-slide-group | neutral  $1 | interaction accessibility carousel keyboard correctness | A horizontally paging rail is a div of divs to everything but th
 interaction/row-forwarded-stretched-focus | neutral  $1 | accessibility focus link correctness cards | A link stretched over its whole row or card — a pseudo-element a
+interaction/rung-stepped-continuous-slider | neutral  $2 | interaction accessibility control slider input native keyboard | A quantity spanning orders of magnitude is meaningful at a handf
 interaction/runtime-assembled-href | neutral  $1 | interaction correctness accessibility link progressive-enhancement | A destination you would rather not serve in the markup can be sp
 interaction/sample-partitioned-hit-columns | E2 D3 W2 F5 $1 | interaction hover hit-area chart data css-only accessibility | Points on a small plot are four-pixel targets with dead space be
 interaction/shadow-scoped-label-patch | neutral  $2 | accessibility third-party shadow-dom correctness observer lifecycle | A vendor launcher — chat, feedback, consent — mounts a bare <but
@@ -601,6 +602,7 @@ surface/painted-border-band | E1 D2 W3 F5 $1 | surface border frame texture css-
 surface/paired-hard-shadow-sheet | E1 D2 W2 F4 $1 | surface depth border detail editorial | To imply a second sheet under a panel, two zero-blur shadows do 
 surface/panel-free-backdrop-legibility | E1 D2 W2 F5 $2 | backdrop-filter legibility photography contrast surface type | Copy over a photograph usually gets a plate, and the plate break
 surface/phase-matched-gradient-drift | E2 D2 W2 F4 $1 | surface gradient loop ambient background | An oversized gradient translated behind its box gives a ground a
+surface/polarity-crossing-panel-ground | E1 D2 W4 F5 $1 | surface gradient contrast color panel card | One panel can carry both polarities of type. Ramp its own ground
 surface/projected-lattice-ground | E2 D3 W1 F4 $2 | surface grid texture ambient depth geometry | A flat hairline lattice reads as a sheet behind the page. Tilt t
 surface/quantised-ground-transition | E1 D2 W2 F3 $1 | surface color gradient tokens detail | Two flat sections meeting edge to edge give a hard seam; a smoot
 surface/radius-inset-connector-rail | E1 D3 W1 F5 $1 | diagram hairline precision detail schematic | Connectors in a node diagram are hairlines on pseudo-elements, n

@@ -4,7 +4,7 @@ category: scale
 tags: [tokens,responsive,breakpoint,architecture,cascade,custom-properties]
 axes: none
 cost: 1
-seen: 12
+seen: 13
 requires: []
 conflicts: []
 completes: []
@@ -127,3 +127,20 @@ sizes — a fluid `font-size` on the host is the only knob the grid needs.
 seams between rows. Fine where the content is drawn on the same fraction — a
 character grid, a waveform — wrong where neighbouring cells must share a hard
 edge.
+
+A breakpoint can only redefine the inline value where the two sizes are related
+by arithmetic. Where they are not — per-element measurements drawn once for a
+wide layout and again for a narrow one, with no single ratio between them —
+emit *both* under distinct names and let the media query switch which one the
+rule reads. The element then carries a small table instead of one number, and
+the stylesheet still owns every decision about when to read it.
+```html
+<div class="bar" style="--h: 32px; --h-wide: 114px">
+```
+```css
+.bar { block-size: var(--h) }
+@media (width >= 48rem) { .bar { block-size: var(--h-wide) } }
+```
+⚠ Two names is the readable ceiling. A third breakpoint wants the numbers in a
+data attribute and the geometry back in the stylesheet, not a wider inline
+table — and every name still needs its own `var()` fallback.

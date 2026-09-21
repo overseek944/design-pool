@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,accessibility,reduced-motion,state,sequence,correctness]
 axes: none
 cost: 2
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -69,3 +69,17 @@ enhancement rather than the encoding.
 unreliably — put the state word in a text node inside the region so the update
 is a content change. Colour alone repeats the problem one axis over; pair it
 with a shape or a count.
+
+An entrance whose *start* pose ships in the markup inverts the branch. Writing
+the offset as an inline `transform` so the server's first paint is already
+frame zero, then handing over to a CSS animation with `both`, costs no script
+and cannot flash — but `animation: none` now strands the element at that offset
+forever. The reduced branch has to undo the markup as well, and because the
+pose is inline it takes `!important` to reach.
+```css
+.col { animation: rise .8s var(--ease) both; animation-delay: var(--d, 0s) }
+@media (prefers-reduced-motion: reduce) {
+  .col { animation: none !important; transform: none !important } }
+```
+⚠ Nothing fails loudly. The page is correct for everyone who never set the
+preference, and broken only for the readers who did.
