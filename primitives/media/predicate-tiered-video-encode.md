@@ -4,7 +4,7 @@ category: media
 tags: [media,video,responsive,performance,bandwidth,correctness]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,19 @@ smallest encode unconditional. Three or four tiers across roughly 720p–2160p.
 another display keeps the encode it started with, and only an explicit `load()`
 re-picks, which restarts playback. The poster is not optional: nothing paints
 until the chosen file holds a frame.
+
+Where the encode must change mid-session — a theme flip swapping a light art
+direction for a dark one, a re-pick after a window moves display — the restart
+`load()` forces is avoidable. Read `currentTime` before the swap, modulo the
+loop length so the offset is meaningful in the new file, and restore it on
+`loadedmetadata` clamped a frame inside the duration. The clip appears to
+continue rather than to reopen.
+```js
+const at = v.currentTime % LOOP
+v.src = next; v.load()
+v.addEventListener('loadedmetadata', () => v.currentTime =
+  Math.min(at, v.duration - 1/60), { once: true })
+```
+⚠ Seeking is asynchronous and fires its own `seeked`: hold the poster until
+then, or the swap shows one frame of the wrong position. Only sound when the
+encodes share a timeline — a different cut resumes into nonsense.

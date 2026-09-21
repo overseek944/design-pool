@@ -4,7 +4,7 @@ category: reveal
 tags: [type,motion,reveal,ambient]
 axes: {energy: 3, density: 4, weight: 2, finish: 5}
 cost: 4
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: [will-change-on-split-children, revert-split-on-resize]
@@ -27,3 +27,18 @@ so the first frame arrives unblurred and pops.
 ```css
 .tok { opacity: .001; filter: blur(3px); translate: 0 5px }
 ```
+
+Reveal by *colour* rather than by opacity and the entry stops being a
+visibility gate. Tokens sit at the muted ink and interpolate to the full one
+through a single `color-mix` percentage, so nothing is ever invisible, a dead
+runtime leaves a legible heading rather than a blank one, and there is no layer
+to promote or discard — the whole effect is one inherited number. Drive that
+number from a scrubbed scroll position rather than a timeline and the text
+tracks the reader. Stagger 15–30ms per token.
+```css
+.tok { color: color-mix(in srgb, var(--ink-muted),
+                        var(--ink) calc(var(--reveal, 1) * 100%)) }
+```
+⚠ The muted end is real text and must clear 4.5:1 on its own — a reveal that
+starts below contrast has only moved the failure. Set the fallback to `1`, so
+unstyled and un-split markup renders finished.

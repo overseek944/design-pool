@@ -1,6 +1,6 @@
 # Manifest
 
-696 primitives. Format: `category/id | axes cost | tags | gist`
+699 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -323,6 +323,7 @@ media/cover-scale-as-scalar | neutral  $2 | media correctness geometry overlay r
 media/crop-coupled-scrim | neutral  $1 | media video legibility overlay accessibility responsive | Footage behind a headline crops differently at every width, so a
 media/crop-scaled-source-hint | neutral  $1 | media correctness responsive performance loading | sizes states the width the browser has to fill, and under object
 media/datum-carrying-render-coordinate | neutral  $1 | figure svg authoring correctness data provenance | A figure derived from real values — points on a projection, mark
+media/decoded-probe-codec-select | neutral  $3 | video codec transparency feature-detection correctness media | canPlayType answers about the container, not about what survives
 media/dialog-scoped-embed-lifecycle | neutral  $2 | media performance dialog correctness lifecycle | A third-party embed is not yours to pause — you cannot reach int
 media/dilated-alpha-keyline | E1 D2 W2 F5 $1 | media icon logo filter contrast legibility detail css-only | A raster mark has no stroke to reach for, so a pale logo dropped
 media/frame-announced-readiness | neutral  $2 | media iframe embed loading progressive-enhancement correctness | An iframe's load fires when its document parses, not when the ap
@@ -382,6 +383,7 @@ motion-system/generation-guarded-sequence | neutral  $2 | animation architecture
 motion-system/handed-off-prepaint-entrance | neutral  $3 | motion entrance hydration correctness progressive-enhancement | An entrance owned by a framework cannot begin until that framewo
 motion-system/hinged-leaf-value-swap | E3 D2 W3 F4 $2 | motion counter transition 3d accessibility | A value that changes by folding reads as mechanical rather than 
 motion-system/independent-transform-channels | neutral  $1 | transform transition architecture composition state | Two concerns wanting the same element — an entrance offset and a
+motion-system/keyboard-modality-stilled-ui | neutral  $1 | motion accessibility keyboard input correctness transition | A reader tabbing through a page outruns transitions authored for
 motion-system/keyframe-resolved-waypoints | E3 D2 W2 F5 $2 | motion keyframes custom-properties architecture choreography | A @keyframes block is document-global and takes no arguments, so
 motion-system/keyframe-variant-bank | E3 D4 W2 F3 $2 | motion generative ambient tokens architecture | Phase and period offsets only ever translate one curve; they can
 motion-system/marquee-playhead | E3 D3 W2 F5 $3 | marquee motion state observer rhythm | Give a moving track one stationary reading position. A marker si
@@ -475,6 +477,7 @@ reveal/char-opacity-drift | E3 D4 W2 F5 $4 | type motion reveal ambient | Per-ch
 reveal/flow-preserved-step-reveal | E3 D2 W2 F3 $1 | reveal text steps clip-path typing layout-safety | A left-to-right text reveal animated on width leaves normal flow
 reveal/glyph-scramble-settle | E4 D3 W2 F3 $2 | type reveal motion technical text | Resolve a label out of noise rather than fading it in: hold the 
 reveal/index-thresholded-progress-gate | E2 D2 W2 F5 $1 | reveal scroll custom-properties progress cheap svg | One scalar can sequence a whole set with no tween per member and
+reveal/leading-collapsed-settle | E2 D2 W3 F5 $2 | reveal type entrance heading scroll leading | A display block can arrive by closing up rather than by moving. 
 reveal/lit-uncovering-front | E3 D2 W3 F4 $2 | reveal wipe blend light scroll edge | Revealing by retreating an opaque cover, rather than by fading o
 reveal/masked-line-rise | E3 D2 W3 F5 $2 | type motion reveal | Split to lines, wrap each in an overflow-hidden outer with a tra
 reveal/mirrored-sign-pair | E3 D2 W3 F4 $2 | reveal motion rotation symmetry pairing scroll parallax | Two peer blocks on one row share a single progress value and rea

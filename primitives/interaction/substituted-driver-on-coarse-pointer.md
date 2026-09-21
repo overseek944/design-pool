@@ -4,7 +4,7 @@ category: interaction
 tags: [pointer,touch,fallback,ambient,correctness,architecture]
 axes: none
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -41,3 +41,17 @@ const shown = fine.matches ? hovered : items[tick]     // interval only when !fi
 ⚠ The rotation must stop off-screen and under `prefers-reduced-motion`, and
 every item still has to be reachable without the pointer — a fine-pointer path
 that is the only path is the same failure in the other direction.
+
+An interval is not the only stand-in for hover. Where the hovered thing is
+positioned down the page, promote *intersection* into the role instead: the
+same `data-active` attribute, written by `pointerenter` on a precise pointer
+and by an observer crossing 0.2–0.35 on everything else. The reader paces it by
+scrolling, so nothing changes unasked, no timer runs, and the two paths differ
+only in what writes the attribute — the styling has one selector.
+```js
+precise ? el.addEventListener('pointerenter', () => on(el))
+        : io.observe(el)   // threshold [0, .25] → dataset.active = ratio >= .25
+```
+⚠ The observer path needs a hysteresis gap or an element resting near the
+threshold flickers. Pick the driver on the same `change` subscription as the
+media query, not once at startup.

@@ -4,7 +4,7 @@ category: scale
 tags: [tokens,fluid,naming,architecture,responsive]
 axes: none
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -49,3 +49,18 @@ judgement per call site and no step anyone has to learn.
 ```
 ⚠ The name is a lie at any root size but the default, which is the point —
 never compute against it, and never mix a raw `px` value into the same scale.
+
+Colour takes the same naming and gains something sizes do not. Name each token
+after its light-mode hex — `--tone-21222c` — and redefine that name under the
+dark scope: a value pasted straight out of a design file becomes a token
+nobody had to invent a semantic name for, and it inverts without being
+renamed. Semantic aliases still sit on top for anything that has a role; the
+hex layer catches the long tail of one-off values that would otherwise be
+written literally and never flip.
+```css
+:root            { --tone-21222c: #21222c }
+[data-theme=dark]{ --tone-21222c: #f4f3f3 }
+```
+⚠ The name is now a lie in one of the two themes, which is the price. Keep the
+literal layer strictly below the semantic one — a component reaching for a hex
+name has skipped a decision about what the colour means.

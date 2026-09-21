@@ -4,7 +4,7 @@ category: perf
 tags: [performance,media-query,bandwidth,video,progressive-enhancement,accessibility]
 axes: none
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []

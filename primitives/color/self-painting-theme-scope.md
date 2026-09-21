@@ -4,7 +4,7 @@ category: color
 tags: [color,tokens,theming,architecture,dark]
 axes: none
 cost: 2
-seen: 23
+seen: 24
 requires: []
 conflicts: []
 completes: []
@@ -131,3 +131,18 @@ let the effect declare nothing but `var()`.
 ```
 ⚠ Amplitudes do not survive a palette swap the way inks do — a third theme
 needs them re-tuned by eye, not interpolated between the two.
+
+Assets belong in the token block too. A diagram, a poster frame or a rendered
+still usually needs a second export for the inverted ground, and shipping both
+elements hides one from layout while still fetching it. Hold the alternate URL
+in a custom property beside the colours and let the replaced element read it —
+one rule serves every instance, and it follows an in-page toggle, which a
+`<picture>` with a `prefers-color-scheme` source cannot.
+```css
+.fig[data-art=flow] { --dark-src: url(/art/flow-dark.webp) }
+[data-theme=dark] .fig img { content: var(--dark-src) }
+```
+⚠ The `src` still downloads, so the dark reader pays for both — reserve this
+for art that genuinely cannot be authored theme-neutral. Keep `src` on the
+light export: an engine that ignores `content` on a replaced element then shows
+the wrong ground rather than nothing.

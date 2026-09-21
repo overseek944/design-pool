@@ -4,7 +4,7 @@ category: surface
 tags: [surface,clip-path,edge,section,responsive,geometry]
 axes: {energy: 1, density: 2, weight: 3, finish: 4}
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -54,3 +54,19 @@ const arc = (cx,cy,r,a0,a1,n=7) => Array.from({length:n+1}, (_,i) =>
 ⚠ The output is 40+ vertices, unreadable and unmaintainable by hand — keep the
 generator in the build, never the expanded list, or the next radius change is
 a rewrite. Sampling below five points per corner reads as a visible facet.
+
+A clip takes the border with it, so a chamfered or slanted box cannot be
+outlined by `border` at all. One polygon with the `evenodd` fill rule draws
+both: the outer shape, then the same shape inset by the hairline, and the
+region between them is the only thing painted. The two rings must be listed in
+one `clip-path` and the inset vertices computed from the same cut token, or the
+stroke thins along the diagonal. Pad the inline axis by the cut plus 4–8px so
+the label clears the slope.
+```css
+.chip { --cut: 10px; clip-path: polygon(evenodd, var(--cut) 0, 100% 0,
+  calc(100% - var(--cut)) 100%, 0 100%,
+  calc(var(--cut) + 1px) 1px, 1px calc(100% - 1px), /* … inner ring */) }
+```
+⚠ This paints a border and still clips the focus ring. Where the shape belongs
+to a control, skew a pseudo-element behind an unclipped box instead — the ring
+then follows the real border box, which is square and therefore honest.

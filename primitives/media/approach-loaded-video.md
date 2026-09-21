@@ -4,7 +4,7 @@ category: media
 tags: [media,video,performance,intersection-observer,accessibility,bandwidth]
 axes: none
 cost: 2
-seen: 23
+seen: 24
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -234,3 +234,18 @@ if (!warm.has(next)) { const p = document.createElement('video')
 ```
 ⚠ Key the map by URL, never by index: a reordered or filtered set re-fetches
 everything it already holds.
+
+`once: true` on the unlock listener loses the race it exists to win: a reader
+who clicks before the first source is assigned spends the only gesture the page
+will ever listen for. Keep one persistent broadcaster instead — a set of
+subscribers, listeners attached while the set is non-empty and removed when it
+empties — and require `isTrusted`, since a synthetic click satisfies no
+autoplay policy and would only burn the retry. Count `keydown` too, but only
+Enter and Space; throttle the whole fan-out to 250–400ms so one tap does not
+retry a grid twice.
+```js
+const fire = e => { if (!e.isTrusted || (e.key && !['Enter',' '].includes(e.key))) return
+  if (performance.now() - last < 350) return; last = performance.now(); subs.forEach(f => f()) }
+```
+⚠ Subscribers must re-check their own gate inside the callback — a gesture
+anywhere on the page reaches every clip, including the ones scrolled past.
