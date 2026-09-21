@@ -4,7 +4,7 @@ category: media
 tags: [media,video,accessibility,reduced-motion,correctness]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []

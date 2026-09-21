@@ -4,7 +4,7 @@ category: media
 tags: [media,video,performance,intersection-observer,accessibility,bandwidth]
 axes: none
 cost: 2
-seen: 15
+seen: 16
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -145,3 +145,17 @@ if (s && !s.src) { s.src = s.dataset.src; v.load() }
 ⚠ `load()` resets `currentTime` and discards the buffer, so gate it on the first
 approach only — running it again on re-entry restarts footage a reader was
 already watching.
+
+Proximity gates nothing for a loop that opens the page — it is already
+intersecting at mount, so the observer starts the fetch and the first decode
+inside the window first paint is competing for. Gate that one on load *phase*
+instead: wait for the `load` event, then a short delay, longer where decode and
+hydration share one weak core. The poster carries the opening frame either way,
+so the only thing deferred is the moment it starts moving.
+```js
+const go = () => setTimeout(() => v.play().catch(() => {}),
+  matchMedia('(max-width: 767px)').matches ? 400 : 50)
+document.readyState === 'complete' ? go() : addEventListener('load', go, { once: true })
+```
+⚠ Delay ranges 30–80ms and 300–600ms; past that the still reads as a failed
+video. Clear the timer on unmount, or a route change plays a detached element.

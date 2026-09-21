@@ -1,6 +1,6 @@
 # Manifest
 
-603 primitives. Format: `category/id | axes cost | tags | gist`
+606 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -125,6 +125,7 @@ interaction/focusable-graphic-regions | neutral  $2 | accessibility svg focus di
 interaction/gap-spanning-hover-bridge | E2 D2 W2 F5 $1 | interaction hover panel menu css-only accessibility | A panel held off its trigger by a visual gap is unreachable by h
 interaction/gesture-affordance-label | E1 D2 W2 F4 $1 | affordance interaction accessibility detail ux | A surface whose only affordance is a gesture — drag to orbit, sc
 interaction/hairline-native-scrubber | E2 D1 W1 F5 $1 | interaction accessibility control scrub native diagram | A diagram that scrubs deserves a real <input type=range>, not a 
+interaction/height-traded-card-panes | E2 D3 W2 F4 $2 | interaction hover card media layout transition | A card that reveals a summary on hover usually grows — shoving i
 interaction/history-entry-backed-overlay | neutral  $2 | interaction overlay history dismiss mobile correctness | An overlay opened from a button owns no history entry, so the ba
 interaction/hysteretic-lock-zone | neutral  $1 | interaction pointer state correctness threshold | Any boolean derived from a continuous input — pointer inside a z
 interaction/idle-scroll-cue | E2 D1 W2 F4 $1 | scroll affordance feedback motion | A page whose motion is entirely scroll-driven stops when the rea
@@ -150,6 +151,7 @@ interaction/proxy-painted-native-control | neutral  $1 | accessibility focus for
 interaction/rejected-file-input-reset | neutral  $1 | correctness form input file detail | Check a chosen file's real type and byte length before any uploa
 interaction/reserved-state-border | neutral  $1 | accessibility focus cls border correctness | A control that gains a border on focus or selection must carry t
 interaction/resting-default-expanding-row | E2 D2 W2 F5 $2 | interaction state hover accessibility layout | A row of panels that expand only on hover says nothing at rest —
+interaction/role-described-slide-group | neutral  $1 | interaction accessibility carousel keyboard correctness | A horizontally paging rail is a div of divs to everything but th
 interaction/row-forwarded-stretched-focus | neutral  $1 | accessibility focus link correctness cards | A link stretched over its whole row or card — a pseudo-element a
 interaction/runtime-assembled-href | neutral  $1 | interaction correctness accessibility link progressive-enhancement | A destination you would rather not serve in the markup can be sp
 interaction/snap-scroll-as-dismiss-gesture | E3 D2 W2 F5 $3 | gesture dialog scroll accessibility sheet | Build a drag-to-dismiss sheet out of a scroll container rather t
@@ -261,6 +263,7 @@ media/aspect-locked-media | neutral  $1 | layout media cls | Lock every media sl
 media/blend-normalised-logo-wall | neutral  $1 | media logos blend-mode assets normalisation | Supplied logo files arrive as opaque rectangles — baked-in white
 media/build-captured-product-shot | neutral  $2 | media asset build product screenshot architecture correctness | A page showing the product either carries a hand-kept screenshot
 media/canvas-driven-favicon | E3 D2 W2 F4 $2 | media icon canvas motion browser detail | The tab strip is a surface a page can paint. Render the mark int
+media/capture-substituted-scene-loop | neutral  $2 | media video 3d performance budget architecture | An ambient 3D scene nobody touches does not need a renderer. If 
 media/centre-converged-mark-family | E1 D2 W1 F5 $1 | media svg icon ornament geometry system | A set of section marks reads as a family when its members share 
 media/chained-filter-duotone | E1 D2 W3 F4 $1 | media color filter normalisation texture | Supplied photographs come from different cameras, days and light
 media/child-reported-frame-height | neutral  $2 | media correctness architecture cls responsive | An iframe reporting its own height hands layout control to a cha
