@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,accessibility,required]
 axes: none
 cost: 1
-seen: 39
+seen: 40
 requires: []
 conflicts: []
 completes: []
@@ -165,3 +165,17 @@ exists to drift.
 ```js
 if (reduced) { clock = 4; draw(); return }      // same draw(), one frame
 ```
+
+The blunt form — `* { animation: none !important }` inside the query — is the
+only branch that needs no knowledge of what is animating, which is what makes
+it survivable on markup whose styles are emitted rather than authored: an
+important author rule outranks even an inline `animation`. It is correct on one
+condition, that no element's *resting* CSS is its hidden state. Kill the
+animation on something that sits at `opacity: 0` until a keyframe lifts it and
+the content is simply gone.
+```css
+@media (prefers-reduced-motion: reduce) { * { animation: none !important } }
+```
+⚠ The condition is the whole technique: author the settled frame as the
+markup's own style and let the keyframe's `from` hold the hidden state, never
+the reverse.

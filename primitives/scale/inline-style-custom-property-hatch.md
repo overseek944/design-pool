@@ -4,7 +4,7 @@ category: scale
 tags: [tokens,responsive,breakpoint,architecture,cascade,custom-properties]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -41,3 +41,16 @@ retunable in one place.
 [data-delay="1"] { transition-delay:  70ms }
 [data-delay="2"] { transition-delay: 140ms }   /* 5–7 steps, then stop */
 ```
+
+The hatch is not needed for *state*. An inline declaration only outranks the
+stylesheet on the properties it actually sets, so an ordinary class rule still
+wins any property the emitter left alone — hover lift and shadow over markup
+that inline-styles only colour, padding and radius. Spend the `!important`
+utilities on the properties the emitter does set, and keep every state in
+normal rules where the cascade works.
+```css
+.btn:hover { transform: translateY(-1px) }   /* nothing inline sets transform */
+```
+⚠ It holds only while the emitter's property set is stable. The release that
+starts emitting an inline `transform` for an entrance offset silently kills
+every hover written this way, and nothing fails loudly.

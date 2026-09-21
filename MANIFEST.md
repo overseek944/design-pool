@@ -1,6 +1,6 @@
 # Manifest
 
-428 primitives. Format: `category/id | axes cost | tags | gist`
+431 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -67,6 +67,7 @@ color/sequence-value-ramp | E1 D2 W3 F4 $1 | color hierarchy surface sequence co
 color/status-triad-tokens | neutral  $1 | color tokens accessibility contrast correctness state | A status is three tokens, not one, because the same hue is asked
 interaction/aliased-fragment-target | neutral  $1 | navigation anchor fragment accessibility architecture url | A section can answer to more than one fragment without renaming 
 interaction/anchor-focus-handoff | neutral  $1 | accessibility navigation focus correctness anchor | An in-page link that only scrolls leaves the keyboard where it w
+interaction/anchor-only-nav-collapse | neutral  $1 | navigation responsive accessibility architecture correctness | Where every link in a bar is an in-page anchor, the narrow-viewp
 interaction/auto-advance-yields-to-input | E2 D2 W2 F5 $2 | carousel autoplay accessibility state | A self-advancing sequence must stop the instant a reader touches
 interaction/axis-swapped-disclosure | neutral  $2 | disclosure responsive layout-animation breakpoint accessibility | A detail panel opens downward in a stacked column and sideways b
 interaction/breakpoint-dual-mode-details | neutral  $2 | disclosure navigation responsive accessibility progressive-enhancement | One <details> can be a permanently-open sidebar above a breakpoi
@@ -191,6 +192,7 @@ media/stacked-contour-volume | E1 D4 W2 F5 $2 | svg mark depth stroke currentcol
 media/state-preserving-frame-relocation | neutral  $3 | media iframe embed lifecycle dom correctness | appendChild removes and reinserts: an iframe reloads, a video re
 media/stepped-transform-sprite | E3 D2 W2 F4 $2 | media sprite animation svg performance | Play a short looping illustration as a filmstrip: frames in one 
 media/underpainted-inline-lqip | neutral  $2 | media loading performance correctness cls | The photograph carrying an opening frame arrives after layout, a
+media/unowned-frame-message-guard | neutral  $1 | media iframe embed security correctness events | A widget script injects its own iframe, so the page holds no con
 media/video-as-surface-not-frame | E3 D2 W4 F4 $3 | media surface hero | autoplay muted loop playsinline preload="auto" with object-conta
 media/welded-figure-caption | E1 D2 W2 F5 $1 | media figure caption accessibility editorial | A caption set as a paragraph under a figure reads as body copy a
 motion-system/additively-gated-reveal | E2 D2 W2 F4 $1 | motion reveal accessibility progressive-enhancement correctness scroll | Most machinery around entrances exists because the from-state is
@@ -241,6 +243,7 @@ motion-system/transient-class-scoped-transition | neutral  $2 | motion-system vi
 perf/analytic-stand-in-until-live | neutral  $2 | data loading architecture visualisation labelling | A visual driven by a live feed has three bad first frames: empty
 perf/bfcache-blanked-surface | neutral  $1 | performance canvas lifecycle correctness restoration flicker | A page restored from the back/forward cache repaints whatever a 
 perf/byte-measured-entry-gate | neutral  $3 | performance loading progress fetch overlay correctness | An overlay held while an asset loads is usually a timer pretendi
+perf/consent-free-analytics-default | neutral  $1 | architecture analytics third-party privacy layout correctness | The consent banner is a decision made in the analytics config, n
 perf/data-saver-media-branch | neutral  $1 | performance media-query bandwidth video progressive-enhancement accessibility | prefers-reduced-data: reduce is a reader saying their connection
 perf/dead-banded-resize-rebuild | neutral  $1 | resize canvas mobile correctness | A generative scene that re-seeds on resize restarts every time a
 perf/derived-epsilon-write-guard | neutral  $1 | performance frame-budget animation correctness architecture | A scrubbed frame writes dozens of values, nearly all unchanged —

@@ -4,7 +4,7 @@ category: layout
 tags: [layout,table,comparison,surface,contrast,hierarchy]
 axes: {energy: 1, density: 3, weight: 4, finish: 5}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -56,3 +56,15 @@ table { table-layout: fixed }  .col { width: var(--col) }
 ⚠ It is decoration outside the table's semantics — the header still has to name
 the column. An overlay indexed from the right breaks the moment a column drops
 at a breakpoint; recompute the multiplier with the column count, or hide it.
+
+The same inversion runs down a stack of peer rows, where it marks the one step
+that carries the claim rather than the one column being argued for — the
+inverted row reads before the others are read at all, so the set states its
+point before anything in it is parsed. The ceiling is exactly one: a second
+inverted row turns an emphasis into two groups, and the reader starts looking
+for a rule separating them.
+```css
+.step[data-key] { background: var(--ink); color: var(--paper) }
+```
+⚠ Inversion is not a state a screen reader can hear, and the row is usually the
+one carrying the number the page is selling — say it in the text.
