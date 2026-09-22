@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,navigation,transition,chrome,accessibility]
 axes: {energy: 2, density: 1, weight: 2, finish: 5}
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
