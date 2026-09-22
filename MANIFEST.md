@@ -1,6 +1,6 @@
 # Manifest
 
-969 primitives. Format: `category/id | axes cost | tags | gist`
+972 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -185,6 +185,7 @@ interaction/drag-scoped-target-states | neutral  $2 | drag drop affordance state
 interaction/drag-suppressed-click-threshold | neutral  $2 | pointer drag interaction correctness accessibility | A surface that answers to drag and also holds links fires a clic
 interaction/dwell-gated-escalation | E2 D1 W2 F5 $1 | hover pointer delay restraint reward | Hover is a weak signal — a pointer crosses half the page on its 
 interaction/edge-hotzone-sibling-reveal | E2 D2 W2 F5 $2 | interaction hover panel chrome css-only accessibility | Reclaim the width a hidden rail costs without a toggle: park an 
+interaction/edge-perched-pacing-sprite | E3 D1 W2 F3 $2 | mascot sprite character perch raf delight | A small fixed-position sprite that paces along the top edge of a
 interaction/edge-traversing-knob | E3 D2 W2 F5 $1 | interaction state affordance motion detail | A control states its direction by sending its own mark the whole
 interaction/exemplar-field-placeholder | neutral  $1 | form input placeholder accessibility copy correctness | A placeholder that restates its label teaches nothing. Write it 
 interaction/fail-open-css-state-toggle | neutral  $1 | interaction css-only progressive-enhancement disclosure correctness accessibility | A visually hidden checkbox plus :has() gives expand, filter and 
@@ -387,6 +388,7 @@ layout/stacking-register | neutral  $1 | architecture z-index tokens correctness
 layout/stateful-chrome-inset-contract | neutral  $2 | layout chrome tokens custom-property architecture overlay correctness | Fixed chrome should publish the space it takes as root custom pr
 layout/sticky-underlay-reveal | E2 D1 W3 F4 $1 | layout scroll sticky depth css-only section | Invert the usual arrival: a panel placed after the content and s
 layout/summed-term-derivation-rows | E1 D3 W2 F5 $1 | layout data figure provenance chart accessibility | A derived figure is believed only when its terms are visible. Gi
+layout/tilted-counter-running-column-wall | E3 D4 W2 F4 $3 | marquee vertical perspective background wall columns 3d | A backdrop of many items reads as depth, not a grid, when it run
 layout/track-centre-spanning-rule | E1 D2 W1 F5 $1 | layout grid connector geometry correctness responsive | A rule joining a row of N equal columns belongs between the cent
 layout/translate-z-axonometric-stage | E1 D3 W2 F5 $3 | 3d depth diagram transform stage | A cutaway model — floor, walls, shelving, a mover — is buildable
 layout/truncating-head-fixed-trailer | neutral  $1 | layout flex truncation correctness cards responsive | A header row pairing a variable-length label with a status badge
@@ -512,6 +514,7 @@ motion-system/attribute-driven-motion-hooks | neutral  $1 | architecture motion 
 motion-system/backface-carried-turn-exit | E3 D1 W3 F5 $2 | motion transition 3d exit scene | A scene that dissolves on exit ends nowhere. Turn it: rotate the
 motion-system/backstopped-transition-handoff | neutral  $2 | motion transition state sequence correctness event | Sequencing a state machine on transitionend rather than on a tim
 motion-system/below-fold-armed-entrance | neutral  $1 | motion correctness progressive-enhancement observer reveal | An entrance system that hides content in CSS and un-hides it fro
+motion-system/blurred-slot-spin-settle | E4 D1 W2 F3 $1 | slot reel blur overshoot value-change randomise | A value being picked — a randomised option, a generated word — r
 motion-system/camera-over-static-scene | E3 D2 W3 F5 $2 | motion transform scale focus diagram narrative | To walk a reader through a diagram, move the viewport rather tha
 motion-system/cardinality-locked-variant-set | E3 D3 W2 F5 $3 | motion svg morph state diagram architecture | A set of marks that switches state — a diagram's shapes, a chart
 motion-system/context-scoped-cleanup | neutral  $1 | motion lifecycle correctness | Create every animation inside a scoped context and revert it on 
