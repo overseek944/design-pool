@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,clipboard,accessibility,correctness,feedback]
 axes: none
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -51,3 +51,16 @@ t = setTimeout(() => delete btn.dataset.copied, 1500)     // 1.2–2s
 ⚠ `data-copied="false"` must look different from no attribute at all, not just
 from `"true"` — styled on presence alone it congratulates the reader for a copy
 that did not happen.
+
+Where the value is itself actionable — an address, a phone number, a URL — the
+fallback is to *act* on it rather than to arm a selection: navigate to its
+scheme handler and the reader reaches what they wanted the value for in one
+press instead of two. Reserve it for payloads that have a handler; a licence key
+or a hash has none and still needs the selection path.
+```js
+try { await navigator.clipboard.writeText(v); flag() }
+catch { location.href = `mailto:${v}`; return }        /* no confirmation */
+```
+⚠ Return before the confirmation. A blocked or absent handler navigates nowhere
+silently, and a control that says *Copied* over a clipboard that was never
+written is worse than the original failure.

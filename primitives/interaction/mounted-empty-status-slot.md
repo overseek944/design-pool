@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,correctness,form,layout,state,css-only]
 axes: none
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,18 @@ instead wherever the reflow on write reads worse than the gap.
 ```
 ⚠ `:empty` counts whitespace as content — a template that leaves a newline
 inside the element never matches it. Render the empty string, not a blank line.
+
+One element can be both the placeholder and the filled state with no branch in
+script: `:empty::before` carries the idle instruction in the muted colour, and
+`:not(:empty)::before/::after` add the quotation marks that only make sense once
+there is something to quote. Keep a `min-block-size` on the slot so a sentence
+streamed in a word at a time does not shift the page under it. Reserve 1–1.5
+lines.
+```css
+.said { min-block-size: 1.5em }
+.said:empty::before { content: 'Hold the shortcut and just ask'; color: var(--muted) }
+.said:not(:empty)::before { content: '\201C' }
+.said:not(:empty)::after  { content: '\201D' }
+```
+⚠ Generated content is skipped by find-in-page and announced inconsistently —
+only for wording a reader can afford to miss, never for the value itself.

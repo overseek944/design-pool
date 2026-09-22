@@ -4,7 +4,7 @@ category: layout
 tags: [diagram,svg,schematic,accessibility,responsive]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 2
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []

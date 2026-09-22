@@ -4,7 +4,7 @@ category: interaction
 tags: [motion,disclosure,accessibility,progressive-enhancement,height]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 13
+seen: 14
 requires: []
 conflicts: []
 completes: []
@@ -74,3 +74,18 @@ a.onfinish = () => { el.style.height = open ? 'auto' : '0px' }
 ⚠ Mark the closed panel `inert` as well as `aria-hidden`, and `visibility:
 hidden` its contents — a zero-height overflow-hidden box still holds focusable
 children in the tab order.
+
+Grow both axes on the one wrapper and the panel reads as a single gesture
+instead of unrolling and then widening: transition `width`, `padding` and
+`border-radius` beside `grid-template-rows`, all on the same duration and curve.
+Give the inner child its *final* width as a fixed value so its text never
+reflows during the move — the wrapper's `overflow: hidden` crops it and the
+content slides out whole rather than re-wrapping every frame. Open width
+1.8–2.4× the closed state.
+```css
+.shell { width: 168px; transition: width .3s var(--e), grid-template-rows .3s var(--e) }
+.shell[data-open] { width: 368px; grid-template-rows: 1fr }
+.shell > * { width: 368px; min-height: 0 }
+```
+⚠ Past about 0.5s the crop stops reading as a panel opening and starts reading
+as a wipe across fixed text.

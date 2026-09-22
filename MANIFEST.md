@@ -1,6 +1,6 @@
 # Manifest
 
-865 primitives. Format: `category/id | axes cost | tags | gist`
+869 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -218,6 +218,7 @@ interaction/partial-modality-inert-siblings | neutral  $2 | interaction dialog a
 interaction/platform-narrowed-download-set | neutral  $2 | progressive-enhancement navigation correctness accessibility architecture | An artifact built for five targets should not ship five equal bu
 interaction/pointer-transparent-copy-layer | neutral  $1 | interaction pointer accessibility layout correctness | Copy laid over a background that reacts to the pointer swallows 
 interaction/pre-hydration-nested-link | neutral  $2 | accessibility links hydration progressive-enhancement correctness | A card that navigates but contains its own link cannot be an anc
+interaction/prose-doubled-key-chord | neutral  $1 | accessibility correctness navigation detail state | A shortcut drawn as keycaps is a picture of a gesture. Assistive
 interaction/proximity-revealed-target | E2 D1 W2 F5 $2 | interaction pointer accessibility focus custom-properties affordance pointer-events | A control meant to be found rather than advertised can key its o
 interaction/proxy-painted-native-control | neutral  $1 | accessibility focus forms input correctness keyboard | Keep the real <input> and paint a sibling. Clip it to a 1×1 rect
 interaction/reader-parameterised-comparison | E2 D3 W2 F5 $3 | comparison demo state interaction accessibility | A before/after figure quoted from your own example is an asserti
@@ -504,6 +505,7 @@ motion-system/observer-liveness-probe | neutral  $1 | intersection-observer reve
 motion-system/opacity-held-glass-entrance | neutral  $1 | motion-system reveal glass backdrop-filter entrance correctness | An entrance that fades a container in silently breaks any backdr
 motion-system/opaque-navigation-cover | E2 D1 W2 F5 $2 | motion navigation transition overlay accessibility correctness | Where View Transitions are unavailable or too coarse, cross a sc
 motion-system/origin-signed-entrance | E3 D2 W2 F5 $1 | motion tabs state custom-properties transition | A tab set whose panels all enter from the same side throws away 
+motion-system/overrun-gesture-loop | E3 D2 W2 F4 $2 | motion svg geometry pointer annotation generative | A target circled by a generated ellipse reads as a shape placed 
 motion-system/parameterised-path-travel | E3 D3 W1 F4 $2 | motion loop ambient diagram css-only | One keyframe animating offset-distance from 0% to 100% drives an
 motion-system/path-scrubbed-entrance | E3 D2 W2 F5 $3 | motion scroll motion-path choreography scrub | Give each element its own curve instead of a shared translate. A
 motion-system/paused-as-authored-rest | neutral  $1 | motion architecture correctness scene performance | A decorative scene whose resting state is running has already pl
@@ -623,6 +625,7 @@ scale/percentage-root-with-divided-type | neutral  $2 | scale tokens accessibili
 scale/proportional-effect-radii | neutral  $1 | unit effect polish coherence | Express blur, glow and shadow radii in vh/vw rather than px, so 
 scale/registered-property-scope | neutral  $1 | tokens architecture animation correctness | @property registration is an API decision, not a formality. synt
 scale/role-named-spacing-tiers | neutral  $2 | tokens architecture rhythm layout scale | A t-shirt spacing scale makes every author guess which step a gi
+scale/stage-space-coordinate-readback | neutral  $2 | correctness measurement scale architecture pointer | A stage authored in fixed design units keeps every CSS value in 
 scale/sub-floor-density-breakpoint | neutral  $1 | responsive breakpoints density correctness | Designing to a 390px floor leaves a real 320–380px band unhandle
 scale/supported-feature-as-scalar | neutral  $1 | progressive-enhancement feature-detection tokens correctness architecture | A feature query usually swaps a rule block. Have it write a numb
 scale/three-tier-token-redefinition | neutral  $2 | unit tokens architecture | One token name, three definitions: fluid desktop → fluid mobile 
@@ -694,6 +697,7 @@ surface/chained-quadratic-wave-edge | E2 D2 W2 F3 $1 | svg path wave band sectio
 surface/channel-split-refraction-glass | E1 D3 W3 F5 $4 | glass backdrop-filter svg-filter refraction chromatic depth | A blur says frosted; a displacement says solid and thick. Refere
 surface/clip-carried-fill-traverse | E2 D2 W2 F5 $2 | svg connector motion clip-path diagram gradient | Dash offset gives a stroked connector direction, but a connector
 surface/clock-bucketed-scene-state | E1 D2 W2 F4 $2 | surface ground state root-attribute progressive-enhancement ambient | Resolve the reader's hour into three to five named buckets, set 
+surface/collapsing-riser-keycap | E1 D2 W3 F4 $1 | surface detail border state css-only hairline | A key drawn as a bordered box reads as a chip. What makes it a c
 surface/comb-ruled-section-seam | E1 D3 W2 F5 $1 | divider section texture rule repeating-gradient seam | Where two full-bleed grounds meet, a hairline rule is lost in th
 surface/concave-corner-seam | E1 D2 W2 F5 $2 | surface border detail chrome css-only | A raised element fuses into the sheet below it only where the jo
 surface/control-cleared-decoration-band | E1 D3 W2 F4 $2 | surface decoration contrast accessibility header | Artwork sharing a box with a control — a band behind a header, a

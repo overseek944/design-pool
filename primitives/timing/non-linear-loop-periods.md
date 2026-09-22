@@ -4,7 +4,7 @@ category: timing
 tags: [motion,ambient,rhythm]
 axes: {energy: 3, density: 3, weight: 2, finish: 4}
 cost: 2
-seen: 24
+seen: 25
 requires: []
 conflicts: []
 completes: []
@@ -101,3 +101,17 @@ rather than one broken line — and it is the register contrast, not the speed
 difference, that stops the eye locking onto either.
 ⚠ Two registers, never three, and neither lane may carry anything the reader
 needs: both are unreadable at the ends of the band.
+
+Period is half of what stops a row of bars reading as a test card; amplitude is
+the other half. Give each member a second index-derived token for its own peak,
+shape those into an envelope across the row — low at the ends, tallest in the
+middle — and run a two-stop keyframe `alternate`, so every bar rises and falls
+on its own clock inside a fixed silhouette. The row then reads as one signal
+rather than N independent loops. Peaks 25–140% of the row's height.
+```css
+i { animation: rise calc(.56s + var(--i) * 37ms) ease-in-out
+                    calc(var(--i) * -173ms) infinite alternate }
+@keyframes rise { from { height: 3px } to { height: var(--peak) } }
+```
+⚠ Keep the delay step from dividing the duration step or the row resolves into a
+travelling wave — readable as a pattern within two passes.

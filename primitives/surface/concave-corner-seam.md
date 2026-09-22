@@ -4,7 +4,7 @@ category: surface
 tags: [surface,border,detail,chrome,css-only]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -40,3 +40,18 @@ Stops at 1–2rem; below 0.75rem the sweep is not legible as a curve.
 fill and the radius to the same two properties the card uses, or a theme change
 leaves the fillets on the old ground. Where the card sits over a gradient rather
 than a flat panel, this cannot work: the fillet paints a flat colour.
+
+Bind the fillet to a property that moves with the element it seams. A bar that
+opens into a card animates its own `border-radius` on the way, and a fillet
+frozen at the closed size detaches from the corner halfway through. Let the
+pseudo-element's width and height read that property and transition *those* on
+the panel's own duration and curve — the seam stays welded for the whole move
+with no second timeline. Fillet 3–16px across the range.
+```css
+.seam::after { width: var(--r); height: var(--r);
+  transition: width .3s var(--e), height .3s var(--e) }
+.tab { --r: 3px } .tab.is-open { --r: 16px }
+```
+⚠ Size the disc `farthest-side` rather than repeating the property inside the
+gradient — an explicit radius snaps to its new value while the box is still
+growing, and the seam flashes mid-transition.

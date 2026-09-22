@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,svg,stroke,path,diagram]
 axes: {energy: 2, density: 2, weight: 1, finish: 5}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

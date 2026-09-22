@@ -4,7 +4,7 @@ category: scale
 tags: [scale,layout,proportion,transform,responsive]
 axes: {energy: 1, density: 2, weight: 3, finish: 4}
 cost: 2
-seen: 16
+seen: 17
 requires: []
 conflicts: []
 completes: []
@@ -162,3 +162,20 @@ the horizontal component of its end-to-end vector, then restore length with
 `hypot()` and angle with `atan2()`, or a diagonal rule thickens as the column
 narrows. Keep the originals: this writes inline styles over authored ones and
 has nothing to restore on teardown otherwise.
+
+Re-declare the design *size* at the breakpoint, not only the factor. A stage
+whose children are absolute coordinates scales into illegibility on a phone long
+before it runs out of room — swap the design width and the ratio together for a
+narrower composition, and the same absolutely-positioned children re-lay
+themselves against the new box while per-breakpoint rules drop the parts that no
+longer earn their place. The mock is re-authored narrow rather than photographed
+and shrunk. Two design sizes cover 390–1440px; a third rarely repays the second
+set of positions.
+```css
+.shell { --dw: 1120; aspect-ratio: 1120 / 620 }
+@media (width <= 600px) { .shell { --dw: 620; aspect-ratio: 620 / 560 }
+  .shell .sidebar { display: none } }
+```
+⚠ The two sizes are two compositions, so anything positioned in the wide one
+needs a rule in the narrow one — a child left on its wide coordinates lands
+outside the new box and is silently clipped.
