@@ -4,7 +4,7 @@ category: scale
 tags: [scale,layout,proportion,transform,responsive]
 axes: {energy: 1, density: 2, weight: 3, finish: 4}
 cost: 2
-seen: 19
+seen: 20
 requires: []
 conflicts: []
 completes: []
@@ -179,3 +179,15 @@ set of positions.
 ⚠ The two sizes are two compositions, so anything positioned in the wide one
 needs a rule in the narrow one — a child left on its wide coordinates lands
 outside the new box and is silently clipped.
+
+Fit the *drawn extent*, not the authored frame. A design frame carries margin
+the artwork never uses, so a contain-fit to the frame leaves the drawing small
+and off-centre. Union every child's offset box with the SVG's `getBBox()`, pad
+by a bleed, and publish the extent's centre as both the stage offset and the
+`transform-origin`; the factor is `min(w / cw, h / ch)`. Bleed 4–16 units;
+refit on `document.fonts.ready`, since labels change the extent.
+```js
+root.style.setProperty('--ox', (c.x1 + c.x2) / 2 + 'px')
+root.style.setProperty('--k', Math.min(w / (c.x2 - c.x1), h / (c.y2 - c.y1)))
+```
+⚠ Exclude animated layers from the union, or a traveller mid-route rescales the whole figure.

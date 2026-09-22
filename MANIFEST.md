@@ -1,6 +1,6 @@
 # Manifest
 
-1006 primitives. Format: `category/id | axes cost | tags | gist`
+1007 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -563,6 +563,7 @@ motion-system/index-capped-stagger-schedule | neutral  $1 | stagger entrance rev
 motion-system/keyboard-modality-stilled-ui | neutral  $1 | motion accessibility keyboard input correctness transition | A reader tabbing through a page outruns transitions authored for
 motion-system/keyframe-resolved-waypoints | E3 D2 W2 F5 $2 | motion keyframes custom-properties architecture choreography | A @keyframes block is document-global and takes no arguments, so
 motion-system/keyframe-variant-bank | E3 D4 W2 F3 $2 | motion generative ambient tokens architecture | Phase and period offsets only ever translate one curve; they can
+motion-system/length-timed-leg-relay | E3 D2 W1 F5 $2 | motion loop diagram offset-path connector timing | A trip across a hub — out along one wire, a pause, back along an
 motion-system/lifecycle-cancelled-cross-document-transition | neutral  $2 | view-transition navigation accessibility progressive-enhancement architecture | A cross-document transition is opted in by an at-rule, so the on
 motion-system/marquee-playhead | E3 D3 W2 F5 $3 | marquee motion state observer rhythm | Give a moving track one stationary reading position. A marker si
 motion-system/marquee-still-state | neutral  $1 | motion accessibility marquee correctness overflow | A marquee's reduced-motion state is not a paused marquee. The tr
