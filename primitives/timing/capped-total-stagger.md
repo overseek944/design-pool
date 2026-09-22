@@ -4,7 +4,7 @@ category: timing
 tags: [motion,sequencing,scale]
 axes: none
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -62,3 +62,17 @@ already watches the group rather than its members.
 is also the last to leave, so zero them in the off-state. An unclosed ladder
 costs more here than under `animation`: the sibling past the final rule takes no
 delay at all and arrives with the first.
+
+Between the fixed total and the capped index sits the pair written as one
+expression: `min(step, budget / count)`. A short set keeps the step it was
+designed at, a long one compresses to fit, and there is no branch and no chosen
+ceiling — the collection decides which rule applies. This is the right form
+wherever the count is known when the group plays but varies by an order of
+magnitude: marks on a plot, rows of a returned result. Step 6–12ms, budget
+400–700ms.
+```js
+const step = Math.min(STEP, BUDGET / Math.max(1, items.length))
+items.forEach((el, i) => setTimeout(() => show(el), LEAD + i * step))
+```
+⚠ Floor the step as well. Under about 4ms apart the sequence stops reading as
+one, and a large enough collection drives the budget term to zero.

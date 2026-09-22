@@ -4,7 +4,7 @@ category: layout
 tags: [overflow,responsive,scroll,correctness,table,figure]
 axes: none
 cost: 1
-seen: 14
+seen: 15
 requires: []
 conflicts: []
 completes: []
@@ -93,3 +93,16 @@ the hint in the figure's small mono tier, directly under the port, not over it.
 ⚠ `tabindex` is markup, so the CSS query cannot set it — match the breakpoint
 from a `matchMedia` listener, or the two halves drift the first time the
 breakpoint moves.
+
+A port declared `width: fit-content; max-width: 100%` answers both widths from
+one rule. It shrink-wraps to a table narrower than the column, so a small figure
+sits centred instead of stranded at the left edge of a full-width box, and it
+stretches and scrolls only once the content passes the measure. The `max-width`
+is load-bearing: `fit-content` alone resolves to max-content and widens the page
+rather than creating the port.
+```css
+.port { width: fit-content; max-width: 100%; margin-inline: auto; overflow-x: auto }
+```
+⚠ Pair it with the `tabindex` condition above and both the tab stop and the
+overflow hint appear at exactly the widths where the port is real — one
+measurement governs all three.

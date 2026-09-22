@@ -1,6 +1,6 @@
 # Manifest
 
-798 primitives. Format: `category/id | axes cost | tags | gist`
+800 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -260,6 +260,7 @@ layout/count-varied-centred-lattice | E1 D4 W2 F5 $2 | layout lattice tessellati
 layout/cropped-stage-mock | E1 D2 W2 F5 $2 | layout responsive overflow media scale detail | Show a framed artifact — a handset, a browser chrome, a console 
 layout/cross-card-band-alignment | E1 D3 W1 F5 $2 | layout grid subgrid cards hairline datasheet alignment | A row of cards aligns at its outer edges and nowhere else: each 
 layout/document-underlay-window | E2 D1 W3 F4 $2 | layout stacking reveal video section fixed | Give the document one fixed, full-viewport media layer at a nega
+layout/em-pitched-slot-rail | neutral  $1 | layout type indicator correctness fluid architecture | A marker that travels between rows — a caret beside a list, a ru
 layout/em-reserved-swap-height | neutral  $1 | layout layout-shift responsive correctness tabs | Content that swaps in place — a tab's copy, a rotating claim — c
 layout/evicting-stream-window | E3 D4 W2 F4 $2 | stream overflow live-data log dom performance | An append-only stream in a scroll container grows without bound 
 layout/facing-edge-tangent-connector | E1 D3 W1 F5 $2 | layout connector svg diagram geometry | A straight rule between a box and a line of text in the facing c
@@ -710,6 +711,7 @@ surface/tiled-dash-border | E1 D2 W1 F4 $2 | surface border dash precision textu
 surface/tiled-shape-edge-mask | E2 D3 W2 F3 $2 | surface mask edge ornament texture section | Cut a section boundary with a shape rather than a straight line:
 surface/twinned-elevation-tokens | E1 D2 W2 F5 $1 | shadow elevation tokens hover card | box-shadow interpolates only when both lists carry the same numb
 surface/user-space-ruling-path | E1 D3 W1 F5 $1 | surface svg texture blueprint diagram cheap | Rule a drawing inside its own viewBox, not behind it. A single <
+timing/animation-clock-derived-state | neutral  $1 | timing animation correctness architecture state synchronisation | A loop that is half CSS and half class — a stroke drawing while 
 timing/asymmetric-enter-exit-delay | E3 D2 W2 F5 $1 | motion sequencing state transition | A staggered group should cascade in and collapse out together. C
 timing/bounce-parametrised-spring | E3 D2 W2 F5 $1 | motion spring rhythm sequencing | Stiffness, mass and damping are three coupled dials, none of whi
 timing/capped-total-stagger | neutral  $1 | motion sequencing scale | For unknown-length collections use stagger:{amount} not stagger:

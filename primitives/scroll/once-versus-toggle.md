@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,reveal,ux]
 axes: none
 cost: 1
-seen: 20
+seen: 21
 requires: []
 conflicts: []
 completes: []

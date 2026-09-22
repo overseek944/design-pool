@@ -4,7 +4,7 @@ category: layout
 tags: [layout,responsive,media-query,ornament,correctness]
 axes: none
 cost: 1
-seen: 21
+seen: 22
 requires: []
 conflicts: []
 completes: []
@@ -81,3 +81,18 @@ document its scrollbar back. Gate 320–360px.
 ```
 ⚠ Height bands normally flip on their own as mobile chrome slides; this one
 cannot, because no phone is ever this short — it fires under zoom or not at all.
+
+The short axis also has a form with no query at all. Give a replaced element
+`max-height` in `vh` beside `max-width: 100%`, with `width` and `height` both
+`auto`, and it solves its own ratio against whichever limit binds first. A
+portrait diagram in a prose column otherwise renders taller than the screen it
+is read on — at 3:5, a 720px measure is 1200px tall. Both `auto`s are
+load-bearing: a global `img { height: auto }` over an already-set width defeats
+the height cap silently. Caps 60–80vh.
+```css
+figure img { max-width: 100%; max-height: 70vh; width: auto; height: auto;
+             margin-inline: auto }
+```
+⚠ The box is now intrinsic on both axes, so keep the `width`/`height`
+attributes on the element — the cap otherwise reintroduces exactly the load
+shift an `aspect-ratio` reservation was holding off.
