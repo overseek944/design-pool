@@ -4,7 +4,7 @@ category: timing
 tags: [motion,indicator,status,ambient,glow]
 axes: {energy: 2, density: 1, weight: 2, finish: 4}
 cost: 1
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -98,3 +98,17 @@ const level = .12 + .88 * breath + thump(p, .3) + thump(Math.max(p - .18, 0), .1
 ⚠ The floor is what stops a dark frame reading as a dead renderer, and the
 thump is what stops the breath reading as a fade — neither substitutes for the
 other. Under `reduce`, hold the floor and drop both.
+
+Fired once by an action rather than by a state, the ring is an echo: proof the
+press landed. Fix its width and scale the ring instead — .5–.7× out to 1.5–1.9×
+over 0.25–0.4s — and let opacity *rise* to its peak at 15–25% before dying, so
+the ring detaches from the control instead of being born glued to its edge.
+Peak alpha .25–.4; brighter reads as an error.
+```css
+.echo { box-shadow: 0 0 0 2px var(--echo, currentColor); pointer-events: none;
+  animation: echo .32s cubic-bezier(.23,1,.32,1) forwards }
+@keyframes echo { 0% { opacity: 0; transform: scale(.6) } 20% { opacity: .35 }
+                  to { opacity: 0; transform: scale(1.7) } }
+```
+⚠ A repeat press on a live class does not restart it — remount the node or key
+it per press, or rapid taps get one echo.

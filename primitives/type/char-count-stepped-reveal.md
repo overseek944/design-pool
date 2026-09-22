@@ -4,7 +4,7 @@ category: type
 tags: [type,motion,css-only,custom-properties,keyframes]
 axes: {energy: 3, density: 1, weight: 2, finish: 4}
 cost: 1
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -97,3 +97,16 @@ that only happens to type in. Width .4–.5em against .85–1em of height.
 ```
 ⚠ A block that keeps blinking after the last glyph reads as a prompt awaiting
 input — remove it on completion rather than leaving it parked.
+
+Where the text arrives from a renderer rather than a script — streamed markdown
+re-rendered on every chunk — there is no node to move. Hang the caret off the
+container's last block as generated content: whichever paragraph, item or code
+block was appended last carries it, and it walks forward with no bookkeeping.
+Same `steps` blink, 0.9–1.2s.
+```css
+.streaming > :last-child::after { content: ""; display: inline-block; width: .45em;
+  height: .95em; vertical-align: -.1em; background: currentColor;
+  animation: blink 1s step-end infinite }
+```
+⚠ A last child that is a list or table puts the caret after the block, not the
+text — descend with `:last-child:is(ul,ol) > li:last-child::after`.

@@ -4,7 +4,7 @@ category: surface
 tags: [surface,depth,glass]
 axes: {energy: 1, density: 3, weight: 3, finish: 4}
 cost: 3
-seen: 50
+seen: 51
 requires: []
 conflicts: []
 completes: []
@@ -86,3 +86,13 @@ where the layer count bites, and keep the glass on everything that overlays.
 ```
 ⚠ The mix has to be computed from the same two tokens the glass alpha names, or
 the surface changes colour at the breakpoint instead of only changing cost.
+
+A row of ghost controls needs no tier at rest. Leave them transparent with no
+edge, and only on `:hover` and `:active` apply the
+lowest blur (2–6px) with an inset 1px ring at 25–35% alpha — the glass appears
+as the response. A toolbar of twenty buttons composites at most one filter.
+```css
+.ghost:is(:hover, :active) { backdrop-filter: blur(4px);
+  box-shadow: inset 0 0 0 1px rgb(123 123 123 / .3) }
+```
+⚠ Hover alone is invisible to touch and keyboard — mirror it on `:focus-visible`.
