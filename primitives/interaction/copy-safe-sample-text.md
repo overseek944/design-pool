@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,code,correctness,detail,usability]
 axes: none
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []

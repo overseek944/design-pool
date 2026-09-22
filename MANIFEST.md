@@ -1,6 +1,6 @@
 # Manifest
 
-827 primitives. Format: `category/id | axes cost | tags | gist`
+829 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -359,6 +359,7 @@ light/stop-built-soft-glow | E1 D2 W2 F4 $1 | gradient glow decoration performan
 light/superposed-lamp-falloff | E1 D2 W2 F4 $1 | light gradient glow wash layering cheap | Alpha composites as 1−(1−a)(1−b), so two low-alpha radial fills 
 light/target-aimed-travelling-beam | E3 D2 W3 F5 $2 | light beam rotation scroll decoration custom-properties | A directional light that moves — a beam, a shaft, a cone — keeps
 light/userspace-blurred-lamp-bed | E1 D2 W2 F4 $2 | glow svg blur gradient decoration responsive | stdDeviation is in user units, so a gaussian blur inside a viewB
+media/absent-asset-display-plate | E1 D2 W4 F4 $1 | media editorial fallback card layout | A feed where only some items carry artwork stops being a grid: a
 media/activation-deferred-player-facade | neutral  $2 | media embed iframe video performance privacy accessibility loading | A third-party player costs hundreds of kilobytes of script and s
 media/alpha-threshold-fuse-filter | E3 D2 W3 F4 $2 | svg filter mark liquid state | Separate shapes read as one substance when a blur is pushed back
 media/aperture-registered-content-layer | E1 D2 W2 F5 $2 | media mockup responsive layout correctness | Live content shown inside supplied frame artwork registers to an
@@ -800,6 +801,7 @@ type/metric-free-weight-transition | E2 D2 W3 F5 $1 | type emphasis weight layou
 type/mixed-magnitude-figure-band | E1 D3 W4 F5 $1 | numerals metric alignment layout data | A row of headline figures rarely shares a digit count — four dig
 type/mono-as-ui-texture | E1 D3 W2 F4 $1 | type ui technical register | Run a monospace face for all chrome — nav, labels, captions, cou
 type/name-extending-hidden-suffix | neutral  $1 | accessibility label correctness type navigation | Every card ending in the same two words — Read more, View — hand
+type/nested-granularity-change-mark | E1 D3 W2 F5 $1 | type annotation diff editorial color state | A change marked at one granularity answers half the question: a 
 type/optical-width-text-fit | E1 D2 W4 F5 $3 | type fit measurement display responsive | A headline that must fill a fixed box cannot be sized by charact
 type/origin-flipped-wipe-underline | E3 D1 W2 F5 $1 | underline link hover transform-origin wipe cheap | A scaleX underline that grows from one end and shrinks back to i
 type/padded-ordinal-counter | E1 D2 W2 F4 $1 | type list counter detail technical | 01 02 … 09 10 numbering without hand-written zeros and without t

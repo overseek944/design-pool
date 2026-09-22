@@ -4,7 +4,7 @@ category: motion-system
 tags: [animation,architecture,correctness,cancellation,sequence]
 axes: none
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
