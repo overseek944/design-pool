@@ -4,7 +4,7 @@ category: type
 tags: [type,lettering,identity,display,bleed,layout]
 axes: {energy: 1, density: 2, weight: 5, finish: 4}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,16 @@ token, never a width one, so it cannot grow into the copy beside it. Height
 ⚠ It is decoration: `aria-hidden`, and the readable wordmark still has to exist
 somewhere in the document. At 390px the glyph and the headline compete for the
 same fold — one of them has to withdraw on a short viewport, and it is this one.
+
+The whole word works the same way at the other end of the page: set it as the
+last element of a dark footer, near full container width, with `line-height`
+0.68–0.8 and the footer's `overflow: hidden`, so the line box ends above the
+lower bowls and the page edge cuts the letters. Here the crop reads as a
+colophon that runs out of paper rather than as mass at the fold. Size it from
+width (roughly 16–24rem, one step down per breakpoint), since nothing sits
+beside it.
+```css
+footer { overflow: hidden }
+.colophon { font-size: 20rem; line-height: .72; white-space: nowrap; user-select: none }
+```
+⚠ A fixed rem size overflows sideways at 390px — step it down or switch to `vw`.
