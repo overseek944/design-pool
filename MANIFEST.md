@@ -1,6 +1,6 @@
 # Manifest
 
-1042 primitives. Format: `category/id | axes cost | tags | gist`
+1044 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -81,6 +81,7 @@ canvas/packed-generation-state-texture | neutral  $3 | canvas shader simulation 
 canvas/packed-word-pixel-writes | neutral  $2 | canvas performance raster imagedata correctness | Filling ImageData a byte at a time costs four indexed writes and
 canvas/palette-as-uniforms | neutral  $2 | shader color system | Pass the site's palette into the shader as named vec3 uniforms r
 canvas/parametric-thickness-variation | E3 D3 W2 F4 $3 | shader organic detail | Drive line or ribbon thickness with uThickness + uThickVary nois
+canvas/patch-subdivided-context-texture | E2 D3 W2 F4 $3 | canvas projection 3d texture perspective drawimage | A 2D context draws images only through affine matrices, so a tex
 canvas/path-data-construction-overlay | E1 D4 W1 F5 $3 | svg path annotation overlay technical diagram | Artwork on the page already carries its own construction. Walk t
 canvas/pattern-space-from-smooth-twin | neutral  $3 | canvas shader grid noise correctness generative | A ruled overlay drawn in a noisy surface's coordinates inherits 
 canvas/peak-table-spectrum-profile | E2 D2 W1 F5 $2 | canvas generative field data precision technical | Summed sines read as a wave. Measurement reads as a quiet baseli
@@ -116,6 +117,7 @@ canvas/sine-steered-heading-wander | E3 D2 W2 F4 $2 | canvas ambient motion agen
 canvas/single-channel-field-storage | neutral  $2 | canvas simulation performance texture shader | Choose the channel count per field rather than reaching for RGBA
 canvas/standard-uniform-set | neutral  $2 | shader architecture reference | A small reusable uniform contract covers most decorative shaders
 canvas/stateless-phase-pair-field | neutral  $3 | canvas architecture morph scrub points field correctness | A scrubbed field of marks usually keeps a live position per mark
+canvas/subject-gated-glint-stream | E2 D2 W3 F5 $3 | shader webgl image texture glow ambient warp | A still illustration can move, unedited. Sample it as a texture 
 canvas/submission-summoned-orbit | E4 D2 W2 F4 $3 | canvas interaction ambient agents orbit feedback state-machine | An ambient field of wanderers can acknowledge what a user just s
 canvas/svg-userspace-pointer-mapping | neutral  $1 | svg pointer correctness interaction geometry | An SVG with a viewBox is drawn in its own coordinate system, and
 canvas/swapped-target-pass-chain | neutral  $3 | canvas shader webgl architecture correctness | One long fragment shader cannot be reordered, disabled or tuned 

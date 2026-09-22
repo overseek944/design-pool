@@ -4,7 +4,7 @@ category: layout
 tags: [3d,ring,carousel,perspective,preserve-3d,placement,depth]
 axes: {energy: 3, density: 3, weight: 2, finish: 5}
 cost: 3
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []

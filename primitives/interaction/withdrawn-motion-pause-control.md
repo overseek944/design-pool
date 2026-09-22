@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,motion,control,state,chrome,cheap]
 axes: none
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []

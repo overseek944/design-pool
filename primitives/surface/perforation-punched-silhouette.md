@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,border,texture,detail,css-only,gradient]
 axes: {energy: 1, density: 2, weight: 2, finish: 3}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,13 @@ perforation, 14–20px at 2× as a scallop.
 ⚠ Without a composite mode the layers add and nothing is cut. A pitch that does
 not divide the side half-cuts the corners; `box-shadow` follows the rectangle,
 so the outline needs `filter: drop-shadow()`.
+
+A single pair of bites, one per side at the same height, marks a tear line
+rather than a perforated edge: two untiled radial layers at `0` and `100%`
+along x, intersected, with the height in a custom property so it can track a
+divider inside the card. Radius 5–12px; move the height with the breakpoint.
+```css
+.stub { --y: 60px; --r: 9px; mask-composite: intersect;
+  mask: radial-gradient(circle at 0 var(--y), #0000 var(--r), #000 calc(var(--r) + .7px)),
+        radial-gradient(circle at 100% var(--y), #0000 var(--r), #000 calc(var(--r) + .7px)) }
+```

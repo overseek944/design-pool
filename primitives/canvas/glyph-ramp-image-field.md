@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,type,texture,image,ambient,generative]
 axes: {energy: 2, density: 4, weight: 2, finish: 3}
 cost: 4
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: [canvas-behind-dom-not-instead-of-it]
@@ -87,3 +87,14 @@ c.next = now + BASE[c.tier] + Math.random() * JIT[c.tier]
 ```
 ⚠ Stop the loop under `prefers-reduced-motion` and when the field leaves the
 viewport — a whole-field text rewrite at 30fps is not free when nobody sees it.
+
+With few levels, draw each level once and stamp it: pre-render 6–12 small
+sprites whose dot radius *and* colour both step with the level — colour eased
+along a cool→hot pair at a power of 0.6–0.8 — then each cell is one `drawImage`
+of its sprite. Tone and hue can never disagree, and no path is rebuilt per frame.
+```js
+const S = Array.from({ length: L }, (_, i) => dotSprite(r0 + (r1 - r0) * i / (L - 1),
+  mix(cool, hot, (i / (L - 1)) ** 0.7)))
+ctx.drawImage(S[level], x, y, cell, cell)
+```
+⚠ Level 0 must be an empty sprite, not a tiny dot, or the ground speckles.
