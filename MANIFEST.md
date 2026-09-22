@@ -1,6 +1,6 @@
 # Manifest
 
-962 primitives. Format: `category/id | axes cost | tags | gist`
+964 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -125,6 +125,7 @@ color/chroma-weighted-peer-rank | E1 D2 W3 F5 $1 | color hierarchy accent icon g
 color/confidence-ladder-neutral-floor | neutral  $1 | tokens status ordinal confidence semantic badge | A grade of certainty is not a grade of danger. Ramp it from a co
 color/declared-contrast-escalation | neutral  $1 | accessibility contrast tokens type color | prefers-contrast: more is not a second theme — it is permission 
 color/disposition-token-set | neutral  $1 | color tokens state correctness accessibility | A review queue is not a severity display, and borrowing success/
+color/diurnal-phase-section-grounds | E1 D2 W2 F4 $1 | color gradient ground section narrative tokens ambient | Give a sequence of full-height sections grounds drawn from succe
 color/embedded-replica-palette-split | neutral  $1 | color tokens product mock architecture | A page embedding a working replica of the product needs two toke
 color/externally-owned-brand-token-pair | neutral  $1 | color tokens theming third-party contrast icon correctness | A third-party brand colour is fixed by its owner, so deriving th
 color/gamut-ladder-fallback | neutral  $1 | color tokens progressive-enhancement correctness | Ship every colour token twice: an sRGB hex baseline, then the wi
@@ -821,6 +822,7 @@ surface/polarity-crossing-panel-ground | E1 D2 W4 F5 $1 | surface gradient contr
 surface/polygon-band-sparkline | E1 D2 W2 F4 $1 | surface chart sparkline clip-path decoration css | A decorative trend glyph needs no SVG: clip a filled pseudo-elem
 surface/progress-raised-horizon-band | E2 D1 W3 F5 $2 | surface gradient scroll scrub ground section-transition | A light section handed to a dark one by a fixed gradient is a pr
 surface/projected-lattice-ground | E2 D3 W1 F4 $2 | surface grid texture ambient depth geometry | A flat hairline lattice reads as a sheet behind the page. Tilt t
+surface/pseudo-lobed-blur-cloud | E1 D2 W2 F3 $2 | surface ambient drift blur pseudo-element css-only atmosphere | A soft cloud from one element, no asset: a rounded pill plus two
 surface/quantised-ground-transition | E1 D2 W2 F3 $1 | surface color gradient tokens detail | Two flat sections meeting edge to edge give a hard seam; a smoot
 surface/quantised-tick-arc | E1 D3 W2 F5 $2 | svg data measurement precision geometry detail | A filled arc is a percentage the eye misjudges by ten points. A 
 surface/radius-inset-connector-rail | E1 D3 W1 F5 $1 | diagram hairline precision detail schematic | Connectors in a node diagram are hairlines on pseudo-elements, n
