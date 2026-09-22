@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,intersection-observer,visibility,battery,correctness]
 axes: none
 cost: 2
-seen: 87
+seen: 88
 requires: []
 conflicts: []
 completes: []
@@ -302,4 +302,17 @@ scene does stop.
 ```css
 [data-paused], [data-paused] *,
 [data-paused] ::before, [data-paused] ::after { animation-play-state: paused !important }
+```
+
+Active scrolling is a fourth term, and the cheapest. Decorative loops on screen
+compete with scroll for the same frames, so stamp the root while scroll events
+are arriving and clear it 100–200ms after the last one; CSS pauses every ambient
+loop for the duration. The reader never sees the pause — their eye is on content
+in motion anyway.
+```js
+addEventListener('scroll', () => { root.dataset.scrolling = ''; clearTimeout(t)
+  t = setTimeout(() => delete root.dataset.scrolling, 140) }, { passive: true })
+```
+```css
+[data-scrolling] .ambient { animation-play-state: paused !important }
 ```

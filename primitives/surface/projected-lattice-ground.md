@@ -4,7 +4,7 @@ category: surface
 tags: [surface,grid,texture,ambient,depth,geometry]
 axes: {energy: 2, density: 3, weight: 1, finish: 4}
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -59,3 +59,15 @@ rotation empties the corners. Perspective from 600px once the box is short.
 ```
 ⚠ The section needs the clip — without it the tilted box paints over whatever
 follows, and an oversized ground is the one layer nobody thinks to look for.
+
+The ground can move after all, if it moves by exactly one cell. Translate the
+lattice inside the same rotated transform, from zero to one pitch on both axes,
+linear. The last frame matches the first, so the floor streams toward the viewer
+without ever seaming. A small extra `rotate` of 3–8deg turns the stream from
+head-on to diagonal. Period 8–20s.
+```css
+@keyframes drift { to { transform: perspective(600px) rotateX(45deg) rotate(-5deg)
+  translate(var(--pitch), var(--pitch)) } }
+```
+⚠ This is the one animated fixed layer on the page: `contain: paint`, pause it
+during scroll and offscreen, and hold it still under reduced motion.

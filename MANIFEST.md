@@ -1,6 +1,6 @@
 # Manifest
 
-992 primitives. Format: `category/id | axes cost | tags | gist`
+993 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -125,6 +125,7 @@ canvas/weight-exponent-colour-field | E2 D2 W3 F5 $3 | shader canvas field gener
 canvas/yielded-program-link | neutral  $2 | canvas webgl shader performance correctness lifecycle | Linking a shader program returns immediately; asking whether it 
 color/band-keyed-readout-channels | neutral  $1 | color tokens state dataviz correctness | A readout showing a measurement and a judgement of it carries on
 color/blend-window-channel-strip | E1 D3 W2 F5 $2 | color data series encoding interpolation two-tone | One strip can carry which of two sources owns each point along i
+color/celled-theme-handoff | E3 D3 W2 F4 $4 | theme dark-mode transition mask svg grid stagger | A theme switch can resolve as a lattice rather than a fade. Clon
 color/chroma-cycled-subject-mark | E2 D2 W2 F5 $2 | color saturation filter emphasis figure contrast loop | Where each part of a figure takes a turn being the subject, dimm
 color/chroma-weighted-peer-rank | E1 D2 W3 F5 $1 | color hierarchy accent icon grid contrast | Two grids of identical cards on one page read as equally importa
 color/confidence-ladder-neutral-floor | neutral  $1 | tokens status ordinal confidence semantic badge | A grade of certainty is not a grade of danger. Ramp it from a co

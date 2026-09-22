@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,loop,ambient,diagram,css-only]
 axes: {energy: 3, density: 3, weight: 1, finish: 4}
 cost: 2
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []

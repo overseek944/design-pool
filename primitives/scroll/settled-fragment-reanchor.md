@@ -4,7 +4,7 @@ category: scroll
 tags: [anchor,fragment,navigation,fonts,correctness,layout-shift]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -30,3 +30,14 @@ await Promise.all([document.fonts.ready, onLoad])
 ⚠ Correct instantly — a smooth correction is a second animation over the first
 and reads as drift. Bind the abandon listeners `once` and `passive` before the
 await, or a reader scrolling during font load is yanked back.
+
+Where the target lives in a lazily loaded chunk, the first failure is earlier:
+the id is not in the document yet, so the browser's jump finds nothing and gives
+up for good. Poll for the element once per frame, scroll the moment it mounts,
+and abandon after a bound — 60–120 frames. Re-run on `hashchange`, cancelling
+any poll still pending.
+```js
+let n = 0; const find = () => { const t = document.getElementById(decodeURIComponent(location.hash.slice(1)))
+  if (t) return t.scrollIntoView({ block: 'start', behavior: 'instant' })
+  if (++n < 90) raf = requestAnimationFrame(find) }
+```
