@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,scroll-driven,view-timeline,scale,transition]
 axes: {energy: 2, density: 1, weight: 2, finish: 5}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -28,3 +28,8 @@ change reads as jitter rather than movement. Floor 0.55–0.8.
 ⚠ A scaled box keeps its layout size, so a gap opens beneath it as it shrinks —
 budget the section's spacing at the floor, not at 1. `both` is load-bearing:
 without it the artifact snaps back to full size the instant it starts leaving.
+
+In a column of stacked cards, run it only over the leaving half:
+`animation-range: contain 0% exit 0%` with a lift of 120–250px plus a scale
+floor of 0.94–0.97. Each card drifts up and back as the next one arrives, then
+leaves at rest, so the drift never fights the incoming card's entrance.

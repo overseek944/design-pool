@@ -4,7 +4,7 @@ category: surface
 tags: [surface, scrim, legibility, backdrop-filter, mask, blur, overlay]
 axes: {energy: 1, density: 2, weight: 2, finish: 4}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,8 @@ everywhere the reader is not reading. Inset 16–40px, blur 8–16px, tint
 ```
 ⚠ The feathered rim is weaker than the centre — check contrast at the text's
 outer corners, not its middle.
+
+Over a photo card, the pad can be a full-width band instead of an ellipse:
+`mask-image: linear-gradient(#0000 25–30%, #000 45–50% 70–75%, #0000 90–95%)`
+carrying only 1–2px of blur. That blur is too small to read as frost. It removes
+the fine detail the text sits on while the image stays recognisable.

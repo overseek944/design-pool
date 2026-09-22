@@ -4,7 +4,7 @@ category: timing
 tags: [motion,indicator,status,ambient,glow]
 axes: {energy: 2, density: 1, weight: 2, finish: 4}
 cost: 1
-seen: 18
+seen: 19
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -118,3 +118,7 @@ turned 45°, a 1–2px accent border and a fixed outer glow — with only a 4–
 core inside it pulsing opacity 1 to 0.2–0.3 over 1.4–2s. The frame holds the
 position constantly; the core alone reports liveness, so a field of them never
 reads as failing at the trough.
+
+On a call-to-action, stop the ring on `:hover` and `:focus-visible`. Once the
+pointer or focus arrives, the call has been answered, and a ring that keeps
+pulsing under the cursor reads as nagging. Use a 2–3s period and a 5–8px spread.

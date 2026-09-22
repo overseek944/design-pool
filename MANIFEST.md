@@ -1,6 +1,6 @@
 # Manifest
 
-1041 primitives. Format: `category/id | axes cost | tags | gist`
+1042 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -214,6 +214,7 @@ interaction/focus-held-chrome-retraction | neutral  $1 | interaction correctness
 interaction/focus-released-occlusion | neutral  $1 | interaction accessibility focus sticky correctness css-only | Any arrangement that deliberately covers one element with anothe
 interaction/focus-within-welded-field-group | E1 D2 W2 F5 $1 | interaction form field focus accessibility control | Two native controls that together produce one value — country co
 interaction/focusable-graphic-regions | neutral  $2 | accessibility svg focus diagram correctness | A drawing whose parts answer to the pointer — a map, a schematic
+interaction/framed-media-pointer-drift | E2 D1 W2 F5 $2 | interaction pointer parallax media hover spring overscan | A hover card doesn't have to tilt to feel deep. Keep the frame s
 interaction/gap-spanning-hover-bridge | E2 D2 W2 F5 $1 | interaction hover panel menu css-only accessibility | A panel held off its trigger by a visual gap is unreachable by h
 interaction/gesture-affordance-label | E1 D2 W2 F4 $1 | affordance interaction accessibility detail ux | A surface whose only affordance is a gesture — drag to orbit, sc
 interaction/ground-joined-tab-selection | E1 D2 W2 F5 $1 | tabs state selection ruled contrast theme | Where a strip of tabs sits directly on the panel it switches, st
