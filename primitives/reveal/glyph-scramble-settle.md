@@ -4,7 +4,7 @@ category: reveal
 tags: [type,reveal,motion,technical,text]
 axes: {energy: 4, density: 3, weight: 2, finish: 3}
 cost: 2
-seen: 13
+seen: 14
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -80,3 +80,17 @@ slots per tick — 15–30% — so the string stays readable while it churns.
 ```
 ⚠ The overlay is only in register while the run is one line — on a wrapping
 block it stacks on the first line. Cap it at single-line labels and headings.
+
+Where the string is grouped — a card number, a code, a key — lock it a *group*
+at a time rather than a character at a time: churn every unlocked group at one
+tick rate and resolve them on a staggered schedule, so the eye reads chunks
+arriving in the order they will be read. Restrict the pool to the value's own
+alphabet — digits for a numeric field — so the churn is plausible, not
+decorative. Tick 40–60ms; first lock 200–300ms; 140–200ms per group.
+```js
+locked = 0; tick = setInterval(() => el.textContent = groups
+  .map((g, i) => i < locked ? g : rand(g.length)).join(' '), 50)
+groups.forEach((_, i) => setTimeout(() => locked = i + 1, 240 + i * 170))
+```
+⚠ Pair it with `font-variant-numeric: tabular-nums`, or a digit-only churn still
+jitters horizontally in a proportional face.

@@ -1,6 +1,6 @@
 # Manifest
 
-1015 primitives. Format: `category/id | axes cost | tags | gist`
+1018 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -474,6 +474,7 @@ media/designed-end-frame-hold | E1 D2 W2 F5 $1 | media video poster replay prefe
 media/device-pixel-snapped-overlay-write | neutral  $1 | canvas overlay precision dpr scrub registration correctness | A DOM layer over a raster — a canvas frame sequence, a cover-fit
 media/dialog-scoped-embed-lifecycle | neutral  $2 | media performance dialog correctness lifecycle | A third-party embed is not yours to pause — you cannot reach int
 media/dilated-alpha-keyline | E1 D2 W2 F5 $1 | media icon logo filter contrast legibility detail css-only | A raster mark has no stroke to reach for, so a pale logo dropped
+media/dot-module-code-render | E1 D3 W2 F4 $1 | media svg qr brand correctness | A stock QR code is the one square-pixel object on a composed pag
 media/event-sourced-audio-control | neutral  $1 | media audio state correctness accessibility interaction | A play control that flips its own boolean on click desynchronise
 media/frame-announced-readiness | neutral  $2 | media iframe embed loading progressive-enhancement correctness | An iframe's load fires when its document parses, not when the ap
 media/frameless-alpha-artwork | E1 D2 W2 F3 $2 | media illustration assets transparency composition | Artwork exported on transparency with a feathered edge does not 
@@ -806,6 +807,7 @@ surface/chained-quadratic-wave-edge | E2 D2 W2 F3 $1 | svg path wave band sectio
 surface/channel-split-refraction-glass | E1 D3 W3 F5 $4 | glass backdrop-filter svg-filter refraction chromatic depth | A blur says frosted; a displacement says solid and thick. Refere
 surface/circling-offset-shadow | E2 D2 W3 F4 $2 | shadow ambient loop light card elevation | A still card reads as lit by a slowly circling lamp when its sha
 surface/clip-carried-fill-traverse | E2 D2 W2 F5 $2 | svg connector motion clip-path diagram gradient | Dash offset gives a stroked connector direction, but a connector
+surface/clipped-bubble-tail | E2 D2 W2 F3 $1 | surface clip-path message pseudo-element | A message bubble's tail needs no border triangle or SVG. Hang a 
 surface/clock-bucketed-scene-state | E1 D2 W2 F4 $2 | surface ground state root-attribute progressive-enhancement ambient | Resolve the reader's hour into three to five named buckets, set 
 surface/collapsing-riser-keycap | E1 D2 W3 F4 $1 | surface detail border state css-only hairline | A key drawn as a bordered box reads as a chip. What makes it a c
 surface/comb-ruled-section-seam | E1 D3 W2 F5 $1 | divider section texture rule repeating-gradient seam | Where two full-bleed grounds meet, a hairline rule is lost in th
@@ -980,6 +982,7 @@ type/metric-free-weight-transition | E2 D2 W3 F5 $1 | type emphasis weight layou
 type/mixed-magnitude-figure-band | E1 D3 W4 F5 $1 | numerals metric alignment layout data | A row of headline figures rarely shares a digit count — four dig
 type/mono-as-ui-texture | E1 D3 W2 F4 $1 | type ui technical register | Run a monospace face for all chrome — nav, labels, captions, cou
 type/name-extending-hidden-suffix | neutral  $1 | accessibility label correctness type navigation | Every card ending in the same two words — Read more, View — hand
+type/native-rounded-face-stack | E2 D2 W2 F3 $1 | type font performance system-font | A rounded display face softens an interface without shipping a b
 type/nested-granularity-change-mark | E1 D3 W2 F5 $1 | type annotation diff editorial color state | A change marked at one granularity answers half the question: a 
 type/optical-width-text-fit | E1 D2 W4 F5 $3 | type fit measurement display responsive | A headline that must fill a fixed box cannot be sized by charact
 type/origin-flipped-wipe-underline | E3 D1 W2 F5 $1 | underline link hover transform-origin wipe cheap | A scaleX underline that grows from one end and shrinks back to i

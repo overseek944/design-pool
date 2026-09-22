@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,disclosure,redaction,accessibility,state]
 axes: {energy: 2, density: 2, weight: 3, finish: 4}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -41,3 +41,16 @@ btn.onclick = () => { location.href = `mailto:${addr()}` }
 ⚠ A reader with script disabled gets a dead button — give it an accessible
 name that says what it does and a working fallback route, a contact form or a
 social profile. This raises the cost of harvesting, it does not prevent it.
+
+Where the value toggles between hidden and shown rather than revealing once, the
+mask should preserve the value's *shape* — same group count, same separators,
+one placeholder glyph per character — so the toggle changes content and never
+width, and the reader can still tell a 16-digit field from a 3-digit one while
+it is hidden. Swap the button's accessible name with the state, not just its
+icon.
+```js
+el.textContent = shown ? v : v.replace(/[^\s/-]/g, '•')
+btn.setAttribute('aria-label', (shown ? 'Hide ' : 'Show ') + 'details')
+```
+⚠ `•` in a proportional face is narrower than a digit; set tabular figures or
+the masked field still shifts on toggle.

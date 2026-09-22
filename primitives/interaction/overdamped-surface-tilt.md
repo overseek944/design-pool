@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,pointer,transform,motion,restraint,custom-property]
 axes: {energy: 2, density: 1, weight: 3, finish: 5}
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -101,3 +101,16 @@ card.style.boxShadow = `${-ry * 3}px ${rx * 3 + 4}px 34px -6px #0000001a`
 ```
 ⚠ Re-read the bounding rect on scroll while tilting; a rect cached on enter is
 wrong the moment the page moves under a stationary pointer.
+
+Where the surface should read as sprung rather than heavy, swap the lerp for a
+second-order step — carry a velocity, pull it toward the target, damp it — and
+the pose overshoots and settles instead of easing in. Give scale its own
+stiffer, more damped channel and a press can dip it below 1 while amplifying
+the tilt 1.3–1.6×, so the card gives under the finger. Stiffness .05–.09 with
+damping .78–.86 on rotation; .10–.14 / .70–.78 on scale; press scale .98–.99.
+```js
+v += (t - c) * .07; v *= .82; c += v      // rotation; overshoots ~10%
+vs += (ts - cs) * .12; vs *= .75; cs += vs // scale channel
+```
+⚠ Past about .88 damping the pose rings visibly after release; below .75 the
+spring is indistinguishable from the lerp and costs a velocity for nothing.
