@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,observer,navigation,architecture,correctness]
 axes: none
 cost: 1
-seen: 13
+seen: 14
 requires: []
 conflicts: []
 completes: []
@@ -123,3 +123,18 @@ const pick = () => set(i => { let best = i, d = Infinity
 ```
 ⚠ It measures every item on every frame it runs, so it does not scale past a
 few dozen — and it reads layout, so nothing in the same handler may write it.
+
+`!isIntersecting` is not "we are past it" — it is also true before the sentinel
+has ever been reached, and the observer delivers exactly that entry on the first
+callback, so a sentinel below the fold flips the state *on* at first paint and
+the chrome renders raised on a page nobody has scrolled. Test the direction as
+well: only an entry whose rect has passed the top of the root counts.
+```js
+new IntersectionObserver(([e]) =>
+  set(!e.isIntersecting && e.boundingClientRect.top < 0)).observe(sentinel)
+```
+⚠ Invisible from the top of the page, which is where it is always tested — load
+at a `#fragment` below the sentinel, or restore a scroll position, to see it.
+Publish the boolean from one module-level store rather than re-observing per
+consumer; the answer is a fact about the document, and N observers on one 1px
+node is N callbacks per crossing for one bit.

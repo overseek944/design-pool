@@ -4,7 +4,7 @@ category: color
 tags: [color,hierarchy,surface,sequence,contrast]
 axes: {energy: 1, density: 2, weight: 3, finish: 4}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -45,3 +45,20 @@ is actually good at.
 .area          { fill: color-mix(in oklch, var(--hi) calc(var(--t) * 100%), var(--lo)) }
 .area.no-data  { fill: oklch(from var(--lo) l .01 h) }
 ```
+
+At page scale the same equal-lightness rotation keys *chapters*: each band a
+plate in its own tint, every other variable — radius, padding, the card
+treatment sitting on it — held identical, so the hue reads as an index rather
+than as a different design. What binds them is a shared texture recipe, one
+hairline hatch at a fixed angle and pitch, drawn in a deeper cut of the band's
+own tint on a `pointer-events: none` layer above the wash. Hatch 1px on 6–10px.
+```css
+.band { background: var(--tint); position: relative }
+.band::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: repeating-linear-gradient(45deg,
+    color-mix(in oklch, var(--tint), black 8%) 0 1px, #0000 1px 8px) }
+```
+⚠ One stroke width is not one strength: the same 1px hairline is a whisper on a
+yellow band and a stripe on a blue one. Derive the hatch from each tint by mix
+amount and check the bands side by side — the tell is one band where somebody
+thickened the stroke to 2px to compensate.

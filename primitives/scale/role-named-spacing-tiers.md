@@ -4,7 +4,7 @@ category: scale
 tags: [tokens,architecture,rhythm,layout,scale]
 axes: none
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -56,3 +56,18 @@ headlines in wide seams.
 ⚠ Redefining at `:root` reaches every subtree that overrode the base unit for
 its own density — scope the breakpoint block to the tokens the page-level rhythm
 owns, or a deliberately compact region silently re-inflates.
+
+The third tier can name *measurements* rather than relationships — every
+one-off number the design actually has, registered at the root with its
+breakpoint siblings beside it (`--panel`, `--panel-md`, `--panel-sm`) instead of
+scattered inline. Names stay component-shaped, which the relationship ladder
+forbids, and the payoff is composition: a height that is the sum of two others
+is declared as that sum and can never drift from either.
+```css
+--announce: 44px; --navbar: 71px;
+--chrome: calc(var(--announce) + var(--navbar));   /* scroll-padding, sticky top */
+```
+⚠ Custom properties do not resolve inside a media query condition, so
+`--breakpoint-lg` cannot gate the query that switches these values — the literal
+has to be written out and kept in step by hand. Comment every such literal with
+the token it shadows; that pair is the registry's one unenforceable rule.

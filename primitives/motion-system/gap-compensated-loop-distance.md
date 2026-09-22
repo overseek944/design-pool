@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,marquee,correctness,loop,overflow]
 axes: none
 cost: 1
-seen: 27
+seen: 28
 requires: []
 conflicts: []
 completes: []
@@ -110,3 +110,19 @@ or the pair reads as one hinged object rather than as two.
 ⚠ Only on a seamless duplicated track. A reel that does not tile — a list
 translated by a measured pitch — parks at its end pose under the same
 declaration, so reversing it needs the static transform authored to match.
+
+A *painted* track has the same arithmetic with no children to measure. A
+`repeating-linear-gradient` at angle θ repeats every `p` along its own normal,
+so the horizontal travel for exactly one period is `p / sin θ` — at 45° with a
+20px pitch that is 28.28px, not 20px, and translating by the pitch jumps the
+pattern back a fraction of a stripe every cycle. Oversize the layer so the tail
+never enters the box.
+```css
+.stripes { width: 200%; background: repeating-linear-gradient(45deg,
+  #ffffff08 0 10px, #ffffff14 10px 20px); animation: slide 1s linear infinite }
+@keyframes slide { to { transform: translateX(-28.284px) } }   /* 20 / sin45 */
+```
+⚠ Write the divisor in the value, not the answer — `calc(20px / 0.7071)` — or
+the number is unmaintainable the moment the angle or pitch is retuned. Diagonal
+motion past a fixed frame is the loop most likely to be read as a progress bar;
+keep it inside something that is plainly indeterminate.

@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,accessibility,marquee,correctness,overflow]
 axes: none
 cost: 1
-seen: 22
+seen: 23
 requires: []
 conflicts: []
 completes: []
@@ -97,3 +97,19 @@ alongside the mask and the duplicates.
 ⚠ A reel worth building is taller than its window, so the release pushes
 everything below it down. Reserve the section against the full list, or the
 still state reflows the page for exactly the readers who asked for less motion.
+
+Where the copy is fixed and short, the still state does not need a measurement
+at all — a viewport width is a good enough proxy for "does this overflow", and
+the whole loop apparatus becomes one compound variant chain. Author the still
+layout as the plain markup and gate the track width, the overflow, the edge
+mask, the `nowrap`, the trailing pad and the duplicate copy on the *same*
+narrow-and-motion-safe condition. Reduced motion then falls out for free: the
+condition fails, and every one of those six declarations drops together.
+```html
+<span class="max-md:motion-safe:whitespace-nowrap max-md:motion-safe:pr-24">…</span>
+<span aria-hidden="true" class="hidden max-md:motion-safe:block …">…</span>
+```
+⚠ The duplicate is `hidden` by default and shown only by the same chain, so it
+never reaches a reader who is not being shown a loop. Any chain that arms the
+track and forgets one of the six leaves a half-marquee — usually the mask,
+fading real content that is no longer moving.

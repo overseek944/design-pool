@@ -4,7 +4,7 @@ category: reveal
 tags: [type,scroll,progress,reveal,colour]
 axes: {energy: 2, density: 2, weight: 3, finish: 4}
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -51,3 +51,20 @@ index, and long words take proportionally longer, which is what reading does.
 ⚠ `color: transparent` is what the selection highlight and forced-colours mode
 both read, so the text is unreadable in both. Restore a real `color` and drop
 the gradient under `forced-colors: active` and `prefers-reduced-motion`.
+
+Uncouple the sweep from progress and it stops meaning "read" and starts meaning
+"not final". A slow gradient band looping through live text — the real words,
+legible the whole time — marks a block as still being written far better than a
+skeleton bar, which shows nothing and reserves the wrong height. Scope it to the
+generated block and remove the class the moment the content settles. Band 8–16%
+of the gradient, 2–3s per lap.
+```css
+.provisional p { background-image: linear-gradient(110deg, var(--dim) 0 42%,
+  var(--ink) 50%, var(--dim) 58% 100%); background-size: 200% 200%;
+  background-clip: text; color: transparent; animation: sweep 2.5s linear infinite }
+```
+⚠ The same `color: transparent` trap, now on text a reader is actively waiting
+to read: under forced colours and in the selection highlight it is invisible,
+and it stays that way for as long as generation runs. Ship the un-swept colour
+under `forced-colors: active` and `prefers-reduced-motion`, where the block
+should be plainly readable and merely marked.
