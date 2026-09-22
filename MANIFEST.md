@@ -1,6 +1,6 @@
 # Manifest
 
-935 primitives. Format: `category/id | axes cost | tags | gist`
+936 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -169,6 +169,7 @@ interaction/copy-safe-sample-text | neutral  $1 | interaction code correctness d
 interaction/copy-with-selection-fallback | neutral  $1 | interaction clipboard accessibility correctness feedback | navigator.clipboard.writeText rejects on an insecure origin, a d
 interaction/coreference-trace-highlight | E2 D3 W2 F5 $2 | interaction annotation cross-reference highlight accessibility diagram | Where one value recurs across panels — a figure in a table, the 
 interaction/count-indexed-sheet-stack | E2 D3 W2 F5 $3 | sheet overlay stack gesture depth transform | A stack of sheets needs one number, not a state machine: how man
+interaction/crawler-excluded-param-carry | neutral  $1 | links navigation analytics seo correctness | The params that identify a visit — campaign, referrer, experimen
 interaction/cross-context-preference-sync | neutral  $1 | theme preferences storage correctness accessibility | A stored preference is a fact about the reader, not about one ta
 interaction/cross-device-action-handoff | neutral  $2 | interaction cta progressive-enhancement accessibility responsive | Where the thing on offer can only be used on a device class the 
 interaction/cursor-tracked-vanishing-point | E3 D3 W2 F5 $3 | interaction pointer 3d depth field transform hover | Tiles pushed toward the reader on Z all shear toward the contain

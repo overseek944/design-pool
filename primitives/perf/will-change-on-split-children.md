@@ -4,7 +4,7 @@ category: perf
 tags: [motion,performance,promotion]
 axes: none
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -59,3 +59,18 @@ animation, and drop the residual `transform` and `filter` with it.
 ⚠ It only reaches what the branch names. A blanket `.scene *{animation:none
 !important}` stops everything and demotes nothing, which is the worst of both —
 scope the demotion to the same selector list or write it as the resting value.
+
+One property per promoted channel, not one for the page. `will-change:
+transform, filter` commits to both, and the filter channel is the expensive
+one — it reserves an offscreen buffer the size of the element while nothing is
+animating. Give `transform` and `filter` their own root properties and a
+subtree can take the cheap promotion without the costly one, each raised
+independently by state or by a capability probe. Every consumer stays one
+declaration.
+```css
+body    { --wc-t: none; --wc-f: none }   /* raise per state, or per engine */
+.layer  { will-change: var(--wc-t, transform) }
+.washed { will-change: var(--wc-f, filter) }
+```
+⚠ Two channels on one element is still two commitments — declare the pair only
+where both properties genuinely animate.
