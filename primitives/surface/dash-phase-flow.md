@@ -4,7 +4,7 @@ category: surface
 tags: [svg,dash,motion,connector,diagram,precision]
 axes: {energy: 2, density: 2, weight: 1, finish: 5}
 cost: 1
-seen: 23
+seen: 24
 requires: []
 conflicts: []
 completes: []
@@ -145,3 +145,8 @@ rather than racing it. Fill 300–400ms, head delayed 0.8–1× that.
 ```
 ⚠ The delay and the fill duration are one decision written twice; retune the
 fill and the head fires early, which reads as two unrelated animations.
+
+The two-places drift is fixable on SVG too: publish the dash as one custom
+property and derive the offset from it — `stroke-dasharray: var(--dash) var(--dash)`
+against `to { stroke-dashoffset: calc(var(--dash) * -2) }` is always exactly one
+period, so a selection ring can be retuned 4–10px without touching the keyframe.

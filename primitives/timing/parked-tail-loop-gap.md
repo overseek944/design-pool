@@ -4,7 +4,7 @@ category: timing
 tags: [motion,timing,rhythm,detail]
 axes: {energy: 3, density: 1, weight: 2, finish: 4}
 cost: 1
-seen: 15
+seen: 16
 requires: []
 conflicts: []
 completes: []
@@ -98,3 +98,10 @@ opacity .4 → 1; period 1.2–1.6s.
 @keyframes dot { 0%, 60%, to { opacity: .4; translate: 0 } 30% { opacity: 1; translate: 0 -2px } }
 .dot:nth-child(2) { animation-delay: .2s } .dot:nth-child(3) { animation-delay: .4s }
 ```
+
+The glint need not be an element that travels. Animate a `clip-path: polygon()`
+parallelogram from wholly left of the box to wholly right — vertices at −90…−30%
+and 95…160% — over a sheen layer that stays put, and the clip is the pass. Fade
+opacity in by 15% and out after 75%; 1–1.5s, finite 2–4 iterations to mark
+something freshly made.
+⚠ `clip-path` animation repaints the layer each frame — one small element only.

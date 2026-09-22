@@ -4,7 +4,7 @@ category: timing
 tags: [motion,easing,delight]
 axes: {energy: 4, density: 2, weight: 2, finish: 3}
 cost: 1
-seen: 13
+seen: 14
 requires: []
 conflicts: []
 completes: []
@@ -73,3 +73,7 @@ an instant response followed by a move.
 ⚠ Ratio, not absolutes — take the non-geometric channel to 0.5–0.65 of the
 transform's duration. Matched durations put the settle and the colour's arrival
 on the same frame and the whole thing reads as one flat move again.
+
+For a catalogue appearing as a set, a four-stop scale pop — `.72` → `1.16` at
+58% → `.94` at 78% → `1` — over 0.35–0.5s on `cubic-bezier(.2,1.25,.32,1)`,
+with a per-card `--appear-delay` of 20–40ms × index.

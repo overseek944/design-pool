@@ -1,6 +1,6 @@
 # Manifest
 
-980 primitives. Format: `category/id | axes cost | tags | gist`
+983 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -218,6 +218,7 @@ interaction/inherited-autocomplete-pass | neutral  $1 | forms autocomplete acces
 interaction/inline-target-floor | neutral  $1 | accessibility interaction correctness detail | A row of small print — legal links, meta, a footer — fails targe
 interaction/instrumented-console-interface | neutral  $1 | instrumentation analytics architecture progressive-enhancement | A page can carry a second interface addressed at nobody who scro
 interaction/intent-frozen-ambient-scene | neutral  $1 | interaction motion hover focus correctness has | An ambient scene carrying one real control makes that control a 
+interaction/keyframe-gated-hit-target | neutral  $1 | accessibility pointer-events visibility entrance correctness keyframes | A delayed entrance leaves its controls clickable while still inv
 interaction/legend-as-series-filter | E2 D2 W2 F5 $2 | legend filter state accessibility chart | A key that only names the series is a second thing to read. Make
 interaction/lock-gated-cross-tab-mutation | neutral  $3 | state correctness concurrency architecture async | Some mutations must not run twice at once across a user's open t
 interaction/margin-cancelled-hit-area | neutral  $1 | interaction touch accessibility hit-area layout correctness | A link in a dense bar cannot reach the 44px touch floor by growi
@@ -520,6 +521,7 @@ motion-system/blurred-slot-spin-settle | E4 D1 W2 F3 $1 | slot reel blur oversho
 motion-system/camera-over-static-scene | E3 D2 W3 F5 $2 | motion transform scale focus diagram narrative | To walk a reader through a diagram, move the viewport rather tha
 motion-system/cardinality-locked-variant-set | E3 D3 W2 F5 $3 | motion svg morph state diagram architecture | A set of marks that switches state — a diagram's shapes, a chart
 motion-system/context-scoped-cleanup | neutral  $1 | motion lifecycle correctness | Create every animation inside a scoped context and revert it on 
+motion-system/corner-circuit-squash-dot | E3 D1 W2 F4 $1 | loader waiting dot keyframes squash pending | A pending indicator that walks rather than spins: one dot visits
 motion-system/counter-drifting-echo-glyph | E3 D1 W2 F4 $1 | motion icon loop trail idle | A directional glyph idling on a small nudge reads as twitching. 
 motion-system/counter-scaled-camera-overlay | neutral  $1 | camera transform overlay cursor correctness | Anything drawn for the reader over a zooming scene — a synthetic
 motion-system/coverage-field-threshold-wave | E3 D4 W2 F4 $2 | field grid threshold cells shimmer generative | A field of cells carrying a coverage value — how much of some fo
@@ -815,6 +817,7 @@ surface/inverted-bevel-state-pair | E2 D2 W2 F3 $1 | surface depth detail afford
 surface/inverted-field-ground | E1 D2 W3 F4 $1 | surface form contrast figure-ground accessibility | Invert the form figure-ground: tint the panel below the page val
 surface/join-straddling-blur-band | E1 D2 W2 F5 $2 | surface mask texture detail section css-only | Two full-bleed plates meeting on a line show the join — a resolu
 surface/latitude-derived-wire-sphere | E1 D3 W1 F5 $1 | surface hairline geometry globe figure decoration | Nested ellipse outlines read as a sphere only when their proport
+surface/luminance-hole-spotlight | E2 D1 W3 F4 $2 | spotlight onboarding mask svg overlay focus-guide | A guided step dims the page and leaves one control lit. Mask an 
 surface/mask-channel-scrim-regions | E1 D2 W3 F5 $1 | scrim imagery mask contrast accessibility | A scrim written as stacked background gradients compounds wherev
 surface/masked-edge-highlight | E1 D2 W2 F5 $2 | surface border light mask detail | A hairline that is bright at one point and fades to nothing arou
 surface/multi-edge-mask-fade | E1 D2 W2 F5 $2 | surface mask edge composition bleed | Let an oversized panel run past the layout and dissolve instead 

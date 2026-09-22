@@ -4,7 +4,7 @@ category: layout
 tags: [layout,container-query,table,responsive,accessibility,correctness]
 axes: none
 cost: 2
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -74,3 +74,8 @@ only two of four, and a dropped column's unit has to travel with its value.
 ```
 ⚠ Generated content is not findable, not translatable and unevenly announced —
 fine for a unit the number already implies, wrong for the value itself.
+
+The same drop works on the block axis. A card made a `container-type: size`
+can shed its description under `@container (max-height: 110–140px)`, so a tile
+squeezed by its grid keeps title and action rather than clipping mid-sentence.
+⚠ A size container needs a height from outside — the grid track, never content.

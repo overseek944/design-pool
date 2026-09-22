@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,mock,meter,progress,accessibility]
 axes: {energy: 2, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -62,3 +62,7 @@ io = new IntersectionObserver(([e]) => e.isIntersecting && start(), { threshold:
 ```
 ⚠ The seeded value is the one most readers see — choose it as carefully as the
 screenshot, not as a zero.
+
+A one-shot indeterminate bar that must never claim completion runs the same rule
+forwards: `scaleX(0)` to `.6–.75` by 60% of a 1–1.5s run, then crawl to
+`.9–.95` and hold with `forwards`. Only the real finish may take it to 1.
