@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,edge,composition,bleed]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 71
+seen: 72
 requires: []
 conflicts: []
 completes: []
@@ -280,3 +280,18 @@ plus one linear for the side that must go entirely.
 ⚠ It occludes rather than reveals: anything layered between the SVG and the
 page is painted over, and the fade is wrong the moment the ground stops being
 that one flat colour.
+
+The asymmetric rail fade above is static, so it still says *more* at the end of
+the track where there is none — the one moment the reader needs to be told to
+stop. Register the trailing distance as a length and drive it from the rail's own
+scroll progress, so the fade retires as the end arrives. No observer, no class,
+and it holds while the rail is being dragged rather than only after it settles.
+Trail full at rest, zero by 92–100% of progress.
+```css
+@property --trail { syntax: '<length>'; inherits: false; initial-value: 48px }
+.rail { animation: retire linear both; animation-timeline: scroll(self inline) }
+@keyframes retire { 0%,80% { --trail: 48px } 100% { --trail: 0px } }
+```
+⚠ Scroll-driven timelines have no fallback value — without `@property`'s
+`initial-value` the custom property is invalid-at-computed-value-time wherever
+they are unsupported, and the mask silently drops entirely.

@@ -1,6 +1,6 @@
 # Manifest
 
-908 primitives. Format: `category/id | axes cost | tags | gist`
+911 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -220,6 +220,7 @@ interaction/nearest-sample-path-pick | neutral  $2 | interaction svg pointer dia
 interaction/occupancy-grid-canvas-pick | neutral  $2 | canvas pointer hit-test performance correctness | Artwork drawn to a canvas has no boxes, so a pointer over it can
 interaction/offset-shadow-press | E3 D2 W4 F2 $1 | interaction state depth detail border | A hard offset shadow reads as a solid object sitting above the p
 interaction/one-sided-hover-delay | E2 D2 W2 F5 $1 | interaction hover delay css-only restraint pointer | A hover-revealed panel wants patience on the way in and none on 
+interaction/ordinal-flipped-panel-anchor | E2 D2 W2 F5 $1 | interaction menu panel css-only layout correctness | A panel wider than its trigger and centred on it runs off the vi
 interaction/outward-corner-target | E3 D2 W1 F5 $2 | interaction state focus border precision detail | Four L-brackets absent at rest, then flying outward past the ele
 interaction/overdamped-surface-tilt | E2 D1 W3 F5 $1 | interaction pointer transform motion restraint custom-property | Most pointer-reactive surfaces try to keep up, and keeping up re
 interaction/overflow-traversing-label | E3 D2 W2 F5 $1 | overflow hover focus type css-only detail | A label too long for its row is usually handed a tooltip or left
@@ -304,6 +305,7 @@ layout/facing-edge-tangent-connector | E1 D3 W1 F5 $2 | layout connector svg dia
 layout/figure-borne-edge-key | E1 D3 W1 F5 $2 | diagram figure legend connectors encoding hairline schematic | A schematic whose connectors carry more than one kind of relatio
 layout/fixed-point-measure-solve | neutral  $2 | layout measure resize fonts reflow correctness | A measured value written back into the layout it came from has n
 layout/fixed-stage-pane-scroll | E1 D2 W2 F5 $3 | layout grid scroll shell navigation | A page may decline to scroll. Fix the shell to the viewport as a
+layout/fixed-subject-cycling-stage | E2 D3 W2 F5 $2 | layout mock demo loop composition evidence | A looping product vignette that replaces its whole stage every b
 layout/float-wrapped-figure | E1 D3 W2 F4 $1 | layout type editorial responsive detail | Neither grid nor flex wraps running text around a picture — floa
 layout/floor-docked-primary-chrome | E2 D1 W2 F5 $2 | layout chrome nav fixed accessibility correctness | Persistent navigation need not sit at the top. Dock it to the bo
 layout/flow-root-float-island | neutral  $1 | layout float flex prose figure correctness | float has no effect on a flex or grid item, so a text column lai
@@ -603,6 +605,7 @@ perf/pixel-ratio-change-watch | neutral  $1 | performance canvas correctness res
 perf/post-teardown-asset-disposal | neutral  $2 | performance correctness lifecycle canvas architecture memory | An asynchronous asset load outlives the view that started it. Sc
 perf/prefetch-on-intent-band | neutral  $2 | performance navigation prefetch observer architecture | Prefetching is two policies, not one. Intent arms on mouseenter,
 perf/preflight-free-cross-origin-post | neutral  $1 | performance forms architecture correctness security | A cross-origin POST sent as application/json is not a simple req
+perf/prepaint-resolved-conditional-chrome | neutral  $1 | perf cls storage first-paint correctness architecture | Chrome whose presence depends on a stored fact about the reader 
 perf/prerender-gated-first-view | neutral  $1 | performance correctness analytics navigation prerender | A page can be fully loaded, scripted and laid out with nobody ha
 perf/readiness-chained-successor-warmup | neutral  $2 | performance media video bandwidth sequence architecture | A sequence of heavy sources — a clip per step of a tabset — warm
 perf/revert-split-on-resize | neutral  $1 | type motion correctness | Split text hard-codes line breaks at split time. On resize or we

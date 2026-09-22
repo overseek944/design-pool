@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,input,placeholder,accessibility,hint,typing]
 axes: {energy: 3, density: 1, weight: 2, finish: 4}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -37,3 +37,17 @@ const step = () => setTimeout(step, del ? RATE / 2 : RATE)   // plus the two hol
 ```
 ⚠ Under `reduce`, render one example as static text and never start the loop —
 a paused typewriter is an empty field with a blinking caret.
+
+A constant per-character interval is what makes typed text read as a teleprinter
+rather than as someone thinking. Jitter each step across a band and hold much
+longer after a comma, a full stop or a question mark: the pauses land where a
+reader's own eye would stop, so the line acquires phrasing instead of just speed.
+Costs one expression. Base 20–40ms with ±60–80% jitter; punctuation hold
+150–250ms.
+```js
+const wait = BASE + Math.random() * SPREAD
+setTimeout(tick, ',.?!'.includes(s[i - 1]) ? HOLD : wait)
+```
+⚠ Jitter is per character, so a long string drifts unpredictably in total
+duration — budget from the mean, and never let a caption sequenced against it
+depend on the typing finishing at a fixed time.

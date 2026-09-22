@@ -4,7 +4,7 @@ category: surface
 tags: [surface,depth,border,detail,editorial]
 axes: {energy: 1, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -63,3 +63,16 @@ so the cap travels down its own wall. Wall 2–3px, light edge 1px.
 one control extruded the other way reads as a hole. Past about 4px it stops
 being a bevel and becomes an isometric solid that the layout has to reserve
 space for.
+
+The same zero blur clones a *hairline* into a ruled set, which is how a
+document, a ledger or a receipt gets drawn at icon scale without a line element
+each. One 1px rule plus two shadows at even multiples of the leading is three
+ruled lines in one declaration, and dropping alpha a step down the stack reads
+as lines running out of ink rather than as a repeat. Leading 3–6px; past four
+clones it costs less to loop a gradient.
+```css
+.rule { height: 1px; background: rgb(var(--ink) / .3);
+        box-shadow: 0 3px 0 rgb(var(--ink) / .25), 0 6px 0 rgb(var(--ink) / .2) }
+```
+⚠ The clones paint outside the element's box and no layout accounts for them —
+pad the parent by the deepest offset or the bottom rule is clipped.

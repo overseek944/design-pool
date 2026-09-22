@@ -4,7 +4,7 @@ category: surface
 tags: [frame,chrome,media,mock,product,decoration]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 20
+seen: 21
 requires: []
 conflicts: []
 completes: []
@@ -84,3 +84,15 @@ no terminal full stop.
 ```
 ⚠ Two lines of apparatus is the ceiling — a third turns the panel's header into
 a section header and the evidence starts reading as a subsection.
+
+Four rows in a mock read as a toy however well they are framed, because nothing
+in the frame says whether four is the dataset or a window onto it. Print the
+visible fraction against the real total in the panel's own header — the count,
+the population, and what to do to see more — and the same four rows become a
+sample of something large at no extra render cost. It is also the honest form:
+the alternative is implying scale with rows nobody can reach.
+```html
+<span class="port-count">7 of 1,284 · scroll for more</span>
+```
+⚠ The affordance named must exist. A count promising scroll on a panel that does
+not scroll is the one piece of mock furniture a reader will test immediately.
