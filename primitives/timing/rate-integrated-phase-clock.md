@@ -4,7 +4,7 @@ category: timing
 tags: [motion,timing,correctness,loop]
 axes: none
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -64,3 +64,19 @@ else { fling = 0; phase += rate * dt }
 ```
 ⚠ Zero the fling whenever the loop stops requesting frames, or a tab returned
 to after a minute resumes a gesture the reader has forgotten making.
+
+None of this is owed when the loop is declarative. A CSS animation already
+holds its own phase, so the rate change that needs integrating in script is one
+write to `playbackRate` on the animations read off the element — `currentTime`
+is preserved by definition and the seam cannot exist. Ramp that number instead
+of the phase, on the same ease-out over 250–450ms, and cancel the pending frame
+on re-entry so a fast in-and-out does not run two ramps against each other.
+Target 0.15–0.35 for a track that should slow to readable rather than stop.
+```js
+const as = el.getAnimations(); if (!as.length) return
+cancelAnimationFrame(el._rf); const from = as[0].playbackRate
+el._rf = ramp(k => as.forEach(a => a.updatePlaybackRate(from + (to - from) * k)))
+```
+⚠ `getAnimations()` is empty until the animation starts, so a ramp armed at
+setup silently does nothing — read it inside the handler. Rate 0 is not
+`paused`: the animation stays live and keeps its compositor layer.

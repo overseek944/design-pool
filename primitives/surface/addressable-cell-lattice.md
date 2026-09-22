@@ -4,7 +4,7 @@ category: surface
 tags: [lattice,grid,hairline,pointer-events,node-budget,decoration]
 axes: {energy: 1, density: 3, weight: 1, finish: 4}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,19 @@ wrapper `pointer-events: none` so only the cells themselves are targets.
 ⚠ Cells that take the pointer also take it from anything beneath them — raise
 real controls above the field rather than trusting source order. Adjacent cells
 draw every interior rule twice, so the lattice is heavier than the token says.
+
+The node budget buys addressability a pointer tint does not need. Leave the
+whole lattice `pointer-events: none`, listen once on the container, and resolve
+the cell by integer division of the pointer offset by the pitch — the
+arithmetic is exact because the grid *is* uniform, one listener replaces N hit
+targets, and the ⚠ above disappears because nothing in the field can take a
+click. Coalesce samples into a rAF and rebuild the index on a debounced
+`ResizeObserver`, 120–200ms.
+```js
+const i = Math.floor(y / pitch) * cols + Math.floor(x / pitch)
+cells[i]?.style.setProperty('--lit', 1)
+```
+⚠ Exact only while every cell is the same size — an `auto-fill` track
+distributing a remainder, or a fractional device pixel ratio, drifts the index
+by one near the far edge. Derive `cols` from the measured track count, never
+from the intended one.

@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,observer,navigation,architecture,correctness]
 axes: none
 cost: 1
-seen: 15
+seen: 16
 requires: []
 conflicts: []
 completes: []
@@ -153,3 +153,18 @@ if (hit.length) setActive(hit.reduce((a, b) =>
 ⚠ The reduce sees only the entries that *changed*, not every observed section —
 one already sitting in the band without crossing an edge this tick is absent
 from the list, not marked inactive in it.
+
+A single band position is behind the reader in one of the two directions.
+Scrolling up, a line fixed at mid-viewport hands off only after the section
+above has already filled the top half of the screen, so the marker reads as
+lagging — while the same line going down is right. Move the band *toward* the
+direction of travel: lower scrolling down, higher scrolling up, and both
+directions hand off as the arriving section reaches the leading edge. 8–15% of
+the viewport between the two positions.
+```js
+const m = dir === 'down' ? '-50% 0px -50% 0px' : '-40% 0px -60% 0px'
+```
+⚠ `rootMargin` is fixed at construction, so this costs a disconnect and rebuild
+on every direction change. Debounce the test against a few pixels of travel or
+a trackpad's noise rebuilds the observer several times a second — and the
+rebuild re-fires for every section, so the active write must be idempotent.

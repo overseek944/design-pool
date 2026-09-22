@@ -1,6 +1,6 @@
 # Manifest
 
-829 primitives. Format: `category/id | axes cost | tags | gist`
+830 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -213,6 +213,7 @@ interaction/pre-hydration-nested-link | neutral  $2 | accessibility links hydrat
 interaction/proximity-revealed-target | E2 D1 W2 F5 $2 | interaction pointer accessibility focus custom-properties affordance pointer-events | A control meant to be found rather than advertised can key its o
 interaction/proxy-painted-native-control | neutral  $1 | accessibility focus forms input correctness keyboard | Keep the real <input> and paint a sibling. Clip it to a 1×1 rect
 interaction/reader-parameterised-comparison | E2 D3 W2 F5 $3 | comparison demo state interaction accessibility | A before/after figure quoted from your own example is an asserti
+interaction/readiness-latched-intent | neutral  $1 | readiness hover lazy intent state custom-element | A control acting on a lazily-upgraded target can be used before 
 interaction/region-scoped-global-key | neutral  $2 | keyboard interaction correctness accessibility visibility | A shortcut bound on the document takes its keys from the whole p
 interaction/rejected-file-input-reset | neutral  $1 | correctness form input file detail | Check a chosen file's real type and byte length before any uploa
 interaction/reserved-state-border | neutral  $1 | accessibility focus cls border correctness | A control that gains a border on focus or selection must carry t

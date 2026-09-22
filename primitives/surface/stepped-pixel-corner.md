@@ -4,7 +4,7 @@ category: surface
 tags: [surface,ornament,detail,texture,cheap]
 axes: {energy: 2, density: 3, weight: 2, finish: 2}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
