@@ -4,7 +4,7 @@ category: layout
 tags: [header,scroll,sticky,chrome]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 23
+seen: 24
 requires: []
 conflicts: []
 completes: []
@@ -172,3 +172,18 @@ without a tie-break. Row 40–56px, on the plate's own curve.
 ⚠ Every word in the row duplicates a heading already on screen — mark it
 `aria-hidden` or the section title is met twice. Drop the row entirely below the
 width where the gloss wraps; two lines of chrome is worse than none.
+
+The threshold form has a continuous twin. Instead of a class flipped once, map
+the first 120–220px of scroll to a clamped 0–1 and drive every property off that
+one number — radius 16→999px, inset, plate alpha, blur, the inline size — each
+its own interpolation. Nothing is timed, so the bar cannot be caught mid-CSS-
+transition by a fast flick, a resize or a restored scroll position: the state is
+a pure function of where the page is.
+```js
+const p = Math.min(1, scrollY / 180)
+plate.style.borderRadius = `${16 + p * 983}px`
+plate.style.backdropFilter = `blur(${p * 12}px)`
+```
+⚠ Continuous means every frame writes, so guard each write against its own
+epsilon and arm `will-change` only once `p` clears a dead zone of 0.02 — held
+on permanently it keeps a compositor layer for the whole page.

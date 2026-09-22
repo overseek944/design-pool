@@ -4,7 +4,7 @@ category: scale
 tags: [responsive,breakpoint,tokens,container-query,custom-properties,architecture,css-only]
 axes: none
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -42,3 +42,17 @@ geometry. Travel 80–140px on the stacked axis, 180–320px on the wide one.
 ⚠ Both operands must carry a unit even at zero — a bare `0` is fine in
 `translate` but voids a `calc()` downstream. Swapping axis mid-transition
 interpolates through the diagonal, so switch at a width no reader is dragging.
+
+The same inversion saves a scripted interpolation from its resize handler. Where
+a scroll-driven value's *output range* depends on the viewport — a bar
+contracting to 1080px wide on desktop and to `viewport − 32px` on a handset —
+the reflex is to rebuild the interpolation when the width changes, which throws
+away whatever state the smoother had accumulated and snaps the value mid-drag.
+Hold the endpoints as live inputs instead and recompute only them.
+```js
+const lo = live(320), hi = live(1080)                 // updated on resize
+const out = combine([p, lo, hi], ([p, a, b]) => a + (b - a) * p)
+```
+⚠ The endpoints must be seeded before the first frame, not on the first resize
+event — one that never fires leaves the interpolation at a default no layout
+chose.

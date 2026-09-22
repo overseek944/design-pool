@@ -1,6 +1,6 @@
 # Manifest
 
-878 primitives. Format: `category/id | axes cost | tags | gist`
+880 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -564,6 +564,7 @@ perf/fixed-point-coordinate-payload | neutral  $2 | perf payload data points pre
 perf/font-display-per-role | neutral  $1 | type font-loading cls performance correctness | font-display is a decision per face, not per project. Body and U
 perf/header-relayed-edge-decision | neutral  $2 | perf architecture ssr caching routing hydration | A cached HTML shell is byte-identical for every reader, so whate
 perf/index-windowed-field-update | neutral  $2 | performance pointer field grid correctness batching | A field of elements driven from the pointer does not need visiti
+perf/inline-property-render-channel | neutral  $1 | performance canvas animation architecture custom-properties correctness | Steering a long-lived render loop from elsewhere costs a store, 
 perf/layer-order-preamble | neutral  $1 | architecture cascade css correctness code-splitting | Cascade layers are ordered by first mention, so with code-split 
 perf/loop-gated-on-attention | neutral  $2 | performance animation intersection-observer visibility battery correctness | An infinite decorative animation never stops — it keeps composit
 perf/markup-declared-instrumentation | neutral  $1 | architecture instrumentation events delegation maintenance | Declare the event name and its payload as data- attributes and l
@@ -677,6 +678,7 @@ scroll/scrub-lag-band | E3 D2 W3 F5 $2 | scroll motion feel | scrub as a number 
 scroll/self-driven-scroll-blackout | neutral  $1 | scroll state observer correctness | Any state derived from scroll position — an active section, a hi
 scroll/settled-fragment-reanchor | neutral  $1 | anchor fragment navigation fonts correctness layout-shift | A page opened directly on a #fragment scrolls once, early, and t
 scroll/smooth-scroll-driving-timeline | E3 D2 W3 F5 $3 | scroll motion architecture | Pair a smooth-scroll library (Lenis) with the animation library'
+scroll/smoothing-bypassed-reduce-branch | neutral  $1 | scroll spring reduced-motion accessibility progress correctness | A value tracking scroll has no landed state to jump to, so the u
 scroll/snap-suppressed-scroll-wrap | neutral  $2 | scroll carousel snap loop correctness | A duplicated track makes a scroll container endless only if the 
 scroll/stale-scroll-request-guard | neutral  $2 | scroll correctness accessibility events navigation | A scroll request crossing an async boundary — posted by an embed
 scroll/sticky-as-cheap-pin | E1 D2 W2 F3 $1 | scroll layout performance | position: sticky for anything that only needs to hold position —

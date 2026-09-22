@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,observer,navigation,architecture,correctness]
 axes: none
 cost: 1
-seen: 16
+seen: 17
 requires: []
 conflicts: []
 completes: []
@@ -168,3 +168,17 @@ const m = dir === 'down' ? '-50% 0px -50% 0px' : '-40% 0px -60% 0px'
 on every direction change. Debounce the test against a few pixels of travel or
 a trackpad's noise rebuilds the observer several times a second — and the
 rebuild re-fires for every section, so the active write must be idempotent.
+
+A band with real height is the third answer to the short-section hole, and it
+needs no rects. Size it taller than the tallest gap a section can leave —
+15–25% of the viewport — so nothing can pass through unseen, then resolve the
+several entries that now intersect at once with a rule rather than by arrival
+order: take the topmost, sorted on `boundingClientRect.top`. The read is
+deterministic at any scroll speed, where "whoever fired last" is not.
+```js
+const a = es.filter(e => e.isIntersecting)
+  .sort((x, y) => x.boundingClientRect.top - y.boundingClientRect.top)[0]
+if (a) setActive(a.target)          // rootMargin "-30% 0px -55% 0px"
+```
+⚠ The two margins no longer sum to −100%, so the band's position is the pair,
+not one number — change either and the hand-off point moves.

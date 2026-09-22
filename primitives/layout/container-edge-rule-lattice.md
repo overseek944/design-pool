@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,hairline,precision,responsive,technical]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 2
-seen: 25
+seen: 26
 requires: []
 conflicts: []
 completes: []
@@ -210,3 +210,18 @@ reads as a break. Period 8–12px, dash 3–5px of it, alpha .12–.25.
 ```
 ⚠ Dashed rules over a dark ground lose the gaps first — check the alpha against
 both grounds, not the light one, and drop to solid under `prefers-contrast: more`.
+
+Make the margin a real element and the rule stops being a separate decision
+from the ground it bounds. An absolutely positioned strip per side, its width
+equal to the content's own inline margin, takes `border-inline` and a
+`repeating-linear-gradient` hatch that draws in `currentColor` — one `color`
+class then recolours hairline and texture together, so a section can change
+register without restating either. Rail 14–36px, narrowing with the gutter.
+```css
+.rail { position: absolute; inset-block: 0; inline-size: var(--rail);
+  border-inline: 1px solid; color: var(--rule); pointer-events: none;
+  background: repeating-linear-gradient(315deg, currentColor 0 1px, #0000 0 50%)
+    0 0 / 10px 10px }
+```
+⚠ A 1px hatch loses more of itself on a dark ground than a hairline does; lift
+its alpha 1.5–2× there, and `aria-hidden` the rails.

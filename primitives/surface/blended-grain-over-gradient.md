@@ -4,7 +4,7 @@ category: surface
 tags: [surface,texture,grain,gradient,blend-mode,banding]
 axes: {energy: 1, density: 3, weight: 3, finish: 4}
 cost: 1
-seen: 26
+seen: 27
 requires: []
 conflicts: []
 completes: []
@@ -162,3 +162,19 @@ panel runs 1000–1300px and 100–280KB *each*, so a set of eight moods is most
 a megabyte of decoration — cap the set, and drop to a flat token under
 `prefers-reduced-data: reduce`. A square stretched to a 16:5 hero resamples hard
 along one axis; author the source at the extreme aspect it must survive.
+
+One page-level overlay can serve both themes if the blend itself is a token.
+Grain that reads as tooth on paper reads as dirt when `multiply` meets a dark
+ground, so put `mix-blend-mode` *and* opacity in custom properties on the theme
+root and switch both: `multiply` near full strength on light, `screen` or
+`soft-light` at 20–35% on dark. One node, one data URI, no second element to
+keep in register.
+```css
+:root        { --grain-blend: multiply; --grain-alpha: 1 }
+[data-theme=dark] { --grain-blend: screen; --grain-alpha: .25 }
+body::before { position: fixed; inset: 0; z-index: 1; pointer-events: none;
+  mix-blend-mode: var(--grain-blend); opacity: var(--grain-alpha) }
+```
+⚠ A `::before` on the page root paints over everything that is not itself
+positioned — give the top-level children `position: relative` and a higher
+`z-index`, or the overlay swallows the document.
