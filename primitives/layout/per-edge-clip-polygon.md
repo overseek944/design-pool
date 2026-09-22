@@ -4,7 +4,7 @@ category: layout
 tags: [overflow,clip,correctness,bleed]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -21,3 +21,12 @@ the end.
 ⚠ Use a large multiple, not `infinity` — engines clamp differently. A clip-path
 crops focus rings like any other paint, and it makes the element a containing
 block for fixed descendants.
+
+Variant — `inset()` takes negative offsets, which is the same cut in one
+function: `inset(0 -64px -64px -64px)` crops the top flush and frees the other
+three edges by the shadow's reach. It is the fix for a panel hanging from a bar
+— a dropdown, a flyout — whose shadow would otherwise smear up across the bar it
+hangs from. Free edges ≥ blur + spread, typically 32–80px.
+```css
+.flyout { box-shadow: 0 28px 42px -22px #1118272e; clip-path: inset(0 -64px -64px -64px) }
+```
