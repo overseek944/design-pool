@@ -4,7 +4,7 @@ category: media
 tags: [media,surface,hero]
 axes: {energy: 3, density: 2, weight: 4, finish: 4}
 cost: 3
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: [aspect-locked-media]
