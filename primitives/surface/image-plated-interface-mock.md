@@ -4,7 +4,7 @@ category: surface
 tags: [product, mock, image, depth, color, surface]
 axes: {energy: 1, density: 2, weight: 3, finish: 5}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,8 @@ and let it run off the bottom edge, framing it as a mat. Plate radius 12–20px.
 ```
 ⚠ The image sits behind real UI text: keep plate luminance away from the mock's
 own surface, or add a 20–40% scrim, and reuse one plate at most twice per page.
+
+Variant — on a light page, plate with a two-stop vertical gradient instead of
+an image, reusing the two hues of the opening ground (cool top, warm foot). The
+plate then echoes the page's atmosphere without a photograph and costs no
+request; 180deg, stops 0% and 100%, radius 16–28px.

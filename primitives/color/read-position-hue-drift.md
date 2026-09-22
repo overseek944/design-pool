@@ -4,7 +4,7 @@ category: color
 tags: [color,scroll,ambient,gradient,filter]
 axes: {energy: 2, density: 2, weight: 2, finish: 4}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -33,3 +33,8 @@ in OKLCH at fixed hue, so each boundary reads as a descent rather than a new
 surface. Holds under reduced motion for free, and nothing inside is filtered.
 ⚠ Rungs closer than ~1% L disappear on uncalibrated panels; mark each seam with
 a hairline so the step survives.
+
+Variant — no layer at all: one `linear-gradient` on the page-length wrapper,
+stops placed at content milestones (neutral → warm → cool), the last stop set
+past 100% (110–130%) so the final hue is approached, never landed. Zero script,
+zero repaint; stops drift if section heights change, so keep 3–5 of them.
