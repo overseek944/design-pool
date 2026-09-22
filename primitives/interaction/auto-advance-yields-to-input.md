@@ -4,7 +4,7 @@ category: interaction
 tags: [carousel,autoplay,accessibility,state]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 37
+seen: 38
 requires: []
 conflicts: []
 completes: []
@@ -180,3 +180,16 @@ const show = (i, picked) => { render(i); clearInterval(t)
 ⚠ Only where every item makes the same point. Where they differ in substance a
 pick is a choice and the rotation must stop — the doubled interval takes it back,
 just later.
+
+Gate the timer on the viewport as well as on input. Where the tabs stack above
+a panel taller than the screen, the switch happens off-screen and the reader
+scrolls back to a panel they never chose — below ~768px, skip the interval
+entirely and let the tabs be tabs. Long cycles (6–10s) suit panels dense enough
+to need reading.
+```js
+useEffect(() => { if (!auto || innerWidth < 768) return
+  const id = setInterval(() => setI(i => (i + 1) % n), 8000)
+  return () => clearInterval(id) }, [auto])
+```
+⚠ Read the width once and the gate is stale after rotation — use a
+`matchMedia` listener where orientation changes are likely.

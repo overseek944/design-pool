@@ -4,7 +4,7 @@ category: surface
 tags: [surface,texture,pattern,blueprint,cheap]
 axes: {energy: 1, density: 3, weight: 1, finish: 4}
 cost: 1
-seen: 48
+seen: 49
 requires: []
 conflicts: []
 completes: []
@@ -40,7 +40,7 @@ Two `linear-gradient`s and one `background-size` give the third generator: an
 orthogonal rule grid, one hairline stop per axis. Run it over a coloured ground
 rather than a flat one and drop the alpha to 2–4% — the ground shows through
 every cell, so the grid reads as scale reference for the surface instead of as a
-pattern on it. Pitch 40–80px, wider than the dot lattice tolerates because lines
+pattern on it. Pitch 40–100px, wider than the dot lattice tolerates because lines
 carry further than specks.
 ```css
 background-image: linear-gradient(90deg,  var(--rule) 1px, transparent 0),

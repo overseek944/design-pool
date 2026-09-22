@@ -1,6 +1,6 @@
 # Manifest
 
-1027 primitives. Format: `category/id | axes cost | tags | gist`
+1028 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -427,6 +427,7 @@ layout/width-floored-placement-rows | E1 D3 W2 F4 $1 | layout grid responsive ov
 layout/width-resolved-ratio-overlap | E1 D3 W2 F5 $1 | layout overlap aspect-ratio responsive composition | A panel pulled up over a fixed-ratio media block loses its propo
 layout/writing-mode-flipped-edge-rail | E1 D2 W3 F3 $1 | layout chrome writing-mode responsive rail fixed logical-properties | One fixed chrome strip can run down the left edge on desktop and
 light/blend-doubled-headline | E2 D2 W4 F5 $3 | type blend legibility contrast compositing | Set the headline twice in one grid cell: an opaque copy under th
+light/blurred-conic-hue-bloom | E1 D2 W2 F4 $2 | gradient glow bloom hue conic decoration ambient | Radial lamps give one hue each and seam where they meet. A conic
 light/broadcast-light-source | E2 D2 W2 F5 $3 | light gradient custom-property ambient architecture | A panel lit at the pointer has one lamp, and only while a pointe
 light/counter-rotated-specular-layer | E2 D2 W3 F5 $2 | light gradient rotation material 3d | An object with its highlight painted into its own background spi
 light/differential-scale-rim-glint | E2 D2 W3 F5 $2 | light rim mask layers ambient metal 3d | A form cut from a single silhouette has no edge for light to cat
