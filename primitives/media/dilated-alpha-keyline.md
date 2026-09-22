@@ -4,7 +4,7 @@ category: media
 tags: [media,icon,logo,filter,contrast,legibility,detail,css-only]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -37,3 +37,18 @@ filter: drop-shadow(1px 0 0 var(--ink)) /* …the other three… */
 ```
 ⚠ A fifth pass is a fifth offscreen composite. On anything large put the cast
 shadow on a wrapper instead, so animating the mark re-renders the ring only.
+
+The ring solves a pairing, and over live footage or a scrolling ground there is
+no pairing to solve: a mark travelling across a frame meets every luminance in
+it once per cycle, so no single ink is correct for the whole pass. Derive the
+ring from the *mark* instead of from the ground — a pale mark takes a dark ring,
+a dark mark a light one — and each mark carries its own contrast wherever it
+lands, at the same four-pass cost. One token per mark, set where the asset is
+declared, not on the row.
+```css
+.mark--light { --ink: #0b0c0ecc }   /* pale artwork */
+.mark--dark  { --ink: #f4f2ecd9 }   /* dark artwork */
+```
+⚠ This makes the marks legible, not equal — a row mixing both inks reads as two
+groups. Where the set must stay one register, take the row out of the footage
+instead and give it the section's own ground.

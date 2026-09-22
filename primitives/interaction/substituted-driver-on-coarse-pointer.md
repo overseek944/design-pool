@@ -4,7 +4,7 @@ category: interaction
 tags: [pointer,touch,fallback,ambient,correctness,architecture]
 axes: none
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -55,3 +55,17 @@ precise ? el.addEventListener('pointerenter', () => on(el))
 ⚠ The observer path needs a hysteresis gap or an element resting near the
 threshold flickers. Pick the driver on the same `change` subscription as the
 media query, not once at startup.
+
+Swapping the driver silently swaps the resource budget too, and it swaps it the
+wrong way. Hover is a deliberate act, so the precise-pointer path can sit at
+`preload="metadata"` and buffer in the moment between intent and playback;
+intersection is not aimed at anything, so the clip has to be decoded *before* it
+crosses the threshold — `preload="auto"` on every such element, on the device
+class least able to pay for it. Gate the eager tier on `saveData` and on a count,
+and reset `currentTime` only on the pointer path, which has a true "left" event.
+```js
+v.preload = precise ? 'metadata' : (nav.connection?.saveData ? 'none' : 'auto')
+```
+⚠ Picking the path from a one-shot `innerWidth < 768` read strands it: width is
+not pointer capability, and unlike a media query it has no `change` to subscribe
+to, so a resized window keeps the wrong driver for the rest of the session.

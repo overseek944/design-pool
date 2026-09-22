@@ -4,7 +4,7 @@ category: media
 tags: [media,color,filter,normalisation,texture]
 axes: {energy: 1, density: 2, weight: 3, finish: 4}
 cost: 1
-seen: 12
+seen: 13
 requires: []
 conflicts: []
 completes: []
@@ -88,3 +88,20 @@ and the set looks faded instead of composed.
 ⚠ Judge it against the monochrome frames, not against the original — the amount
 that seats a photograph beside a grey one is far below the amount that looks
 like anything on its own, so it will read as no change at all in isolation.
+
+On a `<video>` the chain is not a one-off cost the way it is on a still: a
+filtered clip re-runs the whole pass every frame it plays. Couple the grade to
+the *transport* rather than to the pointer and the cost disappears by
+construction — graded while paused, clear while playing — since a filtered video
+is then always a frozen frame and a playing one always carries no filter. The
+rest state also stops being a decision: whatever starts playback drops the
+grade, so hover, intersection and an explicit control all get it for free.
+Transition 0.35–0.7s, slower than the transport change so the two do not land
+together.
+```js
+const set = on => { on ? v.play() : (v.pause(), v.currentTime = 0)
+                    v.style.filter = on ? 'grayscale(0)' : 'grayscale(1)' }
+```
+⚠ `filter` on a video promotes it to its own compositor layer for as long as the
+declaration is non-`none`, so transition to the literal keyword `none` rather
+than to `grayscale(0)` if the layer is what you are trying to shed.
