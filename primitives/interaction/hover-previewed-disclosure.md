@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,disclosure,navigation,hover,progressive-enhancement,correctness]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,16 @@ once engines moved the closed state onto `::details-content`, and fails silently
 the panel lays out at full height and paints nothing. Preview leaves `[open]`
 false, so anything keyed off it — `aria-expanded`, a chevron rotation — must ride
 the same selector.
+
+Where the panel is not a `<details>` — a layered diagram, a card that expands on
+hover — script the same split: open on `pointerenter` only when
+`pointerType === 'mouse'`, so a tap never double-fires open-then-toggle; open on
+focus only when `:focus-visible` matches; close on blur and Escape; and let the
+button's click toggle for everyone. Mark the component ready from script before
+hiding anything, so without JS every panel stays readable.
+```js
+el.addEventListener('pointerenter', e => e.pointerType === 'mouse' && set(true))
+btn.addEventListener('focus', () => btn.matches(':focus-visible') && set(true))
+```
+⚠ Do not close on `pointerleave` while the button holds keyboard focus — the
+mouse leaving would collapse a panel the keyboard user is reading.

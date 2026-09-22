@@ -1,6 +1,6 @@
 # Manifest
 
-1029 primitives. Format: `category/id | axes cost | tags | gist`
+1030 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -371,6 +371,7 @@ layout/occupancy-negotiated-label-placement | neutral  $4 | layout label annotat
 layout/occupancy-padded-back-plate | E1 D3 W2 F5 $1 | layout layering overlap depth mock plate | Two layers of one scene — a wide plate behind, a card in front —
 layout/offset-ladder-peer-row | E1 D2 W2 F4 $1 | layout grid cards rhythm sequence composition | Three equal cards in a row read as three options in no order. St
 layout/offset-placed-interval-rows | E1 D3 W2 F5 $1 | data chart diagram measurement grid accessibility | A bar chart ranks; a row of intervals sequences. Where every ite
+layout/one-open-group-height-floor | neutral  $2 | layout accordion details disclosure measure reflow correctness | In a disclosure group where one item is open at a time, switchin
 layout/operator-track-comparison-row | E1 D3 W2 F5 $1 | layout comparison diagram table reconciliation | Values a reader must reconcile — what was billed, what was order
 layout/overflow-clip-over-hidden | neutral  $1 | overflow correctness accessibility scroll | overflow: clip crops without creating a scroll container. hidden
 layout/per-edge-clip-polygon | neutral  $1 | overflow clip correctness bleed | overflow only works per axis, so there is no way to crop one edg

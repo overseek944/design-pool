@@ -4,7 +4,7 @@ category: layout
 tags: [layout,connector,svg,diagram,geometry]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -91,3 +91,16 @@ l.style.setProperty('--rot', Math.atan2(dy, dx) + 'rad')
 ⚠ Subtract the target's radius from the length or every line runs under the node
 it points at. Give the layer `pointer-events: none` — a rotated bar sits over
 content it does not visually cover.
+
+Where the nodes are ellipses — plinths, pills, oval badges — subtracting a radius
+leaves the line short on one axis and buried on the other. Trim each end to the
+ellipse's own boundary along the centre-to-centre vector, and anchor a
+text-labelled end to a `Range` over the label's text rather than its box, so the
+line meets the words, not the padding. Clearance below the text 4–10px.
+```js
+const k = r => 1 / Math.hypot(dx / r.rx, dy / r.ry)   // boundary fraction
+const d = `M ${a.x + dx * k(a)} ${a.y + dy * k(a)} L ${b.x - dx * k(b)} ${b.y - dy * k(b)}`
+```
+⚠ A fixed-`viewBox` overlay needs every measured pixel rescaled by
+`viewBoxWidth / rect.width` per axis — with `preserveAspectRatio="none"` the two
+factors differ and a single scale skews every route.

@@ -4,7 +4,7 @@ category: layout
 tags: [header,scroll,sticky,chrome]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 37
+seen: 38
 requires: []
 conflicts: []
 completes: []
@@ -187,3 +187,14 @@ plate.style.backdropFilter = `blur(${p * 12}px)`
 ⚠ Continuous means every frame writes, so guard each write against its own
 epsilon and arm `will-change` only once `p` clears a dead zone of 0.02 — held
 on permanently it keeps a compositor layer for the whole page.
+
+The ground swap needs no scroll listener at all when the trigger is "still over
+the hero". Observe the hero with a negative top `rootMargin` equal to the bar's
+height and write the result to an attribute: the flip lands exactly when the
+hero's bottom edge passes under the bar, with zero rect reads.
+```js
+new IntersectionObserver(([e]) => bar.dataset.overHero = e.isIntersecting,
+  { rootMargin: `-${barHeight}px 0px 0px 0px` }).observe(hero)
+```
+⚠ Default the attribute to the solid state in markup, or a page without the hero
+— or without JS — keeps the transparent bar over light content.
