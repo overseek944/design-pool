@@ -1,6 +1,6 @@
 # Manifest
 
-1028 primitives. Format: `category/id | axes cost | tags | gist`
+1029 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -1005,6 +1005,7 @@ type/resolution-stepped-type-scale | neutral  $1 | type tokens scale accessibili
 type/role-leading-ladder | E1 D2 W3 F5 $1 | type tokens scale rhythm precision | Leading is a function of role, not of size, and the ladder is st
 type/rule-ranked-aside-tier | E1 D2 W2 F5 $1 | type hierarchy register annotation cheap | A page that argues carries asides at several ranks, and sizing t
 type/scene-occluded-wordmark | E2 D2 W4 F5 $3 | type canvas mask composite depth wordmark occlusion | A word meant to stand behind a rendered scene cannot sit under i
+type/script-substituted-emphasis | neutral  $1 | type i18n localisation emphasis correctness | Italic is a Latin signal. Han and kana faces rarely ship one, so
 type/self-resolving-text-sweep | E3 D2 W3 F4 $1 | type gradient entrance currentcolor reveal | A one-shot sweep through background-clip: text normally needs cl
 type/serif-accent-in-technical-context | E1 D2 W3 F5 $1 | type contrast editorial restraint | One high-contrast serif, used sparingly against a geometric sans
 type/shadow-bled-inline-highlight | E2 D2 W3 F4 $1 | type highlight inline hover custom-property transition | A highlight that stops at the first and last glyph reads as a cl

@@ -4,7 +4,7 @@ category: type
 tags: [type,i18n,tokens,localisation,correctness]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,15 @@ lighter, so its weight token rises a step.
 ```
 ⚠ `:lang()` reads the declared `lang` attribute — if missing, the page keeps
 Latin values with no visible failure until a translation ships.
+
+Negative display tracking is also a Latin value. Han glyphs sit on a square
+em with built-in side space, so a −.03 to −.05em headline token jams them —
+zero every tracking token under a CJK `lang`, and lift headline leading to
+1.3–1.4. Latin runs embedded in that page (product names, a quoted term) then
+need their own `lang="en"` island that restores the Latin tokens, and every
+CJK override has to exclude it or the island inherits the reset.
+```css
+:lang(zh) { --tracking-tight: 0em }
+:lang(zh) h1:not([lang=en], [lang=en] *) { letter-spacing: normal; line-height: 1.35 }
+[lang=en] { --tracking-tight: -.04em }
+```
