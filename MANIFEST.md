@@ -1,6 +1,6 @@
 # Manifest
 
-941 primitives. Format: `category/id | axes cost | tags | gist`
+944 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -232,6 +232,7 @@ interaction/paired-focus-offset-tokens | neutral  $1 | accessibility focus token
 interaction/panel-scoped-field-disabling | neutral  $1 | interaction form correctness accessibility tabs progressive-enhancement | A tabset that keeps every panel in the DOM — because the set is 
 interaction/partial-modality-inert-siblings | neutral  $2 | interaction dialog accessibility inert focus correctness | Not every overlay should take the whole page. A panel hung off a
 interaction/platform-narrowed-download-set | neutral  $2 | progressive-enhancement navigation correctness accessibility architecture | An artifact built for five targets should not ship five equal bu
+interaction/playhead-lit-legend-rows | E2 D2 W2 F5 $2 | legend chart dataviz sweep highlight sync | When a figure animates along its value axis, let each legend row
 interaction/pointer-borne-rule-sight | E3 D2 W1 F5 $2 | interaction pointer overlay hover transform detail | State the pointer as rules, not as a mark: hairlines longer than
 interaction/pointer-transparent-copy-layer | neutral  $1 | interaction pointer accessibility layout correctness | Copy laid over a background that reacts to the pointer swallows 
 interaction/pre-hydration-nested-link | neutral  $2 | accessibility links hydration progressive-enhancement correctness | A card that navigates but contains its own link cannot be an anc
@@ -348,6 +349,7 @@ layout/perimeter-set-display-sentence | E2 D2 W5 F3 $2 | layout composition type
 layout/prefix-selected-segment-level | E1 D3 W2 F4 $1 | css-only state accessibility data detail cheap | A discrete level — three of ten segments lit — usually costs a c
 layout/provenance-split-label-row | E1 D3 W1 F5 $1 | layout type label truncation provenance correctness detail | A row of labels usually holds two kinds at once: terms from a co
 layout/published-occupancy-inset | neutral  $2 | layout custom-properties panel viewport architecture correctness | A side panel that pushes the page rather than covering it needs 
+layout/radius-literal-ring-comparison | E2 D2 W2 F5 $2 | chart dataviz comparison radius svg concentric | Nest one ring per series on a shared centre with radius equal to
 layout/rail-preserved-track-collapse | E1 D3 W2 F5 $1 | layout grid responsive rhythm editorial | A three-track row — marker rail, title, supporting column — usua
 layout/ranked-apparatus-column | E1 D3 W1 F5 $1 | layout grid metadata responsive editorial hierarchy | Section apparatus — an ordinal, a two-word gloss, a mark — belon
 layout/ratio-anchored-scene-geometry | neutral  $2 | layout architecture responsive tokens geometry css-only | A layered illustration sized in pixels at one breakpoint and re-
@@ -627,6 +629,7 @@ perf/prepaint-resolved-conditional-chrome | neutral  $1 | perf cls storage first
 perf/prerender-gated-first-view | neutral  $1 | performance correctness analytics navigation prerender | A page can be fully loaded, scripted and laid out with nobody ha
 perf/readiness-chained-successor-warmup | neutral  $2 | performance media video bandwidth sequence architecture | A sequence of heavy sources — a clip per step of a tabset — warm
 perf/revert-split-on-resize | neutral  $1 | type motion correctness | Split text hard-codes line breaks at split time. On resize or we
+perf/ring-distance-fetch-order | neutral  $1 | carousel video lazy fetch order loading | A wrapping carousel of media should not assign every source at o
 perf/route-scoped-design-system-sheet | neutral  $2 | performance critical-path architecture tokens bundle css | A marketing route sharing a build with the product inherits the 
 perf/scrim-over-filtered-bleed | neutral  $1 | performance media mobile compositing correctness | A filter, clip-path and transform stacked on one full-bleed imag
 perf/script-free-content-mirror | neutral  $2 | perf progressive-enhancement correctness content architecture | A client-rendered document serves an empty root, so every consum

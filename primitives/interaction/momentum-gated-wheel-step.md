@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,wheel,input,gesture,correctness]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -22,3 +22,14 @@ if (armed && Math.abs(sum += d) >= STEP) (step(dir=Math.sign(sum)), sum = armed 
 ```
 ⚠ Listen non-passively or the page scrolls under the step. Arrow keys and a
 visible control owe the same step.
+
+A horizontal rail inside a vertical page should claim only the gesture that is
+mostly sideways: take `deltaX` when `|deltaX| > |deltaY|`, otherwise return
+without `preventDefault` so the page keeps scrolling. The cheap tail guard is a
+flat lockout after each step — 300–400ms — rather than calm detection.
+```js
+const dx = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : 0
+if (!dx) return; e.preventDefault(); if (Date.now() < until) return
+if (Math.abs(sum += dx) > STEP) (go(Math.sign(sum)), sum = 0, until = Date.now() + 350)
+```
+⚠ A lockout drops a second deliberate flick; keep it under the gesture's tail.

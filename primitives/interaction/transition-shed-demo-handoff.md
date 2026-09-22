@@ -4,7 +4,7 @@ category: interaction
 tags: [affordance,drag,transition,correctness,demo]
 axes: {energy: 2, density: 1, weight: 2, finish: 4}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -38,3 +38,14 @@ const a = setTimeout(() => set(true), 700), b = setTimeout(() => set(false), 150
 ⚠ Tie it to mount only if the thing is above the fold. Below it, the beat is
 spent before the reader arrives and the control is never advertised at all —
 arm on intersection instead.
+
+The walk can be one scripted phrase instead of a loop: sweep the full range,
+pull back past rest, then settle with an elastic ease — 2–3s out, a 300–600ms
+return, a 150–900ms settle. Chain segments as tweens and check the grabbed flag
+between every one, so a hand arriving mid-phrase ends it at the next boundary.
+Arm on intersection, but a figure taller than the viewport never reaches a
+ratio of 0.6 — accept either condition.
+```js
+const seen = e.intersectionRatio >= .6 || e.intersectionRect.height >= .6 * innerHeight
+```
+⚠ Cancel the pending frame and timer on unmount as well as on grab.

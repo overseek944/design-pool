@@ -4,7 +4,7 @@ category: motion-system
 tags: [tabs, entrance, state, css-only, replay]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,12 @@ property in the same rule; 0.6–1s.
 ```
 ⚠ It fires on every entry including a return — right for a chart, wrong for a
 one-time hint, and nothing animates the panel *out*.
+
+Where the panel is not re-matched — one element whose content is swapped — the
+replay needs the off state painted once. Drop the animated flag, wait two
+animation frames (the first schedules the paint, the second lands after it),
+raise it again. No forced reflow, no remount.
+```js
+set(false); requestAnimationFrame(() => requestAnimationFrame(() => set(true)))
+```
+⚠ One frame is not enough — the two writes coalesce and nothing replays.
