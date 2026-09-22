@@ -4,7 +4,7 @@ category: layout
 tags: [layout,layout-shift,responsive,correctness,tabs]
 axes: none
 cost: 1
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []
@@ -66,3 +66,18 @@ is transitioning.
 ```
 ⚠ Not interchangeable with the opacity form — `visibility` is discrete, so a
 fade written against it snaps. Pick one per component and say which.
+
+That last ⚠ is only half true: `visibility` cannot be interpolated, but it can
+be *scheduled*. Give it a zero-length transition delayed by exactly the opacity
+fade, and the outgoing copy stays painted for the whole cross-fade and then
+leaves the accessibility tree, find-in-page and hit-testing in one step at the
+end — the softness of opacity and the discreteness of visibility from one rule,
+with no `transitionend` listener and no class removed on a timer. The same pair
+hands a canvas its poster: the still holds until the live layer has drawn.
+```css
+.layer           { transition: opacity .3s, visibility 0s }
+.layer[data-off] { opacity: 0; visibility: hidden; transition-delay: 0s, .3s }
+```
+⚠ The delay must equal the fade exactly and now lives in two declarations —
+hold both in one custom property. Short and the layer blinks out mid-fade; long
+and it is invisible while still swallowing clicks.

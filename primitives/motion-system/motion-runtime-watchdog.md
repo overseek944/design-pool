@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,correctness,accessibility,progressive-enhancement,reveal]
 axes: none
 cost: 2
-seen: 17
+seen: 18
 requires: []
 conflicts: []
 completes: []
@@ -123,3 +123,20 @@ addEventListener('DOMContentLoaded',
 ⚠ Covers only a runtime that had its chance by then. A deferred or dynamically
 imported bundle registers after the event, so the handshake is the floor under
 the timer there, not a replacement for it.
+
+A one-shot observer has a second way to strand content, and nothing in the
+runtime has to fail for it. On a back/forward navigation the browser restores
+the scroll offset while the reveal classes are gone, so every element *above*
+where the reader lands is hidden, will never intersect again, and stays blank
+for the rest of the session — worse than the dead-bundle case, because the
+script is working and reports nothing. Ask what kind of navigation this is
+before arming anything, and on a restore mark the whole set settled.
+```js
+const back = performance.getEntriesByType('navigation')[0]?.type === 'back_forward'
+const settle = () => els.forEach(el => el.classList.add('shown'))
+back ? settle() : els.forEach(el => io.observe(el))
+addEventListener('pageshow', e => { if (e.persisted) settle() })
+```
+⚠ Both checks are load-bearing and neither implies the other — `persisted` is
+the bfcache restore, the navigation type is a re-executed load out of history.
+A same-document router pop fires neither, so it needs the router's own signal.

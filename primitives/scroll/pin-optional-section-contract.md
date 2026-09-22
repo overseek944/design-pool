@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,architecture,correctness,accessibility,pin,fallback]
 axes: none
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,20 @@ return asSlide ? body
 `scroll-margin`, or the page has two targets for one name. A stage mounting one
 scene at a time is invisible to find-in-page — so the fallback, not the stage,
 is what a small viewport should get.
+
+The control beside the stage needs the same contract as the content, or the
+fallback ships a row of buttons that scroll a page with nothing left to scroll.
+One handler, two branches: pinned, it converts the index to a scroll offset;
+unpinned, it sets the selection directly and the figure holds that state in
+ordinary flow. The affordance can differ — a spread row of counters under a
+pinned stage, a wrapped grid of pressable chips in the static one — but the
+handler and the state must not.
+```js
+const go = i => pinned
+  ? scrollTo({ top: track.offsetTop + at[i] * (track.offsetHeight - stage.offsetHeight) })
+  : select(i)
+```
+⚠ Both branches owe `aria-pressed` and one `aria-live="polite"` line naming the
+current step — in the pinned branch nothing else announces it. The flip between
+branches is itself an event: commit the index derived from the last progress
+before the pin goes, or a resize drops the reader back at step one.

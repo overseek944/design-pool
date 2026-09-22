@@ -4,7 +4,7 @@ category: layout
 tags: [layout,responsive,media-query,ornament,correctness]
 axes: none
 cost: 1
-seen: 25
+seen: 26
 requires: []
 conflicts: []
 completes: []
@@ -111,3 +111,23 @@ window so a tall desktop monitor is untouched.
 ```
 ⚠ Prefer `(orientation: portrait)` or an `aspect-ratio` query to a hard pixel
 pair — the pixel form encodes one device and silently misses the next one.
+
+One height gate is wrong for a stage that reflows. An arrangement that fits in
+760px at two columns stacks at the narrow end and wants 880px there, so a single
+threshold either withdraws the effect on desktops with room for it or leaves it
+broken on the phones without. Write the gate as a comma list of width-and-height
+pairs, one per band, and keep each pair beside the `min-height` token for that
+same band — they are one number stated twice, and separating them is how they
+drift. Steps of 40–100px per band down.
+```css
+.stage { --h: 760px }
+@media (max-width: 1100px) { .stage { --h: 800px } }
+@media (max-width: 760px)  { .stage { --h: 880px } }
+@media (max-height: 759px),
+       (max-width: 1100px) and (max-height: 799px),
+       (max-width: 760px)  and (max-height: 879px) { .stage { --pinned: 0 } }
+```
+⚠ Check the clauses leave no gap — a viewport matching none of them keeps the
+effect, and the hole is always at a band edge where nobody tests. A script
+mirroring this needs one listener per clause, since a comma list fires `change`
+only when the OR flips.

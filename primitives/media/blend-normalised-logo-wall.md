@@ -4,7 +4,7 @@ category: media
 tags: [media,logos,blend-mode,assets,normalisation]
 axes: none
 cost: 1
-seen: 20
+seen: 21
 requires: []
 conflicts: []
 completes: []

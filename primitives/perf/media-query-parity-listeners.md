@@ -4,7 +4,7 @@ category: perf
 tags: [responsive,correctness,architecture,motion,breakpoint]
 axes: none
 cost: 1
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []
@@ -69,3 +69,22 @@ useSyncExternalStore(
 ⚠ Returning the *preference* from the server snapshot is the safer default for
 anything that hides content; returning `false` is safer for anything that
 animates. Pick per query, not once per project.
+
+Parity is only a problem while both sides ask the question. Let the stylesheet
+publish the *verdict* instead: one custom property, set in the base rule and
+flipped by however many conditions CSS needs, with script reading that single
+resolved value rather than restating any expression. Conditions the `matchMedia`
+form cannot reach then come free — a container query, a print block, an
+ancestor's state attribute, a `@supports` miss — and the list of reasons an
+effect is off grows without the controller changing.
+```css
+.stage { --scrub: 1 }
+@media (max-height: 760px), (prefers-reduced-motion: reduce) { .stage { --scrub: 0 } }
+```
+```js
+const on = getComputedStyle(stage).getPropertyValue('--scrub').trim() !== '0'
+```
+⚠ Read it on the invalidations a measure already runs on, never per frame — the
+read forces a style recalculation. And read it from the element the rule
+targets: custom properties inherit, so a probe anywhere else reports the base
+value forever and the gate silently never closes.
