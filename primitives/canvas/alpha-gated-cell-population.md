@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,generative,field,image,mask,silhouette,grid]
 axes: {energy: 1, density: 3, weight: 2, finish: 4}
 cost: 3
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -43,3 +43,8 @@ ctx.letterSpacing = c.letterSpacing === 'normal' ? '0px' : c.letterSpacing
 raster comes out narrower than the element. Compare the measured width against
 the element's own box and leave the text undecorated on a mismatch, rather than
 laying a lattice of the wrong length over it.
+
+Variant — no lattice: draw uniform random positions and keep each with probability
+equal to its alpha, which gives a stochastic scatter whose density tracks the
+picture's opacity. Take the kept point's colour from the same texel, scaled by
+0.8–1.2 jitter, and a texture becomes a point field in its own colours.

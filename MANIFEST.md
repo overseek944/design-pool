@@ -1,6 +1,6 @@
 # Manifest
 
-1036 primitives. Format: `category/id | axes cost | tags | gist`
+1041 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -10,6 +10,7 @@ canvas/age-shaded-traversal-field | E2 D4 W2 F5 $3 | canvas ambient texture gene
 canvas/alpha-bucketed-path-batch | E2 D4 W1 F5 $3 | canvas svg performance generative texture batching | Thousands of individually-faded SVG marks means thousands of nod
 canvas/alpha-gated-cell-population | E1 D3 W2 F4 $3 | canvas generative field image mask silhouette grid | A field of marks in the shape of an arbitrary form usually means
 canvas/area-proportional-mark-population | neutral  $1 | canvas field particles performance responsive density | A generative field authored at one mark count is two different c
+canvas/area-sampled-mesh-point-cloud | E1 D4 W1 F4 $4 | webgl points procedural geometry point-cloud | A whole environment can be drawn as points without a scanned ass
 canvas/aspect-held-camera-coverage | E2 D2 W3 F4 $1 | 3d camera fov responsive framing webgl | A perspective camera fixes vertical field of view, so narrowing 
 canvas/aspect-switched-diagram-axis | E1 D2 W2 F4 $2 | canvas diagram responsive layout aspect pipeline | A left-to-right process drawn in a canvas shrinks to illegible c
 canvas/background-matched-scene-fog | E1 D2 W3 F5 $1 | canvas fog depth background integration scene | A rendered scene ends at its canvas rectangle, so it reads as an
@@ -27,12 +28,14 @@ canvas/chord-solved-tile-width | neutral  $3 | canvas 3d geometry texture seam c
 canvas/clip-ejected-vertex-filter | neutral  $2 | shader webgl points culling perf | A point cloud whose visible subset changes — a facing hemisphere
 canvas/composed-arrival-field | E3 D3 W2 F5 $2 | shader stagger clock uniform reveal perf | Thousands of elements cannot each own a tween. Derive every elem
 canvas/context-loss-rearm | neutral  $2 | canvas correctness lifecycle architecture | A 2D context is lost the same way a WebGL one is — a GPU process
+canvas/coverage-floored-point-splat | E1 D4 W1 F5 $2 | shader webgl points splat antialiasing | Distant points projected below ~2px shimmer and drop out between
 canvas/css-semantic-shape-primitives | neutral  $3 | canvas shader webgl architecture gradient fallback | A ground authored in a design tool is a stack of boxes, ellipses
 canvas/curl-of-potential-field | E2 D3 W2 F4 $3 | canvas flow field generative motion | Advecting anything through a hand-made velocity field pools it i
 canvas/curvature-parametrised-sheet-wrap | E3 D3 W2 F5 $4 | canvas geometry projection morph points 3d | A flat sheet and a sphere are one surface at two curvatures, so 
 canvas/decay-composited-frame-history | E3 D3 W2 F4 $1 | canvas trail composite motion field | Trails normally cost a stored pose history per mark. Never clear
 canvas/delay-binned-source-history | E2 D2 W2 F5 $4 | canvas field pointer motion generative | A field evaluated from the driver's current pose updates everywh
 canvas/density-terminated-raster | E1 D3 W3 F4 $2 | canvas texture image mask edge generative | A generated raster ends at a rectangle unless something is done 
+canvas/depth-only-occluder-pass | neutral  $1 | webgl depth occlusion points wireframe | Points, lines and wireframes have no faces, so everything behind
 canvas/derivative-width-edge-aa | neutral  $2 | shader canvas precision correctness detail | A procedural shape in a fragment shader gets no antialiasing for
 canvas/described-canvas-figure | neutral  $1 | canvas accessibility architecture diagram | A canvas carrying the argument — a diagram, a chart, a staged ex
 canvas/difference-gated-temporal-blend | neutral  $3 | canvas shader texture performance correctness simulation | Blending each frame into the last kills the per-pixel boil of a 
@@ -609,6 +612,7 @@ motion-system/pivot-signed-explode | E2 D3 W2 F5 $2 | explode assembly stack pro
 motion-system/placement-keyed-overlay-entrance | E2 D2 W2 F5 $1 | motion popover tooltip menu overlay entrance exit placement | A floating panel should arrive travelling away from its trigger.
 motion-system/print-frozen-frame-branch | neutral  $1 | print correctness motion fallback accessibility | Anything a reader will print or save as PDF — a report, an invoi
 motion-system/progress-differentiated-motion-blur | E4 D2 W3 F4 $2 | motion blur camera velocity filter transition | A fast camera push between two framings strobes: every frame is 
+motion-system/projected-plane-dom-handoff | E3 D2 W3 F5 $4 | webgl camera scroll overlay transition | A scroll-driven camera can fly into a screen inside a 3D scene a
 motion-system/ramped-travel-shared-fade | E3 D2 W3 F5 $2 | stagger entrance scroll scrub arrival progress | A scrubbed stagger reads as a queue when each part fades separat
 motion-system/reduce-retained-paint-channel | neutral  $1 | motion reduced-motion accessibility hover feedback correctness | A hover or proximity response is several channels at once — a li
 motion-system/reduce-settled-sequence-state | neutral  $2 | motion accessibility reduced-motion state sequence correctness | A panel that builds itself over time — steps landing one at a ti
@@ -764,6 +768,7 @@ scroll/crop-panned-backdrop-scrub | E2 D1 W3 F4 $2 | scroll parallax media scrub
 scroll/css-owned-pin-geometry | neutral  $2 | scroll pin architecture correctness responsive | Let the stylesheet decide whether a section pins and for how lon
 scroll/direction-settled-pin-crossing | neutral  $2 | scroll pin scrub snap settle correctness | A pinned section crossing between two states has two legible res
 scroll/docked-travelling-mark | E3 D1 W2 F5 $3 | scroll anchor continuity measurement architecture | One mark crossing the whole page ties unrelated sections into a 
+scroll/drawn-page-scrollbar | E1 D1 W1 F5 $2 | scrollbar accessibility custom-element chrome | A native scrollbar cannot be restyled to a hairline in every eng
 scroll/dual-driven-progress-property | neutral  $2 | scroll progress custom-property progressive-enhancement architecture | Register one <number> property, let it be the only thing scroll 
 scroll/edge-chained-frame-scroll | neutral  $2 | scroll iframe embed correctness interaction | A same-origin embed that scrolls internally traps the gesture at
 scroll/element-scoped-read-progress | neutral  $2 | scroll progress correctness observer reading | Reading progress belongs to the article, not the document. Measu
