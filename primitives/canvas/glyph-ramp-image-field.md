@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,type,texture,image,ambient,generative]
 axes: {energy: 2, density: 4, weight: 2, finish: 3}
 cost: 4
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: [canvas-behind-dom-not-instead-of-it]
@@ -72,3 +72,18 @@ ctx.fill()
 ⚠ `moveTo` before every `arc` or each dot is joined to the last by a chord
 straight across the image. Raise luminance to a power of 0.8–1.8 here too — dot
 *area* grows as the square of the radius, so a linear map reads far too dark.
+
+A converted field can stay alive without drifting off the image. Bin luminance
+into 4–6 tiers, give each tier a set of 2–3 glyphs of near-equal ink, and let
+every cell re-roll *within its tier* on its own jittered timestamp: the surface
+shimmers while the tone holds. Denser tiers re-rolling sooner (3–4.5s against
+4.5–7s for the lightest) keeps the motion under the subject. Tick at about 30fps
+and rewrite only when a cell actually changed.
+```js
+if (now < c.next) continue
+const g = SET[c.tier][Math.random() * SET[c.tier].length | 0]
+if (g !== c.ch) { grid[c.y][c.x] = c.ch = g; dirty = true }
+c.next = now + BASE[c.tier] + Math.random() * JIT[c.tier]
+```
+⚠ Stop the loop under `prefers-reduced-motion` and when the field leaves the
+viewport — a whole-field text rewrite at 30fps is not free when nobody sees it.

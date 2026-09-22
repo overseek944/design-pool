@@ -4,7 +4,7 @@ category: type
 tags: [type,texture,ornament,ascii]
 axes: {energy: 3, density: 5, weight: 2, finish: 3}
 cost: 2
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []
@@ -102,3 +102,16 @@ run += ch
 ```
 ⚠ Interpolating a palette entry into markup is a string written into `innerHTML`
 every frame — index a fixed array, never anything a reader can reach.
+
+The breakpoint step fails below the engine's minimum font size, where a 3px
+glyph is rendered at the floor and the grid overflows. Set the figure at a whole
+size — 10–14px, `line-height` equal to it — and shrink it with a `transform:
+scale()` instead: 0.14–0.35 is typical, stepped per breakpoint. The grid stays
+exact because it is laid out at full size, and a scale is composited rather
+than reflowed.
+```css
+.figure { font: 12px/12px var(--mono); transform: scale(var(--s, .25));
+  transform-origin: center; transition: transform .5s ease-out }
+```
+⚠ Layout still reserves the unscaled box — position it absolutely inside a sized
+slot, or a 3,000px-wide `<pre>` pushes the page sideways.
