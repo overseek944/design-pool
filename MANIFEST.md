@@ -1,6 +1,6 @@
 # Manifest
 
-967 primitives. Format: `category/id | axes cost | tags | gist`
+969 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -773,6 +773,7 @@ surface/clock-bucketed-scene-state | E1 D2 W2 F4 $2 | surface ground state root-
 surface/collapsing-riser-keycap | E1 D2 W3 F4 $1 | surface detail border state css-only hairline | A key drawn as a bordered box reads as a chip. What makes it a c
 surface/comb-ruled-section-seam | E1 D3 W2 F5 $1 | divider section texture rule repeating-gradient seam | Where two full-bleed grounds meet, a hairline rule is lost in th
 surface/concave-corner-seam | E1 D2 W2 F5 $2 | surface border detail chrome css-only | A raised element fuses into the sheet below it only where the jo
+surface/conic-mitred-bevel-frame | E1 D2 W3 F4 $1 | conic bevel frame bezel skeuomorphic facet housing depth | A moulded frame — a device housing, a recessed screen surround —
 surface/conic-sector-window | E2 D3 W3 F5 $2 | mask conic sector radial ring wedge hover media intersect | A ring index can open a window onto media shaped like the segmen
 surface/control-cleared-decoration-band | E1 D3 W2 F4 $2 | surface decoration contrast accessibility header | Artwork sharing a box with a control — a band behind a header, a
 surface/control-seated-edge-notch | E1 D2 W3 F4 $2 | clip-path shape notch card controls edge radius | Cut a rectangular bay out of a plate's edge, sized to a control 
@@ -846,6 +847,7 @@ surface/smil-driven-filter-parameter | E2 D2 W2 F4 $3 | svg-filter feturbulence 
 surface/stacked-blur-radius-ramp | E1 D2 W3 F5 $3 | surface blur glass scrim depth legibility | Masking one backdrop-filter plate fades the result, not the radi
 surface/stacked-gradient-star-field | E2 D3 W1 F4 $1 | surface texture ambient depth performance | A regular lattice reads as ruled ground; an irregular point fiel
 surface/stepped-pixel-corner | E2 D3 W2 F2 $1 | surface ornament detail texture cheap | Erode a corner into discrete cells rather than rounding or slici
+surface/stippled-projection-marks | E1 D3 W2 F4 $1 | dataviz chart forecast uncertainty dot-pattern series texture | Marks that are projected rather than observed should change text
 surface/structure-borne-dwell-meter | E2 D2 W1 F5 $1 | surface hairline indicator progress divider restraint | A list already ruled between its items needs no separate dwell i
 surface/subthreshold-photographic-ground | E1 D2 W2 F4 $1 | surface texture ground section photography cheap | A section ground that should not be flat and should not be a pic
 surface/synthetic-application-chrome | E1 D2 W2 F5 $1 | frame chrome media mock product decoration | A screenshot dropped into a page is an image; the same screensho

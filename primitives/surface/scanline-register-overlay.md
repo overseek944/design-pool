@@ -4,7 +4,7 @@ category: surface
 tags: [overlay,scanline,texture,video,register,decoration]
 axes: {energy: 1, density: 3, weight: 2, finish: 2}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []

@@ -4,7 +4,7 @@ category: type
 tags: [typography,image,display-type,inline,responsive]
 axes: {energy: 1, density: 3, weight: 4, finish: 4}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
