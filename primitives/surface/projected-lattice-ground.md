@@ -4,7 +4,7 @@ category: surface
 tags: [surface,grid,texture,ambient,depth,geometry]
 axes: {energy: 2, density: 3, weight: 1, finish: 4}
 cost: 2
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -71,3 +71,8 @@ head-on to diagonal. Period 8–20s.
 ```
 ⚠ This is the one animated fixed layer on the page: `contain: paint`, pause it
 during scroll and offscreen, and hold it still under reduced motion.
+
+Variant — a shallow tilt plus an in-plane turn reads as a sheet laid on a desk
+rather than a floor to a horizon: rotateX 25–40°, rotate −15 to −30°, scale
+1.1–1.3. Convergence is mild enough that a dot lattice survives it without the
+far-end mask, though a radial mask still gives the sheet no edge.

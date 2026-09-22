@@ -4,7 +4,7 @@ category: perf
 tags: [perf,cls,storage,first-paint,correctness,architecture]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -39,3 +39,13 @@ new MutationObserver((_, o) => { const el = document.querySelector('[data-mark]'
 ⚠ The marker may never appear — a utility route, an error page. A
 `DOMContentLoaded` backstop that resolves to the default is mandatory, not
 defensive, wherever the unresolved state hides anything.
+
+Variant — where the stored fact moves more than one element, run the read in
+the head and write it to the root instead of to the element: `html[data-x]`
+then hides the chrome *and* restates every offset that depended on it (a
+sticky panel's `top`, `scroll-padding`) in the same selector, so no consumer
+paints once at the wrong offset. The read no longer needs to sit after the
+element at all.
+```js
+try{if(localStorage.getItem(K)==="1")document.documentElement.dataset.strip="off"}catch(e){}
+```
