@@ -1,6 +1,6 @@
 # Manifest
 
-961 primitives. Format: `category/id | axes cost | tags | gist`
+962 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -566,6 +566,7 @@ motion-system/print-frozen-frame-branch | neutral  $1 | print correctness motion
 motion-system/reduce-retained-paint-channel | neutral  $1 | motion reduced-motion accessibility hover feedback correctness | A hover or proximity response is several channels at once — a li
 motion-system/reduce-settled-sequence-state | neutral  $2 | motion accessibility reduced-motion state sequence correctness | A panel that builds itself over time — steps landing one at a ti
 motion-system/reduced-motion-branch | neutral  $1 | motion accessibility required | Branch at setup, not per-animation: if the user prefers reduced 
+motion-system/referent-keyed-icon-gesture | E3 D2 W2 F4 $1 | icon hover micro-motion css keyframes | Peer icons sharing one hover nudge say only clickable. Give each
 motion-system/reformatting-box-resize | E2 D2 W2 F5 $3 | motion keyframes layout mock type resize | An element that changes size mid-demonstration is usually scaled
 motion-system/remeasure-exempt-transition | neutral  $1 | indicator transition resize measurement correctness | A measured indicator — the underline under the active tab, the p
 motion-system/reset-frame-slot-recycle | E3 D1 W2 F4 $1 | motion transition state swap cycle correctness | One node that leaves upward and returns from below has to cross 

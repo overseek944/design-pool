@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,transition,css-only,progressive-enhancement,state]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
