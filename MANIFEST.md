@@ -1,6 +1,6 @@
 # Manifest
 
-936 primitives. Format: `category/id | axes cost | tags | gist`
+937 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -909,6 +909,7 @@ type/origin-flipped-wipe-underline | E3 D1 W2 F5 $1 | underline link hover trans
 type/padded-ordinal-counter | E1 D2 W2 F4 $1 | type list counter detail technical | 01 02 … 09 10 numbering without hand-written zeros and without t
 type/parenthesised-negative-column | E1 D3 W2 F5 $1 | numerals data alignment accessibility detail | In a right-aligned column of signed figures a leading minus is t
 type/range-painted-text-mark | E1 D2 W3 F5 $3 | type highlight selection geometry overlay | ::selection and a span background both paint whatever the line b
+type/registered-integer-counter-tally | E2 D2 W2 F4 $1 | type counter number count-up property css-only | A count-up needs no script once the number is a registered prope
 type/render-scale-countered-label | E1 D2 W1 F5 $1 | type svg diagram label responsive legibility | Text inside a viewBox scales with the figure, so one diagram pla
 type/resolution-stepped-type-scale | neutral  $1 | type tokens scale accessibility legibility correctness | A size that reads cleanly on a 2x panel is muddy on a 1x one: th
 type/role-leading-ladder | E1 D2 W3 F5 $1 | type tokens scale rhythm precision | Leading is a function of role, not of size, and the ladder is st
