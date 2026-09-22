@@ -1,6 +1,6 @@
 # Manifest
 
-998 primitives. Format: `category/id | axes cost | tags | gist`
+1000 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -238,6 +238,7 @@ interaction/nearest-sample-path-pick | neutral  $2 | interaction svg pointer dia
 interaction/occupancy-grid-canvas-pick | neutral  $2 | canvas pointer hit-test performance correctness | Artwork drawn to a canvas has no boxes, so a pointer over it can
 interaction/offset-shadow-press | E3 D2 W4 F2 $1 | interaction state depth detail border | A hard offset shadow reads as a solid object sitting above the p
 interaction/one-sided-hover-delay | E2 D2 W2 F5 $1 | interaction hover delay css-only restraint pointer | A hover-revealed panel wants patience on the way in and none on 
+interaction/open-state-content-defocus | E2 D2 W3 F4 $3 | overlay drawer menu blur focus depth state | A drawer opened from fixed chrome can push the page back by blur
 interaction/ordinal-flipped-panel-anchor | E2 D2 W2 F5 $1 | interaction menu panel css-only layout correctness | A panel wider than its trigger and centred on it runs off the vi
 interaction/outset-active-entry | E2 D2 W3 F4 $1 | steps active-state list scroll emphasis | In a column of entries where one is current — a scroll-spied fea
 interaction/outward-corner-target | E3 D2 W1 F5 $2 | interaction state focus border precision detail | Four L-brackets absent at rest, then flying outward past the ele
@@ -547,6 +548,7 @@ motion-system/edge-flush-viewport-staging | E3 D1 W2 F5 $1 | motion entrance vie
 motion-system/fire-on-arrival-propagation | E3 D3 W2 F5 $3 | entrance propagation graph canvas emergent | An entrance authored as a list of delays must be rewritten whene
 motion-system/first-paint-entry-style | neutral  $1 | motion transition css-only progressive-enhancement state | An element that did not exist a frame ago has no previous value 
 motion-system/flag-collapsed-motion-wrapper | neutral  $1 | motion architecture reduced-motion accessibility correctness feature-flag | Every entrance in a system is a wrapper component; make each one
+motion-system/floor-anchored-squash-landing | E4 D1 W3 F3 $1 | motion entrance keyframes squash stretch impact choreography | An entrance that jumps, lands and absorbs the landing reads as a
 motion-system/flush-separated-transition-arming | neutral  $1 | motion correctness transition observer reveal | A one-shot reveal whose transitions are generated in script — de
 motion-system/fragment-target-entrance-bypass | neutral  $1 | motion correctness anchor fragment reveal navigation | An in-page link or shared #fragment lands the reader on a sectio
 motion-system/gap-compensated-loop-distance | neutral  $1 | motion marquee correctness loop overflow | A duplicated track loops seamlessly only when it travels exactly
