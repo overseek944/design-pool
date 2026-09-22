@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,architecture,correctness,scene,performance]
 axes: none
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: [loop-gated-on-attention]

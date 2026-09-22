@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,scrub,choreography,custom-properties,sequence,architecture]
 axes: {energy: 3, density: 3, weight: 2, finish: 5}
 cost: 2
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []
@@ -97,3 +97,15 @@ breakpoints twice.
 ⚠ `clamp()` on unitless numbers needs all three arguments unitless — one stray
 `px` and the whole declaration is invalid and the consumer falls back to its
 initial value, silently, with no console error.
+
+Let the fallback be the finished frame. Every consumer reads the driver as
+`var(--p, 99)` — a value past the last beat — so when script *removes* the
+property (reduced motion, short viewport, script dead) every window clamps to 1
+and the scene rests composed, with no override rule per consumer. Easing needs
+no script either: smoothstep is one `calc()`. Publish the driver in beat units,
+0–N, and each window's start reads as beat-and-offset — 2.05, 3.02.
+```css
+.card { --w: clamp(0, calc((var(--p, 99) - 2.05) / .5), 1);
+        --e: calc(var(--w) * var(--w) * (3 - 2 * var(--w))) }
+```
+⚠ Disable by `removeProperty`, never by writing 0 — zero is the *empty* scene.

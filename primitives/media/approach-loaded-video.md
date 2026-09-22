@@ -4,7 +4,7 @@ category: media
 tags: [media,video,performance,intersection-observer,accessibility,bandwidth]
 axes: none
 cost: 2
-seen: 33
+seen: 34
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -297,3 +297,12 @@ if (open) { s.src = v.dataset.src; v.load()
 ⚠ The attribute only starts anything while the element is still muted, and a
 no-JS reader now gets the poster and no clip at all — so the poster is the
 content, not a placeholder for it.
+
+A clip that *tells* something — a cut with an opening beat, not ambient footage —
+should rewind on every re-entry: set `currentTime = 0` before `play()` when it
+crosses back in, or a returning reader lands mid-sentence. Threshold 0.25–0.4,
+so it restarts only once it is substantially in view.
+```js
+if (e.isIntersecting) { v.currentTime = 0; v.play().catch(() => {}) } else v.pause()
+```
+⚠ Never on a loop meant as texture — the rewind becomes a visible hitch.

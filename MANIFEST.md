@@ -1,6 +1,6 @@
 # Manifest
 
-966 primitives. Format: `category/id | axes cost | tags | gist`
+967 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -507,6 +507,7 @@ motion-system/anchored-log-zoom-camera | E3 D2 W2 F5 $3 | camera zoom canvas int
 motion-system/anomaly-solved-ellipse-traversal | E3 D1 W2 F5 $2 | motion geometry solver loop path precision | A mark sent round an ellipse by stepping its angle moves fastest
 motion-system/antipodal-mark-pass | E3 D1 W2 F5 $1 | motion-system hover icon affordance | Send a mark out of one corner and back in from the opposite one,
 motion-system/argument-registered-function-transition | neutral  $2 | custom-property registered-property transition clip-path interpolation architecture | A CSS function interpolates only between the same shape in compa
+motion-system/arrival-eligible-intro | neutral  $1 | motion intro entrance correctness accessibility session | An opening sequence is owed only to a fresh arrival at the top. 
 motion-system/attribute-driven-motion-hooks | neutral  $1 | architecture motion maintainability | Target animations off data- attributes, never class names. Styli
 motion-system/backface-carried-turn-exit | E3 D1 W3 F5 $2 | motion transition 3d exit scene | A scene that dissolves on exit ends nowhere. Turn it: rotate the
 motion-system/backstopped-transition-handoff | neutral  $2 | motion transition state sequence correctness event | Sequencing a state machine on transitionend rather than on a tim
