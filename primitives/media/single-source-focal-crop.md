@@ -4,7 +4,7 @@ category: media
 tags: [media,responsive,performance,detail]
 axes: none
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -92,3 +92,15 @@ Scale 1.05–1.25 covers most exported marks.
 ⚠ Symmetric padding only — an off-centre viewBox needs a `translate` beside the
 scale. Keep the honest intrinsic `width`/`height` on the `<img>` so the slot
 still reserves its space before decode.
+
+Push the zoom past about 2× and the crop stops framing the subject and becomes
+atmosphere. A detail of an existing shot magnified 2–3× goes soft from
+interpolation, and under an off-centre ellipse mask that softness reads as depth
+of field — a hero ground built from a file the page already ships. Pair it with
+a ramp from the copy side so nothing sharp is expected of it.
+```css
+.ground img { transform: scale(2.4) translate(14%, -6%);
+  mask-image: radial-gradient(ellipse 55% 70% at 70% 50%, #000 5%, #0000 95%) }
+```
+⚠ Only for grounds nobody is meant to identify — the alt text becomes empty, and
+a recognisable face or label magnified soft reads as a broken asset.

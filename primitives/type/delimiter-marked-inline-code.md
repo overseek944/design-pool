@@ -4,7 +4,7 @@ category: type
 tags: [type,code,inline,prose,delimiter,technical]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -40,3 +40,13 @@ part of the word it follows.
 ```
 ⚠ Zero leading lets the glyph reach the line above — it needs body leading of
 1.6 or looser, which long-form copy has and a dense interface does not.
+
+The same device marks a label tier as annotation rather than heading: wrap a
+mono eyebrow in square brackets with a space inside each, and drop the brackets
+to 40–60% of the label's ink. A count set the same way — `[ 04 ]` beside a nav
+item — reads as metadata, not as a badge. Keep the brackets in generated content
+so the accessible name is the label alone.
+```css
+.eyebrow::before { content: "[\a0"; opacity: .5 }
+.eyebrow::after  { content: "\a0]"; opacity: .5 }
+```

@@ -4,7 +4,7 @@ category: surface
 tags: [overlay,scanline,texture,video,register,decoration]
 axes: {energy: 1, density: 3, weight: 2, finish: 2}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -38,3 +38,8 @@ texture. Period 5–8px, loop 2–4s.
 ```
 ⚠ A full-viewport moving ruling is perpetual peripheral motion — stop it under
 reduced motion and on small screens, where it also costs a composited layer.
+
+Static and nearly subliminal, the ruling marks a still as sensor output rather
+than photography: light 1px lines on a 3px period, `mix-blend-mode: overlay`,
+layer opacity .04–.08, per figure rather than across the page. At that dose it
+is felt, not seen, and needs no brightness compensation.
