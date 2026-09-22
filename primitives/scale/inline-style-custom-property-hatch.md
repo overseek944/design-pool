@@ -4,7 +4,7 @@ category: scale
 tags: [tokens,responsive,breakpoint,architecture,cascade,custom-properties]
 axes: none
 cost: 1
-seen: 14
+seen: 15
 requires: []
 conflicts: []
 completes: []

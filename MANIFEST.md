@@ -1,6 +1,6 @@
 # Manifest
 
-965 primitives. Format: `category/id | axes cost | tags | gist`
+966 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -275,6 +275,7 @@ interaction/supplied-cursor-affordance-pair | E2 D2 W3 F3 $1 | interaction point
 interaction/synthesised-hover-keyboard-proxy | neutral  $2 | accessibility keyboard third-party observer correctness page-builder | A menu or disclosure emitted by a page builder often listens for
 interaction/tilt-exempt-anchor-layer | E2 D2 W3 F5 $2 | interaction pointer transform 3d depth architecture | A surface that tilts under the pointer tilts everything in it, i
 interaction/timestamp-guarded-double-activation | neutral  $1 | events click pointer correctness architecture accessibility | A component that synthesises its own tap alongside the native cl
+interaction/tinted-tap-highlight | neutral  $1 | interaction touch feedback mobile accessibility color | WebKit and Blink flash a grey box over any tapped link or button
 interaction/track-overflowed-card-expansion | E2 D3 W2 F4 $2 | interaction layout grid hover overflow cards | A grid of uniform cards that reveal more on hover either shoves 
 interaction/transition-shed-demo-handoff | E2 D1 W2 F4 $2 | affordance drag transition correctness demo | A control whose only affordance is a drag can advertise itself b
 interaction/transparent-stroke-hit-area | neutral  $1 | accessibility svg interaction touch correctness detail | A small mark inside a viewBox — a path node, a scrubber dot — is

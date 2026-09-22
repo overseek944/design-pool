@@ -4,7 +4,7 @@ category: type
 tags: [type,tokens,opentype,variable-font,precision]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 21
+seen: 22
 requires: []
 conflicts: []
 completes: []
@@ -93,3 +93,14 @@ the number as a single token so the whole display tier retunes at once.
 ```
 ⚠ Below ~70% the counters close up and the face stops surviving small sizes.
 Keep the condensed instance on display roles and leave body text at 100%.
+
+Static optical cuts — where a face ships separate files per optical size
+(text, subhead, display) instead of an `opsz` axis, register each cut under its
+own family name and bind families to roles: text cut for body and captions,
+mid cut for 18–24px subheads, display cut only above ~32px. Three family names,
+one face.
+```css
+@font-face { font-family: "Face Display"; font-weight: 700; src: url(face-display-700.woff2) }
+h1, h2 { font-family: "Face Display", "Face", sans-serif }
+```
+⚠ Each cut multiplies the weight files — load only the weights each role uses.
