@@ -4,7 +4,7 @@ category: layout
 tags: [layout,variant,experiment,css-only,architecture]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -56,3 +56,18 @@ restyle, so anything the arms cannot share — different copy, an extra control 
 turns the reconcile into a visible re-render in front of the reader, which is
 worse than the flash it was avoiding. Apply idempotently: the optimistic write
 and the reconcile will often set the same value.
+
+Give each arm a *route* rather than an attribute and the variants become
+addressable: every alternate can be linked in review, screenshotted by the same
+job, and diffed without anyone driving a toggle. A fixed switcher listing the
+arms with `aria-current` on the live one — plus a way back to the shipped page —
+costs one nav and keeps the set discoverable to whoever inherits it. Useful
+exactly while the decision is open; a route left behind after it closes is an
+un-owned page search will find.
+```jsx
+<nav aria-label="Style options">
+  {arms.map(a => <Link key={a.id} to={`/o/${a.id}`} aria-current={a.id === cur}>{a.id}</Link>)}
+</nav>
+```
+⚠ These routes render real copy and real links. `noindex` them and keep them out
+of the sitemap, or an abandoned arm outranks the page it was drafted against.

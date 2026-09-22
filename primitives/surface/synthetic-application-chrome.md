@@ -4,7 +4,7 @@ category: surface
 tags: [frame,chrome,media,mock,product,decoration]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 22
+seen: 23
 requires: []
 conflicts: []
 completes: []
@@ -96,3 +96,17 @@ the alternative is implying scale with rows nobody can reach.
 ```
 ⚠ The affordance named must exist. A count promising scroll on a panel that does
 not scroll is the one piece of mock furniture a reader will test immediately.
+
+The strip does not have to carry window furniture. Where the mock shows one
+*record* rather than one application, spend it on identity instead — product
+mark, the record's name, and the current state as a chip pushed to the trailing
+edge — and the frame stops saying "a screenshot of an app" and starts saying
+"this row, in the product, right now". No discs, so nothing implies an OS the
+reader may not use. Strip 40–56px to hold a chip, one hairline beneath.
+```css
+.bar { display: flex; align-items: center; gap: .75rem;
+       border-block-end: 1px solid var(--rule) }
+.bar .state { margin-inline-start: auto }
+```
+⚠ The state chip is the one part a reader will try to believe — keep it a
+plausible value for the record shown, or the whole mock reads as filler.

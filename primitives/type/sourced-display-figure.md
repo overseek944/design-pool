@@ -4,7 +4,7 @@ category: type
 tags: [type,figures,provenance,correctness,editorial,accessibility]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -39,3 +39,17 @@ one hairline, marker and target each named by `aria-label`.
 ⚠ The reader arrives here from a `<sup>` mid-sentence and has to get back —
 `:target` styling alone does not return them. Give the note a link home, or
 accept that a long derivation costs the reader their place in the argument.
+
+Where the source is one document rather than a list of references, the locator
+*is* the reference and needs no resolution step: set the section or clause
+address in mono directly inside the value it justifies — a chip, a table cell —
+one tier down in size and ink. The reader gets the route without leaving the
+value, and a page full of derived figures stays auditable with no footnote
+apparatus at all. Locator at 0.72–0.82em, and the same address marked on the
+quoted passage so the pair is findable in both directions.
+```html
+<span class="term">Payment terms <b>Net 60</b><cite>§3.2</cite></span>
+```
+⚠ `§3.2` is announced as "section three point two" at best and as punctuation at
+worst — carry the spoken form in an `aria-label` on the `<cite>`. A locator
+pointing at a passage not shown on the page is a claim, not a citation.

@@ -1,6 +1,6 @@
 # Manifest
 
-914 primitives. Format: `category/id | axes cost | tags | gist`
+915 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -349,6 +349,7 @@ layout/reserved-gutter-pinned-action | neutral  $1 | layout overflow correctness
 layout/reserved-slot-detached-bleed | neutral  $1 | layout bleed cls decorative responsive | The rectangle a decorative field occupies and the rectangle it p
 layout/ring-placed-upright-labels | E1 D3 W2 F4 $2 | layout diagram radial label geometry | Rotating a container to arrange labels around a circle tips ever
 layout/root-attribute-composition-variant | neutral  $1 | layout variant experiment css-only architecture | Two arrangements of one section — a split hero against a centred
+layout/rule-stated-series-elision | E1 D3 W2 F5 $1 | layout truncation series evidence data accessibility | A long regular series — a payment run, a recurring charge — teac
 layout/ruled-definition-rows | E1 D3 W2 F5 $1 | layout type metadata responsive hairline | Metadata reads as a datasheet when it is a list of label-to-valu
 layout/safe-area-floor-gutter | neutral  $1 | layout tokens safe-area responsive correctness | A gutter written as a plain value gets eaten by notches, rounded
 layout/scripted-depth-projected-dom | E3 D3 W2 F5 $4 | 3d projection depth transform dom | preserve-3d puts real DOM in depth but rotates the glyphs with i

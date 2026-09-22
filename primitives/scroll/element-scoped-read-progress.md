@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,progress,correctness,observer,reading]
 axes: none
 cost: 2
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -99,3 +99,18 @@ reader has actually passed before it commits — 0.7–0.75 for a sequence whose
 marks report *read*, nearer 0.5 where they report *arrived*. Below 0.75 the
 last item can never reach the line on a short page, so clamp the fraction and
 let the final step commit at the document end.
+
+One trigger line can drive a whole rail rather than one element. Run the same
+`(line − top) / height` per *segment* against that one datum and write it to the
+segment's own `scaleY`: the fills chain into a single continuous rise with no
+global progress value to keep in sync, and each dot lights when its own midpoint
+crosses the same line. One passive listener, one coalesced rAF for every segment
+— a handler per row is the version that drops frames.
+```js
+const line = innerHeight * PROBE
+fills.forEach(f => { const { top, height } = f.parentElement.getBoundingClientRect()
+  f.style.transform = `scaleY(${clamp01(height ? (line - top) / height : 0)})` })
+```
+⚠ The `reduce` branch here is not `animation: none` — a scroll-driven fill has
+no landed state, so pin every segment to `scaleY(1)` and every dot to lit, or
+the rail ships permanently empty.

@@ -4,7 +4,7 @@ category: surface
 tags: [hairline,divider,gradient,section,restraint]
 axes: {energy: 1, density: 1, weight: 1, finish: 5}
 cost: 1
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
