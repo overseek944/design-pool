@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,focus,forms,input,correctness,keyboard]
 axes: none
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -81,3 +81,22 @@ by giving the pointer away entirely.
 ⚠ `touch-action: none` is load-bearing: without it a vertical drag scrolls the
 page instead. The focus ring lands on an invisible box, so draw it on the
 painted part — nothing else here is focusable.
+
+For a checkbox or radio there is often no proxy to paint. `appearance: none`
+on the control itself leaves a real, focusable, label-associated box that
+takes a background, a border and a radius directly — no sibling, no
+combinator, no focus to forward — and the mark can be an *inset* ring rather
+than a glyph: a filled box with a few pixels of paper pushed in from its own
+edge. One element, and the focus ring stacks into the same shadow list.
+```css
+input[type=checkbox] { appearance: none; width: 16px; height: 16px;
+  border: 1px solid var(--rule); border-radius: 3px; background: var(--paper) }
+input:checked          { background: var(--ink); border-color: var(--ink);
+                         box-shadow: inset 0 0 0 3px var(--paper) }
+input:checked:focus-visible { box-shadow: inset 0 0 0 3px var(--paper),
+                                          0 0 0 3px var(--ring) }
+```
+⚠ Ring 2–4px of a 14–18px box; thinner reads as a rendering artefact. Forced
+colors strips background and shadow both, so the checked state vanishes
+entirely — restore it under `forced-colors: active` with a border or an
+`::after` glyph, which is the one case the painted proxy above still wins.

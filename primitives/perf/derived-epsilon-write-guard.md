@@ -4,7 +4,7 @@ category: perf
 tags: [performance,frame-budget,animation,correctness,architecture]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []

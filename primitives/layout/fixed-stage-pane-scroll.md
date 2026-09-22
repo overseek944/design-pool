@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,scroll,shell,navigation]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 3
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []

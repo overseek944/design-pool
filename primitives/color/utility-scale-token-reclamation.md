@@ -4,7 +4,7 @@ category: color
 tags: [color,tokens,theming,architecture,correctness]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -44,3 +44,19 @@ smaller step.
 radius no utility class was ever applied to, and they are what gives a flattened
 region away. An arbitrary-value utility written inline still wins; those have to
 be found by hand.
+
+A whole-theme polarity flip needs neither `!important` nor a rule per utility.
+The framework's ramp is itself a token block, so redeclare it *reversed* —
+rung 100 takes the ink, rung 950 the paper — and every `bg-*-900` authored
+dark-first resolves light-first with the markup untouched. One block inverts
+an entire application, and the semantic direction survives: what was the
+furthest from the ground still is.
+```css
+@layer theme { :root {
+  --color-slate-100: #17251f;   /* was the near-white rung */
+  --color-slate-950: #fbfdf9 }} /* was the near-black one  */
+```
+⚠ Contrast does not invert with it — a pairing that cleared 4.5:1 dark can
+fail light, and the accents keep their own lightness while the neutrals move.
+Re-score every ink-on-fill pair, and collapse rungs deliberately rather than
+letting two reversed steps land on one hex by accident.

@@ -4,7 +4,7 @@ category: type
 tags: [type,gradient,entrance,currentcolor,reveal]
 axes: {energy: 3, density: 2, weight: 3, finish: 4}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -28,3 +28,20 @@ no state to unwind. Band 8–25% of the strip; 0.6–1.4s.
 ⚠ Under `reduce` the animation must not simply be cancelled — `forwards` never
 applies and the text sits on the transparent tail, invisible. Restore
 `-webkit-text-fill-color: currentColor` and drop the image.
+
+A *looping* sweep says something different, and the timing function decides
+what. Run the same gradient infinitely under `steps(N)` and the highlight
+advances in visible increments instead of gliding — it stops reading as satin
+and starts reading as output being produced, which is the right register for
+text still arriving from a machine. Bind it to the streaming state only and
+drop it the moment the run is final. N 24–64 over 1.5–2.5s; below ~16 the
+chop reads as a dropped frame.
+```css
+.streaming { background: linear-gradient(90deg, #777 10%, #eee 45%, #777 80%)
+    0 0 / 220% 100%; background-clip: text; color: transparent;
+  animation: shimmer 2s steps(48) infinite }
+@keyframes shimmer { to { background-position: -120% 0 } }
+```
+⚠ `color: transparent` with a loop has no end frame to fall back to — under
+`reduce`, and on the final token, restore the inherited colour and remove the
+image, or the text is left painted by a stopped gradient.

@@ -4,7 +4,7 @@ category: reveal
 tags: [svg,stroke,reveal,draw,geometry,correctness]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 19
+seen: 20
 requires: []
 conflicts: []
 completes: []
@@ -82,3 +82,18 @@ the drawing is the point, the travel is punctuation.
 ```
 ⚠ Needs `stroke-dasharray` at the full normalised length, not `L L` — a gap
 shorter than the path lets a second dash wrap in behind the first as it leaves.
+
+The drawn path need not be the thing seen. Give it a stroke wide enough to
+cover the artwork, use it as a `mask` rather than as ink, and the dash sweep
+uncovers whatever is underneath — script lettering, a filled mark, a grained
+fill — along a spine the artist chose instead of along a straight wipe. One
+centreline replaces a hand-cut mask sequence, and the reveal follows the
+gesture of the form, which is what makes handwriting read as written.
+```html
+<mask id="m"><path pathLength="1" stroke="#fff" stroke-width="118" fill="none"
+  stroke-linecap="round" style="stroke-dasharray:1;stroke-dashoffset:1" d="…"/></mask>
+<g mask="url(#m)"><!-- the artwork --></g>
+```
+⚠ Stroke width is a covering guarantee: anything the centreline passes further
+from than half that width is never revealed. `round` caps on both ends, or the
+first and last strokes arrive with a square bite out of them.

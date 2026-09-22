@@ -4,7 +4,7 @@ category: media
 tags: [media,video,legibility,overlay,accessibility,responsive]
 axes: none
 cost: 1
-seen: 19
+seen: 20
 requires: []
 conflicts: []
 completes: []
@@ -114,3 +114,19 @@ restated when the block rewraps.
 ⚠ The wide term is doing the scrim's work and is invisible in a thumbnail —
 check it at 1:1 against the brightest frame. Past roughly 56px of blur it
 reaches far enough to darken the ground under the line below it.
+
+Both shadow terms above are written in px, which pins them to one size — the
+masthead links and the display line over the same picture then need two hand-
+tuned stacks, and a fluid heading is wrong at one end of its clamp. Write the
+offsets and blurs in `em` and the support scales with whatever it is applied
+to: one token serves a 12px label and a 56px headline, and a `clamp()` on
+font-size carries the shadow with it. Three terms — contact, mid, pool.
+```css
+:root { --support: 0 .025em .045em #00000061, 0 .055em .18em #0000009e,
+                   0 0 .56em #00000075 }
+.over-image { text-shadow: var(--support) }
+```
+⚠ `em` resolves against the element's own size, so a token inherited onto a
+small child silently shrinks to nothing — set it where the type is set. The
+pool term reaches over half an em in every direction and will darken the line
+below at tight leading.

@@ -4,7 +4,7 @@ category: scroll
 tags: [anchor,fragment,navigation,fonts,correctness,layout-shift]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

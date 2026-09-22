@@ -1,6 +1,6 @@
 # Manifest
 
-922 primitives. Format: `category/id | axes cost | tags | gist`
+924 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -333,6 +333,7 @@ layout/line-local-trailing-slot | neutral  $1 | layout flex cards metadata corre
 layout/live-dimension-callout | E1 D2 W1 F5 $2 | layout chrome annotation measurement technical | Annotate the frame with its own measurements and a page reads as
 layout/matted-opening-frame | E1 D1 W2 F5 $1 | frame viewport hero media radius safe-area | Inset the opening frame from every viewport edge and the page ba
 layout/measured-copy-keepout | neutral  $2 | layout measurement legibility canvas | Background art told to keep clear of the copy is usually given a
+layout/mount-derived-root-scroll-regime | neutral  $2 | layout scroll architecture has routing correctness | An app shell that locks the root — html, body { height: 100%; ov
 layout/named-container-scope | neutral  $1 | layout container-query correctness components responsive | Any ancestor carrying container-type captures every unnamed @con
 layout/occupancy-negotiated-label-placement | neutral  $4 | layout label annotation collision diagram correctness | Annotations placed independently overlap the moment two anchors 
 layout/occupancy-padded-back-plate | E1 D3 W2 F5 $1 | layout layering overlap depth mock plate | Two layers of one scene — a wide plate behind, a card in front —
@@ -868,6 +869,7 @@ type/char-count-stepped-reveal | E3 D1 W2 F4 $1 | type motion css-only custom-pr
 type/character-grid-as-texture | E3 D5 W2 F3 $2 | type texture ornament ascii | A field of monospace glyphs (+ x X 8 0 @ # % $) on a grid, used 
 type/circumference-fitted-seal-ring | E2 D3 W2 F4 $2 | type svg ornament mark watermark rotation | An authority mark can be typeset rather than drawn: a legend set
 type/content-ghosted-width-reservation | neutral  $1 | type layout-shift css-only accessibility correctness | Text that animates or swaps in place resizes its own box and rel
+type/counter-set-image-aperture | E1 D2 W5 F5 $2 | type svg display media mask wordmark | A word set at architectural scale already contains holes — the c
 type/delimiter-marked-inline-code | E1 D2 W2 F5 $1 | type code inline prose delimiter technical | Inline code in prose is usually a padded chip, and that padding 
 type/edge-cropped-monument-glyph | E1 D2 W5 F4 $1 | type lettering identity display bleed layout | One glyph of the wordmark, set at architectural scale and allowe
 type/em-locked-inline-media-inset | E1 D3 W4 F4 $2 | typography image display-type inline responsive | A display line that ends short leaves a rectangle of dead measur
