@@ -1,6 +1,6 @@
 # Manifest
 
-1003 primitives. Format: `category/id | axes cost | tags | gist`
+1005 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -618,6 +618,7 @@ motion-system/state-scoped-entry-animation | neutral  $1 | tabs entrance state c
 motion-system/stepped-follow-transition | E3 D1 W2 F3 $1 | motion pointer transition steps character | Anything that follows the pointer glides, and glide reads as liq
 motion-system/sub-fusion-tremor | E5 D1 W1 F4 $1 | motion loop drag state micro-interaction | Below roughly 100ms a period stops reading as motion and starts 
 motion-system/svg-geometry-keyframes | E3 D2 W2 F5 $1 | motion svg diagram precision detail | r, cx, cy, x, y and width are CSS properties on SVG, not just at
+motion-system/tilt-outermost-axis-spin | E2 D1 W2 F5 $1 | transform 3d rotation loop correctness | A body spinning on a tilted axis needs the tilt written before t
 motion-system/transient-class-scoped-transition | neutral  $2 | motion-system view-transition theme correctness reduced-motion | A view transition, or a global colour transition, must animate f
 motion-system/transition-cued-height-follow | neutral  $2 | correctness measurement transition resize layout motion | Inline content that changes width re-wraps its copy and the bloc
 motion-system/travel-minimal-target-pairing | E3 D3 W2 F5 $2 | morph rearrange geometry marks svg transition | A set of marks rearranging into a new configuration is usually p
@@ -794,6 +795,7 @@ surface/blended-grain-over-gradient | E1 D3 W3 F4 $1 | surface texture grain gra
 surface/blur-resolved-coarse-raster | E1 D2 W2 F4 $1 | surface canvas texture filter cheap detail | A raster drawn far under display size — a hundred-cell field, a 
 surface/chained-quadratic-wave-edge | E2 D2 W2 F3 $1 | svg path wave band section generative | A regular wave is not an organic profile and needs no per-frame 
 surface/channel-split-refraction-glass | E1 D3 W3 F5 $4 | glass backdrop-filter svg-filter refraction chromatic depth | A blur says frosted; a displacement says solid and thick. Refere
+surface/circling-offset-shadow | E2 D2 W3 F4 $2 | shadow ambient loop light card elevation | A still card reads as lit by a slowly circling lamp when its sha
 surface/clip-carried-fill-traverse | E2 D2 W2 F5 $2 | svg connector motion clip-path diagram gradient | Dash offset gives a stroked connector direction, but a connector
 surface/clock-bucketed-scene-state | E1 D2 W2 F4 $2 | surface ground state root-attribute progressive-enhancement ambient | Resolve the reader's hour into three to five named buckets, set 
 surface/collapsing-riser-keycap | E1 D2 W3 F4 $1 | surface detail border state css-only hairline | A key drawn as a bordered box reads as a chip. What makes it a c
