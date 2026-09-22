@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,marquee,correctness,loop,overflow]
 axes: none
 cost: 1
-seen: 41
+seen: 42
 requires: []
 conflicts: []
 completes: []
@@ -155,3 +155,14 @@ retuning the speed cannot desynchronise them.
 ⚠ Only a negative delay starts mid-cycle; a positive one holds the first pose
 for that long instead. Any offset but half a cycle needs a track that tiles, or
 the two lanes park at visibly different poses whenever the animation stops.
+
+Once the period is measured, derive the duration from it too. A fixed
+`28s` runs a short track slowly and a long one fast, and every copy-count
+change on resize alters the speed. Publish `period / rate` as the duration so
+the strip holds one velocity whatever its content, floored so a short track
+never races. 30–60px/s, floor 15–25s.
+```js
+track.style.setProperty('--dur', `${Math.max(20, period / 38).toFixed(2)}s`)
+```
+⚠ Re-derive after `document.fonts.ready` — the fallback face's period sets the
+wrong speed for the whole session.

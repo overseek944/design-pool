@@ -1,6 +1,6 @@
 # Manifest
 
-958 primitives. Format: `category/id | axes cost | tags | gist`
+960 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -655,6 +655,7 @@ reveal/amplitude-ramped-material-arrival | E2 D3 W2 F4 $2 | reveal canvas shader
 reveal/arc-window-overstroke | E3 D2 W3 F5 $2 | draw-on highlight canvas pulse path | A path being drawn reads as inert when the settled trail and the
 reveal/axis-swept-plot-window | E2 D2 W2 F5 $2 | reveal chart svg clip-path motion data | A line drawn on with stroke-dashoffset is revealed by arc length
 reveal/char-opacity-drift | E3 D4 W2 F5 $4 | type motion reveal ambient | Per-character with opacity + small y, will-change:opacity,transf
+reveal/dimmed-predecessor-series | E2 D2 W2 F5 $1 | reveal chart comparison state svg data | When a plotted result is revised, do not swap the curve. Drop th
 reveal/edge-registered-arrival | E2 D1 W1 F4 $1 | reveal entrance box-shadow outline keyframes acknowledge one-shot | Mark a region's arrival at its boundary instead of moving its co
 reveal/flow-preserved-step-reveal | E3 D2 W2 F3 $1 | reveal text steps clip-path typing layout-safety | A left-to-right text reveal animated on width leaves normal flow
 reveal/front-clipped-mixed-figure | E2 D2 W2 F5 $2 | reveal svg clip-path diagram motion detail | A figure that is not all strokes — connectors carrying node disc
@@ -815,6 +816,7 @@ surface/path-clipped-backdrop-frost | E1 D3 W3 F5 $3 | backdrop-filter blur clip
 surface/perforation-punched-silhouette | E1 D2 W2 F3 $2 | surface mask border texture detail css-only gradient | A ticket stub is a rectangle with its edge eaten away, and no bo
 surface/phase-matched-gradient-drift | E2 D2 W2 F4 $1 | surface gradient loop ambient background | An oversized gradient translated behind its box gives a ground a
 surface/polarity-crossing-panel-ground | E1 D2 W4 F5 $1 | surface gradient contrast color panel card | One panel can carry both polarities of type. Ramp its own ground
+surface/polygon-band-sparkline | E1 D2 W2 F4 $1 | surface chart sparkline clip-path decoration css | A decorative trend glyph needs no SVG: clip a filled pseudo-elem
 surface/progress-raised-horizon-band | E2 D1 W3 F5 $2 | surface gradient scroll scrub ground section-transition | A light section handed to a dark one by a fixed gradient is a pr
 surface/projected-lattice-ground | E2 D3 W1 F4 $2 | surface grid texture ambient depth geometry | A flat hairline lattice reads as a sheet behind the page. Tilt t
 surface/quantised-ground-transition | E1 D2 W2 F3 $1 | surface color gradient tokens detail | Two flat sections meeting edge to edge give a hard seam; a smoot

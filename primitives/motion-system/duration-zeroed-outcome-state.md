@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,architecture,correctness,scene,reduced-motion]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -37,3 +37,13 @@ tl.to(els, { opacity: 1, y: 0, duration: .9 * !reduce, stagger: .12 * !reduce })
 ⚠ Only safe for tweens that end where the content belongs. A zeroed `from()`
 still runs — instantly — so anything whose *start* state is the hidden one needs
 a `set()` instead, or the reader gets the un-revealed frame permanently.
+
+Scripted keyframes get the same outcome from one helper. Route every
+`element.animate()` through a wrapper that, under reduced motion or where the API
+is missing, assigns the *last* keyframe to `style` and returns null — the
+sequence code runs unchanged and lands on its end state.
+```js
+const play = (el, kf, o) => reduce || !el.animate
+  ? (Object.assign(el.style, kf.at(-1)), null) : el.animate(kf, { fill: 'forwards', ...o })
+```
+⚠ Callers chaining `.onfinish` must null-check the return, or the branch throws.
