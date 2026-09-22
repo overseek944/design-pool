@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,edge,composition,bleed]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 68
+seen: 69
 requires: []
 conflicts: []
 completes: []
@@ -264,3 +264,19 @@ z = Math.min(frameW / (w + PAD.x * 2), frameH / (h + PAD.y * 2))
 ```
 ⚠ Percentage feathers are of the mask box, so the inset in pixels changes with
 every resize — recompute the pad from the live box, never from a constant.
+
+Where the layer is a single SVG over a flat ground, the falloff can be drawn
+rather than masked: two full-viewBox `<rect>`s painted last, filled from
+gradients whose opaque stop is the page's own background token. No
+`mask-composite`, no prefix pair, no second element — and because the stops live
+in user space, a `slice` crop scales the dissolve *with* the art instead of
+pinning it to the element box, which a CSS mask cannot do. Radial to taste,
+plus one linear for the side that must go entirely.
+```html
+<radialGradient id="v" cx="78%" r="62%"><stop offset="55%" stop-color="var(--bg)"
+  stop-opacity="0"/><stop offset="100%" stop-color="var(--bg)"/></radialGradient>
+<rect width="100%" height="100%" fill="url(#v)"/>   <!-- after the artwork -->
+```
+⚠ It occludes rather than reveals: anything layered between the SVG and the
+page is painted over, and the fade is wrong the moment the ground stops being
+that one flat colour.

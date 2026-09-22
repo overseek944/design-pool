@@ -1,6 +1,6 @@
 # Manifest
 
-884 primitives. Format: `category/id | axes cost | tags | gist`
+885 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -82,6 +82,7 @@ canvas/precomputed-cell-attenuation-field | E1 D2 W2 F5 $2 | canvas legibility p
 canvas/prerendered-renderer-understudy | neutral  $3 | canvas progressive-enhancement correctness cls state architecture | A canvas that may not run should degrade to a picture, not to an
 canvas/projected-label-visibility-budget | neutral  $3 | webgl label projection density correctness | Projecting a 3D point to screen coordinates gives a position for
 canvas/quantised-level-set-gather | E2 D3 W2 F5 $3 | canvas field flow generative texture | Particles advected through a smooth field spread into a haze: ev
+canvas/radius-linked-point-field | E1 D3 W1 F5 $2 | canvas svg field points generative depth texture | A scatter of points reads as noise. Join every pair closer than 
 canvas/rate-split-channel-ensemble | E2 D2 W1 F5 $2 | canvas field ambient technical measurement hierarchy | Several line traces in one box read as output from several instr
 canvas/resampled-path-travel | neutral  $2 | canvas performance motion connector architecture | Moving a marker along a curve by solving the curve every frame c
 canvas/reseeded-noise-tile | E2 D3 W2 F3 $2 | canvas texture ambient generative performance | Per-pixel noise across a whole viewport every frame is a fill-ra

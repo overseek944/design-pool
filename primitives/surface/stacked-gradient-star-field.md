@@ -4,7 +4,7 @@ category: surface
 tags: [surface,texture,ambient,depth,performance]
 axes: {energy: 2, density: 3, weight: 1, finish: 4}
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -71,3 +71,14 @@ serves a hero at .5 and a footer at .15 without a second export.
 ⚠ Baking the alpha into `stroke` as `rgba()` looks identical and kills both
 controls. Tiers under ~.2 disappear entirely on a dim display — verify the
 lowest one still resolves before it is load-bearing.
+
+`slice` crops from the anchor, and the anchor is a choice: `xMaxYMid` pins the
+art to the trailing edge, `xMinYMid` to the leading one. Compose the field's
+mass against the edge it is anchored to and the crop eats only the sparse side —
+the "nothing load-bearing in the outer 15%" rule above then applies to one edge
+instead of four, so the dense corner survives every aspect ratio intact.
+```html
+<svg viewBox="0 0 1120 680" preserveAspectRatio="xMaxYMid slice" width="100%">
+```
+⚠ An off-centre anchor moves the art relative to the copy beside it as the box
+narrows — check the crop against the text column, not only against the frame.
