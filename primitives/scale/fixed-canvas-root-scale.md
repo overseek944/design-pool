@@ -4,7 +4,7 @@ category: scale
 tags: [scale,layout,proportion,transform,responsive]
 axes: {energy: 1, density: 2, weight: 3, finish: 4}
 cost: 2
-seen: 12
+seen: 13
 requires: []
 conflicts: []
 completes: []
@@ -130,3 +130,17 @@ content actually got. Factor 0.82–0.92.
 ⚠ The height is the one term that cannot be derived — it is the child's
 *unscaled* height, so anything sized by its own content needs a measured value
 rather than a literal, and a wrong one crops or leaves a band.
+
+The inverse is right where the miniature is decoration rather than a readable
+canvas: do not scale at all — author it natively at 4–7px type. Glyphs stay
+hinted instead of resampled, there is no transform, no wrapper height to keep
+in sync and no WCAG 1.4.4 exposure, because nothing at that size claims to be
+text. The composition then has to read from blocks, rules and colour fields
+alone, with the lettering as texture.
+```css
+.mini { font-size: 5px; line-height: 1.4 }       /* 4–7px, never above 8 */
+.mini, .mini * { user-select: none }
+```
+⚠ `aria-hidden` the whole figure and restate anything load-bearing in real
+markup beside it. Sub-pixel paddings and hairlines round inconsistently across
+engines at this scale — quantise the internal spacing to whole pixels.

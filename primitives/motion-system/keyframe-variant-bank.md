@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,generative,ambient,tokens,architecture]
 axes: {energy: 3, density: 4, weight: 2, finish: 3}
 cost: 2
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []

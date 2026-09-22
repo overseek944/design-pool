@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,svg,diagram,precision,detail]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,17 @@ radar pings, a node sliding along a connector, a bar extending.
 ⚠ Geometry properties are not compositor-accelerated — they relayout the SVG
 every frame. Fine for a handful of marks, wrong for hundreds. Safari needs the
 property set in CSS, not only as an attribute, before it will animate.
+
+Where the transform is unavoidable — translating or scaling a whole `<g>` — the
+origin is the trap. Percentage `transform-origin` on an SVG child resolves
+against the nearest *viewport*, not the element, so `50%` on a group parked off
+to one side pivots about the middle of the drawing. `transform-box: fill-box`
+re-points it at the element's own bounding box and the declaration starts
+meaning what it reads as.
+```css
+.drift { transform-box: fill-box; transform-origin: 50%;
+         animation: drift 16s ease-in-out infinite }   /* 8–20s */
+```
+⚠ `fill-box` measures the geometry, so a group whose bounds change mid-animation
+moves its own origin. Stroke and filter regions are outside the fill box — a
+blurred group scales about a point offset from where it looks centred.

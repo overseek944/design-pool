@@ -4,7 +4,7 @@ category: light
 tags: [effect,blend,compositing,dark]
 axes: {energy: 3, density: 3, weight: 3, finish: 4}
 cost: 3
-seen: 13
+seen: 14
 requires: []
 conflicts: []
 completes: []
@@ -106,3 +106,17 @@ the tint crosses section boundaries continuously rather than restarting at each.
 page. Cap the blur radius rather than the element, keep it off the scroll
 container's own transform, and drop it entirely under
 `prefers-reduced-transparency`.
+
+Variant — `soft-light` with *type* as the layer. Set a wordmark far past display
+size at the page's foot, bled beyond three edges so only a fragment of the
+letterforms reads, and blend rather than fill: the mark takes its colour from
+whatever wash sits behind it and becomes a tonal field instead of a second logo.
+Soft-light is the one that survives a near-black ground — screen blows it out,
+overlay leaves it grey. Cap height 1.5–4× the viewport's short side.
+```css
+.coda-mark { position: absolute; inset: auto -4% -22%; width: 108%;
+  mix-blend-mode: soft-light; pointer-events: none }   /* SVG paths, not text */
+```
+⚠ It carries no information and must not be the only place the name appears —
+`aria-hidden`, and keep it out of the tab order. Blending a mark this large over
+a gradient makes its contrast unpredictable; never run copy across it.

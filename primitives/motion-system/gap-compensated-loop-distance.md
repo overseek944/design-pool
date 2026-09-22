@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,marquee,correctness,loop,overflow]
 axes: none
 cost: 1
-seen: 29
+seen: 30
 requires: []
 conflicts: []
 completes: []
@@ -126,3 +126,18 @@ never enters the box.
 the number is unmaintainable the moment the angle or pitch is retuned. Diagonal
 motion past a fixed frame is the loop most likely to be read as a progress bar;
 keep it inside something that is plainly indeterminate.
+
+Where the repeat is *multiplicative* rather than linear — concentric rings, a
+nested frame, a tunnel — the loop distance is a ratio, not a length. Scale to
+exactly the ratio between consecutive rings and ring N lands where ring N+1
+began, so the restart is invisible with no crossfade and no second copy. Author
+the rings from that ratio outward and the number is structural rather than
+tuned; 1.15–1.35 per step, `linear` timing or the seam reappears as a pulse.
+```css
+:root { --step: 1.2487 }      /* r(n+1) / r(n), the same ratio the rings use */
+@keyframes push { to { scale: var(--step) } }
+.tunnel { animation: push 6s linear infinite }     /* 5–12s */
+```
+⚠ Rounding the ratio to two places shows as a jump within a minute of looping —
+carry the divisions the ring geometry actually used. Nothing may sit at the
+vanishing centre: it scales past the viewer and pops.

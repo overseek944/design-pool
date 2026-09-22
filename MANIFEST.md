@@ -1,6 +1,6 @@
 # Manifest
 
-804 primitives. Format: `category/id | axes cost | tags | gist`
+807 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -352,6 +352,7 @@ light/stacked-chromatic-bloom | E3 D2 W4 F4 $3 | effect glow filter svg depth | 
 light/stop-built-soft-glow | E1 D2 W2 F4 $1 | gradient glow decoration performance cheap banding | A blurred lamp holds a composited buffer the size of its box plu
 light/superposed-lamp-falloff | E1 D2 W2 F4 $1 | light gradient glow wash layering cheap | Alpha composites as 1−(1−a)(1−b), so two low-alpha radial fills 
 light/target-aimed-travelling-beam | E3 D2 W3 F5 $2 | light beam rotation scroll decoration custom-properties | A directional light that moves — a beam, a shaft, a cone — keeps
+light/userspace-blurred-lamp-bed | E1 D2 W2 F4 $2 | glow svg blur gradient decoration responsive | stdDeviation is in user units, so a gaussian blur inside a viewB
 media/activation-deferred-player-facade | neutral  $2 | media embed iframe video performance privacy accessibility loading | A third-party player costs hundreds of kilobytes of script and s
 media/alpha-threshold-fuse-filter | E3 D2 W3 F4 $2 | svg filter mark liquid state | Separate shapes read as one substance when a blur is pushed back
 media/aperture-registered-content-layer | E1 D2 W2 F5 $2 | media mockup responsive layout correctness | Live content shown inside supplied frame artwork registers to an
@@ -442,6 +443,7 @@ motion-system/edge-clamped-camera-frame | neutral  $1 | camera transform scene c
 motion-system/edge-flush-viewport-staging | E3 D1 W2 F5 $1 | motion entrance viewport-units responsive css | An element staged beyond the frame is usually given a hand-picke
 motion-system/fire-on-arrival-propagation | E3 D3 W2 F5 $3 | entrance propagation graph canvas emergent | An entrance authored as a list of delays must be rewritten whene
 motion-system/first-paint-entry-style | neutral  $1 | motion transition css-only progressive-enhancement state | An element that did not exist a frame ago has no previous value 
+motion-system/flag-collapsed-motion-wrapper | neutral  $1 | motion architecture reduced-motion accessibility correctness feature-flag | Every entrance in a system is a wrapper component; make each one
 motion-system/flush-separated-transition-arming | neutral  $1 | motion correctness transition observer reveal | A one-shot reveal whose transitions are generated in script — de
 motion-system/gap-compensated-loop-distance | neutral  $1 | motion marquee correctness loop overflow | A duplicated track loops seamlessly only when it travels exactly
 motion-system/generation-guarded-sequence | neutral  $2 | animation architecture correctness cancellation sequence | A choreography written as a chain of awaits has no cancel. A rep
@@ -678,6 +680,7 @@ surface/multi-edge-mask-fade | E1 D2 W2 F5 $2 | surface mask edge composition bl
 surface/nine-slice-control-chrome | E1 D2 W3 F5 $2 | surface border chrome svg detail | A control whose shape is not a rounded rectangle — a tapered edg
 surface/node-centred-connector-falloff | E1 D2 W2 F5 $1 | surface mask connector sequence detail | A rule running the length of a step list is equally present ever
 surface/offcanvas-ellipse-horizon | E1 D2 W1 F5 $1 | surface hairline geometry ambient background depth | A curve whose radius exceeds the viewport cannot be drawn inside
+surface/one-point-room-frame | E1 D2 W1 F5 $1 | perspective hairline background svg depth decoration | Five hairlines make a room you are looking into: an inset rectan
 surface/overflow-visible-for-glow-bleed | neutral  $1 | surface effect svg gotcha | SVG clips to its viewBox by default, which decapitates any drop-
 surface/overwide-ellipse-reading-band | E1 D2 W2 F5 $1 | surface mask focus legibility list | Hold one line of a moving stack legible and let its neighbours d
 surface/painted-border-band | E1 D2 W3 F5 $1 | surface border frame texture css-only detail | The border box is a paintable band, not just an outline. Give an
