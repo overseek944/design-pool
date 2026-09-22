@@ -1,6 +1,6 @@
 # Manifest
 
-915 primitives. Format: `category/id | axes cost | tags | gist`
+917 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -297,6 +297,7 @@ layout/count-threshold-shape-shift | neutral  $1 | layout has quantity-query chr
 layout/count-varied-centred-lattice | E1 D4 W2 F5 $2 | layout lattice tessellation flex field responsive | A tessellated field — hexagons, staggered chips, a brick course 
 layout/cropped-stage-mock | E1 D2 W2 F5 $2 | layout responsive overflow media scale detail | Show a framed artifact — a handset, a browser chrome, a console 
 layout/cross-card-band-alignment | E1 D3 W1 F5 $2 | layout grid subgrid cards hairline datasheet alignment | A row of cards aligns at its outer edges and nowhere else: each 
+layout/dense-column-flow-field | E2 D4 W2 F4 $2 | layout grid field overflow rhythm emphasis | A uniform set that overflows sideways reads as inventory. Fix th
 layout/document-underlay-window | E2 D1 W3 F4 $2 | layout stacking reveal video section fixed | Give the document one fixed, full-viewport media layer at a nega
 layout/em-pitched-slot-rail | neutral  $1 | layout type indicator correctness fluid architecture | A marker that travels between rows — a caret beside a list, a ru
 layout/em-reserved-swap-height | neutral  $1 | layout layout-shift responsive correctness tabs | Content that swaps in place — a tab's copy, a rotating claim — c
@@ -739,6 +740,7 @@ surface/control-cleared-decoration-band | E1 D3 W2 F4 $2 | surface decoration co
 surface/coprime-modulus-cell-dither | E1 D4 W2 F4 $1 | pattern texture grid nth-child dots | A grid of real elements reads as machine-made when every variati
 surface/corner-tick-frame | E1 D2 W1 F5 $1 | surface border frame detail currentcolor precision | Four short L-marks at the corners instead of a closed border: th
 surface/dash-phase-flow | E2 D2 W1 F5 $1 | svg dash motion connector diagram precision | Animating stroke-dashoffset on a dashed connector makes a static
+surface/depth-pinned-shape-tail | E1 D2 W2 F4 $2 | surface mask edge section ground token | A shaped section edge sized as a share of its plate flattens at 
 surface/detached-blur-shadow-plate | E1 D2 W4 F4 $2 | surface depth shadow blur mock hero | Past roughly 40px of blur box-shadow stops reading as shadow, an
 surface/drained-field-clear-window | E2 D2 W3 F5 $3 | surface mask backdrop-filter focus attention de-emphasis | Direct attention by de-emphasising everything else: a full-bleed
 surface/eased-fade-stop-ramp | E1 D2 W2 F5 $2 | surface gradient fade mask precision | A two-stop fade interpolates alpha linearly and the eye reads th

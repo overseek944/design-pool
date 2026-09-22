@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,texture,print,halftone]
 axes: {energy: 1, density: 4, weight: 2, finish: 4}
 cost: 2
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -59,3 +59,17 @@ mask-composite: add;
 ⚠ Union is the default, so that line is documentation rather than effect — the
 pairing that actually matters is `-webkit-mask-composite: source-over`, whose
 name does not match the one it stands in for.
+
+The same AND is what lets one element fade on *two* axes independently. Stack a
+block-direction gradient and an inline one and the default union paints the
+whole box, because every pixel passes one of them — so a scroll port that must
+cue overflow at four edges has no layered form without `intersect`. Each edge
+then carries its own distance and its own driver, and the port composes them in
+one declaration. Cap each at `min(12%, 40px)` or a short port is mostly gone.
+```css
+mask-image: linear-gradient(#0000, #000 var(--t), #000 calc(100% - var(--b)), #0000),
+            linear-gradient(90deg, #0000, #000 var(--s), #000 calc(100% - var(--e)), #0000);
+mask-composite: intersect;
+```
+⚠ `mask-repeat: no-repeat` belongs on both layers — a repeated gradient tiles
+its transparent tail back over the middle and the intersection eats the centre.

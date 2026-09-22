@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,keyframes,custom-properties,architecture,choreography]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 12
+seen: 13
 requires: []
 conflicts: []
 completes: []
@@ -88,3 +88,20 @@ in one rule so the poses read as a composition rather than as six numbers.
 tween between whatever those resolve to, so every pose must be a complete list in
 the same function order — mismatched lists fall back to a matrix blend and the
 rotation takes the short way round.
+
+Document-global also means *name-addressed and last-wins*, which is the only
+clean way to upgrade an animation whose values use a unit that may not parse.
+A custom property cannot rescue it — an unsupported unit invalidates the whole
+declaration, and there is no per-value fallback inside a keyframe. Redeclare the
+entire block under a feature query instead and the element, its class and its
+`animation` shorthand are untouched: a bar chart authored in px becomes one
+authored in container units wherever those resolve.
+```css
+@keyframes bar { 0%,100% { height: 4px } 50% { height: 16px } }
+@supports (height: 1cqw) {
+  @keyframes bar { 0%,100% { height: 4cqw } 50% { height: 16cqw } } }
+```
+⚠ Query a *unit* by using it, not by querying the feature that introduced it —
+`container-type` support and container-unit support are separate. Order matters
+absolutely: the override must come after, and a later import can silently undo
+it.

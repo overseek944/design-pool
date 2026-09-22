@@ -4,7 +4,7 @@ category: interaction
 tags: [sheet,overlay,stack,gesture,depth,transform]
 axes: {energy: 2, density: 3, weight: 2, finish: 5}
 cost: 3
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

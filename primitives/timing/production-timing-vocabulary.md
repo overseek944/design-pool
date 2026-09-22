@@ -4,7 +4,7 @@ category: timing
 tags: [motion,easing,duration,reference,system]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 38
+seen: 39
 requires: []
 conflicts: []
 completes: []
@@ -86,3 +86,17 @@ a monotone out-curve.
 ⚠ Four tracks is four things to keep in phase. Share one duration token and vary
 only the easing, or the element arrives in pieces — and delay any interior
 stroke behind the container by 60–120ms so it draws onto something at rest.
+
+Once every duration is a token, the reduced-motion branch is one block rather
+than a query per component. Zero the tokens at the root and every transition in
+the system collapses at once — nothing has to be found, and a component written
+next year inherits the branch by using the vocabulary. It beats a blanket
+`transition: none !important` because the tokens stay overridable, so the few
+things that must still move — a progress fill, a caret — keep their own value.
+```css
+@media (prefers-reduced-motion: reduce) {
+  :root { --dur-snap: 0s; --dur-quick: 0s; --dur-cross: 0s } }
+```
+⚠ Only safe for transitions, which land on their target value at 0s. Keyframed
+loops and anything whose resting pose is a keyframe stop need the separate
+treatment — zeroing a duration there resolves to the wrong frame, not to none.
