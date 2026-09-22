@@ -4,7 +4,7 @@ category: layout
 tags: [frame,viewport,hero,media,radius,safe-area]
 axes: {energy: 1, density: 1, weight: 2, finish: 5}
 cost: 1
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -83,3 +83,16 @@ an asymmetric mat reads as a misaligned crop, not as a mount.
 ⚠ Decorative, so empty `alt` — and the plate has to be genuinely opaque; at even
 95% the picture's detail sits behind live copy and the mat stops being a mat.
 Still a full-size download per section, so gate it on `prefers-reduced-data`.
+
+A mat in *front* of the page turns the whole viewport into a bezel that content
+scrolls beneath. One fixed element draws only a ring: a two-layer mask with the
+content box excluded from the full box. Push it R past every edge with radius 2R
+and its outer curve falls offscreen — the viewport corners stay square while the
+inner edge rounds to R − band. Band 3–10px, R 20–32px.
+```css
+.bezel { position: fixed; inset: calc(-1 * var(--R)); padding: calc(var(--band) + var(--R));
+  border-radius: calc(2 * var(--R)); background: var(--accent); pointer-events: none;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); mask-composite: exclude }
+```
+⚠ The band hides whatever passes under it — scrollbars, sticky headers, focus
+rings at the page edge. Inset those by the band.

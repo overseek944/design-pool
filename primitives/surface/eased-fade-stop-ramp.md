@@ -4,7 +4,7 @@ category: surface
 tags: [surface,gradient,fade,mask,precision]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -54,3 +54,16 @@ together instead of one outliving the other.
 ```
 ⚠ γ above ~4 crushes the change into a band short enough to read as the hard
 edge the curve was meant to remove. 2.5–3.5 is the useful range.
+
+Write the stops in relative colour and one ramp serves every ground:
+`oklch(from var(--ground) l c h / a)` takes lightness and chroma from whatever
+the section sets, so a fade authored once follows a theme flip or a tinted band
+with no second stop list. Put the angle in a property too and the four
+directions become overrides rather than copies.
+```css
+.fade { background: linear-gradient(var(--angle, 0deg), oklch(from var(--ground) l c h / 1),
+  oklch(from var(--ground) l c h / .89) 33%, oklch(from var(--ground) l c h / .44) 67%,
+  oklch(from var(--ground) l c h / 0)) }
+```
+⚠ Where relative colour is unsupported the whole declaration is dropped — put a
+literal two-stop gradient on the line above it as the fallback.

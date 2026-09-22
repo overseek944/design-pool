@@ -1,6 +1,6 @@
 # Manifest
 
-964 primitives. Format: `category/id | axes cost | tags | gist`
+965 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -773,6 +773,7 @@ surface/comb-ruled-section-seam | E1 D3 W2 F5 $1 | divider section texture rule 
 surface/concave-corner-seam | E1 D2 W2 F5 $2 | surface border detail chrome css-only | A raised element fuses into the sheet below it only where the jo
 surface/conic-sector-window | E2 D3 W3 F5 $2 | mask conic sector radial ring wedge hover media intersect | A ring index can open a window onto media shaped like the segmen
 surface/control-cleared-decoration-band | E1 D3 W2 F4 $2 | surface decoration contrast accessibility header | Artwork sharing a box with a control — a band behind a header, a
+surface/control-seated-edge-notch | E1 D2 W3 F4 $2 | clip-path shape notch card controls edge radius | Cut a rectangular bay out of a plate's edge, sized to a control 
 surface/coprime-modulus-cell-dither | E1 D4 W2 F4 $1 | pattern texture grid nth-child dots | A grid of real elements reads as machine-made when every variati
 surface/corner-tick-frame | E1 D2 W1 F5 $1 | surface border frame detail currentcolor precision | Four short L-marks at the corners instead of a closed border: th
 surface/dash-phase-flow | E2 D2 W1 F5 $1 | svg dash motion connector diagram precision | Animating stroke-dashoffset on a dashed connector makes a static

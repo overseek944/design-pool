@@ -4,7 +4,7 @@ category: surface
 tags: [surface,clip-path,edge,section,responsive,geometry]
 axes: {energy: 1, density: 2, weight: 3, finish: 4}
 cost: 2
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -109,3 +109,18 @@ viewport-scaled `clamp()` keeps the bite proportionate across widths. 40–120px
 ⚠ Whatever is inside has to clear the cut: pad the bitten corner by the step
 plus 8–16px, or a line of copy runs into the diagonal at exactly the width
 where the clamp is largest.
+
+`shape()` retires the arc generator. Its `curve to <point> with <control>` draws a
+quadratic fillet inline, so a chamfer with both knees rounded is one declaration
+reading two tokens — cut and radius — that resizes with the box. Gate it on
+`@supports (clip-path: shape(from 0 0, line to 1px 1px))` and keep the
+pixel-offset polygon as the fallback: same cut, sharp knees. Cut 60–280px,
+knee radius 8–16px.
+```css
+.plate { clip-path: shape(from 0 0, hline to calc(100% - var(--cut) - var(--r)),
+  curve to calc(100% - var(--cut) + var(--r)) var(--r) with calc(100% - var(--cut)) 0,
+  line to calc(100% - var(--r)) calc(var(--cut) - var(--r)),
+  curve to 100% calc(var(--cut) + var(--r)) with 100% var(--cut), vline to 100%, hline to 0, close) }
+```
+⚠ Offsets of ±r on both axes keep the fillet symmetric only at 45°; at any other
+slope scale the diagonal-side offsets by the slope or the knee reads lopsided.

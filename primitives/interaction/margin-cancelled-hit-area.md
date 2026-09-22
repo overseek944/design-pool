@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,touch,accessibility,hit-area,layout,correctness]
 axes: none
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -39,3 +39,14 @@ over has to reserve its width by hand or a long title runs under it.
 ⚠ Shed the growth from both offsets or the target drifts diagonally. Centre the
 glyph with `display: grid; place-items: center` rather than padding — padding
 sized for one box is wrong for the other.
+
+Where padding and margin are both spoken for, extend the target with a
+pseudo-element. An `::after` at a negative inset on a positioned control is
+hit-tested as the control itself, costs no layout, and leaves the painted box,
+its padding and its focus ring exactly where they were. Inset 4–10px.
+```css
+.hit { position: relative }
+.hit::after { content: ""; position: absolute; inset: -6px }
+```
+⚠ `overflow: hidden` or a `clip-path` on the control or any ancestor trims the
+extension back off without warning.

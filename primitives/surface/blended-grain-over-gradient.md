@@ -4,7 +4,7 @@ category: surface
 tags: [surface,texture,grain,gradient,blend-mode,banding]
 axes: {energy: 1, density: 3, weight: 3, finish: 4}
 cost: 1
-seen: 32
+seen: 33
 requires: []
 conflicts: []
 completes: []
@@ -209,3 +209,17 @@ vec2  p = sourcePos(i, t) + u_mix * .4 * g;   // perturb the source, not the res
 ⚠ One scalar offset displaces every source the same way, so the whole field
 swims rather than churns. Sample a second decorrelated value for the other axis
 the moment the drift starts reading as a pan.
+
+Put the noise in the mask channel instead of the paint and it dithers a layer's
+*fade*, not its colour. A tiled blue-noise PNG intersected with the fade gradient
+breaks up the long, shallow alpha ramps that band worst — a surface dissolving
+into a near-black page — and because it only removes alpha it can never tint or
+lift the ground the way a blended grain does. Blue noise rather than white: no
+clumps, so it reads as smoothness, not texture. Tile 128–512px.
+```css
+.surface::before { content: ""; position: absolute; inset: 0; background: var(--surface-bg);
+  mask: url(blue-noise.png) repeat, linear-gradient(#000, #0000) no-repeat;
+  mask-composite: intersect }
+```
+⚠ Resampling smooths the noise back into the ramp — ship the tile at its native
+size and never scale it with `mask-size`.
