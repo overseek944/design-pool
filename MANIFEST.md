@@ -1,6 +1,6 @@
 # Manifest
 
-1008 primitives. Format: `category/id | axes cost | tags | gist`
+1009 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -415,6 +415,7 @@ layout/viewport-height-bands | neutral  $1 | layout responsive media-query ornam
 layout/viewport-unit-role-split | neutral  $1 | layout viewport mobile responsive correctness | A phone has three viewport heights, and picking one for the whol
 layout/weighted-free-space-rows | neutral  $1 | layout grid responsive rhythm measurement | A block sized to the viewport has leftover height; fixed gaps po
 layout/width-budgeted-inline-remainder | neutral  $2 | layout responsive overflow navigation measurement observer correctness | A row of peers that must hold one line — filter chips, tool tabs
+layout/width-floored-placement-rows | E1 D3 W2 F4 $1 | layout grid responsive overlap placement rhythm | A composition placed freely on grid lines — blocks overlapping, 
 layout/width-resolved-ratio-overlap | E1 D3 W2 F5 $1 | layout overlap aspect-ratio responsive composition | A panel pulled up over a fixed-ratio media block loses its propo
 layout/writing-mode-flipped-edge-rail | E1 D2 W3 F3 $1 | layout chrome writing-mode responsive rail fixed logical-properties | One fixed chrome strip can run down the left edge on desktop and
 light/blend-doubled-headline | E2 D2 W4 F5 $3 | type blend legibility contrast compositing | Set the headline twice in one grid cell: an opaque copy under th
