@@ -1,6 +1,6 @@
 # Manifest
 
-940 primitives. Format: `category/id | axes cost | tags | gist`
+941 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -871,6 +871,7 @@ timing/state-named-delay-field | E2 D2 W2 F5 $2 | timing loading state stagger m
 timing/state-scoped-duration | E2 D2 W2 F5 $1 | motion timing transition state asymmetry | Put transition-duration on the state selector rather than the ba
 timing/step-held-cycle-schedule | E2 D2 W2 F3 $1 | motion keyframes loop sequence cycle | step-end on the shorthand turns a keyframe list into a discrete 
 timing/stepped-two-frame-blink | E2 D1 W2 F3 $1 | motion easing indicator status ambient | An indicator that fades reads as decoration; one that snaps betw
+timing/symmetry-stepped-lurch-spin | E3 D1 W2 F4 $1 | spinner loader rotation rhythm indicator brand-mark | A mark spun at constant speed reads as a free-wheeling cog. Turn
 timing/trapezoidal-visibility-envelope | neutral  $1 | motion timing loop architecture | Elements that appear, hold and leave on one shared timeline do n
 timing/unit-aware-token-read | neutral  $1 | tokens correctness motion build | Script reading duration tokens out of computed style must parse 
 type/axis-turned-spine-label | E1 D2 W2 F5 $1 | type label writing-mode collapse chrome accessibility | A panel collapsed to a sliver has no room for a horizontal name,
