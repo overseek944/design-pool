@@ -4,7 +4,7 @@ category: perf
 tags: [performance,navigation,prefetch,observer,architecture]
 axes: none
 cost: 2
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []

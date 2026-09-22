@@ -1,6 +1,6 @@
 # Manifest
 
-837 primitives. Format: `category/id | axes cost | tags | gist`
+839 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -463,6 +463,7 @@ motion-system/flag-collapsed-motion-wrapper | neutral  $1 | motion architecture 
 motion-system/flush-separated-transition-arming | neutral  $1 | motion correctness transition observer reveal | A one-shot reveal whose transitions are generated in script — de
 motion-system/gap-compensated-loop-distance | neutral  $1 | motion marquee correctness loop overflow | A duplicated track loops seamlessly only when it travels exactly
 motion-system/generation-guarded-sequence | neutral  $2 | animation architecture correctness cancellation sequence | A choreography written as a chain of awaits has no cancel. A rep
+motion-system/geometry-ordered-stagger | neutral  $2 | stagger entrance reveal measurement correctness layout | A stagger keyed on DOM index sweeps in source order, and source 
 motion-system/handed-off-prepaint-entrance | neutral  $3 | motion entrance hydration correctness progressive-enhancement | An entrance owned by a framework cannot begin until that framewo
 motion-system/hinged-leaf-value-swap | E3 D2 W3 F4 $2 | motion counter transition 3d accessibility | A value that changes by folding reads as mechanical rather than 
 motion-system/independent-transform-channels | neutral  $1 | transform transition architecture composition state | Two concerns wanting the same element — an entrance offset and a
@@ -819,6 +820,7 @@ type/resolution-stepped-type-scale | neutral  $1 | type tokens scale accessibili
 type/role-leading-ladder | E1 D2 W3 F5 $1 | type tokens scale rhythm precision | Leading is a function of role, not of size, and the ladder is st
 type/rule-ranked-aside-tier | E1 D2 W2 F5 $1 | type hierarchy register annotation cheap | A page that argues carries asides at several ranks, and sizing t
 type/serif-accent-in-technical-context | E1 D2 W3 F5 $1 | type contrast editorial restraint | One high-contrast serif, used sparingly against a geometric sans
+type/shadow-bled-inline-highlight | E2 D2 W3 F4 $1 | type highlight inline hover custom-property transition | A highlight that stops at the first and last glyph reads as a cl
 type/sourced-display-figure | neutral  $1 | type figures provenance correctness editorial accessibility | A number set at display size stops being prose and becomes a cla
 type/split-step-size-ramp | neutral  $1 | type scale tokens density hierarchy | One step function cannot serve a type scale's whole range. A rat
 type/state-dimmed-subordinate-tier | E1 D2 W2 F5 $1 | type hierarchy state accessibility contrast | Where several panels of a stepper are on screen at once and one 

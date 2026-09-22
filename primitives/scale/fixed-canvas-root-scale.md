@@ -4,7 +4,7 @@ category: scale
 tags: [scale,layout,proportion,transform,responsive]
 axes: {energy: 1, density: 2, weight: 3, finish: 4}
 cost: 2
-seen: 14
+seen: 15
 requires: []
 conflicts: []
 completes: []
@@ -144,3 +144,21 @@ alone, with the lettering as texture.
 ⚠ `aria-hidden` the whole figure and restate anything load-bearing in real
 markup beside it. Sub-pixel paddings and hairlines round inconsistently across
 engines at this scale — quantise the internal spacing to whole pixels.
+
+The absolute-coordinate case above has a third path, and it is the one that
+keeps stroke weights honest: remap rather than scale. Measure the composition's
+own extent once, rewrite each child's `left` and `width` as a percentage of it,
+and the arrangement goes fluid while hairlines, type and radii stay at their
+authored size — the opposite trade to `transform: scale()`, which holds
+proportion and destroys weight. Re-run it from a `ResizeObserver`.
+```js
+const ext = kids.reduce((m, k) => Math.max(m, k.left + k.width), 0)
+for (const k of kids) { k.el.style.left  = k.left  / ext * 100 + '%'
+                        k.el.style.width = k.width / ext * 100 + '%' }
+```
+⚠ Percentaging a *rotated* child shears it — its width runs along its own axis,
+not the container's. Decompose the angle out of the computed matrix, scale only
+the horizontal component of its end-to-end vector, then restore length with
+`hypot()` and angle with `atan2()`, or a diagonal rule thickens as the column
+narrows. Keep the originals: this writes inline styles over authored ones and
+has nothing to restore on teardown otherwise.

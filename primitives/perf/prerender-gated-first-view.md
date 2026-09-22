@@ -4,7 +4,7 @@ category: perf
 tags: [performance,correctness,analytics,navigation,prerender]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

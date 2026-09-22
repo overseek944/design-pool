@@ -4,7 +4,7 @@ category: surface
 tags: [surface,border,frame,detail,currentcolor,precision]
 axes: {energy: 1, density: 2, weight: 1, finish: 5}
 cost: 1
-seen: 14
+seen: 15
 requires: []
 conflicts: []
 completes: []
@@ -78,3 +78,19 @@ starts instead of persisting over the picture.
 ```
 ⚠ Nothing load-bearing may ride on marks that vanish: they cannot carry the
 focus ring, and they cannot be the drawn boundary of a hit area.
+
+Pull the four arms off the corners and into the middle and the mark changes
+job: a small bracket box centred on a much larger one reads as a viewfinder
+reticle sighting the content rather than a frame around it. What sells it is
+that it does *not* scale — state the box in px and hold it there while the tile
+reflows, so a grid of mixed-size cells carries one identically sized mark and
+the instrument reads as belonging to the viewer, not the picture. 20–36px.
+```css
+.reticle { position: absolute; top: 50%; left: 50%; width: 28px; aspect-ratio: 1;
+  translate: -50% -50%; pointer-events: none; background: var(--arms) }
+```
+⚠ Eight background layers, not four — the four-layer form draws one diagonal
+pair, which reads as a crop and not as a sight. Over photography or video
+`currentColor` stops being a contrast guarantee, so the mark needs its own light
+value. Centred on a tile it looks like a control: keep it `aria-hidden` and
+never let it be the hit area.
