@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,dialog,accessibility,inert,focus,correctness]
 axes: none
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,17 @@ held.forEach(el => el.inert = true)          // close: el.inert = false
 ⚠ `aria-modal="true"` over a live region tells a screen reader the boundary is
 somewhere it is not. Two at once have no coherent boundary — close the first.
 `inert` does not trap focus; here that is right.
+
+A dialog rendered into a portal at the end of `<body>` has almost no siblings,
+so inerting one level protects nothing — the header and the main column sit
+higher up. Walk from the portal node to `<body>`, inerting the siblings at each
+level, and record each element's prior `inert` value on the way.
+```js
+for (let n = portal; n.parentElement; n = n.parentElement) {
+  for (const el of n.parentElement.children)
+    if (el !== n) { held.push([el, el.inert]); el.inert = true }
+  if (n.parentElement === document.body) break }
+```
+⚠ Restore from the recorded pairs, never by setting `false` — something inert
+before the overlay opened must stay inert after it closes, and a second overlay
+opened over the first depends on it.

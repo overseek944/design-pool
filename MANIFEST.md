@@ -1,6 +1,6 @@
 # Manifest
 
-932 primitives. Format: `category/id | axes cost | tags | gist`
+935 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -680,6 +680,7 @@ scale/viewport-lerped-scalar | neutral  $1 | scale responsive custom-properties 
 scale/viewport-proportional-scale | E2 D2 W4 F4 $3 | unit typography layout responsive poster | Size type AND spacing in vw so the page scales as one proportion
 scale/zoom-as-reflowing-scale | neutral  $1 | unit scale architecture responsive correctness | zoom is the one scale that reflows. transform: scale() leaves th
 scroll/anchor-into-scrubbed-pin | neutral  $2 | scroll navigation anchor correctness pin | An in-page link into a scrubbed pin lands at the top of the pin 
+scroll/anchor-suspended-position-hold | neutral  $2 | scroll correctness layout-shift restore forms | Replacing a block in place — a form step, a filtered list — move
 scroll/append-stream-anchor-release | neutral  $1 | scroll correctness stream log architecture | Engines silently hold the reading position steady when content i
 scroll/aria-current-scrollspy-state | neutral  $1 | accessibility navigation scroll state architecture | A table of contents entry is a location, and the platform has a 
 scroll/beat-split-progress-channels | E3 D3 W2 F5 $2 | scroll scrub choreography custom-properties sequence architecture | A scrubbed multi-beat scene needs no state machine and no per-el
@@ -872,6 +873,7 @@ type/axis-turned-spine-label | E1 D2 W2 F5 $1 | type label writing-mode collapse
 type/balanced-headline-wrap | neutral  $1 | type polish | text-wrap: balance on every headline so line lengths even out in
 type/breakpoint-abbreviated-label | neutral  $1 | type accessibility responsive navigation correctness | A nav item or a column head that shortens at a narrow width — Re
 type/breakpoint-swapped-family-roles | E1 D2 W3 F5 $1 | type responsive breakpoint tokens pairing serif | Which of two faces can carry display size is a function of rende
+type/cap-height-only-leading | E2 D4 W4 F4 $1 | type leading uppercase display density | A line of all-caps uses almost none of its line box — no descend
 type/cap-height-trim | neutral  $1 | type spacing precision alignment | Every text block ships with invisible half-leading above and bel
 type/char-count-stepped-reveal | E3 D1 W2 F4 $1 | type motion css-only custom-properties keyframes | A per-character reveal is one number. Publish the character coun
 type/character-grid-as-texture | E3 D5 W2 F3 $2 | type texture ornament ascii | A field of monospace glyphs (+ x X 8 0 @ # % $) on a grid, used 
@@ -905,6 +907,7 @@ type/optical-width-text-fit | E1 D2 W4 F5 $3 | type fit measurement display resp
 type/origin-flipped-wipe-underline | E3 D1 W2 F5 $1 | underline link hover transform-origin wipe cheap | A scaleX underline that grows from one end and shrinks back to i
 type/padded-ordinal-counter | E1 D2 W2 F4 $1 | type list counter detail technical | 01 02 … 09 10 numbering without hand-written zeros and without t
 type/parenthesised-negative-column | E1 D3 W2 F5 $1 | numerals data alignment accessibility detail | In a right-aligned column of signed figures a leading minus is t
+type/range-painted-text-mark | E1 D2 W3 F5 $3 | type highlight selection geometry overlay | ::selection and a span background both paint whatever the line b
 type/render-scale-countered-label | E1 D2 W1 F5 $1 | type svg diagram label responsive legibility | Text inside a viewBox scales with the figure, so one diagram pla
 type/resolution-stepped-type-scale | neutral  $1 | type tokens scale accessibility legibility correctness | A size that reads cleanly on a 2x panel is muddy on a 1x one: th
 type/role-leading-ladder | E1 D2 W3 F5 $1 | type tokens scale rhythm precision | Leading is a function of role, not of size, and the ladder is st

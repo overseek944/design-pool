@@ -4,7 +4,7 @@ category: type
 tags: [type,tokens,opentype,variable-font,precision]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 20
+seen: 21
 requires: []
 conflicts: []
 completes: []
@@ -79,3 +79,17 @@ inherit and ignore.
 ⚠ A subset request only ships the axes it names. Omit one from the URL and the
 declaration is silently valid and does nothing — the page renders at the axis
 default and the difference is invisible in review, visible in print-out.
+
+The axis pays in the other direction for the same reason. Uppercase display set
+at 60–80% width fits a long line at a size that would otherwise have to shrink,
+and the strokes keep the weight they were drawn with rather than being thinned
+by a lighter cut. Declare `font-stretch` and the `wdth` setting together — one
+axis, but static fallbacks and older engines read only the former — and expose
+the number as a single token so the whole display tier retunes at once.
+```css
+:root    { --w-display: 62 }
+.display { font-stretch: calc(var(--w-display) * 1%);
+           font-variation-settings: "wdth" var(--w-display) }
+```
+⚠ Below ~70% the counters close up and the face stops surviving small sizes.
+Keep the condensed instance on display roles and leave body text at 100%.

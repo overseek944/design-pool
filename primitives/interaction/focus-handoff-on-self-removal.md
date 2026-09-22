@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,focus,correctness,form,state]
 axes: none
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -37,4 +37,15 @@ default scroll-into-view jumps a page that was already in the right place.
 const had = document.activeElement === outgoing
 setInert(outgoing); enable(incoming)
 if (had) incoming.focus({ preventScroll: true })
+```
+
+A restore that is deferred at all has to re-check its target. An overlay that
+remembers `document.activeElement` on open and focuses it again on close holds a
+reference that may have been unmounted while the overlay was up — a row behind
+it re-rendered, a step replaced. Test `isConnected` and fall back to the control
+that opened it; focusing a detached node drops the keyboard on `<body>` with no
+error to notice.
+```js
+const back = saved?.isConnected && saved !== document.body ? saved : trigger
+back?.focus()
 ```
