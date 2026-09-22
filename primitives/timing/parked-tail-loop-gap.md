@@ -4,7 +4,7 @@ category: timing
 tags: [motion,timing,rhythm,detail]
 axes: {energy: 3, density: 1, weight: 2, finish: 4}
 cost: 1
-seen: 13
+seen: 14
 requires: []
 conflicts: []
 completes: []
@@ -87,3 +87,14 @@ of the period at the authored still. Period 4–6s.
 ⚠ One period means one visible restart: every part snaps together at the wrap,
 so each keyframe must end on the frame it starts from or the whole panel jumps
 at once.
+
+The same parked rest drives a staggered sibling wave — a three-dot pending
+indicator — with no script: one keyframe that moves only in its first 25–35%
+and holds rest from there to `to`, each dot delayed 0.15–0.25s. The rest window
+must be longer than the total stagger span, or the last dot is still rising
+when the first starts again and the wave smears into a shimmer. Lift 2–4px,
+opacity .4 → 1; period 1.2–1.6s.
+```css
+@keyframes dot { 0%, 60%, to { opacity: .4; translate: 0 } 30% { opacity: 1; translate: 0 -2px } }
+.dot:nth-child(2) { animation-delay: .2s } .dot:nth-child(3) { animation-delay: .4s }
+```

@@ -1,6 +1,6 @@
 # Manifest
 
-952 primitives. Format: `category/id | axes cost | tags | gist`
+954 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -509,6 +509,7 @@ motion-system/below-fold-armed-entrance | neutral  $1 | motion correctness progr
 motion-system/camera-over-static-scene | E3 D2 W3 F5 $2 | motion transform scale focus diagram narrative | To walk a reader through a diagram, move the viewport rather tha
 motion-system/cardinality-locked-variant-set | E3 D3 W2 F5 $3 | motion svg morph state diagram architecture | A set of marks that switches state — a diagram's shapes, a chart
 motion-system/context-scoped-cleanup | neutral  $1 | motion lifecycle correctness | Create every animation inside a scoped context and revert it on 
+motion-system/counter-drifting-echo-glyph | E3 D1 W2 F4 $1 | motion icon loop trail idle | A directional glyph idling on a small nudge reads as twitching. 
 motion-system/counter-scaled-camera-overlay | neutral  $1 | camera transform overlay cursor correctness | Anything drawn for the reader over a zooming scene — a synthetic
 motion-system/coverage-field-threshold-wave | E3 D4 W2 F4 $2 | field grid threshold cells shimmer generative | A field of cells carrying a coverage value — how much of some fo
 motion-system/deadline-bounded-animated-close | neutral  $1 | motion correctness state architecture | A state change that waits on an animation never happens when the
@@ -840,6 +841,7 @@ surface/tiled-dash-border | E1 D2 W1 F4 $2 | surface border dash precision textu
 surface/tiled-shape-edge-mask | E2 D3 W2 F3 $2 | surface mask edge ornament texture section | Cut a section boundary with a shape rather than a straight line:
 surface/twinned-elevation-tokens | E1 D2 W2 F5 $1 | shadow elevation tokens hover card | box-shadow interpolates only when both lists carry the same numb
 surface/user-space-ruling-path | E1 D3 W1 F5 $1 | surface svg texture blueprint diagram cheap | Rule a drawing inside its own viewBox, not behind it. A single <
+timing/additive-hover-surge-loop | E3 D2 W2 F5 $1 | motion timing loop hover css | Changing a running loop's animation-duration on hover re-derives
 timing/animation-clock-derived-state | neutral  $1 | timing animation correctness architecture state synchronisation | A loop that is half CSS and half class — a stroke drawing while 
 timing/asymmetric-enter-exit-delay | E3 D2 W2 F5 $1 | motion sequencing state transition | A staggered group should cascade in and collapse out together. C
 timing/bounce-parametrised-spring | E3 D2 W2 F5 $1 | motion spring rhythm sequencing | Stiffness, mass and damping are three coupled dials, none of whi

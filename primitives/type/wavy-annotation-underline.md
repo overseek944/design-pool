@@ -4,7 +4,7 @@ category: type
 tags: [type,underline,link,detail,informal]
 axes: {energy: 2, density: 2, weight: 2, finish: 2}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
