@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,performance,depth,particles,batching,quantise]
 axes: none
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -53,3 +53,18 @@ pass(false); drawCore(); pass(true)
 ⚠ Only correct for one occluder: two at different depths need three passes and
 the count keeps climbing. Marks that straddle the divide — a long trail, a wide
 sprite — pick one side per mark and pop as they cross it.
+
+The single-occluder split can be a scalar rather than a plane. Where one moving
+participant passes a set of fixed pieces, derive *how far behind* it is from its
+distance to them, ease that 0→1, and let the one number choose the pass it draws
+in and carry a dim at the same time. It steps back into the scene and forward
+out of it instead of snapping between two layers, and the threshold that flips
+the order sits where the dim is already deepest, so the swap is not visible.
+Dim 0.3–0.5 at full depth, approach eased over 0.4–0.6s.
+```js
+lane += Math.sign(near - lane) * Math.min(dt / EASE, Math.abs(near - lane))
+ctx.globalAlpha = 1 - DIM * lane                 // same scalar, both jobs
+lane > .05 ? (drawActor(), drawSet()) : (drawSet(), drawActor())
+```
+⚠ The order flips at one value while the alpha is continuous — put the flip
+where the dim is deepest, not at 0.5, or the pop lands in plain sight.

@@ -4,7 +4,7 @@ category: type
 tags: [type,texture,ornament,ascii]
 axes: {energy: 3, density: 5, weight: 2, finish: 3}
 cost: 2
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -88,3 +88,17 @@ the served markup stays one line per row.
 glyph figure can be lifted into a search result ahead of the real copy.
 `aria-hidden` stops a screen reader, not a crawler — `data-nosnippet` on the
 wrapper does.
+
+Once the field is coloured *and* animated, the cost is node count, not glyph
+count: a span per cell is tens of thousands of nodes rebuilt every frame. Emit
+one span per colour *run* instead — walk the row, hold the current index, and
+close the span only where it changes. A field of a few thousand cells collapses
+to a few dozen nodes a row, because a field with any structure at all is mostly
+runs. Build the row as one string and assign `innerHTML` once per frame.
+```js
+if (c !== cur) { line += cur < 0 ? run : `<span style="color:${PAL[cur]}">${run}</span>`
+  run = ''; cur = c }
+run += ch
+```
+⚠ Interpolating a palette entry into markup is a string written into `innerHTML`
+every frame — index a fixed array, never anything a reader can reach.

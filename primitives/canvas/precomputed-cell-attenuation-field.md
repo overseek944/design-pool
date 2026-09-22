@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,legibility,performance,ambient,contrast,generative]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -73,3 +73,17 @@ roughly elliptical. Clear out to 30–40% of the box, fully opaque by 70–80%.
 ```
 ⚠ The mask crops what it fades, so anything the field is meant to bleed past —
 a glow, a rule running to the edge — has to live outside the masked element.
+
+Whichever envelope is used, clamp it to a *floor* rather than to zero. A ramp
+that reaches 0 behind the copy removes the field from exactly the region the eye
+spends longest in, so the panel reads as a rectangle of texture with a hole cut
+in it. Hold 0.15–0.25 of full strength there and the field reads as attenuated
+instead of absent, which is the whole point of paying for a soft envelope. Bend
+the approach with a power of 1.4–1.8 so the recovery happens away from the text
+rather than immediately past it.
+```js
+const u = (x - edge) / RAMP                                  // RAMP 80–150px
+const k = FLOOR + (1 - FLOOR) * Math.min(1, Math.max(0, u)) ** 1.6
+```
+⚠ The floor is a contrast decision, not a taste one — it sets the worst ground
+the copy ever sits on, so pick it against the text colour and check it there.

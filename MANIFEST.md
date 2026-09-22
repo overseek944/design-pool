@@ -1,6 +1,6 @@
 # Manifest
 
-832 primitives. Format: `category/id | axes cost | tags | gist`
+836 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -45,6 +45,7 @@ canvas/glyph-ramp-image-field | E2 D4 W2 F3 $4 | canvas type texture image ambie
 canvas/gravity-arced-tumbling-burst | E5 D3 W2 F3 $2 | canvas particles burst physics motion | Marks scattered from a direction and a speed read as a detonatio
 canvas/ground-skirted-profile-stack | E1 D4 W1 F5 $2 | canvas occlusion depth field generative line-art | A stack of profiles sampled across a heightfield reads as a flat
 canvas/half-pixel-hairline-grid | E1 D2 W1 F5 $1 | canvas hairline correctness diagram pixel-ratio performance | A one-pixel canvas line drawn on an integer coordinate straddles
+canvas/hard-pixel-render-target | E2 D2 W3 F2 $3 | canvas pixel raster resolution render-target performance | A scene drawn at display resolution has both cost and crispness 
 canvas/harmonic-feedback-uv-warp | E2 D3 W2 F5 $2 | shader generative texture field webgl noise | Adding one displacement to a coordinate bends a field; feeding t
 canvas/hash-dither-before-quantise | E1 D3 W2 F4 $2 | canvas color ramp noise grain banding generative | Snapping a continuous value onto a short palette — eight to twel
 canvas/hash-tuned-effect-constants | neutral  $1 | canvas generative authoring debug parameters | Every generative effect carries a dozen constants — curl, dissip
@@ -99,6 +100,7 @@ canvas/stateless-phase-pair-field | neutral  $3 | canvas architecture morph scru
 canvas/svg-userspace-pointer-mapping | neutral  $1 | svg pointer correctness interaction geometry | An SVG with a viewBox is drawn in its own coordinate system, and
 canvas/swapped-target-pass-chain | neutral  $3 | canvas shader webgl architecture correctness | One long fragment shader cannot be reordered, disabled or tuned 
 canvas/tilted-heightfield-mark-sheet | E2 D3 W1 F4 $3 | canvas 3d projection field depth scenery | Deep scenery on a 2D context needs no renderer: sample a summed-
+canvas/two-bone-reach-pose | E3 D2 W2 F4 $3 | canvas figure rig articulation procedural geometry | A limb posed by writing its angles needs a hand-tuned number per
 canvas/unit-box-asset-framing | neutral  $2 | canvas correctness scale geometry architecture | A loaded 3D asset arrives at whatever scale and origin its expor
 canvas/uv-reconstructed-sphere-normal | E2 D1 W3 F5 $2 | shader canvas light geometry generative | A lit sphere in a fragment shader needs no geometry, no normal b
 canvas/velocity-paired-field-step | E3 D2 W2 F5 $3 | canvas simulation shader texture solver generative | A field stepped by diffusion spreads and dies. One that should t
@@ -324,6 +326,7 @@ layout/sibling-deferred-block-spacing | neutral  $1 | layout has spacing rhythm 
 layout/single-edge-cell-rules | E1 D3 W1 F5 $1 | layout grid hairline rules precision | In a ruled grid every interior line is drawn by both neighbours 
 layout/slack-funded-control-expansion | E2 D2 W2 F5 $1 | layout flex toolbar disclosure controls restraint | A secondary control in a fixed bar — volume, a filter, a search 
 layout/slot-attribute-child-contract | neutral  $1 | layout architecture composition naming css-only | Let the arrangement own its children's boxes. A part publishes o
+layout/split-persistence-header-row | E1 D1 W2 F4 $1 | layout header navigation positioning chrome | The two halves of a header row need not share a position. Give t
 layout/stacking-register | neutral  $1 | architecture z-index tokens correctness overlay | One file owns every stacking value in the product as named token
 layout/stateful-chrome-inset-contract | neutral  $2 | layout chrome tokens custom-property architecture overlay correctness | Fixed chrome should publish the space it takes as root custom pr
 layout/sticky-underlay-reveal | E2 D1 W3 F4 $1 | layout scroll sticky depth css-only section | Invert the usual arrival: a panel placed after the content and s
@@ -762,6 +765,7 @@ timing/percent-of-master-duration | E2 D3 W2 F5 $2 | timing choreography keyfram
 timing/phase-offset-as-sequence | E3 D2 W2 F4 $1 | motion sequencing rhythm ambient css | Same period, different phase. Give every looping indicator in a 
 timing/press-origin-radial-stagger | E4 D3 W2 F4 $2 | stagger interaction radial delay field hypot | A field of cells that answers to being pressed should propagate 
 timing/production-timing-vocabulary | E2 D2 W2 F5 $1 | motion easing duration reference system | A coherent set beats a clever one. Durations cluster tightly and
+timing/quantised-scene-clock | E2 D1 W2 F2 $1 | timing stepped loop motion performance | Throttling a render loop lowers its cost and leaves the motion c
 timing/rate-integrated-phase-clock | neutral  $1 | motion timing correctness loop | A loop whose speed is a variable — tied to scroll position, a ho
 timing/role-offset-cascade | E3 D2 W2 F5 $1 | timing motion sequencing choreography tokens | Split a cascade into two independent halves: the group's entry t
 timing/sampled-point-spring-easing | E3 D1 W2 F5 $1 | timing easing token css-animation overshoot performance | linear() takes a list of sampled outputs, so a spring solved onc

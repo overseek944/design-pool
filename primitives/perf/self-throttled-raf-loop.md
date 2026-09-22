@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,canvas,battery,frame-budget,correctness]
 axes: none
 cost: 1
-seen: 23
+seen: 24
 requires: []
 conflicts: []
 completes: []
@@ -204,3 +204,16 @@ if (t - sampled > 32) { sampled = t; hist.shift(); hist.push(level) }
 ⚠ Gate on the timestamp, not a frame counter — the counter is the thing that
 differs between panels. 25–40ms per sample; slower and the history steps
 visibly instead of flowing.
+
+A loop started for an element the page does not own — a field inside a framework
+subtree, a widget mounted by a script that offers no teardown hook — has nowhere
+to hang the cancel the ⚠ above demands. Test `document.contains` at the top of
+the frame and return *without* re-requesting: the loop dies with its element,
+one branch, no unmount callback and no registry of live handles to keep.
+```js
+const step = t => { if (!document.contains(el)) return      // no re-request
+  raf = requestAnimationFrame(step); if (t - last < 1000 / FPS) return
+  last = t; draw(t) }
+```
+⚠ Only catches removal, not concealment — an element moved into a hidden
+subtree is still contained and still costs. Pair it with the visibility gate.

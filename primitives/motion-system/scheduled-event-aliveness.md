@@ -4,7 +4,7 @@ category: motion-system
 tags: [idle,loop,character,randomness,raf,ambient]
 axes: {energy: 3, density: 2, weight: 2, finish: 4}
 cost: 3
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -65,3 +65,17 @@ y = y0 + Math.cos(t * 0.00023 + py) * ay    // equal rates would draw a circle
 ⚠ Write `translate`, not `left`/`top` — the latter lays out the page every
 frame, and at this blur radius the element is already a viewport-sized
 composited buffer. Gate the loop on visibility and drop it under `reduce`.
+
+Where the next state is a point in a *continuous* range rather than a member of
+a pool, the recent-ring has no analogue — but rejection sampling does. Redraw
+the target until it is at least a minimum fraction of the range from where the
+thing already is, and every move is a journey. Without the test roughly half of
+a uniform draw lands near the current position, so the loop spends its time
+twitching and the few real relocations read as accidents. Floor 0.2–0.35 of the
+range; above 0.5 the thing only ever crosses the middle and that is its own
+pattern.
+```js
+do { aim = lo + Math.random() * (hi - lo) } while (Math.abs(aim - cur) < MIN)
+```
+⚠ Guaranteed to terminate only while `MIN` is under half the range — past that
+the admissible set empties near the ends and the loop spins.

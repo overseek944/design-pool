@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,motion,morph,points,trail,cheap]
 axes: {energy: 4, density: 3, weight: 2, finish: 5}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -41,3 +41,19 @@ for (let i = 0; i < N; i++) { const f = i / N, p = at(t - i * DT)
 ⚠ Cost is `n` path evaluations per mark per frame — cheap for a closed-form
 path, ruinous for one that integrates. Skip segments once the alpha rounds
 under about 0.015 rather than stroking them invisibly.
+
+On a *closed* path the trail needs no second evaluation at all. Draw the whole
+curve every frame, keep a head as a wrapped phase, and let each sample's
+brightness be an exponential in how far behind the head it sits — the trail is
+an intensity ramp along geometry that was going to be drawn anyway. It costs one
+subtraction per sample, it wraps through the seam with nothing to special-case,
+and the head speed is a phase rate rather than a distance, so the mark keeps its
+cadence however the curve is scaled. Falloff 15–40; below 10 the whole loop
+glows and the head stops reading as a head.
+```js
+const d = ((s - head) % 1 + 1) % 1               // s, head both 0–1
+const v = base + Math.exp(-d * FALLOFF) * gain
+```
+⚠ Phase distance is not arc length: on a curve with uneven speed the tail is
+longer where the parametrisation is sparse. Resample to arc length first if the
+tail must be a fixed length rather than a fixed fraction of the loop.
