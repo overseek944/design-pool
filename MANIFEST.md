@@ -1,6 +1,6 @@
 # Manifest
 
-955 primitives. Format: `category/id | axes cost | tags | gist`
+956 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -55,6 +55,7 @@ canvas/hex-partitioned-cube-field | E2 D3 W1 F5 $2 | canvas lattice isometric ge
 canvas/highlight-weighted-bokeh | E1 D2 W3 F5 $3 | canvas shader webgl blur light texture | A box or gaussian blur averages a bright point away. Weight ever
 canvas/home-sprung-particle-medium | E2 D3 W2 F5 $3 | canvas field pointer motion generative | A field of marks positioned from the pointer each frame travels 
 canvas/import-time-material-reauthor | neutral  $2 | canvas material import architecture correctness scene | An imported model arrives wearing whatever its exporter wrote — 
+canvas/index-grid-vertex-line-family | E2 D4 W1 F5 $3 | canvas shader webgl lines noise field performance | Hundreds of noise-displaced lines need no CPU geometry. Upload o
 canvas/irrational-stride-variation | neutral  $1 | canvas generative field deterministic correctness scatter | Math.random() for per-index variation costs a stored array, a di
 canvas/lattice-quantised-mark-draw | E2 D3 W2 F4 $2 | canvas particles grid lattice generative texture | A particle field drawn at its simulated position floats over the
 canvas/lifetime-enveloped-mark-respawn | E2 D3 W1 F5 $1 | canvas field particles motion generative recycling | A fixed pool of marks recycled on exhaustion makes birth and dea

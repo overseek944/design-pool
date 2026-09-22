@@ -4,7 +4,7 @@ category: canvas
 tags: [shader,interaction,feel]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -53,3 +53,14 @@ target.set(on ? nx(e) : 0, on ? ny(e) : 0)
 ⚠ This replaces `pointerleave`, not the blur/visibility clear above — a tab
 switch stops producing events entirely, so the last sample stands and a surface
 left mid-pose stays there.
+
+One lerp rate for both directions makes arrival and departure the same gesture.
+Split it: engage fast, release at roughly half that rate, so the field answers
+the pointer promptly but lingers as it leaves. Scale any push by smoothed pointer
+speed as well as proximity — a still cursor then only swells the field, a moving
+one shoves it. Engage 0.06–0.12/frame, release 0.03–0.05, speed normalised
+against 6–10px/frame and floored at half strength.
+```js
+act += ((inside ? 1 : 0) - act) * (inside > act ? .08 : .035)
+```
+⚠ Rates per frame drift with refresh rate — scale by `dt` on 120Hz displays.

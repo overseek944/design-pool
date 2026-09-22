@@ -4,7 +4,7 @@ category: media
 tags: [video,codec,transparency,feature-detection,correctness,media]
 axes: none
 cost: 3
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
