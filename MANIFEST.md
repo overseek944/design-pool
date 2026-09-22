@@ -1,6 +1,6 @@
 # Manifest
 
-1033 primitives. Format: `category/id | axes cost | tags | gist`
+1034 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -402,6 +402,7 @@ layout/self-drawing-grid-debug | neutral  $2 | layout grid tooling debug archite
 layout/shape-clipped-foreign-label | neutral  $2 | svg text diagram figure truncation correctness | <text> has no wrapping, ellipsis or tooltip, so diagram labels g
 layout/shared-percent-coordinate-space | E1 D3 W1 F5 $2 | diagram svg schematic accessibility responsive | A node diagram wants SVG lines and real DOM nodes: strokes that 
 layout/sibling-deferred-block-spacing | neutral  $1 | layout has spacing rhythm css-only correctness architecture | A markdown or CMS renderer emits a figure and its caption as fla
+layout/sign-alternated-resting-tilt | E2 D2 W2 F2 $1 | layout tilt rotate cards informal collage | Floating cards set dead square read as a grid; a small resting t
 layout/single-edge-cell-rules | E1 D3 W1 F5 $1 | layout grid hairline rules precision | In a ruled grid every interior line is drawn by both neighbours 
 layout/slack-funded-control-expansion | E2 D2 W2 F5 $1 | layout flex toolbar disclosure controls restraint | A secondary control in a fixed bar — volume, a filter, a search 
 layout/slot-attribute-child-contract | neutral  $1 | layout architecture composition naming css-only | Let the arrangement own its children's boxes. A part publishes o

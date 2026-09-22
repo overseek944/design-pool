@@ -4,7 +4,7 @@ category: surface
 tags: [surface,depth,border,detail,editorial]
 axes: {energy: 1, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -76,3 +76,12 @@ clones it costs less to loop a gradient.
 ```
 ⚠ The clones paint outside the element's box and no layout accounts for them —
 pad the parent by the deepest offset or the bottom rule is clipped.
+
+The extruded form needs no second offset on a filled pill: one zero-blur layer
+straight down, painted from a darker step of the *fill's own* hue rather than
+black, reads as the control's thickness. Publish that step as its own token
+beside the fill so every variant carries a matched ledge. 2–4px; a pressed or
+active state halves it and translates the face by the difference.
+```css
+.btn { background: hsl(var(--fill)); box-shadow: 0 3px 0 hsl(var(--fill-ledge)) }
+```

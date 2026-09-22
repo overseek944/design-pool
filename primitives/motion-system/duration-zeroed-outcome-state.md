@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,architecture,correctness,scene,reduced-motion]
 axes: none
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -47,3 +47,10 @@ const play = (el, kf, o) => reduce || !el.animate
   ? (Object.assign(el.style, kf.at(-1)), null) : el.animate(kf, { fill: 'forwards', ...o })
 ```
 ⚠ Callers chaining `.onfinish` must null-check the return, or the branch throws.
+
+A loop that *crosses* the stage has no usable end: its first and last keyframes
+sit off the edge, so zeroing resolves it to nothing. Under `reduce`, drop the
+animation and set the transform to an elected in-frame pose — 30–50% of the path.
+```css
+@media (prefers-reduced-motion: reduce) { .traveller { animation: none; translate: 38% } }
+```

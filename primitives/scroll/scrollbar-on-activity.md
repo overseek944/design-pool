@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,scrollbar,chrome,restraint,state]
 axes: {energy: 1, density: 1, weight: 1, finish: 5}
 cost: 1
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -80,3 +80,7 @@ Ramp over 40–160px of travel.
 ⚠ This reports *depth*, not activity: a reader who scrolls the pane back to the
 top loses the thumb mid-gesture. Floor it at 0.2–0.3 rather than 0 wherever the
 pane is the page's only scroller.
+
+Where no script is wanted, reveal on `:hover` of the scroller instead of on
+scroll: thumb transparent at rest, 18–25% ink under the pointer.
+⚠ Touch and keyboard users never hover — the thumb never shows for them.
