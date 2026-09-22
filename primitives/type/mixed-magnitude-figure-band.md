@@ -4,7 +4,7 @@ category: type
 tags: [numerals,metric,alignment,layout,data]
 axes: {energy: 1, density: 3, weight: 4, finish: 5}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -36,3 +36,18 @@ lowercase at the full size overwhelms them.
 figure slot with a caption written loosely reads as a headline that wandered
 into a stat band; keep all captions to the same grammar and length, and never
 let the phrase cell be the first one.
+
+Where the claim is a ratio rather than a count, the figure is one glyph. A
+precomposed vulgar fraction — ½ ¼ ⅓ ¾ — sits on the baseline like any other
+cell, aligns under `flex-end` with no stacking, and needs neither
+`font-variant-numeric: diagonal-fractions` nor a two-element numerator rig that
+breaks the moment the caption wraps. It also reads as *proportion* where "50%"
+reads as a measurement, which is usually the sharper claim. 4–8rem, tracking
+pulled to −.05/−.07em.
+```html
+<span class="figure">½</span><p>the lead time</p>
+```
+⚠ Only a display face with a real diagonal form survives the size. A text
+serif's fraction is drawn for 12pt and enlarges into a superscript pair with a
+hairline bar — check the glyph at the rendered size, and keep the fallback
+stack to faces that have one.

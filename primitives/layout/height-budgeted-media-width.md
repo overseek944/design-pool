@@ -4,7 +4,7 @@ category: layout
 tags: [layout,container-query,aspect,fit,cls]
 axes: none
 cost: 2
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -66,3 +66,19 @@ has already surrendered. Ratio 1.6–2.0 for a two-line block; measure it once.
 third line overruns the budget with no warning. Floor the clamp above the point
 where the display size drops under the body size, or the hierarchy inverts on a
 landscape phone.
+
+A ratio is not always the relation wanted. Where the budget is a judgement —
+"at 1000px tall this figure should be 1040 wide, at 700px it should be 880" —
+fit a line through the two anchors instead and write it straight into the
+length: `max()` supplies the floor, `min(100%, …)` the ceiling, and the slope
+is the one term nobody has to reason about again. It needs no container, no
+breakpoint and no measurement, and it is legible as two design decisions rather
+than as a coefficient.
+```css
+/* (700svh→880px, 1000svh→1040px) → slope .533, intercept −5.33rem */
+.figure { max-inline-size: min(100%, max(880px, 53.3svh - 5.33rem)) }
+```
+⚠ Leave the two anchor pairs in a comment. The coefficients are unreadable and
+the next edit is otherwise an algebra problem — and `svh` under a tall phone
+chrome resolves to a height no desktop anchor was fitted against, so gate the
+whole rule behind a pointer-and-keyboard width.

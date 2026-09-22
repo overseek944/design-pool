@@ -4,7 +4,7 @@ category: timing
 tags: [motion,timing,loop,architecture]
 axes: none
 cost: 1
-seen: 15
+seen: 16
 requires: []
 conflicts: []
 completes: []
@@ -100,3 +100,19 @@ el.style.opacity = Math.max(.002, env(t, a, b)).toFixed(3)
 ⚠ Only for decorative layers. Anything interactive left at a non-zero opacity is
 still hit-testable and still in the tab order — that case needs `visibility` or
 `inert`, not a floor.
+
+Where the participants are authored markup rather than a generated set, the
+window belongs *on the element*, not in a table beside the driver. Each node
+carries its own start and end as data attributes; the loop queries them once,
+reads the same clock, and derives each local 0–1 itself. The driver then names
+no participant and is reusable as-is — adding a beat is adding markup, and the
+schedule is reviewable in the same file as the thing it times.
+```html
+<g data-flow data-start="2100" data-end="4300">…</g>
+```
+```js
+const p = Math.max(0, Math.min(1, (t - +el.dataset.start) /
+                                  (+el.dataset.end - +el.dataset.start)))
+```
+⚠ Read the attributes once into the flow list — a `dataset` access per element
+per frame is a string parse in the hot loop.

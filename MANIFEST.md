@@ -1,6 +1,6 @@
 # Manifest
 
-843 primitives. Format: `category/id | axes cost | tags | gist`
+844 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -825,6 +825,7 @@ type/role-leading-ladder | E1 D2 W3 F5 $1 | type tokens scale rhythm precision |
 type/rule-ranked-aside-tier | E1 D2 W2 F5 $1 | type hierarchy register annotation cheap | A page that argues carries asides at several ranks, and sizing t
 type/serif-accent-in-technical-context | E1 D2 W3 F5 $1 | type contrast editorial restraint | One high-contrast serif, used sparingly against a geometric sans
 type/shadow-bled-inline-highlight | E2 D2 W3 F4 $1 | type highlight inline hover custom-property transition | A highlight that stops at the first and last glyph reads as a cl
+type/single-codepoint-face-overlay | E1 D1 W2 F5 $2 | type webfont unicode-range glyph detail brand | A licensed face is almost right and one glyph is wrong — an unsl
 type/sourced-display-figure | neutral  $1 | type figures provenance correctness editorial accessibility | A number set at display size stops being prose and becomes a cla
 type/split-step-size-ramp | neutral  $1 | type scale tokens density hierarchy | One step function cannot serve a type scale's whole range. A rat
 type/state-dimmed-subordinate-tier | E1 D2 W2 F5 $1 | type hierarchy state accessibility contrast | Where several panels of a stepper are on screen at once and one 
