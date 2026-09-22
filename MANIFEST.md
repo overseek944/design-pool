@@ -1,6 +1,6 @@
 # Manifest
 
-954 primitives. Format: `category/id | axes cost | tags | gist`
+955 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -699,6 +699,7 @@ scroll/append-stream-anchor-release | neutral  $1 | scroll correctness stream lo
 scroll/aria-current-scrollspy-state | neutral  $1 | accessibility navigation scroll state architecture | A table of contents entry is a location, and the platform has a 
 scroll/beat-split-progress-channels | E3 D3 W2 F5 $2 | scroll scrub choreography custom-properties sequence architecture | A scrubbed multi-beat scene needs no state machine and no per-el
 scroll/collapsed-observer-band | neutral  $1 | scroll observer navigation architecture correctness | Squeeze an observer's root to a single horizontal line and "whic
+scroll/copy-deferred-ground-inversion | E2 D1 W4 F5 $2 | scroll pin scrub ground inversion contrast color | A pinned section can invert its own ground under the reader — mi
 scroll/crop-panned-backdrop-scrub | E2 D1 W3 F4 $2 | scroll parallax media scrub surface performance | Scrub a backdrop's background-position instead of translating it
 scroll/css-owned-pin-geometry | neutral  $2 | scroll pin architecture correctness responsive | Let the stylesheet decide whether a section pins and for how lon
 scroll/direction-settled-pin-crossing | neutral  $2 | scroll pin scrub snap settle correctness | A pinned section crossing between two states has two legible res
