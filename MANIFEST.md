@@ -1,6 +1,6 @@
 # Manifest
 
-839 primitives. Format: `category/id | axes cost | tags | gist`
+842 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -229,6 +229,7 @@ interaction/sample-partitioned-hit-columns | E2 D3 W2 F5 $1 | interaction hover 
 interaction/seated-action-plate | E1 D2 W4 F5 $1 | button icon radius inversion contrast cta | A filled control can carry its trailing icon on a surface of its
 interaction/shadow-scoped-label-patch | neutral  $2 | accessibility third-party shadow-dom correctness observer lifecycle | A vendor launcher — chat, feedback, consent — mounts a bare <but
 interaction/single-panel-tabset | neutral  $1 | tabs aria architecture performance accessibility correctness | The usual tabset ships every panel and hides all but one, so a s
+interaction/slug-mapped-locale-switch | neutral  $1 | interaction navigation i18n url correctness | A language switcher built by prefixing the current path works on
 interaction/snap-scroll-as-dismiss-gesture | E3 D2 W2 F5 $3 | gesture dialog scroll accessibility sheet | Build a drag-to-dismiss sheet out of a scroll container rather t
 interaction/split-fraction-step-rail | E2 D2 W2 F5 $2 | interaction indicator progress stepper scroll | A stepper driven by a continuous value keeps the index and throw
 interaction/state-as-numeric-custom-property | E3 D2 W2 F5 $1 | interaction hover state tokens architecture | Express interaction state as a number, then derive every depende
@@ -349,6 +350,7 @@ light/broadcast-light-source | E2 D2 W2 F5 $3 | light gradient custom-property a
 light/counter-rotated-specular-layer | E2 D2 W3 F5 $2 | light gradient rotation material 3d | An object with its highlight painted into its own background spi
 light/differential-scale-rim-glint | E2 D2 W3 F5 $2 | light rim mask layers ambient metal 3d | A form cut from a single silhouette has no edge for light to cat
 light/emitted-light-not-borders | E2 D1 W3 F5 $2 | color effect depth restraint | Separate surfaces with glow and luminance rather than 1px solid.
+light/frame-pooled-pending-veil | E2 D1 W2 F4 $1 | light glow state loading overlay accessibility | A document still filling in usually gets an overlay, which block
 light/glow-spined-pass-bar | E3 D1 W2 F5 $1 | light glow sweep box-shadow loop cheap | A light crossing a panel whose content does not change says the 
 light/gradient-through-text | E3 D2 W4 F3 $2 | color type effect | background-clip: text with a transparent fill turns a headline i
 light/offframe-apex-ray-fan | E2 D3 W2 F4 $1 | gradient conic ground atmosphere ambient cheap | A radial wash gives light a direction but no structure. A repeat
@@ -393,6 +395,7 @@ media/decoded-probe-codec-select | neutral  $3 | video codec transparency featur
 media/device-pixel-snapped-overlay-write | neutral  $1 | canvas overlay precision dpr scrub registration correctness | A DOM layer over a raster — a canvas frame sequence, a cover-fit
 media/dialog-scoped-embed-lifecycle | neutral  $2 | media performance dialog correctness lifecycle | A third-party embed is not yours to pause — you cannot reach int
 media/dilated-alpha-keyline | E1 D2 W2 F5 $1 | media icon logo filter contrast legibility detail css-only | A raster mark has no stroke to reach for, so a pale logo dropped
+media/event-sourced-audio-control | neutral  $1 | media audio state correctness accessibility interaction | A play control that flips its own boolean on click desynchronise
 media/frame-announced-readiness | neutral  $2 | media iframe embed loading progressive-enhancement correctness | An iframe's load fires when its document parses, not when the ap
 media/frameless-alpha-artwork | E1 D2 W2 F3 $2 | media illustration assets transparency composition | Artwork exported on transparency with a feathered edge does not 
 media/idle-hydrated-visible-media | neutral  $2 | media video performance bandwidth first-paint scheduling | Media already on screen at first paint cannot be approach-loaded

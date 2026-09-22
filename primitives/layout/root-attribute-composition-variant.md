@@ -4,7 +4,7 @@ category: layout
 tags: [layout,variant,experiment,css-only,architecture]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -38,3 +38,21 @@ html[data-feature-x="off"] [data-feature="x"] { display: none !important }
 ⚠ It hides the link from the reader, not from the document — the href still
 ships, is still crawled and still reads in view-source. A destination that must
 not be discovered is a render branch, not a rule.
+
+The "no flash before paint" claim holds only while the server writes the
+attribute. When the arm comes from a client SDK the root is bare at first
+paint, and the honest answer is not to block on the SDK but to guess well:
+write the answer this reader got last time — held in `sessionStorage`, not
+`localStorage`, so a re-bucketed reader is corrected on their next visit rather
+than never — then reconcile when the flag resolves and cap that wait so a
+blocked SDK still leaves the page armed. 3–5s, and persist on every resolve.
+```js
+const armed = sessionStorage.getItem(KEY)
+if (armed) root.dataset.arm = armed                       // before first paint
+sdk.onFlags(once); setTimeout(once, 4000)                 // whichever lands first
+```
+⚠ This only works while the arms are a CSS delta. A late flip must be a
+restyle, so anything the arms cannot share — different copy, an extra control —
+turns the reconcile into a visible re-render in front of the reader, which is
+worse than the flash it was avoiding. Apply idempotently: the optimistic write
+and the reconcile will often set the same value.

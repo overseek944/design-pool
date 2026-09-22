@@ -4,14 +4,14 @@ category: interaction
 tags: [interaction,state,indicator,accessibility,carousel]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
 tension: []
 ---
 Let the active item in a position indicator change *size*, not only colour. A
-dot elongating into a capsule at 5–8× its width is legible without hue and
+dot elongating into a capsule at 3.5–8× its width is legible without hue and
 against a ground whose contrast you do not control — and its length is then free
 to carry progress *within* the step, not only which step.
 

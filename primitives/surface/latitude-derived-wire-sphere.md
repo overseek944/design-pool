@@ -4,7 +4,7 @@ category: surface
 tags: [surface,hairline,geometry,globe,figure,decoration]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,20 @@ request.
 ⚠ Past about ±70° an inset goes negative and the ring escapes the silhouette —
 the clip is load-bearing. Hairlines this fine vanish below ~200px: drop to three
 rings and raise the alpha rather than scaling down.
+
+Drop the projection and the same construction becomes a frame rather than a
+solid. Symmetric percentage insets on a `border-radius: 50%` child give an
+ellipse whose eccentricity *is* the container's, so two or three of them read
+as concentric rings around whatever the panel holds and re-proportion
+themselves at every width with no media query and nothing measured — the one
+case where an ellipse is cheaper than the circle it degenerates into. Insets
+10–15% and 24–30%, hairline, with the outer ring 20–40% lighter than the inner
+so the set has a direction.
+```css
+.ring { position: absolute; inset: 12%; border: 1px solid var(--line);
+        border-radius: 50%; pointer-events: none }
+```
+⚠ It follows the aspect all the way: a panel that collapses to a tall column on
+a phone turns the rings into lozenges standing on end. Give the panel a
+`min-height` and an aspect floor, or swap them for a single circle below the
+breakpoint.

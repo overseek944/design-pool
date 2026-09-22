@@ -4,7 +4,7 @@ category: motion-system
 tags: [print,correctness,motion,fallback,accessibility]
 axes: none
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -77,3 +77,22 @@ is tuned against whatever the reader's printer defaults to.
 ```
 ⚠ Exact colour prints every decorative wash at full ink. Pair it with dropping
 the decorative layers, or a two-page summary costs a cartridge.
+
+Naming the resting frame per component does not scale past a few, and the one
+that gets missed is the one that prints as a stain. There is a blanket form:
+give *every* animation a large negative delay and a near-zero duration, so each
+one is evaluated past its own end and `fill-mode: both` holds that last
+keyframe. One block covers entrances, shimmers and meters without enumerating
+them, and it is the right default under a `*` selector because print has no
+motion worth keeping. Delay −60s to −120s, duration 0.001s.
+```css
+@media print { *, *::before, *::after {
+  animation-delay: -99s !important; animation-duration: .001s !important;
+  animation-iteration-count: 1 !important; animation-fill-mode: both !important;
+  animation-play-state: running !important; transition-duration: 0s !important } }
+```
+⚠ It freezes at the *end*, which is wrong for the two shapes whose end is not
+their resting state: an `alternate` loop and any keyframe set whose 100% equals
+its 0% both land back where they started, so a fade-in written that way prints
+invisible. Those still need a named frame — the blanket rule is the floor under
+the exceptions, not a replacement for them.

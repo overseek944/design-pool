@@ -4,7 +4,7 @@ category: perf
 tags: [performance,architecture,correctness,lifecycle,embed]
 axes: none
 cost: 2
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -66,3 +66,24 @@ const ready = () => typeof window.vendor?.render === 'function'
 resolves early and the first call throws. This is also the case that most wants
 the backoff above — a poller that clears its memo on timeout will re-poll from
 zero on the next caller.
+
+The deadline's branch should be a working path, not an error. Where the vendor
+only *enhances* something the page can already do — a scheduling popup over a
+booking URL, a rich player over a file link, a map over an address — rejecting
+on timeout hands the component an exception it has no answer for, and the
+reader gets a dead control because a CDN was slow. Resolve into the plain
+behaviour instead, so the press always does something and the widget is the
+upgrade it claims to be. Poll at 60–100ms and give up at 3–5s, far shorter than
+the 10–20s an awaited SDK deserves: this wait is behind a click, not behind
+boot.
+```js
+;(function tryOpen(t = Date.now()) {
+  if (window.Vendor?.open) return window.Vendor.open(url)
+  if (Date.now() - t > 3500) return window.open(url, '_blank', 'noopener')
+  setTimeout(() => tryOpen(t), 80) })()
+```
+⚠ Injecting the vendor's assets on the same press that needs them means the
+fallback fires on every first click over a slow connection — warm them on
+intent (hover, focus, viewport) and keep the deadline for the press itself.
+A popup opened from a timer rather than from the gesture is blocked; the
+fallback must run inside the handler's own task or behind a real link.

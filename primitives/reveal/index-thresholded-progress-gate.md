@@ -4,7 +4,7 @@ category: reveal
 tags: [reveal,scroll,custom-properties,progress,cheap,svg]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -56,3 +56,20 @@ growth still registers as the event.
 ⚠ A floor is a claim about data — on a real chart a stub at every empty category
 reads as a small nonzero value. Use it on a decorative or illustrative figure,
 and let a charted zero be zero.
+
+The front need not be driven by scroll or by a tween. A short schedule of
+*uneven* jumps — a handful of timeouts writing 3, 7, 12, 18 into the same
+scalar — lands members in groups rather than as an even cascade, so a mock
+fills panel by panel instead of item by item, and the grouping is retuned by
+editing four numbers rather than N delays. It also gives a replay for free:
+when the panel's content swaps, write zero and re-arm, and the whole set
+re-sequences with nothing per element to reset. Jumps 300–450ms apart at the
+start, widening to 600–700ms as the groups get larger.
+```js
+[[350, 3], [850, 7], [1450, 12], [2050, 18]].forEach(([ms, v]) =>
+  t.push(setTimeout(() => setFront(v), ms)))            // clear t before re-arming
+```
+⚠ Clearing the pending timeouts before the reset is the whole of the
+correctness — a stale one fires after the swap and jumps the new content to a
+step it has not reached. The last jump must exceed the highest index, and under
+`reduce` write the final value once instead of scheduling anything.
