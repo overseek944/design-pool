@@ -4,7 +4,7 @@ category: perf
 tags: [performance,architecture,correctness,lifecycle,embed]
 axes: none
 cost: 2
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -87,3 +87,12 @@ fallback fires on every first click over a slow connection — warm them on
 intent (hover, focus, viewport) and keep the deadline for the press itself.
 A popup opened from a timer rather than from the gesture is blocked; the
 fallback must run inside the handler's own task or behind a real link.
+
+Where the widget is the page's main conversion path, intent is too late a
+trigger and boot is too early. Warm it after `load` inside
+`requestIdleCallback` (2s `setTimeout` fallback), and inject `preconnect` for
+every origin the vendor will touch on the same call — the stylesheet and the
+frame usually live on different hosts. The press then awaits the one memoised
+promise, already settled in almost every session.
+⚠ Idle-warming charges every visitor the vendor bytes; keep it to widgets most
+sessions actually open.
