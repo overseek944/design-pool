@@ -4,7 +4,7 @@ category: media
 tags: [media,video,responsive,aspect,backdrop,blur]
 axes: {energy: 1, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -39,3 +39,15 @@ compositing layer. Scale 1.1–1.4, and set the slot's background to the asset's
 ```
 ⚠ Only for subjects with real margin. Past about 1.4 a screenshot loses its own
 chrome, which is usually what made it read as a screenshot.
+
+The overscale can be a *preview* state rather than a permanent one. While a
+muted clip loops behind a caption it is decoration, and its bars are noise —
+scale it past them. Once the reader presses play it is content, and the frame
+they chose to watch should be whole: drop the scale on the playing class and
+transition it, so the bars return as the controls do. Scale 1.1–1.2 for
+2.35:1 bars in a 16:9 slot, 0.25–0.4s.
+```css
+.card video.bars { scale: 1.15; transition: scale .3s ease-in-out }
+.card.is-playing video.bars { scale: 1 }
+```
+⚠ Flag the asset, not the slot — only footage with bars baked in wants the zoom.

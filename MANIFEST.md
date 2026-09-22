@@ -1,6 +1,6 @@
 # Manifest
 
-1044 primitives. Format: `category/id | axes cost | tags | gist`
+1046 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -372,6 +372,7 @@ layout/line-local-trailing-slot | neutral  $1 | layout flex cards metadata corre
 layout/live-dimension-callout | E1 D2 W1 F5 $2 | layout chrome annotation measurement technical | Annotate the frame with its own measurements and a page reads as
 layout/matted-opening-frame | E1 D1 W2 F5 $1 | frame viewport hero media radius safe-area | Inset the opening frame from every viewport edge and the page ba
 layout/measured-copy-keepout | neutral  $2 | layout measurement legibility canvas | Background art told to keep clear of the copy is usually given a
+layout/mirror-spacer-centred-title | neutral  $1 | layout centring overlay optical pseudo-element media | A caption stacked over a control in a centred overlay puts the p
 layout/mount-derived-root-scroll-regime | neutral  $2 | layout scroll architecture has routing correctness | An app shell that locks the root — html, body { height: 100%; ov
 layout/named-container-scope | neutral  $1 | layout container-query correctness components responsive | Any ancestor carrying container-type captures every unnamed @con
 layout/occupancy-negotiated-label-placement | neutral  $4 | layout label annotation collision diagram correctness | Annotations placed independently overlap the moment two anchors 
@@ -515,6 +516,7 @@ media/plane-sorted-defocus-field | E1 D3 W2 F5 $2 | depth blur defocus scatter c
 media/predicate-tiered-video-encode | neutral  $2 | media video responsive performance bandwidth correctness | A <video> has no srcset and no sizes, so nothing picks an encode
 media/pseudo-element-pictogram-set | E1 D2 W2 F4 $2 | icon css-only pseudo-element tokens diagram | A set of small technical pictograms — a frame, a scatter, a cyli
 media/query-composed-figure-source | neutral  $3 | media figure architecture iframe product responsive build | Every figure of an interface is usually its own exported image. 
+media/range-looped-excerpt | E2 D2 W2 F4 $1 | media video loop preview excerpt range | A preview does not need its own encode. Loop a range of the full
 media/rate-retimed-ambient-loop | E1 D2 W3 F4 $1 | media video timing ambient loop perf | Background footage cut at natural speed reads as busy behind cop
 media/ratio-split-view-pair | E1 D3 W2 F4 $1 | media figure aspect grid editorial | One subject argued from two views — as photographed, and as the 
 media/reduce-restored-media-transport | neutral  $1 | media video accessibility scroll scrub correctness | Where scroll is the only transport for a continuous medium, pref

@@ -4,7 +4,7 @@ category: timing
 tags: [timing,motion,sequence,stream,demo,mock,cadence,delay]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -50,3 +50,15 @@ const gap = 85 + (Math.random() * 30 - 15)   // per chunk
 ⚠ A growing block inside a scroll port pushes its tail out of view — pin the
 port to the bottom on every append, and only while the reader has not scrolled
 it themselves.
+
+A human reply in a mocked thread wants a presence cue before the text: a
+typing bubble on the speaker's side, tinted as they are, that holds 0.6–1.1s
+and is removed in the same tick the message is shown so nothing reflows between
+them. Type the message itself at 45–70 characters per second behind a caret,
+and hold any attached detail — references, IDs, a table — out of the bubble
+until typing ends, so the bubble grows with the words instead of opening empty.
+```js
+hide(dots); show(msg); type(el, text, 60, () => msg.classList.add('typed'))
+```
+⚠ Revealing held detail with `display` lengthens the thread — follow the
+tail after it, not before.
