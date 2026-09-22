@@ -4,7 +4,7 @@ category: media
 tags: [media,video,accessibility,reduced-motion,correctness]
 axes: none
 cost: 1
-seen: 12
+seen: 13
 requires: []
 conflicts: []
 completes: []
@@ -72,3 +72,17 @@ const play = (img, i) => { if (img.getAttribute('src') !== srcs[i]) img.src = sr
 ⚠ Restarting from frame one is visible on a long loop — acceptable for a short
 cycle, wrong for anything a reader is meant to follow. Keep a poster underneath
 so the eviction reveals a still rather than the container's background.
+
+Put the still in a sibling `<img>` rather than on the container and the crop
+problem above disappears: `object-fit` and `object-position` are copied from
+the video, so the two frame identically from one source file, and the still
+becomes a real element the preload scanner can find and `rel=preload` can warm
+— which the CSS form, discovered only when the rule matches, cannot be.
+```html
+<video class="motion-reduce:hidden" autoplay muted loop playsinline poster="/still.jpg">
+<img src="/still.jpg" alt="" class="hidden motion-reduce:block" decoding="async">
+```
+⚠ Hiding the video in CSS does not stop it downloading: `autoplay` with
+`preload="auto"` fetches a `display: none` element in full, so the reader who
+asked for stillness pays for footage that never paints. Drop the source from
+markup and attach it from the no-preference branch if the bytes matter.

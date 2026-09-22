@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,correctness,progressive-enhancement,observer,reveal]
 axes: none
 cost: 1
-seen: 24
+seen: 25
 requires: []
 conflicts: []
 completes: []
@@ -97,3 +97,20 @@ than to never playing.
 ⚠ The gate is specificity, so the utility and the reinstating rule must stay in
 one layer — a utility hoisted into `@layer utilities` outranks the pin and the
 element never waits.
+
+Whatever arms the eager set must decide visibility the way the observer will,
+or the two gates disagree on the boundary case: a tall element whose top sits
+at 90% of the viewport passes a `top <= 92%` arming and fails a
+`threshold: 0.15` observer. Compute the real intersecting fraction — the
+clamped overlap rect over the element's own area — against the same threshold
+the observer is constructed with, and run it in a layout effect so the verdict
+lands before the first paint rather than a frame into it.
+```js
+const b = el.getBoundingClientRect()
+const vw = Math.min(b.right, innerWidth) - Math.max(b.left, 0)
+const vh = Math.min(b.bottom, innerHeight) - Math.max(b.top, 0)
+if (vw > 0 && vh > 0 && (vw * vh) / (b.width * b.height) >= THRESHOLD) settle()
+```
+⚠ Zero-area elements divide by zero — guard on `b.width * b.height` before the
+ratio. Keep the observer for everything the check declines; it is the arming
+pass that is redundant afterwards, not the observer.

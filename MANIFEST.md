@@ -1,6 +1,6 @@
 # Manifest
 
-844 primitives. Format: `category/id | axes cost | tags | gist`
+850 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -16,6 +16,7 @@ canvas/bisected-heightfield-march | neutral  $4 | canvas shader generative perfo
 canvas/borrowed-scene-constructors | neutral  $2 | canvas 3d architecture interop bundle | A wrapper that owns the renderer — a globe, a model viewer, a 3D
 canvas/bucketed-depth-order | neutral  $2 | canvas performance depth particles batching quantise | Painter's order on a 2D context normally means sorting every mar
 canvas/canvas-behind-dom-not-instead-of-it | neutral  $2 | canvas architecture accessibility | Absolutely-positioned inset-0 canvas with pointer-events-none un
+canvas/cell-jittered-scatter-grid | E1 D3 W2 F3 $1 | canvas scatter field layout responsive generative | Scattering marks from two random draws gives voids and knots, an
 canvas/cell-quantised-arrival-front | E3 D3 W2 F4 $3 | shader reveal grid quantise front texture | A reveal front evaluated per pixel is a soft edge crossing a pic
 canvas/cell-resolved-screen-pass | E2 D4 W2 F4 $4 | shader webgl halftone texture render-pass generative | Screening a render into dots need not change whatever drew it. A
 canvas/cellular-displacement-warp | E2 D3 W2 F5 $3 | canvas shader webgl texture generative field | Smooth noise warps a field continuously — everything stretches a
@@ -85,6 +86,7 @@ canvas/resampled-path-travel | neutral  $2 | canvas performance motion connector
 canvas/reseeded-noise-tile | E2 D3 W2 F3 $2 | canvas texture ambient generative performance | Per-pixel noise across a whole viewport every frame is a fill-ra
 canvas/rotated-screen-halftone | E2 D4 W3 F4 $3 | canvas texture field print raster generative | An axis-aligned dot grid beats against the pixel lattice and rea
 canvas/row-span-culled-field | neutral  $2 | perf field raster culling imagedata architecture | A field summed from a handful of radial sources costs width × he
+canvas/running-sum-field-blur | neutral  $2 | canvas blur field performance buffer architecture | A scalar field that feeds a decision — a dot threshold, a mark s
 canvas/saturating-density-transfer | E1 D2 W2 F5 $1 | canvas shader color field opacity | An accumulating field has no upper bound but coverage does, so m
 canvas/scene-exempt-label-layer | E1 D2 W1 F5 $2 | canvas label type scene legibility layer | An annotation inside a 3D scene should move and occlude like the
 canvas/screen-composited-understroke | E2 D2 W2 F5 $2 | canvas light stroke effect depth cheap | Canvas 2D has no cheap blur, so a glowing stroke is built from p
@@ -159,6 +161,7 @@ interaction/count-indexed-sheet-stack | E2 D3 W2 F5 $3 | sheet overlay stack ges
 interaction/cross-context-preference-sync | neutral  $1 | theme preferences storage correctness accessibility | A stored preference is a fact about the reader, not about one ta
 interaction/cross-device-action-handoff | neutral  $2 | interaction cta progressive-enhancement accessibility responsive | Where the thing on offer can only be used on a device class the 
 interaction/cursor-tracked-vanishing-point | E3 D3 W2 F5 $3 | interaction pointer 3d depth field transform hover | Tiles pushed toward the reader on Z all shear toward the contain
+interaction/declared-quiet-region | neutral  $1 | interaction pointer architecture legibility opt-out correctness | A pointer-driven background sits under the whole document and di
 interaction/dimension-coded-position-dot | E2 D2 W2 F5 $1 | interaction state indicator accessibility carousel | Let the active item in a position indicator change size, not onl
 interaction/dismissal-escalated-reprompt | neutral  $2 | interaction prompt cadence persistence restraint correctness | A recurring prompt — install, subscribe, upgrade — needs a caden
 interaction/drag-suppressed-click-threshold | neutral  $2 | pointer drag interaction correctness accessibility | A surface that answers to drag and also holds links fires a clic
@@ -370,6 +373,7 @@ light/userspace-blurred-lamp-bed | E1 D2 W2 F4 $2 | glow svg blur gradient decor
 media/absent-asset-display-plate | E1 D2 W4 F4 $1 | media editorial fallback card layout | A feed where only some items carry artwork stops being a grid: a
 media/activation-deferred-player-facade | neutral  $2 | media embed iframe video performance privacy accessibility loading | A third-party player costs hundreds of kilobytes of script and s
 media/alpha-threshold-fuse-filter | E3 D2 W3 F4 $2 | svg filter mark liquid state | Separate shapes read as one substance when a blur is pushed back
+media/alternating-mirror-tile | E1 D3 W2 F3 $1 | media texture tiling canvas backdrop seam | A photograph repeated across a band wider than itself cuts at ev
 media/aperture-registered-content-layer | E1 D2 W2 F5 $2 | media mockup responsive layout correctness | Live content shown inside supplied frame artwork registers to an
 media/approach-loaded-video | neutral  $2 | media video performance intersection-observer accessibility bandwidth | Background footage is usually the heaviest thing on a page and u
 media/aspect-locked-media | neutral  $1 | layout media cls | Lock every media slot with an explicit aspect-ratio and let widt
@@ -407,6 +411,7 @@ media/luminance-keyed-alpha-matte | E1 D2 W2 F5 $3 | media filter svg alpha imag
 media/mask-swap-over-shared-paint | E2 D2 W2 F4 $2 | mask icon gradient media state | When a family of glyphs must share one fill — a gradient, a vide
 media/mirror-flanked-panorama | E1 D2 W2 F4 $2 | media image panorama mirror responsive full-bleed | Artwork with a fixed aspect either stretches or loses its compos
 media/mirrored-baseline-reflection | E1 D2 W2 F5 $2 | media mask surface depth detail css-only | A cut-out subject on a surface reads as pasted on unless somethi
+media/one-shot-cache-busted-retry | neutral  $1 | media error resilience image video correctness | One dropped connection or a 503 from the edge leaves an image br
 media/optical-height-logo-row | neutral  $1 | media logos normalisation scale responsive | Supplied marks are drawn to different conventions — a wordmark f
 media/origin-conditional-sandbox | neutral  $1 | media iframe embed security correctness | A sandboxed iframe that is also allow-same-origin and served fro
 media/overscan-relaxed-plate | E2 D1 W3 F5 $2 | media image reveal scale motion observer | A plate that scales up on arrival rests at a non-integer factor 
@@ -525,6 +530,7 @@ motion-system/type-declared-transition-scope | neutral  $2 | motion-system view-
 motion-system/viewport-clamped-slot-travel | E3 D1 W2 F5 $3 | motion travel scroll measurement layout | An element travelling between two positions read from real layou
 motion-system/zero-signal-idle-floor | E2 D1 W2 F5 $1 | motion idle signal realtime feedback reduced-motion | A visual driven by a live input has two states that render ident
 perf/analytic-stand-in-until-live | neutral  $2 | data loading architecture visualisation labelling | A visual driven by a live feed has three bad first frames: empty
+perf/area-budgeted-backing-scale | neutral  $1 | performance canvas dpr memory resize correctness | min(devicePixelRatio, 2) caps the ratio and bounds nothing: the 
 perf/attribute-mirrored-engine-state | neutral  $1 | perf debug instrumentation testing architecture state | An engine that fetches, decodes and caches is invisible the mome
 perf/bfcache-blanked-surface | neutral  $1 | performance canvas lifecycle correctness restoration flicker | A page restored from the back/forward cache repaints whatever a 
 perf/boot-drained-call-queue | neutral  $1 | architecture third-party progressive-enhancement events correctness | A deferred script cannot be called while the page is still parsi

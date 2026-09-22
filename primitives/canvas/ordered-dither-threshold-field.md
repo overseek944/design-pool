@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,texture,pattern,raster,two-tone,generative]
 axes: {energy: 2, density: 4, weight: 3, finish: 2}
 cost: 2
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []

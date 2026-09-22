@@ -4,7 +4,7 @@ category: interaction
 tags: [theme,preference,accessibility,correctness,state]
 axes: none
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []

@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,svg,performance,generative,texture,batching]
 axes: {energy: 2, density: 4, weight: 1, finish: 5}
 cost: 3
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []

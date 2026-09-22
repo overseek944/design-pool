@@ -4,7 +4,7 @@ category: perf
 tags: [perf,loading,images,responsive,resource-hints,critical-path]
 axes: none
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -75,3 +75,18 @@ into the markup before the preloads are written.
 ⚠ Two axes double the tiers, three multiply them — past about six, generate the
 list from the table rather than hand-writing it, because a gap in the coverage
 is silent and a hand-edited predicate is where gaps come from.
+
+A fully client-rendered shell is the degenerate case: there is no `<img>` in
+the markup for the scanner to find at any width, so nothing at all starts until
+the bundle parses, executes and renders. The same static head serves every
+route, which makes the preload a choice rather than a deduction — warm the
+dominant landing route's largest element and every other route pays one wasted
+fetch. Write the reason down; it is a traffic judgement that stops being true
+when traffic moves.
+```html
+<link rel="preload" as="image" href="/hero-poster.jpg" fetchpriority="high">
+```
+⚠ Preload the *poster*, not the clip, where the opening element is video: the
+poster is what paints first and is also the reduced-motion still, so one warmed
+file serves both branches. An unused preload is a console warning on every
+other route — the cost is visible, which is the point.

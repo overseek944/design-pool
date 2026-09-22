@@ -4,7 +4,7 @@ category: media
 tags: [media,logos,blend-mode,assets,normalisation]
 axes: none
 cost: 1
-seen: 19
+seen: 20
 requires: []
 conflicts: []
 completes: []
@@ -135,3 +135,20 @@ inside any stacking context. Opacity 0.25–0.4 at rest, full colour on hover.
 ⚠ `brightness(0)` destroys a mark whose legibility is carried by a light element
 on a dark plate — it turns solid. Keep the per-asset escape hatch; one class,
 not a rule rewrite.
+
+Every chain above spends a `filter` to reach one ink. A `mask-image` of the
+asset over a coloured box reaches any ink directly: the mark is whatever token
+the box is painted with, so the wall follows the theme with no filter to retune
+per ground, and a single logo overrides with one custom property. Lay the
+original file on top at `opacity: 0` and the colour the mask discarded comes
+back on hover as a cross-fade rather than a filter transition.
+```css
+.mark { background: var(--logo-fill, var(--ink-2));
+        mask: var(--src) center / contain no-repeat }
+.cell:hover .mark, .cell:focus-within .mark { opacity: 0 }
+.cell :is(:hover, :focus-within) ~ .original { opacity: 1 }
+```
+⚠ A mask has no `alt`. The accessible name must move to the wrapper as
+`aria-label`, with both the masked box and the colour copy `aria-hidden`, or
+the wall is a row of unnamed boxes to a screen reader and a doubled name to
+anyone who fixes only half of it.

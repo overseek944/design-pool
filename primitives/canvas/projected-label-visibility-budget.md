@@ -4,7 +4,7 @@ category: canvas
 tags: [webgl,label,projection,density,correctness]
 axes: none
 cost: 3
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -40,3 +40,18 @@ row.classList.toggle('dimmed', !facing)              // the DOM label agrees
 ```
 ⚠ Threshold slightly above zero, never at it — exactly edge-on the sign flips
 every frame and the label strobes.
+
+The same projection that places a marker can size it, which matters where the
+overlay draws a box *around* the subject rather than a label beside it. Carry
+the object's bounding-sphere radius, and its screen radius is that over the
+camera distance, times half the viewport height over `tan(fov/2)` — the
+perspective divide the renderer already performs, done once on the CPU. Clamp
+the result: a distant subject still needs a box big enough to read as a mark
+rather than a speck. Floor 24–32px, ceiling 120–160px.
+
+```js
+const px = (r / cam.position.distanceTo(world)) * (h * .5) / Math.tan(fov * Math.PI / 360)
+el.style.width = el.style.height = Math.min(MAX, Math.max(MIN, px * 1.7)) + 'px'
+```
+⚠ `fov` is vertical, so the height is the right term — pairing it with width
+makes every box wrong by the aspect ratio, and correctly so only at 1:1.
