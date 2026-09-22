@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,hairline,precision,responsive,technical]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 2
-seen: 28
+seen: 29
 requires: []
 conflicts: []
 completes: []
@@ -240,3 +240,20 @@ fade distance stays independent of where each band begins.
 ⚠ A mask makes the layer its own compositing surface — one per document, not one
 per section. Under about 60px the gradient reads as a blurred edge rather than
 an emergence, and `-webkit-mask-image` is still needed beside it.
+
+The rules do not have to belong to the sections. One pair of `fixed`
+viewport-height hairlines at the gutter inset costs two elements for the whole
+document instead of two pseudo-elements per band, and it changes what the page
+is doing: the frame stands still while content passes behind it, so the rules
+read as a mount rather than as the container's own edges. The `max()` clamp
+becomes a plain inset, and the tier question disappears because there is only
+ever one frame. Inset 16–48px, rule at 12–25% of the ink.
+```css
+.rule { position: fixed; inset-block: 0; inline-size: 1px; z-index: 40;
+        background: rgb(var(--ink) / .2); pointer-events: none }
+.rule--s { inset-inline-start: var(--gutter) } .rule--e { inset-inline-end: var(--gutter) }
+@media (width < 48rem) { .rule { display: none } }
+```
+⚠ Fixed rules sit above everything in their stacking context — keep them under
+any overlay, drawer or sticky bar's z-index, and drop them entirely below the
+width where the gutter is narrower than the rule is worth.

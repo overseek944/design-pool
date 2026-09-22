@@ -4,7 +4,7 @@ category: canvas
 tags: [shader,architecture,responsive,correctness,reference]
 axes: none
 cost: 3
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -58,3 +58,16 @@ uv += .5;
 ⚠ The ratio has to be the one the buffer was actually sized with, not
 `devicePixelRatio` read at draw time — a clamped or tiered backing store makes
 those two different numbers and the grain jumps on the frame they diverge.
+
+The precision rewrite above misses half the declarations. A global
+`precision highp float;` is only a default: any `uniform mediump vec2`,
+`varying lowp float` or per-parameter qualifier written into the source keeps
+its own precision and goes on truncating the one value that mattered. Rewrite
+both forms in the same pass, and run it over the vertex source too — pattern
+space is built there.
+```js
+src = src.replace(/precision\s+(lowp|mediump)\s+float/g, 'precision highp float')
+         .replace(/\b(uniform|varying|attribute|in|out)\s+(lowp|mediump)\s+(\w+)/g, '$1 highp $3')
+```
+⚠ Promote the vertex and fragment sources together or the varyings disagree and
+the link fails silently on some drivers.

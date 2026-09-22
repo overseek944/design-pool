@@ -4,7 +4,7 @@ category: canvas
 tags: [shader,gradient,surface,generative,ambient]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 3
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []

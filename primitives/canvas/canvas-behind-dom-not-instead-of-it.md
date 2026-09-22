@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,architecture,accessibility]
 axes: none
 cost: 2
-seen: 30
+seen: 31
 requires: []
 conflicts: []
 completes: []
@@ -110,3 +110,19 @@ const m = Math.min(devicePixelRatio || 1, softField ? 0.5 : 2)
 ⚠ The upscale is the browser's, so the element still needs its full CSS size
 and the filter must be `LINEAR` — `NEAREST` on a half-size target turns a soft
 field into visible blocks.
+
+The ratio wants a floor as well as a cap, and it is not always 1. A field whose
+output is quantised — posterised bands, a dither, a hard-edged lattice — aliases
+on a 1× display where a soft gradient would not, so clamp the ratio *up* to
+1.25–2 there and let the area budget take it back down on large boxes. Order
+matters: floor first against the device ratio, then apply the cap, then publish
+the number that survived, because the shader's own device-pixel terms are wrong
+if they read the device ratio instead.
+```js
+let m = Math.max(devicePixelRatio || 1, hardEdged ? 1.5 : 1)      // floor
+m *= Math.min(1, Math.sqrt(2.5e6 / (w * m * h * m)))              // area cap
+gl.uniform1f(loc.u_pixelRatio, (c.width = Math.round(w * m)) / w) // what was used
+```
+⚠ A floor above 1 is supersampling every fragment on the cheapest hardware —
+it belongs to a quantised field that visibly breaks without it, never to an
+ambient wash, and never together with the sub-1 fraction above.
