@@ -4,7 +4,7 @@ category: motion-system
 tags: [idle,loop,character,randomness,raf,ambient]
 axes: {energy: 3, density: 2, weight: 2, finish: 4}
 cost: 3
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -79,3 +79,18 @@ do { aim = lo + Math.random() * (hi - lo) } while (Math.abs(aim - cur) < MIN)
 ```
 ⚠ Guaranteed to terminate only while `MIN` is under half the range — past that
 the admissible set empties near the ends and the loop spins.
+
+Where the thing idling carries meaning at rest — a mark, a status glyph, a
+diagram in its labelled state — the schedule wants an excursion shape rather
+than a walk: leave the canonical pose, hold the deviation only briefly, return
+to the pose exactly, then wait again. A walk between states leaves the reader
+with no answer to what the thing *is*, and a reader arriving mid-page sees
+whichever state the dice landed on. Dwell 7–11s, the excursion out and back
+0.6–1.2s each, hold at the far pose 0.3–0.6s.
+```js
+schedule(() => morph(pick(states), 1000,
+  () => setTimeout(() => morph(REST, 1000, schedule), 450)))
+```
+⚠ The return leg must be cancellable and must end on the stored rest array, not
+on a re-derived one — an excursion interrupted halfway leaves the pose slightly
+off, and the error compounds over an afternoon.

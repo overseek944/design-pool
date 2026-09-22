@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,particles,morph,generative,shape]
 axes: {energy: 3, density: 4, weight: 2, finish: 4}
 cost: 3
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

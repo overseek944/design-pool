@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,svg,identity,loading,state,reduced-motion]
 axes: {energy: 3, density: 1, weight: 2, finish: 5}
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -58,3 +58,15 @@ if (!reduce) mark.animate([{ transform: 'scale(1)' },
 ⚠ It announces nothing — the outcome still needs a live region and a focus move,
 and the beat sits on top of those. Never fire it on failure: the same gesture
 read as celebration is worse than staying still.
+
+A fourth duty is ambient presence: the mark moving on its own, on no signal at
+all, with nothing pending. It is the one licence the identity has that no other
+element does, because it is the element every reader has already learnt — a
+deviation is read against a form they know, so it costs no attention to parse.
+The constraint is that it must always return, and rest must dominate: seconds
+of stillness to a fraction of a second of motion, or the mark stops being a
+mark and becomes a decoration that happens to sit in the corner.
+⚠ Rest is also the state the page ships in and screenshots in — never start the
+loop before first paint, and never let a stopped loop strand a pose that is not
+the rest pose. Skip the loop entirely under `reduce`; suppressing it after the
+fact still costs a frame of motion.

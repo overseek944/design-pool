@@ -1,6 +1,6 @@
 # Manifest
 
-924 primitives. Format: `category/id | axes cost | tags | gist`
+929 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -178,6 +178,7 @@ interaction/disengaged-scoped-transition | E3 D1 W2 F5 $1 | interaction transiti
 interaction/dismissal-escalated-reprompt | neutral  $2 | interaction prompt cadence persistence restraint correctness | A recurring prompt — install, subscribe, upgrade — needs a caden
 interaction/drag-scoped-target-states | neutral  $2 | drag drop affordance state feedback accessibility | A drag that lights only the target under the pointer makes the r
 interaction/drag-suppressed-click-threshold | neutral  $2 | pointer drag interaction correctness accessibility | A surface that answers to drag and also holds links fires a clic
+interaction/dwell-gated-escalation | E2 D1 W2 F5 $1 | hover pointer delay restraint reward | Hover is a weak signal — a pointer crosses half the page on its 
 interaction/edge-hotzone-sibling-reveal | E2 D2 W2 F5 $2 | interaction hover panel chrome css-only accessibility | Reclaim the width a hidden rail costs without a toggle: park an 
 interaction/edge-traversing-knob | E3 D2 W2 F5 $1 | interaction state affordance motion detail | A control states its direction by sending its own mark the whole
 interaction/exemplar-field-placeholder | neutral  $1 | form input placeholder accessibility copy correctness | A placeholder that restates its label teaches nothing. Write it 
@@ -484,6 +485,7 @@ media/unowned-frame-message-guard | neutral  $1 | media iframe embed security co
 media/video-as-surface-not-frame | E3 D2 W4 F4 $3 | media surface hero | autoplay muted loop playsinline preload="auto" with object-conta
 media/welded-figure-caption | E1 D2 W2 F5 $1 | media figure caption accessibility editorial | A caption set as a paragraph under a figure reads as body copy a
 media/zero-box-vector-template-store | neutral  $1 | svg use defs architecture performance accessibility correctness | Vector art that recurs — a mark, a seal, a rule cap — repeats it
+motion-system/accelerating-tremor-release | E4 D2 W3 F4 $3 | anticipation idle release ambient loop | To make a change read as caused rather than scheduled, spend tim
 motion-system/additively-gated-reveal | E2 D2 W2 F4 $1 | motion reveal accessibility progressive-enhancement correctness scroll | Most machinery around entrances exists because the from-state is
 motion-system/anchored-log-zoom-camera | E3 D2 W2 F5 $3 | camera zoom canvas interpolation diagram scene | A 2D camera interpolating scale linearly rushes the far half of 
 motion-system/anomaly-solved-ellipse-traversal | E3 D1 W2 F5 $2 | motion geometry solver loop path precision | A mark sent round an ellipse by stepping its angle moves fastest
@@ -501,6 +503,7 @@ motion-system/coverage-field-threshold-wave | E3 D4 W2 F4 $2 | field grid thresh
 motion-system/deadline-bounded-animated-close | neutral  $1 | motion correctness state architecture | A state change that waits on an animation never happens when the
 motion-system/decaying-change-mark | E3 D1 W2 F4 $1 | motion-system feedback live-data emphasis | Marking a value that just changed with styling it keeps turns an
 motion-system/differential-scale-depth-stack | E3 D2 W3 F5 $2 | motion transform scale depth parallax scroll | Depth on a push needs no perspective and no Z. Stack co-located 
+motion-system/dispersal-routed-morph | E4 D3 W2 F4 $3 | morph rearrange burst transition marks | A field of marks interpolated straight into a new arrangement re
 motion-system/distance-cued-focus-wheel | E2 D2 W2 F5 $2 | list rotation blur depth mask custom-property | A rotating list that only fades its neighbours reads flat. Stack
 motion-system/distance-eased-camera-push | E2 D2 W3 F5 $3 | camera 3d easing scroll narrative | Interpolating a camera's position between two waypoints looks wr
 motion-system/drive-mode-scoped-transition | neutral  $1 | motion scroll scrub custom-properties correctness architecture | A property that eases on arrival and later tracks a continuous i
@@ -574,6 +577,7 @@ motion-system/sub-fusion-tremor | E5 D1 W1 F4 $1 | motion loop drag state micro-
 motion-system/svg-geometry-keyframes | E3 D2 W2 F5 $1 | motion svg diagram precision detail | r, cx, cy, x, y and width are CSS properties on SVG, not just at
 motion-system/transient-class-scoped-transition | neutral  $2 | motion-system view-transition theme correctness reduced-motion | A view transition, or a global colour transition, must animate f
 motion-system/transition-cued-height-follow | neutral  $2 | correctness measurement transition resize layout motion | Inline content that changes width re-wraps its copy and the bloc
+motion-system/travel-minimal-target-pairing | E3 D3 W2 F5 $2 | morph rearrange geometry marks svg transition | A set of marks rearranging into a new configuration is usually p
 motion-system/twin-pose-custom-properties | E3 D3 W2 F5 $2 | transform state stagger custom-properties group choreography | A group that rearranges between two arbitrary layouts — stacked 
 motion-system/type-declared-transition-scope | neutral  $2 | motion-system view-transition scoping state correctness routing | Every ::view-transition- rule applies to every transition, so a 
 motion-system/viewport-clamped-slot-travel | E3 D1 W2 F5 $3 | motion travel scroll measurement layout | An element travelling between two positions read from real layou
@@ -821,6 +825,7 @@ timing/animation-clock-derived-state | neutral  $1 | timing animation correctnes
 timing/asymmetric-enter-exit-delay | E3 D2 W2 F5 $1 | motion sequencing state transition | A staggered group should cascade in and collapse out together. C
 timing/bounce-parametrised-spring | E3 D2 W2 F5 $1 | motion spring rhythm sequencing | Stiffness, mass and damping are three coupled dials, none of whi
 timing/capped-total-stagger | neutral  $1 | motion sequencing scale | For unknown-length collections use stagger:{amount} not stagger:
+timing/co-terminal-offset-stagger | E2 D2 W2 F5 $1 | stagger entrance morph scheduling arrival | A stagger built from delays lengthens the whole move by the last
 timing/cue-list-on-looping-clock | neutral  $2 | motion timing loop architecture correctness | A multi-beat scripted sequence built from chained timers cannot 
 timing/cumulative-gap-schedule | E3 D2 W2 F4 $1 | motion sequencing choreography entrance | A hand-authored entrance is a list of pauses, not absolute delay
 timing/cycle-resolved-depth-ramp | E3 D2 W2 F5 $1 | motion loop depth keyframes css ambient | Phase-offset copies of one loop usually get their differences by
