@@ -1,6 +1,6 @@
 # Manifest
 
-1030 primitives. Format: `category/id | axes cost | tags | gist`
+1033 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -10,6 +10,7 @@ canvas/age-shaded-traversal-field | E2 D4 W2 F5 $3 | canvas ambient texture gene
 canvas/alpha-bucketed-path-batch | E2 D4 W1 F5 $3 | canvas svg performance generative texture batching | Thousands of individually-faded SVG marks means thousands of nod
 canvas/alpha-gated-cell-population | E1 D3 W2 F4 $3 | canvas generative field image mask silhouette grid | A field of marks in the shape of an arbitrary form usually means
 canvas/area-proportional-mark-population | neutral  $1 | canvas field particles performance responsive density | A generative field authored at one mark count is two different c
+canvas/aspect-held-camera-coverage | E2 D2 W3 F4 $1 | 3d camera fov responsive framing webgl | A perspective camera fixes vertical field of view, so narrowing 
 canvas/aspect-switched-diagram-axis | E1 D2 W2 F4 $2 | canvas diagram responsive layout aspect pipeline | A left-to-right process drawn in a canvas shrinks to illegible c
 canvas/background-matched-scene-fog | E1 D2 W3 F5 $1 | canvas fog depth background integration scene | A rendered scene ends at its canvas rectangle, so it reads as an
 canvas/baked-cell-frame-stream | neutral  $4 | canvas animation precomputed payload performance field | An ambient field whose motion is authored rather than simulated 
@@ -427,6 +428,8 @@ layout/width-budgeted-inline-remainder | neutral  $2 | layout responsive overflo
 layout/width-floored-placement-rows | E1 D3 W2 F4 $1 | layout grid responsive overlap placement rhythm | A composition placed freely on grid lines — blocks overlapping, 
 layout/width-resolved-ratio-overlap | E1 D3 W2 F5 $1 | layout overlap aspect-ratio responsive composition | A panel pulled up over a fixed-ratio media block loses its propo
 layout/writing-mode-flipped-edge-rail | E1 D2 W3 F3 $1 | layout chrome writing-mode responsive rail fixed logical-properties | One fixed chrome strip can run down the left edge on desktop and
+light/alpha-carrying-bloom | E2 D2 W4 F5 $3 | bloom glow webgl transparency postprocessing compositing | Bloom on a transparent WebGL canvas vanishes: the halo lands whe
+light/baked-contact-shadow | E1 D2 W3 F5 $3 | 3d shadow webgl grounding render-target perf | Grounds an object with no shadow-casting light. Render the scene
 light/blend-doubled-headline | E2 D2 W4 F5 $3 | type blend legibility contrast compositing | Set the headline twice in one grid cell: an opaque copy under th
 light/blurred-conic-hue-bloom | E1 D2 W2 F4 $2 | gradient glow bloom hue conic decoration ambient | Radial lamps give one hue each and seam where they meet. A conic
 light/broadcast-light-source | E2 D2 W2 F5 $3 | light gradient custom-property ambient architecture | A panel lit at the pointer has one lamp, and only while a pointe

@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,progressive-enhancement,correctness,cls,state,architecture]
 axes: none
 cost: 3
-seen: 13
+seen: 14
 requires: []
 conflicts: []
 completes: []

@@ -4,7 +4,7 @@ category: perf
 tags: [performance,canvas,dpr,memory,resize,correctness]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -14,8 +14,9 @@ tension: []
 free to be an ultrawide, so the backing store grows without limit and the
 per-pixel loop grows with it. Derive the scale from a total-pixel budget
 instead and the worst frame costs the same on every display, losing sharpness
-only where it was already unaffordable. Budget 4–17M pixels: the low end for a
-field redrawn per frame, the high end for a surface drawn once.
+only where it was already unaffordable. Budget 2.5–17M pixels: the low end for a
+field redrawn per frame or a post-processed 3D scene, the high end for a surface
+drawn once. Give each quality tier its own budget rather than one global cap.
 
 ```js
 const s = Math.min(CAP, devicePixelRatio || 1, Math.sqrt(BUDGET / (w * h)))

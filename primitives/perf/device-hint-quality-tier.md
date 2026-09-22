@@ -4,7 +4,7 @@ category: perf
 tags: [performance,webgl,capability,progressive-enhancement,correctness]
 axes: none
 cost: 2
-seen: 18
+seen: 19
 requires: []
 conflicts: []
 completes: []
@@ -157,3 +157,14 @@ const n = (k, f) => { const v = parseFloat(cs.getPropertyValue(k))
 ⚠ Unitless is what makes the read safe — a length token hands back its literal
 `clamp()` text. Nothing re-reads on its own either: subscribe to the same
 queries with `matchMedia`, or the tier stays whatever the first frame resolved.
+
+Variant — a render-on-demand scene has idle gaps that read as slow frames.
+Sample frame deltas only while the scene is being driven (input within the last
+~250ms), discard deltas over 250ms, and demote along an ordered list of the
+cheapest-to-lose effects first — antialias pass, bloom, pixel ratio 1.5, then 1.
+Persist the reached rung in `sessionStorage` so a reload starts there instead of
+re-paying the ramp.
+```js
+if (now - lastInput > 250) return            // idle: not a measurement
+if (++n >= 30 && ema > 24) demote()          // ema of deltas, 20–30ms
+```

@@ -4,7 +4,7 @@ category: canvas
 tags: [webgl, camera, composition, layout, viewport]
 axes: {energy: 2, density: 2, weight: 3, finish: 4}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,7 @@ gl.viewport(shift, 0, W, H)
 ```
 ⚠ Anything projected into DOM or SVG over the canvas must add the same shift,
 in CSS pixels not device pixels, or every annotation drifts off its target.
+
+Variant — vertical: to lift a 3D subject clear of copy below it, render a
+taller virtual frustum and crop it with `camera.setViewOffset`, widening FOV by
+the same factor so scale is unchanged. Shift 25–40% of height.
