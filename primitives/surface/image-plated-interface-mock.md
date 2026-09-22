@@ -4,7 +4,7 @@ category: surface
 tags: [product, mock, image, depth, color, surface]
 axes: {energy: 1, density: 2, weight: 3, finish: 5}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -41,3 +41,8 @@ as a unit so offsets never resolve against a changing box. Gutter 12–32px.
 ```
 ⚠ Reflow breaks the illusion — once cards stack, the offsets show unrelated
 crops. Pin separate offsets per breakpoint or accept independent crops below it.
+
+Variant — on a light page, plate with a pale, low-contrast illustration (hazy
+terrain, washed sky) and float two or three small cards on it rather than one
+mock. The plate's detail stays in its outer 15–25%, the cards cover the centre,
+so the art frames the UI instead of competing with it.

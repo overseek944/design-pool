@@ -4,7 +4,7 @@ category: light
 tags: [effect,blend,compositing,dark]
 axes: {energy: 3, density: 3, weight: 3, finish: 4}
 cost: 3
-seen: 17
+seen: 18
 requires: []
 conflicts: []
 completes: []
@@ -120,3 +120,10 @@ overlay leaves it grey. Cap height 1.5–4× the viewport's short side.
 ⚠ It carries no information and must not be the only place the name appears —
 `aria-hidden`, and keep it out of the tab order. Blending a mark this large over
 a gradient makes its contrast unpredictable; never run copy across it.
+
+Variant — `plus-lighter` for soft colour blobs on a saturated ground. It adds
+channels linearly and clamps, so a blurred cyan shape over deep blue brightens
+toward the ground's own hue instead of greying the way `screen` does at mid
+values. Keep blob opacity 0.4–0.8 and let the shapes overhang the card by
+25–60% of their size, clipped by the card.
+⚠ Stacked additive layers clip to white fast; check copy contrast where two overlap.

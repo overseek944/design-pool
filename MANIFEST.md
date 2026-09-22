@@ -1,6 +1,6 @@
 # Manifest
 
-1010 primitives. Format: `category/id | axes cost | tags | gist`
+1011 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -279,6 +279,7 @@ interaction/single-panel-tabset | neutral  $1 | tabs aria architecture performan
 interaction/slug-mapped-locale-switch | neutral  $1 | interaction navigation i18n url correctness | A language switcher built by prefixing the current path works on
 interaction/snap-scroll-as-dismiss-gesture | E3 D2 W2 F5 $3 | gesture dialog scroll accessibility sheet | Build a drag-to-dismiss sheet out of a scroll container rather t
 interaction/split-fraction-step-rail | E2 D2 W2 F5 $2 | interaction indicator progress stepper scroll | A stepper driven by a continuous value keeps the index and throw
+interaction/stacked-label-roll | E3 D2 W2 F5 $1 | interaction hover button label motion clip | A button can acknowledge the pointer without changing colour or 
 interaction/stage-angle-countered-slide | E2 D3 W2 F5 $2 | interaction hover transform 3d depth custom-property reduced-motion | Inside a stage rotated in its own plane, a child told to slide l
 interaction/state-as-numeric-custom-property | E3 D2 W2 F5 $1 | interaction hover state tokens architecture | Express interaction state as a number, then derive every depende
 interaction/state-seeded-at-listener-attach | neutral  $1 | correctness state events scroll architecture | Events report transitions, not the current value. Any class deri
