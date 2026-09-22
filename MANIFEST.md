@@ -1,6 +1,6 @@
 # Manifest
 
-1018 primitives. Format: `category/id | axes cost | tags | gist`
+1021 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -403,6 +403,7 @@ layout/stacking-register | neutral  $1 | architecture z-index tokens correctness
 layout/stateful-chrome-inset-contract | neutral  $2 | layout chrome tokens custom-property architecture overlay correctness | Fixed chrome should publish the space it takes as root custom pr
 layout/sticky-underlay-reveal | E2 D1 W3 F4 $1 | layout scroll sticky depth css-only section | Invert the usual arrival: a panel placed after the content and s
 layout/summed-term-derivation-rows | E1 D3 W2 F5 $1 | layout data figure provenance chart accessibility | A derived figure is believed only when its terms are visible. Gi
+layout/tile-quantised-extent | neutral  $1 | layout pattern correctness repeat css-math | A repeating decoration — perforations, a ruler, ticks — filling 
 layout/tilted-counter-running-column-wall | E3 D4 W2 F4 $3 | marquee vertical perspective background wall columns 3d | A backdrop of many items reads as depth, not a grid, when it run
 layout/track-centre-spanning-rule | E1 D2 W1 F5 $1 | layout grid connector geometry correctness responsive | A rule joining a row of N equal columns belongs between the cent
 layout/translate-z-axonometric-stage | E1 D3 W2 F5 $3 | 3d depth diagram transform stage | A cutaway model — floor, walls, shelving, a mover — is buildable
@@ -634,6 +635,7 @@ motion-system/traveller-proximity-node-glow | E3 D2 W2 F5 $2 | motion diagram pi
 motion-system/twin-named-keyframe-restart | neutral  $1 | motion keyframes transition correctness css-animation | An animation runs once per name, so after content changes under 
 motion-system/twin-pose-custom-properties | E3 D3 W2 F5 $2 | transform state stagger custom-properties group choreography | A group that rearranges between two arbitrary layouts — stacked 
 motion-system/type-declared-transition-scope | neutral  $2 | motion-system view-transition scoping state correctness routing | Every ::view-transition- rule applies to every transition, so a 
+motion-system/validated-dom-aim-point | E2 D2 W2 F5 $2 | cursor demo synthetic-pointer correctness dom-measure | A scripted pointer aiming at live elements rather than stored co
 motion-system/viewport-clamped-slot-travel | E3 D1 W2 F5 $3 | motion travel scroll measurement layout | An element travelling between two positions read from real layou
 motion-system/zero-signal-idle-floor | E2 D1 W2 F5 $1 | motion idle signal realtime feedback reduced-motion | A visual driven by a live input has two states that render ident
 perf/analytic-stand-in-until-live | neutral  $2 | data loading architecture visualisation labelling | A visual driven by a live feed has three bad first frames: empty
@@ -953,6 +955,7 @@ type/breakpoint-swapped-family-roles | E1 D2 W3 F5 $1 | type responsive breakpoi
 type/cap-height-only-leading | E2 D4 W4 F4 $1 | type leading uppercase display density | A line of all-caps uses almost none of its line box — no descend
 type/cap-height-trim | neutral  $1 | type spacing precision alignment | Every text block ships with invisible half-leading above and bel
 type/cap-matched-family-mix | neutral  $1 | type pairing font alignment precision | Two families at the same font-size rarely share a cap height, so
+type/cap-registered-ruled-row | E1 D3 W2 F5 $1 | type alignment grid blueprint precision metrics | Text inside a visibly ruled grid looks misregistered: the line b
 type/char-count-stepped-reveal | E3 D1 W2 F4 $1 | type motion css-only custom-properties keyframes | A per-character reveal is one number. Publish the character coun
 type/character-grid-as-texture | E3 D5 W2 F3 $2 | type texture ornament ascii | A field of monospace glyphs (+ x X 8 0 @ # % $) on a grid, used 
 type/circumference-fitted-seal-ring | E2 D3 W2 F4 $2 | type svg ornament mark watermark rotation | An authority mark can be typeset rather than drawn: a legend set
