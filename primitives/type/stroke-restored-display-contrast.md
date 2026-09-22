@@ -4,7 +4,7 @@ category: type
 tags: [type,display,contrast,accent,accessibility,ornament]
 axes: {energy: 1, density: 2, weight: 4, finish: 4}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,18 @@ and eats inward — pair it with a light weight, never a bold. 1–2px across
 ```
 ⚠ Not a contrast fix for running text — below roughly 3rem the stroke closes
 apertures and the glyph gets harder to read, not easier.
+
+Inverted — transparent fill, stroke alone — the same declaration gives a ghost
+layer: an outlined word set behind a heading, or oversized type running as a
+band, present as structure without competing for ink. Two things then bite that
+the filled form never hits. An engine without `-webkit-text-stroke` renders
+nothing at all, so the `@supports not` branch has to restore a faint fill; and
+the stroke is centred on the contour, so `paint-order: stroke` keeps the
+arithmetic unchanged when a filled `<em>` is nested inside.
+```css
+.ghost { color: transparent; paint-order: stroke;
+         -webkit-text-stroke: 1.2px var(--line-faint) }
+@supports not (-webkit-text-stroke: 1px black) { .ghost { color: var(--line-faint) } }
+```
+⚠ Give it `user-select: none` and `aria-hidden` — it is a texture, and a screen
+reader otherwise announces a word the page never actually says.

@@ -1,6 +1,6 @@
 # Manifest
 
-796 primitives. Format: `category/id | axes cost | tags | gist`
+798 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -290,6 +290,7 @@ layout/matted-opening-frame | E1 D1 W2 F5 $1 | frame viewport hero media radius 
 layout/measured-copy-keepout | neutral  $2 | layout measurement legibility canvas | Background art told to keep clear of the copy is usually given a
 layout/named-container-scope | neutral  $1 | layout container-query correctness components responsive | Any ancestor carrying container-type captures every unnamed @con
 layout/occupancy-negotiated-label-placement | neutral  $4 | layout label annotation collision diagram correctness | Annotations placed independently overlap the moment two anchors 
+layout/offset-ladder-peer-row | E1 D2 W2 F4 $1 | layout grid cards rhythm sequence composition | Three equal cards in a row read as three options in no order. St
 layout/overflow-clip-over-hidden | neutral  $1 | overflow correctness accessibility scroll | overflow: clip crops without creating a scroll container. hidden
 layout/per-edge-clip-polygon | neutral  $1 | overflow clip correctness bleed | overflow only works per axis, so there is no way to crop one edg
 layout/prefix-selected-segment-level | E1 D3 W2 F4 $1 | css-only state accessibility data detail cheap | A discrete level — three of ten segments lit — usually costs a c
@@ -312,6 +313,7 @@ layout/self-drawing-grid-debug | neutral  $2 | layout grid tooling debug archite
 layout/shared-percent-coordinate-space | E1 D3 W1 F5 $2 | diagram svg schematic accessibility responsive | A node diagram wants SVG lines and real DOM nodes: strokes that 
 layout/sibling-deferred-block-spacing | neutral  $1 | layout has spacing rhythm css-only correctness architecture | A markdown or CMS renderer emits a figure and its caption as fla
 layout/single-edge-cell-rules | E1 D3 W1 F5 $1 | layout grid hairline rules precision | In a ruled grid every interior line is drawn by both neighbours 
+layout/slack-funded-control-expansion | E2 D2 W2 F5 $1 | layout flex toolbar disclosure controls restraint | A secondary control in a fixed bar — volume, a filter, a search 
 layout/slot-attribute-child-contract | neutral  $1 | layout architecture composition naming css-only | Let the arrangement own its children's boxes. A part publishes o
 layout/stacking-register | neutral  $1 | architecture z-index tokens correctness overlay | One file owns every stacking value in the product as named token
 layout/stateful-chrome-inset-contract | neutral  $2 | layout chrome tokens custom-property architecture overlay correctness | Fixed chrome should publish the space it takes as root custom pr

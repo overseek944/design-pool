@@ -4,7 +4,7 @@ category: timing
 tags: [motion,ambient,rhythm]
 axes: {energy: 3, density: 3, weight: 2, finish: 4}
 cost: 2
-seen: 20
+seen: 21
 requires: []
 conflicts: []
 completes: []
@@ -91,3 +91,13 @@ difference has time to register.
 ```
 ⚠ Hold every path to one travel budget. A drifter given more stops that also
 ranges further stops reading as a peer and starts reading as the broken one.
+
+Two counter-running lanes stacked in one band need more than different speeds.
+At the same size and weight they read as one text cut in half and re-glued the
+wrong way round, and the eye keeps trying to join them. Split the typographic
+register too: the fast lane wide-tracked mono uppercase at 0.7–0.8rem, the slow
+one a serif italic at 1.3–1.6× that size. The band then reads as two channels
+rather than one broken line — and it is the register contrast, not the speed
+difference, that stops the eye locking onto either.
+⚠ Two registers, never three, and neither lane may carry anything the reader
+needs: both are unreadable at the ends of the band.

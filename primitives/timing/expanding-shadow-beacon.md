@@ -4,7 +4,7 @@ category: timing
 tags: [motion,indicator,status,ambient,glow]
 axes: {energy: 2, density: 1, weight: 2, finish: 4}
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -68,3 +68,17 @@ column of them is free. Peak 1.6–2×, trough alpha .35–.5, period 2–3s.
 ⚠ The disc is the animation, so at the trough there is no solid core left and
 the indicator can read as failing rather than live. Where the mark must stay
 legible throughout, put the breath on a pseudo-element and leave the dot still.
+
+Better than counting iterations: retire the cue on the event it was cueing.
+Hold it behind a delay long enough that anyone already going to act never sees
+it — 1.5–2.5s over a poster or an idle control — then let the state class that
+marks the action taken kill the animation outright. A count expires on a
+schedule and can still nag someone who has acted; this cannot, and it re-arms
+for free whenever the state goes back — paused, closed, reset — with no
+persisted flag to keep.
+```css
+.cue::after { animation: beacon 3.6s ease-out 1.8s infinite }
+.player:is(.is-playing, .is-scrubbing) .cue::after { animation: none }
+```
+⚠ Gate it on the same state the rest of the chrome reads, or the ring outlives
+the thing it was pointing at.

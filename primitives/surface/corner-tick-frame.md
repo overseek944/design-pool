@@ -4,7 +4,7 @@ category: surface
 tags: [surface,border,frame,detail,currentcolor,precision]
 axes: {energy: 1, density: 2, weight: 1, finish: 5}
 cost: 1
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
@@ -64,3 +64,17 @@ without a label. 6–10px square, offset outward by half its own size.
 ⚠ All four corners reads as a scatter of dots at small sizes; the diagonal pair
 is what makes it a selection. Still decoration — a genuinely selected state has
 to be announced, not only drawn.
+
+The marks can be the state rather than the frame. Tie their opacity to the
+element's own interaction scalar and the brackets are absent at rest, arriving
+as the pointer nears: registration that appears only while something is being
+addressed, which is what separates a live target from a decorated one. The same
+logic retires them — where the frame sits on a player or a viewer the brackets
+belong to the chrome, so they leave with the control bar the moment playback
+starts instead of persisting over the picture.
+```css
+.tile .tick { opacity: var(--d, 0); transition: opacity .3s }
+.player.is-playing:not(.show-controls) .tick { opacity: 0 }
+```
+⚠ Nothing load-bearing may ride on marks that vanish: they cannot carry the
+focus ring, and they cannot be the drawn boundary of a hit area.
