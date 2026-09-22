@@ -4,7 +4,7 @@ category: timing
 tags: [timing,choreography,keyframes,css-animation,token,sequence]
 axes: {energy: 2, density: 3, weight: 2, finish: 5}
 cost: 2
-seen: 27
+seen: 28
 requires: []
 conflicts: []
 completes: []
@@ -206,3 +206,18 @@ a legible static icon. Motion inside the first 30–58%, total 2–2.5s.
 ⚠ Repeat every settle pose at `to`. A part whose last authored stop is earlier
 interpolates from there back to the element's base value across the whole tail,
 and the hold everything else is keeping becomes a slow drift on that one part.
+
+Where a participant's opacity already carries its own track — an SVG stroke, a
+border, a shadow — it cannot also hold the shared blackout, and that
+construction's failure is exactly one element fading a percent out of step. Put
+the wash on a single full-bleed sibling in the ground colour instead, on the
+same token: opaque at 0% and 100%, clear across the middle. One element owns the
+seam, nothing has to agree with anything else, and participants keep their own
+alpha. Clear by 3–5%, hold clear to 92–96%.
+```css
+.wash { position: absolute; inset: 0; background: hsl(var(--ground));
+        pointer-events: none; animation: seam var(--seq) linear infinite }
+@keyframes seam { 0% { opacity: 1 } 4%,94% { opacity: 0 } to { opacity: 1 } }
+```
+⚠ It dims every participant equally at the wrap, so a sequence whose last beat
+is its conclusion loses the frame worth holding — end on a hold, not on the wash.

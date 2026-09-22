@@ -1,6 +1,6 @@
 # Manifest
 
-880 primitives. Format: `category/id | axes cost | tags | gist`
+881 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -522,6 +522,7 @@ motion-system/reset-frame-slot-recycle | E3 D1 W2 F4 $1 | motion transition stat
 motion-system/residual-length-trail-lock | E2 D2 W1 F5 $2 | motion svg stroke path diagram | A trail and the mover drawing it are two animations; time alone 
 motion-system/rest-declared-destination-entrance | neutral  $1 | motion entrance correctness architecture css-only state | An entrance whose end state is live — a scroll-written length, a
 motion-system/ring-down-impact-entrance | E4 D1 W4 F3 $1 | motion entrance keyframes impact choreography | An arrival that eases to rest says the element was placed. One t
+motion-system/route-and-rest-shared-poses | E3 D2 W2 F5 $2 | motion keyframes transition custom-properties state choreography | An arrangement whose members swap places needs two kinds of chan
 motion-system/scheduled-event-aliveness | E3 D2 W2 F4 $3 | idle loop character randomness raf ambient | Anything idling on sines reads as a mechanism — the period is au
 motion-system/scroll-energy-accumulator | E3 D2 W2 F4 $1 | scroll motion shader effect canvas | Scroll position says where something is; scroll effort should sa
 motion-system/scrubbable-waapi-timeline | E3 D2 W3 F5 $3 | motion scroll scrub architecture performance | A scroll-scrubbed timeline needs no animation library. Build eve

@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,keyframes,custom-properties,architecture,choreography]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
@@ -71,3 +71,20 @@ scattered field and a tilted row all animate off the same six lines.
 ⚠ A member at rest pose zero does not move — the amplitude is proportional, so a
 centre card with `--rot: 0` sits dead still while its neighbours swing. Give it a
 small non-zero rest value or animate an additive term beside the multiplier.
+
+Where the stops are *poses* rather than coordinates, store the entire transform
+list in the property and let the stop be a bare `var()`. The block then holds
+only structure — which stop, how long, what swaps at the crossing — and the
+geometry lives where a media query can reach it, so one route re-tunes for a
+narrower stage with no second keyframe block to keep in step. Keep the whole set
+in one rule so the poses read as a composition rather than as six numbers.
+```css
+.stage { --p-far: translate3d(-.9rem,.5rem,-64px) rotate(-1.6deg) scale(.945) }
+@media (width < 48rem) {
+  .stage { --p-far: translate3d(-.6rem,.4rem,-58px) rotate(-1.2deg) scale(.95) } }
+@keyframes recede { to { transform: var(--p-far) } }
+```
+⚠ Poses are substituted, not interpolated. Two stops naming different properties
+tween between whatever those resolve to, so every pose must be a complete list in
+the same function order — mismatched lists fall back to a matrix blend and the
+rotation takes the short way round.

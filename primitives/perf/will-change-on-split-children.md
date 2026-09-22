@@ -4,7 +4,7 @@ category: perf
 tags: [motion,performance,promotion]
 axes: none
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -46,3 +46,16 @@ low-memory tier and a screenshot pass each want.
 ⚠ The hint is now inherited-by-scope, not per-element — an ancestor holding it
 open promotes every declaring descendant under it, which on a long section is
 worse than the per-node version it replaced.
+
+The reduced-motion branch is the forgotten caller. `animation: none` stops the
+movement and leaves every promotion standing, so the reader who asked for less
+gets the same layer count, the same memory and the same softened text, and none
+of the motion that paid for it. Clear the hint in the block that kills the
+animation, and drop the residual `transform` and `filter` with it.
+```css
+@media (prefers-reduced-motion: reduce) {
+  .part { animation: none; will-change: auto; transform: none } }
+```
+⚠ It only reaches what the branch names. A blanket `.scene *{animation:none
+!important}` stops everything and demotes nothing, which is the worst of both —
+scope the demotion to the same selector list or write it as the resting value.

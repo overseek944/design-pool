@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,generative,ambient,tokens,architecture]
 axes: {energy: 3, density: 4, weight: 2, finish: 3}
 cost: 2
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
@@ -68,3 +68,18 @@ scattered across one period doing the rest. Duty .3–.6 reads as activity; unde
 ⚠ Spread the delays over the *whole* period. Every member shares one duration,
 so a delay range covering a fraction of it fixes the phase relationship
 permanently — the population bunches into one burst per cycle and never drifts.
+
+A track can be chosen by width as well as by element. Where the layout reflows
+from a row to a column, motion authored along one axis is wrong in the other — a
+marker travelling a horizontal rail has to travel down the vertical one — and
+overriding `animation-name` alone in the media query leaves every other part of
+the declaration, the duration above all, in one place. Duplicating the whole
+shorthand per breakpoint gives the two widths two clocks, which drift from the
+shared token the first time either is retuned.
+```css
+.pip { animation: var(--seq) linear infinite both; animation-name: run-x }
+@media (width < 48rem) { .pip { animation-name: run-y } }
+```
+⚠ Changing the name restarts the animation, so an element on a shared sequence
+re-enters at 0% on every resize across the breakpoint — invisible on a loop,
+visible on a one-shot and on anything meant to stay in phase with its neighbours.

@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,accessibility,reduced-motion,state,sequence,correctness]
 axes: none
 cost: 2
-seen: 17
+seen: 18
 requires: []
 conflicts: []
 completes: []
@@ -97,3 +97,18 @@ raf = requestAnimationFrame(step)                       // 1.5–4s into the loo
 ⚠ Return before the loop starts rather than cancelling inside it, or the first
 animated frame still paints. A mid-session flip of the query leaves the still
 stale unless the effect re-runs on `change`.
+
+Not every participant has a still worth pinning. A loop explaining a system holds
+two kinds of element: ones depicting *state* — a node, a rail, a boundary — and
+ones existing only to depict passage between states, a packet on the rail, a
+module docking, a pulse crossing a link. Pin the first kind at the elected frame
+and remove the second outright. Frozen, a travelling mark is a dot stopped
+halfway along a wire, which reads as a fault rather than as a still.
+```css
+@media (prefers-reduced-motion: reduce) {
+  .node, .rail, .boundary { animation: none; opacity: 1 }
+  .packet, .dock, .pulse  { display: none } }
+```
+⚠ Removing them takes their meaning with it — a direction or an ordering the
+transit element was the only evidence of has to be carried by the pinned frame
+or by the figure's description.
