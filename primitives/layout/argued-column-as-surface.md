@@ -4,7 +4,7 @@ category: layout
 tags: [layout,table,comparison,surface,contrast,hierarchy]
 axes: {energy: 1, density: 3, weight: 4, finish: 5}
 cost: 1
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []
@@ -98,3 +98,13 @@ dimension, so the field stays seamless. Rule 2–3px against a 1px gap.
 ⚠ The rails paint outside the cell box, so the first or last column loses one
 to the wrapper's `overflow`. Keep the argued column interior, or inset the
 wrapper's border by the rail width.
+
+The same wash states *provenance* rather than argument in a data grid: tint the
+columns the system wrote, leave the ones the reader supplied plain, and origin
+becomes a property of position instead of a legend. It then has to hold a
+register apart from the cell-level status tints in the same table — red, amber
+and green at a similar strength — because two tint systems at one weight read as
+one broken system. Give the column a hue no status uses at half their
+saturation, 4–8% over the ground.
+⚠ Neither register survives greyscale or announcement. The header has to name
+the column's origin in words, and a status cell still needs its printed value.

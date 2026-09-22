@@ -4,7 +4,7 @@ category: media
 tags: [media,iframe,embed,responsive,architecture]
 axes: none
 cost: 3
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -54,3 +54,19 @@ nothing restarts on resize and there is no first frame at the wrong size. s
 the layout box at full size, so the parent must clip it or reserve the
 difference, or the shrunken widget trails a band of its own uncompensated
 height.
+
+The media-query warning above has an exit wherever the embed is a document you
+own: let it take its composition from its own URL. A phone then loads a
+*recomposed* render — collapsed rail, narrower dock, tighter chrome — at its own
+logical width, instead of the desktop composition shrunk until its type is
+sub-pixel. Swap the `src` from a `matchMedia` listener and restate the frame's
+ratio and logical width in the same write, so the box never disagrees with what
+is in it. Roughly 1.6–2× between the two logical widths.
+```js
+mq.addEventListener('change', () => {
+  const w = mq.matches ? 780 : 1440
+  frame.style.aspectRatio = `${w} / 900`; frame.dataset.fw = w
+  if (f.src !== src(w)) f.src = src(w); fit() })
+```
+⚠ Changing `src` reloads the document — anything mid-animation restarts and the
+frame repaints empty. Fire on the breakpoint crossing only, never on resize.

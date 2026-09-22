@@ -4,7 +4,7 @@ category: surface
 tags: [backdrop-filter,legibility,photography,contrast,surface,type]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 12
+seen: 13
 requires: []
 conflicts: []
 completes: []
@@ -170,3 +170,18 @@ it has to be restated whenever the padding is.
 ⚠ The negative margin pulls the plate outside the container's padding box —
 check it at the narrowest width, where the plate reaches the viewport edge and
 the blur clips.
+
+Cheapest of the set: paint the wash rather than filter, and make it radial so it
+has no edge to hide. One `radial-gradient` ellipse on a pseudo-element behind the
+copy, overscanning the block far past its own box sideways, opaque at the centre
+and clear well before the section ends. No compositing layer, no mask, nothing
+recomposited on scroll — and the picture keeps its detail everywhere the words
+are not. Overscan 1.5–2.5× the measure, clear by 70–85% of the radius.
+```css
+.copy::before { content: ""; position: absolute; inset: 2.5rem -10rem -2.5rem;
+  z-index: -1; background: radial-gradient(ellipse at center,
+    #fffb 0, #fff7 45%, #fff0 72%) }
+```
+⚠ `z-index: -1` escapes only as far as the nearest stacking context — a
+`transform`, `filter` or `isolation` on any ancestor traps the wash in front of
+the copy instead of behind it.

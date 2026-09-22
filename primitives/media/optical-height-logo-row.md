@@ -4,7 +4,7 @@ category: media
 tags: [media,logos,normalisation,scale,responsive]
 axes: none
 cost: 1
-seen: 13
+seen: 14
 requires: []
 conflicts: []
 completes: []

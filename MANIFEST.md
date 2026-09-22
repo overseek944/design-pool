@@ -1,6 +1,6 @@
 # Manifest
 
-821 primitives. Format: `category/id | axes cost | tags | gist`
+823 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -323,6 +323,7 @@ layout/slot-attribute-child-contract | neutral  $1 | layout architecture composi
 layout/stacking-register | neutral  $1 | architecture z-index tokens correctness overlay | One file owns every stacking value in the product as named token
 layout/stateful-chrome-inset-contract | neutral  $2 | layout chrome tokens custom-property architecture overlay correctness | Fixed chrome should publish the space it takes as root custom pr
 layout/sticky-underlay-reveal | E2 D1 W3 F4 $1 | layout scroll sticky depth css-only section | Invert the usual arrival: a panel placed after the content and s
+layout/summed-term-derivation-rows | E1 D3 W2 F5 $1 | layout data figure provenance chart accessibility | A derived figure is believed only when its terms are visible. Gi
 layout/track-centre-spanning-rule | E1 D2 W1 F5 $1 | layout grid connector geometry correctness responsive | A rule joining a row of N equal columns belongs between the cent
 layout/translate-z-axonometric-stage | E1 D3 W2 F5 $3 | 3d depth diagram transform stage | A cutaway model — floor, walls, shelving, a mover — is buildable
 layout/truncating-head-fixed-trailer | neutral  $1 | layout flex truncation correctness cards responsive | A header row pairing a variable-length label with a status badge
@@ -399,6 +400,7 @@ media/overscan-relaxed-plate | E2 D1 W3 F5 $2 | media image reveal scale motion 
 media/plane-sorted-defocus-field | E1 D3 W2 F5 $2 | depth blur defocus scatter composition decoration | A field of images scattered at different sizes still reads flat 
 media/predicate-tiered-video-encode | neutral  $2 | media video responsive performance bandwidth correctness | A <video> has no srcset and no sizes, so nothing picks an encode
 media/pseudo-element-pictogram-set | E1 D2 W2 F4 $2 | icon css-only pseudo-element tokens diagram | A set of small technical pictograms — a frame, a scatter, a cyli
+media/query-composed-figure-source | neutral  $3 | media figure architecture iframe product responsive build | Every figure of an interface is usually its own exported image. 
 media/ratio-split-view-pair | E1 D3 W2 F4 $1 | media figure aspect grid editorial | One subject argued from two views — as photographed, and as the 
 media/reduce-restored-media-transport | neutral  $1 | media video accessibility scroll scrub correctness | Where scroll is the only transport for a continuous medium, pref
 media/reduce-swapped-clip-still | neutral  $1 | media video accessibility reduced-motion correctness | An autoplaying loop cannot honour prefers-reduced-motion by paus
