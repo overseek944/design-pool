@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,edge,composition,bleed]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 77
+seen: 78
 requires: []
 conflicts: []
 completes: []
@@ -307,3 +307,13 @@ mask-image: linear-gradient(#000 0 33%, #00000059 50%, #0000 62%)
 ⚠ The bend is a look, not a correction. The same curve that paces a fade over
 artwork holds text legible further into the ramp — check it against the content,
 because hiding that text may have been the point.
+
+An edge fade laid over readable content — a scrolling row of quotes, a carousel
+of cards — survives `forced-colors`, where the reader has asked for maximum
+contrast and the mask still dissolves the text at each end into the system
+ground. Drop it there; the hard crop is the honest affordance in that mode.
+```css
+@media (forced-colors: active) { .rail { mask-image: none; -webkit-mask-image: none } }
+```
+⚠ Remove both the prefixed and unprefixed property — Safari reads only the
+prefixed one.

@@ -4,7 +4,7 @@ category: scale
 tags: [unit,tokens,border,precision,coherence]
 axes: {energy: 1, density: 2, weight: 1, finish: 5}
 cost: 1
-seen: 29
+seen: 30
 requires: []
 conflicts: []
 completes: []
@@ -151,3 +151,14 @@ one variable pair for the whole system, and both invert with the theme for free.
 ```
 ⚠ Alpha over a photograph or a video is not a hairline any more — it takes the
 value of whatever is beneath. Where a rule crosses media, fall back to a solid.
+
+On a dense display the token can go below one device pixel — 0.4–0.6px renders
+as a true hairline at 2x and 3x — provided the root restores a full pixel where
+it would round away. Branch on `resolution`, not on width: the failure is the
+pixel grid, and a large low-density monitor is exactly where it happens.
+```css
+:root { --hair: .5px }
+@media (resolution <= 1.5x) { :root { --hair: 1px } }
+```
+⚠ A sub-pixel line on a light ground is also a lighter line — re-check the edge
+tint against the ground at the thinner width.

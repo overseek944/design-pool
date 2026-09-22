@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,pointer,transform,motion,restraint,custom-property]
 axes: {energy: 2, density: 1, weight: 3, finish: 5}
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -88,3 +88,16 @@ card.addEventListener('click', e => {
 ```
 ⚠ A click handler on a `<div>` is not an affordance — the card still needs a
 real control inside it for the keyboard, and this only forwards the pointer.
+
+A tilted card that also has a scroll entrance has two writers on one
+`transform`. Arm the pointer handler only once the entrance has finished — a
+class the reveal sets — or the first hover overwrites the rise mid-flight and
+the card snaps to its resting position. Let the shadow follow the pose: offset
+it opposite the tilt at 6–12px per degree with the blur fixed, so the light
+source stays put while the surface turns.
+```js
+if (!card.classList.contains('is-revealed')) return   // entrance owns transform
+card.style.boxShadow = `${-ry * 3}px ${rx * 3 + 4}px 34px -6px #0000001a`
+```
+⚠ Re-read the bounding rect on scroll while tilting; a rect cached on enter is
+wrong the moment the page moves under a stationary pointer.
