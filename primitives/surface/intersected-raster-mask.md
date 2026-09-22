@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,texture,print,halftone]
 axes: {energy: 1, density: 4, weight: 2, finish: 4}
 cost: 2
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []

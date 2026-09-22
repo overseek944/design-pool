@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,intersection-observer,visibility,battery,correctness]
 axes: none
 cost: 2
-seen: 77
+seen: 78
 requires: []
 conflicts: []
 completes: []
@@ -292,3 +292,14 @@ btn.setAttribute('aria-pressed', String(paused || rm.matches))
 ⚠ Pausing has to hold a frame worth looking at. A gate that freezes whatever was
 mid-transition reads as a stall — park on the same named rest state the
 reduced-motion branch uses, so both routes land on a composition somebody chose.
+
+The pause selector is usually written short and misses two things. Whatever
+carries the flag has its own `animation`, and `::after` runs as freely as
+`::before` — a decorative element paused through its descendants alone keeps
+compositing the parts nobody thought to list. Write all four terms once; the
+cost is bytes, and an escaped one is invisible in review because most of the
+scene does stop.
+```css
+[data-paused], [data-paused] *,
+[data-paused] ::before, [data-paused] ::after { animation-play-state: paused !important }
+```

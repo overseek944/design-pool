@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,correctness,accessibility,progressive-enhancement,reveal]
 axes: none
 cost: 2
-seen: 18
+seen: 19
 requires: []
 conflicts: []
 completes: []
@@ -140,3 +140,17 @@ addEventListener('pageshow', e => { if (e.persisted) settle() })
 ⚠ Both checks are load-bearing and neither implies the other — `persisted` is
 the bfcache restore, the navigation type is a re-executed load out of history.
 A same-document router pop fires neither, so it needs the router's own signal.
+
+`@media (scripting: enabled)` is the same inverted polarity with nothing to
+arm it — no head script, no class, no `noscript` duplicate of the hidden rules.
+Scope the from-state under it and the hidden state cannot exist where nothing
+could ever undo it. It also composes with the motion query in one condition, so
+a reader on `reduce` is served the settled document and the observer is never
+needed at all.
+```css
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  [data-reveal] { opacity: 0; translate: 0 10px } }
+```
+⚠ It answers *can script run*, not *did this bundle arrive* — keep the timer
+for the 404 case. Falls back to the visible branch in engines that do not
+support the query, which is the safe direction.

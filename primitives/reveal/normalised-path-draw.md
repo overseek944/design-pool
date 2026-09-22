@@ -4,7 +4,7 @@ category: reveal
 tags: [svg,stroke,reveal,draw,geometry,correctness]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 17
+seen: 18
 requires: []
 conflicts: []
 completes: []
@@ -70,3 +70,15 @@ wider and the fast ones read as a different event.
 ⚠ Declare a fallback in the `var()`. A path that ships without the inline style
 gets an invalid `animation` shorthand, which drops `both` too — so it holds its
 undrawn frame permanently rather than merely losing its timing.
+
+Let the offset run past zero and the same one block gives a loop with no reset
+frame: `+L` hidden, `0` complete, `−L` hidden again, so the mark writes itself
+in from the head and is erased from the tail rather than blinking out. Hold the
+drawn state as a pair of equal stops across the middle 50–70% of the cycle —
+the drawing is the point, the travel is punctuation.
+```css
+@keyframes draw { 0%,12% { stroke-dashoffset: 100 }
+                  28%,88% { stroke-dashoffset: 0 } to { stroke-dashoffset: -100 } }
+```
+⚠ Needs `stroke-dasharray` at the full normalised length, not `L L` — a gap
+shorter than the path lets a second dash wrap in behind the first as it leaves.

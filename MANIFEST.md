@@ -1,6 +1,6 @@
 # Manifest
 
-874 primitives. Format: `category/id | axes cost | tags | gist`
+876 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -258,6 +258,7 @@ interaction/withdrawn-motion-pause-control | neutral  $1 | accessibility motion 
 interaction/withheld-value-reveal | E2 D2 W3 F4 $1 | interaction disclosure redaction accessibility state | Withholding a figure claims more than printing it, but only if t
 interaction/zone-derived-regional-ordering | neutral  $1 | interaction i18n privacy ordering progressive-enhancement correctness | A list whose useful entries differ by country can be ordered for
 layout/argued-column-as-surface | E1 D3 W4 F5 $1 | layout table comparison surface contrast hierarchy | In a comparison matrix the column you are arguing for should be 
+layout/axis-tracking-seam-marker | E1 D2 W2 F5 $1 | layout seam affordance responsive breakpoint | Two panels that argue in sequence — problem, then answer — lose 
 layout/balanced-side-track-centring | neutral  $1 | layout grid alignment chrome correctness | space-between centres nothing: the middle child lands wherever t
 layout/border-clamped-annotation-leader | E1 D3 W1 F5 $2 | layout annotation connector svg diagram | A leader line drawn from a label's centre to its subject crosses
 layout/boxless-wrapper | neutral  $1 | layout grid architecture correctness accessibility | display: contents removes an element's box while keeping its chi
@@ -853,6 +854,7 @@ type/render-scale-countered-label | E1 D2 W1 F5 $1 | type svg diagram label resp
 type/resolution-stepped-type-scale | neutral  $1 | type tokens scale accessibility legibility correctness | A size that reads cleanly on a 2x panel is muddy on a 1x one: th
 type/role-leading-ladder | E1 D2 W3 F5 $1 | type tokens scale rhythm precision | Leading is a function of role, not of size, and the ladder is st
 type/rule-ranked-aside-tier | E1 D2 W2 F5 $1 | type hierarchy register annotation cheap | A page that argues carries asides at several ranks, and sizing t
+type/self-resolving-text-sweep | E3 D2 W3 F4 $1 | type gradient entrance currentcolor reveal | A one-shot sweep through background-clip: text normally needs cl
 type/serif-accent-in-technical-context | E1 D2 W3 F5 $1 | type contrast editorial restraint | One high-contrast serif, used sparingly against a geometric sans
 type/shadow-bled-inline-highlight | E2 D2 W3 F4 $1 | type highlight inline hover custom-property transition | A highlight that stops at the first and last glyph reads as a cl
 type/single-codepoint-face-overlay | E1 D1 W2 F5 $2 | type webfont unicode-range glyph detail brand | A licensed face is almost right and one glyph is wrong — an unsl
