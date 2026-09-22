@@ -4,7 +4,7 @@ category: type
 tags: [type,emphasis,hierarchy,editorial,colour]
 axes: {energy: 1, density: 2, weight: 3, finish: 5}
 cost: 1
-seen: 22
+seen: 23
 requires: []
 conflicts: []
 completes: []
@@ -100,3 +100,16 @@ flattens out.
 ⚠ Hard breaks are authored for one measure. Drop to a single tone below the
 breakpoint where the lines reflow, or the recessive half wraps up beside the
 bright one and the hierarchy inverts mid-word.
+
+The split can change face as well as tone. Open each paragraph with its claim
+as a run-in in the display family — a serif against a sans body, one or two
+size steps up, a weight step heavier — and let the muted remainder continue on
+the same line. The paragraph gets a heading without a heading's block, so a
+column of three reads as three arguments rather than three labelled boxes.
+Run-in 1.2–1.4× body size.
+```css
+.arg > .lead { font: 500 1.3em/1 var(--serif); color: var(--fg) }
+.arg         { color: var(--fg-muted) }
+```
+⚠ A larger inline run lifts its whole line box; set `line-height: 1` on the run
+or the first line sits visibly lower than the rest of the paragraph.

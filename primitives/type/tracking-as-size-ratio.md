@@ -4,7 +4,7 @@ category: type
 tags: [type,tracking,precision,fluid,tokens]
 axes: {energy: 1, density: 2, weight: 3, finish: 5}
 cost: 1
-seen: 29
+seen: 30
 requires: []
 conflicts: []
 completes: []
@@ -55,3 +55,14 @@ the same size is already correct at 0 and tightens into a smear. Read the low
 end as a property of the family and set it once per family token, not per band.
 ⚠ Whatever the body face takes, the fallback does not — a metric-override
 fallback matched on width will run narrow again once the tracking is applied.
+
+A monospace face moves every ceiling above. Its word space is a full cell, about
+.6em rather than .25em, so the tracked gap has far more room before it reads as
+a break: multi-word mono labels at 10–13px hold +.20 to +.35 and still scan as
+one phrase, and a two-word wordmark holds up to +.40. The ratio rule is unchanged;
+only the word space it is measured against is wider.
+```css
+.label.mono { font-family: var(--mono); letter-spacing: .3em; text-transform: uppercase }
+```
+⚠ Past +.35 a mono label reads as one letter per cell — a grid, not a word.
+Always check it on the narrowest line it can wrap to.

@@ -1,6 +1,6 @@
 # Manifest
 
-978 primitives. Format: `category/id | axes cost | tags | gist`
+979 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -737,6 +737,7 @@ scroll/once-versus-toggle | neutral  $1 | scroll reveal ux | Two reveal policies
 scroll/overflow-probe-via-scroll-timeline | neutral  $2 | scroll overflow progressive-enhancement correctness | A scroll-driven animation only advances if its scroll port can a
 scroll/pin-and-progress-stack | E4 D3 W4 F4 $4 | scroll layout narrative | Pin a tall container and drive discrete state from a single scru
 scroll/pin-optional-section-contract | neutral  $2 | scroll architecture correctness accessibility pin fallback | A pinned stage and the unpinned version of the same material mus
+scroll/pinned-defocus-hero-exit | E2 D1 W2 F5 $2 | scroll hero sticky pin blur exit depth | An opening section can leave by going out of focus instead of sc
 scroll/pointer-scoped-snap | neutral  $1 | scroll snap pointer input correctness | Mandatory snap is right for a thumb and wrong for a wheel: a tra
 scroll/pre-hydration-scroll-restore | neutral  $2 | scroll navigation hydration restoration architecture | A client-routed page that restores scroll after hydration shows 
 scroll/probe-reach-tail-space | neutral  $2 | scroll layout observer correctness | A scroll probe sits on a fixed line — the midpoint, or just unde
