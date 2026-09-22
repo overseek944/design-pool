@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,accessibility,keyboard,focus,scroll,correctness,carousel]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -51,3 +51,8 @@ the selected tab usually changes weight or padding, and the pre-layout widths
 centre the tab it used to be. Never follow the smooth `scrollTo` with a direct
 `scrollLeft` assignment as a fallback: the assignment wins immediately and the
 animation you asked for never runs.
+
+Where the port wraps an animated marquee track, the correction leaves the port
+offset from the track's own transform. When focus leaves the port entirely
+(`relatedTarget` outside it), reset `scrollLeft` to 0 so the loop resumes
+aligned — skipped under reduced motion, where the reader's position is kept.

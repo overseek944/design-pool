@@ -1,6 +1,6 @@
 # Manifest
 
-946 primitives. Format: `category/id | axes cost | tags | gist`
+947 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -732,6 +732,7 @@ scroll/smooth-scroll-driving-timeline | E3 D2 W3 F5 $3 | scroll motion architect
 scroll/smoothing-bypassed-reduce-branch | neutral  $1 | scroll spring reduced-motion accessibility progress correctness | A value tracking scroll has no landed state to jump to, so the u
 scroll/snap-suppressed-scroll-wrap | neutral  $2 | scroll carousel snap loop correctness | A duplicated track makes a scroll container endless only if the 
 scroll/stale-scroll-request-guard | neutral  $2 | scroll correctness accessibility events navigation | A scroll request crossing an async boundary — posted by an embed
+scroll/step-anchored-layer-dissolve | E2 D2 W2 F5 $2 | scroll scrub crossfade image steps opacity reading | Art beside a column of steps should change when the text does, n
 scroll/sticky-as-cheap-pin | E1 D2 W2 F3 $1 | scroll layout performance | position: sticky for anything that only needs to hold position —
 scroll/tall-target-intersection-clause | neutral  $1 | scroll correctness observer reveal | intersectionRatio is a fraction of the element, so a section tal
 scroll/transform-hosted-scroll-wrapper | neutral  $3 | scroll architecture correctness transform pin | Smoothing the whole page without a library: a spacer takes the m
