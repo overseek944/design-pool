@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,texture,print,halftone]
 axes: {energy: 1, density: 4, weight: 2, finish: 4}
 cost: 2
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -73,3 +73,18 @@ mask-composite: intersect;
 ```
 ⚠ `mask-repeat: no-repeat` belongs on both layers — a repeated gradient tiles
 its transparent tail back over the middle and the intersection eats the centre.
+
+The same algebra turns any solid icon into the cell material a page's charts are
+made of: intersect the silhouette with two hard-stop rulings, one per axis.
+One small silhouette file per icon instead of an exported grid of a thousand
+rects, and cell pitch and gap stay one token across every icon. Pitch 2–4px,
+gap 20–35% of the pitch.
+```css
+.icon { background: var(--ink);
+  mask: url(shield.svg) center / contain no-repeat,
+        linear-gradient(90deg, #000 70%, #0000 0) 0 0 / 3px 3px,   /* columns */
+        linear-gradient(#000 70%, #0000 0) 0 0 / 3px 3px;           /* rows */
+  mask-composite: intersect }                                       /* after the shorthand */
+```
+⚠ Below ~2px pitch the grid aliases into a flat fill; give the icon a text
+label, since the cells carry no name.

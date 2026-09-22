@@ -4,7 +4,7 @@ category: surface
 tags: [ground,scroll,overscroll,theme,correctness]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,14 @@ body { background: var(--paper); min-height: 100svh }
 ```
 ⚠ The body must fully cover the viewport or the root colour shows through on
 short pages; mismatched top and bottom edges need `overscroll-behavior-y: none` instead.
+
+Where only some routes use a different ground — an editorial template on warm
+paper inside an app of white — let the page's own layout class repaint the root:
+`html:has(.layout)` needs no router hook or class toggled on `<html>`, and it
+clears itself when the route unmounts. Pair it with `overscroll-behavior-y: none`
+when the header and footer grounds differ.
+```css
+:is(html, body):has(.editorial) { background: var(--paper-warm); overscroll-behavior-y: none }
+```
+⚠ `:has()` on the root re-evaluates on every DOM mutation beneath it — scope it
+to a stable class near the top, never to a deep or frequently toggled one.
