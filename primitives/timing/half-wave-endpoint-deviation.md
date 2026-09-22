@@ -4,7 +4,7 @@ category: timing
 tags: [motion,easing,interpolation,character]
 axes: {energy: 3, density: 1, weight: 2, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,8 @@ y = lerp(a, b, ease(p)) + arc + settle
 ⚠ The crest sits at the midpoint of whatever progress it is handed — feed it
 the eased parameter and it drifts with the easing. Shape position and deviation
 from the same raw value.
+
+Variant — the same shape works as a spatial envelope along a line: multiply a
+travelling wave by `sin(πx)²` across a trace's length and its ends stay pinned to
+the frame edges while the middle breathes; squaring softens the entry so no kink
+shows at the pin. Amplitude 2–4% of height.

@@ -1,6 +1,6 @@
 # Manifest
 
-1011 primitives. Format: `category/id | axes cost | tags | gist`
+1014 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -10,6 +10,7 @@ canvas/age-shaded-traversal-field | E2 D4 W2 F5 $3 | canvas ambient texture gene
 canvas/alpha-bucketed-path-batch | E2 D4 W1 F5 $3 | canvas svg performance generative texture batching | Thousands of individually-faded SVG marks means thousands of nod
 canvas/alpha-gated-cell-population | E1 D3 W2 F4 $3 | canvas generative field image mask silhouette grid | A field of marks in the shape of an arbitrary form usually means
 canvas/area-proportional-mark-population | neutral  $1 | canvas field particles performance responsive density | A generative field authored at one mark count is two different c
+canvas/aspect-switched-diagram-axis | E1 D2 W2 F4 $2 | canvas diagram responsive layout aspect pipeline | A left-to-right process drawn in a canvas shrinks to illegible c
 canvas/background-matched-scene-fog | E1 D2 W3 F5 $1 | canvas fog depth background integration scene | A rendered scene ends at its canvas rectangle, so it reads as an
 canvas/baked-cell-frame-stream | neutral  $4 | canvas animation precomputed payload performance field | An ambient field whose motion is authored rather than simulated 
 canvas/band-split-spectral-displacement | E3 D3 W2 F4 $3 | canvas audio audio-reactive fft generative data | A visual driven by one loudness value pulses; three bands make i
@@ -608,6 +609,7 @@ motion-system/scheduled-event-aliveness | E3 D2 W2 F4 $3 | idle loop character r
 motion-system/scroll-energy-accumulator | E3 D2 W2 F4 $1 | scroll motion shader effect canvas | Scroll position says where something is; scroll effort should sa
 motion-system/scrubbable-waapi-timeline | E3 D2 W3 F5 $3 | motion scroll scrub architecture performance | A scroll-scrubbed timeline needs no animation library. Build eve
 motion-system/seat-quantised-ring-turn | E2 D3 W2 F5 $2 | radial rotation counter-rotation custom-property loop | A radial arrangement built by rotating an arm out of the centre 
+motion-system/seekable-scene-clock | neutral  $2 | motion canvas loop deterministic reduced-motion testing correctness | Write a looping canvas scene as draw(t) over wrapped cycle time;
 motion-system/self-dissolving-entrance-queue | neutral  $2 | motion sequencing correctness reveal scroll | Serialising entrances stops a long page arriving as noise, but a
 motion-system/self-erasing-play-classes | neutral  $1 | architecture progressive-enhancement svg accessibility correctness entrance | Author the finished frame as the markup, then take it away to pl
 motion-system/self-measured-flow-entry | E3 D2 W2 F4 $2 | motion layout measurement state lifecycle detail | A row inserted into a live column — a log line, a message, a que
@@ -627,6 +629,7 @@ motion-system/tilt-outermost-axis-spin | E2 D1 W2 F5 $1 | transform 3d rotation 
 motion-system/transient-class-scoped-transition | neutral  $2 | motion-system view-transition theme correctness reduced-motion | A view transition, or a global colour transition, must animate f
 motion-system/transition-cued-height-follow | neutral  $2 | correctness measurement transition resize layout motion | Inline content that changes width re-wraps its copy and the bloc
 motion-system/travel-minimal-target-pairing | E3 D3 W2 F5 $2 | morph rearrange geometry marks svg transition | A set of marks rearranging into a new configuration is usually p
+motion-system/traveller-proximity-node-glow | E3 D2 W2 F5 $2 | motion diagram pipeline glow loop canvas derived | A signal travelling a pipeline should visibly do something at ea
 motion-system/twin-named-keyframe-restart | neutral  $1 | motion keyframes transition correctness css-animation | An animation runs once per name, so after content changes under 
 motion-system/twin-pose-custom-properties | E3 D3 W2 F5 $2 | transform state stagger custom-properties group choreography | A group that rearranges between two arbitrary layouts — stacked 
 motion-system/type-declared-transition-scope | neutral  $2 | motion-system view-transition scoping state correctness routing | Every ::view-transition- rule applies to every transition, so a 
