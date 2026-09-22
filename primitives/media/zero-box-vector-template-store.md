@@ -4,7 +4,7 @@ category: media
 tags: [svg,use,defs,architecture,performance,accessibility,correctness]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []

@@ -4,7 +4,7 @@ category: surface
 tags: [surface,gradient,fade,mask,precision]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []

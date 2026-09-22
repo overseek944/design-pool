@@ -4,7 +4,7 @@ category: surface
 tags: [surface,depth,shadow,color-mix,tokens,control]
 axes: {energy: 1, density: 2, weight: 3, finish: 5}
 cost: 1
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []

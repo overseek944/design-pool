@@ -4,7 +4,7 @@ category: surface
 tags: [surface,border,light,mask,detail]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -54,3 +54,16 @@ declaration with no centre to re-aim. Angle 300–330° for a light above-left.
 ⚠ `mask-composite: exclude` needs the `-webkit-` pair, and without it the fill
 floods the whole panel rather than leaving a ring. Grey rather than white keeps
 the bright corners from clipping against a light backdrop showing through.
+
+A linear rake lifts the prohibition above. One edge-to-edge gradient across the
+ring — brightest along the lit diagonal, falling monotonically to the opposite
+corner — reads as a distant source rather than a lamp, and flooring the dim end
+at 0.3–0.5 alpha instead of 0 keeps the whole ring contrast-bearing, so this is
+the form a control can use. The rake angle is the page's light direction and
+belongs to every shadow on it too; 20–80° off the horizontal.
+```css
+.panel::after { border: inherit; border-radius: inherit; corner-shape: inherit;
+  mask: linear-gradient(-60deg, #0000004d 0%, #000 100%) }
+```
+⚠ Put it on the ring's own pseudo-element, never the panel — masked directly,
+the rake takes the content with it and dims text at the far corner.
