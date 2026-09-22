@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,pointer,detail,chrome,accessibility]
 axes: {energy: 2, density: 2, weight: 3, finish: 3}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -43,3 +43,19 @@ body.plain-cursor, body.plain-cursor * { cursor: auto }
 there is no fallback keyword behind it — the reader is left with no pointer at
 all. Track from `pointermove` on the window, not the layer, or the drawn cursor
 stops at the first element that swallows the event.
+
+The warning above about the OS pointer-size setting has one honest answer: stop
+guessing and give the reader the switch. A 32px SVG data URI — the largest any
+platform honours before falling back silently — swapped in from a root class,
+hotspot on the drawn tip, and the whole grammar overridden from two selectors
+rather than re-specified per element. Ship it as a light and a dark colourway,
+because a single ink vanishes over the ground that matches it, and the reader
+choosing the pointer is the one who cannot chase it back.
+```css
+html.big-cursor-dark, html.big-cursor-dark * {
+  cursor: url("data:image/svg+xml,%3Csvg…stroke='white'%3E") 8 4, auto !important }
+```
+⚠ `!important` and the universal selector are load-bearing here — every
+`cursor: pointer` in the product outranks a root class otherwise — and they are
+also why this can only be an opt-in state, never the default paint. Persist the
+choice; a pointer the reader had to find twice is worse than none.

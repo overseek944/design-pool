@@ -4,7 +4,7 @@ category: scale
 tags: [unit,scale,architecture,responsive,correctness]
 axes: none
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -71,3 +71,19 @@ subtree are then unmultiplied again and must lose the division.
 ⚠ The pair is one number written twice and nothing checks it. Derive it —
 `calc(1 / var(--z))` is valid for `zoom` — or a retune of the factor silently
 leaves every cancelling layer at the wrong scale.
+
+Handed to the reader as a control rather than authored, the factor needs three
+guards the design-time use never hits. Clamp it — a range of about 1.0–1.2 is
+where reflow still holds and the page has not become a column of orphans;
+suppress horizontal overflow on the root while it is above 1, because the
+document now lays out wider than the viewport it is measured against; and at
+1 *remove* the property instead of writing it, so the stylesheet's own value
+resumes and nothing pays for a scale that does nothing.
+```js
+const set = z => { document.body.style.zoom = z === 1 ? '' : `${z}`
+  document.documentElement.style.overflowX = z === 1 ? '' : 'hidden' }
+set(Math.min(1.2, Math.max(1, wanted)))
+```
+⚠ The control itself must sit outside the element it scales — put it on `body`
+and mount the panel as a sibling of `body` under the root, or the button grows
+with the page and walks out from under the pointer that is still pressing it.

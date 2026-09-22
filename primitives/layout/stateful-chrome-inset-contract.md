@@ -4,7 +4,7 @@ category: layout
 tags: [layout,chrome,tokens,custom-property,architecture,overlay,correctness]
 axes: none
 cost: 2
-seen: 20
+seen: 21
 requires: []
 conflicts: []
 completes: []
@@ -148,3 +148,21 @@ write(); const ro = new ResizeObserver(write); return () => ro.disconnect()
 ⚠ An inline property on `:root` outranks every stylesheet rule, media queries
 included — written once at any width it pins that value at every other until
 something removes it.
+
+The bottom edge mirrors all of this with one addition. Chrome floating over the
+page end has no fixed obstruction to clear — it has an in-flow element rising
+into the viewport — so the number is the intrusion, `innerHeight` minus the
+element's `top`, floored at zero and rewritten from one rAF-coalesced passive
+scroll handler. Consumers take it through `max()` rather than adding it, which
+gives the base inset for free while the value is 0 and, with `0px` in the
+`var()` slot, a correct position on the paint before any script has run.
+```js
+const y = el.getBoundingClientRect().top
+root.style.setProperty('--end-intrusion', Math.max(0, innerHeight - y) + 'px')
+```
+```css
+.fab { inset-block-end: max(28px, var(--end-intrusion, 0px) + 28px) }
+```
+⚠ Any panel the floating control opens must subtract the same term from its own
+`max-height`, or it lifts off the page end and is clipped by the top of the
+viewport instead.

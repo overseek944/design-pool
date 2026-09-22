@@ -1,6 +1,6 @@
 # Manifest
 
-907 primitives. Format: `category/id | axes cost | tags | gist`
+908 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -199,6 +199,7 @@ interaction/height-traded-card-panes | E2 D3 W2 F4 $2 | interaction hover card m
 interaction/history-entry-backed-overlay | neutral  $2 | interaction overlay history dismiss mobile correctness | An overlay opened from a button owns no history entry, so the ba
 interaction/hover-previewed-disclosure | neutral  $1 | interaction disclosure navigation hover progressive-enhancement correctness | A menu that should fall open under a mouse and still answer a ta
 interaction/hysteretic-lock-zone | neutral  $1 | interaction pointer state correctness threshold | Any boolean derived from a continuous input — pointer inside a z
+interaction/idle-receded-floating-control | E1 D1 W1 F5 $2 | interaction accessibility idle chrome fixed restraint | A control pinned to a viewport corner all session is a standing 
 interaction/idle-scroll-cue | E2 D1 W2 F4 $1 | scroll affordance feedback motion | A page whose motion is entirely scroll-driven stops when the rea
 interaction/in-stage-sequence-exit | neutral  $2 | accessibility keyboard scroll pin focus correctness | A pinned narrative several viewport-heights long is a corridor w
 interaction/inert-tracks-opacity | neutral  $1 | accessibility focus correctness overlay pointer-events | An element faded to opacity: 0 is still in the tab order, still 
