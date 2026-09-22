@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,motion,control,state,chrome,cheap]
 axes: none
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -38,3 +38,14 @@ think the demonstration failed to start.
 ⚠ `disabled` takes the button out of the tab order, so the explanation is
 attached to something a keyboard reader cannot reach. Use `aria-disabled` with a
 no-op handler, or put the sentence in the figure's description instead.
+
+Variant — the stop can also report the playhead. Wrap the button in a thin
+ring whose `stroke-dashoffset` follows the loop's current frame over its total,
+and the control says how far through the demonstration is and that it will
+restart, not only that it moves. Track 1.5–2.5px, ring 28–44px, drawn at 15–25%
+alpha under a 70–90% arc. Read the position only while it plays.
+```js
+ring.style.strokeDashoffset = C - C * anim.currentFrame / anim.totalFrames
+```
+⚠ Polling every 16ms repaints the ring even when the loop is paused offscreen —
+stop the timer on the same predicate that pauses the animation.
