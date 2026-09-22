@@ -4,7 +4,7 @@ category: motion-system
 tags: [camera,transform,overlay,cursor,correctness]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -38,3 +38,17 @@ el.style.borderRadius = `${rest / scale}px`     // rest 12–24px
 0.1px and compare against the last string before writing. Only for a box whose
 radius is small relative to its side; at pill radii the division overshoots and
 the corner flattens.
+
+A full inverse is right for a cursor and wrong for a label. Pinned to screen
+size, annotation on a zoomed-out canvas swells until it is all the reader can
+see, and left alone it vanishes. Raise the inverse to a fractional power and the
+label takes a share of the zoom rather than all or none of it, with a clamp
+stopping both runaway ends. Exponent 0.4–0.7 — lower is nearer a fixed size,
+1.0 is the full counter-scale above; ceiling 1.6–2×.
+```css
+.label { transform: scale(clamp(1, pow(1 / var(--zoom, 1), .6), 1.8));
+         transform-origin: 0 100% }
+```
+⚠ CSS `pow()` is recent; behind a support query the fallback is the plain
+inverse, not nothing. Anchor `transform-origin` to the edge the label is pinned
+by, or the damping walks it off its subject.

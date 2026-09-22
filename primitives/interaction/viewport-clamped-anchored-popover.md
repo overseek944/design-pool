@@ -4,7 +4,7 @@ category: interaction
 tags: [correctness,responsive,overlay,accessibility,hover,focus]
 axes: none
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -81,3 +81,17 @@ mid-gesture. Fraction 60–75%; the offset is the bar's height plus its inset.
 chains to the document and scrolls the page out from under the trigger. A panel
 that scrolls also has items below the fold — they must stay reachable by
 keyboard, not only by wheel.
+
+The one-sided case needs no measurement at all. A badge centred on a marker
+overflows only the edge it is centred against, and `max()` inside the translate
+resolves the element's own `-50%` against the distance to that edge — whichever
+displacement is smaller wins, so the badge is centred everywhere except where
+centring would take it out of the box, and there it parks flush. Publish the
+marker's offset as the property; the browser does the comparison per frame with
+no reflow.
+```css
+.badge { transform: translate(max(-50%, calc(-1 * var(--x, 99999px)))) }
+```
+⚠ It clamps one edge. The trailing edge needs the mirrored `min()` against the
+track width, which does need the element's width — pass it as a second property
+rather than measuring.

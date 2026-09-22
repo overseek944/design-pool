@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,color,ramp,noise,grain,banding,generative]
 axes: {energy: 1, density: 3, weight: 2, finish: 4}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -32,3 +32,16 @@ rather than a coordinate. Size, angle, phase and intro offset all fall out of
 `hash(i + k)` for a few fixed `k`, which costs no stored table and — being pure
 — produces byte-identical output on a server and in the client that hydrates it.
 `Math.random()` in the same place is a hydration mismatch.
+
+A time term need not drift per frame. Floor it to a rate before it enters the
+hash and the grain re-rolls in discrete steps while everything around it still
+renders at full speed — the cadence of exposed stock rather than the hiss of a
+sensor, and the flicker the per-frame form suffers at low frame rates cannot
+happen because the frame rate no longer feeds it. 10–16 re-rolls a second;
+below eight the grain becomes a texture the eye tracks.
+```glsl
+float g = fract(sin(dot(px, vec2(12.9898, 78.233)) + floor(t * RATE) * 0.1) * 43758.5453);
+```
+⚠ Two hashes averaged with the dot constants swapped kill the diagonal banding
+a single `sin` hash leaves across large flat areas. One is enough under grain
+of 0.1 amplitude or less.

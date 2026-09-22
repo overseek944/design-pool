@@ -1,6 +1,6 @@
 # Manifest
 
-891 primitives. Format: `category/id | axes cost | tags | gist`
+896 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -109,6 +109,7 @@ canvas/two-bone-reach-pose | E3 D2 W2 F4 $3 | canvas figure rig articulation pro
 canvas/unit-box-asset-framing | neutral  $2 | canvas correctness scale geometry architecture | A loaded 3D asset arrives at whatever scale and origin its expor
 canvas/uv-reconstructed-sphere-normal | E2 D1 W3 F5 $2 | shader canvas light geometry generative | A lit sphere in a fragment shader needs no geometry, no normal b
 canvas/velocity-paired-field-step | E3 D2 W2 F5 $3 | canvas simulation shader texture solver generative | A field stepped by diffusion spreads and dies. One that should t
+canvas/vertexid-derived-screen-triangle | neutral  $1 | canvas webgl shader pass geometry performance correctness | Every post-processing pass needs geometry covering the screen, a
 canvas/video-textured-mark-field | E2 D3 W2 F5 $3 | canvas video particles texture motion performance | A field of marks needs content as well as motion, and inventing 
 canvas/warm-started-relaxation | neutral  $1 | canvas simulation performance shader solver | An iterative solve re-run every frame — a pressure projection, a
 canvas/wedge-cloned-symmetric-field | E1 D4 W1 F5 $2 | canvas generative symmetry field particles cheap | A ring of marks placed from one pass of random draws clumps unev
@@ -122,6 +123,7 @@ color/embedded-replica-palette-split | neutral  $1 | color tokens product mock a
 color/externally-owned-brand-token-pair | neutral  $1 | color tokens theming third-party contrast icon correctness | A third-party brand colour is fixed by its owner, so deriving th
 color/gamut-ladder-fallback | neutral  $1 | color tokens progressive-enhancement correctness | Ship every colour token twice: an sRGB hex baseline, then the wi
 color/ground-indexed-inverting-ramp | neutral  $2 | color tokens theming naming architecture contrast | Number a neutral ramp by distance from the page ground rather th
+color/headroom-preserved-transfer-round-trip | neutral  $2 | color shader canvas grading transfer correctness | A chain of colour adjustments wants two different spaces and usu
 color/lightness-preserved-neutral-tint | neutral  $2 | color tokens theming neutral contrast | Greys left literally grey under a coloured theme read as a secon
 color/media-sampled-index-chip | E1 D2 W3 F5 $2 | color accent media contrast grid | One brand accent repeated across a grid of unrelated photographs
 color/midpoint-switched-ink | E2 D1 W2 F5 $2 | theme transition contrast color custom-properties legibility | A theme toggle that tweens paper and ink on one curve passes thr
@@ -169,6 +171,7 @@ interaction/cross-device-action-handoff | neutral  $2 | interaction cta progress
 interaction/cursor-tracked-vanishing-point | E3 D3 W2 F5 $3 | interaction pointer 3d depth field transform hover | Tiles pushed toward the reader on Z all shear toward the contain
 interaction/declared-quiet-region | neutral  $1 | interaction pointer architecture legibility opt-out correctness | A pointer-driven background sits under the whole document and di
 interaction/dimension-coded-position-dot | E2 D2 W2 F5 $1 | interaction state indicator accessibility carousel | Let the active item in a position indicator change size, not onl
+interaction/disengaged-scoped-transition | E3 D1 W2 F5 $1 | interaction transition pointer drag reveal accessibility | A value the pointer drives — a wipe seam, a comparison split, a 
 interaction/dismissal-escalated-reprompt | neutral  $2 | interaction prompt cadence persistence restraint correctness | A recurring prompt — install, subscribe, upgrade — needs a caden
 interaction/drag-suppressed-click-threshold | neutral  $2 | pointer drag interaction correctness accessibility | A surface that answers to drag and also holds links fires a clic
 interaction/edge-hotzone-sibling-reveal | E2 D2 W2 F5 $2 | interaction hover panel chrome css-only accessibility | Reclaim the width a hidden rail costs without a toggle: park an 
@@ -604,6 +607,7 @@ perf/stride-pruned-decorative-field | neutral  $1 | perf responsive decoration c
 perf/stylesheet-failure-reload-guard | neutral  $2 | correctness performance progressive-enhancement architecture cls | A hashed stylesheet that 404s after a deploy paints the whole do
 perf/velocity-scaled-preload-margin | neutral  $2 | perf lazy-load scroll images loading | A fixed lazy-load margin is tuned for one scroll speed. Under a 
 perf/will-change-on-split-children | neutral  $1 | motion performance promotion | Split text creates dozens of nodes animated simultaneously; with
+reveal/amplitude-ramped-material-arrival | E2 D3 W2 F4 $2 | reveal canvas shader grain texture entrance | A generated surface fading in from zero opacity arrives as a rec
 reveal/arc-window-overstroke | E3 D2 W3 F5 $2 | draw-on highlight canvas pulse path | A path being drawn reads as inert when the settled trail and the
 reveal/axis-swept-plot-window | E2 D2 W2 F5 $2 | reveal chart svg clip-path motion data | A line drawn on with stroke-dashoffset is revealed by arc length
 reveal/char-opacity-drift | E3 D4 W2 F5 $4 | type motion reveal ambient | Per-character with opacity + small y, will-change:opacity,transf
@@ -798,6 +802,7 @@ timing/cumulative-gap-schedule | E3 D2 W2 F4 $1 | motion sequencing choreography
 timing/cycle-resolved-depth-ramp | E3 D2 W2 F5 $1 | motion loop depth keyframes css ambient | Phase-offset copies of one loop usually get their differences by
 timing/cycle-seam-reshuffle | E2 D3 W2 F5 $2 | timing loop motion svg variation | An ambient loop that repeats exactly becomes wallpaper on the se
 timing/decaying-loop-restart-gap | E2 D1 W2 F5 $1 | loop timing sequence restraint demo attention | A self-restarting demonstration does not want one restart gap. A
+timing/delay-matched-loop-handoff | E2 D1 W2 F5 $1 | timing transition loop idle state css-only | An element that expands into a state and should then idle there 
 timing/dwelling-phase-ring | neutral  $2 | timing state loop choreography architecture demo | A looping demonstration written as a schedule of effects has to 
 timing/expanding-shadow-beacon | E2 D1 W2 F4 $1 | motion indicator status ambient glow | A mark that blinks reports a state; one that throws a ring outwa
 timing/graduation-registered-traversal | E2 D2 W1 F5 $1 | motion diagram svg rhythm precision loop | A marker crossing a drawn scale reads as drift unless its stops 

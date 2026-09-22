@@ -4,7 +4,7 @@ category: layout
 tags: [layout,mobile,keyboard,viewport,responsive,correctness]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,17 @@ room is left.
 is stale while the keyboard is up, and a `max-height` band can flip under a
 reader who is only typing. Chromium honours it, iOS Safari does not — the layout
 still has to survive being panned.
+
+Where the hint is ignored — iOS Safari, and anything panning rather than
+resizing — the keyboard's height is still knowable, just not to CSS. Publish it:
+`visualViewport` reports the shrunken box, the difference against
+`innerHeight` is the occluded band, and writing that to a custom property on the
+root hands every rule a number it can subtract from a `dvh` or spend as a bottom
+margin. Subscribe to `scroll` as well as `resize` — the offset changes while the
+page is panned with the keyboard already open.
+```js
+const set = () => document.documentElement.style.setProperty('--keyboard-inset',
+  `${Math.round(Math.max(0, innerHeight - vv.height - vv.offsetTop))}px`)
+```
+⚠ Remove the property on teardown and default every reader of it to `0px`, or a
+view that unmounts mid-edit leaves the whole layout permanently short.
