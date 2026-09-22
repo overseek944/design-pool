@@ -4,7 +4,7 @@ category: timing
 tags: [loop,timing,sequence,restraint,demo,attention]
 axes: {energy: 2, density: 1, weight: 2, finish: 5}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -51,3 +51,19 @@ new IntersectionObserver(([e]) => e.isIntersecting && start(),
 ⚠ Do not re-arm on every re-entry. A reader scrolling back past a piece that
 has already settled gets the fast pass again, which reads as the page
 restarting rather than as a loop continuing.
+
+The decay has a zero-script form when the piece is CSS: author the choreography
+twice — a `both`-filled one-shot armed by the element's revealed class, and the
+same beats as an infinite loop armed by `:hover, :focus-within`. A grid of eight
+such figures each demonstrates itself once on arrival, parks on its end frame,
+and moves again only under the pointer, where a grid of eight ambient loops is
+noise nobody can read past. Cascade the one-shots 400–900ms apart off the index
+so they arrive in sequence rather than together.
+```css
+.card { --once-delay: calc(var(--i) * 700ms + 1.2s) }
+[data-reveal].is-revealed .card .art { animation: liftOnce 1.4s var(--ease) both var(--once-delay) }
+.card:is(:hover, :focus-within) .art { animation: liftLoop 3.2s var(--ease) infinite }
+```
+⚠ Two keyframe blocks per figure is the cost, and they drift apart on the next
+edit — derive the loop from the one-shot's stops, or the hover state slowly
+stops matching the demonstration it is supposed to repeat.

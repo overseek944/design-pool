@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,surface,hover]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 25
+seen: 26
 requires: []
 conflicts: []
 completes: []
@@ -125,3 +125,18 @@ one rule serves right, left and diagonal. Declaring the block inside
 ```
 ⚠ It arms inside *every* matching ancestor, so key it to the mark's own class —
 a bare `svg` selector catches unrelated icons nested in the same link.
+
+`:has()` also links *correspondence* — a control in one branch lighting a
+specific element in another, with no ancestry between them and no script. Pair
+them by modifier on a common wrapper and fold the remote trigger into the same
+selector list as the element's own hover and its selected class, so one ruleset
+serves all three sources and they cannot drift. A legend to its series, a nav
+item to a diagram node, a caption to the layer it names.
+```css
+.wrap:has(.hit--ai:hover) .layer--ai,
+.layer--ai:hover, .layer--ai.is-active { --on: 1 }
+```
+⚠ Hover-only correspondence is invisible to a keyboard, so put `:focus-within`
+on the remote trigger in the same list — and the link must exist in the
+accessibility tree too (`aria-controls`, or a name that repeats the target's),
+because nothing about a `:has()` pairing reaches a screen reader.

@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,keyframes,custom-properties,architecture,choreography]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []
@@ -56,3 +56,18 @@ wherever it is mounted.
 whose resting position is a keyframe stop — a ring seeded mid-cycle, a member
 placed by its 0% frame — collapses to the middle unless the base style is the
 finished pose.
+
+Where the elements differ only in *pose*, the stops need not name waypoints at
+all — scale the rest-state properties. Each member already carries the `--rot`,
+`--tx` and `--ty` that place it, so a keyframe multiplying those by 1.3–1.8 at
+its midpoint makes every member breathe about its own resting position from one
+block, and the 0%/100% stop is a copy of the base declaration. A fanned stack, a
+scattered field and a tilted row all animate off the same six lines.
+```css
+@keyframes spread { 0%, 100% { transform: translate(var(--tx), var(--ty)) rotate(var(--rot)) }
+  50% { transform: translate(calc(var(--tx) * 1.55), calc(var(--ty) - 2px))
+                   rotate(calc(var(--rot) * 1.55)) } }
+```
+⚠ A member at rest pose zero does not move — the amplitude is proportional, so a
+centre card with `--rot: 0` sits dead still while its neighbours swing. Give it a
+small non-zero rest value or animate an additive term beside the multiplier.

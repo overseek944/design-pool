@@ -1,6 +1,6 @@
 # Manifest
 
-869 primitives. Format: `category/id | axes cost | tags | gist`
+871 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -238,6 +238,7 @@ interaction/single-panel-tabset | neutral  $1 | tabs aria architecture performan
 interaction/slug-mapped-locale-switch | neutral  $1 | interaction navigation i18n url correctness | A language switcher built by prefixing the current path works on
 interaction/snap-scroll-as-dismiss-gesture | E3 D2 W2 F5 $3 | gesture dialog scroll accessibility sheet | Build a drag-to-dismiss sheet out of a scroll container rather t
 interaction/split-fraction-step-rail | E2 D2 W2 F5 $2 | interaction indicator progress stepper scroll | A stepper driven by a continuous value keeps the index and throw
+interaction/stage-angle-countered-slide | E2 D3 W2 F5 $2 | interaction hover transform 3d depth custom-property reduced-motion | Inside a stage rotated in its own plane, a child told to slide l
 interaction/state-as-numeric-custom-property | E3 D2 W2 F5 $1 | interaction hover state tokens architecture | Express interaction state as a number, then derive every depende
 interaction/state-seeded-at-listener-attach | neutral  $1 | correctness state events scroll architecture | Events report transitions, not the current value. Any class deri
 interaction/submit-mounted-challenge-gate | neutral  $2 | forms third-party performance privacy accessibility progressive-enhancement | A verification widget mounted on load costs a third-party script
@@ -825,6 +826,7 @@ type/em-locked-inline-media-inset | E1 D3 W4 F4 $2 | typography image display-ty
 type/em-locked-wordmark-mark | E1 D2 W2 F5 $1 | type logo alignment detail scale | A lock-up whose mark is sized in pixels needs a new value at eve
 type/em-sheared-highlight | E3 D2 W4 F4 $1 | type highlight clip-path emphasis inline scale | A slanted block behind a phrase gives a headline a cut-in, marke
 type/first-line-indent-paragraph-mark | E1 D3 W2 F5 $1 | type prose editorial paragraph rhythm | Paragraphs separated only by a blank line read as interface copy
+type/foreshorten-tolerant-plane-label | E1 D2 W3 F4 $1 | type label 3d legibility tracking accessibility | Type laid in a preserve-3d plane is resampled rather than re-lai
 type/frame-cycled-glyph-indicator | E3 D1 W2 F3 $1 | indicator mono glyph loading state motion | An indeterminate wait does not need a drawn shape. Step one text
 type/fused-run-highlight | E1 D2 W2 F5 $2 | type annotation editorial diff state | Marking a run of blocks — changed lines, an annotated passage — 
 type/glyph-joined-sequence-rail | E1 D3 W1 F4 $1 | type list sequence metadata mono accessibility technical | A four-step process does not always deserve a diagram. Set it as

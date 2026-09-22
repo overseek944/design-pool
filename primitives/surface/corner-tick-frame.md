@@ -4,7 +4,7 @@ category: surface
 tags: [surface,border,frame,detail,currentcolor,precision]
 axes: {energy: 1, density: 2, weight: 1, finish: 5}
 cost: 1
-seen: 15
+seen: 16
 requires: []
 conflicts: []
 completes: []
@@ -94,3 +94,16 @@ pair, which reads as a crop and not as a sight. Over photography or video
 `currentColor` stops being a contrast guarantee, so the mark needs its own light
 value. Centred on a tile it looks like a control: keep it `aria-hidden` and
 never let it be the hit area.
+
+One arm rather than four says something different. Four corners frame; a single
+L set in from the top-right reads as a registration mark on a card that is
+otherwise a plain panel — enough to make a grid of them look drawn rather than
+laid out, with none of the enclosure a full frame adds to an already-bordered
+box. Inset 12–20px, arm 6–10px, around 50% opacity so it sits under the content.
+```css
+.card::after { content: ""; position: absolute; top: 16px; right: 16px;
+  width: 8px; height: 8px; border-top: 1px solid var(--line);
+  border-right: 1px solid var(--line); opacity: .5 }
+```
+⚠ It has to clear the card's own padding box, not the border — placed on the
+same inset as the content it reads as a stray rule rather than as a mark.
