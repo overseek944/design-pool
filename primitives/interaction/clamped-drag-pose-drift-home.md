@@ -4,7 +4,7 @@ category: interaction
 tags: [pointer,interaction,3d,rotation,detail]
 axes: {energy: 2, density: 1, weight: 4, finish: 5}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -55,3 +55,18 @@ if (!dragging) yaw += 0.0035      // resumes from wherever they let go
 ```
 ⚠ It is continuous ambient motion, so it needs the reduced-motion branch that a
 drift-home does not — still, with the drag still rendering.
+
+A fourth case throws rather than settles. Where the pose has no rest and no
+preferred angle — a ring of cards the reader spins to browse — keep the *last*
+delta as a velocity and decay it per frame after release, so a flick carries on
+and coasts to a stop under the hand's own momentum. Decay 0.90–0.96 a frame:
+0.94 runs about a second, 0.90 barely overshoots, and above 0.97 the surface
+never visibly stops. Cut the velocity to zero below roughly 0.01 or the loop
+keeps ticking on motion nobody can see.
+```js
+if (down) { v = (e.clientX - px) * 0.5; angle += v; px = e.clientX }
+else if (Math.abs(v) > 0.01) { angle += v; v *= 0.94 }   // coast
+```
+⚠ A throw and a resumed idle rotation are different states that both run while
+no pointer is down — sum them rather than choosing, or the idle spin snaps on at
+full speed the instant the coast expires.
