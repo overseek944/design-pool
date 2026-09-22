@@ -1,6 +1,6 @@
 # Manifest
 
-812 primitives. Format: `category/id | axes cost | tags | gist`
+815 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -233,6 +233,7 @@ interaction/substituted-driver-on-coarse-pointer | neutral  $2 | pointer touch f
 interaction/supplied-cursor-affordance-pair | E2 D2 W3 F3 $1 | interaction pointer detail chrome accessibility | Replacing the arrow is a strong voice, and the failure is replac
 interaction/tilt-exempt-anchor-layer | E2 D2 W3 F5 $2 | interaction pointer transform 3d depth architecture | A surface that tilts under the pointer tilts everything in it, i
 interaction/timestamp-guarded-double-activation | neutral  $1 | events click pointer correctness architecture accessibility | A component that synthesises its own tap alongside the native cl
+interaction/track-overflowed-card-expansion | E2 D3 W2 F4 $2 | interaction layout grid hover overflow cards | A grid of uniform cards that reveal more on hover either shoves 
 interaction/transition-shed-demo-handoff | E2 D1 W2 F4 $2 | affordance drag transition correctness demo | A control whose only affordance is a drag can advertise itself b
 interaction/transparent-stroke-hit-area | neutral  $1 | accessibility svg interaction touch correctness detail | A small mark inside a viewBox — a path node, a scrubber dot — is
 interaction/twin-suppressed-persistent-action | neutral  $2 | interaction sticky state observer accessibility | A persistent action pinned to the viewport is right through the 
@@ -490,6 +491,7 @@ motion-system/scrubbable-waapi-timeline | E3 D2 W3 F5 $3 | motion scroll scrub a
 motion-system/seat-quantised-ring-turn | E2 D3 W2 F5 $2 | radial rotation counter-rotation custom-property loop | A radial arrangement built by rotating an arm out of the centre 
 motion-system/self-dissolving-entrance-queue | neutral  $2 | motion sequencing correctness reveal scroll | Serialising entrances stops a long page arriving as noise, but a
 motion-system/self-erasing-play-classes | neutral  $1 | architecture progressive-enhancement svg accessibility correctness entrance | Author the finished frame as the markup, then take it away to pl
+motion-system/self-measured-flow-entry | E3 D2 W2 F4 $2 | motion layout measurement state lifecycle detail | A row inserted into a live column — a log line, a message, a que
 motion-system/sequenced-root-view-transition | E2 D1 W2 F5 $2 | motion navigation transition accessibility | The default root view transition cross-fades outgoing and incomi
 motion-system/settling-strike-envelope | E4 D2 W3 F3 $2 | flicker envelope keyframe-table shader portable data | Something powering on does not fade — it strikes, drops out, cat
 motion-system/slope-coupled-bob | E2 D1 W2 F4 $1 | motion keyframes loop wave rotation | An object rising and falling on a keyframed loop reads as a box 
@@ -646,6 +648,7 @@ surface/band-plateaued-scrim | E1 D2 W3 F5 $1 | scrim imagery contrast gradient 
 surface/baseline-closed-area-path | E2 D2 W2 F5 $1 | svg chart sparkline data precision | A sparkline's tinted area and its stroke must never disagree by 
 surface/baseline-square-bar-terminal | E1 D2 W2 F5 $1 | chart radius hairline detail correctness | A bar rounded at both ends stops touching its axis: the radius a
 surface/blended-grain-over-gradient | E1 D3 W3 F4 $1 | surface texture grain gradient blend-mode banding | A wide gradient across a saturated panel bands on 8-bit displays
+surface/blur-resolved-coarse-raster | E1 D2 W2 F4 $1 | surface canvas texture filter cheap detail | A raster drawn far under display size — a hundred-cell field, a 
 surface/chained-quadratic-wave-edge | E2 D2 W2 F3 $1 | svg path wave band section generative | A regular wave is not an organic profile and needs no per-frame 
 surface/channel-split-refraction-glass | E1 D3 W3 F5 $4 | glass backdrop-filter svg-filter refraction chromatic depth | A blur says frosted; a displacement says solid and thick. Refere
 surface/clip-carried-fill-traverse | E2 D2 W2 F5 $2 | svg connector motion clip-path diagram gradient | Dash offset gives a stroked connector direction, but a connector

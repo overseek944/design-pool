@@ -4,7 +4,7 @@ category: timing
 tags: [transition,stacking,scheduling,hover,precision]
 axes: {energy: 2, density: 1, weight: 2, finish: 5}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

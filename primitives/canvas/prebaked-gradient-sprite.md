@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,performance,particles,light]
 axes: none
 cost: 2
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -100,3 +100,19 @@ ctx.globalAlpha = .35 + .65 * (1 - h); ctx.drawImage(B, x, y)
 ⚠ Additive only if the floor is above zero — at `0 + 1·h` the pair dips to one
 faint layer at the crossover. Two bakes double the texture memory, so this is a
 trade against a third phase, not against the loop.
+
+A table of colour strings serves `fillStyle`; per-pixel work needs the
+components. Bake the same ramp as one flat byte array, three entries per level,
+and copy straight into `ImageData` — no string, no parse, no mix in the inner
+loop, and the palette survives as an editable list of stops rather than as
+arithmetic. Smoothstep between the bracketing stops rather than interpolating
+straight: a linear ramp creases visibly at every stop it passes.
+```js
+const L = new Uint8ClampedArray(768)        // 256 levels × rgb, built once
+// per level: e = t * t * (3 - 2 * t) between the two stops that bracket it
+const v = value * 255 | 0
+d[i] = L[v * 3]; d[i + 1] = L[v * 3 + 1]; d[i + 2] = L[v * 3 + 2]; d[i + 3] = 255
+```
+⚠ Build it at module scope, not per instance and never per frame — it is the
+same table for every copy of the effect on the page, and it is the one thing in
+the loop that does not depend on the pixel.

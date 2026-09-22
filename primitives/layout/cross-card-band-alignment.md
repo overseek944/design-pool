@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,subgrid,cards,hairline,datasheet,alignment]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 2
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -66,3 +66,17 @@ sets four at 390px.
 ⚠ Take the count from the longest entry at each width, not the average: a floor
 set by the mean leaves the one long row still pushing its own rule down, which
 is the only ragged edge anyone notices.
+
+The 3–5 ceiling is about *optional* bands. Where every card in the set carries
+every field — a price row, a spec sheet, a comparison — the shortest card has
+no air to gain and the count runs to 8–9 without a hole in it, each band one
+named field rather than a slot that may be empty. Audit it from the other end:
+a band left blank on any single card is a band to merge or drop, whatever the
+total.
+```css
+.row  { grid-template-rows: repeat(8, auto) }
+.card { grid-row: span 8; display: grid; grid-template-rows: subgrid; row-gap: 0 }
+```
+⚠ One `1fr` in the parent's row list hands all the slack to that band and the
+others sit hard against each other; with every band `auto`, the card's own end
+padding is the only thing keeping the last row off the edge.

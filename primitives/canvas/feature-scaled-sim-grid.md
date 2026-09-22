@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,simulation,performance,resolution,texture]
 axes: none
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -44,3 +44,19 @@ cv.width = w; cv.height = Math.max(1, Math.ceil(rect.height / P))
 ```
 ⚠ Cell count now changes on resize, so the buffer and any typed-array view over
 it must be re-created, not reused.
+
+Constant grain and constant cost are different goals and the box cannot serve
+both. Deriving the count from the box holds the grain at every viewport but
+makes a wide panel cost several times a phone; clamping the *long* axis to a
+fixed count and taking the short one from the measured aspect holds the cost
+flat and the field undistorted, letting the grain grow with the box instead.
+Take the second wherever the buffer is smoothed into a continuous wash rather
+than read as cells. Long axis 90–140.
+```js
+const a = r.width / r.height || 1, N = 110
+cv.width  = a >= 1 ? N : Math.max(2, Math.round(N * a))
+cv.height = a >= 1 ? Math.max(2, Math.round(N / a)) : N
+```
+⚠ Guard the degenerate measure — an element still `display: none` or not yet
+laid out reports zero, the aspect comes back `NaN`, and a canvas sized from it
+accepts every later draw silently and paints nothing.
