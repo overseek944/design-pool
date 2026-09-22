@@ -4,7 +4,7 @@ category: surface
 tags: [chrome,nav,scroll,contrast,theme,accessibility]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 14
+seen: 15
 requires: []
 conflicts: []
 completes: []
@@ -102,3 +102,19 @@ light.style.clipPath = `inset(${t * 100}% 0 ${100 - b * 100}% 0)`  // dark takes
 and the link, the other is `aria-hidden`. Worth the second node only for a mark
 several times taller than the seam it crosses — below that the swap above is
 cheaper and reads the same.
+
+Every probe above asks what is *under the bar*, which flips the chrome on the
+first pixel of a section the reader is not looking at yet. Probing a band across
+the middle of the viewport instead — roughly 30–70% of its height, taking the
+lowest-starting section that overlaps — swaps the treatment when the section
+becomes the subject rather than when it becomes adjacent. Pin the opening
+section's tone unconditionally below a small scroll offset, 20–40px, so the
+first screen never argues with the probe.
+```js
+const lo = innerHeight * .3, hi = innerHeight * .7
+const best = marked.map(n => n.getBoundingClientRect())
+  .filter(r => r.top < hi && r.bottom > lo).at(-1)
+```
+⚠ A band shorter than a section is fine; a section shorter than the band
+reports alongside its neighbour, so order the candidates and take one rather
+than letting the last write win.

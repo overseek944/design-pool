@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,interaction,touch,correctness,media-query]
 axes: none
 cost: 1
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -54,3 +54,19 @@ fallback for the others.
 ⚠ The control must be visible *before* it is operated, so it cannot transition
 in from `visibility: hidden` or `display: none` on focus — only opacity and
 transform may carry the reveal.
+
+Decoration follows the same rule with the ends reversed rather than the state
+unhidden. A two-position effect whose richer end is only reachable by hover — a
+gradient panned across an oversized background, a shifted crop — is never seen
+at all by a thumb, so below the hover gate make that end the *resting* one and
+give the plain position to `:hover`. The effect keeps somewhere to go on a
+hybrid device that does report hover, and nothing is lost where hover does not
+exist.
+```css
+.sweep { background-size: 150%; background-position: 0% }
+.sweep:hover { background-position: 50% }
+@media (hover: none) { .sweep { background-position: 50% }
+                       .sweep:hover { background-position: 0% } }
+```
+⚠ Only for effects carrying no information. Where the two positions mean
+different things, swapping which one is at rest changes what the control says.

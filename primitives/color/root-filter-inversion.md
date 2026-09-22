@@ -4,7 +4,7 @@ category: color
 tags: [color,dark,filter,invert,theme,effect]
 axes: {energy: 2, density: 2, weight: 4, finish: 2}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

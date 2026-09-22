@@ -1,6 +1,6 @@
 # Manifest
 
-919 primitives. Format: `category/id | axes cost | tags | gist`
+920 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -230,6 +230,7 @@ interaction/paired-focus-offset-tokens | neutral  $1 | accessibility focus token
 interaction/panel-scoped-field-disabling | neutral  $1 | interaction form correctness accessibility tabs progressive-enhancement | A tabset that keeps every panel in the DOM — because the set is 
 interaction/partial-modality-inert-siblings | neutral  $2 | interaction dialog accessibility inert focus correctness | Not every overlay should take the whole page. A panel hung off a
 interaction/platform-narrowed-download-set | neutral  $2 | progressive-enhancement navigation correctness accessibility architecture | An artifact built for five targets should not ship five equal bu
+interaction/pointer-borne-rule-sight | E3 D2 W1 F5 $2 | interaction pointer overlay hover transform detail | State the pointer as rules, not as a mark: hairlines longer than
 interaction/pointer-transparent-copy-layer | neutral  $1 | interaction pointer accessibility layout correctness | Copy laid over a background that reacts to the pointer swallows 
 interaction/pre-hydration-nested-link | neutral  $2 | accessibility links hydration progressive-enhancement correctness | A card that navigates but contains its own link cannot be an anc
 interaction/prose-doubled-key-chord | neutral  $1 | accessibility correctness navigation detail state | A shortcut drawn as keycaps is a picture of a gesture. Assistive
