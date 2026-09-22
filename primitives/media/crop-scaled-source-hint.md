@@ -4,7 +4,7 @@ category: media
 tags: [media,correctness,responsive,performance,loading]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -27,3 +27,12 @@ crops.
 ```
 ⚠ It buys sharpness with bandwidth — a phone downloads a desktop-sized file.
 Spend it on the one image carrying the page, never on a grid of them.
+
+When the image is sized by height — `height: 110–130%` of a `100svh` section,
+`width: auto` — its rendered width tracks viewport *height*, and a `vw` hint is
+wrong on every window that is not the design aspect. Write `sizes` in `vh`:
+height share × source aspect, with a portrait breakpoint where the crop starts
+consuming width instead.
+```html
+<img sizes="(min-width: 1024px) 130vh, 130vw" style="height:122%;width:auto">
+```
