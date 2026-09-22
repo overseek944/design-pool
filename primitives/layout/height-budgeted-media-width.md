@@ -4,7 +4,7 @@ category: layout
 tags: [layout,container-query,aspect,fit,cls]
 axes: none
 cost: 2
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -82,3 +82,17 @@ than as a coefficient.
 the next edit is otherwise an algebra problem — and `svh` under a tall phone
 chrome resolves to a height no desktop anchor was fitted against, so gate the
 whole rule behind a pointer-and-keyboard width.
+
+The same `min()` resolves against a *container* rather than the viewport, which
+is what a fixed-ratio preview inside a resizable panel needs: `100cqw` for the
+width term, `100cqh` times the ratio for the height term, `aspect-ratio`
+deriving the other side. The frame then fits whichever axis of the panel is
+scarcer while a splitter is dragged, with no observer and no breakpoint.
+```css
+.panel { container-type: size }
+.frame { aspect-ratio: 16 / 9; max-inline-size: 100%;
+         inline-size: min(100cqw, 100cqh * 16 / 9) }
+```
+⚠ `cqh` needs `container-type: size` on the panel, so the panel's height must
+come from the layout above it — sized by its contents instead, every `cqh` term
+resolves to zero and the frame collapses to nothing.

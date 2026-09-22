@@ -4,7 +4,7 @@ category: surface
 tags: [surface,effect,svg,gotcha]
 axes: none
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -38,3 +38,17 @@ space and pad it by roughly twice the blur radius plus any spread.
 ⚠ A user-space region is in absolute coordinates and has to be recomputed
 whenever the element resizes; the percentage default tracks for free, so only
 take this where the default is actually clipping.
+
+A canvas painting an element's *own* light has the same problem in a different
+medium, and neither lever reaches it: the pixels simply do not exist outside
+the backing store. Inflate the canvas by the bloom's reach on every side and
+pull it back by the same amount — the element's box is unchanged and the glow
+has somewhere to land. Pad to where the falloff reaches a few percent: 12–40px
+for an exponential decay of 0.1–0.3 per pixel.
+```css
+.bloom { position: absolute; inset: calc(-1 * var(--pad));
+         width: calc(100% + 2 * var(--pad)); pointer-events: none }
+```
+⚠ The pad enters the shader too — the shape's half-extent is the *element*, not
+the canvas. Scale from `rect + 2 × pad` or the corner radius grows with the
+padding and the ring drifts off the edge it was drawn for.

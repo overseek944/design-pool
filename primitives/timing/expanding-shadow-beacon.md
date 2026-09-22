@@ -4,7 +4,7 @@ category: timing
 tags: [motion,indicator,status,ambient,glow]
 axes: {energy: 2, density: 1, weight: 2, finish: 4}
 cost: 1
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -82,3 +82,19 @@ persisted flag to keep.
 ```
 ⚠ Gate it on the same state the rest of the chrome reads, or the ring outlives
 the thing it was pointing at.
+
+Where the level is a continuous value rather than a keyframe — a shader
+uniform, a driven custom property — two decaying impulses read as a heartbeat
+where one reads as a blink. An exponential decay times a half-rectified sine is
+the thump; a second at 60–75% of a human inter-beat delay and half the
+amplitude is what names it. Ride both on a slow breath with a floor, and couple
+size to brightness: let the glow's decay constant *fall* at the peak so the
+halo widens as it brightens, the way a real source does.
+```js
+const thump = (d, a) => a * Math.exp(-7 * d) * Math.max(Math.sin(d * 14), 0)
+const p = t % 2.5, breath = smoothstep(-1, 1, Math.sin(t * 1.2))
+const level = .12 + .88 * breath + thump(p, .3) + thump(Math.max(p - .18, 0), .15)
+```
+⚠ The floor is what stops a dark frame reading as a dead renderer, and the
+thump is what stops the breath reading as a fade — neither substitutes for the
+other. Under `reduce`, hold the floor and drop both.

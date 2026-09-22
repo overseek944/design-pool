@@ -1,6 +1,6 @@
 # Manifest
 
-903 primitives. Format: `category/id | axes cost | tags | gist`
+906 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -94,6 +94,7 @@ canvas/scene-exempt-label-layer | E1 D2 W1 F5 $2 | canvas label type scene legib
 canvas/screen-composited-understroke | E2 D2 W2 F5 $2 | canvas light stroke effect depth cheap | Canvas 2D has no cheap blur, so a glowing stroke is built from p
 canvas/scroll-advanced-field-clock | E2 D3 W2 F4 $3 | shader field scroll performance ambient battery | A decorative field driven by elapsed time runs forever and then 
 canvas/scroll-driven-frame-atlas | E4 D3 W3 F4 $4 | canvas scroll performance | For scrubbed sequence playback, draw frames from a sprite atlas 
+canvas/shared-context-frame-multiplex | neutral  $3 | canvas webgl performance architecture lifecycle budget | A browser keeps eight to sixteen live WebGL contexts and kills t
 canvas/shell-reprojected-displacement | E2 D3 W2 F5 $2 | shader canvas generative noise silhouette geometry | Noise added straight to a point on a generated form moves it out
 canvas/sign-triple-reference-cage | E2 D2 W1 F5 $2 | canvas 3d projection diagram geometry data | A rotating point cloud gives a reader positions and no frame — n
 canvas/signed-bow-connector-bundle | E1 D3 W1 F5 $2 | canvas connector diagram geometry svg | Connectors terminating at one hub, drawn straight, collapse into
@@ -174,6 +175,7 @@ interaction/declared-quiet-region | neutral  $1 | interaction pointer architectu
 interaction/dimension-coded-position-dot | E2 D2 W2 F5 $1 | interaction state indicator accessibility carousel | Let the active item in a position indicator change size, not onl
 interaction/disengaged-scoped-transition | E3 D1 W2 F5 $1 | interaction transition pointer drag reveal accessibility | A value the pointer drives — a wipe seam, a comparison split, a 
 interaction/dismissal-escalated-reprompt | neutral  $2 | interaction prompt cadence persistence restraint correctness | A recurring prompt — install, subscribe, upgrade — needs a caden
+interaction/drag-scoped-target-states | neutral  $2 | drag drop affordance state feedback accessibility | A drag that lights only the target under the pointer makes the r
 interaction/drag-suppressed-click-threshold | neutral  $2 | pointer drag interaction correctness accessibility | A surface that answers to drag and also holds links fires a clic
 interaction/edge-hotzone-sibling-reveal | E2 D2 W2 F5 $2 | interaction hover panel chrome css-only accessibility | Reclaim the width a hidden rail costs without a toggle: park an 
 interaction/edge-traversing-knob | E3 D2 W2 F5 $1 | interaction state affordance motion detail | A control states its direction by sending its own mark the whole
@@ -378,6 +380,7 @@ light/blend-doubled-headline | E2 D2 W4 F5 $3 | type blend legibility contrast c
 light/broadcast-light-source | E2 D2 W2 F5 $3 | light gradient custom-property ambient architecture | A panel lit at the pointer has one lamp, and only while a pointe
 light/counter-rotated-specular-layer | E2 D2 W3 F5 $2 | light gradient rotation material 3d | An object with its highlight painted into its own background spi
 light/differential-scale-rim-glint | E2 D2 W3 F5 $2 | light rim mask layers ambient metal 3d | A form cut from a single silhouette has no edge for light to cat
+light/distance-derived-border-light | E2 D2 W3 F5 $4 | light shader sdf glow border webgl | One signed distance to the element's rounded rectangle pays for 
 light/emitted-light-not-borders | E2 D1 W3 F5 $2 | color effect depth restraint | Separate surfaces with glow and luminance rather than 1px solid.
 light/frame-pooled-pending-veil | E2 D1 W2 F4 $1 | light glow state loading overlay accessibility | A document still filling in usually gets an overlay, which block
 light/glow-spined-pass-bar | E3 D1 W2 F5 $1 | light glow sweep box-shadow loop cheap | A light crossing a panel whose content does not change says the 
