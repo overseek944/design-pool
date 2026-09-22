@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,intersection-observer,visibility,battery,correctness]
 axes: none
 cost: 2
-seen: 79
+seen: 80
 requires: []
 conflicts: []
 completes: []

@@ -4,7 +4,7 @@ category: surface
 tags: [surface,texture,grain,gradient,blend-mode,banding]
 axes: {energy: 1, density: 3, weight: 3, finish: 4}
 cost: 1
-seen: 28
+seen: 29
 requires: []
 conflicts: []
 completes: []
@@ -193,3 +193,19 @@ color.rgb = mix(color.rgb, vec3(step(u_noiseThreshold, n)), u_noiseOpacity);
 ⚠ A binary field is aliasing by construction — it must be evaluated in device
 pixels and drawn at backing resolution, never scaled up from a smaller target,
 or the grain crawls into visible clumps the moment the canvas resizes.
+
+Where the field is *generated* rather than tiled, the noise belongs in its
+control points, not over its output. Compositing grain onto a finished mesh
+gradient dulls every hue at once; offsetting each colour source by a small noise
+sample before the blend leaves the colours exactly as picked and makes the
+boundaries between them wander, which is the part that reads as organic. Sample
+at a much higher frequency than the sources move, zero-mean, in the field's own
+space. Offset 2–6% of the field's extent — with a thresholded overlay still
+available on top if film is wanted as well.
+```glsl
+float g = valueNoise(uv * 1000.) - .5;        // high frequency, zero-mean
+vec2  p = sourcePos(i, t) + u_mix * .4 * g;   // perturb the source, not the result
+```
+⚠ One scalar offset displaces every source the same way, so the whole field
+swims rather than churns. Sample a second decorrelated value for the other axis
+the moment the drift starts reading as a pan.

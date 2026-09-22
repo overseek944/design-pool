@@ -4,7 +4,7 @@ category: motion-system
 tags: [list,rotation,blur,depth,mask,custom-property]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -66,3 +66,23 @@ through.
 ⚠ Rotated glyphs are resampled — past about 60° text goes soft and its hit area
 shears away from what is drawn. Keep the focused item at 0°, unrotated and
 unblurred, and hold the band's height so the rotation cannot reflow the page.
+
+Masking the ends leaves the band's *height* unstated, and a wheel sized by its
+content shows a half-row at the bottom edge that reads as a clipping fault.
+Quantise it to whole slots: rows × slot, floored at a small minimum so a short
+list still looks like a wheel, capped by what the viewport has left after the
+chrome around it. The list then travels in whole slots too, and the mask's two
+fade depths become the only soft edges — and they need not match, a shallower
+one at the top where the next item is about to be read. Slot 28–36px, floor 5
+slots, fades 10–18%.
+```css
+.wheel { --slot: 30px;
+  height: min(calc(var(--rows) * var(--slot)),
+              max(calc(5 * var(--slot)), calc(100dvh - var(--reserved))));
+  mask-image: linear-gradient(#0000, #000 var(--fade-top, 14%),
+              #000 calc(100% - var(--fade-bottom, 14%)), #0000) }
+.wheel > ul { transform: translate3d(0, var(--shift), 0) }
+```
+⚠ `100dvh` changes as mobile chrome slides, so the cap re-seats the wheel
+mid-scroll. Hold the reserved space as a token and put the cap behind a
+pointer-and-keyboard width rather than tuning the number.

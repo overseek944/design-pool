@@ -4,7 +4,7 @@ category: canvas
 tags: [shader,architecture,responsive,correctness,reference]
 axes: none
 cost: 3
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []

@@ -1,6 +1,6 @@
 # Manifest
 
-906 primitives. Format: `category/id | axes cost | tags | gist`
+907 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -114,6 +114,7 @@ canvas/vertexid-derived-screen-triangle | neutral  $1 | canvas webgl shader pass
 canvas/video-textured-mark-field | E2 D3 W2 F5 $3 | canvas video particles texture motion performance | A field of marks needs content as well as motion, and inventing 
 canvas/warm-started-relaxation | neutral  $1 | canvas simulation performance shader solver | An iterative solve re-run every frame — a pressure projection, a
 canvas/wedge-cloned-symmetric-field | E1 D4 W1 F5 $2 | canvas generative symmetry field particles cheap | A ring of marks placed from one pass of random draws clumps unev
+canvas/weight-exponent-colour-field | E2 D2 W3 F5 $3 | shader canvas field generative color ambient webgl | A mesh gradient in a fragment shader needs no stops or geometry.
 canvas/yielded-program-link | neutral  $2 | canvas webgl shader performance correctness lifecycle | Linking a shader program returns immediately; asking whether it 
 color/band-keyed-readout-channels | neutral  $1 | color tokens state dataviz correctness | A readout showing a measurement and a judgement of it carries on
 color/blend-window-channel-strip | E1 D3 W2 F5 $2 | color data series encoding interpolation two-tone | One strip can carry which of two sources owns each point along i

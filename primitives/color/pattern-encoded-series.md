@@ -4,7 +4,7 @@ category: color
 tags: [color,accessibility,pattern,data,contrast,texture]
 axes: {energy: 1, density: 3, weight: 2, finish: 4}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
