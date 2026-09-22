@@ -4,7 +4,7 @@ category: type
 tags: [type,system]
 axes: {energy: 2, density: 3, weight: 3, finish: 4}
 cost: 1
-seen: 37
+seen: 38
 requires: []
 conflicts: []
 completes: []
@@ -67,3 +67,17 @@ range wide enough to set a heading — 400–600 is usually enough.
 ```
 ⚠ Slope is then structural, so `em` inside body copy collides with the
 apparatus tier — buy emphasis with weight at 600 and leave the italic alone.
+
+A fourth assignment hands the *display* line to the mono. Serif runs the prose,
+sans takes the section headings, and the mono is not only the apparatus tier but
+the one voice at 48–72px — the page announces itself as an instrument and then
+explains itself as a document. It needs the tracking pulled to −0.02 to −0.04em
+and the leading down near 1.0–1.1, because a mono's uniform advance widths open
+gaps at display size that no other face has; the rag comes out mechanically flat
+either way, which is the effect.
+```css
+h1 { font-family: var(--mono); font-size: clamp(2.25rem, 6vw, 3.75rem);
+     letter-spacing: -.03em; line-height: 1.05 }
+```
+⚠ Only holds for short lines. Past about six words the even colour of a mono at
+display size reads as a code block, and the headline stops being read as prose.

@@ -1,6 +1,6 @@
 # Manifest
 
-831 primitives. Format: `category/id | axes cost | tags | gist`
+832 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -48,6 +48,7 @@ canvas/half-pixel-hairline-grid | E1 D2 W1 F5 $1 | canvas hairline correctness d
 canvas/harmonic-feedback-uv-warp | E2 D3 W2 F5 $2 | shader generative texture field webgl noise | Adding one displacement to a coordinate bends a field; feeding t
 canvas/hash-dither-before-quantise | E1 D3 W2 F4 $2 | canvas color ramp noise grain banding generative | Snapping a continuous value onto a short palette — eight to twel
 canvas/hash-tuned-effect-constants | neutral  $1 | canvas generative authoring debug parameters | Every generative effect carries a dozen constants — curl, dissip
+canvas/hex-partitioned-cube-field | E2 D3 W1 F5 $2 | canvas lattice isometric generative ambient texture | An isometric cube needs no projection matrix: a regular hexagon'
 canvas/highlight-weighted-bokeh | E1 D2 W3 F5 $3 | canvas shader webgl blur light texture | A box or gaussian blur averages a bright point away. Weight ever
 canvas/home-sprung-particle-medium | E2 D3 W2 F5 $3 | canvas field pointer motion generative | A field of marks positioned from the pointer each frame travels 
 canvas/import-time-material-reauthor | neutral  $2 | canvas material import architecture correctness scene | An imported model arrives wearing whatever its exporter wrote — 

@@ -4,7 +4,7 @@ category: timing
 tags: [motion,keyframes,loop,sequence,cycle]
 axes: {energy: 2, density: 2, weight: 2, finish: 3}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -45,3 +45,17 @@ per row.
 ⚠ The last pair must end at 100% or the element snaps home across the cycle
 boundary. Anything the reader is meant to act on cannot be selected by a clock —
 this marks a demonstration, never a control.
+
+Where the states are positions on a continuum rather than alternatives, the
+keyframe list disappears entirely: `steps(n)` over a single two-stop travel
+gives n equal hops for free, and n is the only number to tune. A marker crossing
+a track then reads as a sampled signal rather than a glide — the quantisation
+*is* the instrument — and re-pitching it is one integer, not a rewritten block.
+6–10 steps over 1–2s reads as machine sampling; below about 4 it reads as a
+stutter bug.
+```css
+.packet { animation: travel 1.2s steps(8) infinite }
+@keyframes travel { from { left: 0 } to { left: calc(100% - var(--w)) } }
+```
+⚠ Animating `left` is a layout property — the hops are cheap only because there
+are eight of them per cycle, and on anything larger than a mark use `translate`.

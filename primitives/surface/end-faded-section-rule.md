@@ -4,7 +4,7 @@ category: surface
 tags: [hairline,divider,gradient,section,restraint]
 axes: {energy: 1, density: 1, weight: 1, finish: 5}
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -88,3 +88,18 @@ background: linear-gradient(to bottom, var(--line) 0,
 ```
 ⚠ Every write repaints the gradient over the element's whole box where the clip
 alone would not — keep it a 1–2px sliver, and put no `filter` or shadow on it.
+
+A rule can also state that the page *is* a measured drawing rather than state
+where its measure falls. Pair the hairline with a short comb of perpendicular
+ticks at a fixed pitch — one `repeating-linear-gradient` in a band a few pixels
+deep — and the boundary reads as a datum on a sheet, not as a separator between
+two blocks. Both layers inset to the column, so the graduation is also the
+measure. Pitch 16–32px, tick 1px, band 6–10px, comb alpha well under the rule's.
+```css
+.datum { block-size: 8px; background: repeating-linear-gradient(to right,
+  var(--line) 0 1px, transparent 1px 24px); opacity: .45 }
+.datum + hr { block-size: 1px; background: var(--rule) }   /* the rule itself */
+```
+⚠ The comb beats against the pixel grid at fractional DPR exactly as a scanline
+does — check 1.25× and 1.5×. Ticks denser than about 16px stop reading as
+graduations and start reading as a dashed rule, which says something else.

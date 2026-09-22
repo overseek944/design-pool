@@ -4,7 +4,7 @@ category: surface
 tags: [surface,grid,detail,blueprint,ornament]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
