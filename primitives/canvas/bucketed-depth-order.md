@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,performance,depth,particles,batching,quantise]
 axes: none
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -68,3 +68,14 @@ lane > .05 ? (drawActor(), drawSet()) : (drawSet(), drawActor())
 ```
 ⚠ The order flips at one value while the alpha is continuous — put the flip
 where the dim is deepest, not at 0.5, or the pop lands in plain sight.
+
+Where z is animated but slowly — a cloud turning at well under a revolution a
+second — sort an index array rather than the marks, and only every 2nd–4th
+frame. Between sorts the order is a frame or two stale, which no one sees while
+neighbouring depths barely move; the positions still update every frame.
+```js
+if (++frame % 3 === 0) order.sort((a, b) => z[a] - z[b])
+for (const i of order) draw(i)
+```
+⚠ Stale order shows as flicker where fast marks cross — raise the cadence, or
+use buckets, once anything moves quickly in z.

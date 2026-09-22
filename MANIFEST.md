@@ -1,6 +1,6 @@
 # Manifest
 
-983 primitives. Format: `category/id | axes cost | tags | gist`
+984 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -62,6 +62,7 @@ canvas/lattice-quantised-mark-draw | E2 D3 W2 F4 $2 | canvas particles grid latt
 canvas/lifetime-enveloped-mark-respawn | E2 D3 W1 F5 $1 | canvas field particles motion generative recycling | A fixed pool of marks recycled on exhaustion makes birth and dea
 canvas/liveness-floor-reseed | neutral  $2 | canvas generative simulation ambient lifecycle correctness | Most interesting generative rules are also mortal. A lattice, a 
 canvas/named-uv-spaces | neutral  $3 | shader architecture responsive correctness reference | One vertex shader can emit several named coordinate spaces so ea
+canvas/normal-carried-point-shading | E2 D3 W2 F5 $3 | canvas points lighting shading depth ambient 3d | A dot cloud sampled from a surface reads as a solid only if each
 canvas/normalised-index-profile-windows | E1 D2 W2 F5 $1 | generative field envelope responsive precision authoring | Organic variation gives a generated run texture but no large-sca
 canvas/normalised-morph-target-set | E3 D4 W2 F4 $3 | canvas particles morph generative shape | One field of marks can be several forms. Write each form as a pu
 canvas/octave-summed-edge-profile | E2 D2 W2 F3 $1 | canvas generative motion noise field cheap | A horizon, a wave crest or a ribbon edge needs an organic profil

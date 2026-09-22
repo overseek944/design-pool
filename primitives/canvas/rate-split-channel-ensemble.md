@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,field,ambient,technical,measurement,hierarchy]
 axes: {energy: 2, density: 2, weight: 1, finish: 5}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -27,3 +27,15 @@ for (const c of ch) { ctx.beginPath(); ctx.lineWidth = c.lw || 1
 ```
 ⚠ The sample step is a function of the shortest wavelength drawn, not of the
 box — coarser than about 5px and the fastest channel resolves as a zigzag.
+
+Where the channels need not change shape, stop rebuilding them. Bake each once
+into a static SVG path 2–3× the box width and move only its layer — a vertical
+drift of 15–25px on its own period, 6–9s, eased both ways. The trace never
+redraws and the motion is compositor-only; the unequal periods alone keep the
+stack from reading as one rigid sheet.
+```js
+layer.animate({ transform: ['translateY(-20px)', 'translateY(20px)'] },
+  { duration: 7000, direction: 'alternate', iterations: Infinity, easing: 'ease-in-out' })
+```
+⚠ A fixed shape drifting is not a signal changing — right for ambient texture,
+wrong wherever the traces pretend to be live data.

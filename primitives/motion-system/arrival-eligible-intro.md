@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,intro,entrance,correctness,accessibility,session]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: [paused-as-authored-rest]
