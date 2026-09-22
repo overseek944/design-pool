@@ -4,7 +4,7 @@ category: motion-system
 tags: [idle,loop,character,randomness,raf,ambient]
 axes: {energy: 3, density: 2, weight: 2, finish: 4}
 cost: 3
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []

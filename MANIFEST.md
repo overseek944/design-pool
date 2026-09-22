@@ -1,6 +1,6 @@
 # Manifest
 
-911 primitives. Format: `category/id | axes cost | tags | gist`
+914 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -566,6 +566,7 @@ motion-system/stepped-follow-transition | E3 D1 W2 F3 $1 | motion pointer transi
 motion-system/sub-fusion-tremor | E5 D1 W1 F4 $1 | motion loop drag state micro-interaction | Below roughly 100ms a period stops reading as motion and starts 
 motion-system/svg-geometry-keyframes | E3 D2 W2 F5 $1 | motion svg diagram precision detail | r, cx, cy, x, y and width are CSS properties on SVG, not just at
 motion-system/transient-class-scoped-transition | neutral  $2 | motion-system view-transition theme correctness reduced-motion | A view transition, or a global colour transition, must animate f
+motion-system/transition-cued-height-follow | neutral  $2 | correctness measurement transition resize layout motion | Inline content that changes width re-wraps its copy and the bloc
 motion-system/twin-pose-custom-properties | E3 D3 W2 F5 $2 | transform state stagger custom-properties group choreography | A group that rearranges between two arbitrary layouts — stacked 
 motion-system/type-declared-transition-scope | neutral  $2 | motion-system view-transition scoping state correctness routing | Every ::view-transition- rule applies to every transition, so a 
 motion-system/viewport-clamped-slot-travel | E3 D1 W2 F5 $3 | motion travel scroll measurement layout | An element travelling between two positions read from real layou
@@ -819,6 +820,7 @@ timing/decaying-loop-restart-gap | E2 D1 W2 F5 $1 | loop timing sequence restrai
 timing/delay-matched-loop-handoff | E2 D1 W2 F5 $1 | timing transition loop idle state css-only | An element that expands into a state and should then idle there 
 timing/dwelling-phase-ring | neutral  $2 | timing state loop choreography architecture demo | A looping demonstration written as a schedule of effects has to 
 timing/expanding-shadow-beacon | E2 D1 W2 F4 $1 | motion indicator status ambient glow | A mark that blinks reports a state; one that throws a ring outwa
+timing/gap-floored-change-admission | E2 D1 W2 F5 $2 | timing ambient state architecture rhythm loop | Ambient elements on independent random intervals eventually chan
 timing/graduation-registered-traversal | E2 D2 W1 F5 $1 | motion diagram svg rhythm precision loop | A marker crossing a drawn scale reads as drift unless its stops 
 timing/half-wave-endpoint-deviation | E3 D1 W2 F5 $1 | motion easing interpolation character | To add a bulge to a scrubbed interpolation — an arc over a strai
 timing/inert-keyframe-lifetime | neutral  $1 | timing lifecycle css-animation cleanup accessibility | A transient overlay — a burst, a ripple, a one-shot badge — usua
@@ -913,6 +915,7 @@ type/wavy-annotation-underline | E2 D2 W2 F2 $1 | type underline link detail inf
 type/webfont-scoped-to-inline-svg | neutral  $1 | type svg correctness architecture progressive-enhancement | An SVG setting live text in a brand face renders in that face on
 type/weight-dropped-display-line | E1 D2 W4 F5 $1 | type display headline hierarchy contrast | A display block can carry its own hierarchy with no second size,
 type/width-stable-changing-number | E2 D3 W3 F5 $1 | numerals data motion correctness | A figure that animates or streams needs two guarantees, and tabu
+type/word-split-collapsing-swap | E2 D2 W2 F5 $2 | type inline transition measurement accessibility detail | A phrase substituted in running copy cannot crossfade in place: 
 type/wrap-joined-marker-block | E2 D2 W4 F4 $1 | type emphasis highlight decoration radius detail | A solid block behind a phrase paints one rectangle per line, so 
 type/zero-width-hanging-marginal | E1 D2 W1 F5 $1 | type editorial numbering measure heading responsive | A section number, footnote marker or date beside a heading shoul
 ```
