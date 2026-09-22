@@ -4,7 +4,7 @@ category: type
 tags: [type,gradient,entrance,currentcolor,reveal]
 axes: {energy: 3, density: 2, weight: 3, finish: 4}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

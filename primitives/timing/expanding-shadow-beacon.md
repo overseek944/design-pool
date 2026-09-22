@@ -4,7 +4,7 @@ category: timing
 tags: [motion,indicator,status,ambient,glow]
 axes: {energy: 2, density: 1, weight: 2, finish: 4}
 cost: 1
-seen: 13
+seen: 14
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -59,7 +59,7 @@ costs is the whole argument against it, and the compositor form is a different
 reading rather than the same one made cheap: scale the disc itself and fade it,
 and the mark *breathes* instead of emitting — the source is what grows, so
 there is no ring leaving it. `transform` and `opacity` both composite, so a
-column of them is free. Peak 1.6–2×, trough alpha .35–.5, period 2–3s.
+column of them is free. Peak 1.3–2× (below 1.5× on a disc under 8px), trough alpha .35–.5, period 2–3s.
 ```css
 .dot { animation: breathe 2.4s infinite }
 @keyframes breathe { 0%, 100% { transform: scale(1); opacity: 1 }

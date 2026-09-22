@@ -4,7 +4,7 @@ category: media
 tags: [media,image,reveal,scale,motion,observer]
 axes: {energy: 2, density: 1, weight: 3, finish: 5}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
