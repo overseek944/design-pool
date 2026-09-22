@@ -1,6 +1,6 @@
 # Manifest
 
-957 primitives. Format: `category/id | axes cost | tags | gist`
+958 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -122,6 +122,7 @@ color/band-keyed-readout-channels | neutral  $1 | color tokens state dataviz cor
 color/blend-window-channel-strip | E1 D3 W2 F5 $2 | color data series encoding interpolation two-tone | One strip can carry which of two sources owns each point along i
 color/chroma-cycled-subject-mark | E2 D2 W2 F5 $2 | color saturation filter emphasis figure contrast loop | Where each part of a figure takes a turn being the subject, dimm
 color/chroma-weighted-peer-rank | E1 D2 W3 F5 $1 | color hierarchy accent icon grid contrast | Two grids of identical cards on one page read as equally importa
+color/confidence-ladder-neutral-floor | neutral  $1 | tokens status ordinal confidence semantic badge | A grade of certainty is not a grade of danger. Ramp it from a co
 color/declared-contrast-escalation | neutral  $1 | accessibility contrast tokens type color | prefers-contrast: more is not a second theme — it is permission 
 color/disposition-token-set | neutral  $1 | color tokens state correctness accessibility | A review queue is not a severity display, and borrowing success/
 color/embedded-replica-palette-split | neutral  $1 | color tokens product mock architecture | A page embedding a working replica of the product needs two toke

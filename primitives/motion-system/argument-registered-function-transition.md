@@ -4,7 +4,7 @@ category: motion-system
 tags: [custom-property,registered-property,transition,clip-path,interpolation,architecture]
 axes: none
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
