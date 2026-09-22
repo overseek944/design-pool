@@ -1,6 +1,6 @@
 # Manifest
 
-900 primitives. Format: `category/id | axes cost | tags | gist`
+903 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -116,6 +116,7 @@ canvas/wedge-cloned-symmetric-field | E1 D4 W1 F5 $2 | canvas generative symmetr
 canvas/yielded-program-link | neutral  $2 | canvas webgl shader performance correctness lifecycle | Linking a shader program returns immediately; asking whether it 
 color/band-keyed-readout-channels | neutral  $1 | color tokens state dataviz correctness | A readout showing a measurement and a judgement of it carries on
 color/blend-window-channel-strip | E1 D3 W2 F5 $2 | color data series encoding interpolation two-tone | One strip can carry which of two sources owns each point along i
+color/chroma-cycled-subject-mark | E2 D2 W2 F5 $2 | color saturation filter emphasis figure contrast loop | Where each part of a figure takes a turn being the subject, dimm
 color/chroma-weighted-peer-rank | E1 D2 W3 F5 $1 | color hierarchy accent icon grid contrast | Two grids of identical cards on one page read as equally importa
 color/declared-contrast-escalation | neutral  $1 | accessibility contrast tokens type color | prefers-contrast: more is not a second theme — it is permission 
 color/disposition-token-set | neutral  $1 | color tokens state correctness accessibility | A review queue is not a severity display, and borrowing success/
@@ -281,6 +282,7 @@ layout/clipped-source-derived-pair | E1 D3 W1 F5 $1 | layout provenance evidence
 layout/collision-band-gutter | neutral  $2 | layout container-query annotation responsive correctness | Margin notes need room beside the reading column, but only in a 
 layout/column-aligned-disclosure | E1 D2 W2 F5 $2 | layout grid disclosure alignment native | Let a <details> row sit on the page's column grid: make the <sum
 layout/column-registered-overlay-chrome | neutral  $1 | layout overlay alignment correctness chrome | Chrome floating over a full-bleed stage — a stat strip, a scrub 
+layout/concurrent-stage-triptych | E1 D3 W2 F5 $2 | layout mock state hierarchy progression figure | Show every stage of a gated process at once, each panel in its o
 layout/container-budgeted-column-drop | neutral  $2 | layout container-query table responsive accessibility correctness | A dense row carries more columns than a narrow container can hol
 layout/container-edge-rule-lattice | E1 D3 W1 F5 $2 | layout grid hairline precision responsive technical | Draw the measurement system, not only the content. Vertical hair
 layout/container-solved-overlap-stride | E1 D4 W2 F5 $2 | layout overlap measurement resize-observer density quantity | Do not pick how far a row of fixed-width cards overlaps — solve 
@@ -531,6 +533,7 @@ motion-system/print-frozen-frame-branch | neutral  $1 | print correctness motion
 motion-system/reduce-retained-paint-channel | neutral  $1 | motion reduced-motion accessibility hover feedback correctness | A hover or proximity response is several channels at once — a li
 motion-system/reduce-settled-sequence-state | neutral  $2 | motion accessibility reduced-motion state sequence correctness | A panel that builds itself over time — steps landing one at a ti
 motion-system/reduced-motion-branch | neutral  $1 | motion accessibility required | Branch at setup, not per-animation: if the user prefers reduced 
+motion-system/reformatting-box-resize | E2 D2 W2 F5 $3 | motion keyframes layout mock type resize | An element that changes size mid-demonstration is usually scaled
 motion-system/remeasure-exempt-transition | neutral  $1 | indicator transition resize measurement correctness | A measured indicator — the underline under the active tab, the p
 motion-system/reset-frame-slot-recycle | E3 D1 W2 F4 $1 | motion transition state swap cycle correctness | One node that leaves upward and returns from below has to cross 
 motion-system/residual-length-trail-lock | E2 D2 W1 F5 $2 | motion svg stroke path diagram | A trail and the mover drawing it are two animations; time alone 

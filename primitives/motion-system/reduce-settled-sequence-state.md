@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,accessibility,reduced-motion,state,sequence,correctness]
 axes: none
 cost: 2
-seen: 19
+seen: 20
 requires: []
 conflicts: []
 completes: []
@@ -112,3 +112,19 @@ halfway along a wire, which reads as a fault rather than as a still.
 ⚠ Removing them takes their meaning with it — a direction or an ordering the
 transit element was the only evidence of has to be carried by the pinned frame
 or by the figure's description.
+
+A sequence written entirely in CSS keyframes takes the branch as three selector
+lists, and the third is the one that gets forgotten. Kill the animation on every
+participant; restore `opacity: 1; transform: none` on the majority, whose
+resolved state is present; then pin the short list whose beat *removes* them — a
+placeholder that gets replaced, a step that plays out — at `opacity: 0`. Miss
+that list and the still frame stacks the before and the after of every swap on
+top of each other, which reads as a rendering fault rather than a preference.
+```css
+@media (prefers-reduced-motion: reduce) {
+  .beat { animation: none; opacity: 1; transform: none }
+  .beat--consumed { opacity: 0 } }
+```
+⚠ The third list has to be re-derived whenever a beat is added and nothing fails
+loudly. Audit it against the keyframes, not against the rendered page — the page
+looks right to everyone who never set the preference.

@@ -4,7 +4,7 @@ category: timing
 tags: [timing,choreography,keyframes,css-animation,token,sequence]
 axes: {energy: 2, density: 3, weight: 2, finish: 5}
 cost: 2
-seen: 28
+seen: 29
 requires: []
 conflicts: []
 completes: []
@@ -221,3 +221,19 @@ alpha. Clear by 3–5%, hold clear to 92–96%.
 ```
 ⚠ It dims every participant equally at the wrap, so a sequence whose last beat
 is its conclusion loses the frame worth holding — end on a hold, not on the wash.
+
+The 12–30s floor is a function of beat count, not of the period. A figure whose
+participants each hold only two or three poses stays legible at 5.5–8s, because
+each dwell is still 20–40% of a short cycle — what makes a fast loop unreadable
+is the number of beats inside it, not the total. Budget from the dwell instead:
+give every pose at least 1.2s of wall time and let the period fall out of that.
+A figure that completes inside one glance never asks the reader to wait for a
+wrap.
+```css
+:root { --seq: 7s }                 /* 3 poses × ~2.3s dwell */
+@keyframes chip { 0%,10% { opacity: 0 } 22%,44% { opacity: 1 } 62%,to { opacity: 0 } }
+```
+⚠ The participant with the most beats sets the period for everyone, so one
+element needing six poses drags the whole figure back to the long total. Moving
+it to a second clock fixes the length and reintroduces exactly the drift between
+the two groups that the shared token existed to prevent.
