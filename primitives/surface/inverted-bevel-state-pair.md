@@ -4,7 +4,7 @@ category: surface
 tags: [surface,depth,detail,affordance,state,border]
 axes: {energy: 2, density: 2, weight: 2, finish: 3}
 cost: 1
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -78,3 +78,17 @@ roughly half the first's alpha.
 ```
 ⚠ Both alphas are tuned against one ground — halve them on dark, or the rim
 reads as a seam rather than as light.
+
+On a saturated fill the two edges can come from the fill's own ramp instead of
+white and black: a darker step blurred up from the bottom, a lighter step down
+from the top, and a 1px outer ring in the base fill to seal the edge the blur
+softens. Put the three colours in custom properties and one rule serves every
+variant — primary, destructive, warning each reassign the triple, never the
+shadow. Offset and blur 1.5–3px; lighter step 1–2 ramp stops above the fill.
+```css
+.bevel { box-shadow: inset 0 -2px 2px var(--b-dark), inset 0 2px 2px var(--b-light),
+                     0 0 0 1px var(--b-ring) }
+.danger { --b-dark: var(--red-800); --b-light: var(--red-400); --b-ring: var(--red-600) }
+```
+⚠ The ring replaces the border — keep a real `outline` for focus, since a
+box-shadow ring is already spent.

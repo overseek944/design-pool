@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,edge,composition,bleed]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 80
+seen: 81
 requires: []
 conflicts: []
 completes: []
@@ -317,3 +317,15 @@ ground. Drop it there; the hard crop is the honest affordance in that mode.
 ```
 ⚠ Remove both the prefixed and unprefixed property — Safari reads only the
 prefixed one.
+
+A single diagonal layer keeps two *opposite corners* and clears the band
+between them: `to bottom right`, opaque at 0% and 100%, transparent across the
+middle. A decorative field then frames a centred card from top-left and
+bottom-right only, which reads as composed where four faded edges read as a
+vignette. Clear band 20–25% to 75–80%; widen the band on narrow screens where
+the corners crowd the content.
+```css
+mask-image: linear-gradient(to bottom right, #000 0, transparent 22% 78%, #000 100%)
+```
+⚠ The diagonal follows the box's aspect ratio, so on a very wide element the
+corners become thin slivers along the long edges — size the field, not the page.

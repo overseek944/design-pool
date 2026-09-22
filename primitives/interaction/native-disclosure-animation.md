@@ -4,7 +4,7 @@ category: interaction
 tags: [motion,disclosure,accessibility,progressive-enhancement,height]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 18
+seen: 19
 requires: []
 conflicts: []
 completes: []
@@ -105,3 +105,15 @@ reading. 0.35–0.5s on a firm in-out curve.
 ⚠ The written height must be measured with the box back at `auto` and re-measured
 on resize — a value cached from first paint is wrong at the first reflow, and the
 card then clips its own content with no scrollbar to reveal it.
+
+The same track trick runs sideways: `grid-template-columns: 0fr` to `1fr` opens
+a side panel to its content's natural width with no measured value, the child
+again `min-width: 0; overflow: hidden`. Close faster than it opens — roughly
+two-thirds the duration — so dismissal reads as getting out of the way rather
+than as a second animation to wait through. Open 0.25–0.35s, close 0.15–0.22s.
+```css
+.side { display: grid; grid-template-columns: 0fr; transition: grid-template-columns .2s var(--out) }
+.side[data-open] { grid-template-columns: 1fr; transition-duration: .3s }
+```
+⚠ Text inside re-wraps every frame as the track narrows — give the child a fixed
+inline size so it crops rather than reflows.

@@ -1,6 +1,6 @@
 # Manifest
 
-972 primitives. Format: `category/id | axes cost | tags | gist`
+973 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -677,6 +677,7 @@ reveal/normalised-path-draw | E3 D2 W2 F5 $1 | svg stroke reveal draw geometry c
 reveal/overhung-skew-fill-sweep | E3 D2 W2 F5 $2 | reveal interaction motion detail effect | Fill a control on hover behind a slanted edge, not a straight on
 reveal/radius-held-inset-wipe | E3 D2 W2 F5 $2 | reveal clip-path wipe panel motion | A panel widening under clip-path: inset() squares its corners of
 reveal/step-held-band-tear | E4 D2 W3 F2 $2 | motion easing text clip-path reveal glitch | An arrival that should read as a signal resolving rather than fa
+reveal/streamed-chunk-arrival | E2 D2 W1 F4 $1 | reveal streaming text entrance list custom-properties | Text that arrives in chunks — a generated answer, a live log — p
 reveal/token-indexed-reading-front | E2 D2 W3 F4 $2 | type scroll progress reveal colour | Text that inks in as it is read cannot be a gradient sweep: a gr
 reveal/torn-wrapper-reveal | E5 D2 W3 F3 $2 | reveal entrance sequence keyframes reward | Something given rather than loaded earns an opening: destroy the
 reveal/trailing-mask-sweep | E3 D3 W2 F4 $2 | reveal mask scan grid sweep technical | Reveal a field — a measurement grid, a texture, a dot matrix — b
