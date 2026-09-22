@@ -4,7 +4,7 @@ category: timing
 tags: [motion,indicator,status,ambient,glow]
 axes: {energy: 2, density: 1, weight: 2, finish: 4}
 cost: 1
-seen: 15
+seen: 16
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -112,3 +112,9 @@ Peak alpha .25–.4; brighter reads as an error.
 ```
 ⚠ A repeat press on a live class does not restart it — remount the node or key
 it per press, or rapid taps get one echo.
+
+The legible form of the breath: a still outlined frame — a 12–16px square
+turned 45°, a 1–2px accent border and a fixed outer glow — with only a 4–6px
+core inside it pulsing opacity 1 to 0.2–0.3 over 1.4–2s. The frame holds the
+position constantly; the core alone reports liveness, so a field of them never
+reads as failing at the trough.

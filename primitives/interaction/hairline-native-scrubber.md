@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,accessibility,control,scrub,native,diagram]
 axes: {energy: 2, density: 1, weight: 1, finish: 5}
 cost: 1
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -84,3 +84,13 @@ deserves.
 ⚠ An invisible input is still the default thumb width, so its value tops out
 before the pointer reaches either edge. Correct the painted handle with the
 thumb geometry above, or force the thumb to 1px so raw percentage is true.
+
+A square thumb on a tinted track separates itself with a border in the *page
+ground* colour, not a lighter ring: the 2px of ground cuts the thumb out of the
+rail so the rail can sit at 30–40% of the accent and the thumb at full strength
+with no shadow needed. Thumb 14–18px, shrinking a step on narrow screens.
+```css
+.s { background: color-mix(in srgb, var(--accent) 35%, transparent); height: 3px }
+.s::-webkit-slider-thumb { appearance: none; width: 16px; height: 16px;
+  background: var(--accent); border: 2px solid var(--ground) }
+```

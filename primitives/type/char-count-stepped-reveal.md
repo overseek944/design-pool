@@ -4,7 +4,7 @@ category: type
 tags: [type,motion,css-only,custom-properties,keyframes]
 axes: {energy: 3, density: 1, weight: 2, finish: 4}
 cost: 1
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
@@ -110,3 +110,13 @@ Same `steps` blink, 0.9–1.2s.
 ```
 ⚠ A last child that is a list or table puts the caret after the block, not the
 text — descend with `:last-child:is(ul,ol) > li:last-child::after`.
+
+An underscore rather than a bar or block puts the caret on the baseline, where
+it reads as a terminal awaiting input without covering the next glyph's slot.
+Set it wide — 0.5–0.7em by 0.08–0.12em — and let it pulse a soft
+`text-shadow`/glow in `currentColor` with its opacity, 0.9 down to 0.3–0.4 over
+1–1.4s: the glow is what keeps an eased caret reading as lit rather than fading.
+```css
+.caret--under { width: .6em; height: .1em; vertical-align: -.1em; background: currentColor;
+  box-shadow: 0 0 .25em currentColor; animation: glow 1.2s ease-in-out infinite }
+```
