@@ -1,6 +1,6 @@
 # Manifest
 
-989 primitives. Format: `category/id | axes cost | tags | gist`
+992 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -104,9 +104,11 @@ canvas/sign-triple-reference-cage | E2 D2 W1 F5 $2 | canvas 3d projection diagra
 canvas/signed-bow-connector-bundle | E1 D3 W1 F5 $2 | canvas connector diagram geometry svg | Connectors terminating at one hub, drawn straight, collapse into
 canvas/simulation-preroll | neutral  $1 | canvas simulation lifecycle loading generative | A simulation's worst frame is its first: an empty grid, a lone s
 canvas/sine-fold-isoline-field | E2 D3 W2 F4 $2 | canvas generative contour isoline topographic field texture | A smooth scalar field reads as haze; its level sets read as terr
+canvas/sine-steered-heading-wander | E3 D2 W2 F4 $2 | canvas ambient motion agents steering noise-free | Ambient marks that should read as purposeful rather than jitteri
 canvas/single-channel-field-storage | neutral  $2 | canvas simulation performance texture shader | Choose the channel count per field rather than reaching for RGBA
 canvas/standard-uniform-set | neutral  $2 | shader architecture reference | A small reusable uniform contract covers most decorative shaders
 canvas/stateless-phase-pair-field | neutral  $3 | canvas architecture morph scrub points field correctness | A scrubbed field of marks usually keeps a live position per mark
+canvas/submission-summoned-orbit | E4 D2 W2 F4 $3 | canvas interaction ambient agents orbit feedback state-machine | An ambient field of wanderers can acknowledge what a user just s
 canvas/svg-userspace-pointer-mapping | neutral  $1 | svg pointer correctness interaction geometry | An SVG with a viewBox is drawn in its own coordinate system, and
 canvas/swapped-target-pass-chain | neutral  $3 | canvas shader webgl architecture correctness | One long fragment shader cannot be reordered, disabled or tuned 
 canvas/tier-ascended-blur-ladder | E1 D2 W2 F5 $3 | canvas shader webgl blur performance ambient | A blur wide enough to turn shapes into light is unreachable by t
@@ -244,6 +246,7 @@ interaction/page-wide-submission-state | neutral  $1 | form cta state correctnes
 interaction/paired-focus-offset-tokens | neutral  $1 | accessibility focus tokens correctness | Ship the focus ring as three tokens — width, an outer offset, an
 interaction/panel-scoped-field-disabling | neutral  $1 | interaction form correctness accessibility tabs progressive-enhancement | A tabset that keeps every panel in the DOM — because the set is 
 interaction/partial-modality-inert-siblings | neutral  $2 | interaction dialog accessibility inert focus correctness | Not every overlay should take the whole page. A panel hung off a
+interaction/placeholder-shown-value-state | E2 D1 W2 F5 $1 | interaction input form state css-only feedback | A field can answer "you've written something" with no script. :p
 interaction/platform-narrowed-download-set | neutral  $2 | progressive-enhancement navigation correctness accessibility architecture | An artifact built for five targets should not ship five equal bu
 interaction/playhead-lit-legend-rows | E2 D2 W2 F5 $2 | legend chart dataviz sweep highlight sync | When a figure animates along its value axis, let each legend row
 interaction/pointer-borne-rule-sight | E3 D2 W1 F5 $2 | interaction pointer overlay hover transform detail | State the pointer as rules, not as a mark: hairlines longer than

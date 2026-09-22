@@ -4,7 +4,7 @@ category: surface
 tags: [surface,gradient,identity,marker,presence,contrast]
 axes: {energy: 2, density: 2, weight: 3, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []

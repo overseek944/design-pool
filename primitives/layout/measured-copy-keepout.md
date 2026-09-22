@@ -4,7 +4,7 @@ category: layout
 tags: [layout,measurement,legibility,canvas]
 axes: none
 cost: 2
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []
@@ -165,3 +165,8 @@ read as a drawn shape. Gutter stops 10–14% and 86–90%, plateau across 35–6
 against the field at that strength, never at full. A wide viewport widens the
 gutters and leaves the plateau where it was, so re-check the ratio at the
 narrowest width, where the corridor takes most of the box.
+
+Variant — for moving marks that carry labels, keep the mark and fade only its
+label while it sits inside a copy rectangle plus a 30–100px margin; ease the
+label's opacity toward the target rather than cutting it, so a mark drifting
+across the text column goes quiet instead of vanishing.

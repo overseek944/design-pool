@@ -4,7 +4,7 @@ category: surface
 tags: [surface,border,motion,svg]
 axes: {energy: 4, density: 3, weight: 3, finish: 4}
 cost: 3
-seen: 23
+seen: 24
 requires: []
 conflicts: []
 completes: [overflow-visible-for-glow-bleed]
@@ -152,3 +152,8 @@ the ring, both halos and the label together.
 resolvable from the pseudo — they are, but a named keyframe scoped by
 `@scope` or a layer the pseudo cannot see silently yields no motion. Content
 inside needs its own positioned `z-index`, or both halos paint over it.
+
+Variant — circular comet ring with no pseudo and no padding: paint a conic arc
+(transparent for 250–300°, accent across the last 40–70°) on the element itself
+and mask it to a ring with `radial-gradient(farthest-side, #0000 calc(100% - W),
+#000 calc(100% - W))`, W 1–3px. Spinning the element spins the comet; 1.8–3s.

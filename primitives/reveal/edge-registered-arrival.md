@@ -4,7 +4,7 @@ category: reveal
 tags: [reveal,entrance,box-shadow,outline,keyframes,acknowledge,one-shot]
 axes: {energy: 2, density: 1, weight: 1, finish: 4}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
