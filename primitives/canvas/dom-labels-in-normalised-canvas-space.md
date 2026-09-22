@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,accessibility,architecture,correctness,label]
 axes: none
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -52,3 +52,18 @@ const y = (boxH - imgH * s) / 2 + fy * imgH * s
 ⚠ `min` in place of `max` is `contain`, and the two are indistinguishable at one
 aspect ratio — test at both extremes. What comes out is pixels, not percentages,
 so it has to be rewritten on every resize.
+
+Where the fit is solved per *frame* rather than per resize — a scrubbed zoom, a
+pivot that travels with progress — no consumer can re-derive it, and the caveat
+above becomes a write per label per frame. Have the renderer publish the rect it
+actually drew, once, as four percentage custom properties on a shared ancestor.
+Every overlay then registers with canvas content in pure CSS and costs nothing
+per element, however many there are; the loop already holds the numbers.
+```js
+host.style.setProperty('--art-x', (dx / w * 100).toFixed(3) + '%')   // y, w, h alike
+```
+```css
+.pin { left: var(--art-x); top: var(--art-y); width: var(--art-w) }
+```
+⚠ Four inline writes a frame invalidate style on the subtree — keep it small,
+and skip the write when the value rounds to what is already set.

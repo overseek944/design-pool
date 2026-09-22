@@ -1,6 +1,6 @@
 # Manifest
 
-888 primitives. Format: `category/id | axes cost | tags | gist`
+891 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -209,6 +209,7 @@ interaction/mounted-empty-status-slot | neutral  $1 | accessibility correctness 
 interaction/native-disclosure-animation | E2 D2 W2 F5 $2 | motion disclosure accessibility progressive-enhancement height | ::details-content with interpolate-size: allow-keywords animates
 interaction/native-drag-capture-guard | neutral  $1 | pointer drag scroll correctness interaction | Images and links are draggable by default, so a press-and-move i
 interaction/nearest-sample-path-pick | neutral  $2 | interaction svg pointer diagram correctness | Dozens of hairline curves crossing in one figure cannot be hit-t
+interaction/occupancy-grid-canvas-pick | neutral  $2 | canvas pointer hit-test performance correctness | Artwork drawn to a canvas has no boxes, so a pointer over it can
 interaction/offset-shadow-press | E3 D2 W4 F2 $1 | interaction state depth detail border | A hard offset shadow reads as a solid object sitting above the p
 interaction/one-sided-hover-delay | E2 D2 W2 F5 $1 | interaction hover delay css-only restraint pointer | A hover-revealed panel wants patience on the way in and none on 
 interaction/outward-corner-target | E3 D2 W1 F5 $2 | interaction state focus border precision detail | Four L-brackets absent at rest, then flying outward past the ele
@@ -354,6 +355,7 @@ layout/summed-term-derivation-rows | E1 D3 W2 F5 $1 | layout data figure provena
 layout/track-centre-spanning-rule | E1 D2 W1 F5 $1 | layout grid connector geometry correctness responsive | A rule joining a row of N equal columns belongs between the cent
 layout/translate-z-axonometric-stage | E1 D3 W2 F5 $3 | 3d depth diagram transform stage | A cutaway model — floor, walls, shelving, a mover — is buildable
 layout/truncating-head-fixed-trailer | neutral  $1 | layout flex truncation correctness cards responsive | A header row pairing a variable-length label with a status badge
+layout/tuned-constant-emitting-harness | neutral  $2 | tooling authoring architecture debug composition | Placement only the eye can judge — a cut-out registered against 
 layout/uncooperative-corner-reserve | neutral  $1 | overlay third-party footer layering spacing occlusion | A vendor's floating launcher — support chat, consent, feedback —
 layout/unfilled-counterpart-panel | E1 D2 W1 F4 $1 | demo composition mock restraint rhetoric | A two-sided demonstration — the reader's product beside yours — 
 layout/unfloored-zero-scale-bars | E1 D3 W2 F5 $1 | chart axis label correctness accessibility restraint | A comparison whose whole point is dominance breaks the moment th
@@ -494,6 +496,7 @@ motion-system/geometry-ordered-stagger | neutral  $2 | stagger entrance reveal m
 motion-system/handed-off-prepaint-entrance | neutral  $3 | motion entrance hydration correctness progressive-enhancement | An entrance owned by a framework cannot begin until that framewo
 motion-system/hinged-leaf-value-swap | E3 D2 W3 F4 $2 | motion counter transition 3d accessibility | A value that changes by folding reads as mechanical rather than 
 motion-system/independent-transform-channels | neutral  $1 | transform transition architecture composition state | Two concerns wanting the same element — an entrance offset and a
+motion-system/index-capped-stagger-schedule | neutral  $1 | stagger entrance reveal performance correctness | A delay of index × step is linear in a list whose length the des
 motion-system/keyboard-modality-stilled-ui | neutral  $1 | motion accessibility keyboard input correctness transition | A reader tabbing through a page outruns transitions authored for
 motion-system/keyframe-resolved-waypoints | E3 D2 W2 F5 $2 | motion keyframes custom-properties architecture choreography | A @keyframes block is document-global and takes no arguments, so
 motion-system/keyframe-variant-bank | E3 D4 W2 F3 $2 | motion generative ambient tokens architecture | Phase and period offsets only ever translate one curve; they can

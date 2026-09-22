@@ -4,7 +4,7 @@ category: perf
 tags: [perf,loading,images,responsive,resource-hints,critical-path]
 axes: none
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -90,3 +90,16 @@ when traffic moves.
 poster is what paints first and is also the reduced-motion still, so one warmed
 file serves both branches. An unused preload is a console warning on every
 other route — the cost is visible, which is the point.
+
+CORS mode is not the only part of that key a script warm can get wrong. Warming
+a *responsive* image means putting both descriptors on the detached element, and
+the candidate is resolved the moment `srcset` is assigned — so a `sizes` written
+afterwards is too late and the browser has already chosen against a default
+`100vw`. On a rail of half-width cards that warms the largest candidate while the
+`<img>` goes on to fetch a smaller one: two files, neither cached for the other,
+and the warm has doubled the bytes it existed to save. Assign `sizes` first.
+```js
+const w = new Image(); w.sizes = SIZES; w.srcset = SRCSET   // this order only
+```
+⚠ Two places now hold the same `sizes` string. Derive both from one constant —
+a warm that starts missing is silent, and a moved breakpoint is where it starts.

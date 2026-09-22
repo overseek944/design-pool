@@ -4,7 +4,7 @@ category: perf
 tags: [perf,progressive-enhancement,correctness,content,architecture]
 axes: none
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -73,3 +73,17 @@ fetch('/api/items').then(r => r.json()).then(live => { items = live; render() })
 ⚠ The markup is now load-bearing and no longer purely decorative — a change to
 the visible list changes the control's fallback, so keep the parse tolerant of
 separators and whitespace the design may add later.
+
+A mirror clipped to 1px is still laid out, so its text is still shaped — and
+shaping pulls whatever family the cascade hands it. A display face declared on
+`h1, h2, h3` and a body face on the root then download in full to set type at
+1×1 that nobody will ever see, on every route including the ones using neither
+family. Force the block and its descendants onto a system stack: `.mirror *` is
+(0,1,0) and out-specifies the bare element rules with no `!important`.
+```css
+.mirror, .mirror * { font-family: system-ui, sans-serif }
+```
+⚠ Whether the fetch fires at all is a race against the script that removes the
+block, so the cost appears and disappears between loads and no single trace
+proves it. Measure on the routes that do *not* use the display face — there the
+whole download is waste, and a per-page audit is the last place it shows.

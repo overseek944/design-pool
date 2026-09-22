@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,architecture,accessibility]
 axes: none
 cost: 2
-seen: 29
+seen: 30
 requires: []
 conflicts: []
 completes: []

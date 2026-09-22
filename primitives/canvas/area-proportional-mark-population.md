@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,field,particles,performance,responsive,density]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,18 @@ marks = Array.from({ length: n }, spawn)
 ⚠ Separate from the backing-store budget — full device ratio and too many marks
 still drops frames. Area from the element, never the viewport, or the same
 effect in a sidebar gets the full-bleed population.
+
+Repopulating is wrong where the field has history the reader was watching — a
+settled constellation, a trail, a scatter they have been looking at for a minute.
+Scale every position by its own axis ratio instead: the composition survives at
+the cost of a density slightly off the divisor, which nobody can see, where a
+respawn is a visible cut. Skip it below a ratio change of 8–15%, and reseed only
+when the previous box was degenerate — collapsed to a few px by a hidden tab or
+a mid-mount measure.
+```js
+if (Math.abs(sx - 1) > .12 || Math.abs(sy - 1) > .12)
+  for (const m of marks) { m.x *= sx; m.y *= sy }
+```
+⚠ Only positions scale, not the count, so a window dragged from phone width to
+an ultrawide ends far under its own target — top up toward it over the following
+seconds rather than at the event, or the remap buys a repopulation anyway.

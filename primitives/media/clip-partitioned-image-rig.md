@@ -4,7 +4,7 @@ category: media
 tags: [mask,clip-path,illustration,rig,raster,animation]
 axes: {energy: 3, density: 2, weight: 3, finish: 4}
 cost: 3
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -51,3 +51,20 @@ el.style.transformOrigin = `${mean(o, 'x') * 100}% ${mean(o, 'y') * 100}%`
 ⚠ Bake the part at the *middle* of its travel, not at rest. A pose rendered at
 one extreme has its shading lit for that extreme and reads as wrong through the
 other half of the sweep.
+
+Geometric overlap is the wrong fix for a *raster* partition. The strips are
+opaque, so an overlap shows as a doubled edge the instant two of them separate.
+Feather in alpha instead: bake each band into its own offscreen canvas and
+multiply a cross-axis gradient into it with `destination-in` — opaque across the
+middle, clear at both cut edges — so neighbours cross-dissolve at rest and
+neither has an edge left to open. Feather 15–25% of the band's width, and far
+less on the outer two, which meet nothing.
+```js
+const g = c.createLinearGradient(0, 0, bw, 0)
+g.addColorStop(0, '#0000'); g.addColorStop(f, '#000')
+g.addColorStop(1 - f, '#000'); g.addColorStop(1, '#0000')
+c.globalCompositeOperation = 'destination-in'; c.fillStyle = g; c.fillRect(0, 0, bw, bh)
+```
+⚠ Two ramps drawn one over the other do not reconstruct to opaque — the seam
+stays slightly light. Invisible on a dark ground, visible on a bright one, where
+the bands have to overlap by the whole feather rather than be inset to meet.
