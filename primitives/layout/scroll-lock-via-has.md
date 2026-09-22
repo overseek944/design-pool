@@ -4,7 +4,7 @@ category: layout
 tags: [overlay,correctness,overflow,dialog,cls]
 axes: none
 cost: 1
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
@@ -92,3 +92,19 @@ html:has(.stage.is-flowing) { height: auto;  overflow: visible }
 ⚠ Test at the shortest viewport the layout claims to support, not at the
 designer's. A laptop with a browser toolbar open is 100–200px shorter than the
 mock, which is exactly where this fails and where it is never checked.
+
+An app shell that scrolls an inner pane has the compensation problem without the
+lock: the pane's own scrollbar eats width from a column that is supposed to
+reach the viewport edge, and padding the root reaches nothing. Publish the
+measured width as a *registered* length so it is legal inside `calc` and
+resolves to `0` before script runs, then cancel the gutter on the inner column
+with a negative inline margin rather than padding around it — full-bleed rules
+and section grounds then still meet both edges.
+```css
+@property --scrollbar-w { syntax: "<length>"; inherits: true; initial-value: 0px }
+.shell  { overflow-y: auto; height: 100dvh }      /* JS: offsetWidth - clientWidth */
+.column { margin-inline-end: calc(var(--scrollbar-w) * -1) }
+```
+⚠ Re-measure on resize and on theme or zoom change — the value is `0` under
+overlay scrollbars and jumps to 15–17px the moment a mouse is attached on the
+same machine. Nothing interactive may sit in the cancelled strip.

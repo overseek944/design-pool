@@ -4,7 +4,7 @@ category: type
 tags: [type,emphasis,hierarchy,editorial,colour]
 axes: {energy: 1, density: 2, weight: 3, finish: 5}
 cost: 1
-seen: 16
+seen: 17
 requires: []
 conflicts: []
 completes: []
@@ -84,3 +84,19 @@ photograph the receding half tracks the image rather than the scrim.
 ⚠ Alpha is not a contrast ratio. Compute the composited colour against the
 actual ground and hold 4.5:1 — 0.58 of a dark ink on white clears it, the same
 0.58 of white on a mid-tone band does not.
+
+At display size the split survives if it falls on a *line* boundary rather than
+mid-sentence: two short clauses, hard-broken, the first at full strength and the
+whole second line receding. A muted remainder trailing off inside a 60–90px line
+reads as an unfinished render; a muted line under a bright one reads as a second
+voice, because the eye takes the break as the edit. Let the two halves differ in
+chroma as well as lightness — accent above, near-neutral below — so the split
+survives at the tracking display type wants, where a lightness step alone
+flattens out.
+```css
+.display     { font-weight: 300; letter-spacing: -.025em; line-height: 1.02 }
+.display > b { display: block; color: var(--accent); font-weight: inherit }
+```
+⚠ Hard breaks are authored for one measure. Drop to a single tone below the
+breakpoint where the lines reflow, or the recessive half wraps up beside the
+bright one and the hierarchy inverts mid-word.

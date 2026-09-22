@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,hover,panel,chrome,css-only,accessibility]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,19 @@ widen it toward the top edge where pointers overshoot.
 ⚠ Hover-only means no keyboard or touch path: `:focus-within` must ride along,
 and coarse pointers need a real button. Give a class on the root that suppresses
 the peek, or a drag near the edge fights it.
+
+The two selectors stop being enough once the rail can spawn anything that
+leaves its own box — a tooltip in the top layer, a user menu, a confirmation
+popover. The pointer travels to that surface, the rail loses `:hover`, and it
+collapses out from under the thing it just opened. Every such surface has to
+publish its open state back onto the rail as a flag, and the open condition
+becomes the union: hover, focus-within, and one attribute per spawnable
+surface. Author it once as a named variant rather than repeating the list at
+each of the twenty rules that answer to it.
+```css
+.rail:hover, .rail:focus-within,
+.rail[data-menu-open], .rail[data-tooltip-open] { inline-size: var(--rail-open) }
+```
+⚠ A flag written on open and cleared on close leaks whenever the close path is
+not the one you wrote — route change, escape, outside click. Clear it from the
+surface's own teardown, not from the handler that dismissed it.

@@ -4,7 +4,7 @@ category: surface
 tags: [surface,border,motion,svg]
 axes: {energy: 4, density: 3, weight: 3, finish: 4}
 cost: 3
-seen: 19
+seen: 20
 requires: []
 conflicts: []
 completes: [overflow-visible-for-glow-bleed]
@@ -134,3 +134,21 @@ it at `inset: 0` and let the blur do the spreading, 70–90% opacity.
 ⚠ The buffer is the size of the blur, not of the ring, and it repaints every
 frame the angle moves. One primary call to action, never a row of them — and
 `aria-hidden`, since the bloom is a second copy of nothing.
+
+The halo copies need no second declaration at all: `background-image: inherit`
+and `animation: inherit` on the host's own pseudo-elements give two more of the
+same conic, already in phase, already spinning at the same rate — retuning the
+ring retunes both for free. Give them a blur ladder rather than one radius, a
+near copy that thickens the edge and a far one that becomes the light around it,
+and build the gradient on `currentColor` so a single colour declaration moves
+the ring, both halos and the label together.
+```css
+.ring { background-image: conic-gradient(from var(--a), #0000 225deg, currentColor 325deg, #0000) }
+.ring::before, .ring::after { content: ""; position: absolute; inset: 0; z-index: 0;
+  background-image: inherit; animation: inherit; opacity: .7; filter: blur(.25rem) }
+.ring::after { opacity: .3; filter: blur(1rem) }
+```
+⚠ `inherit` on `animation` copies `animation-name` too, so the keyframes must be
+resolvable from the pseudo — they are, but a named keyframe scoped by
+`@scope` or a layer the pseudo cannot see silently yields no motion. Content
+inside needs its own positioned `z-index`, or both halos paint over it.

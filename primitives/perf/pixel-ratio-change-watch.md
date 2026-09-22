@@ -4,7 +4,7 @@ category: perf
 tags: [performance,canvas,correctness,resize,media-query,dpr]
 axes: none
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []

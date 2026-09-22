@@ -1,6 +1,6 @@
 # Manifest
 
-881 primitives. Format: `category/id | axes cost | tags | gist`
+884 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -24,6 +24,7 @@ canvas/chord-solved-tile-width | neutral  $3 | canvas 3d geometry texture seam c
 canvas/clip-ejected-vertex-filter | neutral  $2 | shader webgl points culling perf | A point cloud whose visible subset changes — a facing hemisphere
 canvas/composed-arrival-field | E3 D3 W2 F5 $2 | shader stagger clock uniform reveal perf | Thousands of elements cannot each own a tween. Derive every elem
 canvas/context-loss-rearm | neutral  $2 | canvas correctness lifecycle architecture | A 2D context is lost the same way a WebGL one is — a GPU process
+canvas/css-semantic-shape-primitives | neutral  $3 | canvas shader webgl architecture gradient fallback | A ground authored in a design tool is a stack of boxes, ellipses
 canvas/curl-of-potential-field | E2 D3 W2 F4 $3 | canvas flow field generative motion | Advecting anything through a hand-made velocity field pools it i
 canvas/curvature-parametrised-sheet-wrap | E3 D3 W2 F5 $4 | canvas geometry projection morph points 3d | A flat sheet and a sphere are one surface at two curvatures, so 
 canvas/decay-composited-frame-history | E3 D3 W2 F4 $1 | canvas trail composite motion field | Trails normally cost a stored pose history per mark. Never clear
@@ -101,6 +102,7 @@ canvas/standard-uniform-set | neutral  $2 | shader architecture reference | A sm
 canvas/stateless-phase-pair-field | neutral  $3 | canvas architecture morph scrub points field correctness | A scrubbed field of marks usually keeps a live position per mark
 canvas/svg-userspace-pointer-mapping | neutral  $1 | svg pointer correctness interaction geometry | An SVG with a viewBox is drawn in its own coordinate system, and
 canvas/swapped-target-pass-chain | neutral  $3 | canvas shader webgl architecture correctness | One long fragment shader cannot be reordered, disabled or tuned 
+canvas/tier-ascended-blur-ladder | E1 D2 W2 F5 $3 | canvas shader webgl blur performance ambient | A blur wide enough to turn shapes into light is unreachable by t
 canvas/tilted-heightfield-mark-sheet | E2 D3 W1 F4 $3 | canvas 3d projection field depth scenery | Deep scenery on a 2D context needs no renderer: sample a summed-
 canvas/two-bone-reach-pose | E3 D2 W2 F4 $3 | canvas figure rig articulation procedural geometry | A limb posed by writing its angles needs a hand-tuned number per
 canvas/unit-box-asset-framing | neutral  $2 | canvas correctness scale geometry architecture | A loaded 3D asset arrives at whatever scale and origin its expor
@@ -109,6 +111,7 @@ canvas/velocity-paired-field-step | E3 D2 W2 F5 $3 | canvas simulation shader te
 canvas/video-textured-mark-field | E2 D3 W2 F5 $3 | canvas video particles texture motion performance | A field of marks needs content as well as motion, and inventing 
 canvas/warm-started-relaxation | neutral  $1 | canvas simulation performance shader solver | An iterative solve re-run every frame — a pressure projection, a
 canvas/wedge-cloned-symmetric-field | E1 D4 W1 F5 $2 | canvas generative symmetry field particles cheap | A ring of marks placed from one pass of random draws clumps unev
+canvas/yielded-program-link | neutral  $2 | canvas webgl shader performance correctness lifecycle | Linking a shader program returns immediately; asking whether it 
 color/band-keyed-readout-channels | neutral  $1 | color tokens state dataviz correctness | A readout showing a measurement and a judgement of it carries on
 color/blend-window-channel-strip | E1 D3 W2 F5 $2 | color data series encoding interpolation two-tone | One strip can carry which of two sources owns each point along i
 color/chroma-weighted-peer-rank | E1 D2 W3 F5 $1 | color hierarchy accent icon grid contrast | Two grids of identical cards on one page read as equally importa

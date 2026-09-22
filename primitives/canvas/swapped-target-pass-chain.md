@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,shader,webgl,architecture,correctness]
 axes: none
 cost: 3
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []

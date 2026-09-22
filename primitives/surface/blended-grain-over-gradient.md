@@ -4,7 +4,7 @@ category: surface
 tags: [surface,texture,grain,gradient,blend-mode,banding]
 axes: {energy: 1, density: 3, weight: 3, finish: 4}
 cost: 1
-seen: 27
+seen: 28
 requires: []
 conflicts: []
 completes: []
@@ -178,3 +178,18 @@ body::before { position: fixed; inset: 0; z-index: 1; pointer-events: none;
 ⚠ A `::before` on the page root paints over everything that is not itself
 positioned — give the top-level children `position: relative` and a higher
 `z-index`, or the overlay swallows the document.
+
+Where the grain is generated in a shader rather than tiled from an image, run
+the noise through a hard `step()` before compositing. Smooth noise laid at low
+alpha reads as haze — a second blur over a ground that is already blurred —
+while a binary field of lit and unlit pixels reads as film stock, which is the
+texture the treatment was standing in for. The threshold is the grain's density
+and the mix its strength, and neither costs a sample. Threshold 0.2–0.4 of the
+noise range, alpha 0.01–0.03; pixel-space scale 0.08–0.2.
+```glsl
+float n = snoise(v_uv * u_resolution * u_noiseScale);
+color.rgb = mix(color.rgb, vec3(step(u_noiseThreshold, n)), u_noiseOpacity);
+```
+⚠ A binary field is aliasing by construction — it must be evaluated in device
+pixels and drawn at backing resolution, never scaled up from a smaller target,
+or the grain crawls into visible clumps the moment the canvas resizes.
