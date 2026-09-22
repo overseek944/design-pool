@@ -4,7 +4,7 @@ category: type
 tags: [type,lettering,identity,display,bleed,layout]
 axes: {energy: 1, density: 2, weight: 5, finish: 4}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -51,3 +51,15 @@ ink, bottom stop equal to the ground; `line-height` 0.8–0.95.
 ```
 ⚠ Forced-colors mode drops the gradient and `transparent` text vanishes — give
 it a `@media (forced-colors: active)` fallback of `CanvasText`.
+
+Anchor the dissolve's stops to the box *end* in pixels rather than percent —
+solid to `calc(100% − 240–320px)`, gone by `calc(100% − 100–140px)` — and the
+fade band keeps one height whatever size the word resolves to, so the same rule
+serves the 390px and 1440px steps. On a saturated ground, fill with white at
+15–25% alpha instead of an ink tint: the word reads as a lighter pass of the
+ground itself.
+```css
+.colophon { background-image: linear-gradient(#fff3, #fff3 calc(100% - 300px), #0000 calc(100% - 120px)) }
+```
+⚠ If the glyph box is shorter than the solid offset the word never reaches full
+strength — check the smallest step.

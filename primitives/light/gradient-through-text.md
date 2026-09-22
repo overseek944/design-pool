@@ -4,7 +4,7 @@ category: light
 tags: [color,type,effect]
 axes: {energy: 3, density: 2, weight: 4, finish: 3}
 cost: 2
-seen: 41
+seen: 42
 requires: []
 conflicts: []
 completes: []
@@ -241,3 +241,16 @@ leave dim-but-present text rather than none.
 ⚠ Dim-but-present is still far under 4.5:1. This is a safety net for the
 decorative failure modes, not a licence to leave running text sitting in the
 unfilled state.
+
+A vertical fill over a two-line heading can split the lines without a second
+token: put the light stop inside the first line and push the dark stop *past*
+the box — 150–230% — so the ramp is still mid-travel at the last baseline. Line
+one reads near-solid, line two recedes, and the heading stays one element that
+reflows without a hard break. Start stop 2–65%; the further past 100% the end
+stop, the gentler the recession.
+```css
+.h { background: linear-gradient(180deg, var(--fg) 20%, var(--fg-dim) 220%);
+  -webkit-background-clip: text; color: transparent }
+```
+⚠ The recession depends on line count — at 390px a third line lands darker than
+anything the desktop proof showed; score the lowest line against the ground.
