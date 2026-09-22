@@ -4,7 +4,7 @@ category: layout
 tags: [layout,responsive,overflow,media,scale,detail]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
@@ -62,3 +62,20 @@ being legible at the card's size.
 *unscaled* height unless the stage states its own — and text inside is scaled
 rather than resized, so it renders at a sub-pixel size the browser's minimum
 font setting will not protect.
+
+The reserved-box problem has a closed form: size the mock at the reciprocal of
+its own factor. At `scale(.75)` give it `133%` of the aperture in both axes and
+the painted result lands at exactly 100% — the layout box and what the reader
+sees finally agree, so the stage needs no stated height and no per-instance
+tuning when the factor changes. Anchor the origin to the corner the aperture is
+measured from, not to the centre, or the reciprocal width overflows on one side.
+Factor 0.6–0.8 below the breakpoint, 1 above it.
+```css
+@media (width <= 48rem) {
+  .mock { inline-size: 133%; block-size: 133%;
+          scale: .75; transform-origin: left top } }
+```
+⚠ Two numbers that must stay reciprocal are two numbers that can drift — derive
+both from one custom property (`--k`) rather than writing `133%` and `.75`
+separately. The sub-pixel type warning above still applies: this fixes the box,
+not legibility.

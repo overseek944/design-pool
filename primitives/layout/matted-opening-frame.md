@@ -4,7 +4,7 @@ category: layout
 tags: [frame,viewport,hero,media,radius,safe-area]
 axes: {energy: 1, density: 1, weight: 2, finish: 5}
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -65,3 +65,21 @@ html:has(.marketing:not([hidden])) { background: #fff; scrollbar-color: #cfe0e0 
 ```
 ⚠ `:has()` on the root re-evaluates on every attribute flip in the document —
 key it off one shell-level attribute, never off a state deep in the tree.
+
+The mat is a material choice, not only a gutter. Run a photograph in it —
+filling the frame, the mounted plate fully opaque on top — and a section carries
+an image without one word ever sitting on one: the contrast problem a picture
+creates never arises, because nothing legible touches it. A run of sections then
+differentiates by ground alone while the plate stays identical, which reads as
+one system rather than a series of treatments. Mat 24–56px, even on all sides;
+an asymmetric mat reads as a misaligned crop, not as a mount.
+```css
+.mat        { position: relative; padding: clamp(24px, 3vw, 40px);
+              border-radius: 14px; overflow: clip; isolation: isolate }
+.mat > img  { position: absolute; inset: 0; inline-size: 100%;
+              block-size: 100%; object-fit: cover }
+.mat > .plate { position: relative; background: var(--panel) }
+```
+⚠ Decorative, so empty `alt` — and the plate has to be genuinely opaque; at even
+95% the picture's detail sits behind live copy and the mat stops being a mat.
+Still a full-size download per section, so gate it on `prefers-reduced-data`.

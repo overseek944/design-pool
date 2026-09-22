@@ -1,6 +1,6 @@
 # Manifest
 
-896 primitives. Format: `category/id | axes cost | tags | gist`
+897 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -835,6 +835,7 @@ timing/step-held-cycle-schedule | E2 D2 W2 F3 $1 | motion keyframes loop sequenc
 timing/stepped-two-frame-blink | E2 D1 W2 F3 $1 | motion easing indicator status ambient | An indicator that fades reads as decoration; one that snaps betw
 timing/trapezoidal-visibility-envelope | neutral  $1 | motion timing loop architecture | Elements that appear, hold and leave on one shared timeline do n
 timing/unit-aware-token-read | neutral  $1 | tokens correctness motion build | Script reading duration tokens out of computed style must parse 
+type/axis-turned-spine-label | E1 D2 W2 F5 $1 | type label writing-mode collapse chrome accessibility | A panel collapsed to a sliver has no room for a horizontal name,
 type/balanced-headline-wrap | neutral  $1 | type polish | text-wrap: balance on every headline so line lengths even out in
 type/breakpoint-abbreviated-label | neutral  $1 | type accessibility responsive navigation correctness | A nav item or a column head that shortens at a narrow width — Re
 type/breakpoint-swapped-family-roles | E1 D2 W3 F5 $1 | type responsive breakpoint tokens pairing serif | Which of two faces can carry display size is a function of rende

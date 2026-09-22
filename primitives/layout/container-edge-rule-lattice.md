@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,hairline,precision,responsive,technical]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 2
-seen: 27
+seen: 28
 requires: []
 conflicts: []
 completes: []
@@ -225,3 +225,18 @@ register without restating either. Rail 14–36px, narrowing with the gutter.
 ```
 ⚠ A 1px hatch loses more of itself on a dark ground than a hairline does; lift
 its alpha 1.5–2× there, and `aria-hidden` the rails.
+
+A layer that deliberately overshoots its band — a negative block-start inset so
+the rules rise through whatever sits above — terminates on a hard cut wherever
+the overshoot ends, and that cut reads as a second, unexplained rule. Mask the
+first 100–220px of the layer to nothing and the lines emerge from the ground
+instead, so the sheet appears to continue past what is drawn, which is the whole
+claim a lattice makes. The mask belongs to the layer, not to the section, so the
+fade distance stays independent of where each band begins.
+```css
+.sheet { position: absolute; inset: -200px 0 0; pointer-events: none;
+  mask-image: linear-gradient(#0000 0 120px, #000 200px) }
+```
+⚠ A mask makes the layer its own compositing surface — one per document, not one
+per section. Under about 60px the gradient reads as a blurred edge rather than
+an emergence, and `-webkit-mask-image` is still needed beside it.

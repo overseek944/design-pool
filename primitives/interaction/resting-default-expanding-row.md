@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,state,hover,accessibility,layout]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -39,3 +39,18 @@ pointer because nothing depends on `:hover`. Expanded 2.4–3fr against 0.5–0.
 inside a collapsing column must be laid out at a width that does not depend on
 the column — `overflow: clip` plus `nowrap` or a truncating line — or the text
 rewraps on every frame, which is both the cost and the visible jitter.
+
+Collapsing every inactive member to the same ratio gives a wide panel beside a
+row of identical slats. Decay the ratio by distance from the active index
+instead — 0.6–0.7 of the previous step, floored so the far end stays a target —
+and the row reads as receding: the immediate neighbours keep enough width to
+show what they are, and the tail states how much is left without claiming to be
+readable. Active 2.5–3.5, first neighbour 0.5–0.6, floor 0.10–0.14.
+```js
+const ratio = i => i === active ? 3
+  : Math.max(.12, .55 * 0.65 ** Math.abs(i - active))
+```
+⚠ Only reads as recession if the floor is reached within four or five steps;
+past that the tail is uniform again and the decay is invisible. Ratios divide a
+fixed width, so every member added narrows the active one — cap the count or
+give the row a per-member minimum.
