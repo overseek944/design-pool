@@ -1,6 +1,6 @@
 # Manifest
 
-1009 primitives. Format: `category/id | axes cost | tags | gist`
+1010 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -492,6 +492,7 @@ media/plane-sorted-defocus-field | E1 D3 W2 F5 $2 | depth blur defocus scatter c
 media/predicate-tiered-video-encode | neutral  $2 | media video responsive performance bandwidth correctness | A <video> has no srcset and no sizes, so nothing picks an encode
 media/pseudo-element-pictogram-set | E1 D2 W2 F4 $2 | icon css-only pseudo-element tokens diagram | A set of small technical pictograms — a frame, a scatter, a cyli
 media/query-composed-figure-source | neutral  $3 | media figure architecture iframe product responsive build | Every figure of an interface is usually its own exported image. 
+media/rate-retimed-ambient-loop | E1 D2 W3 F4 $1 | media video timing ambient loop perf | Background footage cut at natural speed reads as busy behind cop
 media/ratio-split-view-pair | E1 D3 W2 F4 $1 | media figure aspect grid editorial | One subject argued from two views — as photographed, and as the 
 media/reduce-restored-media-transport | neutral  $1 | media video accessibility scroll scrub correctness | Where scroll is the only transport for a continuous medium, pref
 media/reduce-swapped-clip-still | neutral  $1 | media video accessibility reduced-motion correctness | An autoplaying loop cannot honour prefers-reduced-motion by paus

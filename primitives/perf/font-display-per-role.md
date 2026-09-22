@@ -4,7 +4,7 @@ category: perf
 tags: [type,font-loading,cls,performance,correctness]
 axes: none
 cost: 1
-seen: 30
+seen: 31
 requires: []
 conflicts: []
 completes: []
