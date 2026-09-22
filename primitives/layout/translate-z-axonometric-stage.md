@@ -4,7 +4,7 @@ category: layout
 tags: [3d,depth,diagram,transform,stage]
 axes: {energy: 1, density: 3, weight: 2, finish: 5}
 cost: 3
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -38,3 +38,17 @@ cannot sort. Step 60–140px at stage scale.
 ⚠ Centring on the count makes the *front* member's Z depend on how many there
 are — a lid, a floor or anything that must stay the nearest thing needs its own
 offset past the ladder's top, not a hard number.
+
+A stack of lifted plates reads as layers of one system once something passes
+through them. Add one more plate — outline or low-alpha fill — and animate only
+its `translateZ` from below the lowest member to above the highest, fading in
+over the first 10–15% and out over the last. It reads as a scan sweeping the
+model, costs one compositor layer, and needs no knowledge of the plates. Cycle
+3–6s, peak alpha .5–.8.
+```css
+.scan { animation: scan 4s linear infinite }
+@keyframes scan { 0% { transform: translateZ(-150px); opacity: 0 }
+  12%, 88% { opacity: .7 } to { transform: translateZ(130px); opacity: 0 } }
+```
+⚠ Without `preserve-3d` on the scan's parent it paints over every plate instead
+of slicing between them.

@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,state,depth,detail,border]
 axes: {energy: 3, density: 2, weight: 4, finish: 2}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -42,3 +42,20 @@ dense screen gains a depth order nobody had to declare.
 ⚠ Rising grows the shadow *outside* the silhouette, unlike pressing — reserve
 the extra pixel in the container's padding or a raised card cuts into its
 neighbour.
+
+Split the object into pseudo-elements and the control box never moves at all:
+`::before` is the slab, fixed at the rest offset; `::after` is the face, and the
+label is a child on its own layer above both. Hover translates the face and the
+label together, 1–3px up and away from the slab. The hit area is the unmoving
+host, so a pointer resting on the bottom edge cannot drop off a rising control
+and flicker the state.
+```css
+.btn { position: relative; isolation: isolate }
+.btn::before, .btn::after { content: ""; position: absolute; inset: 0 }
+.btn::before { background: var(--edge); translate: 2px 2px }
+.btn::after  { z-index: 1; background: var(--fill) }
+.btn > span  { position: relative; z-index: 2 }
+.btn:hover::after, .btn:hover > span { translate: 0 -2px }
+```
+⚠ Face and label need one duration and one curve — split them and the label
+visibly slides across its own face.

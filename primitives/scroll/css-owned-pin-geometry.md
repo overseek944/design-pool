@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,pin,architecture,correctness,responsive]
 axes: none
 cost: 2
-seen: 20
+seen: 21
 requires: []
 conflicts: []
 completes: [media-query-parity-listeners]
