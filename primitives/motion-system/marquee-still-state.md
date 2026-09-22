@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,accessibility,marquee,correctness,overflow]
 axes: none
 cost: 1
-seen: 25
+seen: 26
 requires: []
 conflicts: []
 completes: []
@@ -113,3 +113,11 @@ condition fails, and every one of those six declarations drops together.
 never reaches a reader who is not being shown a loop. Any chain that arms the
 track and forgets one of the six leaves a half-marquee — usually the mask,
 fading real content that is no longer moving.
+
+The still state is most often written as `opacity: 0` on the track, which is not
+a still marquee but a deleted one — and the content inside is usually the
+evidence the section exists for: quotes, logos, press marks. Reach for it only
+where the track is genuinely ornamental, and never where the reduced-motion
+branch is the only thing a screen reader's user also gets.
+⚠ Audit it by loading with the preference on and reading the page, not by
+diffing the rule.

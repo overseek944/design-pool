@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,mock,meter,progress,accessibility]
 axes: {energy: 2, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -50,3 +50,15 @@ is never the subject.
 ⚠ Its reduced-motion form is that end width declared statically, not the
 animation removed: `animation: none` on a bar whose width lives only in the
 keyframes leaves it empty, which reads as a failed load.
+
+An unbounded readout inside a mock — a call timer, a counter, a live duration —
+cannot oscillate its way out of the problem: it only climbs, and left running it
+reaches a value that contradicts the scene. Seed a plausible figure in the
+markup so the still frame, the print and the first paint all read correctly,
+then let script increment only while the mock is in view and never under
+`reduce`. Visible at 0.2–0.4 of the element, and stop climbing after 60–90s.
+```js
+io = new IntersectionObserver(([e]) => e.isIntersecting && start(), { threshold: .3 })
+```
+⚠ The seeded value is the one most readers see — choose it as carefully as the
+screenshot, not as a zero.

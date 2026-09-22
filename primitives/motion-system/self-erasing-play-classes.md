@@ -4,7 +4,7 @@ category: motion-system
 tags: [architecture,progressive-enhancement,svg,accessibility,correctness,entrance]
 axes: none
 cost: 1
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -53,3 +53,16 @@ long enough that the settled card is what is on screen most of it.
 <Fragment key={runId}>{…}</Fragment>   /* runId++ on an interval */
 ```
 ⚠ It is a remount: focus, scroll position and listeners inside die with it.
+
+Under `reduce` the *arm* class is the one that has to be neutralised, not the
+play class. Cancelling the animations alone leaves every moving part sitting in
+the un-drawn state the arming rule wrote — stroke undrawn, scale at 0.4 — which
+is worse than the motion it replaced. Restore the settled values from the armed
+selector itself, so the scene is correct whether or not the play class ever
+lands.
+```css
+@media (prefers-reduced-motion: reduce) {
+  .stage[data-armed] .part { opacity: 1 !important; transform: none !important } }
+```
+⚠ `!important` is load-bearing here: the armed rules it overrides are equally
+specific and come later in the sheet.

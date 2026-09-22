@@ -1,6 +1,6 @@
 # Manifest
 
-836 primitives. Format: `category/id | axes cost | tags | gist`
+837 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -395,6 +395,7 @@ media/dialog-scoped-embed-lifecycle | neutral  $2 | media performance dialog cor
 media/dilated-alpha-keyline | E1 D2 W2 F5 $1 | media icon logo filter contrast legibility detail css-only | A raster mark has no stroke to reach for, so a pale logo dropped
 media/frame-announced-readiness | neutral  $2 | media iframe embed loading progressive-enhancement correctness | An iframe's load fires when its document parses, not when the ap
 media/frameless-alpha-artwork | E1 D2 W2 F3 $2 | media illustration assets transparency composition | Artwork exported on transparency with a feathered edge does not 
+media/idle-hydrated-visible-media | neutral  $2 | media video performance bandwidth first-paint scheduling | Media already on screen at first paint cannot be approach-loaded
 media/ink-channel-probed-icon | neutral  $1 | icon svg media correctness currentcolor | An icon pasted from an arbitrary set carries its colour on one o
 media/integer-scaled-pixel-raster | E1 D2 W3 F2 $1 | media raster pixel-art image-rendering scale | Low-resolution raster art — pixel sprites, 1-bit marks, dithered
 media/interval-held-still-interlude | E1 D2 W3 F4 $1 | media video ambient cycle hero css-animation | A short loop is wallpaper by its second pass. Break it on a peri

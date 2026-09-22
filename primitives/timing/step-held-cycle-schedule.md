@@ -4,7 +4,7 @@ category: timing
 tags: [motion,keyframes,loop,sequence,cycle]
 axes: {energy: 2, density: 2, weight: 2, finish: 3}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]

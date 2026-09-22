@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,input,placeholder,accessibility,hint,typing]
 axes: {energy: 3, density: 1, weight: 2, finish: 4}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,15 @@ past that nobody waits for the loop.
 ⚠ Leave a static `placeholder` on the real field: the overlay is the one hint a
 screen reader never gets. A click handler on the overlay cannot fire —
 `pointer-events: none` is what makes it work.
+
+Type and delete are not the same speed, and a cycle that uses one rate for both
+reads as a machine rather than as someone composing. Delete at roughly half the
+per-character interval, hold the completed string long enough to be read, and
+leave a shorter gap on the empty field before the next example starts. Type
+35–60ms per character, hold 1.5–2.5s, delete at half the type rate, 300–500ms
+empty.
+```js
+const step = () => setTimeout(step, del ? RATE / 2 : RATE)   // plus the two holds
+```
+⚠ Under `reduce`, render one example as static text and never start the loop —
+a paused typewriter is an empty field with a blinking caret.
