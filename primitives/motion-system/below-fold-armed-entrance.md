@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,correctness,progressive-enhancement,observer,reveal]
 axes: none
 cost: 1
-seen: 22
+seen: 23
 requires: []
 conflicts: []
 completes: []
@@ -80,3 +80,20 @@ html.js:not(.fx-ready) [data-enter] { visibility: hidden }
 the class lands and the engine can still measure. Scope the selector to an
 opt-in attribute: applied broadly it is a blank page for the length of the
 bundle.
+
+The split can be one class rather than two markup paths. Author the entrance as
+an ordinary animation utility, and let a second, additive marker class be what
+withholds it: alone, the utility plays from the stylesheet at parse; with the
+marker, the from-state is pinned and `transition: none` holds it until script
+adds a third class that reinstates the animation. Authors then write the same
+utility everywhere and opt an element into waiting by adding one word — no
+component fork, and forgetting the marker degrades to playing immediately rather
+than to never playing.
+```css
+.rise              { animation: rise .45s var(--ease) both }
+.wait.rise         { opacity: 0; transform: translateY(22px); animation: none }
+.wait.seen.rise    { animation: rise .45s var(--ease) both }
+```
+⚠ The gate is specificity, so the utility and the reinstating rule must stay in
+one layer — a utility hoisted into `@layer utilities` outranks the pin and the
+element never waits.

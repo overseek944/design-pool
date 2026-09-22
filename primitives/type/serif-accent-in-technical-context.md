@@ -4,7 +4,7 @@ category: type
 tags: [type,contrast,editorial,restraint]
 axes: {energy: 1, density: 2, weight: 3, finish: 5}
 cost: 1
-seen: 31
+seen: 32
 requires: []
 conflicts: []
 completes: []
@@ -136,3 +136,18 @@ h1 .clause { font-family: var(--serif); font-style: italic;
 ⚠ This is a clause, not an ornament — it is still the sentence and still owes
 4.5:1, which the pale ink such a line usually carries is exactly what fails on a
 light ground. Score the tint at the size it actually ships.
+
+Scope the accent to a *kind of content* rather than to a phrase, and the dose
+regulates itself: give the serif to every figure on the page — statistics,
+prices, durations — while labels, headings and body stay sans. The count is
+bounded by how many numbers there are, a new stat inherits the treatment with no
+decision to make, and figures are where the face earns it, a drawn numeral
+against the flat, closed shapes a geometric sans cuts. Keep the label under each
+figure sans and one tier down, or the pair reads as two voices arguing.
+```css
+.figure { font-family: var(--font-display-serif) }   /* figures only */
+.figure + .label { font-family: var(--font-sans); font-size: .8rem }
+```
+⚠ Check the serif's numerals are lining and tabular before committing — an
+oldstyle set drops digits below the baseline and a column of stats loses its
+alignment.

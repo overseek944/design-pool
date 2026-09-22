@@ -4,7 +4,7 @@ category: layout
 tags: [layout,responsive,media-query,ornament,correctness]
 axes: none
 cost: 1
-seen: 23
+seen: 24
 requires: []
 conflicts: []
 completes: []
@@ -96,3 +96,18 @@ figure img { max-width: 100%; max-height: 70vh; width: auto; height: auto;
 ⚠ The box is now intrinsic on both axes, so keep the `width`/`height`
 attributes on the element — the cap otherwise reintroduces exactly the load
 shift an `aspect-ratio` reservation was holding off.
+
+The floor is the other half of the band, and it catches the device a width
+breakpoint gets wrong: a portrait tablet is wide enough to pass a desktop gate
+and far too tall to read a two-column arrangement, which then runs half a screen
+of copy beside half a screen of dead gutter. Gate the *collapse* on a height
+minimum rather than tightening the width — the same rule a phone would take,
+reached from the other direction. Floors 1100–1300px, paired with a narrow width
+window so a tall desktop monitor is untouched.
+```css
+@media (min-width: 1024px) and (max-width: 1080px) and (min-height: 1200px) {
+  .split { grid-template-columns: 1fr }
+}
+```
+⚠ Prefer `(orientation: portrait)` or an `aspect-ratio` query to a hard pixel
+pair — the pixel form encodes one device and silently misses the next one.

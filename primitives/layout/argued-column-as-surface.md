@@ -4,7 +4,7 @@ category: layout
 tags: [layout,table,comparison,surface,contrast,hierarchy]
 axes: {energy: 1, density: 3, weight: 4, finish: 5}
 cost: 1
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
@@ -108,3 +108,17 @@ one broken system. Give the column a hue no status uses at half their
 saturation, 4–8% over the ground.
 ⚠ Neither register survives greyscale or announcement. The header has to name
 the column's origin in words, and a status cell still needs its printed value.
+
+Marking the winner is not the same as stating the win. A matrix shows the
+figures and leaves the reader to do the subtraction, so carry the conclusion in
+a strip across the foot of the table — the delta against the *runner-up*, not
+against the worst row, which is the comparison anyone checking would make. It
+sits outside the grid, in the accent, one line, and it is the only place on the
+surface where a number is asserted rather than listed. Pair it with an
+attribution at the opposite end so the claim has an owner.
+```css
+.matrix + .verdict { display: flex; justify-content: space-between;
+  border-top: 1px solid var(--rule); color: var(--accent-text) }
+```
+⚠ A delta stated in the chrome is still a claim the copy has to support — if
+the rows can be re-sorted or filtered, it has to recompute or go.

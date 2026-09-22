@@ -1,6 +1,6 @@
 # Manifest
 
-830 primitives. Format: `category/id | axes cost | tags | gist`
+831 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -781,6 +781,7 @@ type/breakpoint-swapped-family-roles | E1 D2 W3 F5 $1 | type responsive breakpoi
 type/cap-height-trim | neutral  $1 | type spacing precision alignment | Every text block ships with invisible half-leading above and bel
 type/char-count-stepped-reveal | E3 D1 W2 F4 $1 | type motion css-only custom-properties keyframes | A per-character reveal is one number. Publish the character coun
 type/character-grid-as-texture | E3 D5 W2 F3 $2 | type texture ornament ascii | A field of monospace glyphs (+ x X 8 0 @ # % $) on a grid, used 
+type/circumference-fitted-seal-ring | E2 D3 W2 F4 $2 | type svg ornament mark watermark rotation | An authority mark can be typeset rather than drawn: a legend set
 type/content-ghosted-width-reservation | neutral  $1 | type layout-shift css-only accessibility correctness | Text that animates or swaps in place resizes its own box and rel
 type/delimiter-marked-inline-code | E1 D2 W2 F5 $1 | type code inline prose delimiter technical | Inline code in prose is usually a padded chip, and that padding 
 type/edge-cropped-monument-glyph | E1 D2 W5 F4 $1 | type lettering identity display bleed layout | One glyph of the wordmark, set at architectural scale and allowe

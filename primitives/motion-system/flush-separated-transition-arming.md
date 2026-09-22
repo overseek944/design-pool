@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,correctness,transition,observer,reveal]
 axes: none
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
