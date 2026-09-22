@@ -1,6 +1,6 @@
 # Manifest
 
-917 primitives. Format: `category/id | axes cost | tags | gist`
+919 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -315,6 +315,7 @@ layout/fractional-grid-with-fluid-rail | E1 D3 W3 F4 $2 | layout grid asymmetry 
 layout/geometry-scoped-connector-overlay | neutral  $1 | layout diagram connector responsive correctness architecture | An overlay of connectors is a picture of one arrangement, not of
 layout/ghost-sizer-twin | neutral  $1 | layout architecture correctness hover reflow | A box that grows on interaction — scales, lifts on Z, expands a 
 layout/golden-section-band-tokens | E1 D2 W2 F5 $1 | layout tokens composition custom-properties grid rhythm | Halves and thirds are where everything lands by default, and a f
+layout/graded-support-cell-vocabulary | E1 D3 W2 F5 $1 | data label accessibility correctness legibility restraint | A capability matrix with a tick-or-blank vocabulary forces every
 layout/gridline-borne-value-label | E1 D3 W1 F5 $1 | chart axis label mono hairline density | A plot that reserves a left gutter for its value axis spends 40–
 layout/height-budgeted-media-width | neutral  $2 | layout container-query aspect fit cls | When a card must fit one screen exactly — media plus chrome, not
 layout/implication-subtracted-spans | neutral  $2 | intervals annotation data correctness architecture | Independent detectors flag overlapping ranges, and drawn as they
@@ -334,6 +335,7 @@ layout/named-container-scope | neutral  $1 | layout container-query correctness 
 layout/occupancy-negotiated-label-placement | neutral  $4 | layout label annotation collision diagram correctness | Annotations placed independently overlap the moment two anchors 
 layout/occupancy-padded-back-plate | E1 D3 W2 F5 $1 | layout layering overlap depth mock plate | Two layers of one scene — a wide plate behind, a card in front —
 layout/offset-ladder-peer-row | E1 D2 W2 F4 $1 | layout grid cards rhythm sequence composition | Three equal cards in a row read as three options in no order. St
+layout/offset-placed-interval-rows | E1 D3 W2 F5 $1 | data chart diagram measurement grid accessibility | A bar chart ranks; a row of intervals sequences. Where every ite
 layout/operator-track-comparison-row | E1 D3 W2 F5 $1 | layout comparison diagram table reconciliation | Values a reader must reconcile — what was billed, what was order
 layout/overflow-clip-over-hidden | neutral  $1 | overflow correctness accessibility scroll | overflow: clip crops without creating a scroll container. hidden
 layout/per-edge-clip-polygon | neutral  $1 | overflow clip correctness bleed | overflow only works per axis, so there is no way to crop one edg

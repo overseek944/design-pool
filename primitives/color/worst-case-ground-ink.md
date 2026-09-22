@@ -4,7 +4,7 @@ category: color
 tags: [color,contrast,accessibility,icon,correctness]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []

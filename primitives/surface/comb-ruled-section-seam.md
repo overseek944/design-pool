@@ -4,7 +4,7 @@ category: surface
 tags: [divider,section,texture,rule,repeating-gradient,seam]
 axes: {energy: 1, density: 3, weight: 2, finish: 5}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -33,7 +33,10 @@ segments, one per hue in the page's register, and the seam declares the palette
 as a physical edge — there is no tick pitch to beat against the pixel grid at
 fractional ratios, and it survives being thickened, where a comb only gets
 louder. Band 4–8px; three to five segments, which is the register's size, not a
-chosen number.
+chosen number. The same band also runs at the document's *top* edge rather than
+at a join — above the masthead, before any content has used a hue — and there it
+takes the thin end and below it, 3–4px, because it is apparatus rather than a
+boundary and has no tonal jump to survive.
 ```css
 .seam { display: flex; block-size: 6px }
 .seam > * { flex: 1 }        /* one per register colour, in ramp order */
