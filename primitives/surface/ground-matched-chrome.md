@@ -4,7 +4,7 @@ category: surface
 tags: [chrome,nav,scroll,contrast,theme,accessibility]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 17
+seen: 18
 requires: []
 conflicts: []
 completes: []
@@ -118,3 +118,14 @@ const best = marked.map(n => n.getBoundingClientRect())
 ⚠ A band shorter than a section is fine; a section shorter than the band
 reports alongside its neighbour, so order the candidates and take one rather
 than letting the last write win.
+
+The first paint needs no probe at all. A page whose opening section is
+full-bleed media carries a marker element, and `:root:has()` flips the bar's
+tokens to its clear, light-ink treatment before any script runs — no flash of
+the paper plate over the film. A scrolled flag set later overrides it with a
+tinted, blurred plate at 55–70% alpha.
+```css
+:root:has([data-hero=media]) { --bar-bg: transparent; --bar-ink: #fff }
+:root[data-scrolled]:has([data-hero=media]) { --bar-bg: #0f0e0d99 }
+```
+⚠ The marker must be in the server HTML; one mounted after hydration brings the flash back.

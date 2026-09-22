@@ -1,6 +1,6 @@
 # Manifest
 
-984 primitives. Format: `category/id | axes cost | tags | gist`
+986 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -848,6 +848,7 @@ surface/receding-bar-plate | E2 D1 W2 F4 $1 | surface chrome scroll opacity acce
 surface/region-bound-hatch-pattern | E1 D3 W1 F5 $1 | svg pattern texture hatch diagram schematic | CSS gradients hatch boxes; a schematic needs the hatch inside an
 surface/restated-route-overlay | E2 D3 W2 F5 $2 | svg diagram path emphasis stroke gradient | Marking one route through a branching diagram by restyling the s
 surface/rim-banded-geometry-lens | E1 D3 W3 F5 $4 | glass backdrop-filter svg-filter refraction sdf canvas edge | Glass thick enough to refract bends light at its edge, not acros
+surface/root-split-overscroll-ground | neutral  $1 | ground scroll overscroll theme correctness | Paint the root and the body separately. The root's background fi
 surface/rotating-conic-border | E4 D3 W3 F4 $3 | surface border motion svg | An animated gradient border without a pseudo-element hack: an SV
 surface/row-borne-quantity-fill | E1 D3 W2 F5 $1 | surface data list density ground accessibility | A ranked list and its bar chart need not be two columns. Make th
 surface/scanline-register-overlay | E1 D3 W2 F2 $1 | overlay scanline texture video register decoration | Footage from mismatched sources — an archive still, a head camer
@@ -922,6 +923,7 @@ type/breakpoint-abbreviated-label | neutral  $1 | type accessibility responsive 
 type/breakpoint-swapped-family-roles | E1 D2 W3 F5 $1 | type responsive breakpoint tokens pairing serif | Which of two faces can carry display size is a function of rende
 type/cap-height-only-leading | E2 D4 W4 F4 $1 | type leading uppercase display density | A line of all-caps uses almost none of its line box — no descend
 type/cap-height-trim | neutral  $1 | type spacing precision alignment | Every text block ships with invisible half-leading above and bel
+type/cap-matched-family-mix | neutral  $1 | type pairing font alignment precision | Two families at the same font-size rarely share a cap height, so
 type/char-count-stepped-reveal | E3 D1 W2 F4 $1 | type motion css-only custom-properties keyframes | A per-character reveal is one number. Publish the character coun
 type/character-grid-as-texture | E3 D5 W2 F3 $2 | type texture ornament ascii | A field of monospace glyphs (+ x X 8 0 @ # % $) on a grid, used 
 type/circumference-fitted-seal-ring | E2 D3 W2 F4 $2 | type svg ornament mark watermark rotation | An authority mark can be typeset rather than drawn: a legend set
