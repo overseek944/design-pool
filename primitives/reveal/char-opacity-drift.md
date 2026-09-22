@@ -4,7 +4,7 @@ category: reveal
 tags: [type,motion,reveal,ambient]
 axes: {energy: 3, density: 4, weight: 2, finish: 5}
 cost: 4
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: [will-change-on-split-children, revert-split-on-resize]
@@ -20,7 +20,7 @@ anyway; per-word is an order fewer, survives resize far better, and reads as
 language arriving rather than letters assembling. Step 20–50ms per token —
 well below the sibling band, because tokens are adjacent, not separate objects.
 
-Add `filter: blur(2–4px)` to the from-state and the tokens resolve out of focus
+Add `filter: blur(2–10px)` to the from-state (past 6px pair it with a 12–20px rise) and the tokens resolve out of focus
 rather than fading, which is what makes the settle read as material. Start the
 opacity at `.001`, not `0`: a true zero lets the compositor discard the layer,
 so the first frame arrives unblurred and pops.
