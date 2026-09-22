@@ -4,7 +4,7 @@ category: layout
 tags: [layout,connector,svg,diagram,geometry]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -72,3 +72,22 @@ if (Math.abs(dx) > Math.abs(dy)) { const x1 = dx > 0 ? a.right : a.left
 ⚠ The test is on centre distance, not the gap between edges, so two wide boxes
 almost level flip between the two forms on a pixel of movement. Hold the last
 choice until the loser leads by a band of 8–24px.
+
+Solving into a `d` attribute keeps the connector's whole life in script. Publish
+the solved segment as custom properties on the connector instead — origin,
+length, angle — and let one absolutely positioned element with
+`transform-origin: 0 50%` be the line. CSS then owns its weight, its fade, its
+dash and any pulse travelling along it, so the motion lands inside the
+stylesheet's reduced-motion branch with no second code path and costs nothing
+per frame. Straight runs only.
+```js
+l.style.setProperty('--len', Math.hypot(dx, dy) - r + 'px')   // r = target radius
+l.style.setProperty('--rot', Math.atan2(dy, dx) + 'rad')
+```
+```css
+.link { position: absolute; left: var(--x); top: var(--y); width: var(--len);
+        transform-origin: 0 50%; rotate: var(--rot) }
+```
+⚠ Subtract the target's radius from the length or every line runs under the node
+it points at. Give the layer `pointer-events: none` — a rotated bar sits over
+content it does not visually cover.

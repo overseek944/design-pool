@@ -1,6 +1,6 @@
 # Manifest
 
-851 primitives. Format: `category/id | axes cost | tags | gist`
+854 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -127,6 +127,7 @@ color/party-keyed-field-tokens | neutral  $1 | color tokens form attribution rev
 color/pattern-encoded-series | E1 D3 W2 F4 $2 | color accessibility pattern data contrast texture | Hue alone cannot carry series identity — it fails in greyscale, 
 color/read-position-hue-drift | E2 D2 W2 F4 $2 | color scroll ambient gradient filter | A long page reads as one undifferentiated field when every secti
 color/root-filter-inversion | E2 D2 W4 F2 $2 | color dark filter invert theme effect | filter: invert(1) hue-rotate(180deg) on the root flips lightness
+color/rule-harvested-theme-bank | neutral  $2 | color tokens theming cssom architecture correctness | Script that has to interpolate a theme — scrubbing it from scrol
 color/runtime-shade-derivation | neutral  $1 | color tokens theming architecture | Derive hover, active and disabled shades from a colour you will 
 color/self-painting-theme-scope | neutral  $2 | color tokens theming architecture dark | A theme is one class that both defines the semantic colour token
 color/sequence-value-ramp | E1 D2 W3 F4 $1 | color hierarchy surface sequence contrast | Tint a row of peer surfaces along one lightness ramp so sequence
@@ -241,6 +242,7 @@ interaction/submit-mounted-challenge-gate | neutral  $2 | forms third-party perf
 interaction/subscribed-state-flag-layer | neutral  $1 | state accessibility correctness tokens css-only has focus hover | Raise the state flag from the attribute that already carries the
 interaction/substituted-driver-on-coarse-pointer | neutral  $2 | pointer touch fallback ambient correctness architecture | Every pointer-reactive decoration is inert on a touchscreen: the
 interaction/supplied-cursor-affordance-pair | E2 D2 W3 F3 $1 | interaction pointer detail chrome accessibility | Replacing the arrow is a strong voice, and the failure is replac
+interaction/synthesised-hover-keyboard-proxy | neutral  $2 | accessibility keyboard third-party observer correctness page-builder | A menu or disclosure emitted by a page builder often listens for
 interaction/tilt-exempt-anchor-layer | E2 D2 W3 F5 $2 | interaction pointer transform 3d depth architecture | A surface that tilts under the pointer tilts everything in it, i
 interaction/timestamp-guarded-double-activation | neutral  $1 | events click pointer correctness architecture accessibility | A component that synthesises its own tap alongside the native cl
 interaction/track-overflowed-card-expansion | E2 D3 W2 F4 $2 | interaction layout grid hover overflow cards | A grid of uniform cards that reveal more on hover either shoves 
@@ -432,6 +434,7 @@ media/sheared-ghost-silhouette | E1 D3 W2 F5 $2 | depth line-art silhouette proj
 media/single-source-focal-crop | neutral  $1 | media responsive performance detail | One photograph can hold a headline at every width without a seco
 media/source-derived-letterbox-fill | E1 D2 W2 F4 $1 | media video responsive aspect backdrop blur | A fixed-ratio slot fed media of another ratio either crops it (c
 media/sparse-sequence-nearest-frame | E3 D2 W3 F5 $4 | scrub scroll images loading canvas progressive perf | A scroll-scrubbed image sequence does not need every frame to ex
+media/srcset-blocked-source-swap | neutral  $1 | media images responsive correctness state | Assigning img.src from script does nothing while the element sti
 media/stacked-contour-volume | E1 D4 W2 F5 $2 | svg mark depth stroke currentcolor | Describe a solid as a stack of cross-sections instead of as a sh
 media/state-preserving-frame-relocation | neutral  $3 | media iframe embed lifecycle dom correctness | appendChild removes and reinserts: an iframe reloads, a video re
 media/stepped-transform-sprite | E3 D2 W2 F4 $2 | media sprite animation svg performance | Play a short looping illustration as a filmstrip: frames in one 

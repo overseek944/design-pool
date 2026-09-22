@@ -4,7 +4,7 @@ category: timing
 tags: [motion,timing,loop,architecture,correctness]
 axes: none
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -39,3 +39,20 @@ else last.dur -= over
 ```
 ⚠ Give each participant its own random phase offset into the period, or every
 one of them restarts on the same frame and the field pulses.
+
+Where every beat's effect is a property of the current time rather than an event,
+drop the cursor entirely: derive the whole scene from `t` on each frame. A typed
+count is `floor((t - at) / perChar)`, a phase is a comparison, a reveal is a
+toggle. Nothing accumulated, so there is nothing to reset — wrapping, pausing,
+seeking and the reduced-motion still frame are the same call with a different
+`t`, and that answers the undo problem above. Use where the beats are states,
+not side effects.
+```js
+const t = (now - start) % PERIOD
+el.dataset.phase = t < ANSWER_AT ? 'ask' : 'answer'
+CUES.forEach(({ at, node }) => node.classList.toggle('in', t >= at))
+```
+⚠ Every write must be a no-op when unchanged — compare before assigning text, or
+a per-frame `textContent` write destroys selection and re-announces to a screen
+reader. The derivation must also be total: a `t` falling between two beats has
+to name a state rather than leave the last one standing by accident.

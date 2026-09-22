@@ -4,7 +4,7 @@ category: interaction
 tags: [carousel,autoplay,accessibility,state]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 29
+seen: 30
 requires: []
 conflicts: []
 completes: []
@@ -149,3 +149,20 @@ useEffect(() => { const t = setTimeout(() => { setHeld(false)
 ⚠ Suits a demonstration that loops past its reader, not a gallery they are
 working through — anyone reading slowly is still overtaken, just later. Where
 the content must not move unbidden, suspend instead.
+
+A sequence that drives `scrollTop` on a pane does not merely advance past the
+reader, it takes the scroll away: every frame overwrites what their wheel just
+did, so the content is not slow to move, it is immovable. Latch on the first
+real input — `wheel`, `touchstart` and `pointerdown`, all passive — and stop
+writing for the remainder of the cycle rather than for a quiet window, since
+resuming means yanking their position back. Clear the latch at the wrap, not on
+a timer.
+```js
+['wheel','touchstart','pointerdown'].forEach(n =>
+  pane.addEventListener(n, () => { held = true }, { passive: true }))
+if (!held) pane.scrollTop = end * ease((t - START) / RUN)
+```
+⚠ `scroll` is the wrong event to listen for — the script's own writes fire it,
+so the latch trips on the first frame. Re-derive `end` from
+`scrollHeight - clientHeight` on a `ResizeObserver`: a pane measured before its
+content settles scrolls to a stale bottom and stops short.

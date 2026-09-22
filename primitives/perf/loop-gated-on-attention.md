@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,intersection-observer,visibility,battery,correctness]
 axes: none
 cost: 2
-seen: 74
+seen: 75
 requires: []
 conflicts: []
 completes: []
@@ -276,3 +276,19 @@ document.addEventListener('visibilitychange', apply)
 ⚠ Rate zero is not always frame zero — a renderer that keeps requesting frames
 to draw an unchanged image costs the same as running. Confirm it idles, or fall
 back to cancelling the loop and stamping the clock on resume.
+
+The reader is a third input to the same predicate, and offering them the switch
+beats guessing on their behalf. Fold an explicit pause control into the gate
+rather than giving it its own path — and where `prefers-reduced-motion` has
+already answered, `disable` the control and relabel it. A toggle appearing to
+offer motion the OS refused is a lie; one that silently overrides the preference
+is worse.
+```js
+const live = () => onScreen && !document.hidden && !rm.matches && !paused
+btn.disabled = rm.matches
+btn.textContent = rm.matches ? 'Motion reduced' : paused ? 'Play' : 'Pause motion'
+btn.setAttribute('aria-pressed', String(paused || rm.matches))
+```
+⚠ Pausing has to hold a frame worth looking at. A gate that freezes whatever was
+mid-transition reads as a stall — park on the same named rest state the
+reduced-motion branch uses, so both routes land on a composition somebody chose.
