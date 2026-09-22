@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,field,particles,motion,generative,recycling]
 axes: {energy: 2, density: 3, weight: 1, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -15,7 +15,7 @@ events in the field, and both read as a blink. Give each mark a randomised
 lifetime and derive its ink from age through an envelope — a short attack, a
 long release to zero — so it is already invisible whenever it is recycled and
 the field renews continuously with no pop to catch. The staggered lifetimes
-also break the uniform look a single spawn pass leaves. Attack 5–15% of life,
+also break the uniform look a single spawn pass leaves. Attack 5–25% of life,
 life 40–200 frames with the spread at least 2×.
 
 ```js
@@ -24,3 +24,8 @@ if (p.age++ > p.life || offscreen(p)) Object.assign(p, spawn(), { age: 0 })
 ```
 ⚠ Randomise the initial age at startup too, or the whole population dies on the
 same frame and the field pulses for its first few cycles.
+
+Variant — a trapezoid instead of attack-release: ramp in over the first 15–25%,
+hold, and release over the last 25–35%. The hold gives each mark a stretch at
+full ink, so a sparse field of large soft marks reads as steady light rather than
+continuous flicker.

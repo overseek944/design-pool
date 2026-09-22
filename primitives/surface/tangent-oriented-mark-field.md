@@ -4,7 +4,7 @@ category: surface
 tags: [surface,texture,generative,ambient,detail,svg]
 axes: {energy: 2, density: 4, weight: 2, finish: 5}
 cost: 3
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -62,3 +62,12 @@ if (h3 > 0.56) push(x - dy / half * off, y + dx / half * off, dx * 0.45, dy * 0.
 ⚠ Derive the extra hashes from the first by a multiply-and-fract, not by a second
 call at the same coordinate — an unshifted hash makes length and darkness agree
 and the field bands.
+
+Variant — orient to the mark's own velocity when there is no curve to sample.
+Rotate to its heading and stretch the long axis with speed, capped: slow marks
+stay round, fast ones elongate, and the field shows its flow with no trails.
+Stretch 1 + min(0.25–0.4, speed × k).
+```js
+ctx.translate(x, y); ctx.rotate(Math.atan2(vy, vx))
+ctx.scale(1 + Math.min(.35, Math.hypot(vx, vy) * .004), 1); ctx.arc(0, 0, r, 0, TAU)
+```

@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,field,particles,performance,responsive,density]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

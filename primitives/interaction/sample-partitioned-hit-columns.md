@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,hover,hit-area,chart,data,css-only,accessibility]
 axes: {energy: 2, density: 3, weight: 2, finish: 5}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -42,3 +42,12 @@ mark's radius or its shape, which a scale would distort.
 ```
 ⚠ `inset` on an absolutely positioned box is layout, not compositing — fine for
 one mark under a pointer, wrong for a row of fifty animating together.
+
+A readout that follows the pointer's x overhangs the plot at the first and last
+samples. Clamp its anchor by half its own width in CSS and it slides flush to
+the edge instead of being cut or spilling out, with no measurement in script.
+Half-width 2.5–4rem, matched to the readout's `min-width`.
+```css
+.tip { position: absolute; translate: -50% 0;
+  left: clamp(3.25rem, var(--x), calc(100% - 3.25rem)) }
+```
