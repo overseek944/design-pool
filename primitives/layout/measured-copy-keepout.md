@@ -4,7 +4,7 @@ category: layout
 tags: [layout,measurement,legibility,canvas]
 axes: none
 cost: 2
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -131,3 +131,20 @@ it is being avoided; a `ResizeObserver` on both is the whole coupling.
 ⚠ A hard stop pair cuts the lattice on a visible line. Feather 8–24px either
 side, or align the stops to a band the content already has — a section edge, the
 hero's own fade — so the cut has a reason to be there.
+
+Where the art is a repeating *field* rather than placed objects, the keepout
+needs no measurement at all: mask the field with an ellipse whose centre is
+transparent, sized in percentages of its own box. The hole then tracks the box
+through every width, so a headline that grows a line is still standing in cleared
+ground and a translated string cannot break it — one declaration, no script, and
+a browser that ignores it gets a full-strength field rather than a broken one.
+Ellipse 30–45% by 40–55%, transparent to opaque across 55–80% of the radius.
+```css
+.field::before { content: ""; position: absolute; inset: 0;
+  background: radial-gradient(var(--speck) 1.5px, #0000 1.5px) 0 0 / 26px 26px;
+  -webkit-mask-image: var(--hole); mask-image: var(--hole);
+  --hole: radial-gradient(ellipse 36% 44% at 50% 52%, #0000 58%, #000 80%) }
+```
+⚠ Only for a field with no features worth placing, and only while the copy is
+centred — the hole is centred on the box, not on the text, so an off-centre
+column leaves the ellipse showing as a soft blob beside it.

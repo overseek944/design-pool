@@ -4,7 +4,7 @@ category: interaction
 tags: [motion,disclosure,accessibility,progressive-enhancement,height]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 14
+seen: 15
 requires: []
 conflicts: []
 completes: []
@@ -89,3 +89,19 @@ content slides out whole rather than re-wrapping every frame. Open width
 ```
 ⚠ Past about 0.5s the crop stops reading as a panel opening and starts reading
 as a wipe across fixed text.
+
+Where the height is genuinely measured and written — content swapped under a
+transition rather than disclosed — the thing that breaks is not the easing but
+the children. A flex column told to animate to a height shorter than its content
+shrinks every flexible child to fit, so the tween reads as the contents being
+crushed and released instead of the box resizing over them. `flex-shrink: 0` on
+the direct children and `overflow: clip` on the box restore the intended
+reading. 0.35–0.5s on a firm in-out curve.
+```css
+.card { display: flex; flex-direction: column; overflow: clip;
+        transition: height .42s cubic-bezier(.4,0,.2,1) }
+.card > * { flex-shrink: 0 }
+```
+⚠ The written height must be measured with the box back at `auto` and re-measured
+on resize — a value cached from first paint is wrong at the first reflow, and the
+card then clips its own content with no scrollbar to reveal it.

@@ -1,6 +1,6 @@
 # Manifest
 
-876 primitives. Format: `category/id | axes cost | tags | gist`
+877 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -713,6 +713,7 @@ surface/eased-fade-stop-ramp | E1 D2 W2 F5 $2 | surface gradient fade mask preci
 surface/end-faded-section-rule | E1 D1 W1 F5 $1 | hairline divider gradient section restraint | A full-bleed rule declares a measure it does not have: run it ed
 surface/fill-derived-shadow-ramp | E1 D2 W3 F5 $1 | surface depth shadow color-mix tokens control | A saturated control's shadow should be made of its own colour, n
 surface/geometry-mirrored-effect-proxy | neutral  $3 | svg filter measurement architecture correctness chrome | Some effects exist only for SVG — a fusing filter, one stroke ar
+surface/glyph-free-interface-mock | E1 D3 W2 F4 $2 | mock decoration product placeholder texture accessibility | A decorative product mock beside a headline competes with it the
 surface/gradient-composited-displacement-map | E1 D2 W3 F5 $3 | svg-filter displacement-map glass refraction backdrop-filter declarative | A displacement map is normally a canvas rebuilt per element on e
 surface/gradient-dot-lattice | E1 D3 W1 F4 $1 | surface texture pattern blueprint cheap | One radial-gradient plus a background-size gives a dot lattice a
 surface/gradient-over-opaque-glass | E1 D3 W3 F5 $1 | surface glass gradient depth cheap performance | Glass without a backdrop filter: stack a vertical alpha gradient

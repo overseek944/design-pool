@@ -4,7 +4,7 @@ category: layout
 tags: [layout,overlay,alignment,correctness,chrome]
 axes: none
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -77,3 +77,18 @@ retuned. Gutter track 56–96px.
 holds the gap only while the grid is what sets it. Below the breakpoint where
 the gutter track collapses, clear the offset rather than letting it resolve
 against a rail that is now the page margin.
+
+Registering to the column's edge is right for chrome and wrong for decoration.
+Past the cap the gutter grows at half the viewport's rate, so anything glued to
+that edge migrates into the screen corners and the composition comes apart on a
+wide display. Add a second clamped term that spends only a *fraction* of the
+surplus and then stops: the element hugs the column while the page is small and
+drifts a bounded distance further out once the column is capped, never more.
+Fraction 0.2–0.35 of the surplus, ceiling 300–550px.
+```css
+.deco { left: calc(clamp(14px, (100vw - 940px) * .17 + 14px, 100px)
+              + clamp(0px, (100vw - 1440px) * .26, 520px)) }
+```
+⚠ Put its `transform-origin` on the edge facing the column. A decoration that
+also scales up with the viewport otherwise grows back across the text it was
+moved out of, and the two rules fight at exactly the widths there is most room.
