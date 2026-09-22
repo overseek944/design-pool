@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,backdrop-filter,focus,attention,de-emphasis]
 axes: {energy: 2, density: 2, weight: 3, finish: 5}
 cost: 3
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -69,3 +69,9 @@ The aperture may move and resize freely; nothing inside it has to know.
 ⚠ Both copies must be driven from one value in one write — split across two
 frame callbacks, the inside lags the outside and the lens reads as sliding on
 the subject.
+
+Pointer-driven, the lens wants a plateau rather than a cone: fully opaque out to
+35–45% of the radius, then a three- or four-stop ramp to zero at 200–280px, so
+the second rendering reads as a solid patch with a soft rim instead of a vignette.
+Write the mask as a CSS radial gradient on custom properties — rasterising it to
+a data URL on every pointer move encodes an image per frame.

@@ -4,7 +4,7 @@ category: timing
 tags: [motion,easing,indicator,status,ambient]
 axes: {energy: 2, density: 1, weight: 2, finish: 3}
 cost: 1
-seen: 23
+seen: 24
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -64,3 +64,6 @@ caret; the same trick at 2–4s reads as a status lamp.
 from hit-testing, so this belongs on decorative marks only — a blinking node
 that carries a name or a target flickers both fifty times a minute. The moment
 the mark means something, blink opacity instead.
+
+A hard stop pair — `0%,60% {opacity:.9} 60.01%,to {opacity:.15}` — sets any duty
+cycle without a timing function; 55–70% on reads as a crosshair or reticle.

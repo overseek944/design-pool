@@ -4,7 +4,7 @@ category: layout
 tags: [layout,chrome,annotation,measurement,technical]
 axes: {energy: 1, density: 2, weight: 1, finish: 5}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []

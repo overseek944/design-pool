@@ -1,6 +1,6 @@
 # Manifest
 
-938 primitives. Format: `category/id | axes cost | tags | gist`
+939 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -642,6 +642,7 @@ reveal/amplitude-ramped-material-arrival | E2 D3 W2 F4 $2 | reveal canvas shader
 reveal/arc-window-overstroke | E3 D2 W3 F5 $2 | draw-on highlight canvas pulse path | A path being drawn reads as inert when the settled trail and the
 reveal/axis-swept-plot-window | E2 D2 W2 F5 $2 | reveal chart svg clip-path motion data | A line drawn on with stroke-dashoffset is revealed by arc length
 reveal/char-opacity-drift | E3 D4 W2 F5 $4 | type motion reveal ambient | Per-character with opacity + small y, will-change:opacity,transf
+reveal/edge-registered-arrival | E2 D1 W1 F4 $1 | reveal entrance box-shadow outline keyframes acknowledge one-shot | Mark a region's arrival at its boundary instead of moving its co
 reveal/flow-preserved-step-reveal | E3 D2 W2 F3 $1 | reveal text steps clip-path typing layout-safety | A left-to-right text reveal animated on width leaves normal flow
 reveal/front-clipped-mixed-figure | E2 D2 W2 F5 $2 | reveal svg clip-path diagram motion detail | A figure that is not all strokes — connectors carrying node disc
 reveal/glyph-scramble-settle | E4 D3 W2 F3 $2 | type reveal motion technical text | Resolve a label out of noise rather than fading it in: hold the 

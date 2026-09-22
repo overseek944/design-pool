@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,observer,navigation,architecture,correctness]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -28,3 +28,9 @@ new IntersectionObserver(es => {
 ⚠ Ratio is a fraction of the *element*, so a section taller than the band pins
 at a low value — declare enough thresholds that the ratio is re-reported as it
 changes, or the argmax is computed from one stale sample per section.
+
+The same spy drives a horizontal snap deck's tabs: make the scroller the `root`,
+thresholds near 0.4/0.6/0.85, and move one indicator of width 100/N% by
+`translateX(index × 100%)`.
+⚠ Taking the max over each callback's batch alone is the stale-winner bug again —
+a batch holds only the entries that changed.
