@@ -1,6 +1,6 @@
 # Manifest
 
-859 primitives. Format: `category/id | axes cost | tags | gist`
+860 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -109,6 +109,7 @@ canvas/velocity-paired-field-step | E3 D2 W2 F5 $3 | canvas simulation shader te
 canvas/video-textured-mark-field | E2 D3 W2 F5 $3 | canvas video particles texture motion performance | A field of marks needs content as well as motion, and inventing 
 canvas/warm-started-relaxation | neutral  $1 | canvas simulation performance shader solver | An iterative solve re-run every frame — a pressure projection, a
 canvas/wedge-cloned-symmetric-field | E1 D4 W1 F5 $2 | canvas generative symmetry field particles cheap | A ring of marks placed from one pass of random draws clumps unev
+color/band-keyed-readout-channels | neutral  $1 | color tokens state dataviz correctness | A readout showing a measurement and a judgement of it carries on
 color/blend-window-channel-strip | E1 D3 W2 F5 $2 | color data series encoding interpolation two-tone | One strip can carry which of two sources owns each point along i
 color/chroma-weighted-peer-rank | E1 D2 W3 F5 $1 | color hierarchy accent icon grid contrast | Two grids of identical cards on one page read as equally importa
 color/declared-contrast-escalation | neutral  $1 | accessibility contrast tokens type color | prefers-contrast: more is not a second theme — it is permission 

@@ -4,7 +4,7 @@ category: reveal
 tags: [reveal,text,steps,clip-path,typing,layout-safety]
 axes: {energy: 3, density: 2, weight: 2, finish: 3}
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -56,3 +56,20 @@ leading space and a baseline-aligned inline-block keeps the run on its line.
 ⚠ `ch` is the advance of `0` in that face, which equals the character width only
 in a monospace — in a proportional face measure the actual string and re-check
 it whenever the face changes.
+
+Where the run being typed carries inline emphasis — an italic clause, a marked
+term — do not type through a DOM of styled spans: every frame would have to
+slice across element boundaries and the tail's styling appears before its text
+does. Hold the string plain, express the style boundary as a character *offset*
+into it, and re-derive the runs each frame from the current length. Before the
+offset there is one run, after it two, and the emphasis can never lead the
+glyphs that carry it. The same offset survives a retimed or reversed pass
+because it indexes content, not markup.
+```js
+const head = typed.slice(0, emFrom), tail = typed.length > emFrom ? typed.slice(emFrom) : ''
+el.replaceChildren(head, tail && Object.assign(document.createElement('em'), { textContent: tail }))
+```
+⚠ Offsets are positions in a specific string — they go silently wrong under
+translation or a copy edit, so keep the boundary beside the text it indexes.
+Inherit the weight explicitly on the emphasis element: a light display face
+whose italic is only supplied at regular will jump a step at the seam.

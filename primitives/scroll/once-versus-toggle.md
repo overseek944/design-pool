@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,reveal,ux]
 axes: none
 cost: 1
-seen: 22
+seen: 23
 requires: []
 conflicts: []
 completes: []
@@ -72,3 +72,19 @@ return r.top < innerHeight - 40
 ⚠ Re-sweep when a route is unhidden — a `MutationObserver` on the shell's
 `hidden` attribute — or content revealed after the last scroll event never
 latches at all.
+
+Between the two policies sits a third worth naming: replay only when the element
+is re-approached from the side it was first read on. On exit, reset the machine
+only if the box is still *below* the fold line — it left downward, so the reader
+scrolled back above it and will meet it again — and leave it finished when it
+leaves upward. A demonstration then plays on every genuine approach and never
+rewinds behind someone who has already passed it and turned around for an
+unrelated reason.
+```js
+if (!e.isIntersecting) { if (el.getBoundingClientRect().top > 0) reset() }
+else if (phase === 'idle') start()          // rootMargin '0px 0px -15% 0px'
+```
+⚠ The rect read is a forced layout inside the callback — one element, on an
+event that fires twice a pass, is fine; a list of forty is not. `top > 0` is
+measured against the viewport, not the observer's margined root, so the two
+thresholds want to be set together or the reset fires inside the armed band.

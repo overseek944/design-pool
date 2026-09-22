@@ -4,7 +4,7 @@ category: surface
 tags: [surface,texture,grain,gradient,blend-mode,banding]
 axes: {energy: 1, density: 3, weight: 3, finish: 4}
 cost: 1
-seen: 24
+seen: 25
 requires: []
 conflicts: []
 completes: []
@@ -146,3 +146,19 @@ edge. 8–12 steps over 6–10s, offsets 1–3%.
 a full-bleed section is the most expensive form of a cheap effect. Honour
 `prefers-reduced-motion` by dropping to `animation: none`, not by hiding the
 grain — the texture is not the motion.
+
+The construction above assumes a ramp between a few stops. Where the field is a
+*mesh* — four or five hues meeting at soft interior poles, the grain already
+baked into the blur — CSS cannot reach it and layered radials get close only at
+a cost that is no longer cheap. Bake the field to an image and treat it as a
+surface token rather than a picture: one square source per mood, `cover`, with
+type composited over it. Nothing bands, nothing recalculates on resize, and
+theming is swapping the file.
+```css
+.panel { background: url(field.webp) 50% / cover; border-radius: 20px }
+```
+⚠ Budget it honestly. A lossy square field big enough not to soften on a wide
+panel runs 1000–1300px and 100–280KB *each*, so a set of eight moods is most of
+a megabyte of decoration — cap the set, and drop to a flat token under
+`prefers-reduced-data: reduce`. A square stretched to a 16:5 hero resamples hard
+along one axis; author the source at the extreme aspect it must survive.
