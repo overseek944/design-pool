@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion-system,feedback,live-data,emphasis]
 axes: {energy: 3, density: 1, weight: 2, finish: 4}
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -52,3 +52,13 @@ set(peak * k)                      // peak 0–1, scaled by the event's magnitud
 ⚠ Under reduced motion write the peak once and clear it after ~150ms rather than
 skipping it — the change still registers, nothing travels. Amplitude encoding a
 quantity must also exist as text; twice as bright is not a readable number.
+
+Where the change is a recompute rather than news — a figure redrawn by a toggle
+or a filter — the envelope can be motion instead of paint. Start the new value
+slightly receded, not absent: 0.5–0.65 opacity, 1–3px low, 0.97–0.99 scale, and
+settle in 250–400ms on a steep ease-out. The figure never blanks, so a burst of
+toggles reads as the number adjusting rather than flickering.
+```css
+@keyframes settle { from { opacity: .55; transform: translateY(2px) scale(.98) } }
+.value { animation: settle .32s cubic-bezier(.16,1,.3,1) }   /* re-key per value */
+```

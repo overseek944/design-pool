@@ -4,7 +4,7 @@ category: interaction
 tags: [sheet,overlay,stack,gesture,depth,transform]
 axes: {energy: 2, density: 3, weight: 2, finish: 5}
 cost: 3
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -40,3 +40,13 @@ from a dismissible stack into a section that deals itself out as the page moves.
 ⚠ Three levels is where the ladder stops paying — below about 0.7 alpha the back
 sheet is reading as the ground, so add depth by holding sheets at the floor
 rather than by extending the step.
+
+Where the sheets are opaque cards pinned over one another, opacity is the wrong
+channel — a translucent back card shows the one behind it through its own face.
+Recede on `filter: brightness()` from the same index instead, 0.015–0.04 per
+level beside the scale step, and the card darkens without turning see-through.
+```css
+.sheet { filter: brightness(calc(1 - var(--d) * .02)) }
+```
+⚠ Any `filter`, even `brightness(1)`, makes the card the containing block for
+fixed descendants and a paint layer; write `filter: none` at depth 0.
