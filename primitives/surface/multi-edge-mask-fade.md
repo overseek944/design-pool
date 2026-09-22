@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,edge,composition,bleed]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 74
+seen: 75
 requires: []
 conflicts: []
 completes: []
@@ -295,3 +295,15 @@ Trail full at rest, zero by 92–100% of progress.
 ⚠ Scroll-driven timelines have no fallback value — without `@property`'s
 `initial-value` the custom property is invalid-at-computed-value-time wherever
 they are unsupported, and the mask silently drops entirely.
+
+A two-stop fade has a visible shoulder. Alpha composites linearly, so the
+midpoint of the ramp is half-opaque and the eye reads the plateau as ending
+early and the tail as dragging. Bend it with one mid stop pulled *below* half —
+around 0.35 alpha at the ramp's centre — and finish the ramp short of the edge
+so the last stretch is fully clear. Three stops is the whole cost.
+```css
+mask-image: linear-gradient(#000 0 33%, #00000059 50%, #0000 62%)
+```
+⚠ The bend is a look, not a correction. The same curve that paces a fade over
+artwork holds text legible further into the ramp — check it against the content,
+because hiding that text may have been the point.

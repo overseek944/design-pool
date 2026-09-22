@@ -4,7 +4,7 @@ category: timing
 tags: [motion,timing,rhythm,detail]
 axes: {energy: 3, density: 1, weight: 2, finish: 4}
 cost: 1
-seen: 12
+seen: 13
 requires: []
 conflicts: []
 completes: []
@@ -72,3 +72,18 @@ each reads as a deliberate visit rather than a lap.
 ```
 ⚠ Stations are bought out of travel, not out of period — a three-station cycle
 needs 1.5–2× the duration of the same sweep run straight or every leg darts.
+
+Different periods stop bursts coinciding, which is right for scattered
+decoration and wrong for a mock of a working system. Give every animated part of
+one illustration the *same* period — the filling bar, the rising row, the drawn
+stroke, the pulsing dot — and separate them with delays of 0.1–0.3s only. The
+panel then reads as one refresh cycle rather than four decorations sharing a
+box. The plateau carries more of that reading than the event does: hold 70–85%
+of the period at the authored still. Period 4–6s.
+```css
+.part { animation: 5.2s cubic-bezier(.32,.72,0,1) infinite both }
+.part--stroke { animation-delay: .15s }
+```
+⚠ One period means one visible restart: every part snaps together at the wrap,
+so each keyframe must end on the frame it starts from or the whole panel jumps
+at once.

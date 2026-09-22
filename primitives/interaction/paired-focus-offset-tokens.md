@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,focus,tokens,correctness]
 axes: none
 cost: 1
-seen: 28
+seen: 29
 requires: []
 conflicts: []
 completes: []
@@ -83,3 +83,17 @@ value as the offset.
 forced-colors drops only the gap fill and the outline still paints. The cost is
 that `--ground` must track the actual surface: set on the wrong tier it paints
 a visible halo around every focused control in the section.
+
+Where the ring genuinely has to be drawn in `box-shadow` — two colours, an inner
+fill in the ground and an outer band in the ink, following a radius no outline
+will trace — the forced-colors loss has a one-line answer. Keep a real `outline`
+at the same width and offset and set it `transparent`. Forced colours repaint
+outline colour and never paint box-shadow, so the ring is the shadow pair in
+normal rendering and the outline in high contrast, and neither mode draws both.
+```css
+:focus-visible { outline: 2px solid transparent; outline-offset: 2px;
+  box-shadow: 0 0 0 3px var(--ground), 0 0 0 5px var(--ink) }
+```
+⚠ This buys back forced colours only. A clipping ancestor still removes the
+whole visible ring, and the transparent outline it leaves behind is worse than
+nothing because it looks correct in every browser you will test in.

@@ -4,7 +4,7 @@ category: light
 tags: [color,type,effect]
 axes: {energy: 3, density: 2, weight: 4, finish: 3}
 cost: 2
-seen: 37
+seen: 38
 requires: []
 conflicts: []
 completes: []
@@ -226,3 +226,18 @@ box.
 ⚠ A gradient worth losing the words to does not exist. Where the clip must stay,
 the duplicate-pseudo construction above is the only form that degrades to
 legible text.
+
+The `color: transparent` trap repeated above has a form that avoids it outright.
+Leave a real `color` on the element at low alpha — 10–20% of the ink — and let
+the fill gradient run behind the glyphs with a hard `transparent` tail. The
+filled stretch is the gradient seen through a faint tint, the unfilled stretch
+is the tint alone, and nothing depends on the background surviving: a dropped
+image, forced colours, an unsupported clip and the reduced-motion branch all
+leave dim-but-present text rather than none.
+```css
+.fill { color: rgb(from var(--ink) r g b / .14); background-clip: text;
+  background-image: linear-gradient(90deg, var(--ink) var(--p), transparent var(--p)) }
+```
+⚠ Dim-but-present is still far under 4.5:1. This is a safety net for the
+decorative failure modes, not a licence to leave running text sitting in the
+unfilled state.

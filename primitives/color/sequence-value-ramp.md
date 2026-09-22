@@ -4,7 +4,7 @@ category: color
 tags: [color,hierarchy,surface,sequence,contrast]
 axes: {energy: 1, density: 2, weight: 3, finish: 4}
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -62,3 +62,18 @@ own tint on a `pointer-events: none` layer above the wash. Hatch 1px on 6–10px
 yellow band and a stripe on a blue one. Derive the hatch from each tint by mix
 amount and check the bands side by side — the tell is one band where somebody
 thickened the stroke to 2px to compensate.
+
+Equal lightness lets one ink serve every band only while the bands stay pale.
+Push the tints to full chroma — a band a reader would name as yellow or pink
+rather than as tinted — and a single neutral ink reads as signage on all of
+them. Ship an ink per tint instead, chromatic rather than black: very dark, but
+with chroma held above roughly 0.05 in `oklch`, and hand-picked per hue because
+no one mix direction flatters the whole set. The band then reads as ink on
+coloured stock. Ink L 0.17–0.43 under paper L 0.85–0.96.
+```css
+.band--citrus { --tint: #f7f055; --ink: #3d2410 }   /* 12:1 */
+.band--rose   { --tint: #ffb3f2; --ink: #8c0a2e }   /* 5.9:1 */
+```
+⚠ Hand-picked means unverified: score every pair. A chromatic ink also loses
+contrast against the band's own darker shades, so borders, chart marks and
+disabled text on that band need checking separately from the body copy.
