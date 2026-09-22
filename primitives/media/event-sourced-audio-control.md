@@ -4,7 +4,7 @@ category: media
 tags: [media,audio,state,correctness,accessibility,interaction]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -27,3 +27,17 @@ btn.onclick = () => a.paused
 ⚠ An unhandled rejection leaves the button reading *pause* over silence. There
 is no `prefers-reduced-motion` for sound, so nothing may start unpressed, and
 the state must reach a label or `aria-pressed`, never colour alone.
+
+Several independent players on one page need a single owner, not a pause-all
+broadcast. Keep a module-level slot holding the stop callback of whichever
+player last claimed it; claiming calls the previous holder's stop first, and
+stopping releases only if the slot still holds *your* callback. Each player
+then resets its own label, progress and visuals through the same path its own
+stop button uses.
+```js
+let owner = null
+export const claim = stop => { if (owner && owner !== stop) owner(); owner = stop }
+export const release = stop => { if (owner === stop) owner = null }
+```
+⚠ Pass a stable function reference (a ref-wrapped callback), or identity
+comparison fails on re-render and a player releases a slot it no longer owns.

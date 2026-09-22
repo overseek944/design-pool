@@ -4,7 +4,7 @@ category: reveal
 tags: [type,scroll,progress,reveal,colour]
 axes: {energy: 2, density: 2, weight: 3, finish: 4}
 cost: 2
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -68,3 +68,16 @@ to read: under forced colours and in the selection highlight it is invisible,
 and it stays that way for as long as generation runs. Ship the un-swept colour
 under `forced-colors: active` and `prefers-reduced-motion`, where the block
 should be plainly readable and merely marked.
+
+Where the text is being *spoken*, the front belongs to the media clock, not to
+scroll. Take word timestamps from the synthesis, read `currentTime` in a rAF
+loop — `timeupdate` fires only 4–15 times a second and the fill visibly steps —
+and advance by character within the current word. Across silence, interpolate
+from the last word's end to the next word's start rather than holding: the fill
+then glides through a pause instead of stalling and jumping.
+```js
+if (t < w.startMs && prev) n = prev.charEnd + (w.charStart - prev.charEnd) * (t - prev.endMs) / (w.startMs - prev.endMs)
+else if (t < w.endMs)      n = w.charStart + Math.ceil((w.charEnd - w.charStart) * (t - w.startMs) / (w.endMs - w.startMs))
+```
+⚠ Render the plain, fully inked string whenever playback is stopped — the dim
+tail is only legible as *not yet spoken* while audio is running.

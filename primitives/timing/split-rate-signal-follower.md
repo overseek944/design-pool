@@ -4,7 +4,7 @@ category: timing
 tags: [timing,motion,signal,smoothing,feedback,realtime]
 axes: {energy: 3, density: 1, weight: 2, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []

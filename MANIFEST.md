@@ -1,6 +1,6 @@
 # Manifest
 
-1001 primitives. Format: `category/id | axes cost | tags | gist`
+1003 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -12,6 +12,7 @@ canvas/alpha-gated-cell-population | E1 D3 W2 F4 $3 | canvas generative field im
 canvas/area-proportional-mark-population | neutral  $1 | canvas field particles performance responsive density | A generative field authored at one mark count is two different c
 canvas/background-matched-scene-fog | E1 D2 W3 F5 $1 | canvas fog depth background integration scene | A rendered scene ends at its canvas rectangle, so it reads as an
 canvas/baked-cell-frame-stream | neutral  $4 | canvas animation precomputed payload performance field | An ambient field whose motion is authored rather than simulated 
+canvas/band-split-spectral-displacement | E3 D3 W2 F4 $3 | canvas audio audio-reactive fft generative data | A visual driven by one loudness value pulses; three bands make i
 canvas/bisected-heightfield-march | neutral  $4 | canvas shader generative performance projection | A heightfield is not a distance field, so sphere tracing has not
 canvas/borrowed-scene-constructors | neutral  $2 | canvas 3d architecture interop bundle | A wrapper that owns the renderer — a globe, a model viewer, a 3D
 canvas/bucketed-depth-order | neutral  $2 | canvas performance depth particles batching quantise | Painter's order on a 2D context normally means sorting every mar
@@ -869,6 +870,7 @@ surface/scrim-terminated-ground | E1 D2 W2 F5 $1 | gradient ground surface secti
 surface/shadow-borne-card-edge | E1 D2 W2 F5 $1 | surface shadow border elevation tokens detail | A white card on an off-white ground has no border that works: at
 surface/shared-origin-pulse-spokes | E3 D2 W1 F4 $1 | surface decoration hairline radial loop custom-properties | Hairline spokes from one origin read as a diagram; a bright head
 surface/single-hue-lit-bead | E2 D2 W3 F5 $1 | surface gradient identity marker presence contrast | At 8–24px a flat disc is a dot; three stops make it a bead. Take
+surface/size-pinned-layer-drift | E2 D2 W2 F4 $2 | gradient animated background layering ambient | A percentage background-position moves a layer by (box − layer) 
 surface/slat-partitioned-blur-veil | E1 D3 W2 F5 $3 | backdrop-filter glass blur edge bleed surface | A blur plate over bleeding artwork says faded, and what was behi
 surface/slope-held-diagonal-edge | E1 D2 W3 F4 $2 | surface clip-path edge section responsive geometry | A clip-path: polygon() with percentage vertices does not keep it
 surface/smil-driven-filter-parameter | E2 D2 W2 F4 $3 | svg-filter feturbulence displacement ambient motion texture accessibility | A surface that should read as alive rather than animated wants i
