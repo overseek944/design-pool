@@ -4,7 +4,7 @@ category: layout
 tags: [layout,measurement,legibility,canvas]
 axes: none
 cost: 2
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -148,3 +148,20 @@ Ellipse 30–45% by 40–55%, transparent to opaque across 55–80% of the radiu
 ⚠ Only for a field with no features worth placing, and only while the copy is
 centred — the hole is centred on the box, not on the text, so an off-centre
 column leaves the ellipse showing as a soft blob beside it.
+
+Where the field spans the whole document the keepout is an *axis*, not a shape:
+one `linear-gradient(to right, …)` whose stops sit at the measure's own share of
+the viewport clears a full-height corridor and carries no vertical geometry at
+all, so it is correct at every scroll depth where a centred ellipse is correct
+at one. Attenuate rather than clear — hold the corridor at 25–40% and the field
+stays continuous across the page, where a true hole makes the corridor itself
+read as a drawn shape. Gutter stops 10–14% and 86–90%, plateau across 35–65%.
+```css
+.field { --keep: 35%;
+  mask-image: linear-gradient(to right, #000 0 12%, #0006 var(--keep),
+              #0006 calc(100% - var(--keep)), #000 88% 100%) }
+```
+⚠ The corridor alpha is a legibility budget, not a look — score body text
+against the field at that strength, never at full. A wide viewport widens the
+gutters and leaves the plateau where it was, so re-check the ratio at the
+narrowest width, where the corridor takes most of the box.

@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,light,stroke,effect,depth,cheap]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -41,3 +41,19 @@ ctx.fillStyle   = dark ? '#eeebe6' : '#5c544a'
 ```
 ⚠ Porting only the operator and keeping the additive alpha gives a light theme
 that looks under-inked and a dark one that looks muddy — the pair is the setting.
+
+Drop the operator entirely and the same construction moves to SVG, which is what
+makes it usable on paper. Draw one `d` as three coincident `<path>`s composed by
+plain source-over alpha: widest and faintest, a core at a quarter of that width,
+then a mid pass carrying most of the ink. Nothing brightens, so the falloff
+reads as ink soaking outward rather than as light. Alphas compose as
+`1 − Π(1 − αᵢ)`, not as a sum — budget the stack's total, then distribute.
+```svg
+<g stroke="currentColor" fill="none">
+  <path d="…" stroke-width="2.4" opacity=".013"/>
+  <path d="…" stroke-width="0.6" opacity=".026"/>
+  <path d="…" stroke-width="1.0" opacity=".13"/></g>
+```
+⚠ Three nodes per line — fine for tens of lines, not thousands. The `d` must be
+identical in all three or the passes separate into visible parallel strokes on
+the first edit; author it once and clone, or drive all three from one `<use>`.

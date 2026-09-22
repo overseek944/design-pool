@@ -4,7 +4,7 @@ category: interaction
 tags: [theme,preferences,storage,correctness,accessibility]
 axes: none
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: [override-released-system-preference]

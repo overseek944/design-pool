@@ -4,7 +4,7 @@ category: surface
 tags: [surface,svg,texture,blueprint,diagram,cheap]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
