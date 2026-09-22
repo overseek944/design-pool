@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,correctness,stream,log,architecture]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -44,3 +44,16 @@ el.addEventListener('wheel', e => {
 ⚠ Wheel and drag are not the whole input set — a keyboard PageUp, a find-in-page
 jump or a scripted `scrollIntoView` moves the reader with no gesture to latch
 on. Keep the proximity test underneath this one as the floor, not instead of it.
+
+Following the tail by `scrollIntoView` on a trailing sentinel instead of by
+assigning `scrollTop` moves one decision into CSS: give the sentinel
+`scroll-margin-block-end` and the tail parks that far clear of the viewport edge
+instead of flush against it, so the newest line is never the one the reader's
+eye has to hunt at the very bottom. Ask for `behavior: 'instant'` explicitly —
+`smooth` starts an animation per append and a fast stream leaves the scroller
+permanently chasing a target that has already moved. Margin 4–10rem.
+```html
+<div data-tail aria-hidden="true" style="scroll-margin-block-end: 8rem"></div>
+```
+⚠ Keep the sentinel empty and out of the accessibility tree. An element with
+content is a row the reader can land on that says nothing.

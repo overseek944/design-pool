@@ -1,6 +1,6 @@
 # Manifest
 
-885 primitives. Format: `category/id | axes cost | tags | gist`
+888 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -237,6 +237,7 @@ interaction/rung-stepped-continuous-slider | neutral  $2 | interaction accessibi
 interaction/runtime-assembled-href | neutral  $1 | interaction correctness accessibility link progressive-enhancement | A destination you would rather not serve in the markup can be sp
 interaction/sample-partitioned-hit-columns | E2 D3 W2 F5 $1 | interaction hover hit-area chart data css-only accessibility | Points on a small plot are four-pixel targets with dead space be
 interaction/seated-action-plate | E1 D2 W4 F5 $1 | button icon radius inversion contrast cta | A filled control can carry its trailing icon on a surface of its
+interaction/sentence-embedded-field | E2 D1 W3 F4 $2 | form input type composition accessibility correctness | A single-field form set as a labelled box asks for data; set as 
 interaction/shadow-scoped-label-patch | neutral  $2 | accessibility third-party shadow-dom correctness observer lifecycle | A vendor launcher — chat, feedback, consent — mounts a bare <but
 interaction/single-panel-tabset | neutral  $1 | tabs aria architecture performance accessibility correctness | The usual tabset ships every panel and hides all but one, so a s
 interaction/slug-mapped-locale-switch | neutral  $1 | interaction navigation i18n url correctness | A language switcher built by prefixing the current path works on
@@ -816,6 +817,7 @@ timing/role-offset-cascade | E3 D2 W2 F5 $1 | timing motion sequencing choreogra
 timing/sampled-point-spring-easing | E3 D1 W2 F5 $1 | timing easing token css-animation overshoot performance | linear() takes a list of sampled outputs, so a spring solved onc
 timing/scheduled-discrete-property-step | E2 D1 W2 F5 $1 | transition stacking scheduling hover precision | A stacking change has no in-between, so naming z-index in a tran
 timing/segment-eased-keyframes | E3 D2 W2 F5 $1 | motion easing keyframes choreography loop | animation-timing-function declared inside a keyframe block sets 
+timing/source-measured-replay | E2 D1 W2 F5 $2 | timing motion stream demo data honesty correctness | A result that arrives whole but is about how fast it was produce
 timing/split-rate-signal-follower | E3 D1 W2 F5 $1 | timing motion signal smoothing feedback realtime | A live level — audio amplitude, scroll effort, request rate — sm
 timing/stagger-band | E3 D3 W2 F4 $1 | motion rhythm sequencing | Sibling stagger lives in a narrow band: .06–.08s reads as one ge
 timing/state-coded-arrival-rate | E3 D3 W2 F4 $1 | timing live-data state stream rhythm | A live stream that changes mode usually recolours its rows and n
@@ -838,6 +840,7 @@ type/edge-cropped-monument-glyph | E1 D2 W5 F4 $1 | type lettering identity disp
 type/em-locked-inline-media-inset | E1 D3 W4 F4 $2 | typography image display-type inline responsive | A display line that ends short leaves a rectangle of dead measur
 type/em-locked-wordmark-mark | E1 D2 W2 F5 $1 | type logo alignment detail scale | A lock-up whose mark is sized in pixels needs a new value at eve
 type/em-sheared-highlight | E3 D2 W4 F4 $1 | type highlight clip-path emphasis inline scale | A slanted block behind a phrase gives a headline a cut-in, marke
+type/first-line-anchored-marker | E1 D2 W1 F5 $1 | type list marker alignment optical correctness fluid | ::marker takes no position, so any custom bullet, rule or status
 type/first-line-indent-paragraph-mark | E1 D3 W2 F5 $1 | type prose editorial paragraph rhythm | Paragraphs separated only by a blank line read as interface copy
 type/foreshorten-tolerant-plane-label | E1 D2 W3 F4 $1 | type label 3d legibility tracking accessibility | Type laid in a preserve-3d plane is resampled rather than re-lai
 type/frame-cycled-glyph-indicator | E3 D1 W2 F3 $1 | indicator mono glyph loading state motion | An indeterminate wait does not need a drawn shape. Step one text

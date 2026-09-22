@@ -4,7 +4,7 @@ category: type
 tags: [type,motion,css-only,custom-properties,keyframes]
 axes: {energy: 3, density: 1, weight: 2, finish: 4}
 cost: 1
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -85,3 +85,15 @@ refill the visible nodes. It also makes the reduced-motion branch a pure return
 ⚠ The authored text must ship inside the spans as well, not only in the
 attribute — script that never runs then leaves a finished heading rather than an
 empty one, and the label is the duplicate instead of the source.
+
+The bar is one of two carets and the narrower one. Where the line should read as
+a terminal rather than as a text field, widen the mark to a filled block a
+little under half an em and keep every other value: still `em`-sized, still
+`currentColor`, still `steps(1)`. The block is the tell that the text is machine
+output, so it belongs on a streamed or replayed result and not on a headline
+that only happens to type in. Width .4–.5em against .85–1em of height.
+```css
+.caret--block { width: .45em; height: .95em; vertical-align: -.1em }
+```
+⚠ A block that keeps blinking after the last glyph reads as a prompt awaiting
+input — remove it on completion rather than leaving it parked.
