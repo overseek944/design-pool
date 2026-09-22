@@ -4,7 +4,7 @@ category: motion-system
 tags: [camera,transform,overlay,cursor,correctness]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []

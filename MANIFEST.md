@@ -1,6 +1,6 @@
 # Manifest
 
-994 primitives. Format: `category/id | axes cost | tags | gist`
+997 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -61,6 +61,7 @@ canvas/irrational-stride-variation | neutral  $1 | canvas generative field deter
 canvas/lattice-quantised-mark-draw | E2 D3 W2 F4 $2 | canvas particles grid lattice generative texture | A particle field drawn at its simulated position floats over the
 canvas/lifetime-enveloped-mark-respawn | E2 D3 W1 F5 $1 | canvas field particles motion generative recycling | A fixed pool of marks recycled on exhaustion makes birth and dea
 canvas/liveness-floor-reseed | neutral  $2 | canvas generative simulation ambient lifecycle correctness | Most interesting generative rules are also mortal. A lattice, a 
+canvas/morphing-rim-pointer-falloff | E3 D3 W2 F4 $2 | shader pointer falloff field organic hover | A pointer reveal with a circular falloff announces its own maths
 canvas/named-uv-spaces | neutral  $3 | shader architecture responsive correctness reference | One vertex shader can emit several named coordinate spaces so ea
 canvas/normal-carried-point-shading | E2 D3 W2 F5 $3 | canvas points lighting shading depth ambient 3d | A dot cloud sampled from a surface reads as a solid only if each
 canvas/normalised-index-profile-windows | E1 D2 W2 F5 $1 | generative field envelope responsive precision authoring | Organic variation gives a generated run texture but no large-sca
@@ -580,6 +581,7 @@ motion-system/pivot-segmented-route | E3 D2 W2 F5 $2 | motion path diagram keyfr
 motion-system/pivot-signed-explode | E2 D3 W2 F5 $2 | explode assembly stack progress figure scrub | A stack opening to show what it is made of must separate about s
 motion-system/placement-keyed-overlay-entrance | E2 D2 W2 F5 $1 | motion popover tooltip menu overlay entrance exit placement | A floating panel should arrive travelling away from its trigger.
 motion-system/print-frozen-frame-branch | neutral  $1 | print correctness motion fallback accessibility | Anything a reader will print or save as PDF — a report, an invoi
+motion-system/progress-differentiated-motion-blur | E4 D2 W3 F4 $2 | motion blur camera velocity filter transition | A fast camera push between two framings strobes: every frame is 
 motion-system/ramped-travel-shared-fade | E3 D2 W3 F5 $2 | stagger entrance scroll scrub arrival progress | A scrubbed stagger reads as a queue when each part fades separat
 motion-system/reduce-retained-paint-channel | neutral  $1 | motion reduced-motion accessibility hover feedback correctness | A hover or proximity response is several channels at once — a li
 motion-system/reduce-settled-sequence-state | neutral  $2 | motion accessibility reduced-motion state sequence correctness | A panel that builds itself over time — steps landing one at a ti
@@ -971,6 +973,7 @@ type/render-scale-countered-label | E1 D2 W1 F5 $1 | type svg diagram label resp
 type/resolution-stepped-type-scale | neutral  $1 | type tokens scale accessibility legibility correctness | A size that reads cleanly on a 2x panel is muddy on a 1x one: th
 type/role-leading-ladder | E1 D2 W3 F5 $1 | type tokens scale rhythm precision | Leading is a function of role, not of size, and the ladder is st
 type/rule-ranked-aside-tier | E1 D2 W2 F5 $1 | type hierarchy register annotation cheap | A page that argues carries asides at several ranks, and sizing t
+type/scene-occluded-wordmark | E2 D2 W4 F5 $3 | type canvas mask composite depth wordmark occlusion | A word meant to stand behind a rendered scene cannot sit under i
 type/self-resolving-text-sweep | E3 D2 W3 F4 $1 | type gradient entrance currentcolor reveal | A one-shot sweep through background-clip: text normally needs cl
 type/serif-accent-in-technical-context | E1 D2 W3 F5 $1 | type contrast editorial restraint | One high-contrast serif, used sparingly against a geometric sans
 type/shadow-bled-inline-highlight | E2 D2 W3 F4 $1 | type highlight inline hover custom-property transition | A highlight that stops at the first and last glyph reads as a cl

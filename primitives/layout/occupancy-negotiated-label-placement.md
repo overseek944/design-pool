@@ -4,7 +4,7 @@ category: layout
 tags: [layout,label,annotation,collision,diagram,correctness]
 axes: none
 cost: 4
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

@@ -4,7 +4,7 @@ category: motion-system
 tags: [transform,transition,architecture,composition,state]
 axes: none
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
