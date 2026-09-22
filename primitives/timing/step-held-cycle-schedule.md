@@ -4,7 +4,7 @@ category: timing
 tags: [motion,keyframes,loop,sequence,cycle]
 axes: {energy: 2, density: 2, weight: 2, finish: 3}
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -59,3 +59,6 @@ stutter bug.
 ```
 ⚠ Animating `left` is a layout property — the hops are cheap only because there
 are eight of them per cycle, and on anything larger than a mark use `translate`.
+Over a longer travel, hold the *rate* rather than the step count: 30–50 steps
+across a 4–6s crossing is the same 8–10 hops a second, still reads as sampled,
+and lets the marker dwell at each end on paired stops (`0%,7%` / `93%,to`).

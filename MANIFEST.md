@@ -1,6 +1,6 @@
 # Manifest
 
-939 primitives. Format: `category/id | axes cost | tags | gist`
+940 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -390,6 +390,7 @@ layout/viewport-unit-role-split | neutral  $1 | layout viewport mobile responsiv
 layout/weighted-free-space-rows | neutral  $1 | layout grid responsive rhythm measurement | A block sized to the viewport has leftover height; fixed gaps po
 layout/width-budgeted-inline-remainder | neutral  $2 | layout responsive overflow navigation measurement observer correctness | A row of peers that must hold one line — filter chips, tool tabs
 layout/width-resolved-ratio-overlap | E1 D3 W2 F5 $1 | layout overlap aspect-ratio responsive composition | A panel pulled up over a fixed-ratio media block loses its propo
+layout/writing-mode-flipped-edge-rail | E1 D2 W3 F3 $1 | layout chrome writing-mode responsive rail fixed logical-properties | One fixed chrome strip can run down the left edge on desktop and
 light/blend-doubled-headline | E2 D2 W4 F5 $3 | type blend legibility contrast compositing | Set the headline twice in one grid cell: an opaque copy under th
 light/broadcast-light-source | E2 D2 W2 F5 $3 | light gradient custom-property ambient architecture | A panel lit at the pointer has one lamp, and only while a pointe
 light/counter-rotated-specular-layer | E2 D2 W3 F5 $2 | light gradient rotation material 3d | An object with its highlight painted into its own background spi
