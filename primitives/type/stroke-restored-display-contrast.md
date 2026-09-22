@@ -52,3 +52,17 @@ fill` so the outline sits under the fill rather than eating into the contour.
 ⚠ `-webkit-text-stroke` resolves `em` against the element's own font-size, so an
 inline `<em>` set at a different size inside the line gets a different weight —
 set the stroke on the sized element, not on a wrapper.
+
+The other answer is to stop rescuing the accent and move it off the load-bearing
+glyphs entirely. A display line's closing full stop carries no meaning — a reader
+who cannot resolve it has lost nothing — which makes it the one mark a
+high-chroma accent can take with no contrast argument to win. Set every
+headline's terminal period in the brand hue and the page gets a recurring
+chromatic gesture for one character, while the type itself stays at full ink. It
+reads as a system only when it is on every display line; on some it is a typo.
+```css
+h1 .stop, h2 .stop { color: var(--accent) }
+```
+⚠ Mark the real character in the markup rather than generating one — a
+`content: "."` lands after a headline that already ends in a question mark, and
+several screen readers announce generated content as part of the heading.

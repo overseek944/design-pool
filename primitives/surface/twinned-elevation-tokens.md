@@ -117,3 +117,16 @@ Ship the whole list per theme rather than swapping one colour inside it. Cast
 ⚠ Both branches still owe the same layer count — a theme that drops the rim
 layer entirely hard-swaps at the midpoint of any transition between them, which
 is the flicker this entry opens by avoiding.
+
+A panel straddling a section seam — head on one band, foot on the next — is lit
+from no direction, and a downward-only list gives it a floor it does not have.
+Add an inverted *first* layer: same colour, offset negated at roughly a third of
+the downward one, alpha 50–70% of it. The panel then reads as suspended between
+the two grounds rather than resting on the lower one, and the token still twins
+because the layer count never moved. Up −6 to −12px, down 20–36px.
+```css
+--float: 0 -8px 40px -20px #0f111424, 0 28px 60px -28px #0f111438;
+```
+⚠ Both layers want negative spread near their own blur radius. Without it the
+upward layer paints a halo along the top edge that reads as a light leak rather
+than a lift — the tell is a panel that looks backlit on a white ground.

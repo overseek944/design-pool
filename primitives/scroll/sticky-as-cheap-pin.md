@@ -45,3 +45,14 @@ track, is what sets the dwell.
 ⚠ A transparent ground shows every earlier row through the current one. The
 stack is also invisible to anyone not scrolling — give the rows a document order
 that still reads as a list with the stickiness released.
+
+The fanned deck's step buys nothing unless the sliver it exposes is
+distinguishable. Cards sharing one ground on one paper leave a band of that same
+colour above each pinned head, and the fan reads as a stack somebody failed to
+align rather than as depth. Give each card its own ground — a step of tint, or
+the next card's cast falling onto it — and the accumulated slivers state how far
+through the sequence the reader is, which the offset alone never says. The step
+then only has to clear the sliver: 16–24px, not the 24–32px a scaled deck needs.
+⚠ The slivers are colour with no text. Whatever they count — step number, stage
+— has to exist as a real heading inside each card, or the section's only
+progress indicator is a band that nothing announces and no one can focus.

@@ -1,6 +1,6 @@
 # Manifest
 
-807 primitives. Format: `category/id | axes cost | tags | gist`
+809 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -700,6 +700,7 @@ surface/region-bound-hatch-pattern | E1 D3 W1 F5 $1 | svg pattern texture hatch 
 surface/restated-route-overlay | E2 D3 W2 F5 $2 | svg diagram path emphasis stroke gradient | Marking one route through a branching diagram by restyling the s
 surface/rim-banded-geometry-lens | E1 D3 W3 F5 $4 | glass backdrop-filter svg-filter refraction sdf canvas edge | Glass thick enough to refract bends light at its edge, not acros
 surface/rotating-conic-border | E4 D3 W3 F4 $3 | surface border motion svg | An animated gradient border without a pseudo-element hack: an SV
+surface/row-borne-quantity-fill | E1 D3 W2 F5 $1 | surface data list density ground accessibility | A ranked list and its bar chart need not be two columns. Make th
 surface/scanline-register-overlay | E1 D3 W2 F2 $1 | overlay scanline texture video register decoration | Footage from mismatched sources — an archive still, a head camer
 surface/scrim-terminated-ground | E1 D2 W2 F5 $1 | gradient ground surface section seam cheap | A decorative ground that stops at its section's edge leaves a ho
 surface/shadow-borne-card-edge | E1 D2 W2 F5 $1 | surface shadow border elevation tokens detail | A white card on an off-white ground has no border that works: at
@@ -791,6 +792,7 @@ type/role-leading-ladder | E1 D2 W3 F5 $1 | type tokens scale rhythm precision |
 type/rule-ranked-aside-tier | E1 D2 W2 F5 $1 | type hierarchy register annotation cheap | A page that argues carries asides at several ranks, and sizing t
 type/serif-accent-in-technical-context | E1 D2 W3 F5 $1 | type contrast editorial restraint | One high-contrast serif, used sparingly against a geometric sans
 type/sourced-display-figure | neutral  $1 | type figures provenance correctness editorial accessibility | A number set at display size stops being prose and becomes a cla
+type/split-step-size-ramp | neutral  $1 | type scale tokens density hierarchy | One step function cannot serve a type scale's whole range. A rat
 type/state-dimmed-subordinate-tier | E1 D2 W2 F5 $1 | type hierarchy state accessibility contrast | Where several panels of a stepper are on screen at once and one 
 type/stroke-restored-display-contrast | E1 D2 W4 F4 $1 | type display contrast accent accessibility ornament | A display glyph filled with a high-chroma accent fails against i
 type/stroked-inline-stadium-mark | E1 D2 W2 F5 $1 | type emphasis border hairline detail radius | Emphasis by outline rather than by fill: a hairline capsule draw
