@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,reveal,ux]
 axes: none
 cost: 1
-seen: 21
+seen: 22
 requires: []
 conflicts: []
 completes: []
@@ -56,3 +56,19 @@ step.classList.toggle('is-reached', top + 32 <= readingLine)     // live
 ```
 ⚠ The latched class must also be applied outright under reduced motion, or a
 reader with the preference set gets a page of permanently hidden artwork.
+
+A latch swept from rects rather than from an observer is the right choice in a
+client-routed document — routes come and go behind `[hidden]`, and a sweep can
+be re-run at exactly those moments — but it inherits a trap the observer does
+not have. A hidden subtree measures 0×0 at the origin, and `top: 0` passes
+`top < innerHeight` for every element on every route that is not on screen: the
+whole site latches on first paint, count-ups play to nobody, and each route
+arrives already settled. Test the size before the position.
+```js
+const r = el.getBoundingClientRect()
+if (!r.width && !r.height) return false          // on a hidden route
+return r.top < innerHeight - 40
+```
+⚠ Re-sweep when a route is unhidden — a `MutationObserver` on the shell's
+`hidden` attribute — or content revealed after the last scroll event never
+latches at all.

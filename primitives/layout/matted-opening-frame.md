@@ -4,7 +4,7 @@ category: layout
 tags: [frame,viewport,hero,media,radius,safe-area]
 axes: {energy: 1, density: 1, weight: 2, finish: 5}
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -53,3 +53,15 @@ headline plus a short deck; the pair is content's, not the device's.
 ⚠ Once `min-height` wins, the frame is taller than the viewport and the bottom
 gutter is below the fold — either accept it as a scroll cue or drop the mat
 entirely under that height, never let it half-show.
+
+One document serving more than one ground makes the root's colour conditional.
+An app shell on tinted paper and a marketing shell on white are the same
+`html`, so a fixed root colour shows the wrong one in the rubber-band gutter of
+whichever route did not pick it. Derive it from whichever shell is currently
+unhidden, and move `scrollbar-color` with it — the track is painted from the
+root too, and a pale thumb on white is the tell.
+```css
+html:has(.marketing:not([hidden])) { background: #fff; scrollbar-color: #cfe0e0 #fff }
+```
+⚠ `:has()` on the root re-evaluates on every attribute flip in the document —
+key it off one shell-level attribute, never off a state deep in the tree.

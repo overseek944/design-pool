@@ -211,3 +211,18 @@ reports.
 ⚠ Two copies is two readings: mark the clipped one `aria-hidden` and
 `pointer-events: none`. They must share every metric — one inherited
 `font-size` or `letter-spacing` apart and the fill slips off the letterforms.
+
+Inside running text the failure is worse than a mistimed gradient. Applied to
+an *inline* element — an `<em>` inside a headline rather than a block — WebKit
+does not paint the clipped background on inline fragments at all, so the phrase
+goes to transparent fill and renders nothing the moment it wraps across a line.
+It survives every desktop check and disappears at the widths where the headline
+breaks. A phrase inside a line of type is not the place for this: shift its
+colour and its style instead, and keep the clip for a block that owns its own
+box.
+```css
+.title em { font-style: italic; color: var(--accent) }   /* not a clipped fill */
+```
+⚠ A gradient worth losing the words to does not exist. Where the clip must stay,
+the duplicate-pseudo construction above is the only form that degrades to
+legible text.

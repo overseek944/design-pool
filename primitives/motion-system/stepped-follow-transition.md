@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,pointer,transition,steps,character]
 axes: {energy: 3, density: 1, weight: 2, finish: 3}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -39,3 +39,20 @@ them.
 ```
 ⚠ A stepped colour crosses intermediate values that were never designed — check
 the ones that land on text for contrast, not just the two endpoints.
+
+A constant gain means the follower is never at rest: it sits displaced by
+whatever fraction of the pointer offset it was given, wherever the pointer is.
+Gate it on a radius instead and ramp the gain linearly to zero at the edge, so
+the element holds its true pose until the pointer is genuinely near and leans
+in over the last 100–160px. Beyond the radius clear the inline transform rather
+than writing zero — the element's own transition carries it home, so the return
+costs no loop and needs no leave handler.
+```js
+const d = Math.hypot(dx, dy)
+if (d < R) b.style.transform = `translate(${dx * k}px, ${dy * k}px)`  /* k = (1 - d/R) * .18–.26 */
+else if (b.style.transform) b.style.transform = ''
+```
+⚠ One document-level `pointermove` over the whole set, not a listener each.
+Two of these within a radius of one another both lean at the pointer between
+them and the pair reads as broken rather than as attentive — reserve it for the
+one control that matters on the screen.

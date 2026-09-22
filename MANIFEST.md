@@ -1,6 +1,6 @@
 # Manifest
 
-856 primitives. Format: `category/id | axes cost | tags | gist`
+859 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -253,12 +253,14 @@ interaction/viewport-clamped-anchored-popover | neutral  $1 | correctness respon
 interaction/visibility-probed-app-escape | neutral  $2 | interaction navigation link mobile correctness fallback | A control that hands off to a native app has no success callback
 interaction/withdrawn-motion-pause-control | neutral  $1 | accessibility motion control state chrome cheap | Perpetual decorative motion owes the reader a stop, and an OS pr
 interaction/withheld-value-reveal | E2 D2 W3 F4 $1 | interaction disclosure redaction accessibility state | Withholding a figure claims more than printing it, but only if t
+interaction/zone-derived-regional-ordering | neutral  $1 | interaction i18n privacy ordering progressive-enhancement correctness | A list whose useful entries differ by country can be ordered for
 layout/argued-column-as-surface | E1 D3 W4 F5 $1 | layout table comparison surface contrast hierarchy | In a comparison matrix the column you are arguing for should be 
 layout/balanced-side-track-centring | neutral  $1 | layout grid alignment chrome correctness | space-between centres nothing: the middle child lands wherever t
 layout/border-clamped-annotation-leader | E1 D3 W1 F5 $2 | layout annotation connector svg diagram | A leader line drawn from a label's centre to its subject crosses
 layout/boxless-wrapper | neutral  $1 | layout grid architecture correctness accessibility | display: contents removes an element's box while keeping its chi
 layout/breakout-grid-named-lines | neutral  $2 | layout grid tokens architecture full-bleed | One grid on the page wrapper with named lines for the bleed gutt
 layout/breakpoint-released-overlay-copy | neutral  $1 | layout responsive breakpoint overlay media mobile | Copy absolutely positioned over a media panel has nowhere to go 
+layout/calendar-anchored-projection-axis | E1 D2 W1 F5 $1 | chart axis label time correctness data | A projection is plotted in elapsed units from now, so evenly spa
 layout/cardinal-cell-cycle-grid | E1 D3 W2 F5 $2 | layout grid diagram cycle radial responsive | A closed four-stage cycle drawn around a hub usually costs trigo
 layout/class-scoped-responsive-hide | neutral  $1 | layout responsive breakpoint correctness accessibility error | A breakpoint that hides the secondary copy hides whatever else a
 layout/clipped-source-derived-pair | E1 D3 W1 F5 $1 | layout provenance evidence truncation panel mock hierarchy | A system that derives structure from unstructured input proves i
@@ -433,6 +435,7 @@ media/seek-throttled-video-scrub | E3 D2 W3 F5 $4 | media video scroll scrub tim
 media/self-masked-cutout-overlay | E1 D2 W3 F4 $2 | media mask color effect detail | A cut-out subject on transparency cannot be graded from CSS — an
 media/sheared-ghost-silhouette | E1 D3 W2 F5 $2 | depth line-art silhouette projection stroke | Flat line work reads as volume if the outline is drawn twice. Ke
 media/single-source-focal-crop | neutral  $1 | media responsive performance detail | One photograph can hold a headline at every width without a seco
+media/size-floored-derivative-fallback | neutral  $1 | media image error resilience correctness cdn | Ask a media host for its largest derivative and many assets will
 media/source-derived-letterbox-fill | E1 D2 W2 F4 $1 | media video responsive aspect backdrop blur | A fixed-ratio slot fed media of another ratio either crops it (c
 media/sparse-sequence-nearest-frame | E3 D2 W3 F5 $4 | scrub scroll images loading canvas progressive perf | A scroll-scrubbed image sequence does not need every frame to ex
 media/srcset-blocked-source-swap | neutral  $1 | media images responsive correctness state | Assigning img.src from script does nothing while the element sti

@@ -4,7 +4,7 @@ category: perf
 tags: [perf,progressive-enhancement,correctness,content,architecture]
 axes: none
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -59,3 +59,17 @@ the copy out of the accessibility tree.
 deliberately *in* the tree. Keep the mirror's wording identical to the visible
 copy rather than a paraphrase: in-page find still matches clipped text in some
 engines, and a reader jumped to an invisible match has nothing to look at.
+
+Where the enhancement is a *control over content the page already renders* —
+a search box over a list, a filter over a strip of names — there is nothing to
+mirror and nothing to drift. Read the seed out of the visible nodes on setup,
+build the control from that, and replace the data with the authoritative fetch
+when it lands. Without script the content is simply there; with it, the control
+works before the request resolves and still works if it fails.
+```js
+let items = [...track.querySelectorAll('[data-item]')].map(el => el.textContent.trim())
+fetch('/api/items').then(r => r.json()).then(live => { items = live; render() })
+```
+⚠ The markup is now load-bearing and no longer purely decorative — a change to
+the visible list changes the control's fallback, so keep the parse tolerant of
+separators and whitespace the design may add later.

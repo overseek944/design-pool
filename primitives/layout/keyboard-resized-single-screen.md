@@ -4,7 +4,7 @@ category: layout
 tags: [layout,mobile,keyboard,viewport,responsive,correctness]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []

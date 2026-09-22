@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,pointer,transform,motion,restraint,custom-property]
 axes: {energy: 2, density: 1, weight: 3, finish: 5}
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -74,3 +74,17 @@ unscaled across every layer, or the stack shears instead of turning.
 ```
 ⚠ Depth needs the parallax and the scale ordering to agree. A back layer drawn
 larger than the front one inverts the read no matter what the multipliers do.
+
+Which surfaces get it is a content decision, not a stylistic one. A tilt plus a
+shadow lift is the vocabulary of a button, so a display-only card wearing it
+collects clicks that do nothing — the reader presses, gets no answer, and
+presses harder. Put it only on frames that already answer a click, and where a
+card is decorated this way make the whole frame activate its own primary
+control so the press the decoration promised lands somewhere.
+```js
+card.addEventListener('click', e => {
+  if (e.target.closest('a, button, input')) return   // controls keep their own
+  card.querySelector('[data-primary]')?.click() })
+```
+⚠ A click handler on a `<div>` is not an affordance — the card still needs a
+real control inside it for the keyboard, and this only forwards the pointer.

@@ -4,7 +4,7 @@ category: media
 tags: [media,embed,iframe,video,performance,privacy,accessibility,loading]
 axes: none
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: [focus-handoff-on-self-removal]
