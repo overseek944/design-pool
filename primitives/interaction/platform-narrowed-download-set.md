@@ -4,7 +4,7 @@ category: interaction
 tags: [progressive-enhancement,navigation,correctness,accessibility,architecture]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,17 @@ for (const a of links) if (a.dataset.target !== pick) {
 ```
 ⚠ Hiding must carry `inert`, or the rejected builds stay in the tab order
 behind a visually single button.
+
+Narrow on *input capability* before platform, or a tablet is handed a desktop
+disk image: iPadOS reports a laptop platform string and is indistinguishable
+from one by name alone, and Android reports the same token as a Linux
+workstation. A handheld's honest answer is not a smaller build, it is a
+different call to action — route it to the walkthrough and say where the
+download lives, rather than offering a 180MB artifact the device cannot run.
+```js
+const handheld = matchMedia('(hover: none) and (pointer: coarse)').matches
+  || (navigator.maxTouchPoints > 1 && /mac/i.test(platformString()))
+```
+⚠ The touch-points clause is what catches a tablet claiming to be a desktop;
+without it the media query alone still misses a stylus-first device. Keep the
+full list reachable — someone on a phone is often fetching for another machine.

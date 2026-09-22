@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,idle,signal,realtime,feedback,reduced-motion]
 axes: {energy: 2, density: 1, weight: 2, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,18 @@ render(Math.min(1, level + idle))
 ⚠ Keep the amplitude below the smallest meaningful reading or the idle is read
 as signal. Drop it under `prefers-reduced-motion` and state "no input" in text
 there instead.
+
+The same floor applies to a *held* frame, where the input is a script rather
+than a sensor. A scripted sequence pausing on the thing it just did goes
+perfectly static, and a static frame in a piece that has been moving reads as
+crashed, not as composed. Keep two cheap residuals alive through every hold: a
+blinking caret or ticking clock inside the frame, and a slow linear drift of
+the frame itself — 10–20px over 3–4s, `linear` so it never announces a start
+or an end.
+```css
+.stage.hold { animation: drift 3.4s linear both }
+@keyframes drift { to { translate: -14px -7px } }
+```
+⚠ Drift is a real transform on a large subtree — put it on the holding
+wrapper, not on each child, and drop both residuals under reduced motion,
+where a genuinely still frame is the correct state.

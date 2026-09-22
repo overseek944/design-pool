@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,subgrid,cards,hairline,datasheet,alignment]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 2
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -80,3 +80,19 @@ total.
 ⚠ One `1fr` in the parent's row list hands all the slack to that band and the
 others sit hard against each other; with every band `auto`, the card's own end
 padding is the only thing keeping the last row off the edge.
+
+Where only the *last* band must line up — a resolution line under copy of
+varying length — the fallback is cheaper than a reserved height: make the card
+a column flex box and give that band `margin-top: auto`. It bottom-aligns
+exactly, starves nothing, and needs no number to retune. The catch is that it
+is only ever a fix for the multi-column case; once the row stacks, every card
+is its own column and `auto` pushes the line to the bottom of a box that no
+longer has a sibling to match. Scope both branches to the same min-width the
+grid uses.
+```css
+@supports not (grid-template-rows: subgrid) {
+  @media (width > 47.5rem) { .card { display: flex; flex-direction: column }
+                             .card .last { margin-top: auto } } }
+```
+⚠ Two branches now share one breakpoint — publish it as a token, or a change to
+the stacking width silently leaves one of them aligning against nothing.

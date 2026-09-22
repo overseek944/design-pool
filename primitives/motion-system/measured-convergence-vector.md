@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,measurement,responsive,choreography,diagram]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 3
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: [reduced-motion-branch, dead-banded-resize-rebuild]
@@ -74,3 +74,18 @@ el.animate([{ transform: `${P} translate3d(${dx}px,${dy}px,120px) scale(.2)`, op
 inline. `perspective()` inside `transform` is per-element, so participants at
 different screen positions get different vanishing points — fine for an
 arrival, wrong for a group that must share one.
+
+Zeroing a transform to measure it is not enough when the element carries a
+`transition` on that same property: the rect read forces a style flush with the
+neutral value applied, so restoring it animates the element back from origin —
+a visible slide every time the layout is measured. Kill the transition for the
+whole block, restore the transform, force one reflow so the restored value
+commits as the new resting state, and only then hand the transition back.
+```js
+const t = el.style.transition, p = el.style.transform
+el.style.transition = 'none'; el.style.transform = 'none'
+const r = el.getBoundingClientRect()                 /* flushes with none applied */
+el.style.transform = p; void el.offsetWidth; el.style.transition = t
+```
+⚠ The reflow must sit between the restore and the re-enable, not after it —
+either side and the transition sees the change and runs it.

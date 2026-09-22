@@ -4,7 +4,7 @@ category: perf
 tags: [architecture,instrumentation,events,delegation,maintenance]
 axes: none
 cost: 1
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -27,3 +27,18 @@ addEventListener('click', e => {
 ⚠ Send session-end metrics on `pagehide` with `sendBeacon`, never `unload` —
 `unload` disqualifies the page from the back/forward cache and is skipped
 outright on mobile.
+
+A `data-*` declaration is baked at render and lies the moment a script rewrites
+what the element does — a call-to-action authored as an in-page jump and
+upgraded to a real download URL on load reports every download as a scroll.
+Where the destination is runtime-assembled, classify on the `href` *at click
+time* instead: match the live URL against the shapes that mean each outcome,
+and keep the near-miss ones apart rather than folding them in, or the headline
+number quietly counts the wrong thing.
+```js
+const u = a.getAttribute('href') || ''
+send(/\/download\/[^/]+\/.+\.(dmg|zip|tar\.gz)$/.test(u) ? 'download'
+   : u.startsWith('#') ? 'jump' : 'outbound', { version: u.match(/\/v[\d.]+\//)?.[0] })
+```
+⚠ Every one of these links navigates away, so pin `sendBeacon` — an XHR fired
+on click races the unload and loses, and it fails as a low number, not an error.

@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,transform,scale,focus,diagram,narrative]
 axes: {energy: 3, density: 2, weight: 3, finish: 5}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []

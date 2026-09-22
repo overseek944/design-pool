@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,edge,composition,bleed]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 67
+seen: 68
 requires: []
 conflicts: []
 completes: []
@@ -251,3 +251,16 @@ exception is a separate, separately-tunable layer. Gutter stops 15–25% and
 ```
 ⚠ Union only ever adds coverage, so a blob straying over the column puts texture
 straight back under the text the gutter mask was protecting.
+
+A feathered frame has a safe area smaller than its box, and content placed by
+the box lands in the fade: the one element the frame exists to show comes out
+half dissolved while the furniture around it stays solid. Treat the largest
+feather inset as padding when fitting or positioning anything inside — pad
+wider than it, not equal to it, so the subject sits in the plateau and only
+chrome pays for the dissolve. Feather 8–14% a side means 1.2–1.5× that in pad.
+```js
+const PAD = { x: feather.x * 1.3, y: feather.y * 1.3 }   /* not feather itself */
+z = Math.min(frameW / (w + PAD.x * 2), frameH / (h + PAD.y * 2))
+```
+⚠ Percentage feathers are of the mask box, so the inset in pixels changes with
+every resize — recompute the pad from the live box, never from a constant.

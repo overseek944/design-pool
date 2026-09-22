@@ -1,6 +1,6 @@
 # Manifest
 
-862 primitives. Format: `category/id | axes cost | tags | gist`
+865 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -320,6 +320,7 @@ layout/rail-preserved-track-collapse | E1 D3 W2 F5 $1 | layout grid responsive r
 layout/ranked-apparatus-column | E1 D3 W1 F5 $1 | layout grid metadata responsive editorial hierarchy | Section apparatus — an ordinal, a two-word gloss, a mark — belon
 layout/ratio-anchored-scene-geometry | neutral  $2 | layout architecture responsive tokens geometry css-only | A layered illustration sized in pixels at one breakpoint and re-
 layout/ratio-released-viewport-lock | neutral  $1 | layout responsive viewport aspect-ratio chrome mobile correctness | A page locked to one screen — 100svh, root overflow: hidden, chr
+layout/reading-edge-anchored-overfit | neutral  $2 | layout fit scale crop legibility correctness | When a fit is clamped — a minimum legible scale, a ceiling of 1 
 layout/remainder-centred-grid-tail | E1 D2 W2 F4 $1 | layout grid alignment cards composition breakpoint | A set whose count is not a multiple of the track count ends on a
 layout/reserved-gutter-pinned-action | neutral  $1 | layout overflow correctness affordance scrim accessibility | An action pinned over a horizontally scrolling strip — a copy bu
 layout/reserved-slot-detached-bleed | neutral  $1 | layout bleed cls decorative responsive | The rectangle a decorative field occupies and the rectangle it p
@@ -527,6 +528,7 @@ motion-system/sequenced-root-view-transition | E2 D1 W2 F5 $2 | motion navigatio
 motion-system/settling-strike-envelope | E4 D2 W3 F3 $2 | flicker envelope keyframe-table shader portable data | Something powering on does not fade — it strikes, drops out, cat
 motion-system/slope-coupled-bob | E2 D1 W2 F4 $1 | motion keyframes loop wave rotation | An object rising and falling on a keyframed loop reads as a box 
 motion-system/slot-permutation-rotation | E2 D3 W2 F5 $3 | motion grid state responsive | To show more items than a grid has cells, swap one cell at a tim
+motion-system/split-curve-axis-bow | E3 D1 W2 F5 $2 | motion-system easing transform arc waapi demo | A mark travelling between two points on one transform moves in a
 motion-system/split-track-puppet-pointer | E2 D2 W2 F5 $2 | demo cursor choreography spring loop | A synthetic pointer demonstrating an interface is two motions, n
 motion-system/state-keyed-descendant-transition | neutral  $1 | motion reveal transition correctness reduced-motion architecture | One observer entry can drive more than one animation. Let the se
 motion-system/state-scoped-entry-animation | neutral  $1 | tabs entrance state css-only replay | A tabset that ships every panel has no handle on its entrance: r
@@ -635,6 +637,7 @@ scroll/beat-split-progress-channels | E3 D3 W2 F5 $2 | scroll scrub choreography
 scroll/collapsed-observer-band | neutral  $1 | scroll observer navigation architecture correctness | Squeeze an observer's root to a single horizontal line and "whic
 scroll/crop-panned-backdrop-scrub | E2 D1 W3 F4 $2 | scroll parallax media scrub surface performance | Scrub a backdrop's background-position instead of translating it
 scroll/css-owned-pin-geometry | neutral  $2 | scroll pin architecture correctness responsive | Let the stylesheet decide whether a section pins and for how lon
+scroll/direction-settled-pin-crossing | neutral  $2 | scroll pin scrub snap settle correctness | A pinned section crossing between two states has two legible res
 scroll/docked-travelling-mark | E3 D1 W2 F5 $3 | scroll anchor continuity measurement architecture | One mark crossing the whole page ties unrelated sections into a 
 scroll/dual-driven-progress-property | neutral  $2 | scroll progress custom-property progressive-enhancement architecture | Register one <number> property, let it be the only thing scroll 
 scroll/edge-chained-frame-scroll | neutral  $2 | scroll iframe embed correctness interaction | A same-origin embed that scrolls internally traps the gesture at
