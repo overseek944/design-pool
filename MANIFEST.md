@@ -1,6 +1,6 @@
 # Manifest
 
-1024 primitives. Format: `category/id | axes cost | tags | gist`
+1027 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -54,6 +54,7 @@ canvas/hard-pixel-render-target | E2 D2 W3 F2 $3 | canvas pixel raster resolutio
 canvas/harmonic-feedback-uv-warp | E2 D3 W2 F5 $2 | shader generative texture field webgl noise | Adding one displacement to a coordinate bends a field; feeding t
 canvas/hash-dither-before-quantise | E1 D3 W2 F4 $2 | canvas color ramp noise grain banding generative | Snapping a continuous value onto a short palette — eight to twel
 canvas/hash-tuned-effect-constants | neutral  $1 | canvas generative authoring debug parameters | Every generative effect carries a dozen constants — curl, dissip
+canvas/hemisphere-lit-point-sprite | E1 D3 W2 F4 $2 | shader webgl points lighting sprite | Thousands of flat disc sprites read as confetti. Treat each poin
 canvas/hex-partitioned-cube-field | E2 D3 W1 F5 $2 | canvas lattice isometric generative ambient texture | An isometric cube needs no projection matrix: a regular hexagon'
 canvas/highlight-weighted-bokeh | E1 D2 W3 F5 $3 | canvas shader webgl blur light texture | A box or gaussian blur averages a bright point away. Weight ever
 canvas/home-sprung-particle-medium | E2 D3 W2 F5 $3 | canvas field pointer motion generative | A field of marks positioned from the pointer each frame travels 
@@ -122,6 +123,7 @@ canvas/uv-reconstructed-sphere-normal | E2 D1 W3 F5 $2 | shader canvas light geo
 canvas/velocity-paired-field-step | E3 D2 W2 F5 $3 | canvas simulation shader texture solver generative | A field stepped by diffusion spreads and dies. One that should t
 canvas/vertexid-derived-screen-triangle | neutral  $1 | canvas webgl shader pass geometry performance correctness | Every post-processing pass needs geometry covering the screen, a
 canvas/video-textured-mark-field | E2 D3 W2 F5 $3 | canvas video particles texture motion performance | A field of marks needs content as well as motion, and inventing 
+canvas/viewport-offset-subject-framing | E2 D2 W3 F4 $1 | webgl camera composition layout viewport | A full-bleed 3D scene behind a text column puts its subject unde
 canvas/warm-started-relaxation | neutral  $1 | canvas simulation performance shader solver | An iterative solve re-run every frame — a pressure projection, a
 canvas/wedge-cloned-symmetric-field | E1 D4 W1 F5 $2 | canvas generative symmetry field particles cheap | A ring of marks placed from one pass of random draws clumps unev
 canvas/weight-exponent-colour-field | E2 D2 W3 F5 $3 | shader canvas field generative color ambient webgl | A mesh gradient in a fragment shader needs no stops or geometry.
@@ -390,6 +392,7 @@ layout/root-attribute-composition-variant | neutral  $1 | layout variant experim
 layout/rule-stated-series-elision | E1 D3 W2 F5 $1 | layout truncation series evidence data accessibility | A long regular series — a payment run, a recurring charge — teac
 layout/ruled-definition-rows | E1 D3 W2 F5 $1 | layout type metadata responsive hairline | Metadata reads as a datasheet when it is a list of label-to-valu
 layout/safe-area-floor-gutter | neutral  $1 | layout tokens safe-area responsive correctness | A gutter written as a plain value gets eaten by notches, rounded
+layout/safe-centred-overflow-column | neutral  $1 | flexbox overflow centring correctness mobile | A vertically centred flex column that grows taller than its box 
 layout/scripted-depth-projected-dom | E3 D3 W2 F5 $4 | 3d projection depth transform dom | preserve-3d puts real DOM in depth but rotates the glyphs with i
 layout/scroll-contracted-bar | E2 D2 W2 F5 $2 | header scroll sticky chrome | A header can start edge-to-edge and contract into an inset float
 layout/scroll-lock-via-has | neutral  $1 | overlay correctness overflow dialog cls | Lock the page behind an overlay from CSS alone by keying off the

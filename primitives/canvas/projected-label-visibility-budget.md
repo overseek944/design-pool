@@ -4,7 +4,7 @@ category: canvas
 tags: [webgl,label,projection,density,correctness]
 axes: none
 cost: 3
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -55,3 +55,14 @@ el.style.width = el.style.height = Math.min(MAX, Math.max(MIN, px * 1.7)) + 'px'
 ```
 ⚠ `fov` is vertical, so the height is the right term — pairing it with width
 makes every box wrong by the aspect ratio, and correctly so only at 1:1.
+
+Where the overlay draws a ring around a region of world space, size it by
+projecting two points rather than by formula: the centre, and the centre plus
+the camera's right vector times the world radius. The pixel distance between
+them is the screen radius under any projection — including an offset viewport
+or a moving FOV — with no trigonometry to keep in sync. Ring 1.5–2.5× the
+cluster's radius; fade it on the same factor as the copy that names it.
+```js
+const r = [view[0], view[4], view[8]]               // camera right, column-major
+const px = dist(proj(c), proj(add(c, scale(r, R))))
+```

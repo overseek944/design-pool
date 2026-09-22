@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,particles,morph,generative,shape]
 axes: {energy: 3, density: 4, weight: 2, finish: 4}
 cost: 3
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -36,3 +36,12 @@ p += (target - p) * Math.min(1, dt * RATE)      // RATE ≈ 7 per second
 ```
 ⚠ Clamp `dt` itself to ~50ms as well, or the first frame after a backgrounded
 tab wakes snaps every value onto its target at once.
+
+On the GPU the targets are attributes, not a refilled array: store two or
+three layouts per point in separate attributes and blend them in the vertex
+shader by uniform weights, so a form change is one scalar per frame and no
+buffer upload. Nest the mixes rather than summing weights, and ease each
+weight before it reaches the shader.
+```glsl
+vec3 p = mix(mix(aPosA, aPosB, uMixB), aPosC, uMixC);
+```
