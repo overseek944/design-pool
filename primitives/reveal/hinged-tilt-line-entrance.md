@@ -4,7 +4,7 @@ category: reveal
 tags: [reveal,entrance,3d,type,blur,motion]
 axes: {energy: 3, density: 1, weight: 2, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,14 @@ ease-out.
 .line { display: inline-block; animation: tilt-in .45s cubic-bezier(.22,1,.36,1) both }
 ```
 ⚠ Blur repaints every frame — single lines only. Reduced motion: opacity only.
+
+Drop the hinge and the same arrival scales up to a display block: no tilt, a
+longer rise and a heavier blur that clears as it lands, so a hero line comes into
+focus rather than sliding into place. Offset 16–32px, blur 6–12px, 0.7–1s on the
+same strong ease-out; the size of the type is what pays for the longer run.
+```css
+@keyframes focus-rise { from { opacity: 0; filter: blur(8px); transform: translateY(24px) } }
+.display { animation: focus-rise .9s cubic-bezier(.22,1,.36,1) both }
+```
+⚠ A filled `blur(0)` end state is still a filter: the block keeps a stacking
+context and traps fixed descendants. Let the base style own the rest state.

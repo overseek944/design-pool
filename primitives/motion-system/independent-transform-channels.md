@@ -4,7 +4,7 @@ category: motion-system
 tags: [transform,transition,architecture,composition,state]
 axes: none
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -39,3 +39,14 @@ outer one, and the two compose as ancestor and descendant transforms.
 ⚠ Two boxes per mark, so a field of hundreds doubles its node count — the
 alternative is moving the loop onto a channel the script does not use, which
 works until the second concern wants it too.
+
+The rival can sit in the same `animation` list. Names listed later win on any
+property they share, and a one-shot entrance with fill `both` keeps winning after
+it ends — a pop-in stacked beside an idle bob holds its final frame forever and
+the loop never shows. List the entrance last with fill `backwards` so it owns the
+pre-delay and its run, then stops contributing; or split channels outright.
+```css
+.mark { animation: bob 3s ease-in-out var(--d) infinite,
+                   pop .6s ease-out var(--d) backwards }
+```
+⚠ Nothing warns: the loop is running, it is just outranked every frame.
