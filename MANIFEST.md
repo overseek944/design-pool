@@ -1,6 +1,6 @@
 # Manifest
 
-800 primitives. Format: `category/id | axes cost | tags | gist`
+802 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -184,6 +184,7 @@ interaction/inert-tracks-opacity | neutral  $1 | accessibility focus correctness
 interaction/inherited-autocomplete-pass | neutral  $1 | forms autocomplete accessibility third-party correctness | A form you did not author — from a page builder, a CMS block, a 
 interaction/inline-target-floor | neutral  $1 | accessibility interaction correctness detail | A row of small print — legal links, meta, a footer — fails targe
 interaction/instrumented-console-interface | neutral  $1 | instrumentation analytics architecture progressive-enhancement | A page can carry a second interface addressed at nobody who scro
+interaction/intent-frozen-ambient-scene | neutral  $1 | interaction motion hover focus correctness has | An ambient scene carrying one real control makes that control a 
 interaction/legend-as-series-filter | E2 D2 W2 F5 $2 | legend filter state accessibility chart | A key that only names the series is a second thing to read. Make
 interaction/lock-gated-cross-tab-mutation | neutral  $3 | state correctness concurrency architecture async | Some mutations must not run twice at once across a user's open t
 interaction/margin-cancelled-hit-area | neutral  $1 | interaction touch accessibility hit-area layout correctness | A link in a dense bar cannot reach the 44px touch floor by growi
@@ -485,6 +486,7 @@ motion-system/self-dissolving-entrance-queue | neutral  $2 | motion sequencing c
 motion-system/self-erasing-play-classes | neutral  $1 | architecture progressive-enhancement svg accessibility correctness entrance | Author the finished frame as the markup, then take it away to pl
 motion-system/sequenced-root-view-transition | E2 D1 W2 F5 $2 | motion navigation transition accessibility | The default root view transition cross-fades outgoing and incomi
 motion-system/settling-strike-envelope | E4 D2 W3 F3 $2 | flicker envelope keyframe-table shader portable data | Something powering on does not fade — it strikes, drops out, cat
+motion-system/slope-coupled-bob | E2 D1 W2 F4 $1 | motion keyframes loop wave rotation | An object rising and falling on a keyframed loop reads as a box 
 motion-system/slot-permutation-rotation | E2 D3 W2 F5 $3 | motion grid state responsive | To show more items than a grid has cells, swap one cell at a tim
 motion-system/split-track-puppet-pointer | E2 D2 W2 F5 $2 | demo cursor choreography spring loop | A synthetic pointer demonstrating an interface is two motions, n
 motion-system/state-keyed-descendant-transition | neutral  $1 | motion reveal transition correctness reduced-motion architecture | One observer entry can drive more than one animation. Let the se

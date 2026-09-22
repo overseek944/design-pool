@@ -4,7 +4,7 @@ category: interaction
 tags: [carousel,autoplay,accessibility,state]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 23
+seen: 24
 requires: []
 conflicts: []
 completes: []
@@ -134,3 +134,18 @@ v.addEventListener('ended', next, { once: true })
 ⚠ `duration` is `NaN` until metadata lands, so the loop must re-request rather
 than divide. Cancel the frame *and* detach the `ended` handler when the step
 changes, or an abandoned clip advances the sequence from behind.
+
+Lengthening the dwell is a gentler answer than suspending it. Keep one timer and
+give it two intervals — the cycle, and a longer one used for the single step
+after a reader picks something — then clear the flag on advance so the sequence
+returns to its own cadence by itself. Nothing is stranded if the pointer never
+leaves, because it never stopped; the reader who chose a step simply gets time
+to read it. Cycle 2.5–4s, held step 2–3× that.
+```js
+useEffect(() => { const t = setTimeout(() => { setHeld(false)
+  setIndex(i => (i + 1) % count) }, held ? 8000 : 3400); return () => clearTimeout(t)
+}, [index, held, count])
+```
+⚠ Suits a demonstration that loops past its reader, not a gallery they are
+working through — anyone reading slowly is still overtaken, just later. Where
+the content must not move unbidden, suspend instead.

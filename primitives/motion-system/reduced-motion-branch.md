@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,accessibility,required]
 axes: none
 cost: 1
-seen: 89
+seen: 90
 requires: []
 conflicts: []
 completes: []
@@ -280,3 +280,19 @@ if (reduced) { for (let i = 0; i < 60; i++) draw(); return }   // draw, not step
 ⚠ Time still for it to look settled, not still because it froze — a preroll
 this short leaves a trail-based field visibly sparse. Check the count against
 the fade, not by eye on one machine.
+
+A very narrow viewport wants the same branch for a different reason. A rig that
+needs horizontal room to read — something travelling a track, a wide figure with
+parts that lag each other — does not merely shrink below roughly 360px, it
+becomes jitter in a space too small to show what it was doing. Comma the width
+into the preference query rather than writing a second block, and let the one
+fallback serve both. It is usually not `animation: none`: the parts that carried
+the motion should go, and what remains has to be recomposed to stand alone.
+```css
+@media (prefers-reduced-motion: reduce), (max-width: 359px) {
+  .rig__track, .rig__trailer { display: none }
+  .rig__label { border-radius: 10px; box-shadow: var(--lift) }  /* now a chip */
+}
+```
+⚠ Only for decoration that degrades to nothing. Anything the narrow reader still
+needs must keep a still form in the same branch, not be hidden by it.

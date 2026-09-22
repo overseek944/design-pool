@@ -4,7 +4,7 @@ category: color
 tags: [color,tokens,alpha,borders,theming]
 axes: none
 cost: 2
-seen: 16
+seen: 17
 requires: []
 conflicts: []
 completes: []
@@ -62,3 +62,19 @@ a wash, 20–30% for a ring.
 ⚠ The solid token stays the only one allowed to carry text or an icon. An accent
 at 10% over an unknown backdrop has no contrast ratio to quote, which is the
 point of it and also its limit.
+
+The "single value, not a ladder" rule above holds for UI washes and breaks for
+line art. A schematic drawn in one accent needs that hue at several strengths at
+once — structure line, faint construction guide, hatch fill, halo, ghosted
+inactive part — and picking them per figure is how a set of thumbnails stops
+reading as one drawing system. Name the rungs by role rather than by number, so
+a figure declares intent and not opacity, and re-author the dark branch instead
+of deriving it. Five to seven roles, 8–45% across the set.
+```css
+--ink-solid: #6c3bff;    --ink-hair: #6c3bff66;   /* 40% — structure */
+--ink-hatch: #6c3bff4d;  --ink-guide: #6c3bff3d;  /* 24% — construction */
+--ink-halo:  #6c3bff1f;  --ink-ghost: #6c3bff17;  /*  9% — inactive */
+```
+⚠ Only the solid rung may carry a label or an arrowhead. Guide and ghost sit
+under 4.5:1 against every ground by design, so nothing a reader must identify
+can be drawn in them alone.

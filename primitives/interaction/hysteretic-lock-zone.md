@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,pointer,state,correctness,threshold]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -36,3 +36,19 @@ const mode = w / h <= 1.30 ? 'portrait' : w / h >= 1.45 ? 'landscape' : current
 ⚠ Holding both doubles the memory of whatever it holds — a frame sequence at two
 orientations is two full working sets. Budget for the pair, or evict the
 inactive side behind a delay longer than any plausible re-crossing.
+
+The same separation generalises past a boolean to an N-way index — a scroll
+progress resolved onto one of five scenes, a width onto one of four column
+counts. Seed from the index currently held rather than recomputing from scratch,
+then walk up only past `(i+1)/n + band` and down only below `i/n - band`, which
+makes every interior boundary hysteretic without naming any of them. A `while`
+rather than an `if` so a fast jump crosses several zones in one read. Band
+2–6% of a zone width.
+```js
+const zoneAt = (p, prev, n, band) => { let i = Math.min(Math.max(prev, 0), n - 1)
+  while (i < n - 1 && p > (i + 1) / n + band) i++
+  while (i > 0     && p < i / n - band)       i--;  return i }
+```
+⚠ The result depends on the previous index, so it is state, not a pure read of
+progress — restoring a scroll position on load gives the wrong zone unless the
+seed is restored with it.

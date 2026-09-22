@@ -4,7 +4,7 @@ category: timing
 tags: [motion,sequencing,scale]
 axes: none
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -76,3 +76,17 @@ items.forEach((el, i) => setTimeout(() => show(el), LEAD + i * step))
 ```
 ⚠ Floor the step as well. Under about 4ms apart the sequence stops reading as
 one, and a large enough collection drives the budget term to zero.
+
+Where the reveal already runs through an observer, the index need not be
+authored at all: read it from the element's position among its annotated
+siblings at the moment it intersects, write the capped delay to its style, and
+unobserve. One observer then serves every staggered group on the page — a grid,
+a nav, a pair of cards — with no `--i`, no `:nth-child` ladder and nothing to
+keep in sync when the markup is reordered. Step 40–70ms, ceiling 3–5.
+```js
+const sibs = [...el.parentElement.children].filter(n => n.hasAttribute('data-reveal'))
+el.style.transitionDelay = `${55 * Math.min(Math.max(sibs.indexOf(el), 0), 4)}ms`
+```
+⚠ The index is positional, so an element that is the only annotated child of its
+own wrapper always scores zero — the cascade collapses silently wherever the
+markup nests one per box rather than listing peers.

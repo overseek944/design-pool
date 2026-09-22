@@ -4,7 +4,7 @@ category: type
 tags: [type,display,contrast,accent,accessibility,ornament]
 axes: {energy: 1, density: 2, weight: 4, finish: 4}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -38,3 +38,17 @@ arithmetic unchanged when a filled `<em>` is nested inside.
 ```
 ⚠ Give it `user-select: none` and `aria-hidden` — it is a texture, and a screen
 reader otherwise announces a word the page never actually says.
+
+Author the stroke width in `em`, not pixels. A display line sized with `clamp()`
+spans a 2–3× range across breakpoints, and a fixed px stroke tracks none of it:
+tuned at the large end it closes apertures on a phone, tuned at the small end it
+thins to nothing on a wide screen. One em-relative value holds the proportion at
+every size the clamp can resolve. Roughly .03–.05em, and `paint-order: stroke
+fill` so the outline sits under the fill rather than eating into the contour.
+```css
+.word { font-size: clamp(2.6rem, 7vw, 6rem);
+        -webkit-text-stroke: .042em var(--accent); paint-order: stroke fill }
+```
+⚠ `-webkit-text-stroke` resolves `em` against the element's own font-size, so an
+inline `<em>` set at a different size inside the line gets a different weight —
+set the stroke on the sized element, not on a wrapper.
