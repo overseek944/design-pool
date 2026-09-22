@@ -1,6 +1,6 @@
 # Manifest
 
-1005 primitives. Format: `category/id | axes cost | tags | gist`
+1006 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -553,6 +553,7 @@ motion-system/floor-anchored-squash-landing | E4 D1 W3 F3 $1 | motion entrance k
 motion-system/flush-separated-transition-arming | neutral  $1 | motion correctness transition observer reveal | A one-shot reveal whose transitions are generated in script — de
 motion-system/fragment-target-entrance-bypass | neutral  $1 | motion correctness anchor fragment reveal navigation | An in-page link or shared #fragment lands the reader on a sectio
 motion-system/gap-compensated-loop-distance | neutral  $1 | motion marquee correctness loop overflow | A duplicated track loops seamlessly only when it travels exactly
+motion-system/gate-registered-keyframe-flip | E2 D2 W1 F5 $1 | motion diagram pipeline state keyframes css | A token crossing a track reads as processed when its state flips
 motion-system/generation-guarded-sequence | neutral  $2 | animation architecture correctness cancellation sequence | A choreography written as a chain of awaits has no cancel. A rep
 motion-system/geometry-ordered-stagger | neutral  $2 | stagger entrance reveal measurement correctness layout | A stagger keyed on DOM index sweeps in source order, and source 
 motion-system/handed-off-prepaint-entrance | neutral  $3 | motion entrance hydration correctness progressive-enhancement | An entrance owned by a framework cannot begin until that framewo
