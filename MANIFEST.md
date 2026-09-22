@@ -1,6 +1,6 @@
 # Manifest
 
-1000 primitives. Format: `category/id | axes cost | tags | gist`
+1001 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -565,6 +565,7 @@ motion-system/lifecycle-cancelled-cross-document-transition | neutral  $2 | view
 motion-system/marquee-playhead | E3 D3 W2 F5 $3 | marquee motion state observer rhythm | Give a moving track one stationary reading position. A marker si
 motion-system/marquee-still-state | neutral  $1 | motion accessibility marquee correctness overflow | A marquee's reduced-motion state is not a paused marquee. The tr
 motion-system/measured-convergence-vector | E3 D2 W2 F5 $3 | motion measurement responsive choreography diagram | Where elements must travel to or from another element the layout
+motion-system/metric-keyed-cell-loader | E3 D2 W2 F4 $1 | motion loader indicator grid stagger custom-properties ambient | One small dot grid yields a family of pending indicators, no key
 motion-system/motion-runtime-watchdog | neutral  $2 | motion correctness accessibility progressive-enhancement reveal | A reveal system that hides content in CSS and un-hides it from J
 motion-system/mpath-bound-traveller | E3 D1 W1 F5 $1 | motion svg path marker loop diagram | A marker crossing a drawn route drifts off it the moment the dra
 motion-system/name-pinned-transition-chrome | E2 D1 W2 F5 $2 | motion navigation transition chrome accessibility | A root view transition snapshots the whole page, so a tab bar pr
