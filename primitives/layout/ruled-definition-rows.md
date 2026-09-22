@@ -4,7 +4,7 @@ category: layout
 tags: [layout,type,metadata,responsive,hairline]
 axes: {energy: 1, density: 3, weight: 2, finish: 5}
 cost: 1
-seen: 13
+seen: 14
 requires: []
 conflicts: []
 completes: []
@@ -72,3 +72,17 @@ even when every one of them is two lines. Marker 6–8px, gap 10–14px.
 ⚠ The indent is the sum of two other declarations — carry it as one custom
 property both the gap and the margin read, or a marker resize silently
 un-aligns every wrapped row.
+
+Laid on its side, the same list becomes a title block: a fixed row of 4–7 equal
+cells, label over value, each cell ruled on its right, the strip ruled top and
+bottom — the page states its own specification at the foot of a hero. Below the
+width where cells fall under ~14ch, keep it one row and let it scroll sideways
+on proximity snap; a stacked title block stops reading as one.
+```css
+.titleblock { display: flex; overflow-x: auto; scroll-snap-type: x proximity;
+  border-block: var(--hair) solid var(--line-strong) }
+.titleblock > div { flex: 1 0 max(14ch, 100% / var(--cells, 6)); scroll-snap-align: start;
+  border-right: var(--hair) solid var(--line) }
+```
+⚠ Hiding the scrollbar removes the only overflow cue — size cells so the last
+visible one is visibly cut.
