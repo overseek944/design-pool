@@ -4,7 +4,7 @@ category: surface
 tags: [dataviz, chart, forecast, uncertainty, dot-pattern, series, texture]
 axes: {energy: 1, density: 3, weight: 2, finish: 4}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,10 @@ data. Dot 1px, pitch 3–5px.
 ```
 ⚠ Below ~6px wide a stipple fill reads as noise — widen the pitch or outline
 it. Say "projected" in the accessible text; texture alone carries no meaning.
+
+In a node diagram the same rule applies to outline: a node or connector that is
+planned rather than live keeps its shape and position but takes a dashed stroke
+(dash 3–5, gap 4–6) and a muted label, so status reads without a second hue.
+```css
+.node.planned { stroke-dasharray: 3 4 } .node.planned text { fill: var(--muted) }
+```

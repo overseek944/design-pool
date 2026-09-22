@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,svg,path,marker,loop,diagram]
 axes: {energy: 3, density: 1, weight: 1, finish: 5}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -51,4 +51,12 @@ windows 8–15% of the lap; shorter and the jump still reads.
 ```html
 <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.9;1"
   dur="4s" begin="2.7s" repeatCount="indefinite"/>
+```
+
+Spread a set of travellers with *negative* `begin` values rather than positive
+ones. A negative begin starts the lap already in progress, so every route is
+populated on the first frame instead of emptying for seconds while later beads
+wait their turn. Offsets of roughly `dur / count` apart keep them evenly spaced.
+```html
+<animateMotion dur="4.6s" begin="-1.8s" repeatCount="indefinite"><mpath href="#r2"/></animateMotion>
 ```

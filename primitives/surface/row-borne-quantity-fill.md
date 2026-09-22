@@ -4,7 +4,7 @@ category: surface
 tags: [surface, data, list, density, ground, accessibility]
 axes: {energy: 1, density: 3, weight: 2, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []

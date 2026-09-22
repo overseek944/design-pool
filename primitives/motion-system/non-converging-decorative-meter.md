@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,mock,meter,progress,accessibility]
 axes: {energy: 2, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -66,3 +66,14 @@ screenshot, not as a zero.
 A one-shot indeterminate bar that must never claim completion runs the same rule
 forwards: `scaleX(0)` to `.6–.75` by 60% of a 1–1.5s run, then crawl to
 `.9–.95` and hold with `forwards`. Only the real finish may take it to 1.
+
+A figure in a mock — a price, a rate, a latency — obeys the same band rule as a
+bar. Drive it from a sine of an integer tick around a fixed base, amplitude
+0.2–1% of the base, and offset each row's phase so neighbours never move in
+step: bounded by construction, it cannot trend toward a claim the way a random
+walk eventually does. Tick 1.2–2s; faster reads as a feed someone should act on.
+```js
+v = base + Math.sin((tick + i * 4) / 7) * amp      // i = row, amp ≈ .004 × base
+```
+⚠ Rewrite only the digits, in a width-reserved `tabular-nums` cell, and stop the
+interval under `reduce` and while the mock is off screen.
