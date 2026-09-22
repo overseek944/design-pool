@@ -4,7 +4,7 @@ category: surface
 tags: [surface,color,pattern,section,boundary,texture]
 axes: {energy: 2, density: 3, weight: 3, finish: 2}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

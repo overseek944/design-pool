@@ -4,7 +4,7 @@ category: media
 tags: [media,raster,pixel-art,image-rendering,scale]
 axes: {energy: 1, density: 2, weight: 3, finish: 2}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []

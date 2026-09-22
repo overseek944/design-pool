@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,particles,burst,physics,motion]
 axes: {energy: 5, density: 3, weight: 2, finish: 3}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,15 @@ ctx.fillRect(-p.w / 2, -p.w / 3, p.w, p.w * .66); ctx.restore()
 ```
 ⚠ Those constants are per *frame*, so a 120Hz display doubles gravity per second
 and flattens the arc. Scale by `dt` against 60fps.
+
+Variant — no canvas: the arc is two keyframe segments on each particle,
+the rise on a strong out-curve to a peak and the fall on an ease-in to the end,
+with peak, end, spin, duration and delay as per-element custom properties set
+once at spawn. One `@keyframes` then drives every piece along its own path. Rise
+25–35% of the run; duration .9–1.6s; 12–40 pieces.
+```css
+@keyframes burst { 0% { translate: 0; scale: .5; animation-timing-function: cubic-bezier(.19,1,.22,1) }
+  32% { translate: var(--px) var(--py); rotate: var(--pr); animation-timing-function: cubic-bezier(.45,.05,.7,.5) }
+  to { translate: var(--ex) var(--ey); rotate: var(--er); opacity: 0 } }
+```
+⚠ Keep it under reduced motion as an instant state change, not the burst.
