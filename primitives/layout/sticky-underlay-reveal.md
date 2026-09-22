@@ -4,7 +4,7 @@ category: layout
 tags: [layout,scroll,sticky,depth,css-only,section]
 axes: {energy: 2, density: 1, weight: 3, finish: 4}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: [overflow-clip-over-hidden]
@@ -51,3 +51,16 @@ zoom. Offset 32–56px, blur 2–2.5× it, spread just under the blur.
 ```
 ⚠ A spread less negative than the blur leaks the shadow out of the other three
 sides, where it has nothing to fall on and reads as a smudge.
+
+The same seam works at the top of a section: an absolutely positioned cover
+over the first viewport of a tall track whose stage is `sticky; top: 0`. The
+cover scrolls away and the stage is already pinned under it — no pin library,
+no measured trigger. Track 170–220vh for one viewport of dwell.
+```css
+.track { position: relative; height: max(1600px, 190vh) }
+.stage { position: sticky; top: 0; height: 100svh }
+.cover { position: absolute; inset: 0 0 auto; height: 100svh; z-index: 2 }
+```
+⚠ Once scrolled past, the cover is still in the tree — set `aria-hidden` and
+`inert` on it past a threshold, with hysteresis, or screen readers announce
+the hero twice.

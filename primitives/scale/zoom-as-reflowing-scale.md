@@ -4,7 +4,7 @@ category: scale
 tags: [unit,scale,architecture,responsive,correctness]
 axes: none
 cost: 1
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -87,3 +87,15 @@ set(Math.min(1.2, Math.max(1, wanted)))
 ⚠ The control itself must sit outside the element it scales — put it on `body`
 and mount the panel as a sibling of `body` under the root, or the button grows
 with the page and walks out from under the pointer that is still pressing it.
+
+The factor can be tiered by viewport rather than fixed: tightest across the
+laptop band where a desktop layout first fits but crowds (about 800–1440px,
+0.84–0.9), easing back to 1 only once the viewport is genuinely wide. The page
+reads as composed at every width instead of sparse at the top end. A hero that
+must stay full-bleed at every tier counter-zooms by the reciprocal per tier.
+```css
+@media (min-width: 800px)  { :root { --z: .86 } .hero { zoom: calc(1 / .86) } }
+@media (min-width: 1800px) { :root { --z: 1 }   .hero { zoom: 1 } }
+```
+⚠ Every tier boundary is a visible jump in type size on resize — keep the
+steps under about 8% or the page lurches as a window is dragged.

@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,backdrop-filter,focus,attention,de-emphasis]
 axes: {energy: 2, density: 2, weight: 3, finish: 5}
 cost: 3
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
