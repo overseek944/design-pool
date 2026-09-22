@@ -4,7 +4,7 @@ category: layout
 tags: [frame,viewport,hero,media,radius,safe-area]
 axes: {energy: 1, density: 1, weight: 2, finish: 5}
 cost: 1
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []
