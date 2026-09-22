@@ -4,7 +4,7 @@ category: surface
 tags: [mock,decoration,product,placeholder,texture,accessibility]
 axes: {energy: 1, density: 3, weight: 2, finish: 4}
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []

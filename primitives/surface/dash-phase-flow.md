@@ -4,7 +4,7 @@ category: surface
 tags: [svg,dash,motion,connector,diagram,precision]
 axes: {energy: 2, density: 2, weight: 1, finish: 5}
 cost: 1
-seen: 18
+seen: 19
 requires: []
 conflicts: []
 completes: []
@@ -129,3 +129,19 @@ staggered set all paints a static dash at load. Dash 0.04–0.12 of the path,
 ```
 ⚠ Unitless dashes still need a stroke that survives scaling — `vector-effect:
 non-scaling-stroke` or a packet on a scaled stage thins out with it.
+
+Where the connector marks an *arrival* rather than a continuous flow, the same
+DOM rule fills once instead of cycling: a 1px spine whose `::before` runs
+`scaleY(0)` to `1` from `transform-origin: top` as the step below it lands. The
+head is the other half — a CSS border triangle that inks by changing colour on
+a transition delayed to just past the fill, so the arrow completes the stroke
+rather than racing it. Fill 300–400ms, head delayed 0.8–1× that.
+```css
+.pipe::before { transform: scaleY(0); transform-origin: top }
+.pipe.on::before { animation: fill .34s ease forwards }
+.pipe::after { border: 3px solid transparent; border-top: 4px solid var(--line);
+               transition: border-top-color .2s ease .28s }
+.pipe.on::after { border-top-color: var(--ink) }
+```
+⚠ The delay and the fill duration are one decision written twice; retune the
+fill and the head fires early, which reads as two unrelated animations.

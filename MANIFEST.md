@@ -1,6 +1,6 @@
 # Manifest
 
-897 primitives. Format: `category/id | axes cost | tags | gist`
+900 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -273,6 +273,7 @@ layout/border-clamped-annotation-leader | E1 D3 W1 F5 $2 | layout annotation con
 layout/boxless-wrapper | neutral  $1 | layout grid architecture correctness accessibility | display: contents removes an element's box while keeping its chi
 layout/breakout-grid-named-lines | neutral  $2 | layout grid tokens architecture full-bleed | One grid on the page wrapper with named lines for the bleed gutt
 layout/breakpoint-released-overlay-copy | neutral  $1 | layout responsive breakpoint overlay media mobile | Copy absolutely positioned over a media panel has nowhere to go 
+layout/bypass-lane-branch-rail | E1 D3 W1 F5 $2 | layout diagram connector flowchart branch hairline | A condition in a vertical flow needs a path that leaves the spin
 layout/calendar-anchored-projection-axis | E1 D2 W1 F5 $1 | chart axis label time correctness data | A projection is plotted in elapsed units from now, so evenly spa
 layout/cardinal-cell-cycle-grid | E1 D3 W2 F5 $2 | layout grid diagram cycle radial responsive | A closed four-stage cycle drawn around a hub usually costs trigo
 layout/class-scoped-responsive-hide | neutral  $1 | layout responsive breakpoint correctness accessibility error | A breakpoint that hides the secondary copy hides whatever else a
@@ -322,7 +323,9 @@ layout/matted-opening-frame | E1 D1 W2 F5 $1 | frame viewport hero media radius 
 layout/measured-copy-keepout | neutral  $2 | layout measurement legibility canvas | Background art told to keep clear of the copy is usually given a
 layout/named-container-scope | neutral  $1 | layout container-query correctness components responsive | Any ancestor carrying container-type captures every unnamed @con
 layout/occupancy-negotiated-label-placement | neutral  $4 | layout label annotation collision diagram correctness | Annotations placed independently overlap the moment two anchors 
+layout/occupancy-padded-back-plate | E1 D3 W2 F5 $1 | layout layering overlap depth mock plate | Two layers of one scene — a wide plate behind, a card in front —
 layout/offset-ladder-peer-row | E1 D2 W2 F4 $1 | layout grid cards rhythm sequence composition | Three equal cards in a row read as three options in no order. St
+layout/operator-track-comparison-row | E1 D3 W2 F5 $1 | layout comparison diagram table reconciliation | Values a reader must reconcile — what was billed, what was order
 layout/overflow-clip-over-hidden | neutral  $1 | overflow correctness accessibility scroll | overflow: clip crops without creating a scroll container. hidden
 layout/per-edge-clip-polygon | neutral  $1 | overflow clip correctness bleed | overflow only works per axis, so there is no way to crop one edg
 layout/prefix-selected-segment-level | E1 D3 W2 F4 $1 | css-only state accessibility data detail cheap | A discrete level — three of ten segments lit — usually costs a c

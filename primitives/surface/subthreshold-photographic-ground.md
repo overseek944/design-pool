@@ -4,7 +4,7 @@ category: surface
 tags: [surface,texture,ground,section,photography,cheap]
 axes: {energy: 1, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -39,3 +39,20 @@ brightness 1.0–1.15 on light and .5–.55 on dark, opacity .3–.5.
 ⚠ The blur reaches for pixels outside the box and reveals the panel's ground at
 the edges — scale the layer slightly, or crop it with `overflow: hidden` and
 `isolation: isolate` on the panel.
+
+Screening the source to one bit before it ships is the third route, and the only
+one that cannot muddy type. A dithered plate has no midtones — it is dots on
+paper — so dropping it to .10–.16 alpha leaves structure with no tonal mass
+under the text, where a washed continuous-tone photograph still carries a soft
+dark field that eats a point of contrast wherever it lands. Hold the subject's
+silhouette, not its detail; 1-bit PNG, `image-rendering: pixelated`, and a
+radial mask so the plate has no edge of its own.
+```css
+.ground { background: url(dither.png) no-repeat 44% 52%/cover; opacity: .145;
+  image-rendering: pixelated;
+  mask-image: radial-gradient(100% 62% at 86% 50%, #000, transparent 85%) }
+```
+⚠ Dot pitch is fixed at authoring, so the plate coarsens as the section grows —
+re-screen per breakpoint rather than scaling one file, or the dots go from
+texture to pattern. Under a responsive-image pipeline it is smeared to grey
+before the page ever sees it.

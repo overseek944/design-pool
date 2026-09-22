@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,form,field,focus,accessibility,control]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -46,3 +46,21 @@ own ring in the same rule or both draw.
 correct only where something else marks the press. Keep the `:focus-within`
 rule underneath as the fallback: a browser without `:has()` drops this whole
 declaration and the group loses its ring entirely rather than degrading.
+
+Stacking the group unwelds it. Once the children sit on separate lines the
+wrapper's border is a stray box around two controls, so the chrome has to go
+back down a level at that breakpoint: strip the wrapper's border, fill, shadow
+and padding, and give each child its own. The ring moves with it —
+`:focus-within` on a wrapper that no longer draws anything is invisible, so
+restore each control's own `:focus-visible`. Unweld wherever the pair would
+wrap, typically 520–640px.
+```css
+@media (width <= 620px) {
+  .group { display: grid; gap: 10px; border: 0; background: none;
+           box-shadow: none; padding: 0 }
+  .group > * { border: 1px solid var(--rule); border-radius: 10px;
+               font-size: 16px } }
+```
+⚠ 16px on the input is load-bearing, not taste: iOS zooms the viewport on focus
+below it, and the welded form's smaller type only got away with it because the
+field was never the full-width target it becomes here.
