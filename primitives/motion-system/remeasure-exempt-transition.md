@@ -4,7 +4,7 @@ category: motion-system
 tags: [indicator,transition,resize,measurement,correctness]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -40,3 +40,20 @@ set(el ? { x: el.offsetLeft, w: el.offsetWidth, on: true } : { w: 0, on: false }
 ```
 ⚠ Collapse the width too, not just the opacity — an invisible full-width box
 still takes the transition on the way back and slides in from the wrong place.
+
+An indicator placed by transform lands off the far end under `direction: rtl`,
+and the fix is two steps rather than a sign flip. `offsetLeft` counts from the
+container's physical left in both directions, while an absolutely-positioned
+child with no inset set now starts at the *right* edge — so mirror the offset
+into a distance from the inline start, then apply it with the sign the
+direction implies. Read the direction off the container's computed style, not
+from a prop, so a subtree flipped by an ancestor is still correct.
+```js
+const rtl = getComputedStyle(root).direction === 'rtl'
+const raw = el.offsetLeft, w = el.offsetWidth
+const d = rtl ? root.offsetWidth - raw - w : raw      // from the inline start
+set({ width: w, x: rtl ? -d : d })
+```
+⚠ Doing one half alone is worse than neither — negating the physical offset
+puts the indicator a container-width away from the item it names. Width carries
+no sign.

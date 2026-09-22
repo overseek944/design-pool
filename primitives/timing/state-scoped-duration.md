@@ -4,7 +4,7 @@ category: timing
 tags: [motion,timing,transition,state,asymmetry]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -43,3 +43,18 @@ closing curve is the default and no third selector is needed.
 ```
 ⚠ Only legible where the travel is long enough to have a shape — under about
 150ms the two curves are indistinguishable and the pair is dead weight.
+
+The limit of the idea is a state carrying no transition at all. A value written
+every frame by a live driver — pointer, drag, scrub — must not interpolate:
+each write restarts the tween from a position already behind, so the response
+trails the input by the whole duration and reads as syrup. Declare the
+transition on the *released* state only, toggled from the same writer that
+publishes the value, and tracking is frame-exact while the return to rest is one
+eased motion. 250–400ms on the release.
+```css
+.cell            { --g: 0 }                       /* written per frame, no transition */
+.cell.released   { transition: --g .32s cubic-bezier(.22,1,.36,1) }
+```
+⚠ Arm the class in the same commit as the rest value, not after it, or the first
+released frame snaps home before the transition exists. Strip it again on the
+next driver sample rather than on a timer.

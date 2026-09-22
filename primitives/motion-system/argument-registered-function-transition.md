@@ -4,7 +4,7 @@ category: motion-system
 tags: [custom-property,registered-property,transition,clip-path,interpolation,architecture]
 axes: none
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -43,3 +43,20 @@ a directional fade stops fading downward. Period 60–140s reads as weather; und
 ⚠ Registered properties animate on the main thread — a viewport-sized conic
 under a 70px blur repaints every frame. Keep it to one, cap the layer's size,
 and retire it under `reduce` rather than slowing it.
+
+Register a bare `<number>` with no unit and the same lever drives a whole
+composite. One dimensionless gain feeds a `color-mix` percentage, a shadow's
+offset and blur, and a scale — every declaration a `calc()` against it — so a
+single transition on the property carries all of them on one curve and no
+channel can drift from another. Keep the derived properties *out* of the
+transition list: eased twice, each chases a target that is itself still moving
+and the settle flattens to well past the stated duration. 0.2–0.5s.
+```css
+@property --g { syntax: "<number>"; inherits: false; initial-value: 0 }
+.cell { transform: scale(calc(1 + .22 * var(--g)));
+        box-shadow: 0 calc(var(--g) * 10px) calc(var(--g) * 28px) -8px var(--glow);
+        transition: --g .32s cubic-bezier(.22,1,.36,1) }
+```
+⚠ A registered property interpolates on the main thread and re-resolves every
+consumer each frame — one element's budget, not a field's. Where a whole set
+must respond, write the scalar per element from one loop and transition nothing.

@@ -1,6 +1,6 @@
 # Manifest
 
-877 primitives. Format: `category/id | axes cost | tags | gist`
+878 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -514,6 +514,7 @@ motion-system/paused-as-authored-rest | neutral  $1 | motion architecture correc
 motion-system/pivot-segmented-route | E3 D2 W2 F5 $2 | motion path diagram keyframes | Interpolating position and heading together makes a marker cut d
 motion-system/pivot-signed-explode | E2 D3 W2 F5 $2 | explode assembly stack progress figure scrub | A stack opening to show what it is made of must separate about s
 motion-system/print-frozen-frame-branch | neutral  $1 | print correctness motion fallback accessibility | Anything a reader will print or save as PDF — a report, an invoi
+motion-system/reduce-retained-paint-channel | neutral  $1 | motion reduced-motion accessibility hover feedback correctness | A hover or proximity response is several channels at once — a li
 motion-system/reduce-settled-sequence-state | neutral  $2 | motion accessibility reduced-motion state sequence correctness | A panel that builds itself over time — steps landing one at a ti
 motion-system/reduced-motion-branch | neutral  $1 | motion accessibility required | Branch at setup, not per-animation: if the user prefers reduced 
 motion-system/remeasure-exempt-transition | neutral  $1 | indicator transition resize measurement correctness | A measured indicator — the underline under the active tab, the p

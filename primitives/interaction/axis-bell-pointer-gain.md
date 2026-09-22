@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,pointer,falloff,data,hover,detail]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -44,3 +44,18 @@ tile.style.setProperty('--d', (n * n).toFixed(3))
 `pointerleave` — a cancelled frame otherwise strands the grid mid-grade. On a
 coarse pointer the system is wholly inert, so whatever it was revealing has to
 be promoted to permanent rather than left at 0.
+
+A row of equal-width items needs no per-element geometry at all. Normalise the
+pointer across the container's single rect and multiply by the count: the result
+is a fractional index the falloff subtracts from directly, so nothing is
+measured per item, a resize costs nothing and the radius is stated in items
+rather than pixels — the same number holds at every width. Offset by half an
+item so the peak sits on a centre rather than a boundary. Radius 2.5–4.5 items.
+```js
+const c = (e.clientX - rect.left) / rect.width * n - .5      // fractional index
+const g = Math.max(0, 1 - Math.abs(i - c) / R)               // R in items
+bar[i].style.setProperty('--g', (g * g).toFixed(3))
+```
+⚠ Only valid while the items share a width — one wider member and index stops
+mapping to position. Cache the rect on resize; reading it inside the move
+handler forces layout at pointer rate.
