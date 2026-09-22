@@ -4,7 +4,7 @@ category: interaction
 tags: [correctness,responsive,overlay,accessibility,hover,focus]
 axes: none
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -65,3 +65,19 @@ property on the trigger switches the whole model.
 ```
 ⚠ A fixed panel no longer moves with its trigger — it must close on scroll, or
 it hangs over the page pointing at a word that has left the viewport.
+
+The same window clips the other axis, and there the failure is quieter: an
+inline overflow announces itself with a scrollbar, where a menu running past the
+bottom of the screen simply hides its last items and looks complete. Cap the
+block size against two facts at once — a fraction of the viewport, and the
+viewport less the chrome the panel hangs from — take the `min()`, and let the
+remainder scroll. `svh`, or a collapsing mobile toolbar retunes the cap
+mid-gesture. Fraction 60–75%; the offset is the bar's height plus its inset.
+```css
+.menu { max-block-size: min(70svh, calc(100svh - var(--chrome, 124px)));
+        overflow-y: auto; overscroll-behavior: contain }
+```
+⚠ Without `overscroll-behavior: contain` a flick reaching the end of the list
+chains to the document and scrolls the page out from under the trigger. A panel
+that scrolls also has items below the fold — they must stay reachable by
+keyboard, not only by wheel.

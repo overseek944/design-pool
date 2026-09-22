@@ -4,7 +4,7 @@ category: media
 tags: [media,video,legibility,overlay,accessibility,responsive]
 axes: none
 cost: 1
-seen: 18
+seen: 19
 requires: []
 conflicts: []
 completes: []
@@ -100,3 +100,17 @@ Blur 12–24px, 2–4px down, alpha 0.4–0.6.
 display weights — a light or thin face has too little ink to cast enough shadow.
 No contrast tool scores it either; sample the rendered pixels against the
 brightest frame by hand.
+
+One shadow cannot do both jobs the ⚠ above splits apart, and two in the same
+declaration can. A tight contact term — 1–3px blur, 1px down — closes the
+counters and apertures a wide blur leaves open; a second at 30–50px blur with
+no offset is not a glyph shadow at all but a pool of ground colour that happens
+to be shaped like the copy. The wide term darkens only the region the words
+occupy, so the frame keeps full strength an inch away and nothing has to be
+restated when the block rewraps.
+```css
+.head { text-shadow: 0 1px 3px rgb(6 8 12 / .65), 0 8px 40px rgb(6 8 12 / .72) }
+```
+⚠ The wide term is doing the scrim's work and is invisible in a thumbnail —
+check it at 1:1 against the brightest frame. Past roughly 56px of blur it
+reaches far enough to darken the ground under the line below it.

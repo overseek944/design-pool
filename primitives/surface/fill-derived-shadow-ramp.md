@@ -4,7 +4,7 @@ category: surface
 tags: [surface,depth,shadow,color-mix,tokens,control]
 axes: {energy: 1, density: 2, weight: 3, finish: 5}
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -72,3 +72,19 @@ brightens reads as the control moving toward the reader instead of switching on.
 ```
 ⚠ Past about .30 the pool reads as a halo on anything lighter than ~8% grey —
 check it against the section it sits in, not against the page token.
+
+The derivation has nothing to read where the caster is neutral: a white card on
+off-white paper has no fill worth mixing, so it falls back to the black this
+entry opens against. Take the ink from the *palette* rather than from the
+element — the darkest step of the accent ramp, one token, spent by every shadow
+on the page. Nothing on screen is that colour, so it never reads as a tint; it
+reads as the page having one light. 5–10% at the widest layer, 3–6% at the
+contact.
+```css
+:root { --shadow-ink: var(--accent-900) }        /* darkest chromatic step */
+.card { box-shadow: 0 1px 2px color-mix(in srgb, var(--ink-900) 5%, transparent),
+        0 16px 40px color-mix(in srgb, var(--shadow-ink) 9%, transparent) }
+```
+⚠ Tint the wide layer only and keep the contact one neutral — chroma at the
+contact edge reads as a coloured keyline rather than as depth. The step has to
+be dark enough to stay low-chroma at these alphas, or every card sits in a haze.

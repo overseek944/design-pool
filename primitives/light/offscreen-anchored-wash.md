@@ -4,7 +4,7 @@ category: light
 tags: [gradient,ground,atmosphere,ambient,color,cheap]
 axes: {energy: 1, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 14
+seen: 15
 requires: []
 conflicts: []
 completes: [eased-fade-stop-ramp]
@@ -161,3 +161,18 @@ lamp.style.opacity = String(PEAK * Math.max(0, 1 - scrollTop / FADE))
 ⚠ `position: fixed` on a blurred element is a composited buffer held for the
 whole session, not just the first view — `visibility: hidden` it at zero, or the
 compositor keeps paying for a lamp nobody can see.
+
+One recipe and two anchors, placed at the two ends of the document: the same
+wash centred above the opening screen and below the closing one. Because only
+the shoulder is ever in frame, the pair reads as a single source passing behind
+the page rather than as two decorations, and the foot inherits the opening's
+atmosphere without repeating its picture. Invert the vertical anchor and change
+nothing else — a different hue or falloff at the bottom breaks the reading.
+Centre −15% to −25% at the top, 115–125% at the foot.
+```css
+.top { background: radial-gradient(120% 140% at 50% -20%, var(--wash), var(--ground) 62%) }
+.end { background: radial-gradient(110% 120% at 50% 120%, var(--wash), var(--ground) 65%) }
+```
+⚠ Only where both ends share a ground — a light footer under a dark opening
+gets a smear, not a bookend. Give the foot the shorter ellipse: a footer is
+rarely a full screen and the falloff has less room to resolve.
