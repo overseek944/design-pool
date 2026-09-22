@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,reveal,transition,correctness,reduced-motion,architecture]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,12 @@ first and its ornament follows.
 ⚠ The reduced-motion branch that flattens the *parent* does not reach here — a
 child whose pre-state is a layout property stays collapsed forever. Give every
 descendant its own settled value in that block, not just `transition: none`.
+
+A scripted child — a demo sequence, a canvas — cannot key off a class, so give
+it a subscription that is race-free: if the section is already settled, run
+now; otherwise wait once for a bubbling `reveal` event the section dispatches.
+Schedule its beats after the parent's own entrance, not from zero.
+```js
+const onReveal = (el, fn) => el.dataset.reveal !== 'pending' ? fn()
+  : el.addEventListener('section:reveal', fn, { once: true })
+```

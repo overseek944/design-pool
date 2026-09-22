@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,architecture,correctness,accessibility,pin,fallback]
 axes: none
 cost: 2
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -52,3 +52,14 @@ on `change` so a resized window flips branch.
 const mq = matchMedia('(min-width: 64rem) and (min-height: 44rem)')
 mq.addEventListener('change', () => setPinned(mq.matches && !rm.matches))
 ```
+
+A stepper that is pinned has a clock — the scroll; unpinned it has none, and a
+static list of steps beside one figure never shows most of them. Hand the
+clock over at the branch flip: start an auto-advance (4–6s) when the pin
+disengages, stop it the moment it engages, and route clicks to `scrollTo` or
+`select` accordingly.
+```js
+onPinnedChange: on => on ? stopAuto() : startAuto()
+```
+⚠ The timer must also yield to reduced motion and to reader input — see
+auto-advance handling — or the fallback rotates content under someone reading it.

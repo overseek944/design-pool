@@ -4,7 +4,7 @@ category: motion-system
 tags: [intersection-observer,reveal,fallback,correctness,progressive-enhancement]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
