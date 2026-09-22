@@ -4,7 +4,7 @@ category: type
 tags: [type,texture,ornament,ascii]
 axes: {energy: 3, density: 5, weight: 2, finish: 3}
 cost: 2
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -74,3 +74,17 @@ reflowed, and the rows and columns arrive as data beside the art.
 ⚠ The `.6` advance ratio is per face — measure it, do not assume. `container-type:
 size` needs a definite height from above, so the slot wants an explicit
 `clamp()`; without one the container has no height and the type collapses to zero.
+
+A field that has to *change* — warped under the pointer, rewritten row by row —
+should not hold its glyphs as text. Carry each row in an attribute and paint it
+with `content: attr()`: an update is one attribute write with no text node to
+invalidate, the characters are unselectable and invisible to find-in-page, and
+the served markup stays one line per row.
+```css
+.row         { display: block; white-space: pre }
+.row::before { content: attr(data-line) }
+```
+⚠ Literal characters are indexable whatever element holds them, and a large
+glyph figure can be lifted into a search result ahead of the real copy.
+`aria-hidden` stops a screen reader, not a crawler — `data-nosnippet` on the
+wrapper does.

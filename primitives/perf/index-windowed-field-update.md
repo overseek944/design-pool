@@ -4,7 +4,7 @@ category: perf
 tags: [performance,pointer,field,grid,correctness,batching]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,16 @@ for (const i of prev) if (!now.has(i)) reset(i); prev = now
 ⚠ The window is a square and the falloff a circle, so test real distance inside
 the loop or the box corners take poses they should not have. Teardown walks
 `prev`, never the field.
+
+Where the field is addressed by a single index — rows of a character grid, a
+rail of ticks — the previous window is two integers, not a set. Keep the last
+`[lo, hi]`, restore the two runs the new window no longer covers, then write the
+range it does: no allocation per frame, no hashing, and the restore reads
+straight out of the pristine source array.
+```js
+for (let i = lo; i < a;  i++) reset(i)         // left of the new window
+for (let i = b + 1; i <= hi; i++) reset(i)     // right of it
+for (let i = a; i <= b; i++) pose(i); [lo, hi] = [a, b]
+```
+⚠ Seed the pair as an empty range — `hi < lo` — rather than as zeros, or the
+first frame resets a row it never posed.

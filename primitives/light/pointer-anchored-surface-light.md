@@ -4,7 +4,7 @@ category: light
 tags: [light,pointer,hover,gradient,custom-properties,surface]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -50,3 +50,19 @@ rather than as retreat.
 ⚠ The stale position is then live if the pointer returns by teleport — a tab
 switch, a scroll under a still mouse — so re-read the coordinates on
 `pointerenter` before raising the opacity, not after.
+
+The published coordinate can drive a *mask* rather than a gradient, and the
+effect stops being a lamp. Three hard stops on one axis — transparent, opaque,
+transparent, all offset from the same property — cut a band at the pointer's
+position through a duplicate of the artwork held above the original, so what
+passes over the surface reads as a scanning head rather than as light. Size the
+band from the content's own pitch, not in pixels, or it is a different width at
+every breakpoint.
+```css
+.scan { mask-image: linear-gradient(to bottom,
+        transparent calc(var(--py) - var(--h)), #000 var(--py),
+        transparent calc(var(--py) + var(--h))) }
+```
+⚠ Recomputing `mask-image` per pointer frame is a paint, not a composite — keep
+the masked layer small, write the property from a rAF you already own, and drop
+the duplicate entirely on a coarse pointer where nothing will ever drive it.

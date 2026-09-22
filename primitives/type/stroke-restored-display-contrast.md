@@ -4,7 +4,7 @@ category: type
 tags: [type,display,contrast,accent,accessibility,ornament]
 axes: {energy: 1, density: 2, weight: 4, finish: 4}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -66,3 +66,18 @@ h1 .stop, h2 .stop { color: var(--accent) }
 ⚠ Mark the real character in the markup rather than generating one — a
 `content: "."` lands after a headline that already ends in a question mark, and
 several screen readers announce generated content as part of the heading.
+
+Set the stroke in the *ground* colour rather than an ink one and the same
+declaration becomes a knockout. A label sitting on a diagram's own connectors
+normally needs an opaque plate behind it, which punches a rectangle through the
+drawing; a 2–4px ground stroke under the fill clears only the letterforms, so
+the lines run up to the glyphs and stop. `paint-order: stroke fill` is
+load-bearing here — without it the halo eats the contour it exists to protect.
+```css
+.label { color: var(--ink); paint-order: stroke fill;
+         -webkit-text-stroke: 3px var(--paper) }
+```
+⚠ The ground colour is a guess the moment the label crosses onto anything else —
+a filled region, a photograph, an inverted band. Scope it to labels that sit on
+the drawing's own paper, and give the text a real `fill` first so an engine
+without `-webkit-text-stroke` still shows the label.

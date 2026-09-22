@@ -4,7 +4,7 @@ category: color
 tags: [color,tokens,theming,third-party,contrast,icon,correctness]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,17 @@ outright, which is why one derivation rule never covers a set.
 ⚠ A recoloured mark may breach the owner's brand terms on anything reading as
 endorsement. Keep the shift to icon tint and accent rules, never a reproduced
 logo, and never let tint alone name which service it is.
+
+The constraint inverts where the brand hue is a *series key* rather than an
+identity mark. A chart carrying a dozen owners' colours at their official values
+fights every ground it is placed on, and nobody is checking a bar against a
+brand book — mix each one toward the section's own paper by a tokenised amount
+and the set reads as one palette, with the legend carrying the naming the colour
+no longer has to. 40–60% on a tinted ground, less in dark where the same mix
+flattens faster.
+```css
+.bar { background: color-mix(in oklab, var(--hue) var(--series-mix, 58%), var(--ground)) }
+```
+⚠ Mix toward the ground, never toward grey: hues pulled to neutral converge and
+two providers stop being distinguishable. Check the mixed set for adjacent pairs
+at the percentage you ship, not at the one you designed with.

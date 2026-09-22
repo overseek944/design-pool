@@ -4,7 +4,7 @@ category: perf
 tags: [performance,webgl,capability,progressive-enhancement,correctness]
 axes: none
 cost: 2
-seen: 16
+seen: 17
 requires: []
 conflicts: []
 completes: []
@@ -138,3 +138,22 @@ tier = Math.min(viewTier, memTier, net)
 ⚠ Absent must resolve to the *top* rung, not zero — the API is Chromium-only, so
 a falsy default tiers down every other engine. Read it once: re-reading
 mid-session downgrades assets already fetched at the higher tier.
+
+The ladder need not be resolved in script at all. Author every expensive
+constant as a *unitless* root custom property — field resolution, pixel-ratio
+cap, bloom amount, a per-frame budget in ms — and let a media query restate only
+the ones a weaker class of device should lower. The renderer reads them once
+with a literal fallback, so input class, width and a motion preference compose
+in the cascade rather than inside one boolean expression, and the ladder sits
+beside the breakpoints where it can be retuned without opening the renderer.
+```css
+:root { --dpr-max: 2; --field-res: 256; --bloom: .18; --frame-budget-ms: 8 }
+@media (pointer: coarse) { :root { --dpr-max: 1.25; --field-res: 128; --bloom: 0 } }
+```
+```js
+const n = (k, f) => { const v = parseFloat(cs.getPropertyValue(k))
+                      return Number.isFinite(v) ? v : f }
+```
+⚠ Unitless is what makes the read safe — a length token hands back its literal
+`clamp()` text. Nothing re-reads on its own either: subscribe to the same
+queries with `matchMedia`, or the tier stays whatever the first frame resolved.
