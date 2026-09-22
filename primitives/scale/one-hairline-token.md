@@ -4,7 +4,7 @@ category: scale
 tags: [unit,tokens,border,precision,coherence]
 axes: {energy: 1, density: 2, weight: 1, finish: 5}
 cost: 1
-seen: 27
+seen: 28
 requires: []
 conflicts: []
 completes: []
@@ -139,3 +139,15 @@ a:hover { color: var(--ink); text-decoration-color: currentColor }
 ⚠ The underline is decoration, not contrast — the resting *text* colour still
 owes 4.5:1, and a tint chosen so the rule "disappears" fails `prefers-contrast`
 unless the faint rung is redeclared there.
+
+Express that pair as alphas of the foreground rather than as solid tints and it
+stops being per-ground. A line at 6–9% white reads identically over a page
+ground, a raised panel and an elevated sheet because it composites onto each of
+them; the solid equivalent has to be re-picked per surface and drifts the moment
+a new elevation is added. The edge tint is the same colour at roughly double —
+one variable pair for the whole system, and both invert with the theme for free.
+```css
+:root { --line: #ffffff12; --edge: #ffffff1c }   /* dark: 7% / 11% */
+```
+⚠ Alpha over a photograph or a video is not a hairline any more — it takes the
+value of whatever is beneath. Where a rule crosses media, fall back to a solid.

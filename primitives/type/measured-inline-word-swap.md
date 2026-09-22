@@ -4,7 +4,7 @@ category: type
 tags: [type,motion,headline,correctness]
 axes: {energy: 3, density: 2, weight: 3, finish: 5}
 cost: 2
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -64,3 +64,17 @@ const line = `${FIXED} ${items[i].value}`
 ⚠ The heading's accessible name now changes on a timer. Anything addressing it
 — a contents list, a skip target, a snapshot test — reads whichever member was
 up, so keep the rotating part out of the clause the page is navigated by.
+
+A slot *typed* rather than swapped has nothing to measure — its width is the
+text — but it passes through zero length, and an empty inline box contributes no
+height, so the line's baseline jumps on every turnaround. Park a zero-width
+space inside the mutating run and the box survives the gap. Any mark riding
+beside the word — a logo, a bullet, the caret — belongs in `em` so it tracks the
+type rather than a fixed step, and the caret wants the run's own height, not the
+line's.
+```jsx
+<span aria-hidden="true">{typed}{'​'}</span>
+<span className="inline-block w-[.06em] h-[.78em]" />   /* caret */
+```
+⚠ Trailing text reflows per character unless the slot is width-reserved — put
+the typed run last in its line, or accept the jitter deliberately.

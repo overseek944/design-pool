@@ -1,6 +1,6 @@
 # Manifest
 
-930 primitives. Format: `category/id | axes cost | tags | gist`
+932 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -439,6 +439,7 @@ media/crop-scaled-source-hint | neutral  $1 | media correctness responsive perfo
 media/datum-carrying-render-coordinate | neutral  $1 | figure svg authoring correctness data provenance | A figure derived from real values — points on a projection, mark
 media/decode-gated-overlay-crossfade | E2 D1 W2 F5 $2 | media transition image crossfade correctness swap | Two photographs trading places in one slot cannot dissolve by tw
 media/decoded-probe-codec-select | neutral  $3 | video codec transparency feature-detection correctness media | canPlayType answers about the container, not about what survives
+media/designed-end-frame-hold | E1 D2 W2 F5 $1 | media video poster replay prefetch polish cta | A one-shot clip rests on whatever frame the encode stopped on — 
 media/device-pixel-snapped-overlay-write | neutral  $1 | canvas overlay precision dpr scrub registration correctness | A DOM layer over a raster — a canvas frame sequence, a cover-fit
 media/dialog-scoped-embed-lifecycle | neutral  $2 | media performance dialog correctness lifecycle | A third-party embed is not yours to pause — you cannot reach int
 media/dilated-alpha-keyline | E1 D2 W2 F5 $1 | media icon logo filter contrast legibility detail css-only | A raster mark has no stroke to reach for, so a pale logo dropped
@@ -566,6 +567,7 @@ motion-system/self-dissolving-entrance-queue | neutral  $2 | motion sequencing c
 motion-system/self-erasing-play-classes | neutral  $1 | architecture progressive-enhancement svg accessibility correctness entrance | Author the finished frame as the markup, then take it away to pl
 motion-system/self-measured-flow-entry | E3 D2 W2 F4 $2 | motion layout measurement state lifecycle detail | A row inserted into a live column — a log line, a message, a que
 motion-system/sequenced-root-view-transition | E2 D1 W2 F5 $2 | motion navigation transition accessibility | The default root view transition cross-fades outgoing and incomi
+motion-system/settle-deferred-face-rewrite | E3 D2 W2 F5 $2 | motion 3d preserve-3d swap stagger cycle logos transition | A rank of slots showing more values than it has room for can tur
 motion-system/settling-strike-envelope | E4 D2 W3 F3 $2 | flicker envelope keyframe-table shader portable data | Something powering on does not fade — it strikes, drops out, cat
 motion-system/slope-coupled-bob | E2 D1 W2 F4 $1 | motion keyframes loop wave rotation | An object rising and falling on a keyframed loop reads as a box 
 motion-system/slot-permutation-rotation | E2 D3 W2 F5 $3 | motion grid state responsive | To show more items than a grid has cells, swap one cell at a tim

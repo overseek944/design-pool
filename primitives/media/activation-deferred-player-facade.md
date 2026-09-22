@@ -4,7 +4,7 @@ category: media
 tags: [media,embed,iframe,video,performance,privacy,accessibility,loading]
 axes: none
 cost: 2
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: [focus-handoff-on-self-removal]
@@ -26,3 +26,19 @@ accessible name the absent player would have.
 ```
 ⚠ Without `autoplay` on the swapped-in URL the reader presses play twice. Give
 the slot a fixed `aspect-ratio` or the swap shifts the page.
+
+A self-hosted `<video>` mounted on activation cannot lean on that attribute:
+the element appears after the gesture that authorised it, and engines disagree
+about whether `autoplay` on a freshly inserted node still counts. Arm the call
+on readiness instead — play at once if `readyState` already clears
+`HAVE_CURRENT_DATA`, otherwise from `loadeddata`, and ship it `preload="auto"`
+so the fetch starts with the mount. Carry the same poster on the element and
+nothing flashes between the button leaving and the first frame.
+```jsx
+const go = () => ref.current?.play().catch(() => {})
+r.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA ? go()
+  : r.addEventListener('loadeddata', go, { once: true })
+```
+⚠ `loadeddata` never fires for a blocked or 404 source, so the poster stays
+under a control that has already been dismissed — bind `error` to restore the
+facade rather than leaving a dead box.
