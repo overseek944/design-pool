@@ -1,6 +1,6 @@
 # Manifest
 
-973 primitives. Format: `category/id | axes cost | tags | gist`
+975 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -40,6 +40,7 @@ canvas/document-spanned-viewport-field | neutral  $2 | canvas scroll background 
 canvas/dom-labels-in-normalised-canvas-space | neutral  $2 | canvas accessibility architecture correctness label | Text drawn with fillText cannot be selected, found, translated o
 canvas/drawn-texture-set | neutral  $2 | canvas texture procedural weight architecture scene | Every map a scene needs — worn floor, printed label, belt tread,
 canvas/eased-pointer-influence | E3 D2 W2 F5 $2 | shader interaction feel | Never feed raw pointer state to a shader. Keep a uMouseActive fl
+canvas/event-spawned-wavefront | E4 D2 W2 F4 $2 | canvas interaction wave ripple impulse click field | A click can disturb a generative field instead of triggering any
 canvas/facing-weighted-directional-pull | E3 D2 W3 F5 $3 | shader canvas pointer motion generative | Uniform displacement inflates a form; a form reaching toward som
 canvas/feature-scaled-sim-grid | neutral  $2 | canvas simulation performance resolution texture | Size a field simulation's grid by the smallest feature worth see
 canvas/frame-gap-driver-trail | E3 D2 W2 F5 $2 | canvas pointer field influence sampling continuity | A field tested against the driver's position once per frame is s
@@ -101,6 +102,7 @@ canvas/shell-reprojected-displacement | E2 D3 W2 F5 $2 | shader canvas generativ
 canvas/sign-triple-reference-cage | E2 D2 W1 F5 $2 | canvas 3d projection diagram geometry data | A rotating point cloud gives a reader positions and no frame — n
 canvas/signed-bow-connector-bundle | E1 D3 W1 F5 $2 | canvas connector diagram geometry svg | Connectors terminating at one hub, drawn straight, collapse into
 canvas/simulation-preroll | neutral  $1 | canvas simulation lifecycle loading generative | A simulation's worst frame is its first: an empty grid, a lone s
+canvas/sine-fold-isoline-field | E2 D3 W2 F4 $2 | canvas generative contour isoline topographic field texture | A smooth scalar field reads as haze; its level sets read as terr
 canvas/single-channel-field-storage | neutral  $2 | canvas simulation performance texture shader | Choose the channel count per field rather than reaching for RGBA
 canvas/standard-uniform-set | neutral  $2 | shader architecture reference | A small reusable uniform contract covers most decorative shaders
 canvas/stateless-phase-pair-field | neutral  $3 | canvas architecture morph scrub points field correctness | A scrubbed field of marks usually keeps a live position per mark
