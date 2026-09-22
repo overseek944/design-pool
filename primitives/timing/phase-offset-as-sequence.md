@@ -4,7 +4,7 @@ category: timing
 tags: [motion,sequencing,rhythm,ambient,css]
 axes: {energy: 3, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 19
+seen: 20
 requires: []
 conflicts: []
 completes: []
@@ -62,3 +62,12 @@ progress instead of the cycle's.
 ```
 ⚠ Duty cycle and peer count are one number: widen a peer's lit plateau past
 `period/N` and two stages are lit at once, which reads as a fault.
+
+Size the visible window to the count and one keyframe becomes an N-item
+rotator. Every item shares the period; each is on screen for only its 1/N
+slice — in, hold, out inside 6–10% of the cycle for ten items — and its delay is
+`i × period / N`. Adding an item means retuning the window, not the timers.
+```css
+.item { grid-area: 1/1; opacity: 0; animation: swap var(--T) ease-in-out infinite;
+        animation-delay: calc(var(--i) * var(--T) / var(--n)) }
+```

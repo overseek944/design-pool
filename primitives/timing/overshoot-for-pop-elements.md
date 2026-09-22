@@ -4,7 +4,7 @@ category: timing
 tags: [motion,easing,delight]
 axes: {energy: 4, density: 2, weight: 2, finish: 3}
 cost: 1
-seen: 12
+seen: 13
 requires: []
 conflicts: []
 completes: []

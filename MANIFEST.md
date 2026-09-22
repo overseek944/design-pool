@@ -1,6 +1,6 @@
 # Manifest
 
-975 primitives. Format: `category/id | axes cost | tags | gist`
+978 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -604,6 +604,7 @@ motion-system/svg-geometry-keyframes | E3 D2 W2 F5 $1 | motion svg diagram preci
 motion-system/transient-class-scoped-transition | neutral  $2 | motion-system view-transition theme correctness reduced-motion | A view transition, or a global colour transition, must animate f
 motion-system/transition-cued-height-follow | neutral  $2 | correctness measurement transition resize layout motion | Inline content that changes width re-wraps its copy and the bloc
 motion-system/travel-minimal-target-pairing | E3 D3 W2 F5 $2 | morph rearrange geometry marks svg transition | A set of marks rearranging into a new configuration is usually p
+motion-system/twin-named-keyframe-restart | neutral  $1 | motion keyframes transition correctness css-animation | An animation runs once per name, so after content changes under 
 motion-system/twin-pose-custom-properties | E3 D3 W2 F5 $2 | transform state stagger custom-properties group choreography | A group that rearranges between two arbitrary layouts — stacked 
 motion-system/type-declared-transition-scope | neutral  $2 | motion-system view-transition scoping state correctness routing | Every ::view-transition- rule applies to every transition, so a 
 motion-system/viewport-clamped-slot-travel | E3 D1 W2 F5 $3 | motion travel scroll measurement layout | An element travelling between two positions read from real layou
@@ -670,6 +671,7 @@ reveal/edge-registered-arrival | E2 D1 W1 F4 $1 | reveal entrance box-shadow out
 reveal/flow-preserved-step-reveal | E3 D2 W2 F3 $1 | reveal text steps clip-path typing layout-safety | A left-to-right text reveal animated on width leaves normal flow
 reveal/front-clipped-mixed-figure | E2 D2 W2 F5 $2 | reveal svg clip-path diagram motion detail | A figure that is not all strokes — connectors carrying node disc
 reveal/glyph-scramble-settle | E4 D3 W2 F3 $2 | type reveal motion technical text | Resolve a label out of noise rather than fading it in: hold the 
+reveal/hinged-tilt-line-entrance | E3 D1 W2 F5 $1 | reveal entrance 3d type blur motion | A short line — status, title, placeholder — that slides up flat 
 reveal/index-thresholded-progress-gate | E2 D2 W2 F5 $1 | reveal scroll custom-properties progress cheap svg | One scalar can sequence a whole set with no tween per member and
 reveal/leading-collapsed-settle | E2 D2 W3 F5 $2 | reveal type entrance heading scroll leading | A display block can arrive by closing up rather than by moving. 
 reveal/lit-uncovering-front | E3 D2 W3 F4 $2 | reveal wipe blend light scroll edge | Revealing by retreating an opaque cover, rather than by fading o
@@ -846,6 +848,7 @@ surface/row-borne-quantity-fill | E1 D3 W2 F5 $1 | surface data list density gro
 surface/scanline-register-overlay | E1 D3 W2 F2 $1 | overlay scanline texture video register decoration | Footage from mismatched sources — an archive still, a head camer
 surface/scrim-terminated-ground | E1 D2 W2 F5 $1 | gradient ground surface section seam cheap | A decorative ground that stops at its section's edge leaves a ho
 surface/shadow-borne-card-edge | E1 D2 W2 F5 $1 | surface shadow border elevation tokens detail | A white card on an off-white ground has no border that works: at
+surface/shared-origin-pulse-spokes | E3 D2 W1 F4 $1 | surface decoration hairline radial loop custom-properties | Hairline spokes from one origin read as a diagram; a bright head
 surface/single-hue-lit-bead | E2 D2 W3 F5 $1 | surface gradient identity marker presence contrast | At 8–24px a flat disc is a dot; three stops make it a bead. Take
 surface/slat-partitioned-blur-veil | E1 D3 W2 F5 $3 | backdrop-filter glass blur edge bleed surface | A blur plate over bleeding artwork says faded, and what was behi
 surface/slope-held-diagonal-edge | E1 D2 W3 F4 $2 | surface clip-path edge section responsive geometry | A clip-path: polygon() with percentage vertices does not keep it

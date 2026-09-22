@@ -4,7 +4,7 @@ category: color
 tags: [color,tokens,theming,architecture,dark]
 axes: none
 cost: 2
-seen: 35
+seen: 36
 requires: []
 conflicts: []
 completes: []
@@ -163,3 +163,7 @@ lands.
 ⚠ Blocking and uncached — keep it under ~40 lines, wrap the storage read in
 `try`, and duplicate the two ground colours here as literals, since no
 stylesheet has parsed yet to supply them.
+
+Under a CSP without `'unsafe-inline'` the resolver cannot be inline. Serve it as
+a same-origin classic `<script src>` in the head — no `defer`, no `async`, no
+module — so it still blocks and runs before first paint while `'self'` covers it.
