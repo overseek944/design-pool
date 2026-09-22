@@ -4,7 +4,7 @@ category: surface
 tags: [glass,backdrop-filter,svg-filter,refraction,chromatic,depth]
 axes: {energy: 1, density: 3, weight: 3, finish: 5}
 cost: 4
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []

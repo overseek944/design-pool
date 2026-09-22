@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,texture,print,halftone]
 axes: {energy: 1, density: 4, weight: 2, finish: 4}
 cost: 2
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -44,3 +44,18 @@ mask-size: 100% 100%, 16px 16px;
 ```
 ⚠ Hard stops alias badly at fractional sizes — keep the cell an even integer and
 off a transformed ancestor, or the checker shimmers while scrolling.
+
+`add` is the other half of the algebra and produces a *frame* rather than line
+work. Two axis gradients, each opaque at both ends and transparent across its
+middle, union into a mask solid at all four edges and clear in the centre — so
+an expensive layer, a displacement filter or a heavy blur, can be confined to an
+element's rim with no distance field to compute and no per-size map to rebuild.
+Bands 8–15% on the long axis, 25–35% on the short.
+```css
+mask-image: linear-gradient(#000, #0000 30% 70%, #000),
+            linear-gradient(90deg, #000, #0000 10% 90%, #000);
+mask-composite: add;
+```
+⚠ Union is the default, so that line is documentation rather than effect — the
+pairing that actually matters is `-webkit-mask-composite: source-over`, whose
+name does not match the one it stands in for.

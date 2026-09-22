@@ -4,7 +4,7 @@ category: surface
 tags: [surface,depth,detail,affordance,state,border]
 axes: {energy: 2, density: 2, weight: 2, finish: 3}
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -63,3 +63,18 @@ themes. 4–8% either way, doubled on a saturated fill.
 ⚠ Press has to stay distinguishable from rest in both — invert to `0 1px` of
 the *ground* colour on `:active` rather than removing the edge, or the dark
 theme's pressed state is simply flat.
+
+An inner edge declared on the content box is clipped by whatever the box
+contains and disappears under an opaque child. Give it an empty sibling of its
+own, last in the stack, `inset: 0` with `border-radius: inherit` — the highlight
+then composites above the content and follows the parent's radius without
+restating it. Two insets on that layer read as two lights: an offset hard one
+for the lit rim, a zero-offset blurred one for ambient edge glow, the second at
+roughly half the first's alpha.
+```css
+.specular { position: absolute; inset: 0; border-radius: inherit;
+  pointer-events: none;
+  box-shadow: inset 1px 1px #ffffff99, inset 0 0 4px #ffffff80 }
+```
+⚠ Both alphas are tuned against one ground — halve them on dark, or the rim
+reads as a seam rather than as light.

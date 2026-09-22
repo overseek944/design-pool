@@ -1,6 +1,6 @@
 # Manifest
 
-871 primitives. Format: `category/id | axes cost | tags | gist`
+874 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -689,6 +689,7 @@ surface/addressable-cell-lattice | E1 D3 W1 F4 $2 | lattice grid hairline pointe
 surface/arc-length-colour-ramp-stroke | E3 D2 W2 F5 $3 | svg stroke gradient color dash effect | An SVG gradient paints in the element's box, so a stroke that cu
 surface/axis-stretched-noise-veil | E1 D3 W2 F4 $3 | surface noise svg-filter gradient atmosphere blend-mode | Evenly blurred noise reads as grain. Blur turbulence anisotropic
 surface/backdrop-blur-tier-system | E1 D3 W3 F4 $3 | surface depth glass | Treat backdrop blur as a depth scale, not a decoration: sm for i
+surface/backdrop-captured-filter-warp | E1 D3 W3 F5 $3 | surface glass refraction svg-filter backdrop-filter displacement | backdrop-filter: url(#f) renders nothing in most engines, so war
 surface/band-plateaued-scrim | E1 D2 W3 F5 $1 | scrim imagery contrast gradient accessibility | A photograph carrying several bands of copy needs a different sc
 surface/baseline-closed-area-path | E2 D2 W2 F5 $1 | svg chart sparkline data precision | A sparkline's tinted area and its stroke must never disagree by 
 surface/baseline-square-bar-terminal | E1 D2 W2 F5 $1 | chart radius hairline detail correctness | A bar rounded at both ends stops touching its axis: the radius a
@@ -732,6 +733,7 @@ surface/masked-edge-highlight | E1 D2 W2 F5 $2 | surface border light mask detai
 surface/multi-edge-mask-fade | E1 D2 W2 F5 $2 | surface mask edge composition bleed | Let an oversized panel run past the layout and dissolve instead 
 surface/nine-slice-control-chrome | E1 D2 W3 F5 $2 | surface border chrome svg detail | A control whose shape is not a rounded rectangle — a tapered edg
 surface/node-centred-connector-falloff | E1 D2 W2 F5 $1 | surface mask connector sequence detail | A rule running the length of a step list is equally present ever
+surface/noise-sourced-lens-warp | E1 D2 W3 F5 $3 | surface glass refraction svg-filter displacement noise | A displacement map need not be drawn geometry. feTurbulence at a
 surface/offcanvas-ellipse-horizon | E1 D2 W1 F5 $1 | surface hairline geometry ambient background depth | A curve whose radius exceeds the viewport cannot be drawn inside
 surface/one-point-room-frame | E1 D2 W1 F5 $1 | perspective hairline background svg depth decoration | Five hairlines make a room you are looking into: an inset rectan
 surface/overflow-visible-for-glow-bleed | neutral  $1 | surface effect svg gotcha | SVG clips to its viewBox by default, which decapitates any drop-
@@ -799,6 +801,7 @@ timing/press-origin-radial-stagger | E4 D3 W2 F4 $2 | stagger interaction radial
 timing/production-timing-vocabulary | E2 D2 W2 F5 $1 | motion easing duration reference system | A coherent set beats a clever one. Durations cluster tightly and
 timing/quantised-scene-clock | E2 D1 W2 F2 $1 | timing stepped loop motion performance | Throttling a render loop lowers its cost and leaves the motion c
 timing/rate-integrated-phase-clock | neutral  $1 | motion timing correctness loop | A loop whose speed is a variable — tied to scroll position, a ho
+timing/reversed-control-point-hold | E3 D1 W2 F5 $1 | motion easing timing hover transition | Nothing in cubic-bezier(x1,y1,x2,y2) requires x1 < x2. Cross the
 timing/role-offset-cascade | E3 D2 W2 F5 $1 | timing motion sequencing choreography tokens | Split a cascade into two independent halves: the group's entry t
 timing/sampled-point-spring-easing | E3 D1 W2 F5 $1 | timing easing token css-animation overshoot performance | linear() takes a list of sampled outputs, so a spring solved onc
 timing/scheduled-discrete-property-step | E2 D1 W2 F5 $1 | transition stacking scheduling hover precision | A stacking change has no in-between, so naming z-index in a tran
