@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,reveal,thresholds]
 axes: {energy: 2, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 21
+seen: 22
 requires: []
 conflicts: []
 completes: []
@@ -61,3 +61,16 @@ const p = Math.min(1, Math.max(0, (innerHeight - box.top - offset) / run))
 ```
 ⚠ Recompute `run` on resize rather than once at setup — a rotated phone moves it
 by more than the whole width of the clamp.
+
+A band stated as a fraction of the viewport has one position where it is
+unreachable: an element close enough to the document's end that its trigger line
+lies past the last scrollable offset never fires, and the final section of a
+short page stays hidden forever. Clamp every computed start to the maximum
+scroll, and for anything already inside that tail fall back to a shallower line
+so it still arrives rather than snapping in at the bottom of the travel.
+```js
+const max = document.documentElement.scrollHeight - innerHeight
+start = Math.max(0, Math.min(top > max ? top - innerHeight : top - (innerHeight - 140), max))
+```
+⚠ It reproduces only on pages barely taller than the viewport — the case that
+survives review on a laptop and fails on the first tall monitor.

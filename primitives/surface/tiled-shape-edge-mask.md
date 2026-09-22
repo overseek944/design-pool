@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,edge,ornament,texture,section]
 axes: {energy: 2, density: 3, weight: 2, finish: 3}
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -74,3 +74,17 @@ enclosing box, so the ceiling that governs nested cards does not apply here.
 ⚠ The notch shows the *body*, not the next section — set the body to one of the
 two tones and let the plates carry the other, or every seam cuts to white. A
 plate shorter than about twice the radius stops reading as a plate.
+
+The two-value `border-radius` form buys a different edge from the same single
+declaration: a horizontal radius of `50%` makes the two corner arcs meet at the
+band's midpoint, so the seam is one continuous shallow dome across the full
+width rather than two notches at the ends. The vertical radius alone sets its
+depth, which is what makes it tunable — and it belongs on the *leading* edge,
+where a band rising into the section above reads as ground swelling up to meet
+it. Crest 32–56px against a full-bleed width.
+```css
+.band { border-radius: 50% 50% 0 0 / var(--crest, 44px) var(--crest, 44px) 0 0 }
+```
+⚠ The depth is fixed in px while the chord is the viewport, so the arc flattens
+toward nothing on a wide monitor — clamp it against `vw` and re-check at 2560px,
+where a crest tuned at 1440 has become a straight line.

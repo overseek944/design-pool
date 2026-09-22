@@ -4,7 +4,7 @@ category: type
 tags: [type,emphasis,highlight,decoration,radius,detail]
 axes: {energy: 2, density: 2, weight: 4, finish: 4}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -54,3 +54,13 @@ Alpha 20–35% keeps the run off the contrast budget entirely.
 ```
 ⚠ The feathered ends are inside the padding, so a run that wraps fades at each
 line break as well — read as intentional at two lines, as a fault at four.
+
+The outer radius reaches further down than a chip needs. Below about 0.15em the
+block stops reading as a rounded shape at all and becomes a slab — a struck
+rectangle with the corners merely taken off, which is what a display line set
+against its own ground wants and what a UI chip must not have. Take the range as
+0.1–0.4em and let the size of the type decide: the smaller the run, the rounder
+it can afford to be before the radius eats the glyphs.
+⚠ At slab proportions the vertical padding is doing all the work and a stray
+`line-height` inherited from the block above swells it — pin `line-height: 1` on
+the mark and give it back as a top margin of 0.1–0.2em, or the baseline drifts.

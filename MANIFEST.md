@@ -1,6 +1,6 @@
 # Manifest
 
-815 primitives. Format: `category/id | axes cost | tags | gist`
+818 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -165,6 +165,7 @@ interaction/exemplar-field-placeholder | neutral  $1 | form input placeholder ac
 interaction/fail-open-css-state-toggle | neutral  $1 | interaction css-only progressive-enhancement disclosure correctness accessibility | A visually hidden checkbox plus :has() gives expand, filter and 
 interaction/fill-agnostic-state-plate | E2 D2 W2 F5 $1 | hover state pseudo-element theme system contrast | A hover token per fill does not scale: a control faced with an i
 interaction/find-reachable-collapse | neutral  $1 | accessibility correctness disclosure search architecture | Collapsed content the browser's own find cannot reach is content
+interaction/focus-ceding-hover-ring | neutral  $1 | interaction focus hover accessibility outline state correctness | An element has exactly one outline, so a hover ring and a focus 
 interaction/focus-exit-dismissal | neutral  $1 | accessibility interaction focus correctness state | A panel that closes on an outside click and on Escape is still b
 interaction/focus-handoff-on-self-removal | neutral  $1 | accessibility focus correctness form state | A control that removes itself when used — a form replaced by its
 interaction/focus-held-chrome-retraction | neutral  $1 | interaction correctness accessibility focus keyboard scroll chrome navigation | A bar that retracts on downward scroll must ask more than which 
@@ -590,6 +591,7 @@ scale/sub-floor-density-breakpoint | neutral  $1 | responsive breakpoints densit
 scale/supported-feature-as-scalar | neutral  $1 | progressive-enhancement feature-detection tokens correctness architecture | A feature query usually swaps a rule block. Have it write a numb
 scale/three-tier-token-redefinition | neutral  $2 | unit tokens architecture | One token name, three definitions: fluid desktop → fluid mobile 
 scale/viewport-centred-band | neutral  $1 | tokens responsive unit layout rhythm | A hero that should sit optically centred but must not vanish on 
+scale/viewport-lerped-scalar | neutral  $1 | scale responsive custom-properties calc tokens correctness | clamp() interpolates a length and stops there: a number, a ratio
 scale/viewport-proportional-scale | E2 D2 W4 F4 $3 | unit typography layout responsive poster | Size type AND spacing in vw so the page scales as one proportion
 scale/zoom-as-reflowing-scale | neutral  $1 | unit scale architecture responsive correctness | zoom is the one scale that reflows. transform: scale() leaves th
 scroll/anchor-into-scrubbed-pin | neutral  $2 | scroll navigation anchor correctness pin | An in-page link into a scrubbed pin lands at the top of the pin 
@@ -610,6 +612,7 @@ scroll/floor-merged-autoplay-progress | neutral  $2 | scroll progress autoplay a
 scroll/fully-entered-recede | E2 D1 W2 F5 $2 | scroll scroll-driven view-timeline scale transition | A tall artifact parked between two sections reads as a wall to b
 scroll/height-aware-sticky-offset | neutral  $2 | scroll sticky layout correctness viewport | top: 0 is only right while the sticky element fits the viewport.
 scroll/hoisted-scroll-timeline | neutral  $2 | scroll motion architecture progressive-enhancement | A named scroll-timeline is visible only to descendants of the sc
+scroll/layer-anchored-scroll-offset | neutral  $2 | scroll parallax custom-properties reduced-motion correctness performance | One document-level scroll value can drive every parallax layer o
 scroll/layout-release-broadcast | neutral  $1 | scroll measurement correctness overlay architecture events | Anything holding the document at a size it will not keep — an en
 scroll/occluded-sibling-fold-progress | E2 D2 W2 F5 $3 | scroll sticky depth progress responsive | A card in a sticky stack should recede by how much of it is cove
 scroll/once-versus-toggle | neutral  $1 | scroll reveal ux | Two reveal policies, chosen per intent, never mixed arbitrarily:
