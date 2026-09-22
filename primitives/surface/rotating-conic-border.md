@@ -4,7 +4,7 @@ category: surface
 tags: [surface,border,motion,svg]
 axes: {energy: 4, density: 3, weight: 3, finish: 4}
 cost: 3
-seen: 24
+seen: 25
 requires: []
 conflicts: []
 completes: [overflow-visible-for-glow-bleed]
@@ -157,3 +157,17 @@ Variant — circular comet ring with no pseudo and no padding: paint a conic arc
 (transparent for 250–300°, accent across the last 40–70°) on the element itself
 and mask it to a ring with `radial-gradient(farthest-side, #0000 calc(100% - W),
 #000 calc(100% - W))`, W 1–3px. Spinning the element spins the comet; 1.8–3s.
+
+A linear rather than conic version needs no `@property` and no rotation: size a
+two-stop-repeating gradient to 200% of the underlay's width and loop
+`background-position` from `0` to `200%`, so the colour flows along the ring
+instead of orbiting it. Keep it at `opacity: 0` and fade it in on hover or
+focus-within over 200–300ms; a 2–4s period reads as current, not as a spinner.
+```css
+.card::before { inset: -1px; background: linear-gradient(90deg, var(--a), var(--b), var(--a));
+  background-size: 200% 100%; opacity: 0; transition: opacity .25s }
+.card:is(:hover, :focus-within)::before { opacity: 1; animation: flow 3s linear infinite }
+@keyframes flow { to { background-position: 200% 0 } }
+```
+⚠ `background-position` repaints every frame — attach the animation in the
+hover rule, not the base, or every card repaints its hidden ring forever.

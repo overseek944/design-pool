@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,svg,path,marker,loop,diagram]
 axes: {energy: 3, density: 1, weight: 1, finish: 5}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -41,3 +41,14 @@ is spread. Radius 3–6px, opacity peak .6–.9.
 ⚠ Inline `path` is in viewBox units and does not follow a `slice` crop the way
 `<mpath>` does — with `preserveAspectRatio` slicing, run travellers only where
 the crop cannot reach.
+
+When the route itself draws on, hold the traveller until the stroke is complete:
+`begin` = the draw's delay + its duration, or a bead arrives on a line that does
+not exist yet. Fade it in and out at each end of the lap — `values="0;1;1;0"`
+with `keyTimes="0;.1;.9;1"` on opacity, same `dur` and `begin` as the motion —
+so the snap from path end back to start happens while it is invisible. Fade
+windows 8–15% of the lap; shorter and the jump still reads.
+```html
+<animate attributeName="opacity" values="0;1;1;0" keyTimes="0;.1;.9;1"
+  dur="4s" begin="2.7s" repeatCount="indefinite"/>
+```

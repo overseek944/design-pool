@@ -4,7 +4,7 @@ category: surface
 tags: [surface,hairline,geometry,ambient,background,depth]
 axes: {energy: 1, density: 2, weight: 1, finish: 5}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -57,3 +57,9 @@ before the panel reads as a target.
 ⚠ Spread bands are painted, not composited, and they are sized by the widest
 ring — a 260px circle with a 90px band repaints a 440px square on any change.
 Keep them on a static decoration layer, never on anything that animates.
+
+⚠ Spinning one of these rings does nothing visible: a circle with a uniform
+border is rotationally symmetric, so `rotate: 360deg` on a loop is pure
+compositor cost for zero motion. If the rings are meant to turn, break the
+symmetry first — a dashed or partial stroke, a gap, or the satellite dot riding
+the circumference — or leave them still.
