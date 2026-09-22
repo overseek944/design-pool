@@ -1,6 +1,6 @@
 # Manifest
 
-854 primitives. Format: `category/id | axes cost | tags | gist`
+856 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -383,6 +383,7 @@ media/aspect-locked-media | neutral  $1 | layout media cls | Lock every media sl
 media/background-format-negotiation | neutral  $1 | media images formats correctness progressive-enhancement | An image that must composite with its own scrim in one paint can
 media/barrier-synced-media-layers | neutral  $2 | video media correctness layering loading | Two clips composited as layers — a base pass and a treated one c
 media/blend-normalised-logo-wall | neutral  $1 | media logos blend-mode assets normalisation | Supplied logo files arrive as opaque rectangles — baked-in white
+media/blend-seated-artwork-ring | E1 D2 W2 F5 $1 | media blend-mode border detail tokens | A tile of supplied artwork needs a hairline to seat it, and one 
 media/build-captured-product-shot | neutral  $2 | media asset build product screenshot architecture correctness | A page showing the product either carries a hand-kept screenshot
 media/canvas-driven-favicon | E3 D2 W2 F4 $2 | media icon canvas motion browser detail | The tab strip is a surface a page can paint. Render the mark int
 media/canvas-relayed-video-playback | neutral  $3 | media video canvas chrome performance | A <video> carries chrome no attribute removes — a long-press sav
@@ -653,6 +654,7 @@ scroll/pre-hydration-scroll-restore | neutral  $2 | scroll navigation hydration 
 scroll/probe-reach-tail-space | neutral  $2 | scroll layout observer correctness | A scroll probe sits on a fixed line — the midpoint, or just unde
 scroll/progress-keyed-copy-retreat | E2 D1 W2 F5 $2 | scroll overlay reveal choreography pin | Copy framing a pinned stage has done its work by the time the st
 scroll/range-offset-scroll-stagger | E2 D2 W2 F5 $2 | scroll scroll-driven stagger sequence css-only | A scroll timeline has no clock, so animation-delay and any stagg
+scroll/retained-ratio-argmax-spy | neutral  $2 | scroll observer navigation architecture correctness | Where a section can be shorter than the reading band, "whoever f
 scroll/reveal-trigger-band | E2 D2 W2 F4 $1 | scroll reveal thresholds | Entrance triggers fire at top 85%–top 90% — just inside the fold
 scroll/scripted-scroll-abort-band | neutral  $1 | scroll correctness accessibility events navigation | A scripted scroll animation owns the viewport for its whole dura
 scroll/scroll-beat-live-region | neutral  $1 | accessibility scroll aria-live narrative correctness | When scrolling is what changes the content — a pinned scene, a c

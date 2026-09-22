@@ -4,7 +4,7 @@ category: type
 tags: [type,emphasis,highlight,decoration,radius,detail]
 axes: {energy: 2, density: 2, weight: 4, finish: 4}
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -64,3 +64,18 @@ it can afford to be before the radius eats the glyphs.
 ⚠ At slab proportions the vertical padding is doing all the work and a stray
 `line-height` inherited from the block above swells it — pin `line-height: 1` on
 the mark and give it back as a top margin of 0.1–0.2em, or the baseline drifts.
+
+The sized background need not be a gradient. A data-URI SVG with
+`preserveAspectRatio="none"` gives the same band an irregular drawn edge — a
+brush stroke, a scribble — from one asset at any phrase length, because an
+organic shape carries no reference geometry for the eye to check the stretch
+against. A circle, a chevron or lettering would read as damaged at the same
+distortion; a blob does not. Height stays in `em`, so it tracks the type.
+Band 0.25–0.4em, clearing the baseline by 0.05–0.15em.
+```css
+.mark { background: url("data:image/svg+xml,…preserveAspectRatio='none'…")
+        no-repeat 0 100% / 100% .32em; padding-bottom: .1em }
+```
+⚠ The asset's own stroke weight stretches with it, so one blob drawn for a
+three-word phrase thins visibly under a single word and thickens across a line —
+draw it near the longest run it will serve, or ship two.

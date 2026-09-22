@@ -4,7 +4,7 @@ category: scale
 tags: [scale,layout,proportion,transform,responsive]
 axes: {energy: 1, density: 2, weight: 3, finish: 4}
 cost: 2
-seen: 15
+seen: 16
 requires: []
 conflicts: []
 completes: []

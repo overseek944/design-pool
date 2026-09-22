@@ -4,7 +4,7 @@ category: scale
 tags: [responsive,breakpoint,tokens,container-query,custom-properties,architecture,css-only]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
