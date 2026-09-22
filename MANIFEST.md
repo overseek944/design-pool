@@ -1,6 +1,6 @@
 # Manifest
 
-1021 primitives. Format: `category/id | axes cost | tags | gist`
+1024 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -190,6 +190,7 @@ interaction/declared-quiet-region | neutral  $1 | interaction pointer architectu
 interaction/dimension-coded-position-dot | E2 D2 W2 F5 $1 | interaction state indicator accessibility carousel | Let the active item in a position indicator change size, not onl
 interaction/disengaged-scoped-transition | E3 D1 W2 F5 $1 | interaction transition pointer drag reveal accessibility | A value the pointer drives — a wipe seam, a comparison split, a 
 interaction/dismissal-escalated-reprompt | neutral  $2 | interaction prompt cadence persistence restraint correctness | A recurring prompt — install, subscribe, upgrade — needs a caden
+interaction/dot-matrix-state-glyph | E1 D2 W2 F4 $1 | interaction icon toggle menu state | A toggle glyph built from a 3×3 dot grid changes state without c
 interaction/drag-scoped-target-states | neutral  $2 | drag drop affordance state feedback accessibility | A drag that lights only the target under the pointer makes the r
 interaction/drag-suppressed-click-threshold | neutral  $2 | pointer drag interaction correctness accessibility | A surface that answers to drag and also holds links fires a clic
 interaction/dwell-gated-escalation | E2 D1 W2 F5 $1 | hover pointer delay restraint reward | Hover is a weak signal — a pointer crosses half the page on its 
@@ -259,6 +260,7 @@ interaction/pointer-borne-rule-sight | E3 D2 W1 F5 $2 | interaction pointer over
 interaction/pointer-transparent-copy-layer | neutral  $1 | interaction pointer accessibility layout correctness | Copy laid over a background that reacts to the pointer swallows 
 interaction/pre-hydration-nested-link | neutral  $2 | accessibility links hydration progressive-enhancement correctness | A card that navigates but contains its own link cannot be an anc
 interaction/prose-doubled-key-chord | neutral  $1 | accessibility correctness navigation detail state | A shortcut drawn as keycaps is a picture of a gesture. Assistive
+interaction/proximity-bounded-gaze | E3 D1 W2 F4 $2 | interaction pointer character spring attention | Eyes that follow the pointer everywhere stop meaning anything. N
 interaction/proximity-revealed-target | E2 D1 W2 F5 $2 | interaction pointer accessibility focus custom-properties affordance pointer-events | A control meant to be found rather than advertised can key its o
 interaction/proxy-painted-native-control | neutral  $1 | accessibility focus forms input correctness keyboard | Keep the real <input> and paint a sibling. Clip it to a 1×1 rect
 interaction/reader-parameterised-comparison | E2 D3 W2 F5 $3 | comparison demo state interaction accessibility | A before/after figure quoted from your own example is an asserti
@@ -536,6 +538,7 @@ motion-system/below-fold-armed-entrance | neutral  $1 | motion correctness progr
 motion-system/blurred-slot-spin-settle | E4 D1 W2 F3 $1 | slot reel blur overshoot value-change randomise | A value being picked — a randomised option, a generated word — r
 motion-system/camera-over-static-scene | E3 D2 W3 F5 $2 | motion transform scale focus diagram narrative | To walk a reader through a diagram, move the viewport rather tha
 motion-system/cardinality-locked-variant-set | E3 D3 W2 F5 $3 | motion svg morph state diagram architecture | A set of marks that switches state — a diagram's shapes, a chart
+motion-system/context-keyed-idle-repertoire | E3 D1 W2 F3 $2 | motion character idle state keyframes loop | A resident character with one idle loop is a screensaver. Give i
 motion-system/context-scoped-cleanup | neutral  $1 | motion lifecycle correctness | Create every animation inside a scoped context and revert it on 
 motion-system/corner-circuit-squash-dot | E3 D1 W2 F4 $1 | loader waiting dot keyframes squash pending | A pending indicator that walks rather than spins: one dot visits
 motion-system/counter-drifting-echo-glyph | E3 D1 W2 F4 $1 | motion icon loop trail idle | A directional glyph idling on a small nudge reads as twitching. 

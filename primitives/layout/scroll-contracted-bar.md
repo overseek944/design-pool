@@ -4,7 +4,7 @@ category: layout
 tags: [header,scroll,sticky,chrome]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 35
+seen: 36
 requires: []
 conflicts: []
 completes: []

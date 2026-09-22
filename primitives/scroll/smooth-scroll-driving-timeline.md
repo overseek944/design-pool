@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,motion,architecture]
 axes: {energy: 3, density: 2, weight: 3, finish: 5}
 cost: 3
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: [context-scoped-cleanup]
@@ -47,3 +47,11 @@ if (off || matchMedia('(prefers-reduced-motion: reduce)').matches) return
 ⚠ Tear the instance down on the route change rather than only skipping
 construction — a client-side navigation into a gated route otherwise leaves the
 previous instance running and still owning the wheel.
+
+Touch input already carries native momentum, so smoothing it only adds a
+follower lag to a finger that expects to be the scroll. Gate construction on
+`(pointer: coarse)` beside the reduced-motion check, and on `navigator.webdriver`
+so automated screenshots and tests see a deterministic native scroll position.
+```js
+if (!reduce.matches && !matchMedia('(pointer: coarse)').matches && !navigator.webdriver) new Lenis()
+```

@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,reveal,thresholds]
 axes: {energy: 2, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 23
+seen: 24
 requires: []
 conflicts: []
 completes: []
