@@ -4,7 +4,7 @@ category: color
 tags: [color,scroll,ambient,gradient,filter]
 axes: {energy: 2, density: 2, weight: 2, finish: 4}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,10 @@ changes identity.
 logo, a chart, a photograph — may live inside it, and the whole fixed layer
 repaints on each write. Coalesce `--p` in rAF; hold it still under
 `prefers-reduced-motion`.
+
+Variant — stepped, no script: give each section its own ground on a monotonic
+lightness ladder instead of one rotating layer. Five to seven rungs, 1–3% L apart
+in OKLCH at fixed hue, so each boundary reads as a descent rather than a new
+surface. Holds under reduced motion for free, and nothing inside is filtered.
+⚠ Rungs closer than ~1% L disappear on uncalibrated panels; mark each seam with
+a hairline so the step survives.

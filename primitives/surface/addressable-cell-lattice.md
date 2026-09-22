@@ -4,7 +4,7 @@ category: surface
 tags: [lattice,grid,hairline,pointer-events,node-budget,decoration]
 axes: {energy: 1, density: 3, weight: 1, finish: 4}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []

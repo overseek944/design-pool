@@ -1,6 +1,6 @@
 # Manifest
 
-960 primitives. Format: `category/id | axes cost | tags | gist`
+961 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -199,6 +199,7 @@ interaction/focusable-graphic-regions | neutral  $2 | accessibility svg focus di
 interaction/gap-spanning-hover-bridge | E2 D2 W2 F5 $1 | interaction hover panel menu css-only accessibility | A panel held off its trigger by a visual gap is unreachable by h
 interaction/gesture-affordance-label | E1 D2 W2 F4 $1 | affordance interaction accessibility detail ux | A surface whose only affordance is a gesture — drag to orbit, sc
 interaction/ground-joined-tab-selection | E1 D2 W2 F5 $1 | tabs state selection ruled contrast theme | Where a strip of tabs sits directly on the panel it switches, st
+interaction/gutter-staged-section-rail | E1 D2 W1 F5 $1 | navigation indicator progress rail responsive fixed | A fixed edge rail of section anchors spends only the gutter it h
 interaction/hairline-native-scrubber | E2 D1 W1 F5 $1 | interaction accessibility control scrub native diagram | A diagram that scrubs deserves a real <input type=range>, not a 
 interaction/height-traded-card-panes | E2 D3 W2 F4 $2 | interaction hover card media layout transition | A card that reveals a summary on hover usually grows — shoving i
 interaction/history-entry-backed-overlay | neutral  $2 | interaction overlay history dismiss mobile correctness | An overlay opened from a button owns no history entry, so the ba
