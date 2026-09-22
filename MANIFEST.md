@@ -1,6 +1,6 @@
 # Manifest
 
-1034 primitives. Format: `category/id | axes cost | tags | gist`
+1036 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -434,6 +434,7 @@ light/baked-contact-shadow | E1 D2 W3 F5 $3 | 3d shadow webgl grounding render-t
 light/blend-doubled-headline | E2 D2 W4 F5 $3 | type blend legibility contrast compositing | Set the headline twice in one grid cell: an opaque copy under th
 light/blurred-conic-hue-bloom | E1 D2 W2 F4 $2 | gradient glow bloom hue conic decoration ambient | Radial lamps give one hue each and seam where they meet. A conic
 light/broadcast-light-source | E2 D2 W2 F5 $3 | light gradient custom-property ambient architecture | A panel lit at the pointer has one lamp, and only while a pointe
+light/co-located-pulse-lamp | E3 D2 W3 F4 $3 | light 3d webgl pulse alert emissive glow | An alert in a lit 3D scene that only raises its own emissive lig
 light/counter-rotated-specular-layer | E2 D2 W3 F5 $2 | light gradient rotation material 3d | An object with its highlight painted into its own background spi
 light/differential-scale-rim-glint | E2 D2 W3 F5 $2 | light rim mask layers ambient metal 3d | A form cut from a single silhouette has no edge for light to cat
 light/distance-derived-border-light | E2 D2 W3 F5 $4 | light shader sdf glow border webgl | One signed distance to the element's rounded rectangle pays for 
@@ -489,6 +490,7 @@ media/dilated-alpha-keyline | E1 D2 W2 F5 $1 | media icon logo filter contrast l
 media/dot-module-code-render | E1 D3 W2 F4 $1 | media svg qr brand correctness | A stock QR code is the one square-pixel object on a composed pag
 media/event-sourced-audio-control | neutral  $1 | media audio state correctness accessibility interaction | A play control that flips its own boolean on click desynchronise
 media/frame-announced-readiness | neutral  $2 | media iframe embed loading progressive-enhancement correctness | An iframe's load fires when its document parses, not when the ap
+media/frame-relayed-theme-token | neutral  $1 | media iframe embed theme custom-property postmessage architecture | Custom properties stop at a frame boundary, so an embedded scene
 media/frameless-alpha-artwork | E1 D2 W2 F3 $2 | media illustration assets transparency composition | Artwork exported on transparency with a feathered edge does not 
 media/idle-hydrated-visible-media | neutral  $2 | media video performance bandwidth first-paint scheduling | Media already on screen at first paint cannot be approach-loaded
 media/ink-channel-probed-icon | neutral  $1 | icon svg media correctness currentcolor | An icon pasted from an arbitrary set carries its colour on one o

@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,fog,depth,background,integration,scene]
 axes: {energy: 1, density: 2, weight: 3, finish: 5}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

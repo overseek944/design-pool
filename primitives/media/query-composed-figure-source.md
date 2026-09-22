@@ -4,7 +4,7 @@ category: media
 tags: [media,figure,architecture,iframe,product,responsive,build]
 axes: none
 cost: 3
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: [counter-scaled-live-embed]
