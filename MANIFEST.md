@@ -1,6 +1,6 @@
 # Manifest
 
-818 primitives. Format: `category/id | axes cost | tags | gist`
+821 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -523,12 +523,14 @@ perf/dual-epsilon-settle-halt | neutral  $1 | performance animation spring frame
 perf/engagement-deferred-third-party | neutral  $2 | performance third-party analytics loading idle correctness | A tag that only observes engaged sessions should not compete wit
 perf/fixed-point-coordinate-payload | neutral  $2 | perf payload data points precision | A large coordinate set shipped as JSON floats spends most of its
 perf/font-display-per-role | neutral  $1 | type font-loading cls performance correctness | font-display is a decision per face, not per project. Body and U
+perf/header-relayed-edge-decision | neutral  $2 | perf architecture ssr caching routing hydration | A cached HTML shell is byte-identical for every reader, so whate
 perf/index-windowed-field-update | neutral  $2 | performance pointer field grid correctness batching | A field of elements driven from the pointer does not need visiti
 perf/layer-order-preamble | neutral  $1 | architecture cascade css correctness code-splitting | Cascade layers are ordered by first mention, so with code-split 
 perf/loop-gated-on-attention | neutral  $2 | performance animation intersection-observer visibility battery correctness | An infinite decorative animation never stops — it keeps composit
 perf/markup-declared-instrumentation | neutral  $1 | architecture instrumentation events delegation maintenance | Declare the event name and its payload as data- attributes and l
 perf/media-query-parity-listeners | neutral  $1 | responsive correctness architecture motion breakpoint | Where script and stylesheet must agree on a layout, ask the brow
 perf/media-scoped-preload-tier | neutral  $1 | perf loading images responsive resource-hints critical-path | When script picks among art-directed sources — an orientation cr
+perf/mount-deferred-environment-value | neutral  $1 | perf hydration ssr cls correctness architecture | A capability query has a safe degraded answer; the reader's cloc
 perf/observed-set-gated-listener | neutral  $2 | performance scroll intersection-observer scrub listener correctness | A scrub that needs a value every frame cannot be served by an ob
 perf/off-thread-texture-downscale | neutral  $2 | performance texture webgl loading memory | Textures authored at 4K decode to tens of megabytes before anyth
 perf/offscreen-subtree-deferral | neutral  $1 | performance containment rendering scroll correctness | Below-fold grids of cards, figures or rows cost style, layout an
@@ -734,6 +736,7 @@ timing/bounce-parametrised-spring | E3 D2 W2 F5 $1 | motion spring rhythm sequen
 timing/capped-total-stagger | neutral  $1 | motion sequencing scale | For unknown-length collections use stagger:{amount} not stagger:
 timing/cue-list-on-looping-clock | neutral  $2 | motion timing loop architecture correctness | A multi-beat scripted sequence built from chained timers cannot 
 timing/cumulative-gap-schedule | E3 D2 W2 F4 $1 | motion sequencing choreography entrance | A hand-authored entrance is a list of pauses, not absolute delay
+timing/cycle-resolved-depth-ramp | E3 D2 W2 F5 $1 | motion loop depth keyframes css ambient | Phase-offset copies of one loop usually get their differences by
 timing/cycle-seam-reshuffle | E2 D3 W2 F5 $2 | timing loop motion svg variation | An ambient loop that repeats exactly becomes wallpaper on the se
 timing/decaying-loop-restart-gap | E2 D1 W2 F5 $1 | loop timing sequence restraint demo attention | A self-restarting demonstration does not want one restart gap. A
 timing/dwelling-phase-ring | neutral  $2 | timing state loop choreography architecture demo | A looping demonstration written as a schedule of effects has to 

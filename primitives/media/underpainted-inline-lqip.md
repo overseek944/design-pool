@@ -4,7 +4,7 @@ category: media
 tags: [media,loading,performance,correctness,cls]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -27,3 +27,17 @@ tear down — the real image simply covers it. Blur 20–40px, scale 1.05–1.15
 ⚠ Inline bytes are uncacheable and delay the markup — past ~500 bytes the
 placeholder costs more than it saves. Opaque photography only: it shows through
 any transparency in the final asset.
+
+Where no version of the image exists ahead of time — a source chosen at
+runtime, a field the reader supplies — the underpaint can be a loading
+treatment rather than a preview, and the architecture is unchanged: a
+gradient sweeping under the slot, covered the instant the real pixels land. No
+load event, no state, nothing to tear down. Sweep 1.2–1.8s, and keep the band's
+lightest stop within 6–10% of the ground or the frame flashes.
+```css
+.shot::before { background: linear-gradient(100deg, var(--g) 30%,
+  var(--g-lit) 50%, var(--g) 70%) 0 0 / 200% 100%; animation: sweep 1.4s infinite }
+```
+⚠ It never ends on its own — a source that 404s sweeps forever and reads as a
+live request. Give the slot an `error` handler that stops the animation and
+shows the failed state.

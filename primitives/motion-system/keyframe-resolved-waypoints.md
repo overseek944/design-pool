@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,keyframes,custom-properties,architecture,choreography]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -43,3 +43,16 @@ unscoped beside the component and namespace the name by hand, or move the
 ```
 ⚠ Hand-namespaced globals collide across components — prefix by owner, not by
 effect, or the second `fade-in` on the page silently wins.
+
+Ship the motion preference in that same unscoped block, keyed to an attribute
+the component writes on every node it animates. The reduced-motion branch then
+travels with the keyframes instead of living in a global stylesheet that a
+later extraction leaves behind, and one rule retires the whole component
+wherever it is mounted.
+```css
+@media (prefers-reduced-motion: reduce) { [data-x-anim] { animation: none !important } }
+```
+⚠ `animation: none` holds each element at its authored base style, so anything
+whose resting position is a keyframe stop — a ring seeded mid-cycle, a member
+placed by its 0% frame — collapses to the middle unless the base style is the
+finished pose.

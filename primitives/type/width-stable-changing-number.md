@@ -4,7 +4,7 @@ category: type
 tags: [numerals,data,motion,correctness]
 axes: {energy: 2, density: 3, weight: 3, finish: 5}
 cost: 1
-seen: 30
+seen: 31
 requires: []
 conflicts: []
 completes: []
@@ -144,3 +144,15 @@ str.split('').map((ch, i) => <Slot key={str.length - i} char={ch} />)
 ⚠ A freshly mounted slot must arrive already showing its digit, not roll to it
 from zero — a leading `1` that counts up from `0` reads as the figure briefly
 being ten times wrong.
+
+The opposite cadence is right for a wall clock, and the distinction is drift.
+A countdown accumulates error and must be polled faster than it reads; a clock
+re-derives absolute time every tick, so it can wake at the smallest unit it
+actually displays. A minutes-only readout on a one-second interval does sixty
+times the work for one visible change, on every open tab.
+```js
+setInterval(tick, showSeconds ? 1000 : 60000)
+```
+⚠ An interval slower than its unit lands on an arbitrary phase, so the minute
+turns up to 59s late. Schedule the first wake on the next boundary, then fall
+into the fixed period.

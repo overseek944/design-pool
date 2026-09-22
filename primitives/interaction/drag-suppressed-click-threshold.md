@@ -4,7 +4,7 @@ category: interaction
 tags: [pointer,drag,interaction,correctness,accessibility]
 axes: none
 cost: 2
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
