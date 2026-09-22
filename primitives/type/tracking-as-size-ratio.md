@@ -4,7 +4,7 @@ category: type
 tags: [type,tracking,precision,fluid,tokens]
 axes: {energy: 1, density: 2, weight: 3, finish: 5}
 cost: 1
-seen: 24
+seen: 25
 requires: []
 conflicts: []
 completes: []
@@ -21,7 +21,7 @@ touches tracking, so this stays a separate control.
 .head { --track: -.06; letter-spacing: calc(var(--fs) * var(--track)) }
 @media (max-width: 600px) { .head { --track: -.02 } }
 ```
-⚠ Display −.04 to −.07, body −.01 to 0, small labels and caps +.02 to +.08 —
+⚠ Display −.04 to −.07, body −.02 to 0, small labels and caps +.02 to +.08 —
 and .14 to .24 on an uppercase eyebrow set small enough to read as a rule rather
 than as a word. Past −.08 letterforms collide at every size.
 
@@ -47,3 +47,11 @@ words of four to eight letters hold +.14 to +.17 at 11–13px and still scan as 
 phrase, because the tracked gap is measured against a word space the short
 words barely accumulate against. Section eyebrows and role labels sit exactly
 there; a three-word label with a nine-letter word in it does not.
+
+The body end of the range is set by the face, not by the size. A geometric sans
+is drawn loose enough to hold at poster scale, so at 12–15px UI sizes it takes
+the full −.02 before the words close up, while a text-optimised face at exactly
+the same size is already correct at 0 and tightens into a smear. Read the low
+end as a property of the family and set it once per family token, not per band.
+⚠ Whatever the body face takes, the fallback does not — a metric-override
+fallback matched on width will run narrow again once the tracking is applied.

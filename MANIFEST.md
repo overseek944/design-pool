@@ -1,6 +1,6 @@
 # Manifest
 
-860 primitives. Format: `category/id | axes cost | tags | gist`
+862 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -691,6 +691,7 @@ surface/chained-quadratic-wave-edge | E2 D2 W2 F3 $1 | svg path wave band sectio
 surface/channel-split-refraction-glass | E1 D3 W3 F5 $4 | glass backdrop-filter svg-filter refraction chromatic depth | A blur says frosted; a displacement says solid and thick. Refere
 surface/clip-carried-fill-traverse | E2 D2 W2 F5 $2 | svg connector motion clip-path diagram gradient | Dash offset gives a stroked connector direction, but a connector
 surface/clock-bucketed-scene-state | E1 D2 W2 F4 $2 | surface ground state root-attribute progressive-enhancement ambient | Resolve the reader's hour into three to five named buckets, set 
+surface/comb-ruled-section-seam | E1 D3 W2 F5 $1 | divider section texture rule repeating-gradient seam | Where two full-bleed grounds meet, a hairline rule is lost in th
 surface/concave-corner-seam | E1 D2 W2 F5 $2 | surface border detail chrome css-only | A raised element fuses into the sheet below it only where the jo
 surface/control-cleared-decoration-band | E1 D3 W2 F4 $2 | surface decoration contrast accessibility header | Artwork sharing a box with a control — a band behind a header, a
 surface/coprime-modulus-cell-dither | E1 D4 W2 F4 $1 | pattern texture grid nth-child dots | A grid of real elements reads as machine-made when every variati
@@ -730,6 +731,7 @@ surface/overwide-ellipse-reading-band | E1 D2 W2 F5 $1 | surface mask focus legi
 surface/painted-border-band | E1 D2 W3 F5 $1 | surface border frame texture css-only detail | The border box is a paintable band, not just an outline. Give an
 surface/paired-hard-shadow-sheet | E1 D2 W2 F4 $1 | surface depth border detail editorial | To imply a second sheet under a panel, two zero-blur shadows do 
 surface/panel-free-backdrop-legibility | E1 D2 W2 F5 $2 | backdrop-filter legibility photography contrast surface type | Copy over a photograph usually gets a plate, and the plate break
+surface/path-clipped-backdrop-frost | E1 D3 W3 F5 $3 | backdrop-filter blur clip-path svg glass shape | backdrop-filter is clipped to the element's border box, so frost
 surface/perforation-punched-silhouette | E1 D2 W2 F3 $2 | surface mask border texture detail css-only gradient | A ticket stub is a rectangle with its edge eaten away, and no bo
 surface/phase-matched-gradient-drift | E2 D2 W2 F4 $1 | surface gradient loop ambient background | An oversized gradient translated behind its box gives a ground a
 surface/polarity-crossing-panel-ground | E1 D2 W4 F5 $1 | surface gradient contrast color panel card | One panel can carry both polarities of type. Ramp its own ground

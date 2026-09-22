@@ -4,7 +4,7 @@ category: surface
 tags: [hairline,divider,gradient,section,restraint]
 axes: {energy: 1, density: 1, weight: 1, finish: 5}
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -103,3 +103,20 @@ measure. Pitch 16–32px, tick 1px, band 6–10px, comb alpha well under the rul
 ⚠ The comb beats against the pixel grid at fractional DPR exactly as a scanline
 does — check 1.25× and 1.5×. Ticks denser than about 16px stop reading as
 graduations and start reading as a dashed rule, which says something else.
+
+Transposed to a vertical spine the fade belongs at one end only. A hairline rail
+running beside a list of steps has a real start — the first item anchors it — so
+fading the top denies a boundary that exists; fade only the far end and the rail
+says the sequence continues past the section rather than stopping on a cap below
+the last row. A stroked gradient does it in the same node that draws the rail, so
+the rail stays one element and the fade tracks its length at any item count.
+Solid through the first 60–80%, zero alpha by the end.
+```html
+<linearGradient id="rail" x1="0" y1="0" x2="0" y2="1">
+  <stop offset=".02" stop-color="currentColor"/>
+  <stop offset="1" stop-color="currentColor" stop-opacity="0"/></linearGradient>
+<path d="M.5 0V183" stroke="url(#rail)"/>
+```
+⚠ `objectBoundingBox` gradient units collapse on a zero-width path — a vertical
+rule has no bounding width, so give the stroke its own `x1`/`x2` of 0 or switch
+the gradient to `userSpaceOnUse`.

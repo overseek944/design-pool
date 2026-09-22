@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,hairline,precision,responsive,technical]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 2
-seen: 24
+seen: 25
 requires: []
 conflicts: []
 completes: []
@@ -194,3 +194,19 @@ width together, and there is no seam between two boxes to keep aligned. Rail
 ⚠ `z-index: -1` sends it behind the parent's own background unless that parent
 makes a stacking context — without the `isolation`, the whole apparatus is
 invisible on any ground that is not transparent.
+
+Run the lattice *dashed* and its optical weight drops far enough to cross what a
+solid rule cannot — a content region, full-bleed artwork, a section whose ground
+inverts — because a dash sequence reads as annotation rather than as a border,
+and the sheet survives being drawn over the page instead of only around it. The
+price is phase: `border-style: dashed` derives its period from the border width
+and differs per engine, so build both axes from one repeating gradient off a
+single period token or the crossings land ink-in-gap and every intersection
+reads as a break. Period 8–12px, dash 3–5px of it, alpha .12–.25.
+```css
+--per: 10px; --dash: 4px;
+.v { background: repeating-linear-gradient(180deg, var(--rule) 0 var(--dash), #0000 var(--dash) var(--per)) }
+.h { background: repeating-linear-gradient(90deg,  var(--rule) 0 var(--dash), #0000 var(--dash) var(--per)) }
+```
+⚠ Dashed rules over a dark ground lose the gaps first — check the alpha against
+both grounds, not the light one, and drop to solid under `prefers-contrast: more`.

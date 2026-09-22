@@ -4,7 +4,7 @@ category: motion-system
 tags: [explode,assembly,stack,progress,figure,scrub]
 axes: {energy: 2, density: 3, weight: 2, finish: 5}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
