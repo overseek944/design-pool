@@ -1,6 +1,6 @@
 # Manifest
 
-979 primitives. Format: `category/id | axes cost | tags | gist`
+980 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -938,6 +938,7 @@ type/grid-counted-leading | neutral  $2 | type tokens scale rhythm leading archi
 type/hyphenated-justified-measure | E1 D3 W2 F5 $1 | type prose editorial measure correctness | Justified body copy sets a page as a printed specification rathe
 type/ink-state-lettering-runs | E1 D2 W4 F5 $2 | type svg stroke detail editorial hairline | One word at display scale can carry two states of ink. Set it as
 type/intra-word-face-interlock | E1 D3 W4 F3 $2 | type display headline lettering fallback detail | Two faces can meet inside a single word rather than between bloc
+type/keyed-label-pair | E1 D3 W2 F5 $1 | type label mono identifier schema form technical hierarchy | A field that exists both for people and for a system has two nam
 type/language-conditional-type-tokens | neutral  $2 | type i18n tokens localisation correctness | The type scale is a function of script, not only viewport. Redef
 type/measured-inline-word-swap | E3 D2 W3 F5 $2 | type motion headline correctness | A word cycling inside a running headline relays out the whole li
 type/measured-line-bucket-stagger | neutral  $2 | type stagger reveal measurement font-loading correctness | A cascade down the rendered lines of a heading does not require 

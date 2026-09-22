@@ -4,7 +4,7 @@ category: color
 tags: [color,hierarchy,surface,sequence,contrast]
 axes: {energy: 1, density: 2, weight: 3, finish: 4}
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []

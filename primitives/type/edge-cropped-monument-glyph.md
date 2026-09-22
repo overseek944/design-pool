@@ -4,7 +4,7 @@ category: type
 tags: [type,lettering,identity,display,bleed,layout]
 axes: {energy: 1, density: 2, weight: 5, finish: 4}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -39,3 +39,15 @@ footer { overflow: hidden }
 .colophon { font-size: 20rem; line-height: .72; white-space: nowrap; user-select: none }
 ```
 ⚠ A fixed rem size overflows sideways at 390px — step it down or switch to `vw`.
+
+On a light footer the crop can dissolve rather than cut: fill the word with a
+vertical gradient running from a mid-grey into the ground itself, clipped to the
+glyphs, so the lower bowls fade out before the page edge reaches them. The word
+then reads as sinking into the paper, not as trimmed by it. Top stop at 20–35%
+ink, bottom stop equal to the ground; `line-height` 0.8–0.95.
+```css
+.colophon { background: linear-gradient(var(--ink-25), var(--ground) 92%);
+  -webkit-background-clip: text; background-clip: text; color: transparent }
+```
+⚠ Forced-colors mode drops the gradient and `transparent` text vanishes — give
+it a `@media (forced-colors: active)` fallback of `CanvasText`.
