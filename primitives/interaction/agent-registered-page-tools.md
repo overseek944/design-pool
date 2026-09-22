@@ -4,7 +4,7 @@ category: interaction
 tags: [architecture,progressive-enhancement,interop,capability,lifecycle,feature-detection]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
