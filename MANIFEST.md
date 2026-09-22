@@ -1,6 +1,6 @@
 # Manifest
 
-997 primitives. Format: `category/id | axes cost | tags | gist`
+998 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -239,6 +239,7 @@ interaction/occupancy-grid-canvas-pick | neutral  $2 | canvas pointer hit-test p
 interaction/offset-shadow-press | E3 D2 W4 F2 $1 | interaction state depth detail border | A hard offset shadow reads as a solid object sitting above the p
 interaction/one-sided-hover-delay | E2 D2 W2 F5 $1 | interaction hover delay css-only restraint pointer | A hover-revealed panel wants patience on the way in and none on 
 interaction/ordinal-flipped-panel-anchor | E2 D2 W2 F5 $1 | interaction menu panel css-only layout correctness | A panel wider than its trigger and centred on it runs off the vi
+interaction/outset-active-entry | E2 D2 W3 F4 $1 | steps active-state list scroll emphasis | In a column of entries where one is current — a scroll-spied fea
 interaction/outward-corner-target | E3 D2 W1 F5 $2 | interaction state focus border precision detail | Four L-brackets absent at rest, then flying outward past the ele
 interaction/overdamped-surface-tilt | E2 D1 W3 F5 $1 | interaction pointer transform motion restraint custom-property | Most pointer-reactive surfaces try to keep up, and keeping up re
 interaction/overflow-traversing-label | E3 D2 W2 F5 $1 | overflow hover focus type css-only detail | A label too long for its row is usually handed a tooltip or left
