@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,canvas,battery,frame-budget,correctness]
 axes: none
 cost: 1
-seen: 22
+seen: 23
 requires: []
 conflicts: []
 completes: []
@@ -190,3 +190,17 @@ new ResizeObserver(() => { dirty = true }).observe(box)
 ```
 ⚠ Clear the flag before drawing, never after — a mutation raised during the
 frame is otherwise discarded without ever being rendered.
+
+Two cadences can share one loop, and a scrolling history needs both. Draw every
+frame so the marks interpolate smoothly, but advance the *data* — shift one
+sample off, push one on — only once a fixed interval has elapsed. The history
+then travels at the same speed on a 60Hz panel and a 120Hz one, where advancing
+per frame runs it at double rate on the better display and reads as a different
+design rather than as a bug.
+```js
+draw(level)                                      // every frame
+if (t - sampled > 32) { sampled = t; hist.shift(); hist.push(level) }
+```
+⚠ Gate on the timestamp, not a frame counter — the counter is the thing that
+differs between panels. 25–40ms per sample; slower and the history steps
+visibly instead of flowing.

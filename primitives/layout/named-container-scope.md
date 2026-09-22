@@ -4,7 +4,7 @@ category: layout
 tags: [layout,container-query,correctness,components,responsive]
 axes: none
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []

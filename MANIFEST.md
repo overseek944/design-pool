@@ -1,6 +1,6 @@
 # Manifest
 
-823 primitives. Format: `category/id | axes cost | tags | gist`
+826 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -202,6 +202,7 @@ interaction/one-sided-hover-delay | E2 D2 W2 F5 $1 | interaction hover delay css
 interaction/outward-corner-target | E3 D2 W1 F5 $2 | interaction state focus border precision detail | Four L-brackets absent at rest, then flying outward past the ele
 interaction/overdamped-surface-tilt | E2 D1 W3 F5 $1 | interaction pointer transform motion restraint custom-property | Most pointer-reactive surfaces try to keep up, and keeping up re
 interaction/overflow-traversing-label | E3 D2 W2 F5 $1 | overflow hover focus type css-only detail | A label too long for its row is usually handed a tooltip or left
+interaction/overlaid-cycling-field-hint | E3 D1 W2 F4 $1 | interaction input placeholder accessibility hint typing | An empty field can demonstrate what to type by cycling examples,
 interaction/override-released-system-preference | neutral  $1 | theme preference accessibility correctness state | A page that mirrors prefers-color-scheme and also ships a toggle
 interaction/paired-focus-offset-tokens | neutral  $1 | accessibility focus tokens correctness | Ship the focus ring as three tokens — width, an outer offset, an
 interaction/panel-scoped-field-disabling | neutral  $1 | interaction form correctness accessibility tabs progressive-enhancement | A tabset that keeps every panel in the DOM — because the set is 
@@ -509,6 +510,7 @@ motion-system/transient-class-scoped-transition | neutral  $2 | motion-system vi
 motion-system/twin-pose-custom-properties | E3 D3 W2 F5 $2 | transform state stagger custom-properties group choreography | A group that rearranges between two arbitrary layouts — stacked 
 motion-system/type-declared-transition-scope | neutral  $2 | motion-system view-transition scoping state correctness routing | Every ::view-transition- rule applies to every transition, so a 
 motion-system/viewport-clamped-slot-travel | E3 D1 W2 F5 $3 | motion travel scroll measurement layout | An element travelling between two positions read from real layou
+motion-system/zero-signal-idle-floor | E2 D1 W2 F5 $1 | motion idle signal realtime feedback reduced-motion | A visual driven by a live input has two states that render ident
 perf/analytic-stand-in-until-live | neutral  $2 | data loading architecture visualisation labelling | A visual driven by a live feed has three bad first frames: empty
 perf/attribute-mirrored-engine-state | neutral  $1 | perf debug instrumentation testing architecture state | An engine that fetches, decodes and caches is invisible the mome
 perf/bfcache-blanked-surface | neutral  $1 | performance canvas lifecycle correctness restoration flicker | A page restored from the back/forward cache repaints whatever a 
@@ -761,6 +763,7 @@ timing/role-offset-cascade | E3 D2 W2 F5 $1 | timing motion sequencing choreogra
 timing/sampled-point-spring-easing | E3 D1 W2 F5 $1 | timing easing token css-animation overshoot performance | linear() takes a list of sampled outputs, so a spring solved onc
 timing/scheduled-discrete-property-step | E2 D1 W2 F5 $1 | transition stacking scheduling hover precision | A stacking change has no in-between, so naming z-index in a tran
 timing/segment-eased-keyframes | E3 D2 W2 F5 $1 | motion easing keyframes choreography loop | animation-timing-function declared inside a keyframe block sets 
+timing/split-rate-signal-follower | E3 D1 W2 F5 $1 | timing motion signal smoothing feedback realtime | A live level — audio amplitude, scroll effort, request rate — sm
 timing/stagger-band | E3 D3 W2 F4 $1 | motion rhythm sequencing | Sibling stagger lives in a narrow band: .06–.08s reads as one ge
 timing/state-coded-arrival-rate | E3 D3 W2 F4 $1 | timing live-data state stream rhythm | A live stream that changes mode usually recolours its rows and n
 timing/state-named-delay-field | E2 D2 W2 F5 $2 | timing loading state stagger motion grid detail accessibility | An indeterminate spinner says work is happening; it cannot say w

@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,marquee,correctness,loop,overflow]
 axes: none
 cost: 1
-seen: 31
+seen: 32
 requires: []
 conflicts: []
 completes: []
@@ -141,3 +141,17 @@ tuned; 1.15–1.35 per step, `linear` timing or the seam reappears as a pulse.
 ⚠ Rounding the ratio to two places shows as a jump within a minute of looping —
 carry the divisions the ring geometry actually used. Nothing may sit at the
 vanishing centre: it scales past the viewer and pops.
+
+A negative delay separates two lanes the other way, and it keeps them at one
+speed. Starting the second lane half a cycle in makes the pair phase-offset
+rather than rate-offset — right where the lanes carry the same plates and a
+duration difference would read as one of them lagging rather than as two
+independent tracks. Derive the offset from the duration in the same `calc` and
+retuning the speed cannot desynchronise them.
+```css
+.lane        { animation: run var(--dur, 40s) linear var(--delay, 0s) infinite }
+.lane--back  { --delay: calc(-1 * var(--dur) / 2); animation-direction: reverse }
+```
+⚠ Only a negative delay starts mid-cycle; a positive one holds the first pose
+for that long instead. Any offset but half a cycle needs a track that tiles, or
+the two lanes park at visibly different poses whenever the animation stops.

@@ -4,7 +4,7 @@ category: perf
 tags: [resize,canvas,mobile,correctness]
 axes: none
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -96,3 +96,17 @@ last = top; if (Math.abs(scrollY - top) > .5) scrollTo({ top, behavior: 'instant
 ```
 ⚠ The scripted scroll fires the same handler the wheel does, so the abandon
 listener must test something the correction itself cannot trip.
+
+Where a buffer's *length* is derived from the container — one sample per N
+pixels of width — a rebuild that allocates a fresh array throws the history
+away, so every accepted resize blanks a display that was mid-reading. Allocate
+the new length, then copy the old tail into its end, so the most recent samples
+survive and stay pinned to the edge the reader is watching. Copying
+`min(new, old)` entries makes the grow and shrink cases one line.
+```js
+const next = Array(n).fill(0), k = Math.min(n, hist.length)
+for (let i = 0; i < k; i++) next[n - k + i] = hist[hist.length - k + i]
+```
+⚠ Aligning to the *start* instead leaves the newest samples mid-array and the
+trace appears to jump backwards. Floor the length as well — a panel narrowed to
+a handful of samples reads as noise rather than as a trend.
