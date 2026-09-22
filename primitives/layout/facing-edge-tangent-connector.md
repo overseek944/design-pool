@@ -4,7 +4,7 @@ category: layout
 tags: [layout,connector,svg,diagram,geometry]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -56,3 +56,19 @@ imgs.forEach(i => i.addEventListener('load', sync, { once: true }))
 ⚠ Solve *after* the reveal settles, not inside the observer callback that starts
 it — `getBoundingClientRect` reports the painted box, so connectors measured
 mid-entrance land where the markers currently are rather than where they stop.
+
+Two boxes stacked vertically want the same construction on the other axis, and
+choosing between them is one comparison. Take the larger of |dx| and |dy|:
+horizontal-dominant leaves the facing left/right edges with both control points
+at the midpoint x, vertical-dominant leaves top/bottom with both at the midpoint
+y. One function then routes a whole graph with no layout pass, and a node moved
+past its neighbour re-routes instead of swinging an S around the side.
+```js
+const [dx, dy] = [b.cx - a.cx, b.cy - a.cy]
+if (Math.abs(dx) > Math.abs(dy)) { const x1 = dx > 0 ? a.right : a.left
+  const x2 = dx > 0 ? b.left : b.right, m = (x1 + x2) / 2
+  d = `M ${x1} ${a.cy} C ${m} ${a.cy}, ${m} ${b.cy}, ${x2} ${b.cy}` }
+```
+⚠ The test is on centre distance, not the gap between edges, so two wide boxes
+almost level flip between the two forms on a pixel of movement. Hold the last
+choice until the loser leads by a band of 8–24px.

@@ -4,7 +4,7 @@ category: scale
 tags: [scale,responsive,custom-properties,calc,tokens,correctness]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

@@ -4,7 +4,7 @@ category: type
 tags: [type,motion,headline,correctness]
 axes: {energy: 3, density: 2, weight: 3, finish: 5}
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -49,3 +49,18 @@ space and a heading that cannot end on the variable word.
 ```
 ⚠ Set the port from the same `line-height` the heading uses, not a rounded rem
 value — descenders clip at the seam otherwise.
+
+`aria-live="off"` silences the turning word and still leaves a sentence that is
+incomplete at every instant the slot is mid-swap. Hand the whole claim over as
+one visually-hidden node beside an `aria-hidden` visual, built from the same
+string the slot renders: assistive technology gets a finished sentence and the
+rotation is invisible to it. Generate both from one template rather than typing
+the fixed clause twice, or they drift on the first copy edit.
+```jsx
+const line = `${FIXED} ${items[i].value}`
+<h2><span class="sr-only">{line}</span>
+    <span aria-hidden="true">{FIXED}<Slot value={items[i].value}/></span></h2>
+```
+⚠ The heading's accessible name now changes on a timer. Anything addressing it
+— a contents list, a skip target, a snapshot test — reads whichever member was
+up, so keep the rotating part out of the clause the page is navigated by.

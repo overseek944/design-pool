@@ -4,7 +4,7 @@ category: timing
 tags: [loop,timing,sequence,restraint,demo,attention]
 axes: {energy: 2, density: 1, weight: 2, finish: 5}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -37,3 +37,17 @@ const dwell = i === 0 ? 700 : i >= steps.length ? 3400 : 2100
 ```
 ⚠ Read the index, not a counter that survives the wrap — on the second pass the
 opening beat must be short again, or the loop accelerates away from the reader.
+
+The asymmetry only lands if the short pass is the *reader's* first, not the
+document's. A loop armed at mount has spent its quick opening off-screen by the
+time a section five viewports down is reached, and what arrives is the long
+ambient cadence — the demonstration reads as static. Arm on intersection at
+0.3–0.5 of the element and start the first gap there; a rotator, a filmstrip
+and a scripted mock all take the same gate.
+```js
+new IntersectionObserver(([e]) => e.isIntersecting && start(),
+  { threshold: .4 }).observe(el)
+```
+⚠ Do not re-arm on every re-entry. A reader scrolling back past a piece that
+has already settled gets the fast pass again, which reads as the page
+restarting rather than as a loop continuing.

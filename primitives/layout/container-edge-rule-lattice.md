@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,hairline,precision,responsive,technical]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 2
-seen: 21
+seen: 22
 requires: []
 conflicts: []
 completes: []
@@ -174,3 +174,23 @@ opting-out section one step above.
 transformed section truncates it short of the document. A section that opts out
 must also paint a ground — `z-index` alone raises a transparent box and the
 rules show straight through it.
+
+Rules and margin ground need not be two mechanisms. One pseudo-element's
+background stack carries both: a hard-stop `linear-gradient` places the hairline
+pair at the rail width and its mirror, then a `repeating-linear-gradient` sized
+`var(--rail) 100%` and placed `left top` / `right top` with `no-repeat` confines
+the tick pattern to each gutter. One token retunes rule position and texture
+width together, and there is no seam between two boxes to keep aligned. Rail
+32–56px, ticks on a 6–10px period.
+```css
+.sheet { isolation: isolate }
+.sheet::before { content: ""; position: absolute; inset: 0; z-index: -1;
+  --t: repeating-linear-gradient(90deg, #0000 0 4px, var(--ink) 4px 6px, #0000 6px 8px);
+  background: linear-gradient(90deg, #0000 calc(var(--rail) - 1px),
+                var(--rule) 0 var(--rail), #0000 0),
+              var(--t) left  top / var(--rail) 100% no-repeat,
+              var(--t) right top / var(--rail) 100% no-repeat }
+```
+⚠ `z-index: -1` sends it behind the parent's own background unless that parent
+makes a stacking context — without the `isolation`, the whole apparatus is
+invisible on any ground that is not transparent.

@@ -1,6 +1,6 @@
 # Manifest
 
-842 primitives. Format: `category/id | axes cost | tags | gist`
+843 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -322,6 +322,7 @@ layout/scripted-depth-projected-dom | E3 D3 W2 F5 $4 | 3d projection depth trans
 layout/scroll-contracted-bar | E2 D2 W2 F5 $2 | header scroll sticky chrome | A header can start edge-to-edge and contract into an inset float
 layout/scroll-lock-via-has | neutral  $1 | overlay correctness overflow dialog cls | Lock the page behind an overlay from CSS alone by keying off the
 layout/self-drawing-grid-debug | neutral  $2 | layout grid tooling debug architecture | A layout system worth having can show its own work. One class re
+layout/shape-clipped-foreign-label | neutral  $2 | svg text diagram figure truncation correctness | <text> has no wrapping, ellipsis or tooltip, so diagram labels g
 layout/shared-percent-coordinate-space | E1 D3 W1 F5 $2 | diagram svg schematic accessibility responsive | A node diagram wants SVG lines and real DOM nodes: strokes that 
 layout/sibling-deferred-block-spacing | neutral  $1 | layout has spacing rhythm css-only correctness architecture | A markdown or CMS renderer emits a figure and its caption as fla
 layout/single-edge-cell-rules | E1 D3 W1 F5 $1 | layout grid hairline rules precision | In a ruled grid every interior line is drawn by both neighbours 
