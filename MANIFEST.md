@@ -1,6 +1,6 @@
 # Manifest
 
-809 primitives. Format: `category/id | axes cost | tags | gist`
+812 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -328,6 +328,7 @@ layout/uncooperative-corner-reserve | neutral  $1 | overlay third-party footer l
 layout/unfilled-counterpart-panel | E1 D2 W1 F4 $1 | demo composition mock restraint rhetoric | A two-sided demonstration — the reader's product beside yours — 
 layout/unfloored-zero-scale-bars | E1 D3 W2 F5 $1 | chart axis label correctness accessibility restraint | A comparison whose whole point is dominance breaks the moment th
 layout/unit-cell-quantity-field | E1 D4 W2 F4 $2 | layout data grid indicator accessibility density | Show a count as one mark per unit, not a bar. Differences a bar 
+layout/vacated-centre-slot-chrome | E2 D1 W2 F5 $2 | layout chrome navigation scroll overlay motion | A fixed bar's centre line holds one occupant at a time, and whic
 layout/viewport-height-bands | neutral  $1 | layout responsive media-query ornament correctness | Some decisions belong to the short axis. An opening frame, a pin
 layout/viewport-unit-role-split | neutral  $1 | layout viewport mobile responsive correctness | A phone has three viewport heights, and picking one for the whol
 layout/weighted-free-space-rows | neutral  $1 | layout grid responsive rhythm measurement | A block sized to the viewport has leftover height; fixed gaps po
@@ -400,6 +401,7 @@ media/ratio-split-view-pair | E1 D3 W2 F4 $1 | media figure aspect grid editoria
 media/reduce-restored-media-transport | neutral  $1 | media video accessibility scroll scrub correctness | Where scroll is the only transport for a continuous medium, pref
 media/reduce-swapped-clip-still | neutral  $1 | media video accessibility reduced-motion correctness | An autoplaying loop cannot honour prefers-reduced-motion by paus
 media/render-fault-reserved-slot | neutral  $1 | media correctness third-party layout-shift fallback lifecycle | A vendor visual runtime — vector player, chart, map, viewer — ca
+media/script-swapped-placeholder-payload | neutral  $1 | media embed third-party fallback progressive-enhancement correctness | A vendor widget that replaces an element in place — a quote bloc
 media/seam-dissolved-video-loop | E2 D1 W3 F5 $3 | media video loop crossfade seam ambient | loop cuts from the last frame to the first, and unless the clip 
 media/seek-throttled-video-scrub | E3 D2 W3 F5 $4 | media video scroll scrub timeline performance | A video can be the scrubbed property: write currentTime from scr
 media/self-masked-cutout-overlay | E1 D2 W3 F4 $2 | media mask color effect detail | A cut-out subject on transparency cannot be graded from CSS — an
@@ -413,6 +415,7 @@ media/stepped-transform-sprite | E3 D2 W2 F4 $2 | media sprite animation svg per
 media/time-mapped-annotation-track | E2 D3 W2 F5 $3 | media video timeline annotation seek evidence | Findings about a recording belong on the recording's own axis. P
 media/transfer-table-gradient-map | E1 D2 W3 F5 $2 | media color filter svg normalisation | A filter chain lays one hue over a photograph; a transfer table 
 media/underpainted-inline-lqip | neutral  $2 | media loading performance correctness cls | The photograph carrying an opening frame arrives after layout, a
+media/uniform-well-embed-row | E1 D2 W2 F5 $2 | media embed iframe third-party layout accessibility | Embeds from three vendors arrive at three heights, three widths 
 media/unowned-frame-message-guard | neutral  $1 | media iframe embed security correctness events | A widget script injects its own iframe, so the page holds no con
 media/video-as-surface-not-frame | E3 D2 W4 F4 $3 | media surface hero | autoplay muted loop playsinline preload="auto" with object-conta
 media/welded-figure-caption | E1 D2 W2 F5 $1 | media figure caption accessibility editorial | A caption set as a paragraph under a figure reads as body copy a

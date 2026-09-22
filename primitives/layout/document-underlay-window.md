@@ -4,7 +4,7 @@ category: layout
 tags: [layout,stacking,reveal,video,section,fixed]
 axes: {energy: 2, density: 1, weight: 3, finish: 4}
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []

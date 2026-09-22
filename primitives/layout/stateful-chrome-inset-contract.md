@@ -4,7 +4,7 @@ category: layout
 tags: [layout,chrome,tokens,custom-property,architecture,overlay,correctness]
 axes: none
 cost: 2
-seen: 16
+seen: 17
 requires: []
 conflicts: []
 completes: []
@@ -133,3 +133,18 @@ document.fonts?.ready.then(set); new ResizeObserver(set).observe(bar)
 ```
 ⚠ Read the height off the element, never off the property it writes — where the
 bar's own size depends on that variable the observer re-fires on its own reflow.
+
+Publish the number only in the state that needs it. Chrome that reserves space
+at one breakpoint and none at another can write the property on entering that
+state and *remove* it on leaving, so the stylesheet's own declaration resumes
+instead of being shadowed by a stale inline value. `removeProperty` is the
+fallback; there is no second place to keep the default, and the measurement
+exists for exactly as long as it is true.
+```js
+if (!wraps) { root.style.removeProperty('--nav-block'); return }
+const write = () => root.style.setProperty('--nav-block', el.offsetHeight + 16 + 'px')
+write(); const ro = new ResizeObserver(write); return () => ro.disconnect()
+```
+⚠ An inline property on `:root` outranks every stylesheet rule, media queries
+included — written once at any width it pins that value at every other until
+something removes it.

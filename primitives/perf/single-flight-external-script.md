@@ -4,7 +4,7 @@ category: perf
 tags: [performance,architecture,correctness,lifecycle,embed]
 axes: none
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []

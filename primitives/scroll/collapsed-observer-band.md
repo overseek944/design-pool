@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,observer,navigation,architecture,correctness]
 axes: none
 cost: 1
-seen: 14
+seen: 15
 requires: []
 conflicts: []
 completes: []
@@ -138,3 +138,18 @@ at a `#fragment` below the sentinel, or restore a scroll position, to see it.
 Publish the boolean from one module-level store rather than re-observing per
 consumer; the answer is a fact about the document, and N observers on one 1px
 node is N callbacks per crossing for one bit.
+
+Collapse it nearly, not exactly. Margins summing to −95% leave a band a few
+percent of the viewport tall, and a section shorter than a zero-height band
+still intersects it — the failure this entry opens with — at the cost of
+letting two sections hold the band at once. Resolve that where it happens: of
+the intersecting entries take the smallest `boundingClientRect.top`, so the
+hand-off still goes to whichever is higher on the page. Band 3–8%.
+```js
+const hit = es.filter(e => e.isIntersecting)
+if (hit.length) setActive(hit.reduce((a, b) =>
+  a.boundingClientRect.top <= b.boundingClientRect.top ? a : b).target.id)
+```
+⚠ The reduce sees only the entries that *changed*, not every observed section —
+one already sitting in the band without crossing an edge this tick is absent
+from the list, not marked inactive in it.
