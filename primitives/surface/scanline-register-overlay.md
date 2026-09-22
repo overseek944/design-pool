@@ -4,7 +4,7 @@ category: surface
 tags: [overlay,scanline,texture,video,register,decoration]
 axes: {energy: 1, density: 3, weight: 2, finish: 2}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,16 @@ ruling takes.
 ⚠ At fractional device pixel ratios the period beats against the pixel grid and
 drifts into wide bands — check 1.25× and 1.5×, and drop the layer entirely
 under `prefers-contrast: more`.
+
+On a dark ground the ruling can be *light* and alive: lines at 10–20% white under
+`mix-blend-mode: screen`, layer opacity .06–.12, and the pseudo-element
+translated down by exactly one period on a linear loop, extended upward by that
+same period so the top never shows a gap. It reads as a refresh, not as a
+texture. Period 5–8px, loop 2–4s.
+```css
+.lines::before { inset: calc(-1 * var(--p)) 0 0; animation: scan 2.5s linear infinite;
+  background: repeating-linear-gradient(#fff3 0 1px, #0000 1px var(--p)) }
+@keyframes scan { to { transform: translateY(var(--p)) } }
+```
+⚠ A full-viewport moving ruling is perpetual peripheral motion — stop it under
+reduced motion and on small screens, where it also costs a composited layer.

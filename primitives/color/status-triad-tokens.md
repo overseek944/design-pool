@@ -4,7 +4,7 @@ category: color
 tags: [color,tokens,accessibility,contrast,correctness,state]
 axes: none
 cost: 1
-seen: 14
+seen: 15
 requires: []
 conflicts: []
 completes: []
@@ -47,3 +47,15 @@ chip picks up whatever it lands on. Wash .05–.09, rule .4–.55, mark full.
 ⚠ Alphas stack — the same chip over a translucent panel above a glow is a third
 colour again. The label is the one cut here that owes a ratio, so it stays
 opaque: it cannot owe one against a backdrop this arrangement leaves unknown.
+
+Where the label must keep a *known* ratio, mix the hue into the surface token
+instead of layering an alpha: `color-mix(in oklab, …)` resolves to an opaque
+colour, so contrast is checkable per theme, yet one `--hue` still drives every
+status. Wash 7–12%, rule 18–28%, icon disc 14–20%.
+```css
+.toast { --fill: color-mix(in oklab, var(--hue) 9%, var(--surface));
+         --edge: color-mix(in oklab, var(--hue) 22%, var(--line)) }
+.toast[data-type=error] { --hue: var(--danger) }
+```
+⚠ Gate the mix behind `@supports`, falling back to the neutral surface — not to
+the raw hue.

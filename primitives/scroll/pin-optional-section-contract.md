@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,architecture,correctness,accessibility,pin,fallback]
 axes: none
 cost: 2
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -43,3 +43,12 @@ const go = i => pinned
 current step — in the pinned branch nothing else announces it. The flip between
 branches is itself an event: commit the index derived from the last progress
 before the pin goes, or a resize drops the reader back at step one.
+
+Gate the boolean on height as well as width. A wide but short window — a laptop
+with the dock and toolbar up — cannot fit stage and list, and a width-only query
+pins it anyway. Pin from roughly 64rem wide *and* 40–48rem tall, and re-evaluate
+on `change` so a resized window flips branch.
+```js
+const mq = matchMedia('(min-width: 64rem) and (min-height: 44rem)')
+mq.addEventListener('change', () => setPinned(mq.matches && !rm.matches))
+```

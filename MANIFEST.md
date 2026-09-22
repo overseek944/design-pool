@@ -1,6 +1,6 @@
 # Manifest
 
-944 primitives. Format: `category/id | axes cost | tags | gist`
+946 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -456,6 +456,7 @@ media/integer-scaled-pixel-raster | E1 D2 W3 F2 $1 | media raster pixel-art imag
 media/interval-held-still-interlude | E1 D2 W3 F4 $1 | media video ambient cycle hero css-animation | A short loop is wallpaper by its second pass. Break it on a peri
 media/luminance-keyed-alpha-matte | E1 D2 W2 F5 $3 | media filter svg alpha image video compositing | Media shot against a flat light ground can be keyed to transpare
 media/mask-swap-over-shared-paint | E2 D2 W2 F4 $2 | mask icon gradient media state | When a family of glyphs must share one fill — a gradient, a vide
+media/mid-clip-seeked-reveal | E2 D2 W2 F5 $1 | media video hover seek poster still reveal loop | A clip mounted on hover over its own still usually opens on a fa
 media/mirror-flanked-panorama | E1 D2 W2 F4 $2 | media image panorama mirror responsive full-bleed | Artwork with a fixed aspect either stretches or loses its compos
 media/mirrored-baseline-reflection | E1 D2 W2 F5 $2 | media mask surface depth detail css-only | A cut-out subject on a surface reads as pasted on unless somethi
 media/one-shot-cache-busted-retry | neutral  $1 | media error resilience image video correctness | One dropped connection or a 503 from the edge leaves an image br
@@ -756,6 +757,7 @@ surface/clock-bucketed-scene-state | E1 D2 W2 F4 $2 | surface ground state root-
 surface/collapsing-riser-keycap | E1 D2 W3 F4 $1 | surface detail border state css-only hairline | A key drawn as a bordered box reads as a chip. What makes it a c
 surface/comb-ruled-section-seam | E1 D3 W2 F5 $1 | divider section texture rule repeating-gradient seam | Where two full-bleed grounds meet, a hairline rule is lost in th
 surface/concave-corner-seam | E1 D2 W2 F5 $2 | surface border detail chrome css-only | A raised element fuses into the sheet below it only where the jo
+surface/conic-sector-window | E2 D3 W3 F5 $2 | mask conic sector radial ring wedge hover media intersect | A ring index can open a window onto media shaped like the segmen
 surface/control-cleared-decoration-band | E1 D3 W2 F4 $2 | surface decoration contrast accessibility header | Artwork sharing a box with a control — a band behind a header, a
 surface/coprime-modulus-cell-dither | E1 D4 W2 F4 $1 | pattern texture grid nth-child dots | A grid of real elements reads as machine-made when every variati
 surface/corner-tick-frame | E1 D2 W1 F5 $1 | surface border frame detail currentcolor precision | Four short L-marks at the corners instead of a closed border: th
