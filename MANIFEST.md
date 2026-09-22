@@ -1,6 +1,6 @@
 # Manifest
 
-986 primitives. Format: `category/id | axes cost | tags | gist`
+989 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -214,6 +214,7 @@ interaction/idle-receded-floating-control | E1 D1 W1 F5 $2 | interaction accessi
 interaction/idle-scroll-cue | E2 D1 W2 F4 $1 | scroll affordance feedback motion | A page whose motion is entirely scroll-driven stops when the rea
 interaction/in-place-cta-field-expansion | E2 D1 W2 F5 $1 | form cta nav disclosure progressive-enhancement focus | A header CTA can open into its own single-field form where it st
 interaction/in-stage-sequence-exit | neutral  $2 | accessibility keyboard scroll pin focus correctness | A pinned narrative several viewport-heights long is a corridor w
+interaction/inert-blur-sealed-preview | E1 D2 W3 F4 $2 | interaction gate blur preview accessibility state | Content that waits on a step — a sign-in, a key, a setup command
 interaction/inert-tracks-opacity | neutral  $1 | accessibility focus correctness overlay pointer-events | An element faded to opacity: 0 is still in the tab order, still 
 interaction/inherited-autocomplete-pass | neutral  $1 | forms autocomplete accessibility third-party correctness | A form you did not author — from a page builder, a CMS block, a 
 interaction/inline-target-floor | neutral  $1 | accessibility interaction correctness detail | A row of small print — legal links, meta, a footer — fails targe
@@ -541,6 +542,7 @@ motion-system/fire-on-arrival-propagation | E3 D3 W2 F5 $3 | entrance propagatio
 motion-system/first-paint-entry-style | neutral  $1 | motion transition css-only progressive-enhancement state | An element that did not exist a frame ago has no previous value 
 motion-system/flag-collapsed-motion-wrapper | neutral  $1 | motion architecture reduced-motion accessibility correctness feature-flag | Every entrance in a system is a wrapper component; make each one
 motion-system/flush-separated-transition-arming | neutral  $1 | motion correctness transition observer reveal | A one-shot reveal whose transitions are generated in script — de
+motion-system/fragment-target-entrance-bypass | neutral  $1 | motion correctness anchor fragment reveal navigation | An in-page link or shared #fragment lands the reader on a sectio
 motion-system/gap-compensated-loop-distance | neutral  $1 | motion marquee correctness loop overflow | A duplicated track loops seamlessly only when it travels exactly
 motion-system/generation-guarded-sequence | neutral  $2 | animation architecture correctness cancellation sequence | A choreography written as a chain of awaits has no cancel. A rep
 motion-system/geometry-ordered-stagger | neutral  $2 | stagger entrance reveal measurement correctness layout | A stagger keyed on DOM index sweeps in source order, and source 
@@ -946,6 +948,7 @@ type/ink-state-lettering-runs | E1 D2 W4 F5 $2 | type svg stroke detail editoria
 type/intra-word-face-interlock | E1 D3 W4 F3 $2 | type display headline lettering fallback detail | Two faces can meet inside a single word rather than between bloc
 type/keyed-label-pair | E1 D3 W2 F5 $1 | type label mono identifier schema form technical hierarchy | A field that exists both for people and for a system has two nam
 type/language-conditional-type-tokens | neutral  $2 | type i18n tokens localisation correctness | The type scale is a function of script, not only viewport. Redef
+type/masked-doodle-margin-note | E2 D2 W2 F2 $1 | type annotation handwritten mask callout informal | One hand-drawn note on an otherwise engineered surface points ha
 type/measured-inline-word-swap | E3 D2 W3 F5 $2 | type motion headline correctness | A word cycling inside a running headline relays out the whole li
 type/measured-line-bucket-stagger | neutral  $2 | type stagger reveal measurement font-loading correctness | A cascade down the rendered lines of a heading does not require 
 type/metric-free-weight-transition | E2 D2 W3 F5 $1 | type emphasis weight layout-shift transition text-shadow | Weight is the obvious way to bring a word forward as it is read 
