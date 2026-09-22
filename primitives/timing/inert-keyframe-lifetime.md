@@ -4,7 +4,7 @@ category: timing
 tags: [timing,lifecycle,css-animation,cleanup,accessibility]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,17 @@ past the longest child.
 early unless the handler checks `event.target === event.currentTarget`. A
 blanket `animation: none` under reduced motion kills the timer too and the
 overlay never leaves — exempt this one, it animates nothing.
+
+A one-shot drawn on canvas has no element to unmount — the surface is permanent
+and only the marks are transient — so the clock has to end the loop and wipe the
+surface in the same branch. Compare elapsed against a fixed budget at the top of
+the frame and `clearRect` on the way out. Anything that merely stops requesting
+frames leaves the last frame painted, and a `pointer-events: none` overlay
+holding a scatter of marks over the UI for the rest of the session looks like
+nothing at all is wrong. Budget 2.5–4s.
+```js
+const frame = t => t - t0 < LIFE ? (draw(), raf = requestAnimationFrame(frame))
+                                 : ctx.clearRect(0, 0, w, h)
+```
+⚠ Not the same clock as the marks' own lifetimes — a budget shorter than the
+slowest mark's flight wipes it mid-air.
