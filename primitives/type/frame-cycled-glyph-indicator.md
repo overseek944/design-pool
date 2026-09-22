@@ -4,7 +4,7 @@ category: type
 tags: [indicator,mono,glyph,loading,state,motion]
 axes: {energy: 3, density: 1, weight: 2, finish: 3}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []

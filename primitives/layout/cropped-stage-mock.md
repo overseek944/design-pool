@@ -4,7 +4,7 @@ category: layout
 tags: [layout,responsive,overflow,media,scale,detail]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 13
+seen: 14
 requires: []
 conflicts: []
 completes: []
@@ -79,3 +79,17 @@ Factor 0.6–0.8 below the breakpoint, 1 above it.
 both from one custom property (`--k`) rather than writing `133%` and `.75`
 separately. The sub-pixel type warning above still applies: this fixes the box,
 not legibility.
+
+The per-instance factor can be solved in CSS alone. Make the stage an
+`inline-size` container, scale the mock by `container / native width`, and cap
+the factor a little above 1 so a wide viewport lets it grow slightly past its
+authored size without going soft. Set the stage's height in the same `cqw` terms
+with the same cap, and the box follows the painted mock at every width with no
+script and no breakpoint list. Coverage 0.85–0.95 of the container, cap 1–1.1.
+```css
+.stage { container-type: inline-size; height: min(64cqw, 640px) }
+.mock  { width: 880px; transform-origin: top center;
+         transform: translateX(-50%) scale(min(1.08, calc(90cqw / 880px))) }
+```
+⚠ Unitless `cqw / px` division needs recent engines — keep a fixed-factor
+fallback below the smallest breakpoint.
