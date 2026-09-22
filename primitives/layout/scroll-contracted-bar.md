@@ -4,7 +4,7 @@ category: layout
 tags: [header,scroll,sticky,chrome]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 26
+seen: 27
 requires: []
 conflicts: []
 completes: []
@@ -120,7 +120,7 @@ The threshold is not the only input. A bar that hosts its own menus must not
 contract while one is open — the capsule shrinks out from under a panel anchored
 to it — so publish a veto as a root attribute the handler ANDs in, and dispatch
 an event when it changes so the test re-runs instead of waiting for a scroll that
-may never come. Engage and release on different thresholds, 32–48 and 8–16, or a
+may never come. Engage and release on different thresholds, 32–64 and 8–24, or a
 bar parked on the line flickers.
 ```js
 const apply = () => set(!root.hasAttribute('data-bar-hold') &&

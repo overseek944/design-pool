@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,connector,diagram,geometry,svg]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -40,3 +40,13 @@ d = `M${ax},${ay} C${c1},${ay} ${c2},${by} ${bx},${by}`
 ⚠ Spread compounds with the count — past 6–8 copies the outermost handle
 overshoots its target and the route visibly doubles back. Cap the index, not
 the step.
+
+Many sources converging on one card edge need not share a terminal. Give each
+route its own endpoint in a tight column just outside the edge, ordered by
+source y so no two routes cross, and set the second control point at the
+endpoint's y so every route arrives flat. The column reads as a port, and the
+bundle stays traceable without any bow. Step 8–14px. Direction can be static:
+three slightly larger, brighter dots in the final 25–35% of each dotted route
+read as arrival without animating anything.
+⚠ The column's height grows with the count — past 8–10 routes it outgrows the
+card edge it is meant to sit beside.

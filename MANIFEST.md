@@ -1,6 +1,6 @@
 # Manifest
 
-947 primitives. Format: `category/id | axes cost | tags | gist`
+949 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -203,6 +203,7 @@ interaction/hover-previewed-disclosure | neutral  $1 | interaction disclosure na
 interaction/hysteretic-lock-zone | neutral  $1 | interaction pointer state correctness threshold | Any boolean derived from a continuous input — pointer inside a z
 interaction/idle-receded-floating-control | E1 D1 W1 F5 $2 | interaction accessibility idle chrome fixed restraint | A control pinned to a viewport corner all session is a standing 
 interaction/idle-scroll-cue | E2 D1 W2 F4 $1 | scroll affordance feedback motion | A page whose motion is entirely scroll-driven stops when the rea
+interaction/in-place-cta-field-expansion | E2 D1 W2 F5 $1 | form cta nav disclosure progressive-enhancement focus | A header CTA can open into its own single-field form where it st
 interaction/in-stage-sequence-exit | neutral  $2 | accessibility keyboard scroll pin focus correctness | A pinned narrative several viewport-heights long is a corridor w
 interaction/inert-tracks-opacity | neutral  $1 | accessibility focus correctness overlay pointer-events | An element faded to opacity: 0 is still in the tab order, still 
 interaction/inherited-autocomplete-pass | neutral  $1 | forms autocomplete accessibility third-party correctness | A form you did not author — from a page builder, a CMS block, a 
@@ -228,6 +229,7 @@ interaction/overdamped-surface-tilt | E2 D1 W3 F5 $1 | interaction pointer trans
 interaction/overflow-traversing-label | E3 D2 W2 F5 $1 | overflow hover focus type css-only detail | A label too long for its row is usually handed a tooltip or left
 interaction/overlaid-cycling-field-hint | E3 D1 W2 F4 $1 | interaction input placeholder accessibility hint typing | An empty field can demonstrate what to type by cycling examples,
 interaction/override-released-system-preference | neutral  $1 | theme preference accessibility correctness state | A page that mirrors prefers-color-scheme and also ships a toggle
+interaction/page-wide-submission-state | neutral  $1 | form cta state correctness signup | A page that repeats one signup form — header, hero, footer — mus
 interaction/paired-focus-offset-tokens | neutral  $1 | accessibility focus tokens correctness | Ship the focus ring as three tokens — width, an outer offset, an
 interaction/panel-scoped-field-disabling | neutral  $1 | interaction form correctness accessibility tabs progressive-enhancement | A tabset that keeps every panel in the DOM — because the set is 
 interaction/partial-modality-inert-siblings | neutral  $2 | interaction dialog accessibility inert focus correctness | Not every overlay should take the whole page. A panel hung off a

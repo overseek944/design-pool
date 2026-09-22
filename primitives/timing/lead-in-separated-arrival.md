@@ -4,7 +4,7 @@ category: timing
 tags: [timing,motion,sequence,stream,demo,mock,cadence,delay]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -37,3 +37,16 @@ const leadIn = FLOOR + Math.min(text.length * RATE, CAP)
 ⚠ The rate is for the reader's sense of size, not the machine's — scale it on
 what will be visible, so an item that lands as a chart rather than as prose
 gets its own flat figure instead of one derived from a string it has no words in.
+
+Streamed prose wants a unit between the character and the line: append two to
+three words per tick, with the whitespace carried inside each chunk, and jitter
+the gap by ±10–20% around 70–100ms. Characters read as a typewriter, lines as a
+paste; word bursts read as tokens. Keep the chunking random per run but the
+final string captured before first paint and cleared synchronously, or the full
+text flashes once.
+```js
+const gap = 85 + (Math.random() * 30 - 15)   // per chunk
+```
+⚠ A growing block inside a scroll port pushes its tail out of view — pin the
+port to the bottom on every append, and only while the reader has not scrolled
+it themselves.
