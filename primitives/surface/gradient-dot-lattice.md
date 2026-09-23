@@ -4,7 +4,7 @@ category: surface
 tags: [surface,texture,pattern,blueprint,cheap]
 axes: {energy: 1, density: 3, weight: 1, finish: 4}
 cost: 1
-seen: 53
+seen: 54
 requires: []
 conflicts: []
 completes: []
@@ -155,3 +155,14 @@ alpha follow: 4–6% inside a figure against 2–4% behind a page.
 ⚠ A fixed px pitch inside a fluid figure changes the cell count at every width
 — the grid that read as paper at 1440px reads as hatching at 390px. Derive it
 from the figure's own height, or hold the figure at a fixed size.
+
+Mask the page lattice inversely — full strength at both edges, 10–15% through
+the middle 30–70% — and it lives in the gutters, framing the reading column
+without ticking behind body copy. Put it on a fixed pseudo-element so it holds
+still while content scrolls over it.
+```css
+body::before { content: ""; position: fixed; inset: 0; pointer-events: none;
+  background: radial-gradient(circle, var(--speck) 1.5px, #0000 1.6px) 0 0 / 40px 40px;
+  mask-image: linear-gradient(90deg, #000, #0000001f 32% 68%, #000) }
+```
+⚠ At 390px there is no gutter — drop the mask floor to 0 or the dots sit under text.

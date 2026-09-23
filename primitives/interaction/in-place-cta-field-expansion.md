@@ -4,7 +4,7 @@ category: interaction
 tags: [form,cta,nav,disclosure,progressive-enhancement,focus]
 axes: {energy: 2, density: 1, weight: 2, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: [focus-exit-dismissal]
@@ -24,3 +24,13 @@ viewport.
 setTimeout(() => input.focus({ preventScroll: true }), 140)
 ```
 ⚠ Plain `focus()` scrolls the page and can trip scroll-armed reveals.
+
+Time the two directions differently. Open with a decelerating width over
+0.38–0.45s and opacity immediate, so the field is legible while it grows; close
+faster, 0.28–0.34s on a standard ease, and hold opacity at 1 until the width has
+finished, dropping it in one step at the end. Fading while narrowing shows a
+half-transparent input squeezing its own text.
+```css
+.form { transition: width .32s cubic-bezier(.4,0,.2,1), opacity 0s linear .36s }
+.open .form { transition: width .42s cubic-bezier(.2,0,0,1), opacity 0s }
+```

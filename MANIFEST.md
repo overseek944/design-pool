@@ -1,6 +1,6 @@
 # Manifest
 
-1087 primitives. Format: `category/id | axes cost | tags | gist`
+1088 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -817,6 +817,7 @@ scroll/height-aware-sticky-offset | neutral  $2 | scroll sticky layout correctne
 scroll/hoisted-scroll-timeline | neutral  $2 | scroll motion architecture progressive-enhancement | A named scroll-timeline is visible only to descendants of the sc
 scroll/layer-anchored-scroll-offset | neutral  $2 | scroll parallax custom-properties reduced-motion correctness performance | One document-level scroll value can drive every parallax layer o
 scroll/layout-release-broadcast | neutral  $1 | scroll measurement correctness overlay architecture events | Anything holding the document at a size it will not keep — an en
+scroll/length-thresholded-station-thread | E2 D2 W1 F5 $3 | scroll svg path stroke thread rail connector progress scrub | One hairline can run a page's length and join its sections. Rout
 scroll/occluded-sibling-fold-progress | E2 D2 W2 F5 $3 | scroll sticky depth progress responsive | A card in a sticky stack should recede by how much of it is cove
 scroll/once-versus-toggle | neutral  $1 | scroll reveal ux | Two reveal policies, chosen per intent, never mixed arbitrarily:
 scroll/overflow-probe-via-scroll-timeline | neutral  $2 | scroll overflow progressive-enhancement correctness | A scroll-driven animation only advances if its scroll port can a
