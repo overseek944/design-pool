@@ -1,6 +1,6 @@
 # Manifest
 
-1094 primitives. Format: `category/id | axes cost | tags | gist`
+1095 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -196,6 +196,7 @@ interaction/coarse-pointer-affordance-promotion | neutral  $1 | accessibility in
 interaction/coarse-pointer-zoom-floor | neutral  $1 | correctness accessibility pointer forms responsive type detail css-only | Mobile Safari zooms the whole page when a focused control's text
 interaction/composed-mailto-submit-fallback | neutral  $1 | interaction forms progressive-enhancement fallback correctness accessibility | A form posting to a third-party endpoint fails in ways the reade
 interaction/content-sized-field-bounds | E1 D1 W2 F4 $1 | form input layout detail progressive-enhancement | field-sizing: content lets an input measure its own value, retir
+interaction/converging-bar-cross-toggle | E2 D1 W2 F4 $1 | interaction toggle menu icon glyph morph transform | A three-bar menu glyph can become its own close mark. The outer 
 interaction/coordinated-group-state | E3 D2 W2 F5 $1 | interaction surface hover | Hover the container, animate the parts. A single group parent le
 interaction/copy-safe-sample-text | neutral  $1 | interaction code correctness detail usability | A terminal or code sample is there to be dragged over and pasted
 interaction/copy-with-selection-fallback | neutral  $1 | interaction clipboard accessibility correctness feedback | navigator.clipboard.writeText rejects on an insecure origin, a d

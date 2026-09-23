@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,svg,path,stroke,thread,rail,connector,progress,scrub]
 axes: {energy: 2, density: 2, weight: 1, finish: 5}
 cost: 3
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -21,3 +21,16 @@ path.style.strokeDashoffset = L - drawn
 for (const s of stations) s.el.classList.toggle('on', drawn >= s.len)
 ```
 ⚠ The route is baked from layout — rebuild on resize and font load. Reduced motion: draw it complete.
+
+A straight vertical rail needs no path, but it still belongs between the
+*centres* of the first and last node, not the container's edges, or it overshoots
+both ends. Measure those two rects into the rail's `top`/`height`, then fill a
+child by `scaleY(progress)` from the top. Instead of toggling each node, map
+progress through a narrow window around its own `i/(n−1)` — opening a little
+before, closing just after — so the node warms as the tip arrives. Window
+−3…−5% to +1…+3%.
+```js
+const on = interpolate(p, [t - .04, t + .02], [ground, accent])
+```
+⚠ Remeasure on `ResizeObserver` *and* each lazy image's `load` — rows grow
+after first paint and the rail ends short of the last node.

@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,navigation,focus,correctness,anchor]
 axes: none
 cost: 1
-seen: 17
+seen: 18
 requires: []
 conflicts: []
 completes: []
@@ -98,3 +98,14 @@ c.scrollTo({ top: t.getBoundingClientRect().top - c.getBoundingClientRect().top
 c.focus({ preventScroll: true })            // plus tabindex="-1" and a name
 ```
 ⚠ Run it after layout settles; a scroller measured mid-hydration lands short.
+
+From a mobile menu, close the sheet first and scroll only once it has finished
+collapsing. A jump issued in the same tick measures against the open layout —
+a taller header, a body still scroll-locked — and lands short or not at all.
+Chain the scroll to the close transition's end rather than a guessed timer;
+if a timer, the close duration plus 20–40ms.
+```js
+setOpen(false); sheet.addEventListener('transitionend', go, { once: true })
+```
+⚠ `transitionend` never fires under reduced motion's zero duration — fall back
+to calling it directly when nothing animated.
