@@ -1,6 +1,6 @@
 # Manifest
 
-1063 primitives. Format: `category/id | axes cost | tags | gist`
+1064 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -160,6 +160,7 @@ color/parallel-alpha-ramp | neutral  $2 | color tokens alpha borders theming | S
 color/party-keyed-field-tokens | neutral  $1 | color tokens form attribution review correctness | On a form assembled from several parties — an applicant's answer
 color/pattern-encoded-series | E1 D3 W2 F4 $2 | color accessibility pattern data contrast texture | Hue alone cannot carry series identity — it fails in greyscale, 
 color/read-position-hue-drift | E2 D2 W2 F4 $2 | color scroll ambient gradient filter | A long page reads as one undifferentiated field when every secti
+color/role-split-brand-accent | neutral  $1 | color accent dark-mode contrast token accessibility correctness | A dark saturated brand hue works as a fill on both grounds, but 
 color/root-filter-inversion | E2 D2 W4 F2 $2 | color dark filter invert theme effect | filter: invert(1) hue-rotate(180deg) on the root flips lightness
 color/rule-harvested-theme-bank | neutral  $2 | color tokens theming cssom architecture correctness | Script that has to interpolate a theme — scrubbing it from scrol
 color/runtime-shade-derivation | neutral  $1 | color tokens theming architecture | Derive hover, active and disabled shades from a colour you will 

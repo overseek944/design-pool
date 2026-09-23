@@ -4,7 +4,7 @@ category: light
 tags: [light,pointer,hover,gradient,custom-properties,surface]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -66,3 +66,16 @@ every breakpoint.
 ⚠ Recomputing `mask-image` per pointer frame is a paint, not a composite — keep
 the masked layer small, write the property from a rAF you already own, and drop
 the duplicate entirely on a coarse pointer where nothing will ever drive it.
+
+Inside a control the light can be a *body* rather than a gradient: a blurred,
+radius-shaped pseudo-element behind the label that scales up from 0.2 on hover
+or `:focus-visible` and follows the pointer on the `translate` channel while the
+reveal rides `transform`. Write the offset in px from the control's centre, so
+the default of 0 is the centre — a keyboard focus gets the same light, parked.
+```css
+.btn::before { translate: var(--dx,0px) var(--dy,0px); transform: scale(.2); opacity: 0 }
+.btn:is(:hover,:focus-visible)::before { transform: none; opacity: 1 }
+@media not all and (hover: hover) and (pointer: fine) { .btn::before { translate: none } }
+```
+⚠ Size the body 130–160% of the control and let its fill fade to zero before
+its own edge; clipped by the pill it otherwise shows a hard arc.

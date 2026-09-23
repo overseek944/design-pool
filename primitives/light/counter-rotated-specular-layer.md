@@ -4,7 +4,7 @@ category: light
 tags: [light,gradient,rotation,material,3d]
 axes: {energy: 2, density: 2, weight: 3, finish: 5}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -38,3 +38,16 @@ s = min(s, 1.5);
 ```
 ⚠ Two lights sum past 1.0 where they cross — clamp the total, or the crossing
 blows out to white and reads as a flicker rather than as a pass.
+
+The split needs no script when the body turns on a keyframe. Clip a light child
+inside the body and give it the inverse keyframe at the *same* duration and
+`linear` timing, so the two angles cancel on every frame. Scale the child
+1.15–1.25 inside that keyframe: a square turned about its centre always covers
+its inscribed circle, and the margin absorbs any radius morph on the body.
+```css
+.body  { overflow: hidden; animation: turn 31s linear infinite }
+.light { animation: back 31s linear infinite }
+@keyframes back { to { transform: rotate(-360deg) scale(1.18) } }
+```
+⚠ Divide the gradient's stop positions by that scale, or the highlight lands
+off where it was drawn.

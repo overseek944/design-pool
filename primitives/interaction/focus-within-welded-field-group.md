@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,form,field,focus,accessibility,control]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -64,3 +64,11 @@ wrap, typically 520–640px.
 ⚠ 16px on the input is load-bearing, not taste: iOS zooms the viewport on focus
 below it, and the welded form's smaller type only got away with it because the
 field was never the full-width target it becomes here.
+
+Stacking need not unweld a field-plus-button pair if the wrapper changes shape
+with it. Keep the one border and the `:focus-within` ring, let the row wrap so
+each child takes the full width, and step the radius down from a pill to
+18–24px: a stadium around two lines reads as a lozenge, a rounded card around
+them reads as one form. Centre the input text once it is full width.
+⚠ The button inside now spans the width, so it needs its own inner radius —
+wrapper radius minus the padding — or its corners cut across the card's.

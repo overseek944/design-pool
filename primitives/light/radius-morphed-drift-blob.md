@@ -4,7 +4,7 @@ category: light
 tags: [ambient,blob,organic,morph,border-radius,blur,keyframes,dark]
 axes: {energy: 2, density: 3, weight: 3, finish: 4}
 cost: 3
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,12 @@ passes match. Reuse one morph across lamps with `reverse`. Drift 20–40s, morph
 ```
 ⚠ Animating `border-radius` repaints the blurred layer every frame: 3–5 lamps,
 paused offscreen and under reduced motion.
+
+The same pair works on a small *solid* body — an unblurred sphere inside a mark
+— once each motion gets its own element: an outer wrapper drifts, the body
+morphs its radius and turns, an inner layer carries the light. Nesting keeps
+the three off one `transform`. With no blur to hide the silhouette, shorten the
+morph to 7–12s and budget clearance: body radius plus drift must stay
+10–20% inside any container edge, or a bulge touches the rim.
+⚠ Keep the corner values within 35–65%; past that the body pinches and reads
+as a fault rather than as soft.
