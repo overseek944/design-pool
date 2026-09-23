@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,entrance,keyframes,impact,choreography]
 axes: {energy: 4, density: 1, weight: 4, finish: 3}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -29,3 +29,8 @@ once per view, on the one block that should feel struck. Peak 4–8px over
 ⚠ Sub-pixel tail crossings are wasted frames — end the list once an excursion
 drops below 1px. Must collapse to a plain fade under `prefers-reduced-motion`;
 a shortened shake is still a shake.
+
+The same decay works on angle. A mark that spins one full turn overruns by
+8–12°, returns 3–5° short, then 1–2° past before resting — and since 360° ≡ 0°
+the rest frame is the start frame, so it replays on hover or load with no
+seam. Fade a glow .5–.7 → 0 over the same span.

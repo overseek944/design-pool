@@ -4,7 +4,7 @@ category: scale
 tags: [tokens,radius,architecture,correctness,surface]
 axes: none
 cost: 1
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
@@ -34,3 +34,7 @@ whole surface — so a panel at 370px and the same surface at 1400px both want
 about 16px, and a radius scaled with its container reads as a different shape at
 every width. Fix the radius at the top of the ladder and let the gutter around
 it scale instead.
+
+A role ladder can also run flat and inverted: panels at 0, controls at 1–3px.
+Nothing nests a rounded box in a rounded box, so the concentric rule never
+applies, and the controls alone carry the softening.

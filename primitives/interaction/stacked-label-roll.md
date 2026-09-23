@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,hover,button,label,motion,clip]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,7 @@ transforms. Travel 100–120% of line height, 300–450ms, strong ease-out.
 .btn:is(:hover, :focus-visible) .roll { translate: 0 -110% }
 ```
 ⚠ `aria-hidden` the second copy or the name is read twice; drop the travel under reduced motion.
+
+The two travels need not match. Park the twin absolutely at `inset: 0` one line
+below and send the resting copy 2–3× further up than the twin rises: it clears
+the box before the incoming label seats, so the two never share the clip.

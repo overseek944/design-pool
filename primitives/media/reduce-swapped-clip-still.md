@@ -4,7 +4,7 @@ category: media
 tags: [media,video,accessibility,reduced-motion,correctness]
 axes: none
 cost: 1
-seen: 15
+seen: 16
 requires: []
 conflicts: []
 completes: []
@@ -86,3 +86,7 @@ becomes a real element the preload scanner can find and `rel=preload` can warm
 `preload="auto"` fetches a `display: none` element in full, so the reader who
 asked for stillness pays for footage that never paints. Drop the source from
 markup and attach it from the no-preference branch if the bytes matter.
+
+Where the held clip keeps a caption bar, name the reason in it — "motion
+paused" for the preference gate, distinct from a reader's pause and from
+"complete" at `ended` — so a still frame reads as honoured, not broken.

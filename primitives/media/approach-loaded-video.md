@@ -4,7 +4,7 @@ category: media
 tags: [media,video,performance,intersection-observer,accessibility,bandwidth]
 axes: none
 cost: 2
-seen: 36
+seen: 37
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -311,3 +311,7 @@ Variant — a background loop the OS paused on its own (low-power mode, a tab
 return, fullscreen exit) never fires anything worth trusting. Retry a rejected
 `play()` once after 300–800ms, and poll every 1–2s for `paused && readyState >= 2`
 — but skip the poll while the reader's pause intent is recorded.
+
+Fetch and playback want different thresholds: one wide observer (250–400px
+margin) that only loads and then disconnects, and a second that plays above
+0.1–0.25 visible ratio and pauses below it.

@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,generative,authoring,debug,parameters]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,7 @@ const CURL = p('curl', 6), DISSIPATION = p('dis', 0.996)
 ⚠ Clamp every value on the way in. The fragment is reader input, and an
 unbounded iteration count or grid size hangs the GPU process, not just the tab.
 Keep it to numbers — never let a fragment select a code path.
+
+The same reading serves review of recorded motion: one parameter scaling every
+demo clip's `playbackRate` by 1.25–2× lets a reviewer check a page of
+walkthroughs at speed, while the shipped default stays 1.
