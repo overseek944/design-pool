@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,form,field,focus,accessibility,control]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -72,3 +72,15 @@ each child takes the full width, and step the radius down from a pill to
 them reads as one form. Centre the input text once it is full width.
 ⚠ The button inside now spans the width, so it needs its own inner radius —
 wrapper radius minus the padding — or its corners cut across the card's.
+
+Variant — a numeric field welded to its own stepper. Hide the native spin
+arrows (they are tiny, unlabelled and engine-specific) and weld a narrow column
+of two real buttons, stacked and split by a hairline, to the field's end; each
+carries an `aria-label` naming the field it changes. Column 28–40px wide.
+```css
+.num { appearance: textfield }
+.num::-webkit-inner-spin-button, .num::-webkit-outer-spin-button { appearance: none }
+.group > .steps { display: grid; inline-size: 32px; border-inline-start: 1px solid var(--rule) }
+```
+⚠ Two stacked halves of a 44px field are 22px targets — pair them with arrow-key
+handling on the input, or make the column wider than it is tall.

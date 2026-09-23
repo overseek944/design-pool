@@ -1,6 +1,6 @@
 # Manifest
 
-1131 primitives. Format: `category/id | axes cost | tags | gist`
+1132 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -225,6 +225,7 @@ interaction/dwell-gated-escalation | E2 D1 W2 F5 $1 | hover pointer delay restra
 interaction/edge-hotzone-sibling-reveal | E2 D2 W2 F5 $2 | interaction hover panel chrome css-only accessibility | Reclaim the width a hidden rail costs without a toggle: park an 
 interaction/edge-perched-pacing-sprite | E3 D1 W2 F3 $2 | mascot sprite character perch raf delight | A small fixed-position sprite that paces along the top edge of a
 interaction/edge-traversing-knob | E3 D2 W2 F5 $1 | interaction state affordance motion detail | A control states its direction by sending its own mark the whole
+interaction/equal-track-segment-thumb | E2 D2 W2 F4 $1 | interaction segmented toggle selection state control transform | Where every option in a segmented control is the same width, the
 interaction/exemplar-field-placeholder | neutral  $1 | form input placeholder accessibility copy correctness | A placeholder that restates its label teaches nothing. Write it 
 interaction/fail-open-css-state-toggle | neutral  $1 | interaction css-only progressive-enhancement disclosure correctness accessibility | A visually hidden checkbox plus :has() gives expand, filter and 
 interaction/fill-agnostic-state-plate | E2 D2 W2 F5 $1 | hover state pseudo-element theme system contrast | A hover token per fill does not scale: a control faced with an i
