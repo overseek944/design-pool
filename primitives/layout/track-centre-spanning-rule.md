@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,connector,geometry,correctness,responsive]
 axes: {energy: 1, density: 2, weight: 1, finish: 5}
 cost: 1
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -60,3 +60,11 @@ Size 10–14px, on `:not(:last-child)` so the last step has no tail.
 ⚠ It sits outside the step's box, so a clipped or `overflow: hidden` card eats
 it. Decorative only — the order is already in the source, and a triangle carries
 no accessible name.
+
+Variant — a flex or scroll rail has no tracks to solve against, only a gap. Put
+the gap in a custom property and derive the connector from it: each card's
+`::after` starts at `100% + gap × 0.1` and runs `gap × 0.8`, so the rule floats
+centred in the gutter at any gap the breakpoints set.
+```css
+.card:not(:last-child)::after { left: calc(100% + var(--gap) * .1); width: calc(var(--gap) * .8) }
+```

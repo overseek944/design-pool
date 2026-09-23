@@ -4,7 +4,7 @@ category: light
 tags: [light,glow,sweep,box-shadow,loop,cheap]
 axes: {energy: 3, density: 1, weight: 2, finish: 5}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []

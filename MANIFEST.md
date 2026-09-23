@@ -1,6 +1,6 @@
 # Manifest
 
-1105 primitives. Format: `category/id | axes cost | tags | gist`
+1106 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -683,6 +683,7 @@ motion-system/settle-deferred-face-rewrite | E3 D2 W2 F5 $2 | motion 3d preserve
 motion-system/settling-strike-envelope | E4 D2 W3 F3 $2 | flicker envelope keyframe-table shader portable data | Something powering on does not fade — it strikes, drops out, cat
 motion-system/slope-coupled-bob | E2 D1 W2 F4 $1 | motion keyframes loop wave rotation | An object rising and falling on a keyframed loop reads as a box 
 motion-system/slot-permutation-rotation | E2 D3 W2 F5 $3 | motion grid state responsive | To show more items than a grid has cells, swap one cell at a tim
+motion-system/split-arc-node-wrap | E3 D2 W3 F5 $2 | motion loop timeline conic ring mask arrival connector | A pulse reaching a node on a line reads as passing through unles
 motion-system/split-curve-axis-bow | E3 D1 W2 F5 $2 | motion-system easing transform arc waapi demo | A mark travelling between two points on one transform moves in a
 motion-system/split-track-puppet-pointer | E2 D2 W2 F5 $2 | demo cursor choreography spring loop | A synthetic pointer demonstrating an interface is two motions, n
 motion-system/state-keyed-descendant-transition | neutral  $1 | motion reveal transition correctness reduced-motion architecture | One observer entry can drive more than one animation. Let the se
