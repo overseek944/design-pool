@@ -4,7 +4,7 @@ category: timing
 tags: [motion,timing,loop,architecture]
 axes: none
 cost: 1
-seen: 21
+seen: 22
 requires: []
 conflicts: []
 completes: []
@@ -116,3 +116,16 @@ const p = Math.max(0, Math.min(1, (t - +el.dataset.start) /
 ```
 ⚠ Read the attributes once into the flow list — a `dataset` access per element
 per frame is a string parse in the hot loop.
+
+A before/after loop can hide its content swap *inside* a wipe on the same
+period. Give the outgoing and incoming layers mirrored keyframes whose crossing
+window sits wholly within the wipe's travel — wipe 20–70%, swap 50–62% — so the
+change happens behind the moving edge and the reader never sees a bare
+dissolve. Keep all participants on one duration and one curve token; only the
+stop percentages differ.
+```css
+@keyframes swap-in  { 0%, 52% { opacity: 0 } 62%, to { opacity: 1 } }
+@keyframes swap-out { 0%, 52% { opacity: 1 } 62%, to { opacity: 0 } }
+```
+⚠ Two opaque layers crossing linearly both sit near 50% mid-swap and the ground
+shows through; keep the outgoing one at 1 and fade only the incoming over it.

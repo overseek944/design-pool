@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,accessibility,control,scrub,native,diagram]
 axes: {energy: 2, density: 1, weight: 1, finish: 5}
 cost: 1
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -94,3 +94,15 @@ with no shadow needed. Thumb 14–18px, shrinking a step on narrow screens.
 .s::-webkit-slider-thumb { appearance: none; width: 16px; height: 16px;
   background: var(--accent); border: 2px solid var(--ground) }
 ```
+
+Add a 1px `box-shadow` ring in ink *outside* that ground-coloured border and the
+thumb reads as a seated knob on any track — including a gradient rail that runs
+from ink to pale, where a bare ground border vanishes at the light end and the
+bare thumb vanishes at the dark end. Pair it with a 1.08–1.15 `scale` on hover
+and `:active` at 100–150ms. Border 2–4px, thumb 22–30px for a primary control.
+```css
+.s::-webkit-slider-thumb { appearance: none; width: 26px; height: 26px; border-radius: 50%;
+  background: var(--ink); border: 3px solid var(--ground); box-shadow: 0 0 0 1px var(--ink) }
+```
+⚠ `outline: none` on the input moves focus onto the thumb — restate it there
+under `:focus-visible` with a 3–4px offset, per engine.
