@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,depth,projection,wireframe,stroke,3d]
 axes: {energy: 2, density: 3, weight: 2, finish: 5}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -44,3 +44,7 @@ ctx.globalAlpha = .35 + .55 * d
 ⚠ Take `half` from the frame's own extent or the whole cloud flattens to one
 alpha as it turns. Without a drawn reference frame the cue is the only depth
 signal there is, and it cannot say how far.
+
+For a handful of vertices (4–12), sorting nodes by z each frame is free — and
+filling each node disc with the ground colour before stroking it lets near nodes
+occlude the edges behind them, which the divisor alone cannot.

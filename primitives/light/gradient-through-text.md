@@ -4,7 +4,7 @@ category: light
 tags: [color,type,effect]
 axes: {energy: 3, density: 2, weight: 4, finish: 3}
 cost: 2
-seen: 50
+seen: 51
 requires: []
 conflicts: []
 completes: []
@@ -254,3 +254,13 @@ stop, the gentler the recession.
 ```
 ⚠ The recession depends on line count — at 390px a third line lands darker than
 anything the desktop proof showed; score the lowest line against the ground.
+
+A looping sheen reads as a tick, not a hum, when the keyframes spend the last
+20–30% of the cycle parked off-glyph: sweep over 70–80%, hold, repeat on a
+3–5s period. For a photographic fill, stack a translucent ink gradient as the
+first layer over the image — the texture shows through as variation while the
+floor contrast comes from the ink, not the photo.
+```css
+@keyframes sheen { 0% { background-position: 88% 0 } 76%, to { background-position: 12% 0 } }
+.tex { background: linear-gradient(#111b, #111b), url(t.jpg) 14% 26% / 210% }
+```

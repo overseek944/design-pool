@@ -1,6 +1,6 @@
 # Manifest
 
-1120 primitives. Format: `category/id | axes cost | tags | gist`
+1122 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -132,6 +132,7 @@ canvas/subject-gated-glint-stream | E2 D2 W3 F5 $3 | shader webgl image texture 
 canvas/submission-summoned-orbit | E4 D2 W2 F4 $3 | canvas interaction ambient agents orbit feedback state-machine | An ambient field of wanderers can acknowledge what a user just s
 canvas/svg-userspace-pointer-mapping | neutral  $1 | svg pointer correctness interaction geometry | An SVG with a viewBox is drawn in its own coordinate system, and
 canvas/swapped-target-pass-chain | neutral  $3 | canvas shader webgl architecture correctness | One long fragment shader cannot be reordered, disabled or tuned 
+canvas/tangent-bridged-node-link | E2 D2 W1 F5 $2 | canvas node graph connector bezier metaball diagram | Centre-to-centre edges read as a chart. Join two circles with tw
 canvas/tier-ascended-blur-ladder | E1 D2 W2 F5 $3 | canvas shader webgl blur performance ambient | A blur wide enough to turn shapes into light is unreachable by t
 canvas/tilted-heightfield-mark-sheet | E2 D3 W1 F4 $3 | canvas 3d projection field depth scenery | Deep scenery on a 2D context needs no renderer: sample a summed-
 canvas/two-bone-reach-pose | E3 D2 W2 F4 $3 | canvas figure rig articulation procedural geometry | A limb posed by writing its angles needs a hand-tuned number per
@@ -784,6 +785,7 @@ reveal/index-thresholded-progress-gate | E2 D2 W2 F5 $1 | reveal scroll custom-p
 reveal/leading-collapsed-settle | E2 D2 W3 F5 $2 | reveal type entrance heading scroll leading | A display block can arrive by closing up rather than by moving. 
 reveal/lit-uncovering-front | E3 D2 W3 F4 $2 | reveal wipe blend light scroll edge | Revealing by retreating an opaque cover, rather than by fading o
 reveal/masked-line-rise | E3 D2 W3 F5 $2 | type motion reveal | Split to lines, wrap each in an overflow-hidden outer with a tra
+reveal/measured-glyph-occluders | E3 D2 W2 F5 $2 | reveal text per-character range headline entrance | Splitting a headline into spans breaks a fill that must run cont
 reveal/mirrored-sign-pair | E3 D2 W3 F4 $2 | reveal motion rotation symmetry pairing scroll parallax | Two peer blocks on one row share a single progress value and rea
 reveal/normalised-path-draw | E3 D2 W2 F5 $1 | svg stroke reveal draw geometry correctness | A draw-on stroke normally needs the path's measured length, whic
 reveal/overhung-skew-fill-sweep | E3 D2 W2 F5 $2 | reveal interaction motion detail effect | Fill a control on hover behind a slanted edge, not a straight on

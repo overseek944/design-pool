@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,correctness,progressive-enhancement,observer,reveal]
 axes: none
 cost: 1
-seen: 26
+seen: 27
 requires: []
 conflicts: []
 completes: []
@@ -114,3 +114,12 @@ if (vw > 0 && vh > 0 && (vw * vh) / (b.width * b.height) >= THRESHOLD) settle()
 ⚠ Zero-area elements divide by zero — guard on `b.width * b.height` before the
 ratio. Keep the observer for everything the check declines; it is the arming
 pass that is redundant afterwards, not the observer.
+
+A tall block never reaches a fixed fraction when it is taller than the
+viewport. Size the threshold from the element: `min(0.08–0.15, 150 / height)`,
+so small blocks wait for a real share and tall ones fire once ~150px shows. Pool
+observers by rounded threshold rather than creating one per element.
+```js
+const t = Math.min(.12, 150 / Math.max(h, 1)), k = Math.round(t * 1e3)
+;(pool[k] ??= new IntersectionObserver(cb, { threshold: t, rootMargin: '0px 0px -6% 0px' })).observe(el)
+```
