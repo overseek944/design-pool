@@ -4,7 +4,7 @@ category: motion-system
 tags: [audio, waveform, bars, mock, decorative, speech]
 axes: {energy: 3, density: 2, weight: 2, finish: 4}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,11 @@ const a = Math.abs(Math.sin(t*(3.4 + i%5*.4) + i*.7)), b = Math.abs(Math.sin(t*(
 bar.style.transform = `scaleY(${talking ? Math.min(.98, .1 + (.25+a*.5+b*.25)*g*(.45+env*.55)) : .05 + i%4*.008})`
 ```
 ⚠ Decorative only: `aria-hidden`, pause off-screen, hold the floor under reduced motion.
+
+CSS-only variant: put the envelope in asymmetric keyframes — fast attack to peak
+at 30–40%, partial fall, a tail above the floor — with per-bar durations
+0.6–1.4s and negative delays, gated on a playing class.
+```css
+@keyframes syllable { 0% { transform: scaleY(.35) } 35% { transform: scaleY(1) } 70% { transform: scaleY(.55) } to { transform: scaleY(.4) } }
+.bar.is-playing { animation: syllable var(--d) ease-in-out var(--o) infinite }
+```
