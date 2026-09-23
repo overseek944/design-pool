@@ -4,7 +4,7 @@ category: type
 tags: [type,counter,number,count-up,property,css-only]
 axes: {energy: 2, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

@@ -4,7 +4,7 @@ category: light
 tags: [light,glow,sweep,box-shadow,loop,cheap]
 axes: {energy: 3, density: 1, weight: 2, finish: 5}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -38,3 +38,8 @@ appears or vanishes at an edge. 6–9s; it should be noticed on the second look.
 ```
 ⚠ Stacked over several panels at once the scans fall into phase and the page
 pulses — stagger their delays or let only one run in view.
+
+Variant — one-shot punctuation: a single pass down a text block, fired once when
+a reveal completes, reads as "checked" rather than "working". 1.5–2.5s on a
+fast-out curve, peak opacity held 20–80% of travel; re-arm only after the block
+has left well behind.

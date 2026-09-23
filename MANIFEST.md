@@ -1,6 +1,6 @@
 # Manifest
 
-1100 primitives. Format: `category/id | axes cost | tags | gist`
+1101 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -523,6 +523,7 @@ media/dialog-scoped-embed-lifecycle | neutral  $2 | media performance dialog cor
 media/dilated-alpha-keyline | E1 D2 W2 F5 $1 | media icon logo filter contrast legibility detail css-only | A raster mark has no stroke to reach for, so a pale logo dropped
 media/dot-module-code-render | E1 D3 W2 F4 $1 | media svg qr brand correctness | A stock QR code is the one square-pixel object on a composed pag
 media/event-sourced-audio-control | neutral  $1 | media audio state correctness accessibility interaction | A play control that flips its own boolean on click desynchronise
+media/first-frame-held-animated-image | E2 D2 W2 F4 $2 | media hover animated-image canvas poster still | An animated GIF or WebP in <img> cannot be paused, so a grid of 
 media/frame-announced-readiness | neutral  $2 | media iframe embed loading progressive-enhancement correctness | An iframe's load fires when its document parses, not when the ap
 media/frame-relayed-theme-token | neutral  $1 | media iframe embed theme custom-property postmessage architecture | Custom properties stop at a frame boundary, so an embedded scene
 media/frameless-alpha-artwork | E1 D2 W2 F3 $2 | media illustration assets transparency composition | Artwork exported on transparency with a feathered edge does not 
