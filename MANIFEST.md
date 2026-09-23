@@ -1,6 +1,6 @@
 # Manifest
 
-1146 primitives. Format: `category/id | axes cost | tags | gist`
+1148 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -266,6 +266,7 @@ interaction/lagged-setpoint-steered-rig | E3 D2 W2 F4 $2 | pointer playable mani
 interaction/legend-as-series-filter | E2 D2 W2 F5 $2 | legend filter state accessibility chart | A key that only names the series is a second thing to read. Make
 interaction/lock-gated-cross-tab-mutation | neutral  $3 | state correctness concurrency architecture async | Some mutations must not run twice at once across a user's open t
 interaction/margin-cancelled-hit-area | neutral  $1 | interaction touch accessibility hit-area layout correctness | A link in a dense bar cannot reach the 44px touch floor by growi
+interaction/mark-summoned-asset-menu | E1 D2 W2 F5 $1 | brand logo context-menu download menu | Right-clicking a logo usually means someone wants the logo. Catc
 interaction/measured-shared-menu-panel | E2 D2 W2 F5 $2 | navigation menu mega-menu dropdown transition measurement | Header menus of different sizes can share one panel. Anchor a si
 interaction/micro-interaction-defaults | E2 D2 W2 F5 $1 | interaction polish consistency | One transition duration (200ms) and one property set for every n
 interaction/modality-gated-port-scroll | neutral  $1 | interaction accessibility keyboard focus scroll correctness carousel | Cards in a horizontal scroll port belong in the ordinary tab ord
@@ -358,6 +359,7 @@ layout/boxless-wrapper | neutral  $1 | layout grid architecture correctness acce
 layout/breakout-grid-named-lines | neutral  $2 | layout grid tokens architecture full-bleed | One grid on the page wrapper with named lines for the bleed gutt
 layout/breakpoint-folded-media-rail | E2 D2 W2 F4 $1 | layout media responsive snap carousel rail | A short set of views — three or four renders — can sit side by s
 layout/breakpoint-released-overlay-copy | neutral  $1 | layout responsive breakpoint overlay media mobile | Copy absolutely positioned over a media panel has nowhere to go 
+layout/breakpoint-scoped-body-reparent | neutral  $2 | correctness fixed containing-block navigation drawer responsive | A drawer or scrim declared position: fixed inside a transformed,
 layout/bypass-lane-branch-rail | E1 D3 W1 F5 $2 | layout diagram connector flowchart branch hairline | A condition in a vertical flow needs a path that leaves the spin
 layout/calendar-anchored-projection-axis | E1 D2 W1 F5 $1 | chart axis label time correctness data | A projection is plotted in elapsed units from now, so evenly spa
 layout/cardinal-cell-cycle-grid | E1 D3 W2 F5 $2 | layout grid diagram cycle radial responsive | A closed four-stage cycle drawn around a hub usually costs trigo
