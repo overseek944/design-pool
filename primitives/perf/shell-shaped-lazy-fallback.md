@@ -4,7 +4,7 @@ category: perf
 tags: [cls,loading,accessibility,architecture,correctness,code-splitting]
 axes: none
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -72,3 +72,17 @@ selected while it stands in.
 ⚠ The line still reflows when the real value is wider than the box — fine for a
 name, wrong for a figure a reader is watching. Where the value is numeric,
 reserve it with tabular figures at its real width instead.
+
+To signal that the shell is live rather than broken, sweep a band across the
+placeholder's own background — no pseudo-element, no overflow clip. A 95–110deg
+gradient between two tints 3–6% apart, sized 200–250% of the box, animated on
+`background-position` from −150% to 150%. An in-out curve over 1.8–2.6s parks
+the band off the box at each end, so passes read as spaced rather than
+continuous.
+```css
+.shell { background: linear-gradient(100deg, var(--a) 38%, var(--b), var(--a) 62%) 0 0 / 220% 100%;
+  animation: sweep 2.4s cubic-bezier(.65,0,.35,1) infinite }
+@keyframes sweep { from { background-position: -150% 0 } to { background-position: 150% 0 } }
+```
+⚠ `background-position` repaints every frame — fine for a few rows, costly for a
+long list. Under reduced motion hold the flat tint.
