@@ -1,6 +1,6 @@
 # Manifest
 
-1106 primitives. Format: `category/id | axes cost | tags | gist`
+1108 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -319,6 +319,7 @@ interaction/stacked-label-roll | E3 D2 W2 F5 $1 | interaction hover button label
 interaction/stage-angle-countered-slide | E2 D3 W2 F5 $2 | interaction hover transform 3d depth custom-property reduced-motion | Inside a stage rotated in its own plane, a child told to slide l
 interaction/state-as-numeric-custom-property | E3 D2 W2 F5 $1 | interaction hover state tokens architecture | Express interaction state as a number, then derive every depende
 interaction/state-seeded-at-listener-attach | neutral  $1 | correctness state events scroll architecture | Events report transitions, not the current value. Any class deri
+interaction/stroke-coded-empty-target | E1 D1 W2 F4 $1 | interaction form file upload state border | A drop or pick target can state "empty" versus "holding somethin
 interaction/submit-mounted-challenge-gate | neutral  $2 | forms third-party performance privacy accessibility progressive-enhancement | A verification widget mounted on load costs a third-party script
 interaction/subscribed-state-flag-layer | neutral  $1 | state accessibility correctness tokens css-only has focus hover | Raise the state flag from the attribute that already carries the
 interaction/substituted-driver-on-coarse-pointer | neutral  $2 | pointer touch fallback ambient correctness architecture | Every pointer-reactive decoration is inert on a touchscreen: the
@@ -342,6 +343,7 @@ layout/balanced-side-track-centring | neutral  $1 | layout grid alignment chrome
 layout/border-clamped-annotation-leader | E1 D3 W1 F5 $2 | layout annotation connector svg diagram | A leader line drawn from a label's centre to its subject crosses
 layout/boxless-wrapper | neutral  $1 | layout grid architecture correctness accessibility | display: contents removes an element's box while keeping its chi
 layout/breakout-grid-named-lines | neutral  $2 | layout grid tokens architecture full-bleed | One grid on the page wrapper with named lines for the bleed gutt
+layout/breakpoint-folded-media-rail | E2 D2 W2 F4 $1 | layout media responsive snap carousel rail | A short set of views — three or four renders — can sit side by s
 layout/breakpoint-released-overlay-copy | neutral  $1 | layout responsive breakpoint overlay media mobile | Copy absolutely positioned over a media panel has nowhere to go 
 layout/bypass-lane-branch-rail | E1 D3 W1 F5 $2 | layout diagram connector flowchart branch hairline | A condition in a vertical flow needs a path that leaves the spin
 layout/calendar-anchored-projection-axis | E1 D2 W1 F5 $1 | chart axis label time correctness data | A projection is plotted in elapsed units from now, so evenly spa

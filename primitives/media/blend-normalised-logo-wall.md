@@ -4,7 +4,7 @@ category: media
 tags: [media,logos,blend-mode,assets,normalisation]
 axes: none
 cost: 1
-seen: 32
+seen: 33
 requires: []
 conflicts: []
 completes: []
@@ -153,3 +153,11 @@ back on hover as a cross-fade rather than a filter transition.
 `aria-label`, with both the masked box and the colour copy `aria-hidden`, or
 the wall is a row of unnamed boxes to a screen reader and a doubled name to
 anyone who fixes only half of it.
+
+Over moving footage rather than a flat ground, prefer `screen` to `lighten`.
+`lighten` picks per channel whichever layer is brighter, so where the video's
+highlights pass behind a mid-tone mark the mark's edge flickers in and out
+frame by frame; `screen` always adds, so the mark stays whole and only brightens
+with the scene. Opacity 0.8–0.95.
+⚠ A coloured mark screened over a bright frame washes toward white — pair the
+footage with a scrim that keeps it below ~40% luminance behind the mark.

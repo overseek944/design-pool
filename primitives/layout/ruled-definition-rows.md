@@ -4,7 +4,7 @@ category: layout
 tags: [layout,type,metadata,responsive,hairline]
 axes: {energy: 1, density: 3, weight: 2, finish: 5}
 cost: 1
-seen: 14
+seen: 15
 requires: []
 conflicts: []
 completes: []
@@ -86,3 +86,14 @@ on proximity snap; a stacked title block stops reading as one.
 ```
 ⚠ Hiding the scrollbar removes the only overflow cue — size cells so the last
 visible one is visibly cut.
+
+Laid out as an `auto-fit` grid of value-over-label cells, the closing trick
+inverts: never cap the set with `li:first-child { border-top }` — it rules only
+the first column, and the other columns of that row float with no top edge.
+The column count is unknown under `auto-fit`, so no `:nth-child` can target the
+first row; put the top rule on the list itself. Cell min 160–240px.
+```css
+.specs { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  border-top: var(--hair) solid var(--line) }
+.specs li { border-bottom: var(--hair) solid var(--line) }
+```

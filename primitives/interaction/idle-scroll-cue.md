@@ -4,7 +4,7 @@ category: interaction
 tags: [scroll,affordance,feedback,motion]
 axes: {energy: 2, density: 1, weight: 2, finish: 4}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -31,3 +31,14 @@ content that a persistent cue could not, and it never needs the
 near-the-bottom suppression. Update it from a single rAF-coalesced scroll
 handler and mark it `aria-hidden`; a per-frame figure is noise to a screen
 reader.
+
+Where the cue is persistent rather than idle-armed, draw it as one vertical
+hairline with a gradient tail (ink → transparent) and breathe it on `scaleY`
+from its top edge — a line growing downward says "continue" without a glyph or
+a word. 1px × 40–64px, scale 1→1.1–1.2, opacity .3→1, period 1.6–2.4s.
+```css
+.hint { inline-size: 1px; block-size: 52px; transform-origin: top;
+  background: linear-gradient(#fff6, #0000); animation: breathe 2s ease-in-out infinite }
+```
+⚠ Stop it under reduced motion, and hide it once the first section is reached —
+an infinite loop the reader has already obeyed is only noise.

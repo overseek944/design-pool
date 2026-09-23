@@ -4,7 +4,7 @@ category: reveal
 tags: [reveal,text,steps,clip-path,typing,layout-safety]
 axes: {energy: 3, density: 2, weight: 2, finish: 3}
 cost: 1
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -88,3 +88,8 @@ ghost the unwritten tail. Sweep 1.5–4s; ghost alpha .12–.3.
 ```
 ⚠ `box-decoration-break: clone` restarts the strip per line and breaks the
 sequence. Ink below 4.5:1 is unreadable mid-sweep — land it fully under reduce.
+
+Do not mark the typing node `aria-live`. A live region re-announces on every
+text mutation, so a script-typed line is read out as a stutter of fragments —
+or, with `polite` queuing, as the first few letters and then nothing. The
+settled string belongs in the label above; the mutating run stays hidden.
