@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,marquee,correctness,loop,overflow]
 axes: none
 cost: 1
-seen: 53
+seen: 54
 requires: []
 conflicts: []
 completes: []
@@ -166,3 +166,15 @@ track.style.setProperty('--dur', `${Math.max(20, period / 38).toFixed(2)}s`)
 ```
 ⚠ Re-derive after `document.fonts.ready` — the fallback face's period sets the
 wrong speed for the whole session.
+
+The tunnel's ratio can be skipped when each ring carries its own opacity
+envelope. Every frame scales from near zero (0.02–0.08) to past the viewport
+(1.3–2) over one long cycle, fading in over the first 20–35% and out over the last,
+and N copies share that cycle at negative delays of −k × period ÷ N. No ring is
+visible at either end of its travel, so the restart needs no geometry.
+```css
+.ring { animation: tunnel 100s linear infinite; animation-delay: calc(var(--k) * -10s) }
+@keyframes tunnel { 0% { scale: .04; opacity: 0 } 30%,70% { opacity: .5 } 100% { scale: 1.5; opacity: 0 } }
+```
+⚠ At 60–120s cycles, the reduced-motion branch should park every ring at a
+fixed scale and 0.08–0.15 opacity instead of just stopping the animation.

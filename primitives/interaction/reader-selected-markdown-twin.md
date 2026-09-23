@@ -4,7 +4,7 @@ category: interaction
 tags: [architecture,progressive-enhancement,interop,persistence,view-mode,markdown]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,9 @@ if (mode === 'text') fetch(src, { headers: { Accept: 'text/markdown' } })
 ```
 ⚠ Read storage after hydration or the server render mismatches; on a failed
 fetch keep the layout rather than blanking the page.
+
+The toggle does not have to live in the header. A two-segment pill fixed at the
+bottom centre, 12–24px off the edge, stays reachable at every scroll depth and
+on a 390px viewport where the header has already collapsed into a menu.
+Remember that the pill covers content, so reserve its height as bottom padding
+on the final section.

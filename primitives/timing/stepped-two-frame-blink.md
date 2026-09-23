@@ -4,7 +4,7 @@ category: timing
 tags: [motion,easing,indicator,status,ambient]
 axes: {energy: 2, density: 1, weight: 2, finish: 3}
 cost: 1
-seen: 30
+seen: 31
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -67,3 +67,12 @@ the mark means something, blink opacity instead.
 
 A hard stop pair — `0%,60% {opacity:.9} 60.01%,to {opacity:.15}` — sets any duty
 cycle without a timing function; 55–70% on reads as a crosshair or reticle.
+
+Replace the on/off pair with a ramp of 8–12 descending stops under `steps(1)`
+and the travelling mark grows a quantised tail: each dot jumps to full, then
+drops one level per step, so a phase-offset row reads as a comet moving along
+it. Offset each dot by period ÷ count; a floor of 0.05–0.15 keeps the track visible.
+```css
+.dot { animation: trail 1s steps(1) infinite; animation-delay: calc(var(--i) * -.1s) }
+@keyframes trail { 0%,100% { opacity: .1 } 10% { opacity: 1 } 50% { opacity: .6 } 90% { opacity: .2 } }
+```

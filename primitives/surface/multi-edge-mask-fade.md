@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,edge,composition,bleed]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 96
+seen: 97
 requires: []
 conflicts: []
 completes: []
@@ -329,3 +329,9 @@ mask-image: linear-gradient(to bottom right, #000 0, transparent 22% 78%, #000 1
 ```
 ⚠ The diagonal follows the box's aspect ratio, so on a very wide element the
 corners become thin slivers along the long edges — size the field, not the page.
+
+One angled three-stop mask, opaque at both ends and clear in the middle
+(`linear-gradient(95–115deg, #000, transparent 45–55%, #000)`), fades a ruled
+backdrop out along a diagonal band. The lattice frames the headline from its
+corners and never passes behind it. With no second layer there is no
+`mask-composite` and no prefix pair to keep in sync.
