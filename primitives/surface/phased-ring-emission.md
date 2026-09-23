@@ -4,7 +4,7 @@ category: surface
 tags: [ring, emission, pulse, loop, attention, halo]
 axes: {energy: 3, density: 2, weight: 2, finish: 4}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,11 @@ for even spacing: period 3–5s, end scale 2.5–5, start alpha .25–.5.
 ```
 ⚠ Keep `opacity: 0` on the base rule: under reduced motion `animation: none`
 leaves every ring drawn round the target.
+
+On a single control — a play button, a primary action — one *filled* copy of
+the control's own colour works better than rings: start alpha .2–.35, end scale
+1.5–2, reaching zero at 75–85% so each period ends in a rest beat. Give the
+control a 1.015–1.03 breath on the same period and the halo reads as released
+by the swell. Period 3–4.5s.
+⚠ Hide the halo under reduced motion rather than stopping it — a stopped copy
+is a dark disc behind the control.

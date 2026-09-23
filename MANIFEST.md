@@ -1,6 +1,6 @@
 # Manifest
 
-1154 primitives. Format: `category/id | axes cost | tags | gist`
+1155 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -661,6 +661,7 @@ motion-system/keyframe-resolved-waypoints | E3 D2 W2 F5 $2 | motion keyframes cu
 motion-system/keyframe-variant-bank | E3 D4 W2 F3 $2 | motion generative ambient tokens architecture | Phase and period offsets only ever translate one curve; they can
 motion-system/length-timed-leg-relay | E3 D2 W1 F5 $2 | motion loop diagram offset-path connector timing | A trip across a hub — out along one wire, a pause, back along an
 motion-system/lifecycle-cancelled-cross-document-transition | neutral  $2 | view-transition navigation accessibility progressive-enhancement architecture | A cross-document transition is opted in by an at-rule, so the on
+motion-system/longhand-split-idle-and-hover | neutral  $1 | correctness hover idle loop transform cascade | A running animation outranks every normal declaration, so an idl
 motion-system/marquee-playhead | E3 D3 W2 F5 $3 | marquee motion state observer rhythm | Give a moving track one stationary reading position. A marker si
 motion-system/marquee-still-state | neutral  $1 | motion accessibility marquee correctness overflow | A marquee's reduced-motion state is not a paused marquee. The tr
 motion-system/matched-vertex-shape-lerp | E2 D2 W2 F4 $2 | svg morph polygon hover data shape interpolation | Two shapes with equal vertex counts morph by lerping each point 

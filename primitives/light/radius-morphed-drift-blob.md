@@ -4,7 +4,7 @@ category: light
 tags: [ambient,blob,organic,morph,border-radius,blur,keyframes,dark]
 axes: {energy: 2, density: 3, weight: 3, finish: 4}
 cost: 3
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
