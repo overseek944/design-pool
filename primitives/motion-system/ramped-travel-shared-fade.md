@@ -4,7 +4,7 @@ category: motion-system
 tags: [stagger, entrance, scroll, scrub, arrival, progress]
 axes: {energy: 3, density: 2, weight: 3, finish: 5}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

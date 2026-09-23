@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,texture,pattern,raster,two-tone,generative]
 axes: {energy: 2, density: 4, weight: 3, finish: 2}
 cost: 2
-seen: 12
+seen: 13
 requires: []
 conflicts: []
 completes: []
@@ -62,3 +62,14 @@ const q = Math.round(v / (255/(L-1))) * (255/(L-1))   // L = levels
 ```
 ⚠ A one-shot pass: it must re-run on resize, and a cross-origin image taints the
 canvas unless it is served with CORS.
+
+The field can be a *boundary* instead of a texture. Feed the threshold vertical
+position plus a small noise term and the matrix turns a straight ground change
+into a dithered edge that crumbles unevenly across the width. Animate the noise
+slowly and the edge shimmers without ever moving. Noise weight 0.05–0.15, and
+smoothstep the sum over 0.05–0.95 so both ends reach solid.
+```glsl
+float s = smoothstep(.05, .95, (1. - uv.y) + .1 * snoise(p * .001 + t));
+```
+⚠ Pause the loop while it is offscreen. An ambient edge that nobody sees still
+draws every frame.

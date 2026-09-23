@@ -4,7 +4,7 @@ category: light
 tags: [light,pointer,hover,gradient,custom-properties,surface]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -79,3 +79,11 @@ the default of 0 is the centre — a keyboard focus gets the same light, parked.
 ```
 ⚠ Size the body 130–160% of the control and let its fill fade to zero before
 its own edge; clipped by the pill it otherwise shows a hard arc.
+
+Hang the lamp on the *grid* rather than on each card. One pointer-events-none
+layer over the whole group, with its gradient centre spring-smoothed toward the
+pointer, reads as one light sliding across the gutters rather than a separate
+glow in each box. The spring puts a short lag between the hand and the light.
+Stiffness 200–400, damping 25–35, radius 250–450px, alpha 4–10%.
+⚠ Over a dark ground the light also shows in the gutters. Keep the alpha at the
+low end or the gaps glow brighter than the cards do.
