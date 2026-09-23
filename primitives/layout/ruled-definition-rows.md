@@ -4,7 +4,7 @@ category: layout
 tags: [layout,type,metadata,responsive,hairline]
 axes: {energy: 1, density: 3, weight: 2, finish: 5}
 cost: 1
-seen: 15
+seen: 16
 requires: []
 conflicts: []
 completes: []
@@ -97,3 +97,16 @@ first row; put the top rule on the list itself. Cell min 160–240px.
   border-top: var(--hair) solid var(--line) }
 .specs li { border-bottom: var(--hair) solid var(--line) }
 ```
+
+A leader turns the hairline from a seam between rows into a path within one: a
+flex child between label and value, `flex: 1` with a 60–100px `min-width`, its
+height equal to the row's line-height so a centred 1px rule sits on the text's
+mid-line. The eye travels label → value along it instead of across empty space.
+The `min-width` is what decides when to give up: below it the row wraps, and
+under ~30rem stack the pair outright and drop the leader.
+```css
+.row { display:flex; align-items:flex-start; gap:.5rem; line-height:1.5rem }
+.row .leader { flex:1; min-width:80px; height:1.5rem; display:flex; align-items:center }
+.row .leader::before { content:""; flex:1; border-top:var(--hair) solid var(--line) }
+```
+⚠ The leader is decoration — `aria-hidden` it, and keep the pair as `dt`/`dd`.

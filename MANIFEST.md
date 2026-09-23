@@ -1,6 +1,6 @@
 # Manifest
 
-1122 primitives. Format: `category/id | axes cost | tags | gist`
+1123 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -344,6 +344,7 @@ interaction/withdrawn-motion-pause-control | neutral  $1 | accessibility motion 
 interaction/withheld-value-reveal | E2 D2 W3 F4 $1 | interaction disclosure redaction accessibility state | Withholding a figure claims more than printing it, but only if t
 interaction/zone-derived-regional-ordering | neutral  $1 | interaction i18n privacy ordering progressive-enhancement correctness | A list whose useful entries differ by country can be ordered for
 layout/argued-column-as-surface | E1 D3 W4 F5 $1 | layout table comparison surface contrast hierarchy | In a comparison matrix the column you are arguing for should be 
+layout/axis-normalised-radar-comparison | E1 D3 W2 F5 $2 | chart comparison data svg legend hairline | Five to nine metrics in unrelated units can share one figure whe
 layout/axis-tracking-seam-marker | E1 D2 W2 F5 $1 | layout seam affordance responsive breakpoint | Two panels that argue in sequence — problem, then answer — lose 
 layout/balanced-side-track-centring | neutral  $1 | layout grid alignment chrome correctness | space-between centres nothing: the middle child lands wherever t
 layout/border-clamped-annotation-leader | E1 D3 W1 F5 $2 | layout annotation connector svg diagram | A leader line drawn from a label's centre to its subject crosses
