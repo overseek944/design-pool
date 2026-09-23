@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,generative,field,image,mask,silhouette,grid]
 axes: {energy: 1, density: 3, weight: 2, finish: 4}
 cost: 3
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -48,3 +48,13 @@ Variant — no lattice: draw uniform random positions and keep each with probabi
 equal to its alpha, which gives a stochastic scatter whose density tracks the
 picture's opacity. Take the kept point's colour from the same texel, scaled by
 0.8–1.2 jitter, and a texture becomes a point field in its own colours.
+
+Variant — vector domain. Where the form exists as polygons (outlines, regions,
+geographic boundaries) skip the raster: map each lattice cell back into the
+shape's own coordinates and admit it by an even-odd point-in-polygon test. No
+decode, no taint, no threshold to tune. Fit the domain's aspect inside the box
+and letterbox the rest, or the silhouette stretches at every ratio. Give each
+admitted cell a base alpha jittered 0.3–0.45 so the field reads as printed, not
+plotted.
+⚠ The test is O(cells × vertices) — run it on resize only, never per frame, and
+simplify the polygons first.

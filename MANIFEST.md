@@ -1,6 +1,6 @@
 # Manifest
 
-1081 primitives. Format: `category/id | axes cost | tags | gist`
+1083 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -68,6 +68,7 @@ canvas/import-time-material-reauthor | neutral  $2 | canvas material import arch
 canvas/index-grid-vertex-line-family | E2 D4 W1 F5 $3 | canvas shader webgl lines noise field performance | Hundreds of noise-displaced lines need no CPU geometry. Upload o
 canvas/irrational-stride-variation | neutral  $1 | canvas generative field deterministic correctness scatter | Math.random() for per-index variation costs a stored array, a di
 canvas/lattice-quantised-mark-draw | E2 D3 W2 F4 $2 | canvas particles grid lattice generative texture | A particle field drawn at its simulated position floats over the
+canvas/lattice-snapped-data-anchors | E2 D3 W2 F4 $2 | canvas field data hotspot hover grid accent | Markers at true coordinates over a dot field fall between dots a
 canvas/lifetime-enveloped-mark-respawn | E2 D3 W1 F5 $1 | canvas field particles motion generative recycling | A fixed pool of marks recycled on exhaustion makes birth and dea
 canvas/liveness-floor-reseed | neutral  $2 | canvas generative simulation ambient lifecycle correctness | Most interesting generative rules are also mortal. A lattice, a 
 canvas/morphing-rim-pointer-falloff | E3 D3 W2 F4 $2 | shader pointer falloff field organic hover | A pointer reveal with a circular falloff announces its own maths
@@ -579,6 +580,7 @@ motion-system/below-fold-armed-entrance | neutral  $1 | motion correctness progr
 motion-system/blurred-slot-spin-settle | E4 D1 W2 F3 $1 | slot reel blur overshoot value-change randomise | A value being picked — a randomised option, a generated word — r
 motion-system/camera-over-static-scene | E3 D2 W3 F5 $2 | motion transform scale focus diagram narrative | To walk a reader through a diagram, move the viewport rather tha
 motion-system/cardinality-locked-variant-set | E3 D3 W2 F5 $3 | motion svg morph state diagram architecture | A set of marks that switches state — a diagram's shapes, a chart
+motion-system/change-tint-decay | E2 D3 W2 F3 $1 | data update feedback table realtime highlight keyframes | A value changing in place is easy to miss in a dense table. Tint
 motion-system/connector-relayed-step-focus | E2 D2 W2 F5 $2 | motion sequence connector autoplay stroke state | A self-advancing step list that jumps its highlight says "next" 
 motion-system/content-cleared-shell-morph | E3 D2 W2 F5 $2 | morph sequencing panel spring transition exit | A surface that reshapes between modes — pill to panel — smears i
 motion-system/context-keyed-idle-repertoire | E3 D1 W2 F3 $2 | motion character idle state keyframes loop | A resident character with one idle loop is a screensaver. Give i

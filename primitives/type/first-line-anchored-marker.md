@@ -4,7 +4,7 @@ category: type
 tags: [type,list,marker,alignment,optical,correctness,fluid]
 axes: {energy: 1, density: 2, weight: 1, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
