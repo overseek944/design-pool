@@ -1,6 +1,6 @@
 # Manifest
 
-1119 primitives. Format: `category/id | axes cost | tags | gist`
+1120 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -519,6 +519,7 @@ media/child-reported-frame-height | neutral  $2 | media correctness architecture
 media/clip-bound-layer-caption | E2 D2 W2 F5 $1 | media label clip interaction accessibility | A wipe or drag reveal that names its two states with badges floa
 media/clip-partitioned-image-rig | E3 D2 W3 F4 $3 | mask clip-path illustration rig raster animation | Flat artwork can be rigged without re-exporting it as parts. Pun
 media/coincident-mark-layer-stack | neutral  $1 | svg animation units architecture correctness | A CSS length on an SVG child is read as user units and then scal
+media/corner-cropped-ghost-glyph | E1 D2 W3 F4 $1 | media icon card crop texture feature-grid | A feature card's icon need not sit beside its title. Draw it 4–8
 media/corner-docked-proof-reel | E3 D2 W3 F3 $2 | media video fixed floating dock social-proof | A short muted loop fixed in a corner for the whole page keeps a 
 media/counter-scaled-live-embed | neutral  $3 | media iframe embed responsive architecture | An embed's CSS width is a separate decision from the size of the
 media/cover-scale-as-scalar | neutral  $2 | media correctness geometry overlay responsive css-only | object-fit: cover scales inside the element and reports nothing,

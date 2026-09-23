@@ -4,7 +4,7 @@ category: surface
 tags: [divider,section,texture,rule,repeating-gradient,seam]
 axes: {energy: 1, density: 3, weight: 2, finish: 5}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -44,3 +44,12 @@ boundary and has no tonal jump to survive.
 ⚠ Past five segments it stops reading as a palette and starts reading as a
 progress bar or a flag. Order them along the register's own ramp, dark to
 light, or the band reads as a chart with a missing key.
+
+Variant — turn the comb 45° and the seam stops belonging to either side: a
+diagonal hatch band 40–80px tall between two same-ground sections reads as a
+spacer the layout owns, a measured gap rather than a join. Keep it inside the
+container's edge rules so it reads as a filled cell. Pitch 6–10px, alpha 0.06–0.14.
+```css
+.gap { block-size: 64px; background: repeating-linear-gradient(-45deg,
+  var(--ink) 0 1px, #0000 1px 8px) }
+```

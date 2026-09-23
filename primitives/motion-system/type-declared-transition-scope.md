@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion-system,view-transition,scoping,state,correctness,routing]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

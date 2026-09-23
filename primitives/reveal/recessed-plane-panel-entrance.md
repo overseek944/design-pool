@@ -4,7 +4,7 @@ category: reveal
 tags: [reveal,entrance,3d,perspective,media,motion]
 axes: {energy: 2, density: 2, weight: 3, finish: 4}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -30,3 +30,10 @@ The line reads as swinging up off the page rather than sliding. Give the
 parent a perspective of 600–1200px or the tilt flattens to a squash.
 ⚠ Tilted type is unreadable mid-motion — keep it off body copy longer than
 two lines.
+
+Variant — settle the rise but not the pose: keep a fixed rotateZ of −4 to −10deg
+and a residual rotateX/Y of 5–15deg at rest, animating only opacity and a
+24–48px translateY. The card lands as an object propped on the page rather than
+a panel flattening into it. Suits one small artefact, never a full-width frame.
+⚠ The reduced-motion branch must keep the resting tilt, not reset to 0 — the
+pose is layout, only the travel is motion.
