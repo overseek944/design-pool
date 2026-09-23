@@ -4,7 +4,7 @@ category: color
 tags: [color,tokens,theming,naming,architecture,contrast]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,17 @@ rungs, chroma 2–4 light against 8–12 dark.
 ```
 ⚠ `light-dark()` resolves against `color-scheme` alone — a `[data-theme]` class
 that does not also set `color-scheme` flips nothing.
+
+Where rungs need not be authored at all, derive them. Declare two endpoints —
+`--ground` and `--ink` — and build every rung as `color-mix(in oklch)` of the
+ground toward the ink at a falling percentage, with a mirror ramp mixing ink
+toward ground for inverted bands. A theme is then two tokens, not two ramp
+tables, and an inverse section reads the same rung names by distance from its
+own ground. 5–7 rungs, ground share stepping 95% → 30%; one rung past the
+ground mixes 8–12% toward pure black or white for recessed wells.
+```css
+--n-3: color-mix(in oklch, var(--ground) 88%, var(--ink));
+--inv-3: color-mix(in oklch, var(--ink) 66%, var(--ground));
+```
+⚠ Mixed rungs inherit whatever chroma the endpoints carry — a tinted ink turns
+every mid rung muddy. Keep endpoints near-neutral and put hue in the accent.

@@ -4,7 +4,7 @@ category: media
 tags: [media,color,filter,normalisation,texture]
 axes: {energy: 1, density: 2, weight: 3, finish: 4}
 cost: 1
-seen: 13
+seen: 14
 requires: []
 conflicts: []
 completes: []
