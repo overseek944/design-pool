@@ -1,6 +1,6 @@
 # Manifest
 
-1099 primitives. Format: `category/id | axes cost | tags | gist`
+1100 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -208,6 +208,7 @@ interaction/cross-context-preference-sync | neutral  $1 | theme preferences stor
 interaction/cross-device-action-handoff | neutral  $2 | interaction cta progressive-enhancement accessibility responsive | Where the thing on offer can only be used on a device class the 
 interaction/cursor-tracked-vanishing-point | E3 D3 W2 F5 $3 | interaction pointer 3d depth field transform hover | Tiles pushed toward the reader on Z all shear toward the contain
 interaction/declared-quiet-region | neutral  $1 | interaction pointer architecture legibility opt-out correctness | A pointer-driven background sits under the whole document and di
+interaction/destination-miniature-menu-card | E1 D3 W2 F5 $2 | navigation menu mega-menu preview mock recognition card | In a menu of product destinations, a name plus one line of copy 
 interaction/dimension-coded-position-dot | E2 D2 W2 F5 $1 | interaction state indicator accessibility carousel | Let the active item in a position indicator change size, not onl
 interaction/disengaged-scoped-transition | E3 D1 W2 F5 $1 | interaction transition pointer drag reveal accessibility | A value the pointer drives — a wipe seam, a comparison split, a 
 interaction/disjoint-resample-example-set | E2 D2 W2 F4 $1 | interaction input examples suggestion state accessibility | A row of clickable starting points under an empty field can draw

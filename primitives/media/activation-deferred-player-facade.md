@@ -4,7 +4,7 @@ category: media
 tags: [media,embed,iframe,video,performance,privacy,accessibility,loading]
 axes: none
 cost: 2
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: [focus-handoff-on-self-removal]
@@ -42,3 +42,15 @@ r.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA ? go()
 ⚠ `loadeddata` never fires for a blocked or 404 source, so the poster stays
 under a control that has already been dismissed — bind `error` to restore the
 facade rather than leaving a dead box.
+
+Where the embed is consent-gated, the facade is the consent point, not a second
+banner. Before consent the button's name and hint say what it will do — open
+privacy settings for external media — and pressing it opens them; once granted,
+the same button mounts the frame. The poster never needs consent because it is
+self-hosted.
+```jsx
+<button onClick={allowed ? () => setPlaying(true) : openConsent}
+  aria-label={allowed ? 'Play the video' : 'Open privacy settings to enable the video'} />
+```
+⚠ Subscribe to the consent store. If granting consent elsewhere doesn't re-render
+the slot, the reader has to press play again and gets nothing.
