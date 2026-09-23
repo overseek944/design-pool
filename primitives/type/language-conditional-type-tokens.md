@@ -4,7 +4,7 @@ category: type
 tags: [type,i18n,tokens,localisation,correctness]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -35,4 +35,12 @@ CJK override has to exclude it or the island inherits the reset.
 :lang(zh) { --tracking-tight: 0em }
 :lang(zh) h1:not([lang=en], [lang=en] *) { letter-spacing: normal; line-height: 1.35 }
 [lang=en] { --tracking-tight: -.04em }
+```
+
+Variant — swap the heading *family*, not just its tokens. A Latin geometric sans
+falls back to a system CJK gothic that shares none of its character; under a
+Japanese `lang`, set headings in the native Mincho serif and body in the system
+gothic, so the display voice is chosen rather than inherited from a fallback.
+```css
+:lang(ja) h1, :lang(ja) h2 { font-family: "Hiragino Mincho ProN", "Yu Mincho", serif }
 ```

@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,reveal,thresholds]
 axes: {energy: 2, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 25
+seen: 26
 requires: []
 conflicts: []
 completes: []
@@ -74,3 +74,8 @@ start = Math.max(0, Math.min(top > max ? top - innerHeight : top - (innerHeight 
 ```
 ⚠ It reproduces only on pages barely taller than the viewport — the case that
 survives review on a laptop and fails on the first tall monitor.
+
+The margin can be a percentage: `-20%` to `-30%` of the root's bottom scales the
+band with viewport height where pixels do not, so a tall screen does not fire
+reveals far below the reader's eye line. Past −30% short sections risk never
+arriving on a phone.

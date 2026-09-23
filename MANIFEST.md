@@ -1,6 +1,6 @@
 # Manifest
 
-1073 primitives. Format: `category/id | axes cost | tags | gist`
+1075 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -45,6 +45,7 @@ canvas/distance-phased-driver-ripple | E3 D2 W2 F5 $2 | canvas pointer field wav
 canvas/document-spanned-viewport-field | neutral  $2 | canvas scroll background generative architecture performance | A decorative field belongs either to the viewport or to the docu
 canvas/dom-labels-in-normalised-canvas-space | neutral  $2 | canvas accessibility architecture correctness label | Text drawn with fillText cannot be selected, found, translated o
 canvas/drawn-texture-set | neutral  $2 | canvas texture procedural weight architecture scene | Every map a scene needs — worn floor, printed label, belt tread,
+canvas/drifting-hairline-bar-field | E2 D3 W1 F4 $2 | canvas field ambient lines background hero generative | A dark ground gains speed and signal without particles or shader
 canvas/eased-pointer-influence | E3 D2 W2 F5 $2 | shader interaction feel | Never feed raw pointer state to a shader. Keep a uMouseActive fl
 canvas/event-spawned-wavefront | E4 D2 W2 F4 $2 | canvas interaction wave ripple impulse click field | A click can disturb a generative field instead of triggering any
 canvas/facing-weighted-directional-pull | E3 D2 W3 F5 $3 | shader canvas pointer motion generative | Uniform displacement inflates a form; a form reaching toward som
@@ -105,6 +106,7 @@ canvas/rotated-screen-halftone | E2 D4 W3 F4 $3 | canvas texture field print ras
 canvas/row-span-culled-field | neutral  $2 | perf field raster culling imagedata architecture | A field summed from a handful of radial sources costs width × he
 canvas/running-sum-field-blur | neutral  $2 | canvas blur field performance buffer architecture | A scalar field that feeds a decision — a dot threshold, a mark s
 canvas/saturating-density-transfer | E1 D2 W2 F5 $1 | canvas shader color field opacity | An accumulating field has no upper bound but coverage does, so m
+canvas/scatter-to-slot-token-sort | E2 D3 W2 F4 $2 | canvas text order progress illustration generative | "We make sense of the mess" drawn without art: scatter short tex
 canvas/scene-exempt-label-layer | E1 D2 W1 F5 $2 | canvas label type scene legibility layer | An annotation inside a 3D scene should move and occlude like the
 canvas/screen-composited-understroke | E2 D2 W2 F5 $2 | canvas light stroke effect depth cheap | Canvas 2D has no cheap blur, so a glowing stroke is built from p
 canvas/scroll-advanced-field-clock | E2 D3 W2 F4 $3 | shader field scroll performance ambient battery | A decorative field driven by elapsed time runs forever and then 
