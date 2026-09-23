@@ -4,7 +4,7 @@ category: media
 tags: [media,logos,blend-mode,assets,normalisation]
 axes: none
 cost: 1
-seen: 29
+seen: 30
 requires: []
 conflicts: []
 completes: []
@@ -113,7 +113,8 @@ luminosity` discards the image's hue entirely and keeps only its lightness, so
 a photographic texture, an engraving or a screenshot laid over a tinted ground
 comes back in that ground's colour with no duotone, no recolouring and no
 second file. Hold it at 25–50% opacity, or its lightness range fights the
-surface it is meant to tint.
+surface it is meant to tint — down to 10–18% where the layer is looping
+line art behind a headline, which reads as texture rather than as a picture.
 ```css
 .texture { mix-blend-mode: luminosity; opacity: .4 }
 ```
