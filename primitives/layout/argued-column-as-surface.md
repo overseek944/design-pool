@@ -4,7 +4,7 @@ category: layout
 tags: [layout,table,comparison,surface,contrast,hierarchy]
 axes: {energy: 1, density: 3, weight: 4, finish: 5}
 cost: 1
-seen: 16
+seen: 17
 requires: []
 conflicts: []
 completes: []
@@ -128,3 +128,15 @@ and move the argument into ink: the argued column at full foreground and weight
 500, the other at 55–65% ink and 400, and only its header in the accent. It
 survives any section ground and any theme because nothing is filled.
 ⚠ Muted ink still owes 4.5:1 — the losing column is content, not decoration.
+
+The panel can also refuse the table's frame. Let the argued column overshoot the
+header rule and the closing rule by 16–40px at each end, radius on all four
+corners, while the ordinary columns stop at the rules — the column now reads as
+a raised pillar standing through the table rather than a stripe inside it.
+```css
+.matrix td.argued, .matrix th.argued { background: var(--ink); color: var(--paper) }
+.matrix th.argued { padding-top: calc(var(--pad) + var(--lift)); border-radius: var(--r) var(--r) 0 0 }
+.matrix tr:last-child td.argued { padding-bottom: var(--lift); border-radius: 0 0 var(--r) var(--r) }
+```
+⚠ The rows' rules must stop at the pillar's edges, not run through it — draw
+them per cell, never on the row.

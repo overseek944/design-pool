@@ -4,7 +4,7 @@ category: color
 tags: [color,tokens,progressive-enhancement,correctness]
 axes: none
 cost: 1
-seen: 25
+seen: 26
 requires: []
 conflicts: []
 completes: []
