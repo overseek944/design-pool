@@ -4,7 +4,7 @@ category: surface
 tags: [surface,detail,border,state,css-only,hairline]
 axes: {energy: 1, density: 2, weight: 3, finish: 4}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -36,4 +36,15 @@ dropping the inset to zero. Edge 2–3px, 20–35% darker than the fill.
 ```css
 .btn { background: var(--accent); box-shadow: inset 0 -2px 0 var(--accent-deep) }
 .btn:active { box-shadow: none; transform: translateY(1px) }
+```
+
+The lip can be the box itself: paint the element in the edge colour and put the
+face on a `::after` translated up by a `--lift` token, so a single variable
+owns rest, hover and press — 1–2px at rest, 0 on `:active`, and the face drops
+onto its own edge.
+```css
+.btn { background: var(--edge) }
+.btn::after { content: ""; position: absolute; inset: 0; border-radius: inherit;
+  background: var(--face); translate: 0 calc(-1 * var(--lift, 1px)) }
+.btn:active { --lift: 0px }
 ```

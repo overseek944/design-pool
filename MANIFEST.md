@@ -1,6 +1,6 @@
 # Manifest
 
-1076 primitives. Format: `category/id | axes cost | tags | gist`
+1078 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -291,6 +291,7 @@ interaction/reader-selected-markdown-twin | neutral  $2 | architecture progressi
 interaction/readiness-latched-intent | neutral  $1 | readiness hover lazy intent state custom-element | A control acting on a lazily-upgraded target can be used before 
 interaction/region-scoped-global-key | neutral  $2 | keyboard interaction correctness accessibility visibility | A shortcut bound on the document takes its keys from the whole p
 interaction/rejected-file-input-reset | neutral  $1 | correctness form input file detail | Check a chosen file's real type and byte length before any uploa
+interaction/rejection-shake-field | E3 D1 W2 F4 $1 | interaction form input feedback validation keyframes error | A refused entry can answer the way a head shakes: a short horizo
 interaction/reserved-state-border | neutral  $1 | accessibility focus cls border correctness | A control that gains a border on focus or selection must carry t
 interaction/resting-default-expanding-row | E2 D2 W2 F5 $2 | interaction state hover accessibility layout | A row of panels that expand only on hover says nothing at rest —
 interaction/role-described-slide-group | neutral  $1 | interaction accessibility carousel keyboard correctness | A horizontally paging rail is a div of divs to everything but th
@@ -1040,6 +1041,7 @@ type/mono-as-ui-texture | E1 D3 W2 F4 $1 | type ui technical register | Run a mo
 type/name-extending-hidden-suffix | neutral  $1 | accessibility label correctness type navigation | Every card ending in the same two words — Read more, View — hand
 type/native-rounded-face-stack | E2 D2 W2 F3 $1 | type font performance system-font | A rounded display face softens an interface without shipping a b
 type/nested-granularity-change-mark | E1 D3 W2 F5 $1 | type annotation diff editorial color state | A change marked at one granularity answers half the question: a 
+type/opt-out-prose-scope | neutral  $1 | prose typography cascade specificity architecture rhythm correctness | A rich-text scope styles bare elements it did not author, and ev
 type/optical-width-text-fit | E1 D2 W4 F5 $3 | type fit measurement display responsive | A headline that must fill a fixed box cannot be sized by charact
 type/origin-flipped-wipe-underline | E3 D1 W2 F5 $1 | underline link hover transform-origin wipe cheap | A scaleX underline that grows from one end and shrinks back to i
 type/padded-ordinal-counter | E1 D2 W2 F4 $1 | type list counter detail technical | 01 02 … 09 10 numbering without hand-written zeros and without t

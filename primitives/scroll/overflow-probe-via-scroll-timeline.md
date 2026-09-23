@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,overflow,progressive-enhancement,correctness]
 axes: none
 cost: 2
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: [conditional-token-space-toggle]
@@ -75,3 +75,8 @@ the mask has no idea which rule won.
 ⚠ A custom property holding an incomplete value list is only invalid where it is
 *used*, so a typo blanks the mask and hides the whole panel rather than failing
 at the declaration. Ship a complete opaque default.
+
+Where a script already publishes each end's remaining scroll distance in px,
+clamp it straight into the stop: `min(1.5rem, var(--overflow-start, 0px))`.
+The fade grows with the first 16–32px of travel, then holds — no registered
+properties, and a `0px` default leaves an unscrolled edge crisp.
