@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,parallax,custom-properties,reduced-motion,correctness,performance]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

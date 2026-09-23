@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,backdrop-filter,focus,attention,de-emphasis]
 axes: {energy: 2, density: 2, weight: 3, finish: 5}
 cost: 3
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -75,3 +75,8 @@ Pointer-driven, the lens wants a plateau rather than a cone: fully opaque out to
 the second rendering reads as a solid patch with a soft rim instead of a vignette.
 Write the mask as a CSS radial gradient on custom properties — rasterising it to
 a data URL on every pointer move encodes an image per frame.
+
+Drawn in a shader, keep dispersion out of the lens's centre: split channels
+only in a band around the rim — rising from 0.6 of the radius, gone by 1.25 —
+and fade that split as the lens grows, so a small aperture reads as glass and
+a large one as a clean view. Offset 0.005–0.015 of UV.

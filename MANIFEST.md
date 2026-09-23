@@ -1,6 +1,6 @@
 # Manifest
 
-1059 primitives. Format: `category/id | axes cost | tags | gist`
+1060 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -226,6 +226,7 @@ interaction/gutter-staged-section-rail | E1 D2 W1 F5 $1 | navigation indicator p
 interaction/hairline-native-scrubber | E2 D1 W1 F5 $1 | interaction accessibility control scrub native diagram | A diagram that scrubs deserves a real <input type=range>, not a 
 interaction/height-traded-card-panes | E2 D3 W2 F4 $2 | interaction hover card media layout transition | A card that reveals a summary on hover usually grows — shoving i
 interaction/history-entry-backed-overlay | neutral  $2 | interaction overlay history dismiss mobile correctness | An overlay opened from a button owns no history entry, so the ba
+interaction/hold-charged-aperture | E3 D2 W3 F4 $2 | interaction pointer press hold reveal lens progress canvas | A hover lens shows a patch; holding the press can earn the whole
 interaction/hover-previewed-disclosure | neutral  $1 | interaction disclosure navigation hover progressive-enhancement correctness | A menu that should fall open under a mouse and still answer a ta
 interaction/hysteretic-lock-zone | neutral  $1 | interaction pointer state correctness threshold | Any boolean derived from a continuous input — pointer inside a z
 interaction/idle-receded-floating-control | E1 D1 W1 F5 $2 | interaction accessibility idle chrome fixed restraint | A control pinned to a viewport corner all session is a standing 

@@ -4,7 +4,7 @@ category: motion-system
 tags: [stagger,entrance,reveal,performance,correctness]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,7 @@ selector so the tail carries no animation at all. Cap 4–8, step 30–60ms.
 ⚠ The cap must clear the count visible in one row at the widest breakpoint, or
 a full first row arrives as a single block and the sweep disappears at exactly
 the width it was tuned for.
+
+Where a script tags blocks it did not author, cycle the index instead of
+capping it — `i % 5–7` — so each viewport-sized run of reveals staggers anew
+rather than the tail arriving as one block.
