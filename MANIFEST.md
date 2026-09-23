@@ -1,6 +1,6 @@
 # Manifest
 
-1101 primitives. Format: `category/id | axes cost | tags | gist`
+1103 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -308,6 +308,7 @@ interaction/rung-stepped-continuous-slider | neutral  $2 | interaction accessibi
 interaction/runtime-assembled-href | neutral  $1 | interaction correctness accessibility link progressive-enhancement | A destination you would rather not serve in the markup can be sp
 interaction/sample-partitioned-hit-columns | E2 D3 W2 F5 $1 | interaction hover hit-area chart data css-only accessibility | Points on a small plot are four-pixel targets with dead space be
 interaction/seated-action-plate | E1 D2 W4 F5 $1 | button icon radius inversion contrast cta | A filled control can carry its trailing icon on a surface of its
+interaction/selection-yielding-dividers | E1 D2 W1 F5 $1 | tabs segmented divider separator selection state has | A segmented control ruled between its items shows a hairline but
 interaction/sentence-embedded-field | E2 D1 W3 F4 $2 | form input type composition accessibility correctness | A single-field form set as a labelled box asks for data; set as 
 interaction/shadow-scoped-label-patch | neutral  $2 | accessibility third-party shadow-dom correctness observer lifecycle | A vendor launcher — chat, feedback, consent — mounts a bare <but
 interaction/single-panel-tabset | neutral  $1 | tabs aria architecture performance accessibility correctness | The usual tabset ships every panel and hides all but one, so a s
@@ -1048,6 +1049,7 @@ type/frame-cycled-glyph-indicator | E3 D1 W2 F3 $1 | indicator mono glyph loadin
 type/fused-run-highlight | E1 D2 W2 F5 $2 | type annotation editorial diff state | Marking a run of blocks — changed lines, an annotated passage — 
 type/glyph-joined-sequence-rail | E1 D3 W1 F4 $1 | type list sequence metadata mono accessibility technical | A four-step process does not always deserve a diagram. Set it as
 type/grid-counted-leading | neutral  $2 | type tokens scale rhythm leading architecture | Set leading as a whole count of one shared unit instead of a rat
+type/hairline-letterpress-text | E1 D2 W2 F4 $1 | type text-shadow letterpress emboss detail cheap | A sub-pixel, unblurred text-shadow a shade lighter than the grou
 type/hyphenated-justified-measure | E1 D3 W2 F5 $1 | type prose editorial measure correctness | Justified body copy sets a page as a printed specification rathe
 type/ink-state-lettering-runs | E1 D2 W4 F5 $2 | type svg stroke detail editorial hairline | One word at display scale can carry two states of ink. Set it as
 type/intra-word-face-interlock | E1 D3 W4 F3 $2 | type display headline lettering fallback detail | Two faces can meet inside a single word rather than between bloc

@@ -4,7 +4,7 @@ category: surface
 tags: [surface,texture,pattern,blueprint,cheap]
 axes: {energy: 1, density: 3, weight: 1, finish: 4}
 cost: 1
-seen: 54
+seen: 55
 requires: []
 conflicts: []
 completes: []
@@ -166,3 +166,11 @@ body::before { content: ""; position: fixed; inset: 0; pointer-events: none;
   mask-image: linear-gradient(90deg, #000, #0000001f 32% 68%, #000) }
 ```
 ⚠ At 390px there is no gutter — drop the mask floor to 0 or the dots sit under text.
+
+Where the dot must stay crisp, tile a data-URI SVG holding one square `rect`
+instead: a gradient's anti-aliased edge softens a 1–2px dot into a smudge, a
+rect at integer size lands on whole pixels. Tile 8–16px, mark 1–2px, near-ground
+colour so it reads as grain, not polka dot.
+```css
+--dots: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12'%3E%3Crect width='2' height='2' fill='%23e8e7e6'/%3E%3C/svg%3E");
+```
