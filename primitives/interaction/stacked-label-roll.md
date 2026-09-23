@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,hover,button,label,motion,clip]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -28,3 +28,12 @@ transforms. Travel 100–120% of line height, 300–450ms, strong ease-out.
 The two travels need not match. Park the twin absolutely at `inset: 0` one line
 below and send the resting copy 2–3× further up than the twin rises: it clears
 the box before the incoming label seats, so the two never share the clip.
+
+The same turnover works sideways for a directional glyph. Put two copies of an
+arrow in a clipped flex row with a small gap and slide the row by one glyph plus
+that gap in the direction the arrow points: the resting copy leaves ahead and
+its twin takes the seat. Gap 0.2–0.4em, 300–400ms.
+```css
+.arrows { display: flex; gap: .25rem; transition: translate .35s cubic-bezier(.4,0,.2,1) }
+.btn:is(:hover, :focus-visible) .arrows { translate: calc(100% + .25rem) }
+```

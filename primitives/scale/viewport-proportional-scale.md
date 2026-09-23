@@ -4,7 +4,7 @@ category: scale
 tags: [unit,typography,layout,responsive,poster]
 axes: {energy: 2, density: 2, weight: 4, finish: 4}
 cost: 3
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: [proportional-effect-radii, three-tier-token-redefinition]
@@ -89,3 +89,15 @@ whose width is the unit.
 ```
 ⚠ A px floor has to go on the *unit*, not on the derived type — flooring the
 font-size alone breaks the proportions the construction exists to keep.
+
+A `vw` root always has one band where it runs out of room: usually 990–1280px,
+where a crowded nav or label row clips before the next breakpoint rearranges it.
+Rather than moving the breakpoint, let a subtree re-root its own font-size a few
+percent lower inside that band only. Everything under it is in `em`, so the
+whole group shrinks together. Trim 3–20%.
+```css
+@media (991px <= width <= 1280px) {
+  [data-font-scale="-10"] { font-size: .9vw } }
+```
+⚠ Each trim is one more way for that subtree to drift from the scale. Use it
+only for what actually clips, never as a general size control.
