@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,interaction,focus,correctness,state]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,13 @@ document.addEventListener('keydown', key)      // remove all three on close
 ⚠ `pointerdown`, not `click` — a click arrives after the press has moved focus,
 so the two handlers race. `focusin` bubbles where `focus` does not; on the
 document, `focus` catches nothing.
+
+Where binding document listeners per open is unwanted, `focusout` on the menu
+wrapper does the same work locally: close unless `relatedTarget` is still
+inside. It fires as focus leaves, so nothing has to be torn down on close.
+```js
+wrap.addEventListener('focusout', e => wrap.contains(e.relatedTarget) || close())
+```
+⚠ `relatedTarget` is `null` when focus goes to the browser chrome or to a
+non-focusable click target. That still closes, which is usually right, but the
+outside `pointerdown` listener remains necessary.

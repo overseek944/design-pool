@@ -1,6 +1,6 @@
 # Manifest
 
-1096 primitives. Format: `category/id | axes cost | tags | gist`
+1097 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -1096,6 +1096,7 @@ type/viewport-locked-single-line | E1 D2 W4 F4 $1 | type responsive display unit
 type/wavy-annotation-underline | E2 D2 W2 F2 $1 | type underline link detail informal | A wavy decoration stops reading as a link and starts reading as 
 type/webfont-scoped-to-inline-svg | neutral  $1 | type svg correctness architecture progressive-enhancement | An SVG setting live text in a brand face renders in that face on
 type/weight-dropped-display-line | E1 D2 W4 F5 $1 | type display headline hierarchy contrast | A display block can carry its own hierarchy with no second size,
+type/width-released-centring | E1 D2 W2 F4 $1 | type alignment responsive measure readability | A centred intro works while it sets in two or three lines around
 type/width-stable-changing-number | E2 D3 W3 F5 $1 | numerals data motion correctness | A figure that animates or streams needs two guarantees, and tabu
 type/word-split-collapsing-swap | E2 D2 W2 F5 $2 | type inline transition measurement accessibility detail | A phrase substituted in running copy cannot crossfade in place: 
 type/wrap-joined-marker-block | E2 D2 W4 F4 $1 | type emphasis highlight decoration radius detail | A solid block behind a phrase paints one rectangle per line, so 

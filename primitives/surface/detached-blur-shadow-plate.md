@@ -4,7 +4,7 @@ category: surface
 tags: [surface,depth,shadow,blur,mock,hero]
 axes: {energy: 1, density: 2, weight: 4, finish: 4}
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -38,3 +38,13 @@ as light trapped in the card rather than a shape inside it.
 .card  { overflow: hidden; border-radius: 12px; isolation: isolate }
 .plate { position: absolute; inset: -20px -58px -26px -45px; filter: blur(100px) }
 ```
+
+Below the plate's cost, one `box-shadow` gets most of the way under a framed
+screenshot: large offset and blur, and a negative spread of 0.55–0.65× the blur.
+The shadow then shows only under the lower edge instead of haloing all four
+sides. Tint it with the ground's hue at 25–45% alpha.
+```css
+.shot { box-shadow: 0 1px #3c281e05, 0 34px 64px -38px #3c281e52 }
+```
+⚠ Too much negative spread and the shadow vanishes entirely at small card
+heights. Check it on the shortest card, not the hero.

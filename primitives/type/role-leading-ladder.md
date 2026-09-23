@@ -4,7 +4,7 @@ category: type
 tags: [type,tokens,scale,rhythm,precision]
 axes: {energy: 1, density: 2, weight: 3, finish: 5}
 cost: 1
-seen: 12
+seen: 13
 requires: []
 conflicts: []
 completes: []
@@ -44,3 +44,15 @@ half-apply one.
 ```
 ⚠ Roles should outnumber sizes, not match them. Two roles resolving to the same
 size is ordinary; two sizes inside one role means it is really two roles.
+
+Measure belongs in the same set. A role that fixes size and leading but leaves
+line length to its container sets a hero in eight words on one page and fifteen
+on the next. Give each role a `ch` cap on `max-inline-size`: display 18–24ch,
+lede 44–52ch, body 60–70ch. Because `ch` resolves against the role's own size,
+the cap holds its rag through the whole fluid clamp.
+```css
+:root { --measure-display: 22ch; --measure-lede: 48ch; --measure-body: 62ch }
+.type-lede { max-inline-size: var(--measure-lede) }
+```
+⚠ A centred block needs `margin-inline: auto` beside the cap, or the capped box
+sits on the start edge with its text centred inside it.
