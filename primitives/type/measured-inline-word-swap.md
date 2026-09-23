@@ -4,7 +4,7 @@ category: type
 tags: [type,motion,headline,correctness]
 axes: {energy: 3, density: 2, weight: 3, finish: 5}
 cost: 2
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -16,7 +16,7 @@ face and size, read its width, and transition the inline container to that
 width as the new word rises into the slot. The sentence closes around each
 word instead of jumping. Re-measure on resize and on `document.fonts.ready` —
 the fallback face sizes differently and the first swap lands wrong. 2.5–4.5s
-per word, 0.5–0.6s for the move.
+per word, 0.28–0.6s for the move.
 ```css
 .roll { display: inline-block; overflow: hidden; height: 1.4em;
         transition: width .52s var(--ease-out) }

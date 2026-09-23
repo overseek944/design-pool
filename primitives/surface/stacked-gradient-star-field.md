@@ -4,7 +4,7 @@ category: surface
 tags: [surface,texture,ambient,depth,performance]
 axes: {energy: 2, density: 3, weight: 1, finish: 4}
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -82,3 +82,11 @@ instead of four, so the dense corner survives every aspect ratio intact.
 ```
 ⚠ An off-centre anchor moves the art relative to the copy beside it as the box
 narrows — check the crop against the text column, not only against the frame.
+
+When the field is scattered by script instead — a few hundred fixed 1.5–2.5px
+nodes — draw positions from a seeded PRNG, not `Math.random()`, so every load and
+every screenshot shows the same sky. Give each node its own duration (2.4–4.8s)
+and delay; one shared duration makes the twinkle pulse in unison. Bucket nodes
+into three brightness tiers (≈70/25/5%), glow only on the top one.
+⚠ Every node is a layer candidate; keep the count under ~300 and freeze to a
+static opacity under reduced motion.
