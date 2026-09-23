@@ -4,7 +4,7 @@ category: layout
 tags: [marquee, vertical, perspective, background, wall, columns, 3d]
 axes: {energy: 3, density: 4, weight: 2, finish: 4}
 cost: 3
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: [marquee-still-state, gap-compensated-loop-distance]

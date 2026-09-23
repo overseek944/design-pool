@@ -1,6 +1,6 @@
 # Manifest
 
-1158 primitives. Format: `category/id | axes cost | tags | gist`
+1160 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -283,6 +283,7 @@ interaction/one-shot-rail-nudge | E2 D2 W2 F4 $1 | affordance interaction carous
 interaction/one-sided-hover-delay | E2 D2 W2 F5 $1 | interaction hover delay css-only restraint pointer | A hover-revealed panel wants patience on the way in and none on 
 interaction/open-state-content-defocus | E2 D2 W3 F4 $3 | overlay drawer menu blur focus depth state | A drawer opened from fixed chrome can push the page back by blur
 interaction/ordinal-flipped-panel-anchor | E2 D2 W2 F5 $1 | interaction menu panel css-only layout correctness | A panel wider than its trigger and centred on it runs off the vi
+interaction/output-denominated-price | E1 D3 W2 F4 $2 | pricing quantity estimator units value | Credits and tokens make a reader do conversion arithmetic before
 interaction/outset-active-entry | E2 D2 W3 F4 $1 | steps active-state list scroll emphasis | In a column of entries where one is current — a scroll-spied fea
 interaction/outward-corner-target | E3 D2 W1 F5 $2 | interaction state focus border precision detail | Four L-brackets absent at rest, then flying outward past the ele
 interaction/overdamped-surface-tilt | E2 D1 W3 F5 $1 | interaction pointer transform motion restraint custom-property | Most pointer-reactive surfaces try to keep up, and keeping up re
@@ -988,6 +989,7 @@ surface/panel-free-backdrop-legibility | E1 D2 W2 F5 $2 | backdrop-filter legibi
 surface/path-clipped-backdrop-frost | E1 D3 W3 F5 $3 | backdrop-filter blur clip-path svg glass shape | backdrop-filter is clipped to the element's border box, so frost
 surface/perforation-punched-silhouette | E1 D2 W2 F3 $2 | surface mask border texture detail css-only gradient | A ticket stub is a rectangle with its edge eaten away, and no bo
 surface/phase-matched-gradient-drift | E2 D2 W2 F4 $1 | surface gradient loop ambient background | An oversized gradient translated behind its box gives a ground a
+surface/phase-spread-turning-ground | E2 D2 W3 F4 $2 | gradient card ambient loop rotate | A painted card ground lives without looking animated when an ove
 surface/phased-ring-emission | E3 D2 W2 F4 $2 | ring emission pulse loop attention halo | A point can radiate without glow: circles over the target at ins
 surface/polarity-crossing-panel-ground | E1 D2 W4 F5 $1 | surface gradient contrast color panel card | One panel can carry both polarities of type. Ramp its own ground
 surface/polygon-band-sparkline | E1 D2 W2 F4 $1 | surface chart sparkline clip-path decoration css | A decorative trend glyph needs no SVG: clip a filled pseudo-elem
