@@ -4,7 +4,7 @@ category: scale
 tags: [scale,layout,proportion,transform,responsive]
 axes: {energy: 1, density: 2, weight: 3, finish: 4}
 cost: 2
-seen: 23
+seen: 24
 requires: []
 conflicts: []
 completes: []
@@ -212,3 +212,13 @@ breakpoint. Steps of .55–.85 below the design width.
   margin-block-end: calc(var(--h) * (var(--s) - 1)) }   /* --h: authored px */
 ```
 ⚠ Hard-coded per-step margins drift the first time the figure's height changes.
+
+Where the scaled thing is one art panel in a fixed-size frame, skip the measured
+wrapper: size the child at the reciprocal percentage and scale it back by the
+factor from `0 0`. The shrunken box then fills the frame exactly at any frame
+size, with no height arithmetic. Factor .8–.9 on narrow widths only.
+```css
+.art > * { width: calc(100% / var(--s)); height: calc(100% / var(--s));
+  transform: scale(var(--s)); transform-origin: 0 0 }   /* --s: .85 */
+```
+⚠ Text inside shrinks with it — keep this to decorative mocks, never real copy.

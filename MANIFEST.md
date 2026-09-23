@@ -1,6 +1,6 @@
 # Manifest
 
-1132 primitives. Format: `category/id | axes cost | tags | gist`
+1135 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -674,6 +674,7 @@ motion-system/overrun-gesture-loop | E3 D2 W2 F4 $2 | motion svg geometry pointe
 motion-system/parameterised-path-travel | E3 D3 W1 F4 $2 | motion loop ambient diagram css-only | One keyframe animating offset-distance from 0% to 100% drives an
 motion-system/path-scrubbed-entrance | E3 D2 W2 F5 $3 | motion scroll motion-path choreography scrub | Give each element its own curve instead of a shared translate. A
 motion-system/paused-as-authored-rest | neutral  $1 | motion architecture correctness scene performance | A decorative scene whose resting state is running has already pl
+motion-system/phase-offset-typing-dots | E2 D1 W1 F4 $1 | keyframes loop dots typing pending chat mock stagger | A "composing" indicator reads as presence, not a spinner, when t
 motion-system/pivot-segmented-route | E3 D2 W2 F5 $2 | motion path diagram keyframes | Interpolating position and heading together makes a marker cut d
 motion-system/pivot-signed-explode | E2 D3 W2 F5 $2 | explode assembly stack progress figure scrub | A stack opening to show what it is made of must separate about s
 motion-system/placement-keyed-overlay-entrance | E2 D2 W2 F5 $1 | motion popover tooltip menu overlay entrance exit placement | A floating panel should arrive travelling away from its trigger.
@@ -681,6 +682,7 @@ motion-system/print-frozen-frame-branch | neutral  $1 | print correctness motion
 motion-system/progress-differentiated-motion-blur | E4 D2 W3 F4 $2 | motion blur camera velocity filter transition | A fast camera push between two framings strobes: every frame is 
 motion-system/projected-plane-dom-handoff | E3 D2 W3 F5 $4 | webgl camera scroll overlay transition | A scroll-driven camera can fly into a screen inside a 3D scene a
 motion-system/ramped-travel-shared-fade | E3 D2 W3 F5 $2 | stagger entrance scroll scrub arrival progress | A scrubbed stagger reads as a queue when each part fades separat
+motion-system/reciprocating-sector-sweep | E2 D2 W3 F4 $1 | sweep wedge rotate loop alternate search keyframes ambient | A beam spinning 360° says "monitoring"; one swinging across a ha
 motion-system/reduce-retained-paint-channel | neutral  $1 | motion reduced-motion accessibility hover feedback correctness | A hover or proximity response is several channels at once — a li
 motion-system/reduce-settled-sequence-state | neutral  $2 | motion accessibility reduced-motion state sequence correctness | A panel that builds itself over time — steps landing one at a ti
 motion-system/reduced-motion-branch | neutral  $1 | motion accessibility required | Branch at setup, not per-animation: if the user prefers reduced 
@@ -834,6 +836,7 @@ scroll/anchor-suspended-position-hold | neutral  $2 | scroll correctness layout-
 scroll/append-stream-anchor-release | neutral  $1 | scroll correctness stream log architecture | Engines silently hold the reading position steady when content i
 scroll/aria-current-scrollspy-state | neutral  $1 | accessibility navigation scroll state architecture | A table of contents entry is a location, and the platform has a 
 scroll/beat-split-progress-channels | E3 D3 W2 F5 $2 | scroll scrub choreography custom-properties sequence architecture | A scrubbed multi-beat scene needs no state machine and no per-el
+scroll/centre-padded-card-pager | E2 D2 W2 F4 $1 | scroll snap carousel rail mobile padding peek | A narrow card rail starts flush left and ends with its last card
 scroll/collapsed-observer-band | neutral  $1 | scroll observer navigation architecture correctness | Squeeze an observer's root to a single horizontal line and "whic
 scroll/copy-deferred-ground-inversion | E2 D1 W4 F5 $2 | scroll pin scrub ground inversion contrast color | A pinned section can invert its own ground under the reader — mi
 scroll/crop-panned-backdrop-scrub | E2 D1 W3 F4 $2 | scroll parallax media scrub surface performance | Scrub a backdrop's background-position instead of translating it
