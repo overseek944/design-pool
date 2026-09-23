@@ -4,7 +4,7 @@ category: type
 tags: [type,list,counter,detail,technical]
 axes: {energy: 1, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 16
+seen: 17
 requires: []
 conflicts: []
 completes: []
@@ -56,3 +56,8 @@ the increment on the label itself: `counter-increment` goes on the label, and
 the section's divider hangs off `section:has(> * > .label)`. A section with no
 label then takes no number and no rule, so adding an unlabelled band never
 renumbers the page. Reset once on `main`, not per section.
+
+Variant — on a primary nav, hang the padded ordinal off each link as a raised
+index at 0.55–0.7em in a tabular or mono face, lifted with `translate` rather
+than `vertical-align: super` so the row's line box does not grow. `aria-hidden`
+by construction, since generated content in `::after` is still read aloud.
