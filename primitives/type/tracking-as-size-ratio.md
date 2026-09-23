@@ -4,7 +4,7 @@ category: type
 tags: [type,tracking,precision,fluid,tokens]
 axes: {energy: 1, density: 2, weight: 3, finish: 5}
 cost: 1
-seen: 32
+seen: 33
 requires: []
 conflicts: []
 completes: []

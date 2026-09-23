@@ -1,6 +1,6 @@
 # Manifest
 
-1168 primitives. Format: `category/id | axes cost | tags | gist`
+1170 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -232,6 +232,7 @@ interaction/exemplar-field-placeholder | neutral  $1 | form input placeholder ac
 interaction/fail-open-css-state-toggle | neutral  $1 | interaction css-only progressive-enhancement disclosure correctness accessibility | A visually hidden checkbox plus :has() gives expand, filter and 
 interaction/fill-agnostic-state-plate | E2 D2 W2 F5 $1 | hover state pseudo-element theme system contrast | A hover token per fill does not scale: a control faced with an i
 interaction/find-reachable-collapse | neutral  $1 | accessibility correctness disclosure search architecture | Collapsed content the browser's own find cannot reach is content
+interaction/fling-held-loop-rate | E4 D2 W2 F4 $2 | marquee drag velocity loop pointer | A looping strip can be thrown rather than dragged. Map horizonta
 interaction/focus-ceding-hover-ring | neutral  $1 | interaction focus hover accessibility outline state correctness | An element has exactly one outline, so a hover ring and a focus 
 interaction/focus-exit-dismissal | neutral  $1 | accessibility interaction focus correctness state | A panel that closes on an outside click and on Escape is still b
 interaction/focus-handoff-on-self-removal | neutral  $1 | accessibility focus correctness form state | A control that removes itself when used — a form replaced by its
@@ -711,6 +712,7 @@ motion-system/ring-down-impact-entrance | E4 D1 W4 F3 $1 | motion entrance keyfr
 motion-system/route-and-rest-shared-poses | E3 D2 W2 F5 $2 | motion keyframes transition custom-properties state choreography | An arrangement whose members swap places needs two kinds of chan
 motion-system/scheduled-event-aliveness | E3 D2 W2 F4 $3 | idle loop character randomness raf ambient | Anything idling on sines reads as a mechanism — the period is au
 motion-system/scroll-energy-accumulator | E3 D2 W2 F4 $1 | scroll motion shader effect canvas | Scroll position says where something is; scroll effort should sa
+motion-system/scroll-steered-loop-direction | E4 D2 W2 F4 $2 | marquee scroll loop direction motion | An autoplaying strip feels attached to the page when scroll stee
 motion-system/scrubbable-waapi-timeline | E3 D2 W3 F5 $3 | motion scroll scrub architecture performance | A scroll-scrubbed timeline needs no animation library. Build eve
 motion-system/seat-quantised-ring-turn | E2 D3 W2 F5 $2 | radial rotation counter-rotation custom-property loop | A radial arrangement built by rotating an arm out of the centre 
 motion-system/seekable-scene-clock | neutral  $2 | motion canvas loop deterministic reduced-motion testing correctness | Write a looping canvas scene as draw(t) over wrapped cycle time;

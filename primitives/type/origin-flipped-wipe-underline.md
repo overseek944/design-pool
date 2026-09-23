@@ -4,7 +4,7 @@ category: type
 tags: [underline,link,hover,transform-origin,wipe,cheap]
 axes: {energy: 3, density: 1, weight: 2, finish: 5}
 cost: 1
-seen: 13
+seen: 14
 requires: []
 conflicts: []
 completes: []
@@ -79,3 +79,12 @@ property, so every frame re-resolves the pseudo-element's box instead of
 compositing a transform already on the GPU. It buys nothing the `scaleX` form
 does not have — a bar scaled on X keeps its authored height — so take it only
 where the bar must also change thickness as it draws.
+
+The wipe needs no keyframes with two pseudo-elements. The resting bar
+(`::before`, origin right) collapses immediately on hover; the second bar
+(`::after`, origin left) grows after a 0.25–0.35s delay, and leaving swaps the
+delays. Being transitions, a fast pointer reverses them cleanly mid-flight.
+```css
+a::after { transform: scaleX(0); transform-origin: left; transition: transform .7s var(--ease) }
+a:hover::before { transform: scaleX(0) }  a:hover::after { transform: scaleX(1); transition-delay: .3s }
+```

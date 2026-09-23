@@ -4,7 +4,7 @@ category: surface
 tags: [surface,glass,refraction,svg-filter,displacement,noise]
 axes: {energy: 1, density: 2, weight: 3, finish: 5}
 cost: 3
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,13 @@ Frequency 0.005–0.012, blur 1.5–3, scale 80–160.
 ```
 ⚠ Scale is in user units, not a proportion of the box — one filter mangles a
 chip and barely moves a panel.
+
+Scale per instance rather than per filter: clone one template filter for each
+element, give the clone a fresh id, and set its `scale` to a base times a
+strength read from the element — a chip at 0.5×, a bar at 1–1.5×. Unequal x/y
+`baseFrequency` (1:2–1:4) stretches the bulges along the long axis of a pill.
+```js
+const f = tpl.cloneNode(true); f.id = `g${i}`; tpl.after(f)
+f.querySelector('feDisplacementMap').setAttribute('scale', 40 * el.dataset.glass)
+```
+⚠ Every clone is its own filter pass — cap the count on a page.
