@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,pointer,detail,chrome,accessibility]
 axes: {energy: 2, density: 2, weight: 3, finish: 3}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -59,3 +59,6 @@ html.big-cursor-dark, html.big-cursor-dark * {
 `cursor: pointer` in the product outranks a root class otherwise — and they are
 also why this can only be an opt-in state, never the default paint. Persist the
 choice; a pointer the reader had to find twice is worse than none.
+
+Variant — a drawn dot 6–10px under `mix-blend-mode: difference` stays visible
+over light and dark grounds with one ink; hide it while a modal owns focus.

@@ -4,7 +4,7 @@ category: type
 tags: [type,texture,ornament,ascii]
 axes: {energy: 3, density: 5, weight: 2, finish: 3}
 cost: 2
-seen: 17
+seen: 18
 requires: []
 conflicts: []
 completes: []

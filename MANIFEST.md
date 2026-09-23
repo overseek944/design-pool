@@ -1,6 +1,6 @@
 # Manifest
 
-1083 primitives. Format: `category/id | axes cost | tags | gist`
+1085 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -87,6 +87,7 @@ canvas/parametric-thickness-variation | E3 D3 W2 F4 $3 | shader organic detail |
 canvas/parked-clock-shader-still | E1 D3 W2 F4 $2 | shader webgl static texture perf generative gradient | A time-driven shader need not animate to earn its place. Set its
 canvas/patch-subdivided-context-texture | E2 D3 W2 F4 $3 | canvas projection 3d texture perspective drawimage | A 2D context draws images only through affine matrices, so a tex
 canvas/path-data-construction-overlay | E1 D4 W1 F5 $3 | svg path annotation overlay technical diagram | Artwork on the page already carries its own construction. Walk t
+canvas/path-riding-stamp-comets | E3 D4 W2 F4 $3 | canvas field generative ambient trail glyph loop | A cell field gains purpose when 4–10 travellers ride precomputed
 canvas/pattern-space-from-smooth-twin | neutral  $3 | canvas shader grid noise correctness generative | A ruled overlay drawn in a noisy surface's coordinates inherits 
 canvas/peak-table-spectrum-profile | E2 D2 W1 F5 $2 | canvas generative field data precision technical | Summed sines read as a wave. Measurement reads as a quiet baseli
 canvas/per-state-still-understudy | neutral  $3 | canvas media perf progressive-enhancement 3d fallback accessibility | A heavy renderer deferred behind one poster freezes the figure a
@@ -281,6 +282,7 @@ interaction/placeholder-shown-value-state | E2 D1 W2 F5 $1 | interaction input f
 interaction/platform-narrowed-download-set | neutral  $2 | progressive-enhancement navigation correctness accessibility architecture | An artifact built for five targets should not ship five equal bu
 interaction/playhead-lit-legend-rows | E2 D2 W2 F5 $2 | legend chart dataviz sweep highlight sync | When a figure animates along its value axis, let each legend row
 interaction/pointer-borne-rule-sight | E3 D2 W1 F5 $2 | interaction pointer overlay hover transform detail | State the pointer as rules, not as a mark: hairlines longer than
+interaction/pointer-pulled-control | E3 D1 W2 F4 $1 | interaction pointer hover spring overshoot cta affordance | A control that leans toward the pointer while hovered, then spri
 interaction/pointer-transparent-copy-layer | neutral  $1 | interaction pointer accessibility layout correctness | Copy laid over a background that reacts to the pointer swallows 
 interaction/pre-hydration-nested-link | neutral  $2 | accessibility links hydration progressive-enhancement correctness | A card that navigates but contains its own link cannot be an anc
 interaction/prose-doubled-key-chord | neutral  $1 | accessibility correctness navigation detail state | A shortcut drawn as keycaps is a picture of a gesture. Assistive
