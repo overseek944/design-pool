@@ -1,6 +1,6 @@
 # Manifest
 
-1155 primitives. Format: `category/id | axes cost | tags | gist`
+1156 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -486,7 +486,7 @@ layout/writing-mode-flipped-edge-rail | E1 D2 W3 F3 $1 | layout chrome writing-m
 light/alpha-carrying-bloom | E2 D2 W4 F5 $3 | bloom glow webgl transparency postprocessing compositing | Bloom on a transparent WebGL canvas vanishes: the halo lands whe
 light/baked-contact-shadow | E1 D2 W3 F5 $3 | 3d shadow webgl grounding render-target perf | Grounds an object with no shadow-casting light. Render the scene
 light/blend-doubled-headline | E2 D2 W4 F5 $3 | type blend legibility contrast compositing | Set the headline twice in one grid cell: an opaque copy under th
-light/blurred-conic-hue-bloom | E1 D2 W2 F4 $2 | gradient glow bloom hue conic decoration ambient | Radial lamps give one hue each and seam where they meet. A conic
+light/blurred-conic-hue-bloom | E1 D2 W2 F4 $2 | gradient glow bloom hue conic decoration ambient metal material | Radial lamps give one hue each and seam where they meet. A conic
 light/broadcast-light-source | E2 D2 W2 F5 $3 | light gradient custom-property ambient architecture | A panel lit at the pointer has one lamp, and only while a pointe
 light/co-located-pulse-lamp | E3 D2 W3 F4 $3 | light 3d webgl pulse alert emissive glow | An alert in a lit 3D scene that only raises its own emissive lig
 light/corner-split-hue-shadow | E1 D2 W3 F4 $1 | shadow glow hue halo box-shadow decoration | Four shadows, each pushed diagonally toward its own corner in it
@@ -1119,6 +1119,7 @@ type/nested-granularity-change-mark | E1 D3 W2 F5 $1 | type annotation diff edit
 type/opt-out-prose-scope | neutral  $1 | prose typography cascade specificity architecture rhythm correctness | A rich-text scope styles bare elements it did not author, and ev
 type/optical-width-text-fit | E1 D2 W4 F5 $3 | type fit measurement display responsive | A headline that must fill a fixed box cannot be sized by charact
 type/origin-flipped-wipe-underline | E3 D1 W2 F5 $1 | underline link hover transform-origin wipe cheap | A scaleX underline that grows from one end and shrinks back to i
+type/ornament-bracketed-figure | E1 D2 W2 F4 $1 | ornament stat social-proof svg decoration trust | A bare number reads as a claim; the same number between a mirror
 type/padded-ordinal-counter | E1 D2 W2 F4 $1 | type list counter detail technical | 01 02 … 09 10 numbering without hand-written zeros and without t
 type/pair-kerned-live-wordmark | E1 D2 W3 F5 $1 | type wordmark kerning logo optical detail | A wordmark set in live text inherits the webfont's kerning, whic
 type/parenthesised-negative-column | E1 D3 W2 F5 $1 | numerals data alignment accessibility detail | In a right-aligned column of signed figures a leading minus is t

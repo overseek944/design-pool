@@ -1,10 +1,10 @@
 ---
 id: blurred-conic-hue-bloom
 category: light
-tags: [gradient,glow,bloom,hue,conic,decoration,ambient]
+tags: [gradient,glow,bloom,hue,conic,decoration,ambient,metal,material]
 axes: {energy: 1, density: 2, weight: 2, finish: 4}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,15 @@ opacity .12–.25, box 500–900px, heavily rounded so no corner survives the bl
 ```
 ⚠ The blur buffer is the box plus the radius on every side — never animate it.
 Decorative only; `aria-hidden`.
+
+Variant — drop the hue and alternate *value* instead: five or six near-greys,
+light and dark in turn, off-centre at 30–40% and blurred 24–40px, read as the
+smeared reflections of polished metal rather than as light. Oversize the layer
+20–30% a side and tilt it 5–12° so no stop lines up with the box, then multiply
+a hairline `repeating-linear-gradient` at 2–4% alpha over it for the grain. A
+procedural cover with no asset; invert the ramp per theme.
+```css
+.plate::before { inset: -28%; filter: blur(34px); transform: rotate(-8deg);
+  background: conic-gradient(from 210deg at 36% 42%, #fff, #c8c7c2 88deg,
+    #f2f1ed 154deg, #aaa9a3 232deg, #dedcd6 298deg, #fff) }
+```
