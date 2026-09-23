@@ -4,7 +4,7 @@ category: surface
 tags: [lattice,grid,hairline,pointer-events,node-budget,decoration]
 axes: {energy: 1, density: 3, weight: 1, finish: 4}
 cost: 2
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -41,3 +41,16 @@ cells[i]?.style.setProperty('--lit', 1)
 distributing a remainder, or a fractional device pixel ratio, drifts the index
 by one near the far edge. Derive `cols` from the measured track count, never
 from the intended one.
+
+A pointer that paints rather than tints leaves a wake. On each move, stamp every
+cell within a radius of 1–2 pitches with one colour and an expiry 300–600ms
+out, advancing through a 3–5 colour palette per *event* rather than per cell —
+a fast stroke then lays down bands. One 30ms sweep drops expired entries; lit
+cells snap on over 40–80ms. When the pointer leaves, a 10–25% random population
+can hold the field alive, reseeded on each leave.
+```js
+const exp = now + LIFE, c = palette[n++ % palette.length]
+for (const k of cellsWithin(x, y, R)) lit.has(k) || lit.set(k, { c, exp })
+```
+⚠ Pointer-only decoration — `aria-hidden`, `touch-action` untouched on mobile,
+and no idle population under reduced motion.

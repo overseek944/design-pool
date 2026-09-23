@@ -4,7 +4,7 @@ category: surface
 tags: [surface,grid,detail,blueprint,ornament]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 2
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
@@ -41,3 +41,16 @@ ones on an interior crossing.
 ⚠ A filled node claims more than a crosshair does — a reader will look for
 meaning in where they are. Place them at real terminations, and drop them
 entirely at the width where the frame itself goes.
+
+The mark can come free with the grid. In a gap-ruled field — line colour as the
+container background, opaque cells — round every cell 4–8px. Each crossing then
+shows the line colour flaring into the four concave corners, a small
+four-pointed star at every junction and nothing to position. Outer bands beside
+a centred column round only the side facing it, so the column's edges carry the
+same notch.
+```css
+.field { gap: 1px; background: var(--line) }
+.field > * { background: var(--ground); border-radius: calc(var(--radius) - 4px) }
+```
+⚠ Above ~10px the stars read as holes rather than joints, and the rule stops
+looking continuous.

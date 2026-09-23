@@ -1,6 +1,6 @@
 # Manifest
 
-1148 primitives. Format: `category/id | axes cost | tags | gist`
+1149 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -354,6 +354,7 @@ layout/argued-column-as-surface | E1 D3 W4 F5 $1 | layout table comparison surfa
 layout/axis-normalised-radar-comparison | E1 D3 W2 F5 $2 | chart comparison data svg legend hairline | Five to nine metrics in unrelated units can share one figure whe
 layout/axis-tracking-seam-marker | E1 D2 W2 F5 $1 | layout seam affordance responsive breakpoint | Two panels that argue in sequence — problem, then answer — lose 
 layout/balanced-side-track-centring | neutral  $1 | layout grid alignment chrome correctness | space-between centres nothing: the middle child lands wherever t
+layout/band-fitted-square-tiles | E1 D4 W2 F4 $2 | grid layout responsive resize measurement pattern | Square tiles of a fixed size leave a ragged remainder in any box
 layout/border-clamped-annotation-leader | E1 D3 W1 F5 $2 | layout annotation connector svg diagram | A leader line drawn from a label's centre to its subject crosses
 layout/boxless-wrapper | neutral  $1 | layout grid architecture correctness accessibility | display: contents removes an element's box while keeping its chi
 layout/breakout-grid-named-lines | neutral  $2 | layout grid tokens architecture full-bleed | One grid on the page wrapper with named lines for the bleed gutt

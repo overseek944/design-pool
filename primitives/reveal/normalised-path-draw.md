@@ -4,7 +4,7 @@ category: reveal
 tags: [svg,stroke,reveal,draw,geometry,correctness]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 35
+seen: 36
 requires: []
 conflicts: []
 completes: []
@@ -110,3 +110,15 @@ icon scale reads as detail settling rather than as mismatch.
 @keyframes redraw { from { stroke-dashoffset: 40 } }
 ```
 ⚠ A subpath longer than the constant shows a gap at rest — measure the set once.
+
+A travelling pulse reads as energy rather than a moving dash when drawn twice
+on the same path with the same dasharray and animation: a 3–5px stroke in the
+accent under a 1–1.5px near-white core. Fire it once per event over a dashed
+static track, staggering sibling paths 0.2–0.3s, and ease out
+(`cubic-bezier(.22,.61,.36,1)`) so it lands rather than exits.
+```html
+<path d="…" stroke="var(--accent)" stroke-width="4" class="pulse"/>
+<path d="…" stroke="#fff" stroke-width="1.5" class="pulse"/>
+```
+⚠ Both strokes need round caps and identical timing, or the core slips out of
+its halo at the ends.
