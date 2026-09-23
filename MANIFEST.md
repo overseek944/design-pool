@@ -1,6 +1,6 @@
 # Manifest
 
-1151 primitives. Format: `category/id | axes cost | tags | gist`
+1152 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -1080,6 +1080,7 @@ type/cap-registered-ruled-row | E1 D3 W2 F5 $1 | type alignment grid blueprint p
 type/char-count-stepped-reveal | E3 D1 W2 F4 $1 | type motion css-only custom-properties keyframes | A per-character reveal is one number. Publish the character coun
 type/character-grid-as-texture | E3 D5 W2 F3 $2 | type texture ornament ascii | A field of monospace glyphs (+ x X 8 0 @ # % $) on a grid, used 
 type/circumference-fitted-seal-ring | E2 D3 W2 F4 $2 | type svg ornament mark watermark rotation | An authority mark can be typeset rather than drawn: a legend set
+type/compound-path-clause-numbering | E1 D3 W2 F4 $1 | type list counter numbering document detail | Nested clauses numbered by path — 1, 1.2, 1.2.3 — without author
 type/content-ghosted-width-reservation | neutral  $1 | type layout-shift css-only accessibility correctness | Text that animates or swaps in place resizes its own box and rel
 type/counter-set-image-aperture | E1 D2 W5 F5 $2 | type svg display media mask wordmark | A word set at architectural scale already contains holes — the c
 type/cross-face-instance-coda | E1 D2 W2 F5 $1 | type card hierarchy register evidence cheap | Cards that each name a general category read as a list of claims
