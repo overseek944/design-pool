@@ -1,6 +1,6 @@
 # Manifest
 
-1065 primitives. Format: `category/id | axes cost | tags | gist`
+1067 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -420,6 +420,7 @@ layout/shared-percent-coordinate-space | E1 D3 W1 F5 $2 | diagram svg schematic 
 layout/sibling-deferred-block-spacing | neutral  $1 | layout has spacing rhythm css-only correctness architecture | A markdown or CMS renderer emits a figure and its caption as fla
 layout/sign-alternated-resting-tilt | E2 D2 W2 F2 $1 | layout tilt rotate cards informal collage | Floating cards set dead square read as a grid; a small resting t
 layout/single-edge-cell-rules | E1 D3 W1 F5 $1 | layout grid hairline rules precision | In a ruled grid every interior line is drawn by both neighbours 
+layout/six-face-ruled-prism | E2 D2 W2 F5 $2 | 3d transform wireframe diagram loop | A volume — a tower, a crate, a stack — needs no renderer: four D
 layout/slack-funded-control-expansion | E2 D2 W2 F5 $1 | layout flex toolbar disclosure controls restraint | A secondary control in a fixed bar — volume, a filter, a search 
 layout/slot-attribute-child-contract | neutral  $1 | layout architecture composition naming css-only | Let the arrangement own its children's boxes. A part publishes o
 layout/split-persistence-header-row | E1 D1 W2 F4 $1 | layout header navigation positioning chrome | The two halves of a header row need not share a position. Give t
@@ -816,6 +817,7 @@ scroll/progress-keyed-copy-retreat | E2 D1 W2 F5 $2 | scroll overlay reveal chor
 scroll/range-offset-scroll-stagger | E2 D2 W2 F5 $2 | scroll scroll-driven stagger sequence css-only | A scroll timeline has no clock, so animation-delay and any stagg
 scroll/retained-ratio-argmax-spy | neutral  $2 | scroll observer navigation architecture correctness | Where a section can be shorter than the reading band, "whoever f
 scroll/reveal-trigger-band | E2 D2 W2 F4 $1 | scroll reveal thresholds | Entrance triggers fire at top 85%–top 90% — just inside the fold
+scroll/runway-straightened-tilted-plane | E2 D2 W3 F5 $2 | scroll sticky 3d perspective progress media | A wide product panel can sit tilted back under the headline and 
 scroll/scripted-scroll-abort-band | neutral  $1 | scroll correctness accessibility events navigation | A scripted scroll animation owns the viewport for its whole dura
 scroll/scroll-beat-live-region | neutral  $1 | accessibility scroll aria-live narrative correctness | When scrolling is what changes the content — a pinned scene, a c
 scroll/scroll-coupled-mat-inset | E2 D1 W2 F5 $2 | scroll clip-path radius hero progress | An opening section can be full bleed and, once the page moves, a

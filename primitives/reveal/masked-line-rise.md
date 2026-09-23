@@ -4,7 +4,7 @@ category: reveal
 tags: [type,motion,reveal]
 axes: {energy: 3, density: 2, weight: 3, finish: 5}
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: [revert-split-on-resize, will-change-on-split-children]

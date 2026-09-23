@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,keyframes,custom-properties,architecture,choreography]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 16
+seen: 17
 requires: []
 conflicts: []
 completes: []
