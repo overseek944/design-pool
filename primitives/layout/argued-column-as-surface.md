@@ -4,7 +4,7 @@ category: layout
 tags: [layout,table,comparison,surface,contrast,hierarchy]
 axes: {energy: 1, density: 3, weight: 4, finish: 5}
 cost: 1
-seen: 19
+seen: 20
 requires: []
 conflicts: []
 completes: []
@@ -140,3 +140,12 @@ a raised pillar standing through the table rather than a stripe inside it.
 ```
 ⚠ The rows' rules must stop at the pillar's edges, not run through it — draw
 them per cell, never on the row.
+
+In a bar comparison the argued mark can carry *material* rather than hue: fill
+only that bar with an image, texture or rich gradient and leave every other bar
+one flat neutral a step off the ground. The eye lands on it before reading a
+value, and the rest stay honest as a baseline. One material mark per chart.
+```css
+.bar { background: var(--neutral-2) } .bar.argued { background: url(field.jpg) center / cover }
+```
+⚠ The value printed on a busy fill needs its own scrim or a 4.5:1 check against the darkest region.

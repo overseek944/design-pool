@@ -4,7 +4,7 @@ category: reveal
 tags: [reveal,clip-path,wipe,panel,motion]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 14
+seen: 15
 requires: []
 conflicts: []
 completes: []
@@ -103,3 +103,12 @@ bottom, 0.15–0.3em top.
 ```
 ⚠ Only from a 100% closed state. Off any partial inset the same end value shows
 a sliver of the element before the wipe has started.
+
+A rounded bar grown from its baseline with `scaleY` squashes its corners into
+flat ellipses for the whole run and only lands them round at the last frame.
+Grow it with the same held-radius clip from a full top inset instead, and stagger
+the printed value to land 80–200ms after its bar rather than scaling with it.
+```css
+@keyframes bar { from { clip-path: inset(100% 0 0 round 6px) } to { clip-path: inset(0 round 6px) } }
+```
+⚠ Under reduced motion land both at their final state; a value that never fades in is a missing number.

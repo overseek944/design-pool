@@ -1,6 +1,6 @@
 # Manifest
 
-1128 primitives. Format: `category/id | axes cost | tags | gist`
+1129 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -585,6 +585,7 @@ media/srcset-blocked-source-swap | neutral  $1 | media images responsive correct
 media/stacked-contour-volume | E1 D4 W2 F5 $2 | svg mark depth stroke currentcolor | Describe a solid as a stack of cross-sections instead of as a sh
 media/state-preserving-frame-relocation | neutral  $3 | media iframe embed lifecycle dom correctness | appendChild removes and reinserts: an iframe reloads, a video re
 media/stepped-transform-sprite | E3 D2 W2 F4 $2 | media sprite animation svg performance | Play a short looping illustration as a filmstrip: frames in one 
+media/text-cast-terminal-demo | E3 D2 W2 F3 $2 | media terminal demo text playback performance | Show a command-line tool working as a recorded text stream repla
 media/time-mapped-annotation-track | E2 D3 W2 F5 $3 | media video timeline annotation seek evidence | Findings about a recording belong on the recording's own axis. P
 media/transfer-table-gradient-map | E1 D2 W3 F5 $2 | media color filter svg normalisation | A filter chain lays one hue over a photograph; a transfer table 
 media/underpainted-inline-lqip | neutral  $2 | media loading performance correctness cls | The photograph carrying an opening frame arrives after layout, a

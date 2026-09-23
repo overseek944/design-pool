@@ -4,7 +4,7 @@ category: type
 tags: [type,motion,css-only,custom-properties,keyframes]
 axes: {energy: 3, density: 1, weight: 2, finish: 4}
 cost: 1
-seen: 13
+seen: 14
 requires: []
 conflicts: []
 completes: []
