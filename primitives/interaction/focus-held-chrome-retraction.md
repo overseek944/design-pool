@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,correctness,accessibility,focus,keyboard,scroll,chrome,navigation]
 axes: none
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -51,3 +51,16 @@ addEventListener('click', e => { if (!e.target.closest?.('a[href^="#"]')?.hash) 
 ```
 ⚠ A timer, not a `scrollend` listener: support is partial, and a jump that lands
 inside one frame never fires the direction test the flag exists to suppress.
+
+A per-frame delta is still the wrong unit on touch: momentum decays in many small
+steps and a finger wobble reverses for one frame. Accumulate travel per
+direction, reset the opposite counter on each reversal, and act only once one
+side passes 60–120px. Clamp `scrollY` into `[0, scrollHeight − innerHeight]`
+first, or iOS rubber-banding at either end reads as a reversal.
+```js
+const y = Math.min(Math.max(0, scrollY), maxY), d = y - last
+if (d > 0) { down += d; up = 0 } else if (d < 0) { up -= d; down = 0 }
+if (down > 90 && y > 240) hide(); else if (up > 90 || y < 40) show()
+```
+⚠ A pointer has no upward scroll to ask with — restore on `mousemove` within
+16–24px of the top edge.
