@@ -4,7 +4,7 @@ category: scale
 tags: [unit,scale,architecture,responsive,correctness]
 axes: none
 cost: 1
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -99,3 +99,13 @@ must stay full-bleed at every tier counter-zooms by the reciprocal per tier.
 ```
 ⚠ Every tier boundary is a visible jump in type size on resize — keep the
 steps under about 8% or the page lurches as a window is dragged.
+
+A fractional factor also blurs hairlines: 1px at zoom 1.98 covers 1.98 device
+pixels and floors to a thin grey line, 1.5px lands on 2.97 and looks soft.
+Divide every stroke width and fine pattern pitch by the factor so it rasterises
+on whole device pixels.
+```css
+.rule { border: calc(1px / var(--zoom)) solid var(--ink) }
+:root { --pitch: calc(6px / var(--zoom)); --w: calc(1.5px / var(--zoom)) }
+```
+⚠ Only correct while `--zoom` is the true factor — browser zoom multiplies on top and nothing reports it.

@@ -4,7 +4,7 @@ category: motion-system
 tags: [demo,cursor,choreography,spring,loop]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -39,3 +39,17 @@ Depress 0.96–0.98 with a matching 3–6% brightness drop.
 ⚠ Clear the attribute on the same timeline that clears the cursor's press, not
 on a separate timer — a stranded flag leaves one control depressed for the rest
 of the loop and reads as a rendering fault.
+
+When the puppet switches shape mid-script — arrow over controls, I-beam over
+fields — stack both shapes inside one positioned element and offset each so
+its own hotspot sits on the element's origin. The element is then positioned by
+hotspot alone and a swap cannot nudge it. Scale every offset with the shape
+(`calc(-8px * var(--cursor-scale))`), 1.1–1.3× the system size so it reads
+beside the real cursor. A click is a 0.85–0.9 press plus a ring scaling 0.4→2.6
+out of the hotspot over 0.3–0.5s.
+```css
+.pointer { position: absolute; pointer-events: none }
+.arrow { left: calc(-8px * var(--s)); top: calc(-5px * var(--s)) }   /* tip at origin */
+.ibeam { left: calc(-14px * var(--s)); top: calc(-14px * var(--s)) } /* centre at origin */
+```
+⚠ `pointer-events: none` is also what lets `elementFromPoint` at the hotspot report the target instead of the puppet.

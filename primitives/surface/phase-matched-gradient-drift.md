@@ -4,7 +4,7 @@ category: surface
 tags: [surface,gradient,loop,ambient,background]
 axes: {energy: 2, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,18 @@ direction instead — a ping-pong never wraps, so it never has a seam to hide.
 ```
 ⚠ Give the parent `overflow: clip` or the page gains a horizontal scrollbar.
 Perpetual ambient motion needs a reduced-motion branch — drop to the 0% frame.
+
+The same rule holds for a ruled hairline pattern, and there it decides whether
+the lines stay lines. Animating `background-position` re-rasterises the
+gradient at a new sub-pixel phase every frame, so hairlines shimmer and change
+weight as they move; translate a pseudo-element painted once instead, overhung
+by one pitch each side, and move it exactly one pitch. Where the colour must
+change, paint a flat fill through a static `mask-image` of the rules — the mask
+never re-rasterises. Pitch 4–10px, rule 1–2px, 1.5–4s per pitch.
+```css
+.rules::before { inset: -2px calc(var(--pitch) * -1); will-change: transform;
+  background: currentColor; mask: repeating-linear-gradient(90deg, #000 0 var(--w), #0000 var(--w) var(--pitch));
+  animation: step 2s linear infinite }
+@keyframes step { to { transform: translateX(calc(var(--pitch) * -1)) } }
+```
+⚠ A promoted layer rounds to whole device pixels while its box may not — overhang vertically too, and let the parent clip.

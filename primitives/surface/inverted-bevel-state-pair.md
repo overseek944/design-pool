@@ -4,7 +4,7 @@ category: surface
 tags: [surface,depth,detail,affordance,state,border]
 axes: {energy: 2, density: 2, weight: 2, finish: 3}
 cost: 1
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
@@ -92,3 +92,13 @@ shadow. Offset and blur 1.5–3px; lighter step 1–2 ramp stops above the fill.
 ```
 ⚠ The ring replaces the border — keep a real `outline` for focus, since a
 box-shadow ring is already spent.
+
+The four-edge desktop bevel is the same grammar at full contrast: two nested
+inset pairs, outer dark bottom-right and light top-left, inner mid-grey and
+white. Swap the pairs to sink it. Keep these to whole 1px steps even inside a
+scaled mock, or the edges land on half device pixels and smear.
+```css
+.raised { box-shadow: inset -1px -1px var(--dark), inset 1px 1px var(--light),
+                      inset -2px -2px var(--shade), inset 2px 2px #fff }
+```
+⚠ This is a period register, not a neutral depth cue — it reads as retro wherever it appears.

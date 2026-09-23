@@ -1,6 +1,6 @@
 # Manifest
 
-1175 primitives. Format: `category/id | axes cost | tags | gist`
+1178 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -246,6 +246,7 @@ interaction/gesture-affordance-label | E1 D2 W2 F4 $1 | affordance interaction a
 interaction/ground-joined-tab-selection | E1 D2 W2 F5 $1 | tabs state selection ruled contrast theme | Where a strip of tabs sits directly on the panel it switches, st
 interaction/gutter-staged-section-rail | E1 D2 W1 F5 $1 | navigation indicator progress rail responsive fixed | A fixed edge rail of section anchors spends only the gutter it h
 interaction/hairline-native-scrubber | E2 D1 W1 F5 $1 | interaction accessibility control scrub native diagram | A diagram that scrubs deserves a real <input type=range>, not a 
+interaction/half-height-radius-target | neutral  $1 | interaction hover radius pill transition easing | A square control that rounds to a pill on hover must tween to ex
 interaction/heat-budgeted-repeat | E4 D2 W3 F3 $1 | interaction press hold repeat throttle meter hysteresis game | Held auto-repeat needs a visible ceiling. Each repeat adds a fix
 interaction/height-traded-card-panes | E2 D3 W2 F4 $2 | interaction hover card media layout transition | A card that reveals a summary on hover usually grows — shoving i
 interaction/history-entry-backed-overlay | neutral  $2 | interaction overlay history dismiss mobile correctness | An overlay opened from a button owns no history entry, so the ba
@@ -460,6 +461,7 @@ layout/shape-clipped-foreign-label | neutral  $2 | svg text diagram figure trunc
 layout/shared-percent-coordinate-space | E1 D3 W1 F5 $2 | diagram svg schematic accessibility responsive | A node diagram wants SVG lines and real DOM nodes: strokes that 
 layout/sibling-deferred-block-spacing | neutral  $1 | layout has spacing rhythm css-only correctness architecture | A markdown or CMS renderer emits a figure and its caption as fla
 layout/sign-alternated-resting-tilt | E2 D2 W2 F2 $1 | layout tilt rotate cards informal collage | Floating cards set dead square read as a grid; a small resting t
+layout/single-clock-conserved-heights | E2 D3 W2 F5 $2 | layout accordion height animation stack pinned | When one item of a fixed-height stack opens as another closes, t
 layout/single-edge-cell-rules | E1 D3 W1 F5 $1 | layout grid hairline rules precision | In a ruled grid every interior line is drawn by both neighbours 
 layout/six-face-ruled-prism | E2 D2 W2 F5 $2 | 3d transform wireframe diagram loop | A volume — a tower, a crate, a stack — needs no renderer: four D
 layout/slack-funded-control-expansion | E2 D2 W2 F5 $1 | layout flex toolbar disclosure controls restraint | A secondary control in a fixed bar — volume, a filter, a search 
@@ -829,6 +831,7 @@ reveal/overhung-skew-fill-sweep | E3 D2 W2 F5 $2 | reveal interaction motion det
 reveal/radius-held-inset-wipe | E3 D2 W2 F5 $2 | reveal clip-path wipe panel motion | A panel widening under clip-path: inset() squares its corners of
 reveal/recessed-plane-panel-entrance | E2 D2 W3 F4 $1 | reveal entrance 3d perspective media motion | A wide panel — an app frame, a large figure — can arrive from be
 reveal/step-held-band-tear | E4 D2 W3 F2 $2 | motion easing text clip-path reveal glitch | An arrival that should read as a signal resolving rather than fa
+reveal/stepped-outline-zoom-open | E2 D2 W2 F2 $1 | reveal dialog window outline steps retro open | A panel can open the way a desktop system once did: a bare 1px o
 reveal/streamed-chunk-arrival | E2 D2 W1 F4 $1 | reveal streaming text entrance list custom-properties | Text that arrives in chunks — a generated answer, a live log — p
 reveal/token-indexed-reading-front | E2 D2 W3 F4 $2 | type scroll progress reveal colour | Text that inks in as it is read cannot be a gradient sweep: a gr
 reveal/torn-wrapper-reveal | E5 D2 W3 F3 $2 | reveal entrance sequence keyframes reward | Something given rather than loaded earns an opening: destroy the
