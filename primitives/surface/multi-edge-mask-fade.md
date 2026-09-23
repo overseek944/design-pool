@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,edge,composition,bleed]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 98
+seen: 99
 requires: []
 conflicts: []
 completes: []
@@ -335,3 +335,13 @@ One angled three-stop mask, opaque at both ends and clear in the middle
 backdrop out along a diagonal band. The lattice frames the headline from its
 corners and never passes behind it. With no second layer there is no
 `mask-composite` and no prefix pair to keep in sync.
+
+Where a label is pinned over the start of a moving rail, hold the mask fully
+clear for the label's width and start the fade only past it: the label gets a
+clean ground with no plate, and items dissolve as they reach it. Clamp both
+stops to the label size (start ≈ label + 0–20px, fade 60–90px).
+```css
+mask-image: linear-gradient(90deg, transparent 0 var(--clear), #000 var(--solid), #000 95%, transparent)
+```
+⚠ Where the rail becomes a scroller under reduced motion, drop the mask and pad
+the first item by `--solid` so the label never covers content.

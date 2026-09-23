@@ -4,7 +4,7 @@ category: media
 tags: [media,color,filter,normalisation,texture]
 axes: {energy: 1, density: 2, weight: 3, finish: 4}
 cost: 1
-seen: 14
+seen: 15
 requires: []
 conflicts: []
 completes: []
@@ -105,3 +105,12 @@ const set = on => { on ? v.play() : (v.pause(), v.currentTime = 0)
 ⚠ `filter` on a video promotes it to its own compositor layer for as long as the
 declaration is non-`none`, so transition to the literal keyword `none` rather
 than to `grayscale(0)` if the layer is what you are trying to shed.
+
+Ship the whole chain as a theme-scoped custom property rather than per rule: on
+a dark ground the tail collapses to `brightness(0) invert(1)`, so a theme switch
+retints every mark with no selector per theme. Hover can then swap a neutral
+silhouette chain for the brand-tinted one.
+```css
+:root { --mark-ink: brightness(0) invert(22%) sepia(25%) saturate(1800%) hue-rotate(110deg) }
+[data-theme=dark] { --mark-ink: brightness(0) invert(1) }
+```

@@ -1,6 +1,6 @@
 # Manifest
 
-1067 primitives. Format: `category/id | axes cost | tags | gist`
+1069 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -821,6 +821,7 @@ scroll/runway-straightened-tilted-plane | E2 D2 W3 F5 $2 | scroll sticky 3d pers
 scroll/scripted-scroll-abort-band | neutral  $1 | scroll correctness accessibility events navigation | A scripted scroll animation owns the viewport for its whole dura
 scroll/scroll-beat-live-region | neutral  $1 | accessibility scroll aria-live narrative correctness | When scrolling is what changes the content — a pinned scene, a c
 scroll/scroll-coupled-mat-inset | E2 D1 W2 F5 $2 | scroll clip-path radius hero progress | An opening section can be full bleed and, once the page moves, a
+scroll/scroll-positioned-counter-rows | E2 D4 W2 F4 $2 | scroll rows marquee horizontal parallax wall | A wall of logo or chip rows need not autoplay. Make each row's h
 scroll/scrollbar-on-activity | E1 D1 W1 F5 $1 | scroll scrollbar chrome restraint state | A permanent scrollbar rules a line down every panel that owns on
 scroll/scrub-lag-band | E3 D2 W3 F5 $2 | scroll motion feel | scrub as a number adds catch-up lag in seconds and is what separ
 scroll/self-driven-scroll-blackout | neutral  $1 | scroll state observer correctness | Any state derived from scroll position — an active section, a hi
@@ -1035,6 +1036,7 @@ type/nested-granularity-change-mark | E1 D3 W2 F5 $1 | type annotation diff edit
 type/optical-width-text-fit | E1 D2 W4 F5 $3 | type fit measurement display responsive | A headline that must fill a fixed box cannot be sized by charact
 type/origin-flipped-wipe-underline | E3 D1 W2 F5 $1 | underline link hover transform-origin wipe cheap | A scaleX underline that grows from one end and shrinks back to i
 type/padded-ordinal-counter | E1 D2 W2 F4 $1 | type list counter detail technical | 01 02 … 09 10 numbering without hand-written zeros and without t
+type/pair-kerned-live-wordmark | E1 D2 W3 F5 $1 | type wordmark kerning logo optical detail | A wordmark set in live text inherits the webfont's kerning, whic
 type/parenthesised-negative-column | E1 D3 W2 F5 $1 | numerals data alignment accessibility detail | In a right-aligned column of signed figures a leading minus is t
 type/range-painted-text-mark | E1 D2 W3 F5 $3 | type highlight selection geometry overlay | ::selection and a span background both paint whatever the line b
 type/registered-integer-counter-tally | E2 D2 W2 F4 $1 | type counter number count-up property css-only | A count-up needs no script once the number is a registered prope
