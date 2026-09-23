@@ -4,7 +4,7 @@ category: layout
 tags: [layout,measurement,legibility,canvas]
 axes: none
 cost: 2
-seen: 12
+seen: 13
 requires: []
 conflicts: []
 completes: []
@@ -181,3 +181,17 @@ const hit = document.elementFromPoint(x, y)?.closest('a,button,input,p,h1,form')
 if (hit || marks.some(m => Math.hypot(x - m.x, y - m.y) < 110)) continue
 ```
 ⚠ Only sees the viewport and skips `pointer-events: none` layers — test at spawn time, not once on load.
+
+Percentage corridor stops drift away from a column that stops growing at its
+max-width. Write them from the measure instead. Stops at
+`max(0px, 50% - M)` and `min(100%, 50% + M)`, with M set to half the column,
+hold the plateau exactly behind the text at every width. The gutter ramps then
+use `max(0px, 30% - k)` and `min(100%, 70% + k)`, so on a narrow screen the
+ramps collapse before the plateau does. To add a top or bottom fade, intersect
+a second gradient instead of multiplying stops by hand.
+```css
+.field { mask-image: linear-gradient(90deg, #000 max(0px, 30% - 14rem),
+  #0008 max(0px, 50% - 24rem) min(100%, 50% + 24rem), #000 min(100%, 70% + 14rem)),
+  linear-gradient(#000 88%, #0000); mask-composite: intersect }
+```
+⚠ Ship the `-webkit-mask-composite: source-in` pair. The default mode is `add`, which unions the two layers and loses the fade.

@@ -4,7 +4,7 @@ category: type
 tags: [type,texture,ornament,ascii]
 axes: {energy: 3, density: 5, weight: 2, finish: 3}
 cost: 2
-seen: 16
+seen: 17
 requires: []
 conflicts: []
 completes: []
@@ -115,3 +115,15 @@ than reflowed.
 ```
 ⚠ Layout still reserves the unscaled box — position it absolutely inside a sized
 slot, or a 3,000px-wide `<pre>` pushes the page sideways.
+
+When a glyph figure sits on top of a glyph field, the two sets of characters
+merge into noise. Give the figure a background made from the page ground: a
+radial gradient that is solid to 40–50% and transparent by 75–80%. Extend it
+past the drawing with a negative margin and matching padding, 1.5–2em by
+3–4ch. That clears a feathered hole in the field behind the figure, with no
+mask and no measuring.
+```css
+.figure { margin: -1.7em -3.5ch; padding: 1.7em 3.5ch;
+  background: radial-gradient(ellipse, var(--ground) 45%, transparent 78%) no-repeat }
+```
+⚠ It works only on a flat ground. Over a gradient or an image, the solid centre shows up as a patch.

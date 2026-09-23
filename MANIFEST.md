@@ -1,6 +1,6 @@
 # Manifest
 
-1078 primitives. Format: `category/id | axes cost | tags | gist`
+1080 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -341,6 +341,7 @@ layout/class-scoped-responsive-hide | neutral  $1 | layout responsive breakpoint
 layout/clipped-source-derived-pair | E1 D3 W1 F5 $1 | layout provenance evidence truncation panel mock hierarchy | A system that derives structure from unstructured input proves i
 layout/collision-band-gutter | neutral  $2 | layout container-query annotation responsive correctness | Margin notes need room beside the reading column, but only in a 
 layout/column-aligned-disclosure | E1 D2 W2 F5 $2 | layout grid disclosure alignment native | Let a <details> row sit on the page's column grid: make the <sum
+layout/column-hung-gutter-figure | E1 D3 W2 F4 $1 | layout gutter ornament figure measure decoration | Decorative figures beside a reading column belong to the column,
 layout/column-registered-overlay-chrome | neutral  $1 | layout overlay alignment correctness chrome | Chrome floating over a full-bleed stage — a stat strip, a scrub 
 layout/concurrent-stage-triptych | E1 D3 W2 F5 $2 | layout mock state hierarchy progression figure | Show every stage of a gated process at once, each panel in its o
 layout/container-budgeted-column-drop | neutral  $2 | layout container-query table responsive accessibility correctness | A dense row carries more columns than a narrow container can hol
@@ -1061,6 +1062,7 @@ type/shadow-bled-inline-highlight | E2 D2 W3 F4 $1 | type highlight inline hover
 type/single-codepoint-face-overlay | E1 D1 W2 F5 $2 | type webfont unicode-range glyph detail brand | A licensed face is almost right and one glyph is wrong — an unsl
 type/sourced-display-figure | neutral  $1 | type figures provenance correctness editorial accessibility | A number set at display size stops being prose and becomes a cla
 type/split-step-size-ramp | neutral  $1 | type scale tokens density hierarchy | One step function cannot serve a type scale's whole range. A rat
+type/stacked-layer-glyph-tint | E1 D4 W2 F4 $1 | type ascii glyph mono color ornament | A glyph figure in two or three inks does not need a span per run
 type/state-dimmed-subordinate-tier | E1 D2 W2 F5 $1 | type hierarchy state accessibility contrast | Where several panels of a stepper are on screen at once and one 
 type/stroke-restored-display-contrast | E1 D2 W4 F4 $1 | type display contrast accent accessibility ornament | A display glyph filled with a high-chroma accent fails against i
 type/stroked-inline-stadium-mark | E1 D2 W2 F5 $1 | type emphasis border hairline detail radius | Emphasis by outline rather than by fill: a hairline capsule draw

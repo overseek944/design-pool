@@ -4,7 +4,7 @@ category: type
 tags: [indicator,mono,glyph,loading,state,motion]
 axes: {energy: 3, density: 1, weight: 2, finish: 3}
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -57,3 +57,17 @@ sentence after it still moves.
 ```
 ⚠ Make frame zero the *final* state, not the empty one, so a non-animating
 engine shows a complete ellipsis rather than nothing at all.
+
+The width form can also be written as a clip. Set the full ellipsis as text,
+clip it with `clip-path: inset(0 100% 0 0)`, and animate to `inset(0)` in
+`steps(n, jump-none)`. With `jump-none`, frame zero is empty and the last frame
+is complete, and every frame gets equal time. The box is laid out at its final
+width from the first paint, so there is no `ch` arithmetic and nothing shifts
+in any face. Use n = glyph count + 1 and a period of 1.2–2s.
+```css
+.dots { display: inline-block; clip-path: inset(0 100% 0 0);
+        animation: dots 1.6s steps(4, jump-none) infinite }
+@keyframes dots { to { clip-path: inset(0) } }
+@media (prefers-reduced-motion: reduce) { .dots { clip-path: none; animation: none } }
+```
+⚠ Under reduced motion, clear the clip as well as the animation, or the dots stay clipped to nothing.
