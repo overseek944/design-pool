@@ -1,6 +1,6 @@
 # Manifest
 
-1110 primitives. Format: `category/id | axes cost | tags | gist`
+1111 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -67,6 +67,7 @@ canvas/highlight-weighted-bokeh | E1 D2 W3 F5 $3 | canvas shader webgl blur ligh
 canvas/home-sprung-particle-medium | E2 D3 W2 F5 $3 | canvas field pointer motion generative | A field of marks positioned from the pointer each frame travels 
 canvas/import-time-material-reauthor | neutral  $2 | canvas material import architecture correctness scene | An imported model arrives wearing whatever its exporter wrote — 
 canvas/index-grid-vertex-line-family | E2 D4 W1 F5 $3 | canvas shader webgl lines noise field performance | Hundreds of noise-displaced lines need no CPU geometry. Upload o
+canvas/ink-clipped-canvas-light | E2 D3 W2 F5 $2 | canvas light composite glyph sweep pointer glow | Light a field of marks — glyphs, dots, hairlines — without light
 canvas/irrational-stride-variation | neutral  $1 | canvas generative field deterministic correctness scatter | Math.random() for per-index variation costs a stored array, a di
 canvas/lattice-quantised-mark-draw | E2 D3 W2 F4 $2 | canvas particles grid lattice generative texture | A particle field drawn at its simulated position floats over the
 canvas/lattice-snapped-data-anchors | E2 D3 W2 F4 $2 | canvas field data hotspot hover grid accent | Markers at true coordinates over a dot field fall between dots a

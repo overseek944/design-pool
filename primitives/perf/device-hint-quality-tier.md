@@ -4,7 +4,7 @@ category: perf
 tags: [performance,webgl,capability,progressive-enhancement,correctness]
 axes: none
 cost: 2
-seen: 19
+seen: 20
 requires: []
 conflicts: []
 completes: []
@@ -168,3 +168,9 @@ re-paying the ramp.
 if (now - lastInput > 250) return            // idle: not a measurement
 if (++n >= 30 && ema > 24) demote()          // ema of deltas, 20–30ms
 ```
+
+Resolve the tier in an inline `<head>` script and write it to the root
+(`data-art="raster"`) so CSS picks a still image or the live vector art before
+first paint — no swap flash. Add `connection.saveData` and a `2g`
+`effectiveType` to the weak test, and let a persisted runtime verdict override
+the hints on the next visit.

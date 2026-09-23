@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,type,texture,image,ambient,generative]
 axes: {energy: 2, density: 4, weight: 2, finish: 3}
 cost: 4
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: [canvas-behind-dom-not-instead-of-it]
@@ -98,3 +98,13 @@ const S = Array.from({ length: L }, (_, i) => dotSprite(r0 + (r1 - r0) * i / (L 
 ctx.drawImage(S[level], x, y, cell, cell)
 ```
 ⚠ Level 0 must be an empty sprite, not a tiny dot, or the ground speckles.
+
+Order the ramp by measurement, not by eye. Rasterise each glyph once into a
+24–32px scratch canvas in the shipped face, sum its alpha, and sort — the ramp
+is then correct for that font, and a field can churn by stepping a random
+200–300 cells ±1/6 of the ramp every 250–350ms: texture moves, tone holds.
+```js
+x.clearRect(0, 0, 24, 24); x.fillText(g, 2, 19)
+let ink = 0; for (const a of x.getImageData(0, 0, 24, 24).data.filter((_, i) => i % 4 == 3)) ink += a
+```
+⚠ Measure after `document.fonts.ready`, or the fallback face's order ships.

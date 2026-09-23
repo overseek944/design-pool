@@ -4,7 +4,7 @@ category: motion-system
 tags: [list,rotation,blur,depth,mask,custom-property]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 13
+seen: 14
 requires: []
 conflicts: []
 completes: []
@@ -99,3 +99,8 @@ const y = step(d) + Math.sign(p) * Math.abs(p) ** 2.5 * 90
 ```
 ⚠ Spring the offset, not a timed ease — a focus jumping several places
 otherwise sweeps every card across the reading line at once.
+
+Wrapping the short way means an item crossing the seam jumps from +2 to −2 and
+would slide the whole stage behind the others. When a slot's distance changes
+by more than 1, disable its transition, place it one step beyond its target on
+the incoming side, then re-enable after two frames and set the real slot.

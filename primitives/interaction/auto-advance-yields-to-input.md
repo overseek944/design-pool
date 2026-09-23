@@ -4,7 +4,7 @@ category: interaction
 tags: [carousel,autoplay,accessibility,state]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 40
+seen: 41
 requires: []
 conflicts: []
 completes: []
@@ -193,3 +193,8 @@ useEffect(() => { if (!auto || innerWidth < 768) return
 ```
 ⚠ Read the width once and the gate is stale after rotation — use a
 `matchMedia` listener where orientation changes are likely.
+
+Pause on keyboard focus only: test `:focus-visible` in the `focusin` handler.
+A mouse click on next/previous also focuses the card, and pausing on it freezes
+the rotation the reader just nudged. Resume on `focusout` only when
+`relatedTarget` has left the card.
