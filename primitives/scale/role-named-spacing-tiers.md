@@ -4,7 +4,7 @@ category: scale
 tags: [tokens,architecture,rhythm,layout,scale]
 axes: none
 cost: 2
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []

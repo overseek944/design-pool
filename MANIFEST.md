@@ -1,6 +1,6 @@
 # Manifest
 
-1145 primitives. Format: `category/id | axes cost | tags | gist`
+1146 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -722,6 +722,7 @@ motion-system/stepped-follow-transition | E3 D1 W2 F3 $1 | motion pointer transi
 motion-system/sub-fusion-tremor | E5 D1 W1 F4 $1 | motion loop drag state micro-interaction | Below roughly 100ms a period stops reading as motion and starts 
 motion-system/summed-delay-terms | neutral  $1 | stagger entrance reveal timing correctness architecture | A child animation nested inside a revealed container keeps its o
 motion-system/svg-geometry-keyframes | E3 D2 W2 F5 $1 | motion svg diagram precision detail | r, cx, cy, x, y and width are CSS properties on SVG, not just at
+motion-system/sweep-trailed-detection-blips | E3 D2 W2 F4 $2 | sweep conic radar blip monitoring loop | A full-turn beam reads as "monitoring" only when it finds things
 motion-system/tilt-outermost-axis-spin | E2 D1 W2 F5 $1 | transform 3d rotation loop correctness | A body spinning on a tilted axis needs the tilt written before t
 motion-system/transient-class-scoped-transition | neutral  $2 | motion-system view-transition theme correctness reduced-motion | A view transition, or a global colour transition, must animate f
 motion-system/transition-cued-height-follow | neutral  $2 | correctness measurement transition resize layout motion | Inline content that changes width re-wraps its copy and the bloc
