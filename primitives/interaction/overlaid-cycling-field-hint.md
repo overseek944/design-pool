@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,input,placeholder,accessibility,hint,typing]
 axes: {energy: 3, density: 1, weight: 2, finish: 4}
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -51,3 +51,15 @@ setTimeout(tick, ',.?!'.includes(s[i - 1]) ? HOLD : wait)
 ⚠ Jitter is per character, so a long string drifts unpredictably in total
 duration — budget from the mean, and never let a caption sequenced against it
 depend on the typing finishing at a fixed time.
+
+Where the examples are whole requests rather than words being composed, roll
+them instead of typing them: each string enters from below and leaves upward
+through a one-line viewport feathered at both edges by a mask, so the swap
+reads as a drum turning rather than as a cut. Pin a static caret outside the
+viewport so the field still looks ready while its contents move. Travel ±100–110%
+of the line, 0.4–0.6s, a new string every 2.5–4s; feather 25–35% each side.
+```css
+.vp { height: 1lh; overflow: hidden; mask-image: linear-gradient(transparent,
+  #000 32%, #000 68%, transparent) }
+```
+⚠ Past about 35% feather the resting line itself loses ink at its ascenders.

@@ -4,7 +4,7 @@ category: interaction
 tags: [embed,iframe,pointer-events,activation,accessibility,correctness]
 axes: none
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
