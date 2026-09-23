@@ -4,7 +4,7 @@ category: color
 tags: [color,palette,ramp,oklch,tokens,scale]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []

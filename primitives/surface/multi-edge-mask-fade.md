@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,edge,composition,bleed]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 106
+seen: 107
 requires: []
 conflicts: []
 completes: []
@@ -352,4 +352,14 @@ continuous through it — no visible hole whose edge competes with the type. Pai
 it with a vertical ramp on the wrapper so the field also dissolves top and bottom.
 ```css
 mask-image: radial-gradient(ellipse 45% 35% at 50% 33%, #0003, #000)
+```
+
+On a cropped product mock inside a card, stop each edge's ramp short of clear.
+An intersected pair that ends at 15–30% alpha leaves the far corner ghosted, so
+the panel reads as continuing past the card rather than dissolving into a void,
+and the corner — where both ramps multiply — lands lowest on its own. Hold
+opaque to 40–60% of each axis.
+```css
+mask-image: linear-gradient(90deg, #000 45%, #0003), linear-gradient(#000 55%, #0003);
+mask-composite: intersect
 ```

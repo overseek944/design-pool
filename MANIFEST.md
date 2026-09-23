@@ -1,6 +1,6 @@
 # Manifest
 
-1108 primitives. Format: `category/id | axes cost | tags | gist`
+1109 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -595,6 +595,7 @@ motion-system/blurred-slot-spin-settle | E4 D1 W2 F3 $1 | slot reel blur oversho
 motion-system/camera-over-static-scene | E3 D2 W3 F5 $2 | motion transform scale focus diagram narrative | To walk a reader through a diagram, move the viewport rather tha
 motion-system/cardinality-locked-variant-set | E3 D3 W2 F5 $3 | motion svg morph state diagram architecture | A set of marks that switches state — a diagram's shapes, a chart
 motion-system/change-tint-decay | E2 D3 W2 F3 $1 | data update feedback table realtime highlight keyframes | A value changing in place is easy to miss in a dense table. Tint
+motion-system/click-held-leave-dim | E1 D2 W2 F4 $1 | navigation page-transition mpa bfcache progressive-enhancement | A multi-page site can acknowledge a click before the next docume
 motion-system/connector-relayed-step-focus | E2 D2 W2 F5 $2 | motion sequence connector autoplay stroke state | A self-advancing step list that jumps its highlight says "next" 
 motion-system/content-cleared-shell-morph | E3 D2 W2 F5 $2 | morph sequencing panel spring transition exit | A surface that reshapes between modes — pill to panel — smears i
 motion-system/context-keyed-idle-repertoire | E3 D1 W2 F3 $2 | motion character idle state keyframes loop | A resident character with one idle loop is a screensaver. Give i
