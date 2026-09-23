@@ -4,7 +4,7 @@ category: color
 tags: [color,tokens,accessibility,contrast,correctness,state]
 axes: none
 cost: 1
-seen: 17
+seen: 18
 requires: []
 conflicts: []
 completes: []
@@ -59,3 +59,12 @@ status. Wash 7–12%, rule 18–28%, icon disc 14–20%.
 ```
 ⚠ Gate the mix behind `@supports`, falling back to the neutral surface — not to
 the raw hue.
+
+Interactive statuses — a destructive button, a dismissable alert — need a hover
+cut too, and it is the same mix one step further rather than a new swatch: raise
+the wash by 3–5 points and the rule by 12–16. The step then holds in both themes
+because it rides the surface token the wash was already mixed against.
+```css
+--fill-hover: color-mix(in oklab, var(--hue) 13%, var(--surface));
+--edge-hover: color-mix(in oklab, var(--hue) 42%, var(--line));
+```
