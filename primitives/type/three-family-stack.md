@@ -4,7 +4,7 @@ category: type
 tags: [type,system]
 axes: {energy: 2, density: 3, weight: 3, finish: 4}
 cost: 1
-seen: 44
+seen: 45
 requires: []
 conflicts: []
 completes: []

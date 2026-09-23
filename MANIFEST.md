@@ -1,6 +1,6 @@
 # Manifest
 
-1085 primitives. Format: `category/id | axes cost | tags | gist`
+1087 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -532,6 +532,7 @@ media/mask-swap-over-shared-paint | E2 D2 W2 F4 $2 | mask icon gradient media st
 media/mid-clip-seeked-reveal | E2 D2 W2 F5 $1 | media video hover seek poster still reveal loop | A clip mounted on hover over its own still usually opens on a fa
 media/mirror-flanked-panorama | E1 D2 W2 F4 $2 | media image panorama mirror responsive full-bleed | Artwork with a fixed aspect either stretches or loses its compos
 media/mirrored-baseline-reflection | E1 D2 W2 F5 $2 | media mask surface depth detail css-only | A cut-out subject on a surface reads as pasted on unless somethi
+media/off-corner-swatch-plates | E2 D2 W3 F2 $1 | media ornament collage offset color cheap | Push one or two flat colour squares out past different corners o
 media/one-shot-cache-busted-retry | neutral  $1 | media error resilience image video correctness | One dropped connection or a 503 from the edge leaves an image br
 media/optical-height-logo-row | neutral  $1 | media logos normalisation scale responsive | Supplied marks are drawn to different conventions — a wordmark f
 media/origin-conditional-sandbox | neutral  $1 | media iframe embed security correctness | A sandboxed iframe that is also allow-same-origin and served fro
@@ -879,6 +880,7 @@ surface/coprime-modulus-cell-dither | E1 D4 W2 F4 $1 | pattern texture grid nth-
 surface/corner-tick-frame | E1 D2 W1 F5 $1 | surface border frame detail currentcolor precision | Four short L-marks at the corners instead of a closed border: th
 surface/dash-phase-flow | E2 D2 W1 F5 $1 | svg dash motion connector diagram precision | Animating stroke-dashoffset on a dashed connector makes a static
 surface/depth-pinned-shape-tail | E1 D2 W2 F4 $2 | surface mask edge section ground token | A shaped section edge sized as a share of its plate flattens at 
+surface/depth-weighted-cell-seam | E2 D4 W3 F2 $2 | surface section edge grid pixel transition generative | Hand a light section to a dark one through a band of square cell
 surface/detached-blur-shadow-plate | E1 D2 W4 F4 $2 | surface depth shadow blur mock hero | Past roughly 40px of blur box-shadow stops reading as shadow, an
 surface/drained-field-clear-window | E2 D2 W3 F5 $3 | surface mask backdrop-filter focus attention de-emphasis | Direct attention by de-emphasising everything else: a full-bleed
 surface/eased-fade-stop-ramp | E1 D2 W2 F5 $2 | surface gradient fade mask precision | A two-stop fade interpolates alpha linearly and the eye reads th
