@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,edge,composition,bleed]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 100
+seen: 101
 requires: []
 conflicts: []
 completes: []
@@ -345,3 +345,11 @@ mask-image: linear-gradient(90deg, transparent 0 var(--clear), #000 var(--solid)
 ```
 ⚠ Where the rail becomes a scroller under reduced motion, drop the mask and pad
 the first item by `--solid` so the label never covers content.
+
+The keep-out need not reach zero. Floor the centre at 15–30% alpha instead of
+transparent and the ambient field still recedes behind the headline but stays
+continuous through it — no visible hole whose edge competes with the type. Pair
+it with a vertical ramp on the wrapper so the field also dissolves top and bottom.
+```css
+mask-image: radial-gradient(ellipse 45% 35% at 50% 33%, #0003, #000)
+```
