@@ -4,7 +4,7 @@ category: motion-system
 tags: [list,rotation,blur,depth,mask,custom-property]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 12
+seen: 13
 requires: []
 conflicts: []
 completes: []
@@ -86,3 +86,16 @@ slots, fades 10–18%.
 ⚠ `100dvh` changes as mobile chrome slides, so the cap re-seats the wheel
 mid-scroll. Hold the reserved space as a token and put the cap behind a
 pointer-and-keyboard width rather than tuning the number.
+
+At either end of the list the stack is one-sided, and a wheel that keeps the
+focus pinned to centre leaves half its band empty. Shift the whole stack against
+the focus's normalised position, eased hard so the middle of the list stays
+centred and only the extremes move: offset `sign(p)·|p|^2–3 × 60–120px`, with
+`p` running −1…1 across the list. Compress the steps with distance as well —
+roughly 90, 150, then +15px per level — so the tail tucks rather than trails.
+```js
+const p = (focus - (n - 1) / 2) / ((n - 1) / 2)
+const y = step(d) + Math.sign(p) * Math.abs(p) ** 2.5 * 90
+```
+⚠ Spring the offset, not a timed ease — a focus jumping several places
+otherwise sweeps every card across the reading line at once.

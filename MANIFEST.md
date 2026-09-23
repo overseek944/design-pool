@@ -1,6 +1,6 @@
 # Manifest
 
-1109 primitives. Format: `category/id | axes cost | tags | gist`
+1110 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -616,6 +616,7 @@ motion-system/dual-duty-mark-animation | E3 D1 W2 F5 $2 | motion svg identity lo
 motion-system/duration-zeroed-outcome-state | neutral  $1 | motion architecture correctness scene reduced-motion | A scene built from dozens of delayed one-shots has a still state
 motion-system/edge-clamped-camera-frame | neutral  $1 | camera transform scene correctness architecture | A camera that pans to centre a point of interest frames empty sp
 motion-system/edge-flush-viewport-staging | E3 D1 W2 F5 $1 | motion entrance viewport-units responsive css | An element staged beyond the frame is usually given a hand-picke
+motion-system/enveloped-voice-level-bars | E3 D2 W2 F4 $2 | audio waveform bars mock decorative speech | A row of level bars read as speech, not a loop, when each bar's 
 motion-system/fire-on-arrival-propagation | E3 D3 W2 F5 $3 | entrance propagation graph canvas emergent | An entrance authored as a list of delays must be rewritten whene
 motion-system/first-paint-entry-style | neutral  $1 | motion transition css-only progressive-enhancement state | An element that did not exist a frame ago has no previous value 
 motion-system/flag-collapsed-motion-wrapper | neutral  $1 | motion architecture reduced-motion accessibility correctness feature-flag | Every entrance in a system is a wrapper component; make each one

@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,navigation,anchor,correctness,pin]
 axes: none
 cost: 2
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -65,3 +65,15 @@ being shown.
 ⚠ An instant jump still fires the handler, so the state lands in the same frame
 and needs no suppression window — which is what makes it worth preferring over
 blacking the spy out for the duration of a tween.
+
+Where the pin maps its progress to discrete steps by `floor(progress × n)`,
+a click that scrolls to a step's start lands on the boundary and rounding can
+report the previous one. Aim at the slice midpoint, `(i + 0.5) / n` of the
+scrollable span, and set the index optimistically before the scroll so the
+panel does not flash the old step. Gate the scroll on the same query that
+creates the pin — below it the steps are a plain accordion and the click
+should only toggle.
+```js
+scrollTo({ top: top + (el.offsetHeight - innerHeight) * (i + .5) / n })
+```
+⚠ Read the gating query with a live `matchMedia` listener, not once at mount.
