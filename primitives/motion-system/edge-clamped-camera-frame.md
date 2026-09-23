@@ -4,7 +4,7 @@ category: motion-system
 tags: [camera,transform,scene,correctness,architecture]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: [camera-over-static-scene]

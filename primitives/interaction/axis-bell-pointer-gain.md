@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,pointer,falloff,data,hover,detail]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -59,3 +59,15 @@ bar[i].style.setProperty('--g', (g * g).toFixed(3))
 ⚠ Only valid while the items share a width — one wider member and index stops
 mapping to position. Cache the rect on resize; reading it inside the move
 handler forces layout at pointer rate.
+
+Where the bulge is geometric rather than a value, spend the same gain on three
+properties at once — scale, a lift off the baseline and an inline margin — so
+neighbours part to make room instead of overlapping, and anchor the transform at
+the shared edge. Smoothstep the falloff (`g*g*(3-2g)`) for a flat-topped peak,
+and a 60–100ms transition hides the per-frame writes. Peak scale 1.3–1.6, lift
+8–16px, spread 8–20px.
+```css
+.item { transform-origin: bottom; margin-inline: calc(var(--g) * 16px);
+  transform: translateY(calc(var(--g) * -14px)) scale(calc(1 + var(--g) * .5)) }
+```
+⚠ The margin reflows the row every frame — keep it to one short flex line.

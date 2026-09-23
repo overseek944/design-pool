@@ -4,7 +4,7 @@ category: timing
 tags: [timing,choreography,keyframes,css-animation,token,sequence]
 axes: {energy: 2, density: 3, weight: 2, finish: 5}
 cost: 2
-seen: 38
+seen: 39
 requires: []
 conflicts: []
 completes: []
@@ -241,3 +241,9 @@ the two groups that the shared token existed to prevent.
 Variant — staggered stream: sub-parts of one travelling item (a lid closing, a
 seal stamping) take the item's duration *and* its per-item delay variable, so
 every beat lands at the same point of every item's pass however many run.
+
+Name each keyframe block by the percentage it opens at — `appear-28`,
+`pop-61` — and a family of identical entrances differs only in its name, the
+timeline becomes readable from the stylesheet's keyframe list, and a retime is a
+rename. Close every member on one shared exit window (e.g. 96.8–97.3%) so the
+whole stage clears together before the loop restarts.

@@ -4,7 +4,7 @@ category: scale
 tags: [scale,layout,proportion,transform,responsive]
 axes: {energy: 1, density: 2, weight: 3, finish: 4}
 cost: 2
-seen: 26
+seen: 27
 requires: []
 conflicts: []
 completes: []
@@ -229,4 +229,15 @@ scene fits like `object-fit: contain` and never crops. Publish it as the custom
 property from the same resize handler; scale 0.5–1.2 across usual boxes.
 ```js
 el.style.setProperty('--s', Math.min(r.width / 560, r.height / 680))
+```
+
+Spend the container unit once, as the stage's `font-size`, and author every
+dimension inside in `em`: one declaration replaces a `calc()` per property, and
+the `clamp()` becomes a legibility floor and a sharpness ceiling for the whole
+miniature. Recompose for narrow containers by changing the divisor, not the
+rules. Divisor 40–120 em per container width, floor 7–9px, cap 11–13px.
+```css
+.stage { container-type: inline-size }
+.mock  { font-size: clamp(8px, calc(100cqw / 112), 11.5px); height: 23em }
+@media (width <= 899px) { .mock { font-size: clamp(7px, calc(100cqw / 46), 12px) } }
 ```
