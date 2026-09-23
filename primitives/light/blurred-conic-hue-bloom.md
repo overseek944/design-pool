@@ -4,7 +4,7 @@ category: light
 tags: [gradient,glow,bloom,hue,conic,decoration,ambient,metal,material]
 axes: {energy: 1, density: 2, weight: 2, finish: 4}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -36,3 +36,10 @@ procedural cover with no asset; invert the ramp per theme.
   background: conic-gradient(from 210deg at 36% 42%, #fff, #c8c7c2 88deg,
     #f2f1ed 154deg, #aaa9a3 232deg, #dedcd6 298deg, #fff) }
 ```
+
+Variant — no gradient at all: a flex-wrap box of four half-by-half cells, each
+a flat hue, with the two lower cells given one fully rounded outer corner, then
+blurred 48–72px at .5–.7 opacity. The blur fuses the cells into one bloom whose
+lower edge is already curved. It holds at small sizes — a 300×120px bed under a
+single control, the control pulled up over it by negative margin — where the
+500px floor above would swamp the page.

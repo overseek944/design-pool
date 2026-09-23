@@ -1,6 +1,6 @@
 # Manifest
 
-1165 primitives. Format: `category/id | axes cost | tags | gist`
+1166 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -716,6 +716,7 @@ motion-system/seekable-scene-clock | neutral  $2 | motion canvas loop determinis
 motion-system/self-dissolving-entrance-queue | neutral  $2 | motion sequencing correctness reveal scroll | Serialising entrances stops a long page arriving as noise, but a
 motion-system/self-erasing-play-classes | neutral  $1 | architecture progressive-enhancement svg accessibility correctness entrance | Author the finished frame as the markup, then take it away to pl
 motion-system/self-measured-flow-entry | E3 D2 W2 F4 $2 | motion layout measurement state lifecycle detail | A row inserted into a live column — a log line, a message, a que
+motion-system/self-relative-indeterminate-sweep | E3 D1 W2 F4 $1 | motion progress loading indeterminate reduced-motion accessibility | An indeterminate bar is a short segment crossing a clipped track
 motion-system/sequenced-root-view-transition | E2 D1 W2 F5 $2 | motion navigation transition accessibility | The default root view transition cross-fades outgoing and incomi
 motion-system/settle-deferred-face-rewrite | E3 D2 W2 F5 $2 | motion 3d preserve-3d swap stagger cycle logos transition | A rank of slots showing more values than it has room for can tur
 motion-system/settling-strike-envelope | E4 D2 W3 F3 $2 | flicker envelope keyframe-table shader portable data | Something powering on does not fade — it strikes, drops out, cat

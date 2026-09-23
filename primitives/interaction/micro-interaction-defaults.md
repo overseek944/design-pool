@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,polish,consistency]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 19
+seen: 20
 requires: []
 conflicts: []
 completes: []
@@ -52,3 +52,11 @@ Name the property, never `all`; cap the row at five or six items; keep it inside
 ⚠ This reflows the row on every frame of the transition, so it is the one place
 the 120–200ms band is too fast to hide the cost — 300–400ms, and nothing else
 animating in that row.
+
+Split press from release: override `transition-duration` on `:active` to
+60–90ms and leave the base rule at the band. The press lands while the finger is
+still down; the release eases back over the full duration. One declaration,
+no second transition list to keep in sync.
+```css
+.btn:active { transform: scale(.95); transition-duration: 75ms }
+```
