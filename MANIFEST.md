@@ -1,6 +1,6 @@
 # Manifest
 
-1170 primitives. Format: `category/id | axes cost | tags | gist`
+1171 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -694,6 +694,7 @@ motion-system/phase-offset-typing-dots | E2 D1 W1 F4 $1 | keyframes loop dots ty
 motion-system/pivot-segmented-route | E3 D2 W2 F5 $2 | motion path diagram keyframes | Interpolating position and heading together makes a marker cut d
 motion-system/pivot-signed-explode | E2 D3 W2 F5 $2 | explode assembly stack progress figure scrub | A stack opening to show what it is made of must separate about s
 motion-system/placement-keyed-overlay-entrance | E2 D2 W2 F5 $1 | motion popover tooltip menu overlay entrance exit placement | A floating panel should arrive travelling away from its trigger.
+motion-system/predecessor-extruded-cell-route | E3 D3 W2 F4 $2 | grid cell path svg sequence diagram | A route across a coarse grid reads as cells fading on in order —
 motion-system/print-frozen-frame-branch | neutral  $1 | print correctness motion fallback accessibility | Anything a reader will print or save as PDF — a report, an invoi
 motion-system/progress-differentiated-motion-blur | E4 D2 W3 F4 $2 | motion blur camera velocity filter transition | A fast camera push between two framings strobes: every frame is 
 motion-system/projected-plane-dom-handoff | E3 D2 W3 F5 $4 | webgl camera scroll overlay transition | A scroll-driven camera can fly into a screen inside a 3D scene a

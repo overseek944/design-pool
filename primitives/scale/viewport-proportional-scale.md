@@ -4,7 +4,7 @@ category: scale
 tags: [unit,typography,layout,responsive,poster]
 axes: {energy: 2, density: 2, weight: 4, finish: 4}
 cost: 3
-seen: 12
+seen: 13
 requires: []
 conflicts: []
 completes: [proportional-effect-radii, three-tier-token-redefinition]
@@ -101,3 +101,13 @@ whole group shrinks together. Trim 3–20%.
 ```
 ⚠ Each trim is one more way for that subtree to drift from the scale. Use it
 only for what actually clips, never as a general size control.
+
+Variant — scale only the root and let everything else stay in `rem`: give
+`html` a `calc(<rem> + <vw>)` font-size per breakpoint band, each band its own
+line, so type, spacing and radii all ride one knob and still honour a user's
+base size through the rem term. Keep the vw coefficient 0.35–0.85 and the rem
+term ≥ 0.45 so zoom still moves the page.
+```css
+html { font-size: calc(.6rem + .45vw) }
+@media (max-width: 479px) { html { font-size: calc(.5rem + .84vw) } }
+```
