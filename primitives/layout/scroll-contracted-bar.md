@@ -4,7 +4,7 @@ category: layout
 tags: [header,scroll,sticky,chrome]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 39
+seen: 40
 requires: []
 conflicts: []
 completes: []
@@ -206,4 +206,14 @@ page there is no compositor layer to hold. Hero alpha 0.2–0.4, blur 16–24px.
 ```css
 .bar { background: rgb(var(--ink) / .3); backdrop-filter: blur(20px) }
 .bar[data-past-hero] { background: rgb(var(--ink)); backdrop-filter: none }
+```
+
+`calc()` cannot ease, so a raw clamped scroll fraction drives the continuous
+form linearly and the capsule arrives with a visible corner at both ends of the
+range. Shape the scalar before publishing it — smoothstep, `p * p * (3 - 2 * p)`
+— and every property on the channel inherits the same ease-in-out with no
+per-property timing. Ramp over 150–250px, starting 10–30px down.
+```js
+const f = Math.min(Math.max((scrollY - 20) / 200, 0), 1)
+bar.style.setProperty('--c', f * f * (3 - 2 * f))
 ```

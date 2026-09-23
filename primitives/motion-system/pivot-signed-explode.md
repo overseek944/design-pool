@@ -4,7 +4,7 @@ category: motion-system
 tags: [explode,assembly,stack,progress,figure,scrub]
 axes: {energy: 2, density: 3, weight: 2, finish: 5}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,16 @@ layers.forEach((el, i) =>
 ⚠ Elect the pivot for what it means, not as the middle index. Reserve the open
 height up front — the separation is transform-only, but a figure sized to the
 closed stack lets the open one overlap its neighbours.
+
+As an ambient loop it needs no script: give each layer its signed offset as a
+custom property and let one shared keyframe travel to `var(--shift)` and back,
+so the stack breathes about its pivot on one clock.
+Offsets pointing toward the pivot collapse the stack; away from it, open it. Offset step 12–24px, cycle 4–6s with
+a hold at both ends.
+```css
+.layer { animation: breathe 5s cubic-bezier(.45,0,.25,1) infinite }
+.layer:nth-child(1) { --shift: 32px } .layer:nth-child(5) { --shift: -32px }
+@keyframes breathe { 0%,15%,to { translate: 0 } 45%,65% { translate: 0 var(--shift) } }
+```
+⚠ Put the loop on `translate`, not `transform`, when the plates already carry a
+shear (`rotate() skew()` for a flat isometric plane) — or the keyframe wipes it.
