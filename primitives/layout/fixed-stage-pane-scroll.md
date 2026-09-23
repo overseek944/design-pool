@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,scroll,shell,navigation]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 3
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -46,3 +46,11 @@ lock `html, body` fixed with `overscroll-behavior: none` only under a fine
 pointer, and on touch give the body a 150–200vh runway so the first swipe folds
 the chrome while the fixed stage stays put. ⚠ That scroll moves nothing — keep
 the runway short.
+
+Variant — where only one side is decorative, fix just that half and let the
+document scroll the other: `position: fixed; inset: 0 0 0 50%` on an
+`aria-hidden` visual, with the reading column capped at the remaining width.
+Find-in-page, URL-bar collapse and the single-scroller assumption all survive.
+Split 45–55%.
+⚠ Below the breakpoint the fixed half must stack or leave. Left in place it sits
+under the text and has to pass the body-contrast floor.

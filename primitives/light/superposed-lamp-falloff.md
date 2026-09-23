@@ -4,7 +4,7 @@ category: light
 tags: [light,gradient,glow,wash,layering,cheap]
 axes: {energy: 1, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -26,3 +26,16 @@ outer; outer 1.3–2× the inner per axis. Author it as one SVG with
 ⚠ Each layer bands separately on 8-bit panels and the seams do not align — add
 grain over the pair rather than more stops. At these alphas nothing survives
 `forced-colors`, so no meaning may rest on it.
+
+Variant — a neutral field that themes itself. Draw 3–5 ellipses in one inline
+SVG and point every `stop-color` at the UI's own role tokens: text colour at
+.3–.45 opacity for the dark core, border tone for the mid lamps, surface colour
+for "lift" ellipses that erase back toward the ground. Nothing is a hex, so
+light and dark resolve with no second asset. `preserveAspectRatio="xMidYMid
+slice"` keeps the ellipses round at any pane ratio.
+```html
+<radialGradient id="core"><stop stop-color="var(--text)" stop-opacity=".4"/>
+  <stop offset="1" stop-color="var(--surface)" stop-opacity="0"/></radialGradient>
+```
+⚠ `var()` inside a presentation attribute resolves only for inline SVG. An
+`<img>` or CSS `url()` reference gets black stops.

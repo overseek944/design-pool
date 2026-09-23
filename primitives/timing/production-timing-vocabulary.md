@@ -4,7 +4,7 @@ category: timing
 tags: [motion,easing,duration,reference,system]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 44
+seen: 45
 requires: []
 conflicts: []
 completes: []
@@ -100,3 +100,14 @@ things that must still move — a progress fill, a caret — keep their own valu
 ⚠ Only safe for transitions, which land on their target value at 0s. Keyframed
 loops and anything whose resting pose is a keyframe stop need the separate
 treatment — zeroing a duration there resolves to the wrong frame, not to none.
+
+Bracket each band rather than naming one value: `-min`, base and `-max` about
+±20–30% apart, nine tokens in three bands. A component that needs a notch
+quicker or slower steps within its band instead of inventing a number, and a
+staggered delay can reuse the band floor. Because every consumer reads the nine
+names, a second theme can redefine all of them ×1.3–1.5 and the whole
+product changes tempo from one block.
+```css
+:root { --d-fast-min: 95ms; --d-fast: 125ms; --d-fast-max: 165ms }
+[data-theme=calm] { --d-fast-min: 130ms; --d-fast: 175ms; --d-fast-max: 230ms }
+```
