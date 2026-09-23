@@ -1,6 +1,6 @@
 # Manifest
 
-1064 primitives. Format: `category/id | axes cost | tags | gist`
+1065 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -202,6 +202,7 @@ interaction/cursor-tracked-vanishing-point | E3 D3 W2 F5 $3 | interaction pointe
 interaction/declared-quiet-region | neutral  $1 | interaction pointer architecture legibility opt-out correctness | A pointer-driven background sits under the whole document and di
 interaction/dimension-coded-position-dot | E2 D2 W2 F5 $1 | interaction state indicator accessibility carousel | Let the active item in a position indicator change size, not onl
 interaction/disengaged-scoped-transition | E3 D1 W2 F5 $1 | interaction transition pointer drag reveal accessibility | A value the pointer drives — a wipe seam, a comparison split, a 
+interaction/disjoint-resample-example-set | E2 D2 W2 F4 $1 | interaction input examples suggestion state accessibility | A row of clickable starting points under an empty field can draw
 interaction/dismissal-escalated-reprompt | neutral  $2 | interaction prompt cadence persistence restraint correctness | A recurring prompt — install, subscribe, upgrade — needs a caden
 interaction/dot-matrix-state-glyph | E1 D2 W2 F4 $1 | interaction icon toggle menu state | A toggle glyph built from a 3×3 dot grid changes state without c
 interaction/drag-scoped-target-states | neutral  $2 | drag drop affordance state feedback accessibility | A drag that lights only the target under the pointer makes the r
