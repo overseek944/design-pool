@@ -1,6 +1,6 @@
 # Manifest
 
-1103 primitives. Format: `category/id | axes cost | tags | gist`
+1104 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -494,6 +494,7 @@ media/absent-asset-display-plate | E1 D2 W4 F4 $1 | media editorial fallback car
 media/activation-deferred-player-facade | neutral  $2 | media embed iframe video performance privacy accessibility loading | A third-party player costs hundreds of kilobytes of script and s
 media/alpha-threshold-fuse-filter | E3 D2 W3 F4 $2 | svg filter mark liquid state | Separate shapes read as one substance when a blur is pushed back
 media/alternating-mirror-tile | E1 D3 W2 F3 $1 | media texture tiling canvas backdrop seam | A photograph repeated across a band wider than itself cuts at ev
+media/ambient-loop-promoted-to-feature | E2 D1 W3 F4 $2 | media video audio fullscreen interaction | When the background loop is the film itself, the play control ca
 media/aperture-registered-content-layer | E1 D2 W2 F5 $2 | media mockup responsive layout correctness | Live content shown inside supplied frame artwork registers to an
 media/approach-loaded-video | neutral  $2 | media video performance intersection-observer accessibility bandwidth | Background footage is usually the heaviest thing on a page and u
 media/aspect-locked-media | neutral  $1 | layout media cls | Lock every media slot with an explicit aspect-ratio and let widt

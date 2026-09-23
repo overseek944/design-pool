@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,pointer,detail,chrome,accessibility]
 axes: {energy: 2, density: 2, weight: 3, finish: 3}
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -62,3 +62,7 @@ choice; a pointer the reader had to find twice is worse than none.
 
 Variant — a drawn dot 6–10px under `mix-blend-mode: difference` stays visible
 over light and dark grounds with one ink; hide it while a modal owns focus.
+
+Variant — mount the drawn dot only while `(hover: hover) and (pointer: fine)`
+matches, listening for `change` so a docked tablet flips cleanly; ease it toward
+the pointer at 0.2–0.4 per frame and zero its opacity on window `mouseout`.

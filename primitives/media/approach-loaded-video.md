@@ -4,7 +4,7 @@ category: media
 tags: [media,video,performance,intersection-observer,accessibility,bandwidth]
 axes: none
 cost: 2
-seen: 35
+seen: 36
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -306,3 +306,8 @@ so it restarts only once it is substantially in view.
 if (e.isIntersecting) { v.currentTime = 0; v.play().catch(() => {}) } else v.pause()
 ```
 ⚠ Never on a loop meant as texture — the rewind becomes a visible hitch.
+
+Variant — a background loop the OS paused on its own (low-power mode, a tab
+return, fullscreen exit) never fires anything worth trusting. Retry a rejected
+`play()` once after 300–800ms, and poll every 1–2s for `paused && readyState >= 2`
+— but skip the poll while the reader's pause intent is recorded.

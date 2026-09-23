@@ -4,7 +4,7 @@ category: interaction
 tags: [form,input,type,composition,accessibility,correctness]
 axes: {energy: 2, density: 1, weight: 3, finish: 4}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,8 @@ field on the same size and weight or the seam shows.
 ```
 ⚠ The sentence is not the accessible name — carry a real label or `aria-label`,
 and keep a visible focus state that is not only the rule changing tone.
+
+Variant — the field can *be* the call to action: its placeholder is the CTA
+line, uppercase and tracked on an underline, sized by an invisible twin of that
+text stacked in the same grid cell, and cleared on focus. ⚠ The prompt vanishes
+on the first keystroke, so the accessible name must not rely on it.

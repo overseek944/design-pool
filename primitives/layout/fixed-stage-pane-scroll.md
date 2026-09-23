@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,scroll,shell,navigation]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 3
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -40,3 +40,9 @@ new IntersectionObserver(cb, { root: port })
 ⚠ `scroll-behavior` and `scroll-margin-top` belong to whichever element
 scrolls. Left on the document they stop working at the wide breakpoint with no
 error, and in-page links land under the sticky header.
+
+Variant — a single-screen composition can keep the URL-bar collapse it gives up:
+lock `html, body` fixed with `overscroll-behavior: none` only under a fine
+pointer, and on touch give the body a 150–200vh runway so the first swipe folds
+the chrome while the fixed stage stays put. ⚠ That scroll moves nothing — keep
+the runway short.
