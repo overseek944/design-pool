@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,accessibility,reduced-motion,state,sequence,correctness]
 axes: none
 cost: 2
-seen: 20
+seen: 21
 requires: []
 conflicts: []
 completes: []

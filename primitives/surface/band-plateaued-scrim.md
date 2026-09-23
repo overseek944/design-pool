@@ -4,7 +4,7 @@ category: surface
 tags: [scrim,imagery,contrast,gradient,accessibility]
 axes: {energy: 1, density: 2, weight: 3, finish: 5}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -40,3 +40,15 @@ alone. Floor .2–.35, ramp adding .15–.3 at its ends.
 ⚠ Two layers compound, so the contrast check is against the product, not either
 alone — and a floor heavy enough to pass on its own has already thrown the
 picture away.
+
+On a light page the scrim need not darken at all: write it in the page's own
+ground colour and run it across the frame, opaque behind the copy and thinning
+toward the far edge. The artwork then surfaces out of the page rather than
+sitting in a box, and the section has no seam where it meets the next one.
+Pre-soften the art beneath (blur 4–10px, overscaled past the blur) so the thin
+end reads as atmosphere, not a cropped picture. Ground .9–1 over copy, .05–.2 far.
+```css
+.scrim { background: linear-gradient(to right, var(--ground) 0 30%,
+  color-mix(in srgb, var(--ground) 35%, transparent) 60%, #0000 100%) }
+```
+⚠ At narrow widths copy spans the thin end — switch the ramp vertical there.

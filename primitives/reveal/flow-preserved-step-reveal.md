@@ -4,7 +4,7 @@ category: reveal
 tags: [reveal,text,steps,clip-path,typing,layout-safety]
 axes: {energy: 3, density: 2, weight: 2, finish: 3}
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -73,3 +73,18 @@ el.replaceChildren(head, tail && Object.assign(document.createElement('em'), { t
 translation or a copy edit, so keep the boundary beside the text it indexes.
 Inherit the weight explicitly on the emphasis element: a light display face
 whose italic is only supplied at regular will jump a step at the seam.
+
+Where the run wraps and must still ink in reading order with no script, keep it
+`display: inline` and sweep a background clipped to the glyphs. An inline box's
+fragments share one background strip laid end to end, so `background-size`
+growing 0→100% fills line one, then line two, with the text node intact and the
+box at its settled size throughout. Stack a faint second layer at full size to
+ghost the unwritten tail. Sweep 1.5–4s; ghost alpha .12–.3.
+```css
+.run { display: inline; color: transparent;
+  background: linear-gradient(#111 0 0) no-repeat 0 0 / 0% 100%, linear-gradient(#1112 0 0);
+  -webkit-background-clip: text; background-clip: text; animation: ink 3s ease-in-out both }
+@keyframes ink { to { background-size: 100% 100%, auto } }
+```
+⚠ `box-decoration-break: clone` restarts the strip per line and breaks the
+sequence. Ink below 4.5:1 is unreadable mid-sweep — land it fully under reduce.
