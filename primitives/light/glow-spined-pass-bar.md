@@ -4,7 +4,7 @@ category: light
 tags: [light,glow,sweep,box-shadow,loop,cheap]
 axes: {energy: 3, density: 1, weight: 2, finish: 5}
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -43,3 +43,8 @@ Variant — one-shot punctuation: a single pass down a text block, fired once wh
 a reveal completes, reads as "checked" rather than "working". 1.5–2.5s on a
 fast-out curve, peak opacity held 20–80% of travel; re-arm only after the block
 has left well behind.
+
+Variant — trailing wake: hang a 16–28px gradient tail off the spine on the
+side it has just left, blurred 1–2px at 20–30% peak alpha, and feather its
+ends with the same horizontal mask as the line. The bar then reads as moving
+in a direction rather than sitting at a position; flip the tail on reversal.
