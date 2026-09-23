@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,texture,pattern,raster,two-tone,generative]
 axes: {energy: 2, density: 4, weight: 3, finish: 2}
 cost: 2
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
@@ -50,3 +50,15 @@ float shade = field(c * u_px * u_ratio / u_res);   // field and threshold share 
 ```
 ⚠ Cell size is now in CSS pixels, so the 2px floor is a CSS-pixel floor — on a
 3× panel that is six device pixels and the fill rate saved is real.
+
+The field can be a supplied photograph rather than a generated value. Draw it
+cover-fitted into a canvas at device pixels, read `getImageData` once, collapse
+each block to luma, add the threshold and floor onto 3–8 grey levels, then write
+the block back — block size 1–4 device pixels. Levels and block size stay tunable
+per placement instead of being baked into a re-exported asset.
+```js
+const v = .299*r + .587*g + .114*b + (M4[y&3][x&3]/16 - .5) * 255/L
+const q = Math.round(v / (255/(L-1))) * (255/(L-1))   // L = levels
+```
+⚠ A one-shot pass: it must re-run on resize, and a cross-origin image taints the
+canvas unless it is served with CORS.

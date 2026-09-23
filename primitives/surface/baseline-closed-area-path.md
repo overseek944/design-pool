@@ -4,7 +4,7 @@ category: surface
 tags: [svg,chart,sparkline,data,precision]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -22,3 +22,14 @@ const area = `M${pts.split(' ').join(' L')} L295,54 L0,54 Z`
 ⚠ The baseline is the viewBox floor, not zero on the data scale — a series that
 goes negative fills upward unless you clamp it. Draw the fill first so the
 stroke is never softened by the gradient over it.
+
+Close the same point list against a reference line instead of the floor — a
+provisioned ceiling, a budget, a target — and the fill becomes the headroom:
+the gap between what was reserved and what was used, drawn as one area. Dash
+the reference, tint the gap at .04–.10 alpha, and keep the series stroke solid.
+```js
+const gap = [...pts, `${xEnd},${yRef}`, `${xStart},${yRef}`].join(' ')
+// <line y1={yRef} y2={yRef} stroke-dasharray="4 3"/> <polygon points={gap}/>
+```
+⚠ Valid only while the series stays under the reference; a crossing folds the
+polygon over itself — clip it to the reference side.
