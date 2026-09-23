@@ -1,6 +1,6 @@
 # Manifest
 
-1111 primitives. Format: `category/id | axes cost | tags | gist`
+1114 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -31,8 +31,10 @@ canvas/composed-arrival-field | E3 D3 W2 F5 $2 | shader stagger clock uniform re
 canvas/context-loss-rearm | neutral  $2 | canvas correctness lifecycle architecture | A 2D context is lost the same way a WebGL one is — a GPU process
 canvas/coverage-floored-point-splat | E1 D4 W1 F5 $2 | shader webgl points splat antialiasing | Distant points projected below ~2px shimmer and drop out between
 canvas/css-semantic-shape-primitives | neutral  $3 | canvas shader webgl architecture gradient fallback | A ground authored in a design tool is a stack of boxes, ellipses
+canvas/css-transform-posed-mesh | neutral  $3 | webgl vertex dom-sync transform overlay architecture | A WebGL surface standing in for a CSS-transformed element — tilt
 canvas/curl-of-potential-field | E2 D3 W2 F4 $3 | canvas flow field generative motion | Advecting anything through a hand-made velocity field pools it i
 canvas/curvature-parametrised-sheet-wrap | E3 D3 W2 F5 $4 | canvas geometry projection morph points 3d | A flat sheet and a sphere are one surface at two curvatures, so 
+canvas/cylinder-wrapped-sheet-peel | E3 D2 W3 F5 $4 | webgl shader vertex paper peel fold reveal interaction | A plane reads as paper when it bends like paper. Every vertex pa
 canvas/decay-composited-frame-history | E3 D3 W2 F4 $1 | canvas trail composite motion field | Trails normally cost a stored pose history per mark. Never clear
 canvas/delay-binned-source-history | E2 D2 W2 F5 $4 | canvas field pointer motion generative | A field evaluated from the driver's current pose updates everywh
 canvas/density-terminated-raster | E1 D3 W3 F4 $2 | canvas texture image mask edge generative | A generated raster ends at a rectangle unless something is done 
@@ -51,6 +53,7 @@ canvas/eased-pointer-influence | E3 D2 W2 F5 $2 | shader interaction feel | Neve
 canvas/event-spawned-wavefront | E4 D2 W2 F4 $2 | canvas interaction wave ripple impulse click field | A click can disturb a generative field instead of triggering any
 canvas/facing-weighted-directional-pull | E3 D2 W3 F5 $3 | shader canvas pointer motion generative | Uniform displacement inflates a form; a form reaching toward som
 canvas/feature-scaled-sim-grid | neutral  $2 | canvas simulation performance resolution texture | Size a field simulation's grid by the smallest feature worth see
+canvas/foreignobject-dom-snapshot-texture | neutral  $3 | webgl texture dom svg rasterize fonts snapshot handoff | Live markup can become a texture without a screenshot library. D
 canvas/frame-gap-driver-trail | E3 D2 W2 F5 $2 | canvas pointer field influence sampling continuity | A field tested against the driver's position once per frame is s
 canvas/glyph-ramp-image-field | E2 D4 W2 F3 $4 | canvas type texture image ambient generative | Encode a photograph as a field of characters: draw it into an of
 canvas/graded-dispersion-lens-blur | E1 D2 W3 F5 $3 | canvas shader webgl blur chromatic dispersion media texture | Blur an image or video texture by position: project each fragmen

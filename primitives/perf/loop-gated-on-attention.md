@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,intersection-observer,visibility,battery,correctness]
 axes: none
 cost: 2
-seen: 102
+seen: 103
 requires: []
 conflicts: []
 completes: []
@@ -333,3 +333,13 @@ selector at all: loops read `animation-play-state: var(--loop-state, running)`,
 the root carries the tab-visibility value and each observed element overrides it
 with its own intersection. The fallback keeps everything running if the script
 never loads.
+
+A timer-driven sequence needs the same gate on its timeouts, not only its
+animations. Keep pause reasons in a set — hidden, hovered, offscreen — and act
+only when it flips between empty and non-empty. On pause, clear each timeout and
+store `due − now`; pause the running animations from
+`getAnimations({subtree: true})`, skipping transitions. On resume, re-arm with
+the remainder, so the beat lands where it would have.
+```js
+timers.forEach(t => { clearTimeout(t.id); t.remaining = Math.max(0, t.due - performance.now()) })
+```

@@ -4,7 +4,7 @@ category: timing
 tags: [motion,sequencing,choreography,entrance]
 axes: {energy: 3, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -39,3 +39,11 @@ const beat = (el, dur, hand = .6) => { el.animate(KF, { duration: dur, delay: t,
 ⚠ Overlapping beats that touch the same property fight — the later animation
 wins outright rather than blending. Overlap only across different properties, or
 across different elements.
+
+When a sequence is part script, part stylesheet, retime both halves from one
+rate. Publish it as a custom property that every CSS duration and delay divides
+by, and divide each scheduled gap in script by the same number; the two clocks
+cannot drift apart when the demo is tuned faster or slower. Rate 0.8–1.3.
+```css
+.pane { transition: transform calc(1.3s / var(--rate, 1)) var(--ease) }
+```

@@ -4,7 +4,7 @@ category: perf
 tags: [performance,third-party,analytics,loading,idle,correctness]
 axes: none
 cost: 2
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -43,3 +43,13 @@ const Effect = ok ? lazy(() => import('./ambient')) : null
 ⚠ Evaluate the gate after mount, not during render, or the server and the
 client disagree and the markup is thrown away. Subscribe to the query's
 `change` so a window dragged to a large display can still arm it.
+
+A heavy effect owned by one element can take that element's own intent as the
+trigger: arm the import on its first `pointerenter` or `focusin`, behind the
+capability query, and ship a static or CSS fallback that is already fully
+usable. Most readers never hover it and never pay for it.
+```js
+el.addEventListener('pointerenter', load, { once: true }); el.addEventListener('focusin', load, { once: true })
+```
+⚠ Set a disposed flag in cleanup and check it after the `await`, or a module
+that resolves late mounts onto a detached element.
