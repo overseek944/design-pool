@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,performance,motion,connector,architecture]
 axes: none
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -55,3 +55,9 @@ path.setAttribute('d', `M${pts[0].x},${pts[0].y} ` + segs.slice(0, n).join(' '))
 ⚠ Rebuild on resize only if `d` or the viewBox actually changed — user-space
 geometry is width-independent, so a table keyed to the path is not stale when
 the box is.
+
+Key the table by the `d` string itself and a return leg costs nothing: reverse
+a copy of the sampled array and run the same interpolator, so outbound and
+homeward travel share one measurement. Composite routes — spoke, hub, spoke —
+join as one `d` and sample once rather than chaining per-segment timers.
+60 samples covers a two-curve route at diagram scale.

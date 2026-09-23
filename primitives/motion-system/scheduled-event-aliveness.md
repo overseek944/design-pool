@@ -4,7 +4,7 @@ category: motion-system
 tags: [idle,loop,character,randomness,raf,ambient]
 axes: {energy: 3, density: 2, weight: 2, finish: 4}
 cost: 3
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -94,3 +94,14 @@ schedule(() => morph(pick(states), 1000,
 ⚠ The return leg must be cancellable and must end on the stored rest array, not
 on a re-derived one — an excursion interrupted halfway leaves the pose slightly
 off, and the error compounds over an afternoon.
+
+Where each event is a weighted binary outcome — pass or fail, hit or miss — the
+stride trick has nothing to vary and a free draw still produces runs of four
+that read as a broken demo. Keep the bias but cap the streak: count consecutive
+repeats of each outcome and force the other once the count reaches the cap.
+The ratio survives on average; the tail never shows. Bias 60–80%, cap 2–3.
+```js
+let ok = Math.random() < BIAS
+if (okRun >= CAP) ok = false; if (failRun >= CAP) ok = true
+ok ? (okRun++, failRun = 0) : (failRun++, okRun = 0)
+```

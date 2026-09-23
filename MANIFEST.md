@@ -1,6 +1,6 @@
 # Manifest
 
-1095 primitives. Format: `category/id | axes cost | tags | gist`
+1096 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -640,6 +640,7 @@ motion-system/observer-liveness-probe | neutral  $1 | intersection-observer reve
 motion-system/opacity-held-glass-entrance | neutral  $1 | motion-system reveal glass backdrop-filter entrance correctness | An entrance that fades a container in silently breaks any backdr
 motion-system/opaque-navigation-cover | E2 D1 W2 F5 $2 | motion navigation transition overlay accessibility correctness | Where View Transitions are unavailable or too coarse, cross a sc
 motion-system/origin-signed-entrance | E3 D2 W2 F5 $1 | motion tabs state custom-properties transition | A tab set whose panels all enter from the same side throws away 
+motion-system/outcome-routed-traveller | E3 D2 W2 F5 $2 | motion svg diagram connector feedback hub raf | A marker crossing a checkpoint can carry its verdict in the rout
 motion-system/overrun-gesture-loop | E3 D2 W2 F4 $2 | motion svg geometry pointer annotation generative | A target circled by a generated ellipse reads as a shape placed 
 motion-system/parameterised-path-travel | E3 D3 W1 F4 $2 | motion loop ambient diagram css-only | One keyframe animating offset-distance from 0% to 100% drives an
 motion-system/path-scrubbed-entrance | E3 D2 W2 F5 $3 | motion scroll motion-path choreography scrub | Give each element its own curve instead of a shared translate. A
