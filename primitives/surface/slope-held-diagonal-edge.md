@@ -4,7 +4,7 @@ category: surface
 tags: [surface,clip-path,edge,section,responsive,geometry]
 axes: {energy: 1, density: 2, weight: 3, finish: 4}
 cost: 2
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []

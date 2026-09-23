@@ -1,6 +1,6 @@
 # Manifest
 
-1047 primitives. Format: `category/id | axes cost | tags | gist`
+1050 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -499,6 +499,7 @@ media/event-sourced-audio-control | neutral  $1 | media audio state correctness 
 media/frame-announced-readiness | neutral  $2 | media iframe embed loading progressive-enhancement correctness | An iframe's load fires when its document parses, not when the ap
 media/frame-relayed-theme-token | neutral  $1 | media iframe embed theme custom-property postmessage architecture | Custom properties stop at a frame boundary, so an embedded scene
 media/frameless-alpha-artwork | E1 D2 W2 F3 $2 | media illustration assets transparency composition | Artwork exported on transparency with a feathered edge does not 
+media/host-mirrored-frame-route | neutral  $2 | media iframe embed history routing postmessage architecture | An embedded app has no address bar, so its views cannot be linke
 media/idle-hydrated-visible-media | neutral  $2 | media video performance bandwidth first-paint scheduling | Media already on screen at first paint cannot be approach-loaded
 media/ink-channel-probed-icon | neutral  $1 | icon svg media correctness currentcolor | An icon pasted from an arbitrary set carries its colour on one o
 media/integer-scaled-pixel-raster | E1 D2 W3 F2 $1 | media raster pixel-art image-rendering scale | Low-resolution raster art — pixel sprites, 1-bit marks, dithered
@@ -512,6 +513,7 @@ media/one-shot-cache-busted-retry | neutral  $1 | media error resilience image v
 media/optical-height-logo-row | neutral  $1 | media logos normalisation scale responsive | Supplied marks are drawn to different conventions — a wordmark f
 media/origin-conditional-sandbox | neutral  $1 | media iframe embed security correctness | A sandboxed iframe that is also allow-same-origin and served fro
 media/overscan-relaxed-plate | E2 D1 W3 F5 $2 | media image reveal scale motion observer | A plate that scales up on arrival rests at a non-integer factor 
+media/packed-bit-raster-inline | neutral  $2 | media raster bitmap pixel canvas recolor asset architecture | A 1-bit illustration need not be an image file. Pack it one bit 
 media/plane-sorted-defocus-field | E1 D3 W2 F5 $2 | depth blur defocus scatter composition decoration | A field of images scattered at different sizes still reads flat 
 media/predicate-tiered-video-encode | neutral  $2 | media video responsive performance bandwidth correctness | A <video> has no srcset and no sizes, so nothing picks an encode
 media/pseudo-element-pictogram-set | E1 D2 W2 F4 $2 | icon css-only pseudo-element tokens diagram | A set of small technical pictograms — a frame, a scatter, a cyli
@@ -719,6 +721,7 @@ reveal/amplitude-ramped-material-arrival | E2 D3 W2 F4 $2 | reveal canvas shader
 reveal/arc-window-overstroke | E3 D2 W3 F5 $2 | draw-on highlight canvas pulse path | A path being drawn reads as inert when the settled trail and the
 reveal/axis-swept-plot-window | E2 D2 W2 F5 $2 | reveal chart svg clip-path motion data | A line drawn on with stroke-dashoffset is revealed by arc length
 reveal/char-opacity-drift | E3 D4 W2 F5 $4 | type motion reveal ambient | Per-character with opacity + small y, will-change:opacity,transf
+reveal/coverage-stepped-mask-dissolve | E2 D3 W2 F3 $1 | reveal mask dither raster keyframes entrance halftone | An arrival can resolve like a raster filling in rather than a fa
 reveal/dimmed-predecessor-series | E2 D2 W2 F5 $1 | reveal chart comparison state svg data | When a plotted result is revised, do not swap the curve. Drop th
 reveal/edge-registered-arrival | E2 D1 W1 F4 $1 | reveal entrance box-shadow outline keyframes acknowledge one-shot | Mark a region's arrival at its boundary instead of moving its co
 reveal/flow-preserved-step-reveal | E3 D2 W2 F3 $1 | reveal text steps clip-path typing layout-safety | A left-to-right text reveal animated on width leaves normal flow

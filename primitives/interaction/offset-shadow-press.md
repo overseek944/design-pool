@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,state,depth,detail,border]
 axes: {energy: 3, density: 2, weight: 4, finish: 2}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
