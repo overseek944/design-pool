@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,field,ambient,technical,measurement,hierarchy]
 axes: {energy: 2, density: 2, weight: 1, finish: 5}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -39,3 +39,14 @@ layer.animate({ transform: ['translateY(-20px)', 'translateY(20px)'] },
 ```
 ⚠ A fixed shape drifting is not a signal changing — right for ambient texture,
 wrong wherever the traces pretend to be live data.
+
+The ensemble can resolve. Give each channel two parameter sets — its own, and
+one target shared by all — and interpolate every term by a single 0–1 progress:
+at 1 the traces coincide into one wave. Fade all but the promoted channel out
+on the same value and lerp its colour to the resolved hue, or overlapping
+strokes under a darkening blend sum to near-black at unison. Converge over
+2–5s, hold 1–3s, release.
+```js
+const p = lerpSet(c.own, shared, t)   // amp, freq, phase, speed
+c.opacity = c.promoted ? lerp(c.a, 1, t) : lerp(c.a, 0, t)
+```

@@ -4,7 +4,7 @@ category: timing
 tags: [motion,timing,rhythm,detail]
 axes: {energy: 3, density: 1, weight: 2, finish: 4}
 cost: 1
-seen: 22
+seen: 23
 requires: []
 conflicts: []
 completes: []
@@ -13,11 +13,11 @@ tension: []
 A sweep that should pass, rest, then pass again cannot get its rest from
 `animation-delay` — that delays the first iteration only, so every later pass
 runs back-to-back. Put the rest inside the keyframes: finish the travel at
-45–85% and repeat the end state at `to`, and the element parks out of frame for
+15–85% and repeat the end state at `to`, and the element parks out of frame for
 the remainder of each cycle. Duty cycle and period then tune independently.
 
 ```css
-.sheen { animation: sweep 6s ease-in-out infinite }   /* 4–9s */
+.sheen { animation: sweep 6s ease-in-out infinite }   /* 3.5–9s */
 @keyframes sweep { 0% { transform: translateX(0) }
                    60%, to { transform: translateX(400%) } }
 ```

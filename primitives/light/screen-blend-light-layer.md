@@ -4,7 +4,7 @@ category: light
 tags: [effect,blend,compositing,dark]
 axes: {energy: 3, density: 3, weight: 3, finish: 4}
 cost: 3
-seen: 18
+seen: 19
 requires: []
 conflicts: []
 completes: []

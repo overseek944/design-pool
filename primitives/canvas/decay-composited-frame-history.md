@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,trail,composite,motion,field]
 axes: {energy: 3, density: 3, weight: 2, finish: 4}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []

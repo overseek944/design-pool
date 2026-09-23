@@ -1,6 +1,6 @@
 # Manifest
 
-1050 primitives. Format: `category/id | axes cost | tags | gist`
+1052 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -452,6 +452,7 @@ light/gradient-through-text | E3 D2 W4 F3 $2 | color type effect | background-cl
 light/offframe-apex-ray-fan | E2 D3 W2 F4 $1 | gradient conic ground atmosphere ambient cheap | A radial wash gives light a direction but no structure. A repeat
 light/offscreen-anchored-wash | E1 D2 W2 F4 $1 | gradient ground atmosphere ambient color cheap | A radial gradient centred inside its box shows its hot core and 
 light/pointer-anchored-surface-light | E2 D2 W2 F5 $2 | light pointer hover gradient custom-properties surface | Let a panel light where the pointer is rather than uniformly. On
+light/radius-morphed-drift-blob | E2 D3 W3 F4 $3 | ambient blob organic morph border-radius blur keyframes dark | A blurred lamp that only translates reads as a disc on rails. Ru
 light/relit-state-fill | E2 D2 W3 F4 $1 | light gradient hover control surface | A gradient-filled control usually signals hover by getting brigh
 light/screen-blend-light-layer | E3 D3 W3 F4 $3 | effect blend compositing dark | mix-blend-mode: screen on an overlay makes it add light and drop
 light/self-derived-bloom-understudy | E2 D2 W3 F5 $2 | glow bloom filter svg line-art decoration | A glow authored as its own asset stops matching the artwork the 
@@ -499,6 +500,7 @@ media/event-sourced-audio-control | neutral  $1 | media audio state correctness 
 media/frame-announced-readiness | neutral  $2 | media iframe embed loading progressive-enhancement correctness | An iframe's load fires when its document parses, not when the ap
 media/frame-relayed-theme-token | neutral  $1 | media iframe embed theme custom-property postmessage architecture | Custom properties stop at a frame boundary, so an embedded scene
 media/frameless-alpha-artwork | E1 D2 W2 F3 $2 | media illustration assets transparency composition | Artwork exported on transparency with a feathered edge does not 
+media/host-cued-frame-playback | neutral  $2 | media iframe embed postmessage intersection-observer playback scroll architecture | An animation isolated in a frame cannot see the host's scroll, s
 media/host-mirrored-frame-route | neutral  $2 | media iframe embed history routing postmessage architecture | An embedded app has no address bar, so its views cannot be linke
 media/idle-hydrated-visible-media | neutral  $2 | media video performance bandwidth first-paint scheduling | Media already on screen at first paint cannot be approach-loaded
 media/ink-channel-probed-icon | neutral  $1 | icon svg media correctness currentcolor | An icon pasted from an arbitrary set carries its colour on one o

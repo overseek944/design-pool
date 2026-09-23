@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,performance,depth,particles,batching,quantise]
 axes: none
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []

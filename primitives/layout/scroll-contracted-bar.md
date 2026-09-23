@@ -4,7 +4,7 @@ category: layout
 tags: [header,scroll,sticky,chrome]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 38
+seen: 39
 requires: []
 conflicts: []
 completes: []
@@ -198,3 +198,12 @@ new IntersectionObserver(([e]) => bar.dataset.overHero = e.isIntersecting,
 ```
 ⚠ Default the attribute to the solid state in markup, or a page without the hero
 — or without JS — keeps the transparent bar over light content.
+
+Invert the ground instead: blur the bar while it floats over the hero art, and
+switch it to an opaque plate with no filter once the hero has passed. The blur
+is spent only where something moving sits under the links; for the rest of the
+page there is no compositor layer to hold. Hero alpha 0.2–0.4, blur 16–24px.
+```css
+.bar { background: rgb(var(--ink) / .3); backdrop-filter: blur(20px) }
+.bar[data-past-hero] { background: rgb(var(--ink)); backdrop-filter: none }
+```
