@@ -1,6 +1,6 @@
 # Manifest
 
-1052 primitives. Format: `category/id | axes cost | tags | gist`
+1053 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -237,6 +237,7 @@ interaction/inline-target-floor | neutral  $1 | accessibility interaction correc
 interaction/instrumented-console-interface | neutral  $1 | instrumentation analytics architecture progressive-enhancement | A page can carry a second interface addressed at nobody who scro
 interaction/intent-frozen-ambient-scene | neutral  $1 | interaction motion hover focus correctness has | An ambient scene carrying one real control makes that control a 
 interaction/keyframe-gated-hit-target | neutral  $1 | accessibility pointer-events visibility entrance correctness keyframes | A delayed entrance leaves its controls clickable while still inv
+interaction/lagged-setpoint-steered-rig | E3 D2 W2 F4 $2 | pointer playable manipulation lerp cursor demo | A figure the reader can operate — a gantry, a gripper, a stylus 
 interaction/legend-as-series-filter | E2 D2 W2 F5 $2 | legend filter state accessibility chart | A key that only names the series is a second thing to read. Make
 interaction/lock-gated-cross-tab-mutation | neutral  $3 | state correctness concurrency architecture async | Some mutations must not run twice at once across a user's open t
 interaction/margin-cancelled-hit-area | neutral  $1 | interaction touch accessibility hit-area layout correctness | A link in a dense bar cannot reach the 44px touch floor by growi

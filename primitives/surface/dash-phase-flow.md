@@ -4,7 +4,7 @@ category: surface
 tags: [svg,dash,motion,connector,diagram,precision]
 axes: {energy: 2, density: 2, weight: 1, finish: 5}
 cost: 1
-seen: 33
+seen: 34
 requires: []
 conflicts: []
 completes: []
@@ -150,3 +150,13 @@ The two-places drift is fixable on SVG too: publish the dash as one custom
 property and derive the offset from it — `stroke-dasharray: var(--dash) var(--dash)`
 against `to { stroke-dashoffset: calc(var(--dash) * -2) }` is always exactly one
 period, so a selection ring can be retuned 4–10px without touching the keyframe.
+
+A single dot crossing a short DOM link needs no dash at all, but it does need
+soft terminals: ramp opacity in over the first 8–15% of the run and out over
+the last, so the traveller never pops into existence on a node's edge. Drive it
+with `translate` against a known width, not `left` — animating an offset
+property re-lays-out every frame. 0.8–1.4s per crossing.
+```css
+@keyframes cross { 0% { opacity: 0; translate: 0 } 10%, 90% { opacity: 1 }
+                   to { opacity: 0; translate: var(--run) } }
+```

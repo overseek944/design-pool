@@ -4,7 +4,7 @@ category: interaction
 tags: [pointer,touch,fallback,ambient,correctness,architecture]
 axes: none
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
