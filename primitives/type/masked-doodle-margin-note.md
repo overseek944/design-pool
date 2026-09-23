@@ -4,7 +4,7 @@ category: type
 tags: [type,annotation,handwritten,mask,callout,informal]
 axes: {energy: 2, density: 2, weight: 2, finish: 2}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []

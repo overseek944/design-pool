@@ -1,6 +1,6 @@
 # Manifest
 
-1173 primitives. Format: `category/id | axes cost | tags | gist`
+1175 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -563,6 +563,7 @@ media/idle-hydrated-visible-media | neutral  $2 | media video performance bandwi
 media/ink-channel-probed-icon | neutral  $1 | icon svg media correctness currentcolor | An icon pasted from an arbitrary set carries its colour on one o
 media/integer-scaled-pixel-raster | E1 D2 W3 F2 $1 | media raster pixel-art image-rendering scale | Low-resolution raster art — pixel sprites, 1-bit marks, dithered
 media/interval-held-still-interlude | E1 D2 W3 F4 $1 | media video ambient cycle hero css-animation | A short loop is wallpaper by its second pass. Break it on a peri
+media/laddered-wrapper-fullscreen | neutral  $2 | media video fullscreen popover interaction accessibility | Fullscreen the player's wrapper, not the <video>, so custom chro
 media/luminance-keyed-alpha-matte | E1 D2 W2 F5 $3 | media filter svg alpha image video compositing | Media shot against a flat light ground can be keyed to transpare
 media/mask-swap-over-shared-paint | E2 D2 W2 F4 $2 | mask icon gradient media state | When a family of glyphs must share one fill — a gradient, a vide
 media/mid-clip-seeked-reveal | E2 D2 W2 F5 $1 | media video hover seek poster still reveal loop | A clip mounted on hover over its own still usually opens on a fa
@@ -1013,6 +1014,7 @@ surface/receding-bar-plate | E2 D1 W2 F4 $1 | surface chrome scroll opacity acce
 surface/region-bound-hatch-pattern | E1 D3 W1 F5 $1 | svg pattern texture hatch diagram schematic | CSS gradients hatch boxes; a schematic needs the hatch inside an
 surface/restated-route-overlay | E2 D3 W2 F5 $2 | svg diagram path emphasis stroke gradient | Marking one route through a branching diagram by restyling the s
 surface/rim-banded-geometry-lens | E1 D3 W3 F5 $4 | glass backdrop-filter svg-filter refraction sdf canvas edge | Glass thick enough to refract bends light at its edge, not acros
+surface/rim-weighted-backdrop-blur | E1 D2 W3 F5 $2 | surface glass blur backdrop-filter mask rim controls | Thick glass is clear in the middle and smeared at the edge. Fake
 surface/root-split-overscroll-ground | neutral  $1 | ground scroll overscroll theme correctness | Paint the root and the body separately. The root's background fi
 surface/rotating-conic-border | E4 D3 W3 F4 $3 | surface border motion svg | An animated gradient border without a pseudo-element hack: an SV
 surface/rounded-tile-ground | E1 D2 W2 F4 $1 | ground grid tile gradient panel structure backdrop | A soft gradient panel reads as a flat wash. Partition it into a 

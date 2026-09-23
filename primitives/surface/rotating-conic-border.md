@@ -4,7 +4,7 @@ category: surface
 tags: [surface,border,motion,svg]
 axes: {energy: 4, density: 3, weight: 3, finish: 4}
 cost: 3
-seen: 34
+seen: 35
 requires: []
 conflicts: []
 completes: [overflow-visible-for-glow-bleed]
@@ -188,3 +188,10 @@ just that edge's colours, an active-row marker with the ramp's direction built i
 ```
 ⚠ `border-image` ignores `border-radius` — square corners only — and does not
 interpolate on/off; fade the element or an overlay, not the border.
+
+Variant — transition the registered angle instead of looping it. The rim light
+swings 40–60° on hover over 0.4–0.6s and settles, so the edge answers the
+pointer rather than idling. One transition, no animation running at rest.
+```css
+.ctl::after { transition: --a .5s ease } .ctl:hover::after { --a: -125deg }
+```

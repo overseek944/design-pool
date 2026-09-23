@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,focus,forms,input,correctness,keyboard]
 axes: none
 cost: 1
-seen: 8
+seen: 9
 requires: []
 conflicts: []
 completes: []
@@ -100,3 +100,9 @@ input:checked:focus-visible { box-shadow: inset 0 0 0 3px var(--paper),
 colors strips background and shadow both, so the checked state vanishes
 entirely — restore it under `forced-colors: active` with a border or an
 `::after` glyph, which is the one case the painted proxy above still wins.
+
+For a full-width divider (a before/after wipe), overscan the range by half a
+thumb on each side — `left: calc(var(--thumb) / -2); width: calc(100% + var(--thumb))`
+— so the thumb's centre, not its edge, spans 0–100% and value maps 1:1 to the
+split. A horizontal-only drag wants `touch-action: pan-y`, not `none`, so the page
+still scrolls vertically over it. Thumb 40–48px.
