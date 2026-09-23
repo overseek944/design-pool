@@ -4,7 +4,7 @@ category: type
 tags: [type,display,contrast,accent,accessibility,ornament]
 axes: {energy: 1, density: 2, weight: 4, finish: 4}
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -81,3 +81,14 @@ load-bearing here — without it the halo eats the contour it exists to protect.
 a filled region, a photograph, an inverted band. Scope it to labels that sit on
 the drawing's own paper, and give the text a real `fill` first so an engine
 without `-webkit-text-stroke` still shows the label.
+
+The same rescue carries to a highlighted series in a chart. A pale high-chroma
+line fails against a light plot, so draw it twice from one `d`: an ink casing
+underneath, 1.8–2.5× the width, and the accent on top. The series keeps its hue,
+gains an edge on every ground it crosses, and outranks the plain hairlines of
+the other series without a second colour.
+```svg
+<path d="…" stroke="var(--ink)"    stroke-width="4" fill="none"/>
+<path d="…" stroke="var(--accent)" stroke-width="2" fill="none"/>
+```
+⚠ Round both joins and caps, or the casing pokes past the core at every vertex.

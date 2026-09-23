@@ -4,7 +4,7 @@ category: type
 tags: [indicator,mono,glyph,loading,state,motion]
 axes: {energy: 3, density: 1, weight: 2, finish: 3}
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -71,3 +71,16 @@ in any face. Use n = glyph count + 1 and a period of 1.2–2s.
 @media (prefers-reduced-motion: reduce) { .dots { clip-path: none; animation: none } }
 ```
 ⚠ Under reduced motion, clear the clip as well as the animation, or the dots stay clipped to nothing.
+
+The `content` form also runs once rather than looping: a status label stepping
+through named stages ("Drafting…" → "Publishing…" → done) with `step-end` and
+`both`, so it parks on the final word and can take the success hue in that last
+stop. Put the *final* state in the element's real text at `font-size: 0` and
+animate only the pseudo-element — assistive tech and no-CSS readers get the
+outcome, not a stage — provided the pseudo is silenced with empty alt text, or
+it is announced too. Stages 3–4 over 1.5–2.5s.
+```css
+.status { font-size: 0 } .status::after { content: "Drafting…" / ""; font-size: .6rem;
+  animation: stages 2s step-end both }
+@keyframes stages { 53% { content: "Publishing…" } 70%, to { content: "Done"; color: var(--ok) } }
+```

@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,particles,burst,physics,motion]
 axes: {energy: 5, density: 3, weight: 2, finish: 3}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
