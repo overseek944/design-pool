@@ -4,7 +4,7 @@ category: layout
 tags: [layout,scroll,sticky,depth,css-only,section]
 axes: {energy: 2, density: 1, weight: 3, finish: 4}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: [overflow-clip-over-hidden]
@@ -64,3 +64,15 @@ no measured trigger. Track 170–220vh for one viewport of dwell.
 ⚠ Once scrolled past, the cover is still in the tree — set `aria-hidden` and
 `inert` on it past a threshold, with hysteresis, or screen readers announce
 the hero twice.
+
+The `position: fixed` form — panel pinned to the viewport bottom, content given
+an equal `margin-bottom` and a deep drop shadow on its rounded lip — needs no
+wrapper, but the margin and the panel height become two numbers that must move
+together at every breakpoint. Put both on one custom property.
+```css
+:root    { --under-h: clamp(560px, 70svh, 1100px) }
+.content { position: relative; z-index: 1; margin-bottom: var(--under-h) }
+.under   { position: fixed; inset: auto 0 0; min-height: var(--under-h) }
+```
+⚠ A fixed panel is painted under the whole document at all times, and an
+overflowing one is unreachable — cap its content, never its height.

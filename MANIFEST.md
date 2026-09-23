@@ -1,6 +1,6 @@
 # Manifest
 
-1060 primitives. Format: `category/id | axes cost | tags | gist`
+1061 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -447,6 +447,7 @@ light/blend-doubled-headline | E2 D2 W4 F5 $3 | type blend legibility contrast c
 light/blurred-conic-hue-bloom | E1 D2 W2 F4 $2 | gradient glow bloom hue conic decoration ambient | Radial lamps give one hue each and seam where they meet. A conic
 light/broadcast-light-source | E2 D2 W2 F5 $3 | light gradient custom-property ambient architecture | A panel lit at the pointer has one lamp, and only while a pointe
 light/co-located-pulse-lamp | E3 D2 W3 F4 $3 | light 3d webgl pulse alert emissive glow | An alert in a lit 3D scene that only raises its own emissive lig
+light/counter-phased-lamp-pair | E2 D2 W3 F4 $2 | glow drift halo ambient keyframes lamp | One drifting lamp behind a mark pulls the glow off-centre every 
 light/counter-rotated-specular-layer | E2 D2 W3 F5 $2 | light gradient rotation material 3d | An object with its highlight painted into its own background spi
 light/differential-scale-rim-glint | E2 D2 W3 F5 $2 | light rim mask layers ambient metal 3d | A form cut from a single silhouette has no edge for light to cat
 light/distance-derived-border-light | E2 D2 W3 F5 $4 | light shader sdf glow border webgl | One signed distance to the element's rounded rectangle pays for 
