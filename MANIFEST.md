@@ -1,6 +1,6 @@
 # Manifest
 
-1089 primitives. Format: `category/id | axes cost | tags | gist`
+1091 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -18,6 +18,7 @@ canvas/baked-cell-frame-stream | neutral  $4 | canvas animation precomputed payl
 canvas/band-split-spectral-displacement | E3 D3 W2 F4 $3 | canvas audio audio-reactive fft generative data | A visual driven by one loudness value pulses; three bands make i
 canvas/bisected-heightfield-march | neutral  $4 | canvas shader generative performance projection | A heightfield is not a distance field, so sphere tracing has not
 canvas/borrowed-scene-constructors | neutral  $2 | canvas 3d architecture interop bundle | A wrapper that owns the renderer — a globe, a model viewer, a 3D
+canvas/box-bounded-volume-raymarch | E2 D3 W3 F5 $4 | canvas shader webgl volume 3d-texture raymarch scientific data | A scanned or simulated volume can render as translucent matter, 
 canvas/bucketed-depth-order | neutral  $2 | canvas performance depth particles batching quantise | Painter's order on a 2D context normally means sorting every mar
 canvas/canvas-behind-dom-not-instead-of-it | neutral  $2 | canvas architecture accessibility | Absolutely-positioned inset-0 canvas with pointer-events-none un
 canvas/cell-jittered-scatter-grid | E1 D3 W2 F3 $1 | canvas scatter field layout responsive generative | Scattering marks from two random draws gives voids and knots, an
@@ -742,6 +743,7 @@ perf/single-read-state-fanout | neutral  $1 | performance scroll listener state 
 perf/stall-detected-loop-rearm | neutral  $1 | performance correctness lifecycle loop architecture | A render loop driven by anything other than requestAnimationFram
 perf/stride-pruned-decorative-field | neutral  $1 | perf responsive decoration correctness | A decorative field — dots, marks, ticks, labels — that costs too
 perf/stylesheet-failure-reload-guard | neutral  $2 | correctness performance progressive-enhancement architecture cls | A hashed stylesheet that 404s after a deploy paints the whole do
+perf/transferred-buffer-worker-decode | neutral  $2 | performance worker binary loading webgl correctness | A raw binary asset — voxel data, a point cloud, packed mesh arra
 perf/velocity-scaled-preload-margin | neutral  $2 | perf lazy-load scroll images loading | A fixed lazy-load margin is tuned for one scroll speed. Under a 
 perf/will-change-on-split-children | neutral  $1 | motion performance promotion | Split text creates dozens of nodes animated simultaneously; with
 reveal/amplitude-ramped-material-arrival | E2 D3 W2 F4 $2 | reveal canvas shader grain texture entrance | A generated surface fading in from zero opacity arrives as a rec

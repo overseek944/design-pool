@@ -4,7 +4,7 @@ category: type
 tags: [type,display,headline,hierarchy,contrast]
 axes: {energy: 1, density: 2, weight: 4, finish: 5}
 cost: 1
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
