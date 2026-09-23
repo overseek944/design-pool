@@ -4,7 +4,7 @@ category: reveal
 tags: [reveal,entrance,3d,type,blur,motion]
 axes: {energy: 3, density: 1, weight: 2, finish: 5}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -34,3 +34,7 @@ same strong ease-out; the size of the type is what pays for the longer run.
 ```
 ⚠ A filled `blur(0)` end state is still a filter: the block keeps a stacking
 context and traps fixed descendants. Let the base style own the rest state.
+
+A flat variant for a word swapping inside a heading: `skewY(3–6deg)` in place of
+the perspective hinge, same rise and blur. It shears rather than tips, so it
+needs no perspective context and stays in the line's own plane.

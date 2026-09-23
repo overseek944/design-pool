@@ -4,7 +4,7 @@ category: surface
 tags: [overlay,scanline,texture,video,register,decoration]
 axes: {energy: 1, density: 3, weight: 2, finish: 2}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -43,3 +43,15 @@ Static and nearly subliminal, the ruling marks a still as sensor output rather
 than photography: light 1px lines on a 3px period, `mix-blend-mode: overlay`,
 layer opacity .04–.08, per figure rather than across the page. At that dose it
 is felt, not seen, and needs no brightness compensation.
+
+Reduced to a single line it stops being texture and reads as *analysis in
+progress*: one 2–3px bar, a light-core horizontal gradient with a matching
+glow, travelling top-to-bottom and back over one tile of media. Stops at
+10–20% and 75–90% keep it off the frame edges. 2–3s ease-in-out, only while the
+item is in its processing state.
+```css
+.scan { position: absolute; inset-inline: 0; height: 2px; box-shadow: 0 0 10px #fff;
+  background: linear-gradient(90deg, #0000, #fff, #0000); animation: scan 2.4s ease-in-out infinite }
+@keyframes scan { 0%, to { top: 12% } 50% { top: 78% } }
+```
+⚠ Animating `top` runs layout — one bar per tile, few tiles; use `translate` for many.

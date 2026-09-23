@@ -4,7 +4,7 @@ category: surface
 tags: [pattern, texture, grid, nth-child, dots]
 axes: {energy: 1, density: 4, weight: 2, finish: 4}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -40,3 +40,11 @@ random seed does not. Delay index 6–10, duration index 4–6, durations spread
 never will. Use it on an endless idle, and drive anything that must resolve
 from one clock. Keep the member count off the product of the two moduli, or the
 pattern lines up with the set exactly once and the trick is visible.
+
+Where the set wants scattered phases rather than a walking one, multiply the
+index by a prime and take it modulo the period: `(i × p) % P` visits every slot
+once per `P` members, so neighbours land far apart in phase and the pulse
+reads as independent cells, not a wave. p 97–211 against P = the loop length in ms.
+```js
+`animation-delay:${(i * 197) % 2400}ms`   /* p must not divide P */
+```

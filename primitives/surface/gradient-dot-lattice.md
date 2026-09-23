@@ -4,7 +4,7 @@ category: surface
 tags: [surface,texture,pattern,blueprint,cheap]
 axes: {energy: 1, density: 3, weight: 1, finish: 4}
 cost: 1
-seen: 55
+seen: 56
 requires: []
 conflicts: []
 completes: []
@@ -174,3 +174,15 @@ colour so it reads as grain, not polka dot.
 ```css
 --dots: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12'%3E%3Crect width='2' height='2' fill='%23e8e7e6'/%3E%3C/svg%3E");
 ```
+
+Animate a two-pitch dot stack by moving each layer's `background-position`
+exactly one of its own tiles in a single linear keyframe. The loop is seamless
+with no oversized box, and since both layers share one duration the coarse pitch
+travels faster than the fine one in proportion to their ratio — parallax from one
+declaration. Pitch ratio 2–4×, cycle 14–30s.
+```css
+.drift { background-size: 24px 24px, 8px 8px; animation: drift 18s linear infinite }
+@keyframes drift { to { background-position: 24px 24px, 8px 8px } }
+```
+⚠ Repaints the whole box every frame — confine it to a hero band and stop it
+under `prefers-reduced-motion`.

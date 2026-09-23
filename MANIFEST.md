@@ -1,6 +1,6 @@
 # Manifest
 
-1104 primitives. Format: `category/id | axes cost | tags | gist`
+1105 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -603,6 +603,7 @@ motion-system/counter-scaled-camera-overlay | neutral  $1 | camera transform ove
 motion-system/coverage-field-threshold-wave | E3 D4 W2 F4 $2 | field grid threshold cells shimmer generative | A field of cells carrying a coverage value — how much of some fo
 motion-system/deadline-bounded-animated-close | neutral  $1 | motion correctness state architecture | A state change that waits on an animation never happens when the
 motion-system/decaying-change-mark | E3 D1 W2 F4 $1 | motion-system feedback live-data emphasis | Marking a value that just changed with styling it keeps turns an
+motion-system/descending-stamp-entrance | E3 D1 W4 F3 $1 | motion entrance keyframes scale rotate badge verdict | A mark that rises into place was placed; one that arrives oversi
 motion-system/differential-scale-depth-stack | E3 D2 W3 F5 $2 | motion transform scale depth parallax scroll | Depth on a push needs no perspective and no Z. Stack co-located 
 motion-system/dispersal-routed-morph | E4 D3 W2 F4 $3 | morph rearrange burst transition marks | A field of marks interpolated straight into a new arrangement re
 motion-system/distance-cued-focus-wheel | E2 D2 W2 F5 $2 | list rotation blur depth mask custom-property | A rotating list that only fades its neighbours reads flat. Stack
