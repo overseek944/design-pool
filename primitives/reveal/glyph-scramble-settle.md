@@ -4,7 +4,7 @@ category: reveal
 tags: [type,reveal,motion,technical,text]
 axes: {energy: 4, density: 3, weight: 2, finish: 3}
 cost: 2
-seen: 14
+seen: 15
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -94,3 +94,15 @@ groups.forEach((_, i) => setTimeout(() => locked = i + 1, 240 + i * 170))
 ```
 ⚠ Pair it with `font-variant-numeric: tabular-nums`, or a digit-only churn still
 jitters horizontally in a proportional face.
+
+Scramble can be the *leading edge* of a type-on rather than a settle over a held
+string: reveal characters left to right over 2–4s, render the next 1–3 slots as
+random glyphs, and render nothing past them, with an `aria-hidden` sizer copy
+holding the final wrap so nothing reflows. After it lands, the same routine
+answers hover locally — the character under the pointer and 1–3 either side
+re-noise while it rests there, and settle when it leaves.
+```js
+const shown = i < head, noisy = i >= head && i < head + 2
+return shown ? ch : noisy ? rand() : null   // null: not yet written
+```
+⚠ Under `reduce` jump straight to the full string and skip the hover churn.

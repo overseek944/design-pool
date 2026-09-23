@@ -4,7 +4,7 @@ category: surface
 tags: [scrim,imagery,contrast,gradient,accessibility]
 axes: {energy: 1, density: 2, weight: 3, finish: 5}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []

@@ -1,6 +1,6 @@
 # Manifest
 
-1124 primitives. Format: `category/id | axes cost | tags | gist`
+1125 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -295,6 +295,7 @@ interaction/playhead-lit-legend-rows | E2 D2 W2 F5 $2 | legend chart dataviz swe
 interaction/pointer-borne-rule-sight | E3 D2 W1 F5 $2 | interaction pointer overlay hover transform detail | State the pointer as rules, not as a mark: hairlines longer than
 interaction/pointer-held-counterfactual | E2 D3 W2 F4 $2 | interaction hover data table comparison scenario counter | A figure can show its own alternative instead of a second chart.
 interaction/pointer-pulled-control | E3 D1 W2 F4 $1 | interaction pointer hover spring overshoot cta affordance | A control that leans toward the pointer while hovered, then spri
+interaction/pointer-seeded-inverse-flood | E3 D1 W3 F4 $1 | interaction hover button clip pointer invert | An outlined control can flood to its inverse from wherever the p
 interaction/pointer-transparent-copy-layer | neutral  $1 | interaction pointer accessibility layout correctness | Copy laid over a background that reacts to the pointer swallows 
 interaction/pre-hydration-nested-link | neutral  $2 | accessibility links hydration progressive-enhancement correctness | A card that navigates but contains its own link cannot be an anc
 interaction/prose-doubled-key-chord | neutral  $1 | accessibility correctness navigation detail state | A shortcut drawn as keycaps is a picture of a gesture. Assistive
