@@ -1,6 +1,6 @@
 # Manifest
 
-1098 primitives. Format: `category/id | axes cost | tags | gist`
+1099 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -174,6 +174,7 @@ color/sequence-value-ramp | E1 D2 W3 F4 $1 | color hierarchy surface sequence co
 color/status-triad-tokens | neutral  $1 | color tokens accessibility contrast correctness state | A status is three tokens, not one, because the same hue is asked
 color/stepped-hue-run-swatches | E2 D2 W3 F4 $1 | color palette accent divider legend swatch | An ordered run of 4–7 neighbouring hues, spread over roughly 90–
 color/theme-shifted-series-window | neutral  $2 | color tokens theming data chart contrast correctness | A series palette tuned on paper goes muddy against ink, and inve
+color/tint-overshoot-arrival | E3 D2 W2 F4 $1 | color entrance overshoot keyframes indicator tint | Overshoot need not be geometric. A mark that arrives from a mute
 color/transform-bracketing-hue-pair | E1 D2 W2 F5 $1 | color diagram semantics pipeline hue accessibility | A pipeline figure whose input and output look alike asks the rea
 color/utility-scale-token-reclamation | neutral  $2 | color tokens theming architecture correctness | A codebase committed to a utility framework has its palette froz
 color/worst-case-ground-ink | neutral  $1 | color contrast accessibility icon correctness | A mark handed to a surface you do not own — a favicon in the tab

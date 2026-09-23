@@ -4,7 +4,7 @@ category: type
 tags: [type,polish]
 axes: none
 cost: 1
-seen: 109
+seen: 110
 requires: []
 conflicts: []
 completes: []
