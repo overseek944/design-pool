@@ -1,6 +1,6 @@
 # Manifest
 
-1141 primitives. Format: `category/id | axes cost | tags | gist`
+1142 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -212,6 +212,7 @@ interaction/crawler-excluded-param-carry | neutral  $1 | links navigation analyt
 interaction/cross-context-preference-sync | neutral  $1 | theme preferences storage correctness accessibility | A stored preference is a fact about the reader, not about one ta
 interaction/cross-device-action-handoff | neutral  $2 | interaction cta progressive-enhancement accessibility responsive | Where the thing on offer can only be used on a device class the 
 interaction/cursor-tracked-vanishing-point | E3 D3 W2 F5 $3 | interaction pointer 3d depth field transform hover | Tiles pushed toward the reader on Z all shear toward the contain
+interaction/debounced-save-acknowledgement | E1 D1 W1 F4 $1 | interaction form input feedback state autosave status | A field that saves itself needs a status that is quiet while typ
 interaction/declared-quiet-region | neutral  $1 | interaction pointer architecture legibility opt-out correctness | A pointer-driven background sits under the whole document and di
 interaction/destination-miniature-menu-card | E1 D3 W2 F5 $2 | navigation menu mega-menu preview mock recognition card | In a menu of product destinations, a name plus one line of copy 
 interaction/dimension-coded-position-dot | E2 D2 W2 F5 $1 | interaction state indicator accessibility carousel | Let the active item in a position indicator change size, not onl

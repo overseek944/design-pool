@@ -4,7 +4,7 @@ category: motion-system
 tags: [keyframes,loop,dots,typing,pending,chat,mock,stagger]
 axes: {energy: 2, density: 1, weight: 1, finish: 4}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -22,3 +22,7 @@ on mount instead of all three popping together. Period 1.2–1.6s, peak at 35–
   animation-delay: calc(-.32s + .16s * var(--i)) }
 ```
 ⚠ Reduced motion: static dots at full scale — the zero rest shows nothing. Add a text alternative.
+
+Variant: rest the dots *on*, not at zero — scale .75–.85 and opacity .25–.4 at
+rest, full at the peak. The wave is quieter, the row is always legible, and the
+reduced-motion branch is simply the rest keyframe with no animation.
