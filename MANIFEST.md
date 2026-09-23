@@ -1,6 +1,6 @@
 # Manifest
 
-1093 primitives. Format: `category/id | axes cost | tags | gist`
+1094 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -771,6 +771,7 @@ reveal/streamed-chunk-arrival | E2 D2 W1 F4 $1 | reveal streaming text entrance 
 reveal/token-indexed-reading-front | E2 D2 W3 F4 $2 | type scroll progress reveal colour | Text that inks in as it is read cannot be a gradient sweep: a gr
 reveal/torn-wrapper-reveal | E5 D2 W3 F3 $2 | reveal entrance sequence keyframes reward | Something given rather than loaded earns an opening: destroy the
 reveal/trailing-mask-sweep | E3 D3 W2 F4 $2 | reveal mask scan grid sweep technical | Reveal a field — a measurement grid, a texture, a dot matrix — b
+reveal/weight-settled-figure-entrance | E2 D2 W2 F5 $1 | svg stroke reveal chart entrance geometry | A line figure — a grid, a radar web, a diagram frame — can land 
 reveal/word-mask-variant | E4 D3 W3 F4 $2 | type motion reveal | Same nested-mask structure at word granularity (inline-block on 
 scale/absence-conditioned-child-default | neutral  $1 | tokens specificity component-api utility cascade correctness | A component wants to size the icons and rules handed to it, then
 scale/breakpoint-fallback-chain | neutral  $2 | tokens responsive architecture components css | Let a caller pass per-breakpoint values as custom properties and

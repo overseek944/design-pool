@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,accessibility,required]
 axes: none
 cost: 1
-seen: 104
+seen: 105
 requires: []
 conflicts: []
 completes: []
@@ -296,3 +296,12 @@ the motion should go, and what remains has to be recomposed to stand alone.
 ```
 ⚠ Only for decoration that degrades to nothing. Anything the narrow reader still
 needs must keep a still form in the same branch, not be hidden by it.
+
+Where an animation *is* the element's lifetime — a confirmation pill that fades
+in, holds and fades out in one keyframe with `forwards` — neither cancelling nor
+collapsing is right: one leaves it on screen, the other flashes it. Swap only
+`animation-name` under `reduce` to an opacity-only twin with identical stops, so
+duration, hold and exit survive and only the travel goes.
+```css
+@media (prefers-reduced-motion: reduce) { .pill { animation-name: pill-still } }
+```
