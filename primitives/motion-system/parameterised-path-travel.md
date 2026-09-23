@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,loop,ambient,diagram,css-only]
 axes: {energy: 3, density: 3, weight: 1, finish: 4}
 cost: 2
-seen: 14
+seen: 15
 requires: []
 conflicts: []
 completes: []
@@ -88,3 +88,15 @@ el.style.setProperty('--route', `path("${d}")`)
 ⚠ Observe every box the route touches, not only the wrapper — a sibling that
 reflows inside an unchanged width fires nothing on the container, and the path
 goes on pointing at where the box used to be.
+
+Where the routes are wiring — right-angle traces feeding a chip or bus — a
+linear clock reads as fluid, not signal. Give the shared keyframe a hold-then-
+dash curve instead: the traveller idles near the origin, then fires the length
+of the trace and lands. Stagger by setting each delay equal to a different
+duration, 3–6s, so dispatches never sync.
+```css
+.packet { offset-path: var(--route); animation: travel var(--dur) infinite
+          cubic-bezier(.7, 0, .05, 1) var(--delay) }   /* x1 .6–.8, x2 0–.1 */
+```
+⚠ This is the easing the parameter-shaping note above excludes — pick one per
+route, never both.

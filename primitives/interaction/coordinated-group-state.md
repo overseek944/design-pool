@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,surface,hover]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 27
+seen: 28
 requires: []
 conflicts: []
 completes: []
@@ -140,3 +140,16 @@ item to a diagram node, a caption to the layer it names.
 on the remote trigger in the same list — and the link must exist in the
 accessibility tree too (`aria-controls`, or a name that repeats the target's),
 because nothing about a `:has()` pairing reaches a screen reader.
+
+Where the parts are a loose cluster — icons around a mark — give each one two
+coordinates as custom properties, a resting offset and a hover offset, and one
+shared rule swaps them. The cluster spreads or regathers on parent hover with no
+per-item selector; the whole choreography is data on the elements. Hover travel
+6–20px beyond rest, scale 1.05–1.15.
+```css
+.bit { transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) }
+.group:is(:hover, :focus-within) .bit {
+  transform: translate(calc(-50% + var(--hx)), calc(-50% + var(--hy))) scale(1.1) }
+```
+⚠ Transition `transform` on `.bit` inside `prefers-reduced-motion: no-preference`;
+outside it, hold the resting coordinates.
