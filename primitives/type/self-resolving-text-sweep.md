@@ -4,7 +4,7 @@ category: type
 tags: [type,gradient,entrance,currentcolor,reveal]
 axes: {energy: 3, density: 2, weight: 3, finish: 4}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -45,3 +45,19 @@ chop reads as a dropped frame.
 ⚠ `color: transparent` with a loop has no end frame to fall back to — under
 `reduce`, and on the final token, restore the inherited colour and remove the
 image, or the text is left painted by a stopped gradient.
+
+On a known solid ground the loop can skip `background-clip` entirely: leave the
+text in its own muted ink and run a pseudo-element band — transparent, the
+ground colour at 80–95% alpha, transparent — across it under `overflow:
+hidden`. The ink never goes transparent, so there is no stopped-gradient state
+to recover from; removing the class is the whole reset. Band 30–60% of the
+width, 1.2–2s linear.
+```css
+.pending { position: relative; overflow: hidden; color: var(--fg-muted) }
+.pending::after { content: ""; position: absolute; inset: 0 auto 0 0; width: 50%;
+  background: linear-gradient(90deg, #0000, rgb(255 255 255 / .9), #0000);
+  animation: band 1.5s linear infinite }
+@keyframes band { from { translate: -100% } to { translate: 300% } }
+```
+⚠ The band paints the ground colour, so it shows as a stripe on any image or
+tint behind the text — only for a flat surface you control.

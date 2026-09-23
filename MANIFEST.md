@@ -1,6 +1,6 @@
 # Manifest
 
-1071 primitives. Format: `category/id | axes cost | tags | gist`
+1072 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -874,6 +874,7 @@ surface/drained-field-clear-window | E2 D2 W3 F5 $3 | surface mask backdrop-filt
 surface/eased-fade-stop-ramp | E1 D2 W2 F5 $2 | surface gradient fade mask precision | A two-stop fade interpolates alpha linearly and the eye reads th
 surface/edge-matched-panel-descent | E1 D2 W2 F4 $2 | backdrop artwork seam full-bleed continuity overscroll ground | Full-bleed artwork sections read as separate pictures because ea
 surface/end-faded-section-rule | E1 D1 W1 F5 $1 | hairline divider gradient section restraint | A full-bleed rule declares a measure it does not have: run it ed
+surface/extended-mark-gesture-ground | E1 D1 W1 F4 $1 | surface svg identity ambient stroke draw-on restraint | Lift the one gesture inside a mark — a pulse, a signature curve,
 surface/feathered-copy-pad | E1 D2 W2 F4 $2 | surface scrim legibility backdrop-filter mask blur overlay | Over a live scene, a full-frame scrim dims everything to protect
 surface/fill-derived-shadow-ramp | E1 D2 W3 F5 $1 | surface depth shadow color-mix tokens control | A saturated control's shadow should be made of its own colour, n
 surface/geometry-mirrored-effect-proxy | neutral  $3 | svg filter measurement architecture correctness chrome | Some effects exist only for SVG — a fusing filter, one stroke ar
