@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,svg,identity,loading,state,reduced-motion]
 axes: {energy: 3, density: 1, weight: 2, finish: 5}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -70,3 +70,13 @@ mark and becomes a decoration that happens to sit in the corner.
 loop before first paint, and never let a stopped loop strand a pose that is not
 the rest pose. Skip the loop entirely under `reduce`; suppressing it after the
 fact still costs a frame of motion.
+
+A bar row standing for a voice needs more than one breath. Two stops on
+`scaleY` read as breathing; five or six irregular stops between 0.45 and 1.35
+read as speech. Stack a blurred glow row behind the crisp one on a different
+irregular track of similar period, and the silhouette never repeats as a unit.
+```css
+@keyframes talk { 0%,to { transform: scaleY(1) } 14% { transform: scaleY(.45) }
+  30% { transform: scaleY(1.35) } 48% { transform: scaleY(.55) } 68% { transform: scaleY(1.2) } }
+```
+⚠ Past ~1.3 the tallest bar clips its box — size the row for the peak, not rest.
