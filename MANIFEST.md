@@ -1,6 +1,6 @@
 # Manifest
 
-1167 primitives. Format: `category/id | axes cost | tags | gist`
+1168 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -1071,6 +1071,7 @@ timing/role-offset-cascade | E3 D2 W2 F5 $1 | timing motion sequencing choreogra
 timing/sampled-point-spring-easing | E3 D1 W2 F5 $1 | timing easing token css-animation overshoot performance | linear() takes a list of sampled outputs, so a spring solved onc
 timing/scheduled-discrete-property-step | E2 D1 W2 F5 $1 | transition stacking scheduling hover precision | A stacking change has no in-between, so naming z-index in a tran
 timing/segment-eased-keyframes | E3 D2 W2 F5 $1 | motion easing keyframes choreography loop | animation-timing-function declared inside a keyframe block sets 
+timing/shared-clock-stalling-twin | E2 D3 W2 F4 $2 | demo comparison mock timing rhetoric | A claim about persistence cannot be shown by one panel. Run two 
 timing/source-measured-replay | E2 D1 W2 F5 $2 | timing motion stream demo data honesty correctness | A result that arrives whole but is about how fast it was produce
 timing/split-rate-signal-follower | E3 D1 W2 F5 $1 | timing motion signal smoothing feedback realtime | A live level — audio amplitude, scroll effort, request rate — sm
 timing/stagger-band | E3 D3 W2 F4 $1 | motion rhythm sequencing | Sibling stagger lives in a narrow band: .06–.08s reads as one ge

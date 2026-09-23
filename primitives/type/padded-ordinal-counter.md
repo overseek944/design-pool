@@ -4,7 +4,7 @@ category: type
 tags: [type,list,counter,detail,technical]
 axes: {energy: 1, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 15
+seen: 16
 requires: []
 conflicts: []
 completes: []
@@ -51,3 +51,8 @@ one and still not compete. Figure 1.4–2.2× the card's height.
 ```
 ⚠ The clipped first numeral must still be the *same* size as the rest — shrink
 it to fit and the row reads as a mistake.
+When the counter numbers sections by their eyebrow labels, not list items, gate
+the increment on the label itself: `counter-increment` goes on the label, and
+the section's divider hangs off `section:has(> * > .label)`. A section with no
+label then takes no number and no rule, so adding an unlabelled band never
+renumbers the page. Reset once on `main`, not per section.

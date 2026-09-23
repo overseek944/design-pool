@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,progress,custom-property,progressive-enhancement,architecture]
 axes: none
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
