@@ -4,7 +4,7 @@ category: surface
 tags: [surface,blur,glass,scrim,depth,legibility]
 axes: {energy: 1, density: 2, weight: 3, finish: 5}
 cost: 3
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []

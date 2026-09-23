@@ -1,6 +1,6 @@
 # Manifest
 
-1054 primitives. Format: `category/id | axes cost | tags | gist`
+1055 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -51,6 +51,7 @@ canvas/facing-weighted-directional-pull | E3 D2 W3 F5 $3 | shader canvas pointer
 canvas/feature-scaled-sim-grid | neutral  $2 | canvas simulation performance resolution texture | Size a field simulation's grid by the smallest feature worth see
 canvas/frame-gap-driver-trail | E3 D2 W2 F5 $2 | canvas pointer field influence sampling continuity | A field tested against the driver's position once per frame is s
 canvas/glyph-ramp-image-field | E2 D4 W2 F3 $4 | canvas type texture image ambient generative | Encode a photograph as a field of characters: draw it into an of
+canvas/graded-dispersion-lens-blur | E1 D2 W3 F5 $3 | canvas shader webgl blur chromatic dispersion media texture | Blur an image or video texture by position: project each fragmen
 canvas/gravity-arced-tumbling-burst | E5 D3 W2 F3 $2 | canvas particles burst physics motion | Marks scattered from a direction and a speed read as a detonatio
 canvas/ground-skirted-profile-stack | E1 D4 W1 F5 $2 | canvas occlusion depth field generative line-art | A stack of profiles sampled across a heightfield reads as a flat
 canvas/half-pixel-hairline-grid | E1 D2 W1 F5 $1 | canvas hairline correctness diagram pixel-ratio performance | A one-pixel canvas line drawn on an integer coordinate straddles
