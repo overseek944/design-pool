@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,overlay,reveal,choreography,pin]
 axes: {energy: 2, density: 1, weight: 2, finish: 5}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: [hysteretic-lock-zone]
@@ -26,3 +26,15 @@ el.dataset.copyOut = progress > .16
 ```
 ⚠ Fade it, never `display: none` — the departing block is often the stage's only
 heading, and the section is named by it.
+
+A continuous retreat has to yield to focus. While `:focus-visible` sits inside
+the copy, hold its fade at zero — tabbing into a half-faded headline's link is
+tabbing into something the reader cannot see — and only set `inert` once the
+fade is 99%+ complete and nothing inside is focused.
+```js
+const held = !!copy.querySelector(':focus-visible')
+const f = held ? 0 : smooth(.15, .45, progress)
+copy.inert = f > .995 && !held
+```
+⚠ Test `:focus-visible`, not `activeElement`: a mouse click leaves focus behind
+and would pin the copy on screen for the rest of the scroll.

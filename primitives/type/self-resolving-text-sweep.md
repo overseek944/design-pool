@@ -4,7 +4,7 @@ category: type
 tags: [type,gradient,entrance,currentcolor,reveal]
 axes: {energy: 3, density: 2, weight: 3, finish: 4}
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -61,3 +61,14 @@ width, 1.2–2s linear.
 ```
 ⚠ The band paints the ground colour, so it shows as a stripe on any image or
 tint behind the text — only for a flat surface you control.
+
+The looping band's highlight need not be a literal. Derive it from the text's
+own ink with relative colour syntax — same hue, alpha scaled down on light
+grounds, lightness lifted on dark — so one class shimmers correctly on any
+colour and either theme. Light alpha ×0.15–0.3; dark lightness +0.3–0.5.
+```css
+.shimmer { --hi: oklch(from currentColor l c h / calc(alpha * .2)) }
+.dark .shimmer { --hi: oklch(from currentColor max(.8, calc(l + .4)) c h) }
+```
+⚠ Relative colour is recent — declare a literal `--hi` first so older engines
+still get a band.
