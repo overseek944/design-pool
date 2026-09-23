@@ -4,7 +4,7 @@ category: layout
 tags: [layout,overflow,scroll,affordance,responsive,measure]
 axes: {energy: 2, density: 3, weight: 2, finish: 4}
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -53,3 +53,12 @@ together per breakpoint; they are one number.
 ```
 ⚠ It governs the snap position too, so a track with `scroll-snap-align: start`
 and no scroll padding snaps items half under the bleed at every stop.
+
+The cropped sliver is computable in CSS: `round(down, …)` counts how many whole
+items plus gaps fit, and what remains is the peek. Size the edge fade to it —
+clamped 12–24px low, 80–120px high — so the fade covers exactly the partial item
+instead of a fixed band that dims a whole card at one width and nothing at another.
+```css
+.rail { --peek: calc(100vw - var(--g) - round(down, 100vw - var(--g) + var(--gap), var(--card) + var(--gap))) }
+@supports (width: round(down, 10px, 3px)) { .fade { width: clamp(16px, var(--peek), 120px) } }
+```

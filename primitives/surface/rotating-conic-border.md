@@ -4,7 +4,7 @@ category: surface
 tags: [surface,border,motion,svg]
 axes: {energy: 4, density: 3, weight: 3, finish: 4}
 cost: 3
-seen: 27
+seen: 28
 requires: []
 conflicts: []
 completes: [overflow-visible-for-glow-bleed]
@@ -171,3 +171,9 @@ focus-within over 200–300ms; a 2–4s period reads as current, not as a spinne
 ```
 ⚠ `background-position` repaints every frame — attach the animation in the
 hover rule, not the base, or every card repaints its hidden ring forever.
+
+As a one-time flourish rather than ambient motion: spin a square pseudo-element
+at 200% of the pill's width behind an opaque inner fill, for a finite count —
+`animation: spin 2–4s linear 1–3 forwards` — so the light circles a couple of
+times on load and settles. Alternating full and 10–20% alpha stops give two
+travelling highlights per turn.

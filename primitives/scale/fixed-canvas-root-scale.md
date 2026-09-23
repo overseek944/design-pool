@@ -4,7 +4,7 @@ category: scale
 tags: [scale,layout,proportion,transform,responsive]
 axes: {energy: 1, density: 2, weight: 3, finish: 4}
 cost: 2
-seen: 21
+seen: 22
 requires: []
 conflicts: []
 completes: []
@@ -191,3 +191,13 @@ root.style.setProperty('--ox', (c.x1 + c.x2) / 2 + 'px')
 root.style.setProperty('--k', Math.min(w / (c.x2 - c.x1), h / (c.y2 - c.y1)))
 ```
 ⚠ Exclude animated layers from the union, or a traveller mid-route rescales the whole figure.
+
+`calc(100vw / 1280)` resolves to a length, and `scale()` rejects it on real
+engines. Take the ratio from trigonometry instead — `tan(atan2(a, b))` of two
+lengths is their unitless quotient — and cap it so the mock only ever shrinks.
+Subtract the column gutter from the numerator; restate the design width per
+breakpoint rather than the cap.
+```css
+.mock { --s: min(1, tan(atan2(100vw - 60px, 1040px))); scale: var(--s); transform-origin: top center }
+```
+⚠ No CSS trig and the declaration drops — declare a stepped `--s` first.

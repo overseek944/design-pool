@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,intersection-observer,visibility,battery,correctness]
 axes: none
 cost: 2
-seen: 99
+seen: 100
 requires: []
 conflicts: []
 completes: []
@@ -327,3 +327,9 @@ const tick = t => { step(Math.min((t - last) / 1e3, .1)); last = t
   raf = items.size ? requestAnimationFrame(tick) : 0 }
 const wake = () => raf || (last = performance.now(), raf = requestAnimationFrame(tick))
 ```
+
+Publishing the gate as a custom property rather than an attribute needs no
+selector at all: loops read `animation-play-state: var(--loop-state, running)`,
+the root carries the tab-visibility value and each observed element overrides it
+with its own intersection. The fallback keeps everything running if the script
+never loads.

@@ -1,6 +1,6 @@
 # Manifest
 
-1097 primitives. Format: `category/id | axes cost | tags | gist`
+1098 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -266,6 +266,7 @@ interaction/native-drag-capture-guard | neutral  $1 | pointer drag scroll correc
 interaction/nearest-sample-path-pick | neutral  $2 | interaction svg pointer diagram correctness | Dozens of hairline curves crossing in one figure cannot be hit-t
 interaction/occupancy-grid-canvas-pick | neutral  $2 | canvas pointer hit-test performance correctness | Artwork drawn to a canvas has no boxes, so a pointer over it can
 interaction/offset-shadow-press | E3 D2 W4 F2 $1 | interaction state depth detail border | A hard offset shadow reads as a solid object sitting above the p
+interaction/one-shot-rail-nudge | E2 D2 W2 F4 $1 | affordance interaction carousel scroll ux detail | A horizontal rail whose overflow is only a cropped sliver can st
 interaction/one-sided-hover-delay | E2 D2 W2 F5 $1 | interaction hover delay css-only restraint pointer | A hover-revealed panel wants patience on the way in and none on 
 interaction/open-state-content-defocus | E2 D2 W3 F4 $3 | overlay drawer menu blur focus depth state | A drawer opened from fixed chrome can push the page back by blur
 interaction/ordinal-flipped-panel-anchor | E2 D2 W2 F5 $1 | interaction menu panel css-only layout correctness | A panel wider than its trigger and centred on it runs off the vi
