@@ -4,7 +4,7 @@ category: layout
 tags: [layout,grid,hairline,rules,precision]
 axes: {energy: 1, density: 3, weight: 1, finish: 5}
 cost: 1
-seen: 40
+seen: 41
 requires: []
 conflicts: []
 completes: []
@@ -93,3 +93,20 @@ colour.
 gradient whose stops are close in value reads as a flat frame and the effect is
 paid for and not seen. Cells take the outer radius less the mortar or the
 corners disagree.
+
+Where only *occupied* cells are drawn — a sparse population on an empty lattice
+— the edge set depends on the neighbours, not the column count. Each cell always
+paints its top and left, and paints right or bottom only where that neighbour is
+vacant; a cluster then reads as one outlined shape with single-weight seams.
+Paint the four edges as gradients on one pseudo-element fed by custom
+properties, so neighbour state is a class toggle.
+```css
+.cell::before { content: ""; position: absolute; inset: 0 -1px -1px 0;
+  background: linear-gradient(var(--c),var(--c)) top/100% 1px no-repeat,
+    linear-gradient(var(--c),var(--c)) left/1px 100% no-repeat,
+    linear-gradient(var(--r,#0000),var(--r,#0000)) right/1px 100% no-repeat,
+    linear-gradient(var(--b,#0000),var(--b,#0000)) bottom/100% 1px no-repeat }
+.cell.open-right { --r: var(--c) }  .cell.open-bottom { --b: var(--c) }
+```
+⚠ Judge "vacant" against the settled population, not cells still fading in, or
+edges flicker on for a frame at every step.

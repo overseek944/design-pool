@@ -1,6 +1,6 @@
 # Manifest
 
-1156 primitives. Format: `category/id | axes cost | tags | gist`
+1158 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -183,6 +183,7 @@ color/tint-overshoot-arrival | E3 D2 W2 F4 $1 | color entrance overshoot keyfram
 color/transform-bracketing-hue-pair | E1 D2 W2 F5 $1 | color diagram semantics pipeline hue accessibility | A pipeline figure whose input and output look alike asks the rea
 color/utility-scale-token-reclamation | neutral  $2 | color tokens theming architecture correctness | A codebase committed to a utility framework has its palette froz
 color/worst-case-ground-ink | neutral  $1 | color contrast accessibility icon correctness | A mark handed to a surface you do not own — a favicon in the tab
+interaction/action-yielding-label-fade | E1 D3 W1 F5 $1 | list row-actions mask truncation hover focus overflow | Row actions that appear on hover land on top of the label, and s
 interaction/activation-claimed-embed | neutral  $2 | embed iframe pointer-events activation accessibility correctness | An embed rendered live on a page most readers only scroll past s
 interaction/agent-registered-page-tools | neutral  $1 | architecture progressive-enhancement interop capability lifecycle feature-detection | A page can publish a few callable tools to an agent driving the 
 interaction/aliased-fragment-target | neutral  $1 | navigation anchor fragment accessibility architecture url | A section can answer to more than one fragment without renaming 
@@ -976,6 +977,7 @@ surface/multi-edge-mask-fade | E1 D2 W2 F5 $2 | surface mask edge composition bl
 surface/nine-slice-control-chrome | E1 D2 W3 F5 $2 | surface border chrome svg detail | A control whose shape is not a rounded rectangle — a tapered edg
 surface/node-centred-connector-falloff | E1 D2 W2 F5 $1 | surface mask connector sequence detail | A rule running the length of a step list is equally present ever
 surface/noise-sourced-lens-warp | E1 D2 W3 F5 $3 | surface glass refraction svg-filter displacement noise | A displacement map need not be drawn geometry. feTurbulence at a
+surface/occupancy-rendered-lattice | E3 D3 W2 F4 $3 | grid cells dom simulation sparse lattice interactive ambient | A discrete simulation — a life rule, a spreading state — can run
 surface/offcanvas-ellipse-horizon | E1 D2 W1 F5 $1 | surface hairline geometry ambient background depth | A curve whose radius exceeds the viewport cannot be drawn inside
 surface/one-point-room-frame | E1 D2 W1 F5 $1 | perspective hairline background svg depth decoration | Five hairlines make a room you are looking into: an inset rectan
 surface/overflow-visible-for-glow-bleed | neutral  $1 | surface effect svg gotcha | SVG clips to its viewBox by default, which decapitates any drop-

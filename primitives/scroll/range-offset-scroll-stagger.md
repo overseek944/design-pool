@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,scroll-driven,stagger,sequence,css-only]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -42,3 +42,19 @@ Reserve the 40–60% step for sets whose members are genuinely separate.
 ⚠ The whole group then finishes inside a third of the timeline, so the settle
 lands while the section is still arriving — start the last window before the
 element is comfortably in view, not after.
+
+Per-word ranges need no `nth-child` ladder: stamp each span with an index
+property and compute the window from three knobs on the group, so one rule
+serves a headline of any length and a second group retunes by overriding the
+knobs alone. Words want a far smaller step than cards — 0.3–1% of the timeline
+on a window of 8–12% — or a long line finishes after the section has left.
+```css
+.words > span { display: inline-block; animation: rise linear both;
+  animation-timeline: --words; animation-range:
+    cover calc(var(--from) + var(--i) * var(--step))
+    cover calc(var(--from) + var(--i) * var(--step) + var(--span)) }
+.title { --from: 0%; --step: .8%; --span: 12% }
+```
+⚠ The span must be `inline-block` or its transform is ignored; wrap the whole
+block in `@supports (animation-timeline: view())` so unsupported engines show
+static text instead of words parked at the 0% frame.
