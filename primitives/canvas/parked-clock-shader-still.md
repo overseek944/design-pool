@@ -4,7 +4,7 @@ category: canvas
 tags: [shader, webgl, static, texture, perf, generative, gradient]
 axes: {energy: 1, density: 3, weight: 2, finish: 4}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []

@@ -4,7 +4,7 @@ category: reveal
 tags: [svg,stroke,reveal,draw,geometry,correctness]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 32
+seen: 33
 requires: []
 conflicts: []
 completes: []
@@ -97,3 +97,16 @@ gesture of the form, which is what makes handwriting read as written.
 ⚠ Stroke width is a covering guarantee: anything the centreline passes further
 from than half that width is never revealed. `round` caps on both ends, or the
 first and last strokes arrive with a square bite out of them.
+
+Where the markup belongs to an icon set and cannot carry `pathLength`, one
+oversized constant does the same job for hover: a dasharray at or above the
+longest subpath in the set's grid — 36–60 on a 24-unit icon — applied to every
+`path, line, circle, rect` at once. Rest drawn, replay only while the parent is
+hovered, 0.25–0.4s on a decelerating curve; short strokes finish early, which at
+icon scale reads as detail settling rather than as mismatch.
+```css
+.ico :is(path,line,circle,rect) { stroke-dasharray: 40; stroke-dashoffset: 0 }
+.group:hover .ico :is(path,line,circle,rect) { animation: redraw .3s cubic-bezier(.22,1,.36,1) }
+@keyframes redraw { from { stroke-dashoffset: 40 } }
+```
+⚠ A subpath longer than the constant shows a gap at rest — measure the set once.

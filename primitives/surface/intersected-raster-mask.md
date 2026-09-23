@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,texture,print,halftone]
 axes: {energy: 1, density: 4, weight: 2, finish: 4}
 cost: 2
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []
@@ -88,3 +88,18 @@ gap 20–35% of the pitch.
 ```
 ⚠ Below ~2px pitch the grid aliases into a flat fill; give the icon a text
 label, since the cells carry no name.
+
+`mask-composite` takes a list, one operator per layer, each combining that layer
+with the result beneath it — so mixed operators write an expression rather than
+a single mode. `add, intersect, add` over layers A, B, C (top first) reads as
+*A ∪ (B ∩ C)*: a horizontal band and a vertical band intersect into a corner
+panel, then a radial bloom unions over it, carving an irregular region for a
+decorative layer that no single gradient shape describes. Soft stops 60–120px.
+```css
+mask-image: radial-gradient(60vw 50vw at 90% 10%, #000 20%, #0000 46%),
+  linear-gradient(#0000 40%, #000 55% 70%, #0000), linear-gradient(90deg, #0000 55%, #000 70%);
+mask-composite: add, intersect, add;
+-webkit-mask-composite: source-over, source-in, source-over;
+```
+⚠ Pixel-anchored stops leave the region stranded at other widths — hide it below
+~1024px or build stops from `%`/`vw`.

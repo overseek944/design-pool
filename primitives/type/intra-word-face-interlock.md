@@ -4,7 +4,7 @@ category: type
 tags: [type,display,headline,lettering,fallback,detail]
 axes: {energy: 1, density: 3, weight: 4, finish: 3}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
