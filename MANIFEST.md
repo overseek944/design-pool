@@ -1,6 +1,6 @@
 # Manifest
 
-1160 primitives. Format: `category/id | axes cost | tags | gist`
+1161 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -1026,6 +1026,7 @@ surface/synthetic-application-chrome | E1 D2 W2 F5 $1 | frame chrome media mock 
 surface/tangent-oriented-mark-field | E2 D4 W2 F5 $3 | surface texture generative ambient detail svg | A field of round dots reads as spray. Give each mark a long axis
 surface/tiled-dash-border | E1 D2 W1 F4 $2 | surface border dash precision texture | border-style: dashed offers no control — dash length is derived 
 surface/tiled-shape-edge-mask | E2 D3 W2 F3 $2 | surface mask edge ornament texture section | Cut a section boundary with a shape rather than a straight line:
+surface/tinted-through-face-ring | E2 D2 W3 F4 $1 | surface gradient border button pill hover css-only | A gradient ring needs no mask: pad a gradient wrapper 2–5px and 
 surface/translated-curve-line-field | E2 D3 W1 F4 $2 | svg path lines contour wave ground ambient generative | Flowing hairlines need no noise or canvas: repeat one cubic curv
 surface/twinned-elevation-tokens | E1 D2 W2 F5 $1 | shadow elevation tokens hover card | box-shadow interpolates only when both lists carry the same numb
 surface/user-space-ruling-path | E1 D3 W1 F5 $1 | surface svg texture blueprint diagram cheap | Rule a drawing inside its own viewBox, not behind it. A single <
