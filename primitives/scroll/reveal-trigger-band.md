@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,reveal,thresholds]
 axes: {energy: 2, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 26
+seen: 27
 requires: []
 conflicts: []
 completes: []
@@ -79,3 +79,15 @@ The margin can be a percentage: `-20%` to `-30%` of the root's bottom scales the
 band with viewport height where pixels do not, so a tall screen does not fire
 reveals far below the reader's eye line. Past −30% short sections risk never
 arriving on a phone.
+
+On a phone the band can invert. A thumb flick crosses a short viewport faster
+than an entrance finishes, so a negative margin there means content still
+rising under the reader's eye. Branch the options on width: keep the inset band
+at desktop, but on narrow screens use `threshold: 0` and a *positive* bottom
+margin of 100–250px, so each element arms before it enters and has settled by
+the time it is seen.
+```js
+const narrow = matchMedia('(max-width: 639px)').matches
+new IntersectionObserver(cb, narrow ? { threshold: 0, rootMargin: '0px 0px 200px 0px' }
+                                    : { threshold: .12, rootMargin: '0px 0px -8% 0px' })
+```
