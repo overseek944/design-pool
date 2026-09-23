@@ -1,6 +1,6 @@
 # Manifest
 
-1055 primitives. Format: `category/id | axes cost | tags | gist`
+1056 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -164,6 +164,7 @@ color/runtime-shade-derivation | neutral  $1 | color tokens theming architecture
 color/self-painting-theme-scope | neutral  $2 | color tokens theming architecture dark | A theme is one class that both defines the semantic colour token
 color/sequence-value-ramp | E1 D2 W3 F4 $1 | color hierarchy surface sequence contrast | Tint a row of peer surfaces along one lightness ramp so sequence
 color/status-triad-tokens | neutral  $1 | color tokens accessibility contrast correctness state | A status is three tokens, not one, because the same hue is asked
+color/stepped-hue-run-swatches | E2 D2 W3 F4 $1 | color palette accent divider legend swatch | An ordered run of 4–7 neighbouring hues, spread over roughly 90–
 color/theme-shifted-series-window | neutral  $2 | color tokens theming data chart contrast correctness | A series palette tuned on paper goes muddy against ink, and inve
 color/transform-bracketing-hue-pair | E1 D2 W2 F5 $1 | color diagram semantics pipeline hue accessibility | A pipeline figure whose input and output look alike asks the rea
 color/utility-scale-token-reclamation | neutral  $2 | color tokens theming architecture correctness | A codebase committed to a utility framework has its palette froz

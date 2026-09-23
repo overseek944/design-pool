@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,correctness,accessibility,link,progressive-enhancement]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,8 @@ for (const a of document.querySelectorAll('[data-user]'))
 ```
 ⚠ Script off means no address at all — print a fallback route in the markup.
 This defeats naive harvesters only; treat it as friction, never protection.
+
+Variant — store each half reversed and build the `@` from its char code, so no
+address-shaped string exists in the source at all. Let the element's own text
+spell the address out in words as the no-script fallback, and overwrite it with
+the assembled address only when script runs.
