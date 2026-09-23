@@ -1,6 +1,6 @@
 # Manifest
 
-1129 primitives. Format: `category/id | axes cost | tags | gist`
+1130 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -1061,6 +1061,7 @@ type/character-grid-as-texture | E3 D5 W2 F3 $2 | type texture ornament ascii | 
 type/circumference-fitted-seal-ring | E2 D3 W2 F4 $2 | type svg ornament mark watermark rotation | An authority mark can be typeset rather than drawn: a legend set
 type/content-ghosted-width-reservation | neutral  $1 | type layout-shift css-only accessibility correctness | Text that animates or swaps in place resizes its own box and rel
 type/counter-set-image-aperture | E1 D2 W5 F5 $2 | type svg display media mask wordmark | A word set at architectural scale already contains holes — the c
+type/cross-face-instance-coda | E1 D2 W2 F5 $1 | type card hierarchy register evidence cheap | Cards that each name a general category read as a list of claims
 type/delimiter-marked-inline-code | E1 D2 W2 F5 $1 | type code inline prose delimiter technical | Inline code in prose is usually a padded chip, and that padding 
 type/edge-cropped-monument-glyph | E1 D2 W5 F4 $1 | type lettering identity display bleed layout | One glyph of the wordmark, set at architectural scale and allowe
 type/em-locked-inline-media-inset | E1 D3 W4 F4 $2 | typography image display-type inline responsive | A display line that ends short leaves a rectangle of dead measur

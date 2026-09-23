@@ -4,7 +4,7 @@ category: interaction
 tags: [tabs,state,selection,ruled,contrast,theme]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: [reserved-state-border]
