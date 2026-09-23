@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,carousel,snap,loop,correctness]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -41,3 +41,8 @@ setTimeout(() => { track.style.transition = 'none'; paint(home)
 ```
 ⚠ A click inside that window starts a step from the clone and the rebase then
 yanks it — ignore input until the rebase has run.
+
+A pointer drag on the transformed track needs no momentum model: follow the
+pointer 1:1 with the transition off, then on release commit one step if travel
+passed 15–25% of an item width, otherwise re-seat to the current index.
+Listen for move and up on `window`, not the track, so a release outside it lands.

@@ -1,6 +1,6 @@
 # Manifest
 
-1139 primitives. Format: `category/id | axes cost | tags | gist`
+1141 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -344,6 +344,7 @@ interaction/transparent-stroke-hit-area | neutral  $1 | accessibility svg intera
 interaction/twin-suppressed-persistent-action | neutral  $2 | interaction sticky state observer accessibility | A persistent action pinned to the viewport is right through the 
 interaction/viewport-clamped-anchored-popover | neutral  $1 | correctness responsive overlay accessibility hover focus | A popover sized against its trigger gets clipped by the window: 
 interaction/visibility-probed-app-escape | neutral  $2 | interaction navigation link mobile correctness fallback | A control that hands off to a native app has no success callback
+interaction/width-held-pending-button | E2 D1 W2 F4 $1 | interaction button loading pending spinner layout-stability | A button that swaps its label for a spinner shrinks and shifts i
 interaction/withdrawn-motion-pause-control | neutral  $1 | accessibility motion control state chrome cheap | Perpetual decorative motion owes the reader a stop, and an OS pr
 interaction/withheld-value-reveal | E2 D2 W3 F4 $1 | interaction disclosure redaction accessibility state | Withholding a figure claims more than printing it, but only if t
 interaction/zone-derived-regional-ordering | neutral  $1 | interaction i18n privacy ordering progressive-enhancement correctness | A list whose useful entries differ by country can be ordered for
@@ -575,6 +576,7 @@ media/reduce-restored-media-transport | neutral  $1 | media video accessibility 
 media/reduce-swapped-clip-still | neutral  $1 | media video accessibility reduced-motion correctness | An autoplaying loop cannot honour prefers-reduced-motion by paus
 media/render-fault-reserved-slot | neutral  $1 | media correctness third-party layout-shift fallback lifecycle | A vendor visual runtime — vector player, chart, map, viewer — ca
 media/script-swapped-placeholder-payload | neutral  $1 | media embed third-party fallback progressive-enhancement correctness | A vendor widget that replaces an element in place — a quote bloc
+media/scroll-seeked-vector-animation | E3 D2 W2 F5 $3 | media scroll scrub vector-animation illustration seek | An authored vector animation exported as JSON can be the scrubbe
 media/seam-dissolved-video-loop | E2 D1 W3 F5 $3 | media video loop crossfade seam ambient | loop cuts from the last frame to the first, and unless the clip 
 media/seek-throttled-video-scrub | E3 D2 W3 F5 $4 | media video scroll scrub timeline performance | A video can be the scrubbed property: write currentTime from scr
 media/self-masked-cutout-overlay | E1 D2 W3 F4 $2 | media mask color effect detail | A cut-out subject on transparency cannot be graded from CSS — an

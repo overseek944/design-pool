@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,measurement,responsive,choreography,diagram]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 3
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: [reduced-motion-branch, dead-banded-resize-rebuild]
@@ -89,3 +89,8 @@ el.style.transform = p; void el.offsetWidth; el.style.transition = t
 ```
 ⚠ The reflow must sit between the restore and the re-enable, not after it —
 either side and the transition sees the change and runs it.
+
+Where offsets are authored rather than measured — a hand-placed scatter
+collapsing into a mark — scale them by one fit factor from the stage's half-width
+instead: `clamp((stageW/2 - cardW*.7 - gutter) / reach, .2, 1)`, with `reach`
+~400px wide and ~140px narrow, plus a separate offset set per breakpoint.

@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,hero,sticky,pin,blur,exit,depth]
 axes: {energy: 2, density: 1, weight: 2, finish: 5}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: [inert-tracks-opacity]
@@ -35,3 +35,11 @@ reads as staying behind while the page moves on; nothing repaints.
 y = map(p, [0,1], [0,80]); s = map(p, [0,1], [1,1.04]); o = map(p, [0,.85], [1,.35])
 ```
 ⚠ Zero all three in the reduced-motion branch, not just the drift.
+
+Mirrored as an entrance it needs no pin: blur each block by how far it still sits
+below the fold line, clearing fully by 30–50% of viewport height into view. Max
+blur 8–16px; write `filter: none` under 0.1px so settled blocks drop the filter.
+```js
+const b = (1 - clamp01((innerHeight - el.getBoundingClientRect().top) / (innerHeight*.4))) * 14
+el.style.filter = b < .1 ? 'none' : `blur(${b.toFixed(2)}px)`
+```
