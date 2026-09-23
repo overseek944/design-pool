@@ -4,7 +4,7 @@ category: surface
 tags: [surface,border,frame,detail,currentcolor,precision]
 axes: {energy: 1, density: 2, weight: 1, finish: 5}
 cost: 1
-seen: 23
+seen: 24
 requires: []
 conflicts: []
 completes: []
@@ -107,3 +107,7 @@ box. Inset 12–20px, arm 6–10px, around 50% opacity so it sits under the cont
 ```
 ⚠ It has to clear the card's own padding box, not the border — placed on the
 same inset as the content it reads as a stray rule rather than as a mark.
+
+On a filled control, draw the frame as a translucent hairline 2–4px outside the
+fill and stud its corners with solid squares of 3–5px centred on the line — the
+button reads as a plate seated in a mount. Mark the studs `aria-hidden`.

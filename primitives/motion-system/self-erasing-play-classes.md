@@ -4,7 +4,7 @@ category: motion-system
 tags: [architecture,progressive-enhancement,svg,accessibility,correctness,entrance]
 axes: none
 cost: 1
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []
