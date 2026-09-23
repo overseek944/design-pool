@@ -4,7 +4,7 @@ category: layout
 tags: [layout,tilt,rotate,cards,informal,collage]
 axes: {energy: 2, density: 2, weight: 2, finish: 2}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -13,7 +13,7 @@ tension: []
 Floating cards set dead square read as a grid; a small resting tilt makes the set
 read as dropped by hand. Alternate the sign between neighbours so no two adjacent
 cards share a lean, vary the magnitude so the pattern has no period, and give the
-card carrying the most text the smallest angle. Text cards 1–3°, image or
+card carrying the most text the smallest angle. Text cards 0.6–3° (a dense grid wants the low end), image or
 sticker cards up to 4–6°.
 
 ```css

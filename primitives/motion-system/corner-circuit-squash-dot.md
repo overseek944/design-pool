@@ -4,7 +4,7 @@ category: motion-system
 tags: [loader,waiting,dot,keyframes,squash,pending]
 axes: {energy: 3, density: 1, weight: 2, finish: 4}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -22,3 +22,12 @@ as patient work, not a whirl. Each quarter is travel plus an 8% hold at
 ```
 ⚠ `left`/`top` relayout per frame — fine for one dot, never for many. Stop
 under reduced motion.
+
+The conversational form is three dots sharing one keyframe, offset by a quarter
+period each, rising only in the first half and resting for the rest — so the
+wave travels and then pauses, reading as someone composing rather than as a
+spinner. Rise 3–6px, period .8–1.4s, delay step period/4.
+```css
+@keyframes hop { 0%,60%,to { translate: 0 } 30% { translate: 0 -5px } }
+.dot { animation: hop .8s ease-in-out infinite } .dot:nth-child(2) { animation-delay: .2s }
+```

@@ -4,7 +4,7 @@ category: layout
 tags: [layout,mobile,keyboard,viewport,responsive,correctness]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -40,3 +40,10 @@ const set = () => document.documentElement.style.setProperty('--keyboard-inset',
 ```
 ⚠ Remove the property on teardown and default every reader of it to `0px`, or a
 view that unmounts mid-edit leaves the whole layout permanently short.
+
+Publish the visual viewport's *height* beside the inset and a full-screen panel
+can size to it directly, with the unit it replaces as fallback — no subtraction
+in every rule, and a reader mounted before the script runs still gets a sane box.
+```css
+.sheet { height: calc(var(--vv-height, 100dvh) - max(env(safe-area-inset-top), 12px)) }
+```

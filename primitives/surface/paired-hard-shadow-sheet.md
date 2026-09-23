@@ -4,7 +4,7 @@ category: surface
 tags: [surface,depth,border,detail,editorial]
 axes: {energy: 1, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []
@@ -85,3 +85,8 @@ active state halves it and translates the face by the difference.
 ```css
 .btn { background: hsl(var(--fill)); box-shadow: 0 3px 0 hsl(var(--fill-ledge)) }
 ```
+
+A single zero-blur layer offset equally on both axes, in translucent ink rather
+than the page colour, is the flat cut-out card: no sheet, no bevel, just a
+printed drop. 5–9px offset, alpha .15–.5 — lower on light grounds, higher on
+saturated ones.
