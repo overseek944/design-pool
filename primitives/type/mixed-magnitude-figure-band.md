@@ -4,7 +4,7 @@ category: type
 tags: [numerals,metric,alignment,layout,data]
 axes: {energy: 1, density: 3, weight: 4, finish: 5}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -51,3 +51,11 @@ pulled to −.05/−.07em.
 serif's fraction is drawn for 12pt and enlarges into a superscript pair with a
 hairline bar — check the glyph at the rendered size, and keep the fallback
 stack to faces that have one.
+
+A cell can also hold a short list of identifiers — codes, versions, SKUs — set in
+mono at 35–45% of the figure size and wrapped as a flex row, each item parted by
+a small filled dot in the band's accent. The mono face carries "exact label"
+where a figure carries "quantity", so the cell ranks with its neighbours without
+pretending to be a count. Dot 4–7px, `align-items: baseline`, row gap 0.1–0.15em.
+⚠ Screen readers get the dots as nothing, so the items read as one run-on
+string — keep each code a list item.

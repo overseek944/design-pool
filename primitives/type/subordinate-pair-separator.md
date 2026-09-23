@@ -4,7 +4,7 @@ category: type
 tags: [type,figures,hierarchy,detail,unit]
 axes: {energy: 1, density: 2, weight: 3, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,13 @@ should be quieter than the label beside it.
 ⚠ Announced as two numbers with a symbol between them. The relation has to live
 in text or an `aria-label`, not in the weight. Under 3:1 the separator drops out
 and the two figures collide into one unreadable number.
+
+At display size a weight and tone step is not enough — a full-size arrow between
+two headline figures is a third glyph competing with them. Drop the separator to
+0.3–0.4em of the figure and lift it toward the x-height with `vertical-align` so
+it sits between the numerals' optical centres rather than on their baseline; the
+units on either side drop the same way, one step smaller still.
+```css
+.fig .sep  { font-size: .35em; vertical-align: .2em; margin-inline: .3em; color: var(--ink-quiet) }
+.fig .unit { font-size: .28em; margin-inline-start: .14em }
+```

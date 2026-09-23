@@ -4,7 +4,7 @@ category: layout
 tags: [layout,truncation,series,evidence,data,accessibility]
 axes: {energy: 1, density: 3, weight: 2, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -25,3 +25,12 @@ floor the ramp at 0.55–0.7.
 ⚠ The count belongs in the sentence, not in the `…` — an ellipsis tile is
 decoration to a screen reader. Never ramp a member below body contrast; they are
 values, not texture.
+
+For an *irregular* set with no rule to state — a catalogue of supported types, a
+tag cloud cut short — close the row with a tile distinguished by construction
+rather than opacity: transparent fill, a dashed border one tone above the ground,
+italic or muted label. Solid members read as "these", the dashed tile as "and the
+rest"; members stay at full contrast.
+```css
+.set > .more { background: none; border: 1px dashed var(--rule-strong); font-style: italic }
+```
