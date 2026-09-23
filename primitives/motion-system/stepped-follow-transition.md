@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,pointer,transition,steps,character]
 axes: {energy: 3, density: 1, weight: 2, finish: 3}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -56,3 +56,12 @@ else if (b.style.transform) b.style.transform = ''
 Two of these within a radius of one another both lean at the pointer between
 them and the pair reads as broken rather than as attentive — reserve it for the
 one control that matters on the screen.
+
+The same quantisation suits *arrivals*. A popover, badge or spark that scales
+in over `steps(2–3, end)` in 0.15–0.55s lands in two or three frames — a sprite
+appearing, not a card inflating — and matches a pixel or bitmap register where a
+smooth ease would read as a different, glossier product.
+```css
+.pop.show { animation: pop .18s steps(2, end) }
+@keyframes pop { from { transform: scale(.4) } }
+```

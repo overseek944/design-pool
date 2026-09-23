@@ -4,7 +4,7 @@ category: canvas
 tags: [shader,webgl,halftone,texture,render-pass,generative]
 axes: {energy: 2, density: 4, weight: 2, finish: 4}
 cost: 4
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -41,3 +41,16 @@ vec2  rot = vec2(p.x * c - p.y * s, p.x * s + p.y * c);   // then floor rot, not
 ```
 ⚠ Rotation puts cell centres outside the source at the corners — sample with
 clamped coordinates, or oversize the pass by the cell diagonal.
+
+A still photograph needs no shader for the same screen. In Canvas 2D, draw the
+image into a canvas one third of the target's CSS size, read `getImageData`
+once, and for each pixel fill a *square* of side 0–3 on a 3px lattice over a
+flat ground — side from luma through a window (`(l - lo) / span`) rather than
+raw luma, so only the highlights print and the ground keeps its colour. Two
+tokens read from computed style give a duotone that follows the theme. Window
+`lo` 0.3–0.6, `span` 0.3–0.5.
+```js
+const a = Math.min(1, Math.max(0, (l - lo) / span)), s = Math.round(a * 3)
+if (s) ctx.fillRect(x * 3 + ((3 - s) >> 1), y * 3 + ((3 - s) >> 1), s, s)
+```
+⚠ One-shot: re-run on a debounced resize, and the source must be same-origin.

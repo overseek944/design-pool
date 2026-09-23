@@ -4,7 +4,7 @@ category: surface
 tags: [surface,ornament,detail,texture,cheap]
 axes: {energy: 2, density: 3, weight: 2, finish: 2}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -27,3 +27,17 @@ two neighbours or the step reads as a hole.
 ```
 ⚠ Decoration only — it paints outside the element's box, so any ancestor with
 `overflow: hidden` erases it.
+
+Cut the staircase into the element itself and it becomes the control's
+outline instead of an ornament beside it: a 20-point `clip-path: polygon()` that
+notches each corner in two cell steps, stored once as a custom property. Keep a
+finer copy at half the cell and the hover can *resolve* — coarse, fine, square —
+under `step-end`, so the edge sharpens in frames like a raster loading rather
+than easing. Cell 2–6px, 0.1–0.2s for the whole resolve.
+```css
+.btn { clip-path: var(--steps) }   /* polygon(0 6px, 3px 6px, 3px 3px, 6px 3px, 6px 0, … ×4) */
+.btn:hover, .btn:focus-visible { animation: sq .14s step-end forwards }
+@keyframes sq { 0% { clip-path: var(--steps) } 50% { clip-path: var(--steps-fine) } to { clip-path: inset(0) } }
+```
+⚠ `clip-path` clips the focus outline too — draw focus with an inset shadow or
+a ring on a wrapper, or keyboard focus vanishes.

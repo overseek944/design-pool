@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,svg,stroke,path,diagram]
 axes: {energy: 2, density: 2, weight: 1, finish: 5}
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -41,3 +41,17 @@ head.setAttribute('transform',
 ```
 ⚠ Sample back, never forward — a lookahead past the end flips the head around
 at the final frame.
+
+A scripted tour along one path needs its stops as *fractions* of that path, and
+authoring them by hand breaks on the next edit. Author the stops as coordinates
+instead and resolve them once: walk the path every 1–4 units, keep the length
+nearest each target, and divide by the total. Each leg of the tour is then
+`[fromFraction, toFraction, ms]`, and the trail's dashoffset and the mover both
+read that one progress.
+```js
+for (let s = 0; s <= L; s += 2) { const p = path.getPointAtLength(s)
+  stops.forEach(([x, y], i) => { const d = (p.x-x)**2 + (p.y-y)**2
+    if (d < best[i]) best[i] = d, frac[i] = s / L }) }
+```
+⚠ A path that passes near a stop twice resolves to whichever pass is closer —
+order-check the fractions, or search each stop only after the previous one.

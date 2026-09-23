@@ -4,7 +4,7 @@ category: scale
 tags: [scale,layout,proportion,transform,responsive]
 axes: {energy: 1, density: 2, weight: 3, finish: 4}
 cost: 2
-seen: 25
+seen: 26
 requires: []
 conflicts: []
 completes: []
@@ -222,3 +222,11 @@ size, with no height arithmetic. Factor .8–.9 on narrow widths only.
   transform: scale(var(--s)); transform-origin: 0 0 }   /* --s: .85 */
 ```
 ⚠ Text inside shrinks with it — keep this to decorative mocks, never real copy.
+
+A stage bounded in both directions — a hero panel with a set height as well as
+a width — scales by the *smaller* ratio, `min(w / W, h / H)`, so the authored
+scene fits like `object-fit: contain` and never crops. Publish it as the custom
+property from the same resize handler; scale 0.5–1.2 across usual boxes.
+```js
+el.style.setProperty('--s', Math.min(r.width / 560, r.height / 680))
+```
