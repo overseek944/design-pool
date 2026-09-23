@@ -1,6 +1,6 @@
 # Manifest
 
-1153 primitives. Format: `category/id | axes cost | tags | gist`
+1154 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -788,6 +788,7 @@ perf/self-throttled-raf-loop | neutral  $1 | performance animation canvas batter
 perf/shell-shaped-lazy-fallback | neutral  $2 | cls loading accessibility architecture correctness code-splitting | A lazy fallback is usually a spinner in a box that is not the co
 perf/single-flight-external-script | neutral  $2 | performance architecture correctness lifecycle embed | Several components on a page may each need the same third-party 
 perf/single-read-state-fanout | neutral  $1 | performance scroll listener state architecture correctness | Several components asking one continuous input the same question
+perf/split-rate-field-solve | neutral  $2 | performance canvas field grid pointer batching | A field with an expensive ambient term and a cheap pointer term 
 perf/stall-detected-loop-rearm | neutral  $1 | performance correctness lifecycle loop architecture | A render loop driven by anything other than requestAnimationFram
 perf/stride-pruned-decorative-field | neutral  $1 | perf responsive decoration correctness | A decorative field — dots, marks, ticks, labels — that costs too
 perf/stylesheet-failure-reload-guard | neutral  $2 | correctness performance progressive-enhancement architecture cls | A hashed stylesheet that 404s after a deploy paints the whole do

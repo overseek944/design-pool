@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,pointer,field,influence,sampling,continuity]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -41,3 +41,11 @@ if (!last || Math.hypot(x - last.x, y - last.y) >= GATE) trail.push({ x, y, ts: 
 ```
 ⚠ Grow the radius as the pose ages — `R * (0.65 + 0.35 * fade)` — or a wake
 that only dims reads as a row of separate dents rather than one spreading one.
+
+Let smoothed pointer speed widen the corridor too: a fast sweep reads as a
+broad wake, a slow drag as a narrow one. Track speed with its own lerp
+(0.1–0.15) and scale the radius 1–1.6× against a speed ceiling.
+```js
+spd += (Math.hypot(dx, dy) - spd) * .12; R = R0 * (1 + .6 * Math.min(spd / 18, 1))
+```
+⚠ Decay speed toward 0 on pointerleave too, or the wake freezes wide.

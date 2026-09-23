@@ -4,7 +4,7 @@ category: timing
 tags: [timing,motion,sequence,stream,demo,mock,cadence,delay]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]

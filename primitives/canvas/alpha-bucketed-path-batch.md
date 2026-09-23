@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,svg,performance,generative,texture,batching]
 axes: {energy: 2, density: 4, weight: 1, finish: 5}
 cost: 3
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []
@@ -102,3 +102,13 @@ for (const k in d) path[k].setAttribute('d', d[k] || 'M0 0')
 ⚠ Concatenation is still the cost — round to one decimal and keep the register
 count in single figures, past which the attribute writes stop being the cheap
 part.
+
+One ladder can drive two channels. Where each mark is a hollow ring rather than
+a dot, let the bucket set line width as well as alpha — thin and faint at the
+bottom, thick and solid at the top — and the field reads as a halftone without
+a single fill. Width 0.25–2.5px across 12–20 levels.
+```js
+w[b] = MIN + (MAX - MIN) * (b + .5) / N    // per bucket, beside its alpha
+```
+⚠ Width steps are more visible than alpha steps; widen the ladder before the
+ring radius drops under ~3px.

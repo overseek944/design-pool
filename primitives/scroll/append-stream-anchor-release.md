@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,correctness,stream,log,architecture]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -57,3 +57,12 @@ permanently chasing a target that has already moved. Margin 4–10rem.
 ```
 ⚠ Keep the sentinel empty and out of the accessibility tree. An element with
 content is a row the reader can land on that says nothing.
+
+Between an instant jump and `smooth`, close a fixed fraction of the remaining
+gap per frame in one rAF loop, restarted — not stacked — on each append. The
+tail glides to a moving target and never queues animations. Fraction 0.15–0.25;
+snap once the gap is under 1px.
+```js
+cancelAnimationFrame(s.id); (function f() { const g = el.scrollHeight - el.clientHeight - el.scrollTop
+  if (g > 1) { el.scrollTop += g * .18; s.id = requestAnimationFrame(f) } else el.scrollTop += g })()
+```
