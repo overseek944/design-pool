@@ -4,7 +4,7 @@ category: scale
 tags: [scale,layout,proportion,transform,responsive]
 axes: {energy: 1, density: 2, weight: 3, finish: 4}
 cost: 2
-seen: 22
+seen: 23
 requires: []
 conflicts: []
 completes: []
@@ -201,3 +201,14 @@ breakpoint rather than the cap.
 .mock { --s: min(1, tan(atan2(100vw - 60px, 1040px))); scale: var(--s); transform-origin: top center }
 ```
 ⚠ No CSS trig and the declaration drops — declare a stepped `--s` first.
+
+For one fixed-size figure stepped down per breakpoint, the reclaimed space can be
+a negative `margin-block-end` instead of a wrapper: with `transform-origin: top`
+the empty band below the figure is its authored height times `1 − s`, so the
+margin is that number negated. Derive it from the same `--s`, never type it per
+breakpoint. Steps of .55–.85 below the design width.
+```css
+.figure { transform: scale(var(--s)); transform-origin: top;
+  margin-block-end: calc(var(--h) * (var(--s) - 1)) }   /* --h: authored px */
+```
+⚠ Hard-coded per-step margins drift the first time the figure's height changes.

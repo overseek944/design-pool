@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,accessibility,required]
 axes: none
 cost: 1
-seen: 105
+seen: 106
 requires: []
 conflicts: []
 completes: []
@@ -305,3 +305,16 @@ duration, hold and exit survive and only the travel goes.
 ```css
 @media (prefers-reduced-motion: reduce) { .pill { animation-name: pill-still } }
 ```
+
+Between the blunt `*` reset and a per-class list sits the attribute-substring
+selector: emitted markup that writes keyframe names into `style` can be matched
+by name, so only the listed loops stop and every other animation on the page
+keeps its own branch. One selector per keyframe name, 3–8 names, kept beside the
+`@keyframes` they name.
+```css
+@media (prefers-reduced-motion: reduce) {
+  [style*="pulse-ring"], [style*="glint"] { animation: none !important }
+}
+```
+⚠ It is a text match: a renamed keyframe silently escapes, and a short name
+matches inside longer ones — prefix names so no name contains another.
