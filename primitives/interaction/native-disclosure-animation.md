@@ -4,7 +4,7 @@ category: interaction
 tags: [motion,disclosure,accessibility,progressive-enhancement,height]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 19
+seen: 20
 requires: []
 conflicts: []
 completes: []
@@ -117,3 +117,8 @@ than as a second animation to wait through. Open 0.25–0.35s, close 0.15–0.22
 ```
 ⚠ Text inside re-wraps every frame as the track narrows — give the child a fixed
 inline size so it crops rather than reflows.
+
+Variant — resolve the answer out of focus instead of only fading it: the body
+starts at `filter: blur(1–3px)` with opacity 0 and clears as the height opens.
+Short text then arrives as settling rather than sliding. Drop the blur under
+`reduce` and keep the fade.

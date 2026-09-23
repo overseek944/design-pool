@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,interaction,focus,correctness,state]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -36,3 +36,8 @@ wrap.addEventListener('focusout', e => wrap.contains(e.relatedTarget) || close()
 ⚠ `relatedTarget` is `null` when focus goes to the browser chrome or to a
 non-focusable click target. That still closes, which is usually right, but the
 outside `pointerdown` listener remains necessary.
+
+Variant — where the close control lives inside the panel and the open toggle
+outside it, closing unmounts the focused element. Defer the handoff one frame
+(`requestAnimationFrame`) so the toggle exists again, then
+`toggle.focus({ preventScroll: true })` so the page does not jump to it.

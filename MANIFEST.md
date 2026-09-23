@@ -1,6 +1,6 @@
 # Manifest
 
-1163 primitives. Format: `category/id | axes cost | tags | gist`
+1165 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -1008,6 +1008,7 @@ surface/restated-route-overlay | E2 D3 W2 F5 $2 | svg diagram path emphasis stro
 surface/rim-banded-geometry-lens | E1 D3 W3 F5 $4 | glass backdrop-filter svg-filter refraction sdf canvas edge | Glass thick enough to refract bends light at its edge, not acros
 surface/root-split-overscroll-ground | neutral  $1 | ground scroll overscroll theme correctness | Paint the root and the body separately. The root's background fi
 surface/rotating-conic-border | E4 D3 W3 F4 $3 | surface border motion svg | An animated gradient border without a pseudo-element hack: an SV
+surface/rounded-tile-ground | E1 D2 W2 F4 $1 | ground grid tile gradient panel structure backdrop | A soft gradient panel reads as a flat wash. Partition it into a 
 surface/row-borne-quantity-fill | E1 D3 W2 F5 $1 | surface data list density ground accessibility | A ranked list and its bar chart need not be two columns. Make th
 surface/scanline-register-overlay | E1 D3 W2 F2 $1 | overlay scanline texture video register decoration | Footage from mismatched sources — an archive still, a head camer
 surface/scrim-terminated-ground | E1 D2 W2 F5 $1 | gradient ground surface section seam cheap | A decorative ground that stops at its section's edge leaves a ho
@@ -1030,6 +1031,7 @@ surface/tiled-dash-border | E1 D2 W1 F4 $2 | surface border dash precision textu
 surface/tiled-shape-edge-mask | E2 D3 W2 F3 $2 | surface mask edge ornament texture section | Cut a section boundary with a shape rather than a straight line:
 surface/tinted-through-face-ring | E2 D2 W3 F4 $1 | surface gradient border button pill hover css-only | A gradient ring needs no mask: pad a gradient wrapper 2–5px and 
 surface/translated-curve-line-field | E2 D3 W1 F4 $2 | svg path lines contour wave ground ambient generative | Flowing hairlines need no noise or canvas: repeat one cubic curv
+surface/translucent-mat-ring | E1 D2 W2 F4 $1 | card ring box-shadow spread gradient-ground edge | An opaque white card on a tinted gradient ground can take a seco
 surface/twinned-elevation-tokens | E1 D2 W2 F5 $1 | shadow elevation tokens hover card | box-shadow interpolates only when both lists carry the same numb
 surface/user-space-ruling-path | E1 D3 W1 F5 $1 | surface svg texture blueprint diagram cheap | Rule a drawing inside its own viewBox, not behind it. A single <
 timing/additive-hover-surge-loop | E3 D2 W2 F5 $1 | motion timing loop hover css | Changing a running loop's animation-duration on hover re-derives

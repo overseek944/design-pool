@@ -4,7 +4,7 @@ category: interaction
 tags: [button,icon,radius,inversion,contrast,cta]
 axes: {energy: 1, density: 2, weight: 4, finish: 5}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -28,3 +28,7 @@ control's content height, label padding 4–8× the inset.
 ⚠ It looks like two controls and is one: never nest a second interactive element
 inside, and keep the plate `pointer-events: none`. The label is no longer
 optically centred — centre it in its own box.
+
+Variant — on a fully rounded control the plate becomes a circle: inset 2–4px,
+diameter the content height, `border-radius: 50%`, the plate a lighter step of
+the fill rather than an inversion when the control is already high-contrast.
