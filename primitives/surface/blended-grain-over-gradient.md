@@ -4,7 +4,7 @@ category: surface
 tags: [surface,texture,grain,gradient,blend-mode,banding]
 axes: {energy: 1, density: 3, weight: 3, finish: 4}
 cost: 1
-seen: 38
+seen: 39
 requires: []
 conflicts: []
 completes: []
@@ -223,3 +223,14 @@ clumps, so it reads as smoothness, not texture. Tile 128–512px.
 ```
 ⚠ Resampling smooths the noise back into the ramp — ship the tile at its native
 size and never scale it with `mask-size`.
+
+Grain need not sit on a gradient at all. On a flat light ground, a separate
+overlay element carrying the tile at plain opacity reads as paper stock rather
+than dirt, provided it is confined — inset to the content column, and laid only
+on the bands that open and close the page, so the plain bands between read as a
+different material. Halve the opacity in the dark theme. Tile 140–220px,
+opacity 4–8% light, 2–4% dark.
+```css
+.band::after { content: ""; position: absolute; inset: 0 var(--gutter);
+  background: var(--grain) repeat 0 0 / 180px; opacity: .06; pointer-events: none }
+```

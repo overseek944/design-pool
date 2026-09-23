@@ -4,7 +4,7 @@ category: surface
 tags: [surface,detail,border,state,css-only,hairline]
 axes: {energy: 1, density: 2, weight: 3, finish: 4}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -28,3 +28,12 @@ kbd { display: inline-grid; place-items: center; block-size: 1.7em;
 ```
 ⚠ In an illustration these are not controls. `aria-hidden` the row and name the
 chord in prose, or a reader is handed a stray unlabelled "Ctrl".
+
+On a filled button the riser can be an inset shadow instead of a border: a
+bottom edge in a darker step of the fill, painted inside the box, so the plate
+gains its lip with no border-box arithmetic and no height change. Press by
+dropping the inset to zero. Edge 2–3px, 20–35% darker than the fill.
+```css
+.btn { background: var(--accent); box-shadow: inset 0 -2px 0 var(--accent-deep) }
+.btn:active { box-shadow: none; transform: translateY(1px) }
+```

@@ -4,7 +4,7 @@ category: media
 tags: [media,illustration,assets,transparency,composition]
 axes: {energy: 1, density: 2, weight: 2, finish: 3}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []

@@ -1,6 +1,6 @@
 # Manifest
 
-1053 primitives. Format: `category/id | axes cost | tags | gist`
+1054 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -997,6 +997,7 @@ type/edge-cropped-monument-glyph | E1 D2 W5 F4 $1 | type lettering identity disp
 type/em-locked-inline-media-inset | E1 D3 W4 F4 $2 | typography image display-type inline responsive | A display line that ends short leaves a rectangle of dead measur
 type/em-locked-wordmark-mark | E1 D2 W2 F5 $1 | type logo alignment detail scale | A lock-up whose mark is sized in pixels needs a new value at eve
 type/em-sheared-highlight | E3 D2 W4 F4 $1 | type highlight clip-path emphasis inline scale | A slanted block behind a phrase gives a headline a cut-in, marke
+type/em-sized-inline-source-glyph | E1 D3 W2 F4 $1 | inline icon logo prose typography accessibility | Named sources in running copy can carry their marks inside the s
 type/first-line-anchored-marker | E1 D2 W1 F5 $1 | type list marker alignment optical correctness fluid | ::marker takes no position, so any custom bullet, rule or status
 type/first-line-indent-paragraph-mark | E1 D3 W2 F5 $1 | type prose editorial paragraph rhythm | Paragraphs separated only by a blank line read as interface copy
 type/foreshorten-tolerant-plane-label | E1 D2 W3 F4 $1 | type label 3d legibility tracking accessibility | Type laid in a preserve-3d plane is resampled rather than re-lai
