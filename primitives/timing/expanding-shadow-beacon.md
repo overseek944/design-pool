@@ -4,7 +4,7 @@ category: timing
 tags: [motion,indicator,status,ambient,glow]
 axes: {energy: 2, density: 1, weight: 2, finish: 4}
 cost: 1
-seen: 25
+seen: 26
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]

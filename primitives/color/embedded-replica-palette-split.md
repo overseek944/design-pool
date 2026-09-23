@@ -4,7 +4,7 @@ category: color
 tags: [color,tokens,product,mock,architecture]
 axes: none
 cost: 1
-seen: 10
+seen: 11
 requires: []
 conflicts: []
 completes: []
@@ -52,3 +52,11 @@ each to the boundary selector rather than adding a second global rule.
 ⚠ The region's reduced-motion branch is the same problem: a replica animating
 its own loading and arrival states needs the blanket collapse scoped to it, not
 inherited from a root rule that may not exist in the host at all.
+
+Variant — a host with a theme toggle. The replica shows the product as it
+ships, so it must not follow the page into dark. Redeclare every host theme
+token on the boundary with the product's values and set `color-scheme` there,
+so the page flips around a frame that holds still.
+```css
+.replica { color-scheme: light; --page: 255 255 255; --ink: 0 0 0; --line: 24 23 18 }
+```
