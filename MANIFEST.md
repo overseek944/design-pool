@@ -1,6 +1,6 @@
 # Manifest
 
-1056 primitives. Format: `category/id | axes cost | tags | gist`
+1058 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -790,6 +790,7 @@ scroll/embed-claims-wheel-on-hover | neutral  $1 | scroll embed iframe overflow 
 scroll/end-clamped-section-spy | neutral  $1 | scroll navigation correctness architecture | A scroll spy that takes the last section whose top has crossed a
 scroll/fixed-attachment-band | E2 D1 W3 F3 $1 | scroll parallax media surface progressive-enhancement performance | A full-bleed decorative band whose image is pinned to the viewpo
 scroll/floor-merged-autoplay-progress | neutral  $2 | scroll progress autoplay accessibility architecture | A sequence that moves only while the page moves is a flick on a 
+scroll/framed-to-cover-zoom | E3 D2 W3 F4 $3 | scroll pin zoom hero scale frame media | A pinned hero can open as media in a frame and scroll into it. S
 scroll/fully-entered-recede | E2 D1 W2 F5 $2 | scroll scroll-driven view-timeline scale transition | A tall artifact parked between two sections reads as a wall to b
 scroll/height-aware-sticky-offset | neutral  $2 | scroll sticky layout correctness viewport | top: 0 is only right while the sticky element fits the viewport.
 scroll/hoisted-scroll-timeline | neutral  $2 | scroll motion architecture progressive-enhancement | A named scroll-timeline is visible only to descendants of the sc
@@ -838,6 +839,7 @@ surface/baseline-closed-area-path | E2 D2 W2 F5 $1 | svg chart sparkline data pr
 surface/baseline-square-bar-terminal | E1 D2 W2 F5 $1 | chart radius hairline detail correctness | A bar rounded at both ends stops touching its axis: the radius a
 surface/blended-grain-over-gradient | E1 D3 W3 F4 $1 | surface texture grain gradient blend-mode banding | A wide gradient across a saturated panel bands on 8-bit displays
 surface/blur-resolved-coarse-raster | E1 D2 W2 F4 $1 | surface canvas texture filter cheap detail | A raster drawn far under display size — a hundred-cell field, a 
+surface/bowed-screen-clip | E1 D2 W3 F3 $1 | clip-path svg screen retro device shape | A picture tube's face bows outward on every edge. An objectBound
 surface/chained-quadratic-wave-edge | E2 D2 W2 F3 $1 | svg path wave band section generative | A regular wave is not an organic profile and needs no per-frame 
 surface/channel-split-refraction-glass | E1 D3 W3 F5 $4 | glass backdrop-filter svg-filter refraction chromatic depth | A blur says frosted; a displacement says solid and thick. Refere
 surface/circling-offset-shadow | E2 D2 W3 F4 $2 | shadow ambient loop light card elevation | A still card reads as lit by a slowly circling lamp when its sha

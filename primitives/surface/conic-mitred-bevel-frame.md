@@ -4,7 +4,7 @@ category: surface
 tags: [conic, bevel, frame, bezel, skeuomorphic, facet, housing, depth]
 axes: {energy: 1, density: 2, weight: 3, finish: 4}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -24,3 +24,11 @@ bands top lightest, bottom darkest; spread 15–30% lightness between them.
 ```
 ⚠ Mitres land at the centre's diagonals only on a square box; on a rectangle
 move the stops to `atan2(h, w)` or the corners skew off-true.
+
+Variant — where the housing is a ring around content rather than a filled
+plate, per-side `border-*-color` gives the same four facets with true mitres at
+any aspect ratio, since borders always meet on the corner diagonal. Top
+lightest, bottom darkest; a deeper bottom border becomes a control ledge.
+```css
+.housing { border: 24px solid var(--side); border-top-color: var(--hi); border-bottom: 56px solid var(--lo) }
+```

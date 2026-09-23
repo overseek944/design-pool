@@ -4,7 +4,7 @@ category: media
 tags: [media,video,scroll,scrub,timeline,performance]
 axes: {energy: 3, density: 2, weight: 3, finish: 5}
 cost: 4
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: [scrub-lag-band, reduce-restored-media-transport]
@@ -50,3 +50,15 @@ if (i !== Math.floor(v.currentTime * FPS) && !v.seeking)
 ```
 ⚠ `FPS` must be the encode's real rate. Guess high and every index maps to a
 frame already shown, so the guard never fires and the scrub freezes.
+
+A decoder that cannot keep up does not error — it lands somewhere near the
+target and the scrub stutters with nothing to catch. Compare `currentTime`
+against the requested time in `seeked`; count consecutive misses beyond
+0.1–0.15s and, after 2–4, stop scrubbing and swap to the still. Fetching the
+clip whole into a `blob:` URL first removes range-request latency from every
+seek, which is most of what the watchdog would otherwise catch.
+```js
+v.addEventListener('seeked', () => { misses = Math.abs(v.currentTime - want) > .12 ? misses + 1 : 0
+  if (misses >= 3) fallBackToStill() })
+```
+⚠ A blob holds the entire file in memory — keep the clip under 5–10MB and revoke the URL on teardown.
