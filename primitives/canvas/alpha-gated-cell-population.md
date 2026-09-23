@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,generative,field,image,mask,silhouette,grid]
 axes: {energy: 1, density: 3, weight: 2, finish: 4}
 cost: 3
-seen: 6
+seen: 7
 requires: []
 conflicts: []
 completes: []

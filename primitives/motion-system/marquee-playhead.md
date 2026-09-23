@@ -4,7 +4,7 @@ category: motion-system
 tags: [marquee,motion,state,observer,rhythm]
 axes: {energy: 3, density: 3, weight: 2, finish: 5}
 cost: 3
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,15 @@ wallpaper. Two lanes want different fractions, so the eye reads one.
 ⚠ The active item changes with no user input, so the linked panel must not be a
 live region — it would narrate forever. Mark it `aria-hidden` and ship the same
 content as a static list.
+
+Variant — the marker as a seam between two renderings. Stack two copies of the
+track, driven by one shared animation, and clip each to one side of the fixed
+line with `clip-path: inset()`. Items look one way before the line and another
+after it — muted then resolved, flagged then passing — so a process reads as
+something the track goes *through*. Seam at 40–60%; mark it with a 1px rule or
+a small disc.
+```css
+.before { clip-path: inset(0 calc(100% - var(--seam)) 0 0) }
+.after  { clip-path: inset(0 0 0 var(--seam)) }
+```
+⚠ `aria-hidden` one copy — otherwise every item is announced twice.

@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,tabs,state,custom-properties,transition]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
