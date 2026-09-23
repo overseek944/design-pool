@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,loader,indicator,grid,stagger,custom-properties,ambient]
 axes: {energy: 3, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -36,3 +36,14 @@ it. Sweep 0.5–0.8s, step 60–120ms.
 .mark:hover .dot { animation: sweep .68s both; animation-delay: calc(var(--diag) * .1s) }
 @keyframes sweep { 0%, to { fill-opacity: var(--rest) } 45%, 65% { fill-opacity: 1 } }
 ```
+
+At one row of three the grid becomes a presence mark — someone is composing.
+Delay by index at 12–18% of the cycle and let the keyframe *hop* as well as dim,
+so the wave reads as agency rather than loading. Cycle 0.9–1.4s, hop 1–3px.
+```css
+.typing i { animation: hop 1s ease-in-out infinite }
+.typing i:nth-child(2) { animation-delay: .15s } .typing i:nth-child(3) { animation-delay: .3s }
+@keyframes hop { 50% { opacity: .4; transform: translateY(-2px) } }
+```
+⚠ Give the container `role="img"` and an `aria-label`; three empty nodes say
+nothing to assistive tech.

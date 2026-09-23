@@ -1,6 +1,6 @@
 # Manifest
 
-1091 primitives. Format: `category/id | axes cost | tags | gist`
+1092 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -902,6 +902,7 @@ surface/grid-intersection-crosshair | E1 D3 W1 F5 $2 | surface grid detail bluep
 surface/ground-matched-chrome | E2 D2 W2 F5 $2 | chrome nav scroll contrast theme accessibility | Floating chrome crosses grounds it does not own. Rather than hun
 surface/ground-relative-depth-amount | E1 D2 W2 F5 $2 | surface color depth elevation theme tokens color-mix | Ship the depth step as a percentage, not the resulting colour. E
 surface/hairline-overhang | E1 D2 W1 F5 $1 | surface detail precision | Negative inset of exactly 1px with calc(100% + 2px) sizing so a 
+surface/housing-tucked-hardware-keys | E1 D2 W3 F4 $1 | surface device bezel housing mock pseudo-element stacking | A handset drawn in CSS around a live screen reads as a picture u
 surface/image-plated-interface-mock | E1 D2 W3 F5 $2 | product mock image depth color surface | On a monochrome dark page, set the interface mock on an atmosphe
 surface/inherited-tint-hover-plate | E1 D2 W2 F5 $1 | surface hover currentcolor theming accessibility | A hover plate behind an inline link usually costs a token per co
 surface/inset-outline-margin-rule | E1 D2 W2 F5 $1 | surface border frame outline detail precision | A second hairline set in from a plate's own edge makes it read a

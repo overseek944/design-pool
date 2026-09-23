@@ -4,7 +4,7 @@ category: motion-system
 tags: [architecture,progressive-enhancement,svg,accessibility,correctness,entrance]
 axes: none
 cost: 1
-seen: 9
+seen: 10
 requires: []
 conflicts: []
 completes: []
@@ -66,3 +66,17 @@ lands.
 ```
 ⚠ `!important` is load-bearing here: the armed rules it overrides are equally
 specific and come later in the sheet.
+
+In a state-driven render the same idea is the initial value: start the machine
+at `step = length, mode = 'complete'`, so the server and the reduced-motion
+reader both get the finished thread, and rewind to 0 only on the first qualified
+view. Make each step's timeout an effect of `active = inView && tabVisible` —
+exit clears it, re-entry reschedules the *same* step, so the sequence pauses
+rather than resets. Per-step delays 600–1800ms, arm at 0.3–0.5.
+```js
+const [s, set] = useState({ step: n, mode: 'complete' })
+useEffect(() => { if (!active || s.step >= n) return
+  const t = setTimeout(() => set({ step: s.step + 1 }), delays[s.step]); return () => clearTimeout(t) }, [active, s.step])
+```
+⚠ The rewind blanks a visible block — gate it on the ratio so it happens as the
+block arrives, never under a reader already looking at it.
