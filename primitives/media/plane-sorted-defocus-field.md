@@ -4,7 +4,7 @@ category: media
 tags: [depth,blur,defocus,scatter,composition,decoration]
 axes: {energy: 1, density: 3, weight: 2, finish: 5}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -14,7 +14,7 @@ A field of images scattered at different sizes still reads flat — scale alone
 says *smaller*, not *further*. Sort them into two or three focal planes and
 give each plane a fixed blur, the sharp plane holding whatever must be read.
 Defocus is the cue the eye trusts; scale and opacity only support it. Two
-planes carry it; three before the ramp bands. Far-plane blur 5–12px at 0.3–0.6
+planes carry it; three before the ramp bands. Far-plane blur 3–12px at 0.3–0.6
 opacity and 0.5–0.7 scale; keep the near plane at zero blur so nothing in focus
 pays for a filter buffer.
 
@@ -26,3 +26,8 @@ pays for a filter buffer.
 ⚠ `filter: blur()` samples transparent pixels past the box, so a blurred member
 loses its own edge — oversize it or inset its content. Mark every one
 `aria-hidden` and `pointer-events: none`.
+
+A far plane can also be a running column — a slow vertical loop of cards at
+2–4px blur and 0.4–0.6 opacity beside a sharp foreground panel, faded top and
+bottom so it has no ends. Defocus is what stops the motion competing: at that
+blur it reads as ambient activity, not content. 60–100s per cycle.
