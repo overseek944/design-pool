@@ -4,7 +4,7 @@ category: type
 tags: [type,gradient,entrance,currentcolor,reveal]
 axes: {energy: 3, density: 2, weight: 3, finish: 4}
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -72,3 +72,7 @@ colour and either theme. Light alpha ×0.15–0.3; dark lightness +0.3–0.5.
 ```
 ⚠ Relative colour is recent — declare a literal `--hi` first so older engines
 still get a band.
+
+Variant — round trip: a two-ink strip (accent to ~45%, ink from ~55%) at
+200–250% width, looped 100%→0→100% with a hold at 0 across 20–40% of the cycle,
+recolours a phrase and hands it back. Reads as "this just changed", not sheen.

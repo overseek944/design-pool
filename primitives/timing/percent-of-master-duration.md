@@ -4,7 +4,7 @@ category: timing
 tags: [timing,choreography,keyframes,css-animation,token,sequence]
 axes: {energy: 2, density: 3, weight: 2, finish: 5}
 cost: 2
-seen: 37
+seen: 38
 requires: []
 conflicts: []
 completes: []
@@ -237,3 +237,7 @@ wrap.
 element needing six poses drags the whole figure back to the long total. Moving
 it to a second clock fixes the length and reintroduces exactly the drift between
 the two groups that the shared token existed to prevent.
+
+Variant — staggered stream: sub-parts of one travelling item (a lid closing, a
+seal stamping) take the item's duration *and* its per-item delay variable, so
+every beat lands at the same point of every item's pass however many run.

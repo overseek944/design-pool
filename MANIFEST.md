@@ -1,6 +1,6 @@
 # Manifest
 
-1135 primitives. Format: `category/id | axes cost | tags | gist`
+1137 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -482,6 +482,7 @@ light/blend-doubled-headline | E2 D2 W4 F5 $3 | type blend legibility contrast c
 light/blurred-conic-hue-bloom | E1 D2 W2 F4 $2 | gradient glow bloom hue conic decoration ambient | Radial lamps give one hue each and seam where they meet. A conic
 light/broadcast-light-source | E2 D2 W2 F5 $3 | light gradient custom-property ambient architecture | A panel lit at the pointer has one lamp, and only while a pointe
 light/co-located-pulse-lamp | E3 D2 W3 F4 $3 | light 3d webgl pulse alert emissive glow | An alert in a lit 3D scene that only raises its own emissive lig
+light/corner-split-hue-shadow | E1 D2 W3 F4 $1 | shadow glow hue halo box-shadow decoration | Four shadows, each pushed diagonally toward its own corner in it
 light/counter-phased-lamp-pair | E2 D2 W3 F4 $2 | glow drift halo ambient keyframes lamp | One drifting lamp behind a mark pulls the glow off-centre every 
 light/counter-rotated-specular-layer | E2 D2 W3 F5 $2 | light gradient rotation material 3d | An object with its highlight painted into its own background spi
 light/differential-scale-rim-glint | E2 D2 W3 F5 $2 | light rim mask layers ambient metal 3d | A form cut from a single silhouette has no edge for light to cat
@@ -657,6 +658,7 @@ motion-system/marquee-still-state | neutral  $1 | motion accessibility marquee c
 motion-system/matched-vertex-shape-lerp | E2 D2 W2 F4 $2 | svg morph polygon hover data shape interpolation | Two shapes with equal vertex counts morph by lerping each point 
 motion-system/measured-convergence-vector | E3 D2 W2 F5 $3 | motion measurement responsive choreography diagram | Where elements must travel to or from another element the layout
 motion-system/metric-keyed-cell-loader | E3 D2 W2 F4 $1 | motion loader indicator grid stagger custom-properties ambient | One small dot grid yields a family of pending indicators, no key
+motion-system/mid-flight-lane-convergence | E3 D3 W2 F4 $2 | loop ambient custom-properties keyframes stagger converge | A stream crossing a stage reads as disorder being sorted when ea
 motion-system/motion-runtime-watchdog | neutral  $2 | motion correctness accessibility progressive-enhancement reveal | A reveal system that hides content in CSS and un-hides it from J
 motion-system/mpath-bound-traveller | E3 D1 W1 F5 $1 | motion svg path marker loop diagram | A marker crossing a drawn route drifts off it the moment the dra
 motion-system/name-pinned-transition-chrome | E2 D1 W2 F5 $2 | motion navigation transition chrome accessibility | A root view transition snapshots the whole page, so a tab bar pr
