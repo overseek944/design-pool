@@ -4,7 +4,7 @@ category: layout
 tags: [header,scroll,sticky,chrome]
 axes: {energy: 2, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 40
+seen: 41
 requires: []
 conflicts: []
 completes: []
@@ -13,7 +13,7 @@ tension: []
 A header can start edge-to-edge and contract into an inset floating capsule
 once the page moves — the cue that the chrome has detached from the document. Animate an inner plate's `max-inline-size`,
 `border-radius` and background; never the sticky element's own box, which
-reflows the page and jitters the links inside it. Threshold 16–48px scrolled.
+reflows the page and jitters the links inside it. Threshold 1–48px scrolled (1px detaches on the first wheel tick).
 ```css
 .plate { max-inline-size: 100%; border-radius: 0; background: transparent;
          transition: max-inline-size .3s, border-radius .3s, background .3s }

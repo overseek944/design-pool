@@ -4,7 +4,7 @@ category: perf
 tags: [perf,progressive-enhancement,correctness,content,architecture]
 axes: none
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []
@@ -87,3 +87,10 @@ family. Force the block and its descendants onto a system stack: `.mirror *` is
 block, so the cost appears and disappears between loads and no single trace
 proves it. Measure on the routes that do *not* use the display face — there the
 whole download is waste, and a per-page audit is the last place it shows.
+
+Where the framework clears its mount node on first render — a client root
+replacing its children — the mirror can live *inside* the root as a
+`display:none; aria-hidden` block and needs no teardown script: the render that
+paints the app is the removal.
+⚠ `display:none` text is the weakest-weighted form for crawlers that do parse
+the DOM; use it only where the clipped variant's duplication is unacceptable.

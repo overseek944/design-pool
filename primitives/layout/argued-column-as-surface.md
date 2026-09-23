@@ -4,7 +4,7 @@ category: layout
 tags: [layout,table,comparison,surface,contrast,hierarchy]
 axes: {energy: 1, density: 3, weight: 4, finish: 5}
 cost: 1
-seen: 15
+seen: 16
 requires: []
 conflicts: []
 completes: []
@@ -122,3 +122,9 @@ attribution at the opposite end so the claim has an owner.
 ```
 ⚠ A delta stated in the chrome is still a claim the copy has to support — if
 the rows can be re-sorted or filtered, it has to recompute or go.
+
+The lightest dose spends no ground at all. Keep every cell on the page surface
+and move the argument into ink: the argued column at full foreground and weight
+500, the other at 55–65% ink and 400, and only its header in the accent. It
+survives any section ground and any theme because nothing is filled.
+⚠ Muted ink still owes 4.5:1 — the losing column is content, not decoration.

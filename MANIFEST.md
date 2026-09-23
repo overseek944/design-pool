@@ -1,6 +1,6 @@
 # Manifest
 
-1088 primitives. Format: `category/id | axes cost | tags | gist`
+1089 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -540,6 +540,7 @@ media/overscan-relaxed-plate | E2 D1 W3 F5 $2 | media image reveal scale motion 
 media/packed-bit-raster-inline | neutral  $2 | media raster bitmap pixel canvas recolor asset architecture | A 1-bit illustration need not be an image file. Pack it one bit 
 media/plane-sorted-defocus-field | E1 D3 W2 F5 $2 | depth blur defocus scatter composition decoration | A field of images scattered at different sizes still reads flat 
 media/predicate-tiered-video-encode | neutral  $2 | media video responsive performance bandwidth correctness | A <video> has no srcset and no sizes, so nothing picks an encode
+media/pruned-native-player-chrome | neutral  $1 | media video controls correctness accessibility | Native video controls are accessible and free, but offer buttons
 media/pseudo-element-pictogram-set | E1 D2 W2 F4 $2 | icon css-only pseudo-element tokens diagram | A set of small technical pictograms — a frame, a scatter, a cyli
 media/query-composed-figure-source | neutral  $3 | media figure architecture iframe product responsive build | Every figure of an interface is usually its own exported image. 
 media/range-looped-excerpt | E2 D2 W2 F4 $1 | media video loop preview excerpt range | A preview does not need its own encode. Loop a range of the full
