@@ -1,6 +1,6 @@
 # Manifest
 
-1166 primitives. Format: `category/id | axes cost | tags | gist`
+1167 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -403,6 +403,7 @@ layout/geometry-scoped-connector-overlay | neutral  $1 | layout diagram connecto
 layout/ghost-sizer-twin | neutral  $1 | layout architecture correctness hover reflow | A box that grows on interaction — scales, lifts on Z, expands a 
 layout/golden-section-band-tokens | E1 D2 W2 F5 $1 | layout tokens composition custom-properties grid rhythm | Halves and thirds are where everything lands by default, and a f
 layout/graded-support-cell-vocabulary | E1 D3 W2 F5 $1 | data label accessibility correctness legibility restraint | A capability matrix with a tick-or-blank vocabulary forces every
+layout/graduated-gutter-rail | E1 D3 W1 F5 $1 | layout grid rule scale gutter precision technical | Give the page a measuring scale down both edges: reserve a narro
 layout/gridline-borne-value-label | E1 D3 W1 F5 $1 | chart axis label mono hairline density | A plot that reserves a left gutter for its value axis spends 40–
 layout/height-budgeted-media-width | neutral  $2 | layout container-query aspect fit cls | When a card must fit one screen exactly — media plus chrome, not
 layout/implication-subtracted-spans | neutral  $2 | intervals annotation data correctness architecture | Independent detectors flag overlapping ranges, and drawn as they
