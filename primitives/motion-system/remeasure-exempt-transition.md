@@ -4,7 +4,7 @@ category: motion-system
 tags: [indicator,transition,resize,measurement,correctness]
 axes: none
 cost: 1
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []

@@ -4,7 +4,7 @@ category: media
 tags: [svg,filter,mark,liquid,state]
 axes: {energy: 3, density: 2, weight: 3, finish: 4}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: [instance-scoped-filter-id]

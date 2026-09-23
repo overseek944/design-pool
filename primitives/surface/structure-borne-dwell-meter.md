@@ -4,7 +4,7 @@ category: surface
 tags: [surface,hairline,indicator,progress,divider,restraint]
 axes: {energy: 2, density: 2, weight: 1, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []

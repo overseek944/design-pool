@@ -1,6 +1,6 @@
 # Manifest
 
-1125 primitives. Format: `category/id | axes cost | tags | gist`
+1128 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -264,6 +264,7 @@ interaction/lagged-setpoint-steered-rig | E3 D2 W2 F4 $2 | pointer playable mani
 interaction/legend-as-series-filter | E2 D2 W2 F5 $2 | legend filter state accessibility chart | A key that only names the series is a second thing to read. Make
 interaction/lock-gated-cross-tab-mutation | neutral  $3 | state correctness concurrency architecture async | Some mutations must not run twice at once across a user's open t
 interaction/margin-cancelled-hit-area | neutral  $1 | interaction touch accessibility hit-area layout correctness | A link in a dense bar cannot reach the 44px touch floor by growi
+interaction/measured-shared-menu-panel | E2 D2 W2 F5 $2 | navigation menu mega-menu dropdown transition measurement | Header menus of different sizes can share one panel. Anchor a si
 interaction/micro-interaction-defaults | E2 D2 W2 F5 $1 | interaction polish consistency | One transition duration (200ms) and one property set for every n
 interaction/modality-gated-port-scroll | neutral  $1 | interaction accessibility keyboard focus scroll correctness carousel | Cards in a horizontal scroll port belong in the ordinary tab ord
 interaction/momentum-gated-wheel-step | neutral  $2 | interaction wheel input gesture correctness | A trackpad flick is one gesture and hundreds of events, so a ste
@@ -401,6 +402,7 @@ layout/interior-line-anchored-bleed | neutral  $1 | layout full-bleed aspect-rat
 layout/intrinsic-floored-auto-track | neutral  $1 | layout grid responsive correctness overflow breakpoints | repeat(auto-fit, minmax(<floor>, 1fr)) reflows a row of cards wi
 layout/intrinsic-size-abstaining-child | neutral  $1 | layout correctness type detail | A width: fit-content block is sized by its widest child, which i
 layout/keyboard-resized-single-screen | neutral  $1 | layout mobile keyboard viewport responsive correctness | A one-screen layout holding a text field breaks the moment the o
+layout/label-reserved-bar-scale | E1 D3 W2 F5 $1 | chart label bar comparison correctness | A bar with its value printed past its end overflows the track ne
 layout/labelled-elastic-rule | E1 D2 W1 F5 $1 | layout type hairline metadata editorial | A section divider carries more than separation when the rule its
 layout/legibility-floor-scroll-port | neutral  $1 | overflow responsive scroll correctness table figure | A table or a diagram has a width below which it stops being read
 layout/line-counted-reel-window | neutral  $1 | layout type clipping carousel fluid geometry | A reel showing a few rows at a time has three numbers that must 
@@ -1064,6 +1066,7 @@ type/em-locked-inline-media-inset | E1 D3 W4 F4 $2 | typography image display-ty
 type/em-locked-wordmark-mark | E1 D2 W2 F5 $1 | type logo alignment detail scale | A lock-up whose mark is sized in pixels needs a new value at eve
 type/em-sheared-highlight | E3 D2 W4 F4 $1 | type highlight clip-path emphasis inline scale | A slanted block behind a phrase gives a headline a cut-in, marke
 type/em-sized-inline-source-glyph | E1 D3 W2 F4 $1 | inline icon logo prose typography accessibility | Named sources in running copy can carry their marks inside the s
+type/erase-retype-value-swap | E3 D2 W2 F3 $1 | type text swap comparison motion technical | When figures switch to another dataset, delete each old string o
 type/first-line-anchored-marker | E1 D2 W1 F5 $1 | type list marker alignment optical correctness fluid | ::marker takes no position, so any custom bullet, rule or status
 type/first-line-indent-paragraph-mark | E1 D3 W2 F5 $1 | type prose editorial paragraph rhythm | Paragraphs separated only by a blank line read as interface copy
 type/foreshorten-tolerant-plane-label | E1 D2 W3 F4 $1 | type label 3d legibility tracking accessibility | Type laid in a preserve-3d plane is resampled rather than re-lai
