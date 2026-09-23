@@ -4,7 +4,7 @@ category: media
 tags: [media,loading,performance,correctness,cls]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -41,3 +41,14 @@ lightest stop within 6–10% of the ground or the frame flashes.
 ⚠ It never ends on its own — a source that 404s sweeps forever and reads as a
 live request. Give the slot an `error` handler that stops the animation and
 shows the failed state.
+
+For a CSS background there is no pseudo-element to add: list the inline
+placeholder as the *second* layer of the same `background`, beneath the real
+URL. It paints immediately and the real layer covers it on arrival, with the
+ground colour as the third fallback.
+```css
+.hero { background: url(hero.webp) 50%/cover no-repeat,
+                    url(data:image/jpeg;base64,…) 50%/cover var(--ground) no-repeat }
+```
+⚠ No blur is applied in this form — keep the placeholder under ~24px wide so
+upscaling smooths it, or it reads as a broken low-resolution image.

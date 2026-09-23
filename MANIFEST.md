@@ -1,6 +1,6 @@
 # Manifest
 
-1116 primitives. Format: `category/id | axes cost | tags | gist`
+1118 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -291,6 +291,7 @@ interaction/placeholder-shown-value-state | E2 D1 W2 F5 $1 | interaction input f
 interaction/platform-narrowed-download-set | neutral  $2 | progressive-enhancement navigation correctness accessibility architecture | An artifact built for five targets should not ship five equal bu
 interaction/playhead-lit-legend-rows | E2 D2 W2 F5 $2 | legend chart dataviz sweep highlight sync | When a figure animates along its value axis, let each legend row
 interaction/pointer-borne-rule-sight | E3 D2 W1 F5 $2 | interaction pointer overlay hover transform detail | State the pointer as rules, not as a mark: hairlines longer than
+interaction/pointer-held-counterfactual | E2 D3 W2 F4 $2 | interaction hover data table comparison scenario counter | A figure can show its own alternative instead of a second chart.
 interaction/pointer-pulled-control | E3 D1 W2 F4 $1 | interaction pointer hover spring overshoot cta affordance | A control that leans toward the pointer while hovered, then spri
 interaction/pointer-transparent-copy-layer | neutral  $1 | interaction pointer accessibility layout correctness | Copy laid over a background that reacts to the pointer swallows 
 interaction/pre-hydration-nested-link | neutral  $2 | accessibility links hydration progressive-enhancement correctness | A card that navigates but contains its own link cannot be an anc
@@ -643,6 +644,7 @@ motion-system/length-timed-leg-relay | E3 D2 W1 F5 $2 | motion loop diagram offs
 motion-system/lifecycle-cancelled-cross-document-transition | neutral  $2 | view-transition navigation accessibility progressive-enhancement architecture | A cross-document transition is opted in by an at-rule, so the on
 motion-system/marquee-playhead | E3 D3 W2 F5 $3 | marquee motion state observer rhythm | Give a moving track one stationary reading position. A marker si
 motion-system/marquee-still-state | neutral  $1 | motion accessibility marquee correctness overflow | A marquee's reduced-motion state is not a paused marquee. The tr
+motion-system/matched-vertex-shape-lerp | E2 D2 W2 F4 $2 | svg morph polygon hover data shape interpolation | Two shapes with equal vertex counts morph by lerping each point 
 motion-system/measured-convergence-vector | E3 D2 W2 F5 $3 | motion measurement responsive choreography diagram | Where elements must travel to or from another element the layout
 motion-system/metric-keyed-cell-loader | E3 D2 W2 F4 $1 | motion loader indicator grid stagger custom-properties ambient | One small dot grid yields a family of pending indicators, no key
 motion-system/motion-runtime-watchdog | neutral  $2 | motion correctness accessibility progressive-enhancement reveal | A reveal system that hides content in CSS and un-hides it from J

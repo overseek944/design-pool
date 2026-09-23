@@ -4,7 +4,7 @@ category: interaction
 tags: [correctness,state,events,scroll,architecture]
 axes: none
 cost: 1
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -57,3 +57,12 @@ v.readyState >= v.HAVE_ENOUGH_DATA ? ok() : v.addEventListener('canplaythrough',
 v.addEventListener('error', () => settle('still'))
 ```
 ⚠ Clear the timer on teardown, or a settle fires into a tree that is gone.
+
+Where the seeded class drives a transitioned property — a bar going from clear
+to filled — the seeding call itself animates on a reload mid-page. Null the
+transition inline for the seed and restore it two frames later: one frame is
+not enough, since the style change and the removal can land in the same commit.
+```js
+bar.style.transition = 'none'; sync()
+requestAnimationFrame(() => requestAnimationFrame(() => bar.style.transition = ''))
+```
