@@ -1,6 +1,6 @@
 # Manifest
 
-1138 primitives. Format: `category/id | axes cost | tags | gist`
+1139 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -727,6 +727,7 @@ motion-system/twin-pose-custom-properties | E3 D3 W2 F5 $2 | transform state sta
 motion-system/type-declared-transition-scope | neutral  $2 | motion-system view-transition scoping state correctness routing | Every ::view-transition- rule applies to every transition, so a 
 motion-system/validated-dom-aim-point | E2 D2 W2 F5 $2 | cursor demo synthetic-pointer correctness dom-measure | A scripted pointer aiming at live elements rather than stored co
 motion-system/viewport-clamped-slot-travel | E3 D1 W2 F5 $3 | motion travel scroll measurement layout | An element travelling between two positions read from real layou
+motion-system/wipe-scan-flash-processing-beat | E3 D2 W2 F4 $1 | processing scan sequence demo mock clip-path keyframes loading | A spinner says "wait", never "reading this". Stage processing on
 motion-system/zero-signal-idle-floor | E2 D1 W2 F5 $1 | motion idle signal realtime feedback reduced-motion | A visual driven by a live input has two states that render ident
 perf/analytic-stand-in-until-live | neutral  $2 | data loading architecture visualisation labelling | A visual driven by a live feed has three bad first frames: empty
 perf/area-budgeted-backing-scale | neutral  $1 | performance canvas dpr memory resize correctness | min(devicePixelRatio, 2) caps the ratio and bounds nothing: the 

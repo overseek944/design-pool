@@ -4,7 +4,7 @@ category: surface
 tags: [surface,border,motion,svg]
 axes: {energy: 4, density: 3, weight: 3, finish: 4}
 cost: 3
-seen: 31
+seen: 32
 requires: []
 conflicts: []
 completes: [overflow-visible-for-glow-bleed]
@@ -177,3 +177,14 @@ at 200% of the pill's width behind an opaque inner fill, for a finite count —
 `animation: spin 2–4s linear 1–3 forwards` — so the light circles a couple of
 times on load and settles. Alternating full and 10–20% alpha stops give two
 travelling highlights per turn.
+
+The cheapest static form needs no extra element: `border-image: <gradient> 1`.
+Slice 1 stretches the gradient over the whole border box, so each side shows its
+own stretch of it — and a one-sided border (left only, bottom only) carries
+just that edge's colours, an active-row marker with the ramp's direction built in.
+```css
+.on { border: 1px solid transparent;
+      border-image: linear-gradient(135deg, var(--a), var(--b), var(--c)) 1 }
+```
+⚠ `border-image` ignores `border-radius` — square corners only — and does not
+interpolate on/off; fade the element or an overlay, not the border.

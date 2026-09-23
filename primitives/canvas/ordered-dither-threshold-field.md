@@ -4,7 +4,7 @@ category: canvas
 tags: [canvas,texture,pattern,raster,two-tone,generative]
 axes: {energy: 2, density: 4, weight: 3, finish: 2}
 cost: 2
-seen: 13
+seen: 14
 requires: []
 conflicts: []
 completes: []
@@ -73,3 +73,17 @@ float s = smoothstep(.05, .95, (1. - uv.y) + .1 * snoise(p * .001 + t));
 ```
 ⚠ Pause the loop while it is offscreen. An ambient edge that nobody sees still
 draws every frame.
+
+Swap the matrix for a static per-cell hash and the same comparison gives
+stochastic stipple — no crosshatch, still frozen in place — and the field can
+then drive two channels at once: *count* through the threshold, *tone* through
+the kept cell's alpha stepped into 3–4 levels. Drift the field and cells switch
+on and off where they sit, reading as signal rather than particles. Density
+0.2–0.4, alpha 0.05–0.35.
+```js
+if (hash(c, r) < Math.min(1, 2 * D * v)) {
+  ctx.globalAlpha = .05 + Math.ceil(4 * Math.min(1, v / .8)) / 4 * .3
+  ctx.fillRect(c * P, r * P, S, S) }
+```
+⚠ Fill with the canvas element's computed `color`, re-read on theme change, and
+the stipple follows the theme with no token plumbing.
