@@ -1,6 +1,6 @@
 # Manifest
 
-1161 primitives. Format: `category/id | axes cost | tags | gist`
+1163 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -646,6 +646,7 @@ motion-system/edge-flush-viewport-staging | E3 D1 W2 F5 $1 | motion entrance vie
 motion-system/enveloped-voice-level-bars | E3 D2 W2 F4 $2 | audio waveform bars mock decorative speech | A row of level bars read as speech, not a loop, when each bar's 
 motion-system/fire-on-arrival-propagation | E3 D3 W2 F5 $3 | entrance propagation graph canvas emergent | An entrance authored as a list of delays must be rewritten whene
 motion-system/first-paint-entry-style | neutral  $1 | motion transition css-only progressive-enhancement state | An element that did not exist a frame ago has no previous value 
+motion-system/first-scroll-armed-flourish | neutral  $1 | motion entrance reveal engagement lcp correctness reduced-motion | A decorative flourish on a heading — colour sweep, shimmer — com
 motion-system/flag-collapsed-motion-wrapper | neutral  $1 | motion architecture reduced-motion accessibility correctness feature-flag | Every entrance in a system is a wrapper component; make each one
 motion-system/floor-anchored-squash-landing | E4 D1 W3 F3 $1 | motion entrance keyframes squash stretch impact choreography | An entrance that jumps, lands and absorbs the landing reads as a
 motion-system/flush-separated-transition-arming | neutral  $1 | motion correctness transition observer reveal | A one-shot reveal whose transitions are generated in script — de
@@ -804,6 +805,7 @@ reveal/axis-swept-plot-window | E2 D2 W2 F5 $2 | reveal chart svg clip-path moti
 reveal/char-opacity-drift | E3 D4 W2 F5 $4 | type motion reveal ambient | Per-character with opacity + small y, will-change:opacity,transf
 reveal/coverage-stepped-mask-dissolve | E2 D3 W2 F3 $1 | reveal mask dither raster keyframes entrance halftone | An arrival can resolve like a raster filling in rather than a fa
 reveal/dimmed-predecessor-series | E2 D2 W2 F5 $1 | reveal chart comparison state svg data | When a plotted result is revised, do not swap the curve. Drop th
+reveal/draft-retiring-grow-wipe | E2 D2 W2 F5 $2 | reveal clip-path wipe layering media scroll | Show a finished image arriving over its own draft — a render ove
 reveal/edge-registered-arrival | E2 D1 W1 F4 $1 | reveal entrance box-shadow outline keyframes acknowledge one-shot | Mark a region's arrival at its boundary instead of moving its co
 reveal/flow-preserved-step-reveal | E3 D2 W2 F3 $1 | reveal text steps clip-path typing layout-safety | A left-to-right text reveal animated on width leaves normal flow
 reveal/front-clipped-mixed-figure | E2 D2 W2 F5 $2 | reveal svg clip-path diagram motion detail | A figure that is not all strokes — connectors carrying node disc

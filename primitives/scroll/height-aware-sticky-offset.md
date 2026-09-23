@@ -4,7 +4,7 @@ category: scroll
 tags: [scroll,sticky,layout,correctness,viewport]
 axes: none
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,hover,button,label,motion,clip]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -37,3 +37,10 @@ its twin takes the seat. Gap 0.2–0.4em, 300–400ms.
 .arrows { display: flex; gap: .25rem; transition: translate .35s cubic-bezier(.4,0,.2,1) }
 .btn:is(:hover, :focus-visible) .arrows { translate: calc(100% + .25rem) }
 ```
+
+The twin can be paint rather than DOM. Give the one label a `text-shadow` offset exactly one travel below it, unblurred, in the text colour; the shadow is the incoming copy. One node means one accessible name and nothing to `aria-hidden`. Offset 1.2–1.4em, matching the travel.
+```css
+.label { display: inline-block; text-shadow: 0 1.3em currentColor; transition: transform .6s cubic-bezier(.625,.05,0,1) }
+.btn:is(:hover, :focus-visible) .label { transform: translateY(-1.3em) }
+```
+⚠ Clip the parent, not the label: a clip on the moving element travels with it and never hides the shadow copy.

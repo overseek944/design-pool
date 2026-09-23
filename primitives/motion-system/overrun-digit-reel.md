@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,counter,number,figure,reveal,accessibility]
 axes: {energy: 3, density: 2, weight: 3, finish: 4}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
