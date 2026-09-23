@@ -1,6 +1,6 @@
 # Manifest
 
-1069 primitives. Format: `category/id | axes cost | tags | gist`
+1071 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -182,6 +182,7 @@ interaction/autofill-proofed-honeypot | neutral  $1 | accessibility correctness 
 interaction/axis-bell-pointer-gain | E3 D2 W2 F5 $2 | interaction pointer falloff data hover detail | A row of elements already carrying values can answer the pointer
 interaction/axis-swapped-disclosure | neutral  $2 | disclosure responsive layout-animation breakpoint accessibility | A detail panel opens downward in a stacked column and sideways b
 interaction/background-drawn-control-affordance | neutral  $1 | forms native-control dark-ground affordance select | appearance: none on a <select> deletes its arrow, and it takes n
+interaction/bare-ground-pointer-claim | E4 D2 W2 F3 $3 | interaction pointer overlay svg play background easter-egg crosshair | The empty ground of a page can become playable without stealing 
 interaction/breakpoint-dual-mode-details | neutral  $2 | disclosure navigation responsive accessibility progressive-enhancement | One <details> can be a permanently-open sidebar above a breakpoi
 interaction/breakpoint-relocated-panel | neutral  $2 | disclosure responsive dom breakpoint accessibility correctness | A row of triggers whose detail opens in one shared panel below t
 interaction/breakpoint-scoped-overlay-dismiss | neutral  $1 | navigation overlay responsive correctness accessibility | An overlay that exists only below a breakpoint — a mobile nav sh
@@ -228,6 +229,7 @@ interaction/gesture-affordance-label | E1 D2 W2 F4 $1 | affordance interaction a
 interaction/ground-joined-tab-selection | E1 D2 W2 F5 $1 | tabs state selection ruled contrast theme | Where a strip of tabs sits directly on the panel it switches, st
 interaction/gutter-staged-section-rail | E1 D2 W1 F5 $1 | navigation indicator progress rail responsive fixed | A fixed edge rail of section anchors spends only the gutter it h
 interaction/hairline-native-scrubber | E2 D1 W1 F5 $1 | interaction accessibility control scrub native diagram | A diagram that scrubs deserves a real <input type=range>, not a 
+interaction/heat-budgeted-repeat | E4 D2 W3 F3 $1 | interaction press hold repeat throttle meter hysteresis game | Held auto-repeat needs a visible ceiling. Each repeat adds a fix
 interaction/height-traded-card-panes | E2 D3 W2 F4 $2 | interaction hover card media layout transition | A card that reveals a summary on hover usually grows — shoving i
 interaction/history-entry-backed-overlay | neutral  $2 | interaction overlay history dismiss mobile correctness | An overlay opened from a button owns no history entry, so the ba
 interaction/hold-charged-aperture | E3 D2 W3 F4 $2 | interaction pointer press hold reveal lens progress canvas | A hover lens shows a patch; holding the press can earn the whole

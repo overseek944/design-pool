@@ -4,7 +4,7 @@ category: perf
 tags: [performance,animation,intersection-observer,visibility,battery,correctness]
 axes: none
 cost: 2
-seen: 93
+seen: 94
 requires: []
 conflicts: []
 completes: []
@@ -315,4 +315,15 @@ addEventListener('scroll', () => { root.dataset.scrolling = ''; clearTimeout(t)
 ```
 ```css
 [data-scrolling] .ambient { animation-play-state: paused !important }
+```
+
+A loop that animates a set of objects is its own best gate: request the next
+frame only while the set is non-empty, and let whatever adds an object restart
+it. Store the handle as 0 when parked so the restart is idempotent, and reset
+the clock on restart so the first `dt` is not the idle gap — clamp it to
+0.05–0.1s anyway.
+```js
+const tick = t => { step(Math.min((t - last) / 1e3, .1)); last = t
+  raf = items.size ? requestAnimationFrame(tick) : 0 }
+const wake = () => raf || (last = performance.now(), raf = requestAnimationFrame(tick))
 ```

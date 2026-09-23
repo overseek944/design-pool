@@ -4,7 +4,7 @@ category: layout
 tags: [layout,measurement,legibility,canvas]
 axes: none
 cost: 2
-seen: 11
+seen: 12
 requires: []
 conflicts: []
 completes: []
@@ -170,3 +170,14 @@ Variant — for moving marks that carry labels, keep the mark and fade only its
 label while it sits inside a copy rectangle plus a 30–100px margin; ease the
 label's opacity toward the target rather than cutting it, so a mark drifting
 across the text column goes quiet instead of vanishing.
+
+Scattered marks that must land *between* the copy need no measurement at all:
+rejection-sample. Draw a candidate point, hit-test it with `elementFromPoint`,
+and reject it if `closest()` finds text or a control, or if it sits within
+100–150px of a mark already placed. Give up after 10–20 tries and skip the
+spawn — a crowded viewport simply gets fewer marks.
+```js
+const hit = document.elementFromPoint(x, y)?.closest('a,button,input,p,h1,form')
+if (hit || marks.some(m => Math.hypot(x - m.x, y - m.y) < 110)) continue
+```
+⚠ Only sees the viewport and skips `pointer-events: none` layers — test at spawn time, not once on load.
