@@ -1,6 +1,6 @@
 # Manifest
 
-1062 primitives. Format: `category/id | axes cost | tags | gist`
+1063 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -82,6 +82,7 @@ canvas/packed-generation-state-texture | neutral  $3 | canvas shader simulation 
 canvas/packed-word-pixel-writes | neutral  $2 | canvas performance raster imagedata correctness | Filling ImageData a byte at a time costs four indexed writes and
 canvas/palette-as-uniforms | neutral  $2 | shader color system | Pass the site's palette into the shader as named vec3 uniforms r
 canvas/parametric-thickness-variation | E3 D3 W2 F4 $3 | shader organic detail | Drive line or ribbon thickness with uThickness + uThickVary nois
+canvas/parked-clock-shader-still | E1 D3 W2 F4 $2 | shader webgl static texture perf generative gradient | A time-driven shader need not animate to earn its place. Set its
 canvas/patch-subdivided-context-texture | E2 D3 W2 F4 $3 | canvas projection 3d texture perspective drawimage | A 2D context draws images only through affine matrices, so a tex
 canvas/path-data-construction-overlay | E1 D4 W1 F5 $3 | svg path annotation overlay technical diagram | Artwork on the page already carries its own construction. Walk t
 canvas/pattern-space-from-smooth-twin | neutral  $3 | canvas shader grid noise correctness generative | A ruled overlay drawn in a noisy surface's coordinates inherits 
