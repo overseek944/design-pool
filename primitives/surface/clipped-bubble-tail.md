@@ -4,7 +4,7 @@ category: surface
 tags: [surface, clip-path, message, pseudo-element]
 axes: {energy: 2, density: 2, weight: 2, finish: 3}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []

@@ -4,7 +4,7 @@ category: surface
 tags: [surface,texture,pattern,blueprint,cheap]
 axes: {energy: 1, density: 3, weight: 1, finish: 4}
 cost: 1
-seen: 60
+seen: 61
 requires: []
 conflicts: []
 completes: []
@@ -186,3 +186,15 @@ declaration. Pitch ratio 2–4×, cycle 14–30s.
 ```
 ⚠ Repaints the whole box every frame — confine it to a hero band and stop it
 under `prefers-reduced-motion`.
+
+Cut the lattice to an irregular shape and it stops being a ground and becomes a
+print tint — a flat screen patch laid slightly out of register behind a subject.
+Clip it with a notched `polygon()`, give it an ink border, rotate it off-square,
+and hold it faint. Pitch 5–9px, opacity 0.1–0.25, rotation 2–6°.
+```css
+.tint { position: absolute; inset: 8% 3%; opacity: .16; rotate: 4deg;
+  border: 2px solid var(--ink); clip-path: polygon(0 0,100% 0,100% 100%,0 100%,0 75%,22% 63%,15% 29%,0 25%);
+  background: radial-gradient(var(--ink) 1px, #0000 1px) 0 0 / 7px 7px }
+```
+⚠ One per view. `clip-path` also clips the border, so the notch reads as a cut,
+not an outline — intended, but surprising the first time.

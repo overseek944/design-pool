@@ -1,6 +1,6 @@
 # Manifest
 
-1130 primitives. Format: `category/id | axes cost | tags | gist`
+1131 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -584,6 +584,7 @@ media/sparse-sequence-nearest-frame | E3 D2 W3 F5 $4 | scrub scroll images loadi
 media/srcset-blocked-source-swap | neutral  $1 | media images responsive correctness state | Assigning img.src from script does nothing while the element sti
 media/stacked-contour-volume | E1 D4 W2 F5 $2 | svg mark depth stroke currentcolor | Describe a solid as a stack of cross-sections instead of as a sh
 media/state-preserving-frame-relocation | neutral  $3 | media iframe embed lifecycle dom correctness | appendChild removes and reinserts: an iframe reloads, a video re
+media/stateful-screen-transcript | neutral  $1 | accessibility a11y transcript demo mock details disclosure | A rendered product screen — a device UI in an iframe, canvas or 
 media/stepped-transform-sprite | E3 D2 W2 F4 $2 | media sprite animation svg performance | Play a short looping illustration as a filmstrip: frames in one 
 media/text-cast-terminal-demo | E3 D2 W2 F3 $2 | media terminal demo text playback performance | Show a command-line tool working as a recorded text stream repla
 media/time-mapped-annotation-track | E2 D3 W2 F5 $3 | media video timeline annotation seek evidence | Findings about a recording belong on the recording's own axis. P
