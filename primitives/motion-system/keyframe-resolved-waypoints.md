@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,keyframes,custom-properties,architecture,choreography]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 19
+seen: 20
 requires: []
 conflicts: []
 completes: []
@@ -105,3 +105,13 @@ authored in container units wherever those resolve.
 `container-type` support and container-unit support are separate. Order matters
 absolutely: the override must come after, and a later import can silently undo
 it.
+
+The resolved value can be the element's *rest state*, not only a waypoint. When
+a family of marks settles at different values — bars at .45–.9 opacity by rank —
+end one shared keyframe on `var(--rest)` and have the reduced-motion branch set
+the same property statically. Rest value is then declared once per element, and
+the animated and still paths cannot drift apart.
+```css
+@keyframes grow { from { opacity: 0; scale: 1 0 } to { opacity: var(--rest, .7); scale: 1 } }
+@media (prefers-reduced-motion: reduce) { .bar { animation: none; opacity: var(--rest, .7) } }
+```

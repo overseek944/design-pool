@@ -4,7 +4,7 @@ category: surface
 tags: [surface,mask,edge,composition,bleed]
 axes: {energy: 1, density: 2, weight: 2, finish: 5}
 cost: 2
-seen: 115
+seen: 116
 requires: []
 conflicts: []
 completes: []
@@ -363,3 +363,14 @@ opaque to 40–60% of each axis.
 mask-image: linear-gradient(90deg, #000 45%, #0003), linear-gradient(#000 55%, #0003);
 mask-composite: intersect
 ```
+
+Two axes need not be one element's mask stack. Put the horizontal ramp on a
+wrapper and the vertical one on the media inside it: masks multiply down the
+tree, so the result is the intersection with no `mask-composite` and no Safari
+prefix pair — and each axis can change at its own breakpoint without rewriting
+the other. Lead fade 30–50% of the width, foot fade 25–45% of the height.
+```css
+.frame { mask-image: linear-gradient(90deg, #0000, #000 40%) }
+.frame > video { mask-image: linear-gradient(#000 58%, #0000) }
+```
+⚠ Two masked layers are two offscreen buffers; keep it to one such pair per view.
