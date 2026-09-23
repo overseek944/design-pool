@@ -4,7 +4,7 @@ category: color
 tags: [color,tokens,theming,third-party,contrast,icon,correctness]
 axes: none
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
