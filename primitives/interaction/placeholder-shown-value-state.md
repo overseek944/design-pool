@@ -4,7 +4,7 @@ category: interaction
 tags: [interaction,input,form,state,css-only,feedback]
 axes: {energy: 2, density: 1, weight: 2, finish: 5}
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
@@ -23,3 +23,12 @@ brightness; glow 8–20px at low alpha.
 ```
 ⚠ Requires a placeholder attribute (a single space works). Whitespace-only
 input counts as a value, so never use this as validation.
+
+Variant — arm the submit control from the same state: a send button that sits
+in a neutral fill while the field is empty and takes the accent once it holds a
+value tells the reader the action is live without a disabled attribute. Key it
+from the container with `:has()` so the button needn't be a sibling.
+```css
+form:has(input:not(:placeholder-shown)) .send { background: var(--accent); color: #fff }
+```
+⚠ Visual only — the empty submit must still be handled, not merely look inert.
