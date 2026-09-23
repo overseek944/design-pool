@@ -4,7 +4,7 @@ category: surface
 tags: [gradient,animated,background,layering,ambient]
 axes: {energy: 2, density: 2, weight: 2, finish: 4}
 cost: 2
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []

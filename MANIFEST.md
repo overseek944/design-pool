@@ -1,6 +1,6 @@
 # Manifest
 
-1123 primitives. Format: `category/id | axes cost | tags | gist`
+1124 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -248,6 +248,7 @@ interaction/history-entry-backed-overlay | neutral  $2 | interaction overlay his
 interaction/hold-charged-aperture | E3 D2 W3 F4 $2 | interaction pointer press hold reveal lens progress canvas | A hover lens shows a patch; holding the press can earn the whole
 interaction/hover-previewed-disclosure | neutral  $1 | interaction disclosure navigation hover progressive-enhancement correctness | A menu that should fall open under a mouse and still answer a ta
 interaction/hysteretic-lock-zone | neutral  $1 | interaction pointer state correctness threshold | Any boolean derived from a continuous input — pointer inside a z
+interaction/idle-docking-pointer-companion | E4 D1 W2 F3 $2 | pointer spring sprite idle trail velocity tilt follow | A small fixed sprite that trails the pointer at an offset on a d
 interaction/idle-receded-floating-control | E1 D1 W1 F5 $2 | interaction accessibility idle chrome fixed restraint | A control pinned to a viewport corner all session is a standing 
 interaction/idle-scroll-cue | E2 D1 W2 F4 $1 | scroll affordance feedback motion | A page whose motion is entirely scroll-driven stops when the rea
 interaction/in-place-cta-field-expansion | E2 D1 W2 F5 $1 | form cta nav disclosure progressive-enhancement focus | A header CTA can open into its own single-field form where it st

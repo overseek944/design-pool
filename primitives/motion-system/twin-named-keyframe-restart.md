@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,keyframes,transition,correctness,css-animation]
 axes: none
 cost: 1
-seen: 1
+seen: 2
 requires: []
 conflicts: []
 completes: []
