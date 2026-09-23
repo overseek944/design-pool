@@ -4,7 +4,7 @@ category: media
 tags: [media,video,responsive,aspect,backdrop,blur]
 axes: {energy: 1, density: 2, weight: 2, finish: 4}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -51,3 +51,16 @@ transition it, so the bars return as the controls do. Scale 1.1–1.2 for
 .card.is-playing video.bars { scale: 1 }
 ```
 ⚠ Flag the asset, not the slot — only footage with bars baked in wants the zoom.
+
+A full-bleed opening film is the same choice made per viewport shape. `cover`
+on a landscape screen fills; on a portrait phone the same rule crops a 16:9
+frame to its middle third and the subject leaves the shot. Letterbox it there
+instead — `contain` on the section's own dark ground — and switch to `cover`
+once the viewport is wide enough that the crop keeps the subject. Switch on
+aspect, not on a phone breakpoint: 1/1–4/3.
+```css
+.film { object-fit: contain; background: #000 }
+@media (min-aspect-ratio: 1/1) { .film { object-fit: cover } }
+```
+⚠ The bars sit where overlaid chrome and copy usually go — check that header
+and caption stay legible against bare ground as well as against footage.

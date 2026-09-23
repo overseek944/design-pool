@@ -1,6 +1,6 @@
 # Manifest
 
-1075 primitives. Format: `category/id | axes cost | tags | gist`
+1076 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -256,6 +256,7 @@ interaction/micro-interaction-defaults | E2 D2 W2 F5 $1 | interaction polish con
 interaction/modality-gated-port-scroll | neutral  $1 | interaction accessibility keyboard focus scroll correctness carousel | Cards in a horizontal scroll port belong in the ordinary tab ord
 interaction/momentum-gated-wheel-step | neutral  $2 | interaction wheel input gesture correctness | A trackpad flick is one gesture and hundreds of events, so a ste
 interaction/mounted-empty-status-slot | neutral  $1 | accessibility correctness form layout state css-only | A live region only announces if it was in the document before th
+interaction/named-details-menu-group | neutral  $1 | interaction disclosure menu dropdown light-dismiss keyboard progressive-enhancement correctness | Header dropdowns rarely need a popover library. Give sibling <de
 interaction/native-disclosure-animation | E2 D2 W2 F5 $2 | motion disclosure accessibility progressive-enhancement height | ::details-content with interpolate-size: allow-keywords animates
 interaction/native-drag-capture-guard | neutral  $1 | pointer drag scroll correctness interaction | Images and links are draggable by default, so a press-and-move i
 interaction/nearest-sample-path-pick | neutral  $2 | interaction svg pointer diagram correctness | Dozens of hairline curves crossing in one figure cannot be hit-t
