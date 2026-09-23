@@ -4,7 +4,7 @@ category: surface
 tags: [surface,depth,shadow,blur,mock,hero]
 axes: {energy: 1, density: 2, weight: 4, finish: 4}
 cost: 2
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -42,7 +42,9 @@ as light trapped in the card rather than a shape inside it.
 Below the plate's cost, one `box-shadow` gets most of the way under a framed
 screenshot: large offset and blur, and a negative spread of 0.55–0.65× the blur.
 The shadow then shows only under the lower edge instead of haloing all four
-sides. Tint it with the ground's hue at 25–45% alpha.
+sides. Push the spread to 0.8–0.88× the blur and the shadow thins to a
+soft ledge under the bottom edge only — the whole elevation scale can be built
+that way, tiers differing by offset and blur rather than by alpha. Tint it with the ground's hue at 25–45% alpha.
 ```css
 .shot { box-shadow: 0 1px #3c281e05, 0 34px 64px -38px #3c281e52 }
 ```

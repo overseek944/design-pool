@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,tabs,state,custom-properties,transition]
 axes: {energy: 3, density: 2, weight: 2, finish: 5}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -40,3 +40,13 @@ el.className = Math.abs(d) > 1 ? 'snap' : d > 0 ? 'enter' : 'enter-rev'
 ⚠ The outgoing layer needs the same branch — pair a slide-out with the slide and
 nothing at all with the cut, or the cut animates one half of a swap it is not
 part of.
+
+One signed property can drive *opposed* travel inside the same slide. Let the
+media layer consume the negated value and the copy layer the raw one: on
+change the two part and close like a shutter, still in the direction of
+travel, and the media can blur 4–8px as it leaves so the copy stays the
+read. Offsets 24–40px, copy one third to half the media's.
+```css
+.slide[data-active=false] .media { translate: calc(var(--from) * -1) 18px; filter: blur(6px) }
+.slide[data-active=false] .copy  { translate: var(--from) 12px }
+```

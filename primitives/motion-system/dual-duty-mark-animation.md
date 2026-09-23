@@ -4,7 +4,7 @@ category: motion-system
 tags: [motion,svg,identity,loading,state,reduced-motion]
 axes: {energy: 3, density: 1, weight: 2, finish: 5}
 cost: 2
-seen: 5
+seen: 6
 requires: []
 conflicts: []
 completes: []

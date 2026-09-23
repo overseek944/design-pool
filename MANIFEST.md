@@ -1,6 +1,6 @@
 # Manifest
 
-1149 primitives. Format: `category/id | axes cost | tags | gist`
+1150 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -374,6 +374,7 @@ layout/concurrent-stage-triptych | E1 D3 W2 F5 $2 | layout mock state hierarchy 
 layout/container-budgeted-column-drop | neutral  $2 | layout container-query table responsive accessibility correctness | A dense row carries more columns than a narrow container can hol
 layout/container-edge-rule-lattice | E1 D3 W1 F5 $2 | layout grid hairline precision responsive technical | Draw the measurement system, not only the content. Vertical hair
 layout/container-solved-overlap-stride | E1 D4 W2 F5 $2 | layout overlap measurement resize-observer density quantity | Do not pick how far a row of fixed-width cards overlaps — solve 
+layout/container-stepped-nav-compaction | neutral  $1 | layout container-query navigation header responsive tokens i18n | A header's link rail runs out of room at a width no viewport que
 layout/content-spanning-note-bracket | E1 D2 W1 F5 $1 | layout annotation editorial rule accessibility | A note set in the margin beside a long block never says which ro
 layout/count-derived-stack-extent | E1 D4 W2 F5 $1 | layout overlap stack calc responsive composition | Absolutely-positioned children contribute no height, so an overl
 layout/count-threshold-shape-shift | neutral  $1 | layout has quantity-query chrome css-only density | Let a container change what it is once its contents pass a count
