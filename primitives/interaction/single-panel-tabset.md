@@ -4,7 +4,7 @@ category: interaction
 tags: [tabs,aria,architecture,performance,accessibility,correctness]
 axes: none
 cost: 1
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -38,3 +38,11 @@ if (k !== undefined) { e.preventDefault(); select(tabs[(k+tabs.length) % tabs.le
 ⚠ The roving stop must be rewritten on every selection, not only on keyboard
 ones — a click that leaves `tabIndex 0` on the old tab drops the reader back
 onto a tab that is no longer current.
+
+Presented as an accordion — numbered rows, one body open, a shared visual
+beside the list — the set is still a tabset: the shared visual always needs a
+selection, so clicking the open row must not close it. Then `aria-expanded`
+toggles that can never read `false` on demand lie; either give the rows tab
+semantics, or let the row collapse and hold the visual on the last selection.
+⚠ Below the breakpoint where the visual stacks under the list, it lands far
+from the row that changed it — move it into the open row or drop it.

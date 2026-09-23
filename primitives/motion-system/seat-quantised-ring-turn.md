@@ -4,7 +4,7 @@ category: motion-system
 tags: [radial,rotation,counter-rotation,custom-property,loop]
 axes: {energy: 2, density: 3, weight: 2, finish: 5}
 cost: 2
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: []
@@ -41,3 +41,13 @@ orbit reads as a spinner.
 ⚠ Two compositor tickets per orbiting child, and the pair only stays in phase
 while both start together — anything that restarts one animation alone
 (a class toggle, a re-render that re-declares it) tips every child permanently.
+
+Place each child with the individual `rotate`/`translate` properties, not
+`transform`: a counter-spin keyframe written on `transform` replaces the
+placement, so every node collapses to the centre unless the keyframe repeats
+`translate(-50%, calc(-1 * var(--r))) rotate(calc(-1 * var(--a)))` ahead of the
+spin. Pausing on hover is safe only if one rule pauses ring and children
+together. Radius as a `clamp()` token, 8–18rem.
+```css
+.orbit:hover :is(.ring, .child) { animation-play-state: paused }
+```

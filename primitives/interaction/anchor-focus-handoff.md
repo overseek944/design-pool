@@ -4,7 +4,7 @@ category: interaction
 tags: [accessibility,navigation,focus,correctness,anchor]
 axes: none
 cost: 1
-seen: 18
+seen: 19
 requires: []
 conflicts: []
 completes: []
@@ -109,3 +109,13 @@ setOpen(false); sheet.addEventListener('transitionend', go, { once: true })
 ```
 ⚠ `transitionend` never fires under reduced motion's zero duration — fall back
 to calling it directly when nothing animated.
+
+One delegated handler on `a[href*="#"]` catches far more than in-page jumps.
+Intercept only a same-document fragment: bail on `defaultPrevented`, any button
+but the primary, a `download` attribute, a `target` other than `_self`, and any
+URL whose origin or pathname differs from the current one — otherwise
+`/other-page#pricing` is swallowed and scrolls nowhere.
+```js
+const u = new URL(a.href)
+if (u.origin !== location.origin || u.pathname !== location.pathname || !u.hash) return
+```
