@@ -1,6 +1,6 @@
 # Manifest
 
-1171 primitives. Format: `category/id | axes cost | tags | gist`
+1173 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -688,6 +688,7 @@ motion-system/outcome-routed-traveller | E3 D2 W2 F5 $2 | motion svg diagram con
 motion-system/overrun-digit-reel | E3 D2 W3 F4 $1 | motion counter number figure reveal accessibility | A figure can arrive rolling like a mechanical counter instead of
 motion-system/overrun-gesture-loop | E3 D2 W2 F4 $2 | motion svg geometry pointer annotation generative | A target circled by a generated ellipse reads as a shape placed 
 motion-system/parameterised-path-travel | E3 D3 W1 F4 $2 | motion loop ambient diagram css-only | One keyframe animating offset-distance from 0% to 100% drives an
+motion-system/parity-signed-line-exit | E4 D2 W3 F4 $2 | exit headline lines scroll stagger split-text | A multi-line headline that leaves as one block reads as scrolled
 motion-system/path-scrubbed-entrance | E3 D2 W2 F5 $3 | motion scroll motion-path choreography scrub | Give each element its own curve instead of a shared translate. A
 motion-system/paused-as-authored-rest | neutral  $1 | motion architecture correctness scene performance | A decorative scene whose resting state is running has already pl
 motion-system/phase-offset-typing-dots | E2 D1 W1 F4 $1 | keyframes loop dots typing pending chat mock stagger | A "composing" indicator reads as presence, not a spinner, when t
@@ -908,6 +909,7 @@ scroll/settled-fragment-reanchor | neutral  $1 | anchor fragment navigation font
 scroll/smooth-scroll-driving-timeline | E3 D2 W3 F5 $3 | scroll motion architecture | Pair a smooth-scroll library (Lenis) with the animation library'
 scroll/smoothing-bypassed-reduce-branch | neutral  $1 | scroll spring reduced-motion accessibility progress correctness | A value tracking scroll has no landed state to jump to, so the u
 scroll/snap-suppressed-scroll-wrap | neutral  $2 | scroll carousel snap loop correctness | A duplicated track makes a scroll container endless only if the 
+scroll/split-range-arrive-leave | E2 D1 W2 F5 $1 | view-timeline scroll entrance exit headline css-only | One element can own its arrival and its departure with no script
 scroll/stale-scroll-request-guard | neutral  $2 | scroll correctness accessibility events navigation | A scroll request crossing an async boundary — posted by an embed
 scroll/step-anchored-layer-dissolve | E2 D2 W2 F5 $2 | scroll scrub crossfade image steps opacity reading | Art beside a column of steps should change when the text does, n
 scroll/sticky-as-cheap-pin | E1 D2 W2 F3 $1 | scroll layout performance | position: sticky for anything that only needs to hold position —

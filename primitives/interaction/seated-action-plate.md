@@ -4,7 +4,7 @@ category: interaction
 tags: [button,icon,radius,inversion,contrast,cta]
 axes: {energy: 1, density: 2, weight: 4, finish: 5}
 cost: 1
-seen: 4
+seen: 5
 requires: []
 conflicts: []
 completes: []
@@ -32,3 +32,15 @@ optically centred — centre it in its own box.
 Variant — on a fully rounded control the plate becomes a circle: inset 2–4px,
 diameter the content height, `border-radius: 50%`, the plate a lighter step of
 the fill rather than an inversion when the control is already high-contrast.
+
+Variant — travelling plate: on hover the plate crosses to the far end while the
+label shifts half a plate-plus-inset the other way, so the two trade sides and
+the press reads as a mechanism engaging. Travel is the control width less the
+plate and both insets, so the width must be fixed. 0.3–0.5s on an expo-out.
+```css
+.btn { --travel: calc(var(--w) - var(--plate) - 2 * var(--inset)) }
+.btn:hover > .plate { translate: var(--travel) 0 }
+.btn:hover > .label { translate: calc(-.5 * (var(--plate) + var(--inset))) 0 }
+```
+⚠ A label that grows past the fixed width collides with the travelled plate —
+size for the longest translation.
