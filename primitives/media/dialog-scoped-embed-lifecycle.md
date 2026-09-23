@@ -4,7 +4,7 @@ category: media
 tags: [media,performance,dialog,correctness,lifecycle]
 axes: none
 cost: 2
-seen: 3
+seen: 4
 requires: []
 conflicts: []
 completes: []
@@ -29,3 +29,13 @@ embed is what the reader asked to enlarge. Destroying and recreating it there
 restarts the thing they were already watching. Either policy is defensible; the
 choice is whether continuity or a guaranteed stop matters more, and it has to
 be made once for the surface rather than per component.
+
+The page's own ambient loop keeps running behind the dialog and competes with
+the film the reader opened. Pause it on open and resume on `close` only if it
+was playing before — record `!v.paused` at open, never assume.
+```js
+open.onclick = () => { wasOn = !bg.paused; bg.pause(); /* build + showModal */ }
+dlg.addEventListener('close', () => { wasOn && bg.play().catch(() => {}) })
+```
+⚠ A loop the reader paused, or one held still under `prefers-reduced-motion`,
+must stay paused after close — blind resume overrides their choice.
