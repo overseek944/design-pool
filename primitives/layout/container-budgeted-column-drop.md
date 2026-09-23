@@ -4,7 +4,7 @@ category: layout
 tags: [layout,container-query,table,responsive,accessibility,correctness]
 axes: none
 cost: 2
-seen: 7
+seen: 8
 requires: []
 conflicts: []
 completes: []
@@ -79,3 +79,14 @@ The same drop works on the block axis. A card made a `container-type: size`
 can shed its description under `@container (max-height: 110–140px)`, so a tile
 squeezed by its grid keeps title and action rather than clipping mid-sentence.
 ⚠ A size container needs a height from outside — the grid track, never content.
+
+Unstack rather than drop where every column is a comparison the reader needs.
+Hide the header row, take each row to one column, and let every cell carry its
+own column name from a `::before` so the label travels with the value. Label
+weight one to two steps under the value, gap .2–.4rem between cells.
+```css
+@media (width <= 40rem) { .thead { display: none }
+  .row { grid-template-columns: 1fr } .cell::before { content: attr(data-col) ": " } }
+```
+⚠ Generated content is inconsistently announced. Keep real `role="columnheader"`
+headers visually hidden rather than `display: none`, or the table loses its names.
