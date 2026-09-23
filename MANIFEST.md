@@ -1,6 +1,6 @@
 # Manifest
 
-1178 primitives. Format: `category/id | axes cost | tags | gist`
+1179 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -559,6 +559,7 @@ media/first-frame-held-animated-image | E2 D2 W2 F4 $2 | media hover animated-im
 media/frame-announced-readiness | neutral  $2 | media iframe embed loading progressive-enhancement correctness | An iframe's load fires when its document parses, not when the ap
 media/frame-relayed-theme-token | neutral  $1 | media iframe embed theme custom-property postmessage architecture | Custom properties stop at a frame boundary, so an embedded scene
 media/frameless-alpha-artwork | E1 D2 W2 F3 $2 | media illustration assets transparency composition | Artwork exported on transparency with a feathered edge does not 
+media/front-weighted-playback-bar | E2 D1 W2 F4 $1 | media video progress timing interaction | A linear bar on a long clip crawls, and a crawling bar invites a
 media/host-cued-frame-playback | neutral  $2 | media iframe embed postmessage intersection-observer playback scroll architecture | An animation isolated in a frame cannot see the host's scroll, s
 media/host-mirrored-frame-route | neutral  $2 | media iframe embed history routing postmessage architecture | An embedded app has no address bar, so its views cannot be linke
 media/idle-hydrated-visible-media | neutral  $2 | media video performance bandwidth first-paint scheduling | Media already on screen at first paint cannot be approach-loaded
