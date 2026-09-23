@@ -1,6 +1,6 @@
 # Manifest
 
-1143 primitives. Format: `category/id | axes cost | tags | gist`
+1144 primitives. Format: `category/id | axes cost | tags | gist`
 Axes: E=energy D=density W=weight F=finish. Read `axes.md` first.
 
 ```
@@ -425,6 +425,7 @@ layout/operator-track-comparison-row | E1 D3 W2 F5 $1 | layout comparison diagra
 layout/overflow-clip-over-hidden | neutral  $1 | overflow correctness accessibility scroll | overflow: clip crops without creating a scroll container. hidden
 layout/per-edge-clip-polygon | neutral  $1 | overflow clip correctness bleed | overflow only works per axis, so there is no way to crop one edg
 layout/perimeter-set-display-sentence | E2 D2 W5 F3 $2 | layout composition type figure editorial responsive | A display sentence need not be a block. Break it into two to fou
+layout/pre-laid-replay-transcript | E2 D2 W2 F4 $1 | demo transcript replay layout-shift typing sequence | A scripted thread that appends messages grows the page under the
 layout/prefix-selected-segment-level | E1 D3 W2 F4 $1 | css-only state accessibility data detail cheap | A discrete level — three of ten segments lit — usually costs a c
 layout/provenance-split-label-row | E1 D3 W1 F5 $1 | layout type label truncation provenance correctness detail | A row of labels usually holds two kinds at once: terms from a co
 layout/published-occupancy-inset | neutral  $2 | layout custom-properties panel viewport architecture correctness | A side panel that pushes the page rather than covering it needs 

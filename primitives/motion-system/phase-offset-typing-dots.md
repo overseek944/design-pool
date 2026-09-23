@@ -4,7 +4,7 @@ category: motion-system
 tags: [keyframes,loop,dots,typing,pending,chat,mock,stagger]
 axes: {energy: 2, density: 1, weight: 1, finish: 4}
 cost: 1
-seen: 2
+seen: 3
 requires: []
 conflicts: []
 completes: [reduced-motion-branch]
@@ -26,3 +26,7 @@ on mount instead of all three popping together. Period 1.2–1.6s, peak at 35–
 Variant: rest the dots *on*, not at zero — scale .75–.85 and opacity .25–.4 at
 rest, full at the peak. The wave is quieter, the row is always legible, and the
 reduced-motion branch is simply the rest keyframe with no animation.
+
+Run the resting-on variant with `steps(2, end)` instead of an ease and the dots
+blink between two opacities rather than breathing — a terminal register that
+suits a monospace thread. Offset 0.12–0.2s per dot, period 1.2–1.6s.
